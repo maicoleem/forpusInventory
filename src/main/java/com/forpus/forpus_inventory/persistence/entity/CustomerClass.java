@@ -1,4 +1,4 @@
-package com.forpus.forpus_inventory.module;
+package com.forpus.forpus_inventory.persistence.entity;
 
 import javax.persistence.*;
 import java.util.Objects;

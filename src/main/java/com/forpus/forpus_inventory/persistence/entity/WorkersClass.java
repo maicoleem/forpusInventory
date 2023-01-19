@@ -1,11 +1,11 @@
-package com.forpus.forpus_inventory.module;
+package com.forpus.forpus_inventory.persistence.entity;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "partners", schema = "inventoryaccounting", catalog = "")
-public class PartnersClass {
+@Table(name = "workers", schema = "inventoryaccounting", catalog = "")
+public class WorkersClass {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "IdentificationCard", nullable = false)
@@ -14,11 +14,20 @@ public class PartnersClass {
     @Column(name = "Name", nullable = false, length = 20)
     private String name;
     @Basic
+    @Column(name = "Job", nullable = false, length = 20)
+    private String job;
+    @Basic
+    @Column(name = "Wage", nullable = false)
+    private int wage;
+    @Basic
     @Column(name = "PhoneNumber", nullable = false)
     private int phoneNumber;
     @Basic
     @Column(name = "Address", nullable = false, length = 20)
     private String address;
+    @Basic
+    @Column(name = "Password", nullable = false, length = 15)
+    private String password;
 
     public int getIdentificationCard() {
         return identificationCard;
@@ -34,6 +43,22 @@ public class PartnersClass {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getJob() {
+        return job;
+    }
+
+    public void setJob(String job) {
+        this.job = job;
+    }
+
+    public int getWage() {
+        return wage;
+    }
+
+    public void setWage(int wage) {
+        this.wage = wage;
     }
 
     public int getPhoneNumber() {
@@ -52,16 +77,24 @@ public class PartnersClass {
         this.address = address;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PartnersClass that = (PartnersClass) o;
-        return identificationCard == that.identificationCard && phoneNumber == that.phoneNumber && Objects.equals(name, that.name) && Objects.equals(address, that.address);
+        WorkersClass that = (WorkersClass) o;
+        return identificationCard == that.identificationCard && wage == that.wage && phoneNumber == that.phoneNumber && Objects.equals(name, that.name) && Objects.equals(job, that.job) && Objects.equals(address, that.address) && Objects.equals(password, that.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(identificationCard, name, phoneNumber, address);
+        return Objects.hash(identificationCard, name, job, wage, phoneNumber, address, password);
     }
 }
