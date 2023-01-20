@@ -1,0 +1,48 @@
+#panelWhite{
+    -fx-background-color: #F5F5F5;
+}
+
+#panelGrey{
+    -fx-background-color: #C2C2C2;
+}
+#panelBlue{
+    -fx-background-color: #1BA1E2;
+}
+#labelWhite{
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-background-color: #F5F5F5;
+}
+#textFieldWhite{
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-background-color: #F5F5F5;
+}
+
+#buttonSide{
+    -fx-border-radius: 20;
+    -fx-background-radius: 40;
+    -fx-background-color: #C2C2C2;
+}
+
+#buttonOptions{
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-background-color: #C2C2C2;
+}
+
+#buttonBlue{
+    -fx-border-radius: 20;
+    -fx-background-radius: 40;
+    -fx-background-color: #1BA1E2;
+}
+
+
+Button:hover {
+    -fx-font-size: 20px;
+}
+
+#buttonSide:pressed{
+    -fx-background-color: #FFFFFF;
+    -fx-font-weight: bold;
+}
