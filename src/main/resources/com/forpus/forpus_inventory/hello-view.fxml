@@ -5,7 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.93" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #F5F5F5;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.forpus.forpus_inventory.HelloController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      opacity="0.93" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #F5F5F5;" xmlns="http://javafx.com/javafx/17.0.2-ea"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.forpus.forpus_inventory.controller.HelloController">
    <children>
       <ImageView fitHeight="112.0" fitWidth="127.0" layoutX="79.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="216.0" layoutY="146.0" text="Freya Styles">
@@ -16,6 +18,11 @@
          <font>
             <Font name="Tahoma Bold" size="38.0" />
          </font></Label>
+      <Label fx:id="lblSingUp" layoutX="106.0" layoutY="340.0" text="" textFill="RED">
+         <font>
+            <Font name="Tahoma" size="20.0" />
+         </font>
+      </Label>
       <Label layoutX="106.0" layoutY="384.0" prefHeight="20.0" prefWidth="300.0" text="User Name">
          <font>
             <Font name="Tahoma Bold" size="16.0" />

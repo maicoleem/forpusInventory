@@ -15,7 +15,11 @@ module com.forpus.forpus_inventory {
     //requires eu.hansolo.tilesfx;
 
     opens com.forpus.forpus_inventory to javafx.fxml;
-    exports com.forpus.forpus_inventory;
-    opens com.forpus.forpus_inventory.module;
+    opens com.forpus.forpus_inventory.controller to javafx.fxml;
     opens com.forpus.forpus_inventory.persistence.entity;
+    exports com.forpus.forpus_inventory.controller;
+    exports com.forpus.forpus_inventory;
+
+
+
 }
