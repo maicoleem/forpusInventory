@@ -4,27 +4,26 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "partners", schema = "inventoryaccounting", catalog = "")
+@Table(name = "partners", schema = "inventoryaccounting")
 public class PartnersClass {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "IdentificationCard", nullable = false)
-    private int identificationCard;
+    @Column(name = "IdentificationCard", nullable = false, length = 20)
+    private String identificationCard;
     @Basic
     @Column(name = "Name", nullable = false, length = 20)
     private String name;
     @Basic
-    @Column(name = "PhoneNumber", nullable = false)
-    private int phoneNumber;
+    @Column(name = "PhoneNumber", nullable = false, length = 20)
+    private String phoneNumber;
     @Basic
     @Column(name = "Address", nullable = false, length = 20)
     private String address;
 
-    public int getIdentificationCard() {
+    public String getIdentificationCard() {
         return identificationCard;
     }
 
-    public void setIdentificationCard(int identificationCard) {
+    public void setIdentificationCard(String identificationCard) {
         this.identificationCard = identificationCard;
     }
 
@@ -36,11 +35,11 @@ public class PartnersClass {
         this.name = name;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

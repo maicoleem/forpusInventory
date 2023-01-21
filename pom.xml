@@ -132,6 +132,11 @@
                         <configuration>
                             <mainClass>com.forpus.forpus_inventory/com.forpus.forpus_inventory.HelloApplication
                             </mainClass>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources</directory>
+                                </resource>
+                            </resources>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

@@ -4,21 +4,17 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "company", schema = "inventoryaccounting", catalog = "")
+@Table(name = "company", schema = "inventoryaccounting")
 public class CompanyClass {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "idCompany", nullable = false)
-    private int idCompany;
+    @Column(name = "idCompanyNIT", nullable = false, length = 20)
+    private String idCompanyNIT;
     @Basic
     @Column(name = "Name", nullable = false, length = 10)
     private String name;
     @Basic
     @Column(name = "Password", nullable = false, length = 10)
     private String password;
-    @Basic
-    @Column(name = "NIT", nullable = false, length = 10)
-    private String nit;
     @Basic
     @Column(name = "Addres", nullable = false, length = 20)
     private String addres;
@@ -32,12 +28,12 @@ public class CompanyClass {
     @Column(name = "Social", nullable = false, length = 20)
     private String social;
 
-    public int getIdCompany() {
-        return idCompany;
+    public String getIdCompanyNIT() {
+        return idCompanyNIT;
     }
 
-    public void setIdCompany(int idCompany) {
-        this.idCompany = idCompany;
+    public void setIdCompanyNIT(String idCompanyNIT) {
+        this.idCompanyNIT = idCompanyNIT;
     }
 
     public String getName() {
@@ -54,14 +50,6 @@ public class CompanyClass {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getNit() {
-        return nit;
-    }
-
-    public void setNit(String nit) {
-        this.nit = nit;
     }
 
     public String getAddres() {
@@ -101,11 +89,11 @@ public class CompanyClass {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CompanyClass that = (CompanyClass) o;
-        return idCompany == that.idCompany && Objects.equals(name, that.name) && Objects.equals(password, that.password) && Objects.equals(nit, that.nit) && Objects.equals(addres, that.addres) && Objects.equals(phoneNumber, that.phoneNumber) && Objects.equals(web, that.web) && Objects.equals(social, that.social);
+        return idCompanyNIT == that.idCompanyNIT && Objects.equals(name, that.name) && Objects.equals(password, that.password) && Objects.equals(addres, that.addres) && Objects.equals(phoneNumber, that.phoneNumber) && Objects.equals(web, that.web) && Objects.equals(social, that.social);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idCompany, name, password, nit, addres, phoneNumber, web, social);
+        return Objects.hash(idCompanyNIT, name, password, addres, phoneNumber, web, social);
     }
 }

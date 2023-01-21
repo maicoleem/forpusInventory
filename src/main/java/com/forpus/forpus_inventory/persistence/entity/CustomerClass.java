@@ -4,40 +4,28 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "customer", schema = "inventoryaccounting", catalog = "")
+@Table(name = "customer", schema = "inventoryaccounting")
 public class CustomerClass {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "idCustomer", nullable = false)
-    private int idCustomer;
-    @Basic
-    @Column(name = "IdentificationCard", nullable = false, length = 15)
-    private String identificationCard;
+    @Column(name = "idCustomer", nullable = false, length = 20)
+    private String idCustomer;
     @Basic
     @Column(name = "Name", nullable = false, length = 20)
     private String name;
     @Basic
-    @Column(name = "PhoneNumber", nullable = false)
-    private int phoneNumber;
+    @Column(name = "PhoneNumber", nullable = false, length = 20)
+    private String phoneNumber;
     @Basic
     @Column(name = "Addres", nullable = false, length = 20)
     private String addres;
 
-    public int getIdCustomer() {
+    public String getIdCustomer() {
         return idCustomer;
     }
 
-    public void setIdCustomer(int idCustomer) {
+    public void setIdCustomer(String idCustomer) {
         this.idCustomer = idCustomer;
-    }
-
-    public String getIdentificationCard() {
-        return identificationCard;
-    }
-
-    public void setIdentificationCard(String identificationCard) {
-        this.identificationCard = identificationCard;
     }
 
     public String getName() {
@@ -48,11 +36,11 @@ public class CustomerClass {
         this.name = name;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -69,11 +57,11 @@ public class CustomerClass {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CustomerClass that = (CustomerClass) o;
-        return idCustomer == that.idCustomer && phoneNumber == that.phoneNumber && Objects.equals(identificationCard, that.identificationCard) && Objects.equals(name, that.name) && Objects.equals(addres, that.addres);
+        return idCustomer == that.idCustomer && phoneNumber == that.phoneNumber && Objects.equals(name, that.name) && Objects.equals(addres, that.addres);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idCustomer, identificationCard, name, phoneNumber, addres);
+        return Objects.hash(idCustomer, name, phoneNumber, addres);
     }
 }

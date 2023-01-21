@@ -4,12 +4,11 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "workers", schema = "inventoryaccounting", catalog = "")
+@Table(name = "workers", schema = "inventoryaccounting")
 public class WorkersClass {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "IdentificationCard", nullable = false)
-    private int identificationCard;
+    @Column(name = "IdentificationCard", nullable = false, length = 20)
+    private String identificationCard;
     @Basic
     @Column(name = "Name", nullable = false, length = 20)
     private String name;
@@ -17,11 +16,11 @@ public class WorkersClass {
     @Column(name = "Job", nullable = false, length = 20)
     private String job;
     @Basic
-    @Column(name = "Wage", nullable = false)
-    private int wage;
+    @Column(name = "Wage", nullable = false, length = 20)
+    private String wage;
     @Basic
-    @Column(name = "PhoneNumber", nullable = false)
-    private int phoneNumber;
+    @Column(name = "PhoneNumber", nullable = false, length = 20)
+    private String phoneNumber;
     @Basic
     @Column(name = "Address", nullable = false, length = 20)
     private String address;
@@ -29,11 +28,11 @@ public class WorkersClass {
     @Column(name = "Password", nullable = false, length = 15)
     private String password;
 
-    public int getIdentificationCard() {
+    public String getIdentificationCard() {
         return identificationCard;
     }
 
-    public void setIdentificationCard(int identificationCard) {
+    public void setIdentificationCard(String identificationCard) {
         this.identificationCard = identificationCard;
     }
 
@@ -53,19 +52,19 @@ public class WorkersClass {
         this.job = job;
     }
 
-    public int getWage() {
+    public String getWage() {
         return wage;
     }
 
-    public void setWage(int wage) {
+    public void setWage(String wage) {
         this.wage = wage;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
