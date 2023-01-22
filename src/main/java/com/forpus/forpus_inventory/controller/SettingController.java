@@ -1,18 +1,26 @@
 package com.forpus.forpus_inventory.controller;
 
+import com.forpus.forpus_inventory.HelloApplication;
 import com.forpus.forpus_inventory.domain.services.Constant;
+import com.forpus.forpus_inventory.persistence.crud.DeleteHQL;
+import com.forpus.forpus_inventory.persistence.crud.FoundHQL;
 import com.forpus.forpus_inventory.persistence.crud.SaveHQL;
+import com.forpus.forpus_inventory.persistence.crud.SearchHQL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 public class SettingController implements Initializable {
     public Button buttonPartners;
@@ -100,6 +108,7 @@ public class SettingController implements Initializable {
             buttonSlide.setStyle("-fx-background-color: #F5F5F5; ");
             Constant.greyToBlueSlide = buttonSlide;
         }
+
     }
 
     public void changeLabelsText(String idButton){
@@ -303,12 +312,74 @@ public class SettingController implements Initializable {
                 alert.show();
                 break;
             case "search":
+                if(SearchHQL.searchHQL()){
+                    try{
+                        FXMLLoader search = new FXMLLoader(HelloApplication.class.getResource("search-view.fxml"));
+                        Parent root = search.load();
+                        Scene sceneSearch = new Scene(root);
+                        Stage stage = new Stage();
+
+                        stage.initModality(Modality.APPLICATION_MODAL);
+                        stage.setScene(sceneSearch);
+
+                        stage.showAndWait();
+
+
+                    }catch (Exception e){
+                        System.out.println(e);
+                    }
+
+
+                }else{
+
+                }
+
+                /*
+
+                Constant.companiesList;*/
+
+
                 break;
             case "deleted":
+                Constant.tfCode = textFieldIdentificationCard.getText();
+
+                Alert alertDelete = new Alert(Alert.AlertType.INFORMATION);
+
+                alertDelete.setTitle("Freya Style--//--Forpus Company");
+
+                if(DeleteHQL.workerDelete()){
+                    alertDelete.setContentText("Datos Eliminados");
+                }else {
+                    alertDelete.setContentText("Error al eliminar datos");
+                }
+                alertDelete.show();
+
                 break;
             case "cancel":
+                //textFields
+                textFieldIdentificationCard.setText("");
+                textFieldName.setText("");
+                textFieldPhone.setText("");
+                textFieldAddress.setText("");
+                textFieldJob.setText("");
+                textFieldSalary.setText("");
+                textFieldPassword.setText("");
                 break;
             case "found":
+                Constant.tfCode = textFieldIdentificationCard.getText();
+                Alert alertSearch = new Alert(Alert.AlertType.INFORMATION);
+                alertSearch.setTitle("Freya Style--//--Forpus Company");
+                if(FoundHQL.workerFound()){
+                    textFieldName.setText(Constant.tfName);
+                    textFieldPhone.setText(Constant.tfPhone);
+                    textFieldAddress.setText(Constant.tfAddress);
+                    textFieldJob.setText(Constant.tfJob);
+                    textFieldSalary.setText(Constant.tfSalary);
+                    textFieldPassword.setText(Constant.tfPassword);
+                }else{
+                    alertSearch.setContentText("Daton no encontrados");
+                    alertSearch.show();
+                }
                 break;
             default:
                 break;

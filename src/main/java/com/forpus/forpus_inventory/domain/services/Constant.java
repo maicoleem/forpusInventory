@@ -1,5 +1,6 @@
 package com.forpus.forpus_inventory.domain.services;
 
+import com.forpus.forpus_inventory.persistence.entity.*;
 import javafx.scene.control.Button;
 
 public class Constant {
@@ -34,6 +35,15 @@ public class Constant {
 
     //CRUD se salvaron los datos?????
     public static String messageSave = "";
+
+    //lista de todos los datos
+    public static CompanyClass[] companiesList = null;
+    public static CustomerClass[] customersList = null;
+    public static PartnersClass[] partnersList = null;
+    public static ProvidersClass[] providersList = null;
+    public static WorkersClass[] workersList = null;
+    public static CompanyClass[] companyList = null;
+
 
 
 

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane id="panelWhite" fx:id="paneWhite" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.93" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.forpus.forpus_inventory.controller.SearchController">
+
+   <children>
+      <TableView id="tableView" fx:id="tableView" layoutY="300.0" prefHeight="468.0" prefWidth="1024.0">
+        <columns>
+            <TableColumn id="C1" fx:id="c1" minWidth="146.0" prefWidth="75.0" text="C1" />
+            <TableColumn id="C2" fx:id="c2" minWidth="146.0" prefWidth="75.0" text="C2" />
+            <TableColumn id="C3" fx:id="c3" minWidth="146.0" prefWidth="75.0" text="C3" />
+            <TableColumn id="C4" fx:id="c4" minWidth="146.0" prefWidth="75.0" text="C4" />
+            <TableColumn id="C5" fx:id="c5" minWidth="146.0" prefWidth="75.0" text="C5" />
+            <TableColumn id="C6" fx:id="c6" minWidth="146.0" prefWidth="75.0" text="C6" />
+            <TableColumn id="C7" fx:id="c7" minWidth="146.0" prefWidth="75.0" text="C7" />
+
+        </columns>
+      </TableView>
+      <Button id="buttonCompanySearch" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#company" prefHeight="30.0" prefWidth="70.0" styleClass="buttonBlue" text="Company" />
+      <Button id="buttonPartnerSearch" layoutX="90.0" layoutY="10.0" mnemonicParsing="false" onAction="#partner" prefHeight="30.0" prefWidth="70.0" styleClass="buttonBlue" text="Partner" />
+      <Button id="buttonWorkerSearch" layoutX="170.0" layoutY="10.0" mnemonicParsing="false" onAction="#worker" prefHeight="30.0" prefWidth="70.0" styleClass="buttonBlue" text="Workers" />
+      <Button id="buttonCustomerSearch" layoutX="250.0" layoutY="10.0" mnemonicParsing="false" onAction="#customer" prefHeight="30.0" prefWidth="70.0" styleClass="buttonBlue" text="Customer" />
+      <Button id="buttonProvidersSearch" layoutX="330.0" layoutY="10.0" mnemonicParsing="false" onAction="#providers" prefHeight="30.0" prefWidth="70.0" styleClass="buttonBlue" text="Providers" />
+   </children>
+</Pane>

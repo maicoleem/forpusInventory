@@ -5,7 +5,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane id="panelWhite" fx:id="paneWhite" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.93" prefHeight="768.0" prefWidth="1024.0" stylesheets="@../styles/style-default.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.forpus.forpus_inventory.controller.SettingController">
+<Pane id="panelWhite" fx:id="paneWhite" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" opacity="0.93" prefHeight="768.0" prefWidth="1024.0"
+      stylesheets="@../styles/style-default.css" xmlns="http://javafx.com/javafx/17.0.2-ea"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.forpus.forpus_inventory.controller.SettingController">
 
     <children>
         <Button id="buttonCompany" fx:id="buttonCompany" layoutX="106.0" layoutY="55.0" mnemonicParsing="false" onAction="#buttonOptions" prefHeight="60.0" prefWidth="300.0" styleClass="buttonOptions" text="Empresa">

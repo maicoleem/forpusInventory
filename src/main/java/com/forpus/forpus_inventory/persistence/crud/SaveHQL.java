@@ -11,8 +11,9 @@ public class SaveHQL {
         if(searchWorker()){
             //cuando lo encuentre debe de actualizar falta eso
             Constant.messageSave = "Encontrado";
+            insertWorker("update");
             return true;
-        } else if (inserWorker()) {
+        } else if (insertWorker("save")) {
             Constant.messageSave = "Creado";
             return true;
         } else{
@@ -43,7 +44,7 @@ public class SaveHQL {
         return false;
     }
 
-    public static boolean inserWorker(){
+    public static boolean insertWorker(String saveOrUpdate){
         try{
             //check hibernate connection and database
             SessionDB.session();
@@ -60,10 +61,14 @@ public class SaveHQL {
                     company.setSocial(Constant.tfSalary);
 
                     session.beginTransaction();
-                    session.save(company);
+                   if(saveOrUpdate.equals("save")){
+                        session.save(company);
+                   }else{
+                       session.update(company);
+                   }
                     session.getTransaction().commit();
                     session.close();
-                    System.out.println("Empresa Creada");
+                    System.out.println("Datos guardados");
                     break;
                 case "CustomerClass":
                     CustomerClass customer = new CustomerClass();
@@ -73,7 +78,11 @@ public class SaveHQL {
                     customer.setAddres(Constant.tfAddress);
 
                     session.beginTransaction();
-                    session.save(customer);
+                    if(saveOrUpdate.equals("save")){
+                        session.save(customer);
+                    }else{
+                        session.update(customer);
+                    }
                     session.getTransaction().commit();
                     session.close();
                     System.out.println("Cliente Creado");
@@ -86,7 +95,11 @@ public class SaveHQL {
                     partnert.setAddress(Constant.tfAddress);
 
                     session.beginTransaction();
-                    session.save(partnert);
+                    if(saveOrUpdate.equals("save")){
+                        session.save(partnert);
+                    }else{
+                        session.update(partnert);
+                    }
                     session.getTransaction().commit();
                     session.close();
                     System.out.println("Socio Creada");
@@ -101,7 +114,11 @@ public class SaveHQL {
                     provider.setEmail(Constant.tfJob);
 
                     session.beginTransaction();
-                    session.save(provider);
+                    if(saveOrUpdate.equals("save")){
+                        session.save(provider);
+                    }else{
+                        session.update(provider);
+                    }
                     session.getTransaction().commit();
                     session.close();
                     System.out.println("proveedor Creado");
@@ -118,7 +135,11 @@ public class SaveHQL {
                     worker.setPassword(Constant.tfPassword);
 
                     session.beginTransaction();
-                    session.save(worker);
+                    if(saveOrUpdate.equals("save")){
+                        session.save(worker);
+                    }else{
+                        session.update(worker);
+                    }
                     session.getTransaction().commit();
                     session.close();
                     System.out.println("Trabajador Creado");
@@ -132,6 +153,8 @@ public class SaveHQL {
             return false;
         }
     }
+
+
 }
 
 
