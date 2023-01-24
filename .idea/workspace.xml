@@ -4,19 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SearchController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/DeleteHQL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/FoundHQL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SearchHQL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/search-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="first create the functions for all the buttons of the CRUD, create the new view and its application to fetch all the information from the table">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/WareController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsWare.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/CategoryoneClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/CategorythreeClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/CategorytwoClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/ProductClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/ServiceClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/ServiceProductClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/WareProductClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/WarehouseClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/ware-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/HelloController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SettingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SettingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/Constant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/Session/SessionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/Session/SessionDB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SingUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SingUp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/settings-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/settings-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/styles/style-default.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/styles/style-default.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +135,11 @@
       <workItem from="1674232537113" duration="36196000" />
       <workItem from="1674324995130" duration="11405000" />
       <workItem from="1674339825536" duration="6743000" />
-      <workItem from="1674360125315" duration="3439000" />
+      <workItem from="1674360125315" duration="3533000" />
+      <workItem from="1674491208976" duration="5304000" />
+      <workItem from="1674511832702" duration="5511000" />
+      <workItem from="1674518195448" duration="3709000" />
+      <workItem from="1674521965498" duration="8860000" />
     </task>
     <task id="LOCAL-00001" summary="first: I create the project with javaFX, I add the dependencies of mySQL and hibernate into the pom.xml.&#10;Second: I add file hibernate.cfg.xml {i do file-project structure -Facets -hibernate -choose module}&#10;third: I add database &#10;fourth: I do mapping of the tables of database&#10;fifth:for the  connection I had do several config:&#10;-I add in module-info.java requires for hibernate and I add opens com.forpus.forpus_inventory.module that is where are the class of the tables that use hibernate.">
       <created>1674089245612</created>
@@ -164,7 +176,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674276499302</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="first create the functions for all the buttons of the CRUD, create the new view and its application to fetch all the information from the table">
+      <created>1674363644711</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1674363644711</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,7 +195,8 @@
     <MESSAGE value="reorganice el proyecto y consulte como hacer para saltar otra view, luego las funciones." />
     <MESSAGE value="I add css file and diretory styles." />
     <MESSAGE value="1. the ids of buttons and labels and text field were change in setting-view.xml&#10;2. the style of buttons when click is okay&#10;3. the functionality for the button save is okay but missing update the dates." />
-    <option name="LAST_COMMIT_MESSAGE" value="1. the ids of buttons and labels and text field were change in setting-view.xml&#10;2. the style of buttons when click is okay&#10;3. the functionality for the button save is okay but missing update the dates." />
+    <MESSAGE value="first create the functions for all the buttons of the CRUD, create the new view and its application to fetch all the information from the table" />
+    <option name="LAST_COMMIT_MESSAGE" value="first create the functions for all the buttons of the CRUD, create the new view and its application to fetch all the information from the table" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

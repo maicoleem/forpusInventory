@@ -15,6 +15,8 @@ public class SingUp {
     public static boolean companySingUP(){
         //check hibernate connection and database
         SessionDB.session();
+        System.out.println("hello");
+        System.out.println(SessionDB.session().getSession());
         Session session = SessionDB.session().getSession();
         //set the search query by name and get the password
         try{

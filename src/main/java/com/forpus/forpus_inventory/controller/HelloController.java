@@ -30,7 +30,6 @@ public class HelloController {
         SingUp.password = password.getText();
         System.out.println(SingUp.name +" / "+ SingUp.password);
         SingUp.companySingUP();
-        System.out.println(SingUp.companySingUP());
         if(SingUp.companySingUP()){
             lblSingUp.setText("Success");
 

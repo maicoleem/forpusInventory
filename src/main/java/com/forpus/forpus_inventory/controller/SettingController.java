@@ -13,10 +13,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -58,6 +60,16 @@ public class SettingController implements Initializable {
     @FXML
     public TextField textFieldPassword;
     @FXML
+    public Button save;
+    @FXML
+    public Button remove;
+    @FXML
+    public Button search;
+    @FXML
+    public Button cancel;
+    @FXML
+    public Button found;
+    @FXML
     Pane paneWhite;
     @FXML
     Button buttonPartner;
@@ -95,24 +107,16 @@ public class SettingController implements Initializable {
     }
 
     @FXML
-    protected void buttonSlide(ActionEvent event){
-        Button buttonSlide = (Button) event.getSource();
-
-        if(Constant.greyToBlueSlide == null){
-            Constant.greyToBlueSlide = buttonSlide;
-            buttonSlide.setStyle("-fx-background-color: #F5F5F5; ");
-        } else if (Constant.greyToBlueSlide == buttonSlide) {
-            buttonSlide.setStyle("-fx-background-color: #F5F5F5; ");
-        }else{
-            Constant.greyToBlueSlide.setStyle("-fx-background-color: #C2C2C2; ");
-            buttonSlide.setStyle("-fx-background-color: #F5F5F5; ");
-            Constant.greyToBlueSlide = buttonSlide;
-        }
+    protected void buttonSlide(ActionEvent event) throws IOException {
+        WareController.slide(event);
 
     }
 
     public void changeLabelsText(String idButton){
         Constant.buttonOptionsID = idButton;
+
+        changeOptions();
+
         switch (idButton){
             case "buttonCompany":
                 Constant.entity = "CompanyClass";
@@ -279,6 +283,14 @@ public class SettingController implements Initializable {
                 textFieldJob.setVisible(false);
                 textFieldSalary.setVisible(false);
                 textFieldPassword.setVisible(false);
+
+                //buttons
+                save.setVisible(false);
+                remove.setVisible(false);
+                found.setVisible(false);
+                search.setVisible(false);
+                cancel.setVisible(false);
+
                 break;
             default:
                 System.out.println("ERROR");
@@ -291,25 +303,30 @@ public class SettingController implements Initializable {
         switch (idButton){
             case "save":
                 Constant.tfCode = textFieldIdentificationCard.getText();
-                Constant.tfName = textFieldName.getText();
-                Constant.tfPhone = textFieldPhone.getText();
-                Constant.tfAddress = textFieldAddress.getText();
-                Constant.tfJob = textFieldJob.getText();
-                Constant.tfSalary = textFieldSalary.getText();
-                Constant.tfPassword = textFieldPassword.getText();
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Freya Style--//--Forpus Company");
+                if(!Objects.equals(Constant.tfCode, "")){
+                    Constant.tfName = textFieldName.getText();
+                    Constant.tfPhone = textFieldPhone.getText();
+                    Constant.tfAddress = textFieldAddress.getText();
+                    Constant.tfJob = textFieldJob.getText();
+                    Constant.tfSalary = textFieldSalary.getText();
+                    Constant.tfPassword = textFieldPassword.getText();
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Freya Style--//--Forpus Company");
 
-                if(SaveHQL.workerInsertUpdate()){
-                    if(Objects.equals(Constant.messageSave, "Creado")){
-                        alert.setContentText("Se han guardado los datos");
-                    }else{
-                        alert.setContentText("Se han actualizado los datos");
+                    if(SaveHQL.workerInsertUpdate()){
+                        if(Objects.equals(Constant.messageSave, "Creado")){
+                            alert.setContentText("Se han guardado los datos");
+                        }else{
+                            alert.setContentText("Se han actualizado los datos");
+                        }
+                    }else {
+                        alert.setContentText("Error en actualizar y/o insertar datos, por favor reiniciar");
                     }
-                }else {
-                    alert.setContentText("Error en actualizar y/o insertar datos, por favor reiniciar");
+                    alert.show();
+                }else{
+                    alertSend("Por favor digitar código");
                 }
-                alert.show();
+
                 break;
             case "search":
                 if(SearchHQL.searchHQL()){
@@ -329,16 +346,12 @@ public class SettingController implements Initializable {
                         System.out.println(e);
                     }
 
-
                 }else{
-
+                    Alert alertSearch = new Alert(Alert.AlertType.INFORMATION);
+                    alertSearch.setTitle("Freya Style--//--Forpus Company");
+                    alertSearch.setContentText("Error al cargar los datos");
+                    alertSearch.show();
                 }
-
-                /*
-
-                Constant.companiesList;*/
-
-
                 break;
             case "deleted":
                 Constant.tfCode = textFieldIdentificationCard.getText();
@@ -353,38 +366,66 @@ public class SettingController implements Initializable {
                     alertDelete.setContentText("Error al eliminar datos");
                 }
                 alertDelete.show();
-
                 break;
             case "cancel":
                 //textFields
-                textFieldIdentificationCard.setText("");
-                textFieldName.setText("");
-                textFieldPhone.setText("");
-                textFieldAddress.setText("");
-                textFieldJob.setText("");
-                textFieldSalary.setText("");
-                textFieldPassword.setText("");
+                changeOptions();
                 break;
             case "found":
                 Constant.tfCode = textFieldIdentificationCard.getText();
-                Alert alertSearch = new Alert(Alert.AlertType.INFORMATION);
-                alertSearch.setTitle("Freya Style--//--Forpus Company");
-                if(FoundHQL.workerFound()){
-                    textFieldName.setText(Constant.tfName);
-                    textFieldPhone.setText(Constant.tfPhone);
-                    textFieldAddress.setText(Constant.tfAddress);
-                    textFieldJob.setText(Constant.tfJob);
-                    textFieldSalary.setText(Constant.tfSalary);
-                    textFieldPassword.setText(Constant.tfPassword);
-                }else{
-                    alertSearch.setContentText("Daton no encontrados");
-                    alertSearch.show();
-                }
+                    if(!Objects.equals(Constant.tfCode, "")){
+                        Alert alertSearch = new Alert(Alert.AlertType.INFORMATION);
+                        alertSearch.setTitle("Freya Style--//--Forpus Company");
+                        if(FoundHQL.workerFound()){
+                            textFieldName.setText(Constant.tfName);
+                            textFieldPhone.setText(Constant.tfPhone);
+                            textFieldAddress.setText(Constant.tfAddress);
+                            textFieldJob.setText(Constant.tfJob);
+                            textFieldSalary.setText(Constant.tfSalary);
+                            textFieldPassword.setText(Constant.tfPassword);
+                        }else{
+                            alertSearch.setContentText("Daton no encontrados");
+                            alertSearch.show();
+                        }
+                        save.setDisable(false);
+                        remove.setDisable(false);
+                        textFieldIdentificationCard.setDisable(true);
+                    }else{
+                        alertSend("Por favor digitar código");
+                    }
                 break;
             default:
                 break;
         }
 
+    }
+    public void changeOptions(){
+        save.setDisable(true);
+        remove.setDisable(true);
+        textFieldIdentificationCard.setDisable(false);
+
+        //buttons
+        save.setVisible(true);
+        remove.setVisible(true);
+        found.setVisible(true);
+        search.setVisible(true);
+        cancel.setVisible(true);
+
+        //textFields
+        textFieldIdentificationCard.setText("");
+        textFieldName.setText("");
+        textFieldPhone.setText("");
+        textFieldAddress.setText("");
+        textFieldJob.setText("");
+        textFieldSalary.setText("");
+        textFieldPassword.setText("");
+    }
+
+    public void alertSend(String massage){
+        Alert alertMassage = new Alert(Alert.AlertType.INFORMATION);
+        alertMassage.setTitle("Freya Style--//--Forpus Company");
+        alertMassage.setContentText(massage);
+        alertMassage.show();
     }
 
     @Override

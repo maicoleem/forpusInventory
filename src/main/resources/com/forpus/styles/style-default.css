@@ -1,8 +1,8 @@
-#panelWhite{
+.panelWhite{
     -fx-background-color: #F5F5F5;
 }
 
-#panelGrey{
+.paneGrey{
     -fx-background-color: #C2C2C2;
 }
 #panelBlue{
@@ -13,13 +13,20 @@
     -fx-border-radius: 20;
     -fx-background-color: #F5F5F5;
 }
+
+.labelGrey{
+    -fx-background-color: #C2C2C2;
+    -fx-border-radius: 20;
+    -fx-background-radius: 40;
+}
+
 #textFieldWhite{
     -fx-background-radius: 20;
     -fx-border-radius: 20;
     -fx-background-color: #F5F5F5;
 }
 
-#buttonSide{
+.buttonSide{
     -fx-border-radius: 20;
     -fx-background-radius: 40;
     -fx-background-color: #C2C2C2;

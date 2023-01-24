@@ -67,7 +67,6 @@ public class SaveHQL {
                        session.update(company);
                    }
                     session.getTransaction().commit();
-                    session.close();
                     System.out.println("Datos guardados");
                     break;
                 case "CustomerClass":
@@ -84,7 +83,6 @@ public class SaveHQL {
                         session.update(customer);
                     }
                     session.getTransaction().commit();
-                    session.close();
                     System.out.println("Cliente Creado");
                     break;
                 case "PartnersClass":
@@ -120,7 +118,6 @@ public class SaveHQL {
                         session.update(provider);
                     }
                     session.getTransaction().commit();
-                    session.close();
                     System.out.println("proveedor Creado");
 
                     break;
@@ -141,7 +138,6 @@ public class SaveHQL {
                         session.update(worker);
                     }
                     session.getTransaction().commit();
-                    session.close();
                     System.out.println("Trabajador Creado");
                     break;
                 default:
