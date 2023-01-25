@@ -28,7 +28,6 @@ public class HelloController {
     protected void onButtonClick(ActionEvent event) throws IOException {
         SingUp.name = userName.getText();
         SingUp.password = password.getText();
-        System.out.println(SingUp.name +" / "+ SingUp.password);
         SingUp.companySingUP();
         if(SingUp.companySingUP()){
             lblSingUp.setText("Success");

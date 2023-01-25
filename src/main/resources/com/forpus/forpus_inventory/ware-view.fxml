@@ -8,17 +8,17 @@
 <Pane id="panelWhite" fx:id="paneWhite" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.93" prefHeight="768.0" prefWidth="1024.0" styleClass="panelWhite" stylesheets="@../styles/style-default.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.forpus.forpus_inventory.controller.WareController">
 
     <children>
-      <TableView fx:id="tabla" layoutX="80.0" layoutY="470.0" prefHeight="200.0" prefWidth="720.0">
+      <TableView id="tableWare" fx:id="tableWare" layoutX="80.0" layoutY="470.0" prefHeight="200.0" prefWidth="720.0">
         <columns>
-          <TableColumn fx:id="c1" prefWidth="75.0" text="C1" />
-          <TableColumn fx:id="c2" prefWidth="75.0" text="C2" />
-            <TableColumn fx:id="c3" prefWidth="75.0" text="C3" />
-            <TableColumn fx:id="c4" prefWidth="75.0" text="C4" />
-            <TableColumn fx:id="c5" prefWidth="75.0" text="C5" />
-            <TableColumn fx:id="c6" prefWidth="75.0" text="C6" />
-            <TableColumn fx:id="c7" prefWidth="75.0" text="C7" />
-            <TableColumn fx:id="c8" prefWidth="75.0" text="C8" />
-            <TableColumn fx:id="c9" prefWidth="75.0" text="C9" />
+          <TableColumn id="c1" fx:id="c1" prefWidth="75.0" text="C1" />
+          <TableColumn id="c2" fx:id="c2" prefWidth="75.0" text="C2" />
+            <TableColumn id="c3" fx:id="c3" prefWidth="75.0" text="C3" />
+            <TableColumn id="c4" fx:id="c4" prefWidth="75.0" text="C4" />
+            <TableColumn id="c5" fx:id="c5" prefWidth="75.0" text="C5" />
+            <TableColumn id="c6" fx:id="c6" prefWidth="75.0" text="C6" />
+            <TableColumn id="c7" fx:id="c7" prefWidth="75.0" text="C7" />
+            <TableColumn id="c8" fx:id="c8" prefWidth="75.0" text="C8" />
+            <TableColumn id="c9" fx:id="c9" prefWidth="75.0" text="C9" />
         </columns>
       </TableView>
         <Button id="found" fx:id="found" layoutX="814.0" layoutY="694.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
@@ -180,7 +180,7 @@
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
-            <Label fx:id="labelSale" alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="264.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Precio de venta">
+            <Label fx:id="labelSale" alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="264.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Precio venta">
                <font>
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
@@ -224,28 +224,88 @@
                   <Font name="Tahoma Bold" size="20.0" />
                </font>
             </TextField>
-            <TextField id="tfThreeCategory1" fx:id="tfThreeCategory1" layoutX="160.0" layoutY="188.0" prefHeight="40.0" prefWidth="200.0" promptText="123456789abcdef" visible="false">
+            <TextField id="tfThreeCategory1" fx:id="tfThreeCategory1" disable="true" layoutX="160.0" layoutY="188.0" prefHeight="40.0" prefWidth="200.0" promptText="123456789abcdef" visible="false">
                <font>
                   <Font name="Tahoma Bold" size="20.0" />
                </font>
             </TextField>
-            <Label id="labelConsumed" fx:id="labelConsumed" alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="340.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Consumo">
+            <Label id="labelConsumed" fx:id="labelConsumed" alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="340.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Consumo" visible="false">
                <font>
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
-            <TextField id="tfConsumed" fx:id="tfConsumed" layoutX="530.0" layoutY="336.0" prefHeight="40.0" prefWidth="200.0" promptText="123456789abcdef">
+            <TextField id="tfConsumed" fx:id="tfConsumed" layoutX="530.0" layoutY="336.0" prefHeight="40.0" prefWidth="200.0" promptText="123456789abcdef" visible="false">
                <font>
                   <Font name="Tahoma Bold" size="20.0" />
                </font>
             </TextField>
+            <TextField id="tfWare" fx:id="tfWare" layoutX="530.0" layoutY="190.0" prefHeight="40.0" prefWidth="200.0" promptText="123456789abcdef" visible="false">
+               <font>
+                  <Font name="Tahoma Bold" size="20.0" />
+               </font>
+            </TextField>
+            <Button id="bOne" fx:id="bOne" disable="true" layoutX="370.0" layoutY="26.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCheck" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button" visible="false">
+               <graphic>
+                  <ImageView fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/check.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="bTwo" fx:id="bTwo" disable="true" layoutX="370.0" layoutY="102.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCheck" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button" visible="false">
+               <graphic>
+                  <ImageView fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/check.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="bThree" fx:id="bThree" disable="true" layoutX="370.0" layoutY="178.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCheck" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button" visible="false">
+               <graphic>
+                  <ImageView fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/check.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="buttonUAM" fx:id="buttonUAM" layoutX="793.0" layoutY="198.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="25.0" prefWidth="150.0" styleClass="buttonBlue" text="Uno A Muchos" visible="false">
+               <font>
+                  <Font name="Tahoma Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button id="buttonMAU" fx:id="buttonMAU" layoutX="793.0" layoutY="150.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="25.0" prefWidth="150.0" styleClass="buttonBlue" text="Muchos A Uno" visible="false">
+               <font>
+                  <Font name="Tahoma Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button id="bTwoRemove" fx:id="bTwoRemove" disable="true" layoutX="440.0" layoutY="102.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonRemoveCate" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button" visible="false">
+               <graphic>
+                  <ImageView fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/remove.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="bThreeRemove" fx:id="bThreeRemove" disable="true" layoutX="440.0" layoutY="178.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonRemoveCate" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button" visible="false">
+               <graphic>
+                  <ImageView fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/remove.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children></Pane>
-      <TextField id="tfCost" fx:id="tfCost" layoutX="810.0" layoutY="560.0" prefHeight="40.0" prefWidth="200.0" promptText="123456789abcdef">
+      <TextField id="tfCost" fx:id="tfCost" layoutX="810.0" layoutY="560.0" prefHeight="40.0" prefWidth="200.0" promptText="123456789abcdef" visible="false">
          <font>
             <Font name="Tahoma Bold" size="20.0" />
          </font>
       </TextField>
-      <Label id="labelCost" fx:id="labelCost" alignment="CENTER" contentDisplay="CENTER" layoutX="829.0" layoutY="512.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Costo">
+      <Label id="labelCost" fx:id="labelCost" alignment="CENTER" contentDisplay="CENTER" layoutX="829.0" layoutY="512.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Costo" visible="false">
          <font>
             <Font name="Tahoma Bold" size="19.0" />
          </font>

@@ -11,11 +11,14 @@ public class SessionDB {
             if(sessionHibernate == null){
                     SessionFactory sF = new Configuration().configure().buildSessionFactory();
                     sessionHibernate = sF.openSession();
+                System.out.println("Session open");
              }
        }catch (Exception e){
              e.printStackTrace();
+           System.out.println("Session cerado");
            System.out.println(e);
        }
+        System.out.println("Session abierta");
        return sessionHibernate;
     }
 

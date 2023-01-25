@@ -1,11 +1,13 @@
 package com.forpus.forpus_inventory.persistence.entity;
 
+import org.hibernate.action.internal.OrphanRemovalAction;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "categorytwo", schema = "inventoryaccounting", catalog = "")
+@Table(name = "categorytwo", schema = "inventoryaccounting")
 public class CategorytwoClass {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -17,7 +19,7 @@ public class CategorytwoClass {
     @Basic
     @Column(name = "id_category_one", insertable = false, updatable = false, nullable = false)
     private int idCategoryOne;
-    @OneToMany(mappedBy = "categorytwoByIdTwoThree")
+    @OneToMany(mappedBy = "categorytwoByIdTwoThree", cascade = CascadeType.ALL, orphanRemoval = true)
     private Collection<CategorythreeClass> categorythreesByIdTwo;
     @ManyToOne
     @JoinColumn(name = "id_category_one", referencedColumnName = "id_one", nullable = false)

@@ -1,10 +1,13 @@
 package com.forpus.forpus_inventory.persistence.crud;
 
 import com.forpus.forpus_inventory.domain.services.Constant;
+import com.forpus.forpus_inventory.domain.services.ConstantsWare;
 import com.forpus.forpus_inventory.persistence.Session.SessionDB;
 import com.forpus.forpus_inventory.persistence.entity.*;
 import org.hibernate.Query;
 import org.hibernate.Session;
+
+import java.util.Objects;
 
 public class SaveHQL {
     public static boolean workerInsertUpdate(){
@@ -30,7 +33,6 @@ public class SaveHQL {
             Query query = session.createQuery(q);
             System.out.println(query);
             query.setParameter(1, Constant.tfCode);
-            System.out.println(query);
             CompanyClass company = (CompanyClass) query.uniqueResult();
             if(company != null){
                 return true;
@@ -150,6 +152,74 @@ public class SaveHQL {
         }
     }
 
+    //para update categorias
+    //para insertar categorias
+    public static boolean saveUpdateCate(String saveUpdate){
+        try {
+            //check hibernate connection and database
+            SessionDB.session();
+            //Session session = SessionDB.session().getSession();
+            Session session = SessionDB.sessionHibernate;
+
+            switch (Constant.entity) {
+                case "CategoryoneClass":
+                CategoryoneClass oneC = new CategoryoneClass();
+                oneC.setCategoryOne(Constant.tfName);
+                session.beginTransaction();
+                if (Objects.equals(saveUpdate, "save")) {
+                    session.save(oneC);
+                } else {
+                    oneC = session.load(CategoryoneClass.class, ConstantsWare.one.getIdOne());
+                    oneC.setCategoryOne(Constant.tfName);
+                    session.evict(oneC);
+                    session.update(oneC);
+                }
+                ConstantsWare.one = oneC;
+                break;
+
+                case "CategorytwoClass":
+                    CategorytwoClass twoC = new CategorytwoClass();
+                    twoC.setCategoryTwo(Constant.tfName);
+                    twoC.setIdCategoryOne(ConstantsWare.one.getIdOne());
+                    session.beginTransaction();
+
+                    if (Objects.equals(saveUpdate, "save")) {
+                        twoC.setCategoryoneByIdCategoryOne(ConstantsWare.one);
+                        session.save(twoC);
+                    } else {
+                        twoC = session.load(CategorytwoClass.class, ConstantsWare.two.getIdTwo());
+                        twoC.setCategoryTwo(Constant.tfName);
+                        session.update(twoC);
+                    }
+                    ConstantsWare.two = twoC;
+                    break;
+                case "CategorythreeClass":
+                    CategorythreeClass threeC = new CategorythreeClass();
+                    threeC.setCategoryThree(Constant.tfName);
+                    threeC.setIdTwoThree(ConstantsWare.two.getIdTwo());
+                    threeC.setCategorytwoByIdTwoThree(ConstantsWare.two);
+                    session.beginTransaction();
+                    if (Objects.equals(saveUpdate, "save")) {
+                        session.save(threeC);
+                    } else {
+                        threeC = session.load(CategorythreeClass.class, ConstantsWare.three.getIdThree());
+                        threeC.setCategoryThree(Constant.tfName);
+                        session.update(threeC);
+                    }
+                    ConstantsWare.three = threeC;
+                    break;
+                default:
+                    break;
+            }
+            session.getTransaction().commit();
+            return true;
+        }catch (Exception e){
+            SessionDB.sessionClose();
+            e.printStackTrace();
+            System.out.println(e);
+            return false;
+        }
+    }
 
 }
 

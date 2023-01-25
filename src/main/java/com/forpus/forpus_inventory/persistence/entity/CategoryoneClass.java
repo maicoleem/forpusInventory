@@ -14,7 +14,7 @@ public class CategoryoneClass {
     @Basic
     @Column(name = "categoryOne", nullable = false, length = 20)
     private String categoryOne;
-    @OneToMany(mappedBy = "categoryoneByIdCategoryOne")
+    @OneToMany(mappedBy = "categoryoneByIdCategoryOne", cascade = CascadeType.ALL, orphanRemoval = true)
     private Collection<CategorytwoClass> categorytwosByIdOne;
 
     public int getIdOne() {
@@ -49,7 +49,6 @@ public class CategoryoneClass {
     public Collection<CategorytwoClass> getCategorytwosByIdOne() {
         return categorytwosByIdOne;
     }
-
     public void setCategorytwosByIdOne(Collection<CategorytwoClass> categorytwosByIdOne) {
         this.categorytwosByIdOne = categorytwosByIdOne;
     }

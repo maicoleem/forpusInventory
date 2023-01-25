@@ -1,58 +1,108 @@
 package com.forpus.forpus_inventory.persistence.crud;
 
 import com.forpus.forpus_inventory.domain.services.Constant;
+import com.forpus.forpus_inventory.domain.services.ConstantsWare;
 import com.forpus.forpus_inventory.persistence.Session.SessionDB;
 import com.forpus.forpus_inventory.persistence.entity.*;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import java.util.List;
+
 public class DeleteHQL {
+
 
     public static boolean workerDelete(){
         try{
             //check hibernate connection and database
             SessionDB.session();
-            Session session = SessionDB.session().getSession();
+            Session session = SessionDB.sessionHibernate;
             switch (Constant.entity){
                 case "CompanyClass":
                     CompanyClass company = session.load(CompanyClass.class, Constant.tfCode);
                     session.delete(company);
-                    session.getTransaction().commit();
-                    session.close();
                     break;
                 case "CustomerClass":
                     CustomerClass customer = session.load(CustomerClass.class, Constant.tfCode);
                     session.delete(customer);
-                    session.getTransaction().commit();
-                    session.close();
-
                     break;
                 case "PartnersClass":
                     PartnersClass partner = session.load(PartnersClass.class, Constant.tfCode);
                     session.delete(partner);
-                    session.getTransaction().commit();
-                    session.close();
-
                     break;
                 case "ProvidersClass":
                     ProvidersClass provider = session.load(ProvidersClass.class, Constant.tfCode);
                     session.delete(provider);
-                    session.getTransaction().commit();
-                    session.close();
-
                     break;
                 case "WorkersClass":
                     WorkersClass worker = session.load(WorkersClass.class, Constant.tfCode);
                     session.delete(worker);
-                    session.getTransaction().commit();
-                    session.close();
+                    break;
+                case "CategoryoneClass":
+
+                    String q = "delete from "+ Constant.entity +" C where C.idOne in(?1)";
+                    Query query = session.createQuery(q);
+                    query.setParameter(1, ConstantsWare.one.getIdOne());
+                    query.executeUpdate();
+
+                    break;
+                case "CategorytwoClass":
+                    CategorytwoClass two = session.load(CategorytwoClass.class, ConstantsWare.two.getIdTwo());
+                    session.delete(two);
+
+                    break;
+                case "CategorythreeClass":
+                    CategorythreeClass three = session.load(CategorythreeClass.class, ConstantsWare.three.getIdThree());
+                    session.delete(three);
                     break;
                 default:
                     break;
             }
+            //session.getTransaction().commit();
             return true;
         }catch (Exception i){
+
+            SessionDB.sessionClose();
             System.out.println(i);
+            i.printStackTrace();
             return false;
+        }
+    }
+
+    public static void deleteForean(){
+        try{
+            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("persistence");
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            entityManager.getTransaction().begin();
+
+            switch (Constant.entity) {
+                case "CategoryoneClass":
+                    CategoryoneClass one = entityManager.find(CategoryoneClass.class, ConstantsWare.one.getIdOne());
+                    one.getCategorytwosByIdOne().remove(one);
+                    entityManager.remove(one);
+                    break;
+                case "CategorytwoClass":
+                    CategorytwoClass two = entityManager.find(CategorytwoClass.class, ConstantsWare.two.getIdTwo());
+                    two.getCategorythreesByIdTwo().remove(two);
+                    entityManager.remove(two);
+                    break;
+                case "CategorythreeClass":
+                    CategorythreeClass three = entityManager.find(CategorythreeClass.class, ConstantsWare.three.getIdThree());
+                    entityManager.remove(three);
+                    break;
+                default:
+                    break;
+            }
+            entityManager.flush();
+            entityManager.clear();
+            entityManager.getTransaction().commit();
+            System.out.println("borrado");
+
+        }catch (Exception e){
+            System.out.println(e);
         }
     }
 

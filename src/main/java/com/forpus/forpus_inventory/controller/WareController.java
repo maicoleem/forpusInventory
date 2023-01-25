@@ -3,33 +3,44 @@ package com.forpus.forpus_inventory.controller;
 import com.forpus.forpus_inventory.HelloApplication;
 import com.forpus.forpus_inventory.domain.services.Constant;
 import com.forpus.forpus_inventory.domain.services.ConstantsWare;
+import com.forpus.forpus_inventory.persistence.crud.DeleteHQL;
+import com.forpus.forpus_inventory.persistence.crud.FoundHQL;
+import com.forpus.forpus_inventory.persistence.crud.SaveHQL;
+import com.forpus.forpus_inventory.persistence.crud.SearchHQL;
+import com.forpus.forpus_inventory.persistence.entity.CategoryoneClass;
+import com.forpus.forpus_inventory.persistence.entity.CategorythreeClass;
+import com.forpus.forpus_inventory.persistence.entity.CategorytwoClass;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class WareController {
     @FXML
-    public TableView tabla;
+    public TableColumn<Object, Object> c1;
     @FXML
-    public TableColumn c1;
+    public TableColumn<Object, Object> c2;
     @FXML
-    public TableColumn c2;
+    public TableColumn<Object, Object> c3;
     @FXML
-    public TableColumn c3;
+    public TableColumn<Object, Object> c4;
     @FXML
-    public TableColumn c4;
+    public TableColumn<Object, Object> c5;
     @FXML
-    public TableColumn c5;
+    public TableColumn<Object, Object> c6;
     @FXML
-    public TableColumn c6;
-    @FXML
-    public TableColumn c7;
+    public TableColumn<Object, Object> c7;
     @FXML
     public TableColumn c8;
     @FXML
@@ -114,18 +125,296 @@ public class WareController {
     public Label labelConsumed;
     @FXML
     public TextField tfConsumed;
-
     @FXML
+    public TextField tfWare;
+    @FXML
+    public Button bOne;
+    @FXML
+    public Button bTwo;
+    @FXML
+    public Button bThree;
+    @FXML
+    public Button buttonUAM;
+    @FXML
+    public Button buttonMAU;
+    @FXML
+    public Button bThreeRemove;
+    @FXML
+    public Button bTwoRemove;
+    @FXML
+    public TableView tableWare;
 
+    @FXML //botones del CRUD
     public void buttonCRUD(ActionEvent event) {
+
+        Button buttonCRUD = (Button) event.getSource();
+
+        if(Constant.blueToWhite == null){
+            Constant.blueToWhite = buttonCRUD;
+            buttonCRUD.setStyle("-fx-background-color: #F5F5F5; ");
+        } else if (Constant.blueToWhite == buttonCRUD) {
+            buttonCRUD.setStyle("-fx-background-color: #F5F5F5; ");
+        }else{
+            Constant.blueToWhite.setStyle("-fx-background-color: #1BA1E2; ");
+            buttonCRUD.setStyle("-fx-background-color: #F5F5F5; ");
+            Constant.blueToWhite = buttonCRUD;
+        }
+        crudEjecuted(buttonCRUD.getId());
+    }
+    public void crudEjecuted(String idButton){
+
+        switch (idButton){
+            case "save":
+                /*Constant.tfCode = tfCode.getText();
+                if(!Objects.equals(Constant.tfCode, "")){
+                    Constant.tfName = textFieldName.getText();
+                    Constant.tfPhone = textFieldPhone.getText();
+                    Constant.tfAddress = textFieldAddress.getText();
+                    Constant.tfJob = textFieldJob.getText();
+                    Constant.tfSalary = textFieldSalary.getText();
+                    Constant.tfPassword = textFieldPassword.getText();
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Freya Style--//--Forpus Company");
+
+                    if(SaveHQL.workerInsertUpdate()){
+                        if(Objects.equals(Constant.messageSave, "Creado")){
+                            alert.setContentText("Se han guardado los datos");
+                        }else{
+                            alert.setContentText("Se han actualizado los datos");
+                        }
+                    }else {
+                        alert.setContentText("Error en actualizar y/o insertar datos, por favor reiniciar");
+                    }
+                    alert.show();
+                }else{
+                    alertSend("Por favor digitar código");
+                }*/
+
+                break;
+            case "search":
+                if(SearchHQL.searchHQL()){
+                    try{
+                        FXMLLoader search = new FXMLLoader(HelloApplication.class.getResource("search-view.fxml"));
+                        Parent root = search.load();
+                        Scene sceneSearch = new Scene(root);
+                        Stage stage = new Stage();
+
+                        stage.initModality(Modality.APPLICATION_MODAL);
+                        stage.setScene(sceneSearch);
+
+                        stage.showAndWait();
+
+
+                    }catch (Exception e){
+                        System.out.println(e);
+                    }
+
+                }else{
+                    Alert alertSearch = new Alert(Alert.AlertType.INFORMATION);
+                    alertSearch.setTitle("Freya Style--//--Forpus Company");
+                    alertSearch.setContentText("Error al cargar los datos");
+                    alertSearch.show();
+                }
+                break;
+            case "remove":
+                if(Constant.entity == "CategoryoneClass"){
+                    DeleteHQL.deleteForean();
+                }else{
+    
+                    Constant.tfCode = tfCode.getText();
+                    if(DeleteHQL.workerDelete()){
+                        alertSend("Datos Eliminados");
+                    }else {
+                        alertSend("Error al eliminar datos");
+                    }
+                }
+                crudEjecuted("cancel");
+                break;
+            case "cancel":
+                //textFields
+                switch (Constant.entity){
+                    case "CategorioneClass":
+                    case "CategoritwoClass":
+                    case "CategorythreeClass":
+                        options("buttonCategory");
+                    break;
+                    case "buttonWare":
+                        options("buttonWare");
+                        break;
+                    case "buttonService":
+                        options("buttonService");
+                        break;
+                    case "buttonProducts":
+                        options("buttonProducts");
+                        break;
+                    case "buttonTransmute":
+                        options("buttonTransmute");
+                        break;
+                    default:
+                }
+
+                break;
+            case "found":
+                Constant.tfCode = tfCode.getText();
+
+                if(!Objects.equals(Constant.tfCode, "")){
+                    differentiateBetweenEntities(FoundHQL.workerFound());
+                }else{
+                    alertSend("Por favor digitar código");
+                }
+                break;
+            default:
+                break;
+        }
+
+    }
+    //fucnion para que el crud haga diferentes cosas dependiendo de la entity
+    public void differentiateBetweenEntities(Boolean found){
+        switch (Constant.entity){
+            case "CategoryoneClass":
+                    bOne.setDisable(false);
+                    SearchHQL.searchHQL();
+                    c1.setText("Categoria Uno");
+                    c1.setCellValueFactory(new PropertyValueFactory<>("categoryOne"));
+                    ObservableList<CategoryoneClass> dates = FXCollections.observableArrayList(ConstantsWare.categoryOneList);
+                    tableWare.getItems().clear();
+                    tableWare.setItems(dates);
+                break;
+            default:
+                break;
+        }
     }
 
+    public void buttonCheck(ActionEvent event) {
+        Button buttonCheck = (Button) event.getSource();
+
+        switch (buttonCheck.getId()){
+            case "bOne":
+                Constant.entity = "CategoryoneClass";
+                Constant.tfName = tfCode.getText();
+                ConstantsWare.two = null;
+                ConstantsWare.three = null;
+
+                if(ConstantsWare.one != null){
+                    Constant.tfCode = String.valueOf(ConstantsWare.one.getIdOne());
+                    if(SaveHQL.saveUpdateCate("update")){
+                        bOne.setDisable(true);
+                        bTwo.setDisable(false);
+                        tfCode.setDisable(true);
+                        tfOneCategory.setDisable(false);
+                        remove.setDisable(false);
+                    }
+                }else{
+                    if(SaveHQL.saveUpdateCate("save")){
+                        bOne.setDisable(true);
+                        bTwo.setDisable(false);
+                        tfCode.setDisable(true);
+                        tfOneCategory.setDisable(false);
+                        remove.setDisable(false);
+                    }
+                }
+                Constant.entity = "CategorytwoClass";
+                SearchHQL.searchHQL();
+                c1.setText("Categoria Dos");
+                c1.setCellValueFactory(new PropertyValueFactory<>("categoryTwo"));
+                ObservableList<CategorytwoClass> datesTwo = FXCollections.observableArrayList(ConstantsWare.categoryTwoList);
+                tableWare.getItems().clear();
+                tableWare.setItems(datesTwo);
+                Constant.entity = "CategoryoneClass";
+
+                break;
+            case "bTwo":
+                Constant.entity = "CategorytwoClass";
+                Constant.tfName = tfOneCategory.getText();
+
+                if(FoundHQL.workerFound() || ConstantsWare.two != null){
+
+                    Constant.tfCode = String.valueOf(ConstantsWare.two.getIdTwo());
+
+                    if(SaveHQL.saveUpdateCate("update")){
+                        System.out.println("update");
+                        bOne.setDisable(true);
+                        bTwo.setDisable(false);
+                        bThree.setDisable(false);
+
+                        tfCode.setDisable(true);
+                        tfOneCategory.setDisable(false);
+                        tfThreeCategory1.setDisable(false);
+                        bTwoRemove.setDisable(false);
+
+                    }
+                }else{
+                    if(SaveHQL.saveUpdateCate("save")){
+                        System.out.println("save");
+                        bOne.setDisable(true);
+                        bTwo.setDisable(false);
+                        bThree.setDisable(false);
+
+                        bThree.setDisable(false);
+                        tfCode.setDisable(true);
+                        tfOneCategory.setDisable(false);
+                        tfThreeCategory1.setDisable(false);
+                        bTwoRemove.setVisible(true);
+                        bTwoRemove.setDisable(false);
+                    }
+                }
+                Constant.entity = "CategorythreeClass";
+                SearchHQL.searchHQL();
+                c1.setText("Categoria Tres");
+                c1.setCellValueFactory(new PropertyValueFactory<>("categoryThree"));
+                ObservableList<CategorythreeClass> datesThree = FXCollections.observableArrayList(ConstantsWare.categoryThreeList);
+                tableWare.getItems().clear();
+                tableWare.setItems(datesThree);
+                Constant.entity = "CategorytwoClass";
+                break;
+            case "bThree":
+                Constant.entity = "CategorythreeClass";
+                Constant.tfName = tfThreeCategory1.getText();
+                if(FoundHQL.workerFound() || ConstantsWare.three != null){
+                    Constant.tfCode = String.valueOf(ConstantsWare.three.getIdThree());
+                    if(SaveHQL.saveUpdateCate("update")){
+                        bThreeRemove.setVisible(true);
+                        bThreeRemove.setDisable(false);
+                    }
+                }else{
+                    if(SaveHQL.saveUpdateCate("save")){
+
+                        bThreeRemove.setDisable(false);
+                    }
+                }
+                break;
+            default:
+                break;
+        }
+
+    }
     @FXML
+    public void buttonRemoveCate(ActionEvent event) {
+
+        Button buttonRemove = (Button) event.getSource();
+
+        switch (buttonRemove.getId()){
+            case "bTwoRemove":
+                Constant.entity = "CategorytwoClass";
+                DeleteHQL.deleteForean();
+                tfOneCategory.setText("");
+                tfThreeCategory1.setText("");
+                break;
+            case "bThreeRemove":
+                Constant.entity = "CategorythreeClass";
+                tfThreeCategory1.setText("");
+                DeleteHQL.deleteForean();
+                break;
+            default:
+                break;
+        }
+    }
+    
+    @FXML //botones del lado derecho
     private void buttonSlide(ActionEvent event) throws IOException {
         slide(event);
     }
-
-    @FXML
+    @FXML//botones derechos
     static void slide(ActionEvent event) throws IOException {
         Button buttonSlide = (Button) event.getSource();
 
@@ -141,14 +430,7 @@ public class WareController {
         }
         slideChange(buttonSlide.getId(), event);
     }
-
-    public void alertSend(String massage){
-        Alert alertMassage = new Alert(Alert.AlertType.INFORMATION);
-        alertMassage.setTitle("Freya Style--//--Forpus Company");
-        alertMassage.setContentText(massage);
-        alertMassage.show();
-    }
-
+    @FXML //botones de lado derecho
     static void slideChange(String blue, ActionEvent event) throws IOException {
         switch (blue){
             case "bWare":
@@ -180,7 +462,7 @@ public class WareController {
 
     }
 
-    @FXML
+    @FXML //botones de arriba
     public void buttonsOptions(ActionEvent event) {
         Button buttonOption = (Button) event.getSource();
 
@@ -199,10 +481,14 @@ public class WareController {
         options(ConstantsWare.idOption);
 
     }
+    //botones de arriba, para dar formato al view
     protected void options(String option){
         clean();
         switch (option){
             case "buttonCategory":
+
+                Constant.entity = "CategoryoneClass";
+
                 labelCode.setText("Categoria 1");
                 labelOneCategory.setText("Categoria 2");
                 labelThreeCategory.setText("Categoria 3");
@@ -210,6 +496,15 @@ public class WareController {
                 labelThreeCategory.setVisible(true);
                 tfOneCategory.setVisible(true);
                 tfThreeCategory1.setVisible(true);
+
+                tfOneCategory.setDisable(true);
+                tfThreeCategory1.setDisable(true);
+
+                bOne.setVisible(true);
+                bTwo.setVisible(true);
+                bThree.setVisible(true);
+                bTwoRemove.setVisible(true);
+                bThreeRemove.setVisible(true);
 
                 break;
             case "buttonWare":
@@ -228,6 +523,7 @@ public class WareController {
                 labelProfit.setText("Horas");
                 labelProduct.setText("Servicio");
                 labelSale.setText("Contenido");
+                labelWage.setText("Bodega");
 
 
                 comboBoxOne.setVisible(true);
@@ -264,6 +560,7 @@ public class WareController {
                 labelProfit.setText("Profit");
                 labelProduct.setText("Producto");
                 labelSale.setText("Precio Venta");
+                labelWage.setText("Bodega");
 
                 labelBuy.setVisible(true);
                 labelSale.setVisible(true);
@@ -283,16 +580,48 @@ public class WareController {
                 tfSale.setVisible(true);
                 tfProfit.setVisible(true);
 
-
                 break;
             case "buttonTransmute":
+
+                labelCode.setText(Constant.lblCode);
+                labelOneCategory.setText("Cantidad");
+                labelThreeCategory.setText("Código");
+                labelWage.setText("Producto");
+                labelBuy.setText("Cantidad");
+                labelProfit.setText("Profit");
+                labelProduct.setText("Producto");
+                labelConsumed.setText("Precio Venta");
+
+                labelBuy.setVisible(true);
+                labelProfit.setVisible(true);
+                labelProduct.setVisible(true);
+                labelWage.setVisible(true);
+                labelThreeCategory.setVisible(true);
+                labelConsumed.setVisible(true);
+                labelCost.setVisible(true);
+
+                comboBoxOne.setVisible(true);
+                comboBoxThree.setVisible(true);
+
+                tfBuy.setVisible(true);
+                tfProduct.setVisible(true);
+                tfProfit.setVisible(true);
+                tfThreeCategory1.setVisible(true);
+                tfConsumed.setVisible(true);
+                tfCost.setVisible(true);
+                tfWare.setVisible(true);
+
+                bTwo.setVisible(true);
+                buttonUAM.setVisible(true);
+                buttonMAU.setVisible(true);
+
                 break;
             default:
                 break;
         };
-
     }
 
+    //botones de arriba para dar formato al view
     protected void clean(){
 
         labelBuy.setVisible(false);
@@ -318,14 +647,46 @@ public class WareController {
         tfThreeCategory1.setVisible(false);
         tfCost.setVisible(false);
         tfConsumed.setVisible(false);
+        tfWare.setVisible(false);
+
+        tfCode.setDisable(false);
+        tfOneCategory.setDisable(false);
+        tfThreeCategory1.setDisable(false);
 
         tfCode.setText("");
         tfBuy.setText("");
         tfProduct.setText("");
         tfSale.setText("");
         tfProfit.setText("");
+        tfWare.setText("");
+        tfCost.setText("");
+        tfConsumed.setText("");
+        tfThreeCategory1.setText("");
+        tfOneCategory.setText("");
 
-        tabla.getItems().clear();
+        tableWare.getItems().clear();
 
+        bOne.setVisible(false);
+        bTwo.setVisible(false);
+        bThree.setVisible(false);
+        buttonUAM.setVisible(false);
+        buttonMAU.setVisible(false);
+        bTwoRemove.setVisible(false);
+
+        bTwo.setDisable(true);
+        bThree.setDisable(true);
+        bTwoRemove.setDisable(true);
+        bThreeRemove.setVisible(false);
+        bThreeRemove.setDisable(true);
+        remove.setDisable(true);
+
+        c1.setText("C1");
     }
+    public void alertSend(String massage){
+        Alert alertMassage = new Alert(Alert.AlertType.INFORMATION);
+        alertMassage.setTitle("Freya Style--//--Forpus Company");
+        alertMassage.setContentText(massage);
+        alertMassage.show();
+    }
+
 }

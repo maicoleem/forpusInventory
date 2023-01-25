@@ -13,13 +13,12 @@ public class SingUp {
     public static String name = "";
     public static String password = "";
     public static boolean companySingUP(){
-        //check hibernate connection and database
-        SessionDB.session();
-        System.out.println("hello");
-        System.out.println(SessionDB.session().getSession());
-        Session session = SessionDB.session().getSession();
-        //set the search query by name and get the password
-        try{
+        try{//check hibernate connection and database
+            SessionDB.session();
+            Session session = SessionDB.sessionHibernate;
+            //SessionDB.session().getSession();
+
+            //set the search query by name and get the password
             Query query = session.createQuery("from CompanyClass C where C.name in(?1)");
             query.setParameter(1, name);
             CompanyClass company = (CompanyClass) query.uniqueResult();
