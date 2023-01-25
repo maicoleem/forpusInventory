@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SettingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SettingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/WareController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/WareController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/Constant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsWare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsWare.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/DeleteHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/DeleteHQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/FoundHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/FoundHQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SearchHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SearchHQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/ProvidersClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/ProvidersClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/WarehouseClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/WarehouseClass.java" afterDir="false" />
-    </list>
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Se creo el crud para la bodegas." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,36 +42,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;JPA.DatabaseSchemaImportDialog&quot;: &quot;e8a54545-f878-467d-b1bf-a1d41c63fbb2&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_directory_selection&quot;: &quot;C:/Users/Teemo/OneDrive/java/proyecto1/forpus_inventory/src/main/java/com/forpus&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Teemo/OneDrive/java/proyecto1/forpus_inventory&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "JPA.DatabaseSchemaImportDialog": "e8a54545-f878-467d-b1bf-a1d41c63fbb2",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_directory_selection": "C:/Users/Teemo/OneDrive/java/proyecto1/forpus_inventory/src/main/java/com/forpus",
+    "last_opened_file_path": "C:/Users/Teemo/OneDrive/java/proyecto1/forpus_inventory",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "Errors",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="ImportMappingsDialog.RecentPackages">
       <recent name="com.forpus" />
@@ -134,7 +122,7 @@
       <workItem from="1674521965498" duration="9051000" />
       <workItem from="1674540370696" duration="3737000" />
       <workItem from="1674572431929" duration="40264000" />
-      <workItem from="1674661134034" duration="9364000" />
+      <workItem from="1674661134034" duration="10019000" />
     </task>
     <task id="LOCAL-00001" summary="first: I create the project with javaFX, I add the dependencies of mySQL and hibernate into the pom.xml.&#10;Second: I add file hibernate.cfg.xml {i do file-project structure -Facets -hibernate -choose module}&#10;third: I add database &#10;fourth: I do mapping of the tables of database&#10;fifth:for the  connection I had do several config:&#10;-I add in module-info.java requires for hibernate and I add opens com.forpus.forpus_inventory.module that is where are the class of the tables that use hibernate.">
       <created>1674089245612</created>
@@ -192,7 +180,21 @@
       <option name="project" value="LOCAL" />
       <updated>1674615364085</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Se creo el crud para la bodegas.">
+      <created>1674675240101</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1674675240101</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Se creo el crud para la bodegas.">
+      <created>1674675347484</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1674675347484</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,7 +209,8 @@
     <MESSAGE value="first create the functions for all the buttons of the CRUD, create the new view and its application to fetch all the information from the table" />
     <MESSAGE value="Se crearon las nuevas tablas con sus relaciones, se mapearon y e tuvo que adicionar al las clases de las entidades dos parametros para que no se mapeara dos veces las mismas tablas por las claves foraneas, se comenzo el diseño de la pestaña de almacenamiento falta diseñar la parte de la transmutación y el crud." />
     <MESSAGE value="Se creo el CRUD para las categorias, se agregaron màs botones.&#10;Para realizar el borrado de datos se tuvo que implementar un nuevo metodo en la clase DeleteHQL debido a que los metodos con session.delete(objeto) y el query no funcionaban, daban un error." />
-    <option name="LAST_COMMIT_MESSAGE" value="Se creo el CRUD para las categorias, se agregaron màs botones.&#10;Para realizar el borrado de datos se tuvo que implementar un nuevo metodo en la clase DeleteHQL debido a que los metodos con session.delete(objeto) y el query no funcionaban, daban un error." />
+    <MESSAGE value="Se creo el crud para la bodegas." />
+    <option name="LAST_COMMIT_MESSAGE" value="Se creo el crud para la bodegas." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
