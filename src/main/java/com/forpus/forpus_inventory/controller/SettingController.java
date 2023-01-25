@@ -153,7 +153,7 @@ public class SettingController implements Initializable {
                 break;
             case "buttonPartners":
             case "buttonCustomers":
-                if(idButton=="buttonPartners"){
+                if(idButton.equals("buttonPartners")){
                     Constant.entity ="PartnersClass";
                 }else{
                     Constant.entity ="CustomerClass";
@@ -326,6 +326,7 @@ public class SettingController implements Initializable {
                 }else{
                     alertSend("Por favor digitar código");
                 }
+                System.out.println(Constant.entity);
 
                 break;
             case "search":

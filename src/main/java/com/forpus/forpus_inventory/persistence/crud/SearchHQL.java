@@ -80,6 +80,13 @@ public class SearchHQL {
                     List<CategorythreeClass> results8 = query8.list();
                     ConstantsWare.categoryThreeList = results8.toArray(new CategorythreeClass[0]);
                     break;
+                case "WarehouseClass":
+                    ConstantsWare.wareList = null;
+                    String hql9 = "FROM "+ Constant.entity;
+                    Query query9 = session.createQuery(hql9);
+                    List<WarehouseClass> results9 = query9.list();
+                    ConstantsWare.wareList = results9.toArray(new WarehouseClass[0]);
+                    break;
 
                 default:
                     break;

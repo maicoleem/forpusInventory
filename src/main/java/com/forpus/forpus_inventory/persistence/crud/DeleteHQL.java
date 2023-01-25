@@ -42,7 +42,6 @@ public class DeleteHQL {
                     session.delete(worker);
                     break;
                 case "CategoryoneClass":
-
                     String q = "delete from "+ Constant.entity +" C where C.idOne in(?1)";
                     Query query = session.createQuery(q);
                     query.setParameter(1, ConstantsWare.one.getIdOne());
@@ -58,10 +57,14 @@ public class DeleteHQL {
                     CategorythreeClass three = session.load(CategorythreeClass.class, ConstantsWare.three.getIdThree());
                     session.delete(three);
                     break;
+                case "WarehouseClass":
+                    WarehouseClass ware = session.load(WarehouseClass.class, Constant.tfCode);
+                    session.delete(ware);
+                    break;
                 default:
                     break;
             }
-            //session.getTransaction().commit();
+            session.getTransaction().commit();
             return true;
         }catch (Exception i){
 
@@ -92,6 +95,10 @@ public class DeleteHQL {
                 case "CategorythreeClass":
                     CategorythreeClass three = entityManager.find(CategorythreeClass.class, ConstantsWare.three.getIdThree());
                     entityManager.remove(three);
+                    break;
+                case "WarehouseClass":
+                    WarehouseClass ware = entityManager.find(WarehouseClass.class, ConstantsWare.ware.getIdWarehouse());
+                    entityManager.remove(ware);
                     break;
                 default:
                     break;

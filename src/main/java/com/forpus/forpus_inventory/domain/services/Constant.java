@@ -2,6 +2,10 @@ package com.forpus.forpus_inventory.domain.services;
 
 import com.forpus.forpus_inventory.persistence.entity.*;
 import javafx.scene.control.Button;
+import org.hibernate.hql.internal.ast.tree.BooleanLiteralNode;
+
+import java.util.List;
+import java.util.Objects;
 
 public class Constant {
     public static Button greyToBlue = null;
@@ -43,8 +47,18 @@ public class Constant {
     public static ProvidersClass[] providersList = null;
     public static WorkersClass[] workersList = null;
     public static CompanyClass[] companyList = null;
+    public static String[] entityForean= {"CategoryoneClass", "WarehouseClass"};
 
+    public static Boolean isEntityForeanKey(String entity){
 
+        for(int i = 0; i < 2; i = i+1){
+
+            if (Objects.equals(entityForean[i], entity)){
+                return true;
+            }
+        }
+        return false;
+    }
 
 
 }

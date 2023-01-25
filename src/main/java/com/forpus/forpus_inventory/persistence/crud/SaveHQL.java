@@ -11,7 +11,7 @@ import java.util.Objects;
 
 public class SaveHQL {
     public static boolean workerInsertUpdate(){
-        if(searchWorker()){
+        if(FoundHQL.workerFound()){
             //cuando lo encuentre debe de actualizar falta eso
             Constant.messageSave = "Encontrado";
             insertWorker("update");
@@ -20,6 +20,7 @@ public class SaveHQL {
             Constant.messageSave = "Creado";
             return true;
         } else{
+            Constant.messageSave = "Error al guardar";
             return false;
         }
     }
@@ -51,6 +52,8 @@ public class SaveHQL {
             //check hibernate connection and database
             SessionDB.session();
             Session session = SessionDB.session().getSession();
+            System.out.println(Constant.entity);
+            System.out.println(Constant.tfCode);
             switch (Constant.entity){
                 case "CompanyClass":
                     CompanyClass company = new CompanyClass();
@@ -95,6 +98,7 @@ public class SaveHQL {
                     partnert.setAddress(Constant.tfAddress);
 
                     session.beginTransaction();
+
                     if(saveOrUpdate.equals("save")){
                         session.save(partnert);
                     }else{
@@ -107,6 +111,7 @@ public class SaveHQL {
                     break;
                 case "ProvidersClass":
                     ProvidersClass provider = new ProvidersClass();
+                    System.out.println("ProvidersClass save or update");
                     provider.setNit(Constant.tfCode);
                     provider.setName(Constant.tfName);
                     provider.setPhoneNumber(Constant.tfPhone);
@@ -141,6 +146,21 @@ public class SaveHQL {
                     }
                     session.getTransaction().commit();
                     System.out.println("Trabajador Creado");
+                    break;
+                case "WarehouseClass":
+                    WarehouseClass ware = new WarehouseClass();
+                    ware.setIdWarehouse(Constant.tfCode);
+                    ware.setName(Constant.tfName);
+
+                    session.beginTransaction();
+
+                    if(saveOrUpdate.equals("save")){
+                        session.save(ware);
+                    }else{
+                        session.update(ware);
+                    }
+                    session.getTransaction().commit();
+                    System.out.println("Bodega Guardada");
                     break;
                 default:
                     break;

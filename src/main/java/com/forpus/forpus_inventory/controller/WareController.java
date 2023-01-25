@@ -10,6 +10,7 @@ import com.forpus.forpus_inventory.persistence.crud.SearchHQL;
 import com.forpus.forpus_inventory.persistence.entity.CategoryoneClass;
 import com.forpus.forpus_inventory.persistence.entity.CategorythreeClass;
 import com.forpus.forpus_inventory.persistence.entity.CategorytwoClass;
+import com.forpus.forpus_inventory.persistence.entity.WarehouseClass;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -165,30 +166,21 @@ public class WareController {
 
         switch (idButton){
             case "save":
-                /*Constant.tfCode = tfCode.getText();
+                Constant.tfCode = tfCode.getText();
                 if(!Objects.equals(Constant.tfCode, "")){
-                    Constant.tfName = textFieldName.getText();
-                    Constant.tfPhone = textFieldPhone.getText();
-                    Constant.tfAddress = textFieldAddress.getText();
-                    Constant.tfJob = textFieldJob.getText();
-                    Constant.tfSalary = textFieldSalary.getText();
-                    Constant.tfPassword = textFieldPassword.getText();
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Freya Style--//--Forpus Company");
-
+                    Constant.tfName = tfOneCategory.getText();
                     if(SaveHQL.workerInsertUpdate()){
                         if(Objects.equals(Constant.messageSave, "Creado")){
-                            alert.setContentText("Se han guardado los datos");
+                            alertSend("Se han guardado los datos");
                         }else{
-                            alert.setContentText("Se han actualizado los datos");
+                            alertSend("Se han actualizado los datos");
                         }
                     }else {
-                        alert.setContentText("Error en actualizar y/o insertar datos, por favor reiniciar");
+                        alertSend("Error en actualizar y/o insertar datos, por favor reiniciar");
                     }
-                    alert.show();
                 }else{
                     alertSend("Por favor digitar código");
-                }*/
+                }
 
                 break;
             case "search":
@@ -204,7 +196,6 @@ public class WareController {
 
                         stage.showAndWait();
 
-
                     }catch (Exception e){
                         System.out.println(e);
                     }
@@ -217,7 +208,8 @@ public class WareController {
                 }
                 break;
             case "remove":
-                if(Constant.entity == "CategoryoneClass"){
+
+                if(Constant.isEntityForeanKey(Constant.entity)){
                     DeleteHQL.deleteForean();
                 }else{
     
@@ -268,6 +260,7 @@ public class WareController {
         }
 
     }
+
     //fucnion para que el crud haga diferentes cosas dependiendo de la entity
     public void differentiateBetweenEntities(Boolean found){
         switch (Constant.entity){
@@ -280,11 +273,35 @@ public class WareController {
                     tableWare.getItems().clear();
                     tableWare.setItems(dates);
                 break;
+
+            case "WarehouseClass":
+                //busca y pone datos en la tabla
+                SearchHQL.searchHQL();
+                tableWare.getItems().clear();
+                c1.setText("Codigo");
+                c1.setCellValueFactory(new PropertyValueFactory<>("idWarehouse"));
+                c2.setText("Bodega");
+                c2.setCellValueFactory(new PropertyValueFactory<>("name"));
+                ObservableList<WarehouseClass> datesWare = FXCollections.observableArrayList(ConstantsWare.wareList);
+                tableWare.setItems(datesWare);
+
+                //busca el codigo de la warehouse y pone el nombre
+                if(FoundHQL.workerFound()){
+                    tfOneCategory.setText(ConstantsWare.ware.getName());
+                    save.setDisable(false);
+                    remove.setDisable(false);
+                }else{
+                    alertSend("La bodega no existe");
+                    save.setDisable(false);
+                }
+
+                break;
             default:
                 break;
         }
     }
 
+    //botones check para categorias pricnipalmente
     public void buttonCheck(ActionEvent event) {
         Button buttonCheck = (Button) event.getSource();
 
@@ -388,7 +405,7 @@ public class WareController {
         }
 
     }
-    @FXML
+    @FXML //boton remover para las categorias
     public void buttonRemoveCate(ActionEvent event) {
 
         Button buttonRemove = (Button) event.getSource();
@@ -479,7 +496,6 @@ public class WareController {
 
         ConstantsWare.idOption = buttonOption.getId();
         options(ConstantsWare.idOption);
-
     }
     //botones de arriba, para dar formato al view
     protected void options(String option){
@@ -508,10 +524,12 @@ public class WareController {
 
                 break;
             case "buttonWare":
+                Constant.entity = "WarehouseClass";
+
                 labelCode.setText(Constant.lblCode);
                 labelOneCategory.setText("Bodega");
-
                 tfOneCategory.setVisible(true);
+
 
                 break;
             case "buttonService":
@@ -688,5 +706,4 @@ public class WareController {
         alertMassage.setContentText(massage);
         alertMassage.show();
     }
-
 }

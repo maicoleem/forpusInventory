@@ -4,9 +4,8 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "providers", schema = "inventoryaccounting", catalog = "")
+@Table(name = "providers", schema = "inventoryaccounting")
 public class ProvidersClass {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "Nit", nullable = false, length = 20)
     private String nit;

@@ -5,9 +5,8 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "warehouse", schema = "inventoryaccounting", catalog = "")
+@Table(name = "warehouse", schema = "inventoryaccounting")
 public class WarehouseClass {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id_warehouse", nullable = false, length = 6)
     private String idWarehouse;

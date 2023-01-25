@@ -39,6 +39,7 @@ public class FoundHQL {
                     break;
                 case "ProvidersClass":
                     ProvidersClass provider = session.load(ProvidersClass.class, Constant.tfCode);
+                    System.out.println(Constant.tfCode);
                     Constant.tfName = provider.getName();
                     Constant.tfPhone = provider.getPhoneNumber();
                     Constant.tfAddress = provider.getAddress();
@@ -92,12 +93,24 @@ public class FoundHQL {
                         ConstantsWare.three = three;
                     }
                     break;
+                case "WarehouseClass":
+                    String qWare = "from "+ Constant.entity +" C where C.id in(?1)";
+                    Query queryWare = session.createQuery(qWare);
+                    queryWare.setParameter(1, Constant.tfCode);
+                    WarehouseClass ware = (WarehouseClass) queryWare.uniqueResult();
+
+                    if(ware == null){
+                        return false;
+                    }else{
+                        ConstantsWare.ware = ware;
+                    }
+                    break;
                 default:
                     break;
             }
             return true;
         }catch (Exception i){
-            SessionDB.sessionClose();
+            //SessionDB.sessionClose();
             System.out.println(i);
             return false;
         }
