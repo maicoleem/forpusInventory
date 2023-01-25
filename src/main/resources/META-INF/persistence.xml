@@ -1,0 +1,20 @@
+<persistence version="3.0" xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+
+<persistence-unit name="persistence">
+        <description>Hibernate Entity Manager Example</description>
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+    <properties>
+        <property name="jakarta.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>
+        <property name="jakarta.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/inventoryaccounting"/>
+        <property name="jakarta.persistence.jdbc.user" value="root"/>
+        <property name="jakarta.persistence.jdbc.password" value="@punk666vN@@TmBA-jK"/>
+        <property name="hibernate.hbm2ddl.auto" value="update"/>
+
+    </properties>
+
+    </persistence-unit>
+
+</persistence>
