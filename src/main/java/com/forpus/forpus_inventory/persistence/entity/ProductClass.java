@@ -5,9 +5,8 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "product", schema = "inventoryaccounting", catalog = "")
+@Table(name = "product", schema = "inventoryaccounting")
 public class ProductClass {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id_product", nullable = false, length = 6)
     private String idProduct;
@@ -18,7 +17,7 @@ public class ProductClass {
     @Column(name = "purchase_price", nullable = false, length = 20)
     private String purchasePrice;
     @Basic
-    @Column(name = "sale price", nullable = false, length = 20)
+    @Column(name = "sale_price", nullable = false, length = 20)
     private String salePrice;
     @Basic
     @Column(name = "profit", nullable = false, length = 20)

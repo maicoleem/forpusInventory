@@ -5,9 +5,8 @@ import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "service", schema = "inventoryaccounting", catalog = "")
+@Table(name = "service", schema = "inventoryaccounting")
 public class ServiceClass {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id_service", nullable = false, length = 6)
     private String idService;

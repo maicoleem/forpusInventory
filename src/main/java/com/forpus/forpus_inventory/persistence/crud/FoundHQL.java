@@ -71,7 +71,6 @@ public class FoundHQL {
                     String qTwo = "from "+ Constant.entity +" C where C.categoryTwo in(?1)";
                     Query queryTwo = session.createQuery(qTwo);
                     queryTwo.setParameter(1, Constant.tfName);
-
                     CategorytwoClass two = (CategorytwoClass) queryTwo.uniqueResult();
 
                     if(two == null){
@@ -105,6 +104,28 @@ public class FoundHQL {
                         ConstantsWare.ware = ware;
                     }
                     break;
+                case "ServiceClass":
+                    String qService = "from "+ Constant.entity +" C where C.id in(?1)";
+                    Query queryService = session.createQuery(qService);
+                    queryService.setParameter(1, Constant.tfCode);
+                    ServiceClass service = (ServiceClass) queryService.uniqueResult();
+                    if(service == null){
+                        return false;
+                    }else{
+                        ConstantsWare.service = service;
+                    }
+                    break;
+                case "ProductClass":
+                    String qProduct = "from "+ Constant.entity +" C where C.id in(?1)";
+                    Query queryProduct = session.createQuery(qProduct);
+                    queryProduct.setParameter(1, Constant.tfCode);
+                    ProductClass product = (ProductClass) queryProduct.uniqueResult();
+                    if(product == null){
+                        return false;
+                    }else{
+                        ConstantsWare.product = product;
+                    }
+                    break;
                 default:
                     break;
             }
@@ -115,4 +136,5 @@ public class FoundHQL {
             return false;
         }
     }
+
 }

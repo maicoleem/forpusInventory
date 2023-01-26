@@ -87,14 +87,32 @@ public class SearchHQL {
                     List<WarehouseClass> results9 = query9.list();
                     ConstantsWare.wareList = results9.toArray(new WarehouseClass[0]);
                     break;
+                case "ServiceClass":
+                    ConstantsWare.serviceList = null;
+                    String hql10 = "FROM "+ Constant.entity;
+                    Query query10 = session.createQuery(hql10);
+                    List<ServiceClass> results10 = query10.list();
+                    ConstantsWare.serviceList = results10.toArray(new ServiceClass[0]);
+                    break;
+                case "ProductClass":
+                    ConstantsWare.productList = null;
+                    System.out.println("buscando en la ProductClass");
+                    String hql11 = "FROM "+ Constant.entity;
+                    System.out.println("buscando en la ProductClass" + hql11);
+                    Query query11 = session.createQuery(hql11);
+                    List<ProductClass> results11 = query11.list();
+                    ConstantsWare.productList = results11.toArray(new ProductClass[0]);
+                    System.out.println("buscando en la ProductClass");
+                    break;
 
                 default:
                     break;
             }
             return true;
         }catch (Exception i){
-            SessionDB.sessionClose();
+            //SessionDB.sessionClose();
             System.out.println(i);
+            i.printStackTrace();
             return false;
         }
     }

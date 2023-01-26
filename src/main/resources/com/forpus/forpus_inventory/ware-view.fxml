@@ -215,10 +215,10 @@
                   <Font name="Tahoma Bold" size="20.0" />
                </font>
             </TextField>
-            <ComboBox fx:id="comboBoxThree" layoutX="160.0" layoutY="188.0" prefHeight="40.0" prefWidth="200.0" promptText="Categoria 3" visibleRowCount="5" />
-            <ComboBox fx:id="comboBoxOne" layoutX="160.0" layoutY="112.0" prefHeight="40.0" prefWidth="200.0" promptText="Categoria 1" visibleRowCount="5" />
-            <ComboBox fx:id="comboBoxTwo" layoutX="530.0" layoutY="112.0" prefHeight="40.0" prefWidth="200.0" promptText="Categoria 2" visibleRowCount="5" />
-            <ComboBox fx:id="comboBoxWage" layoutX="530.0" layoutY="188.0" prefHeight="40.0" prefWidth="200.0" promptText="Bodega" visibleRowCount="5" />
+            <ComboBox id="comboBoxThree" fx:id="comboBoxThree" layoutX="160.0" layoutY="188.0" onAction="#comboBoxClick" prefHeight="40.0" prefWidth="200.0" promptText="Categoria 3" visibleRowCount="5" />
+            <ComboBox id="comboBoxOne" fx:id="comboBoxOne" layoutX="160.0" layoutY="112.0" onAction="#comboBoxClick" prefHeight="40.0" prefWidth="200.0" promptText="Categoria 1" visibleRowCount="5" />
+            <ComboBox id="comboBoxTwo" fx:id="comboBoxTwo" layoutX="530.0" layoutY="112.0" onAction="#comboBoxClick" prefHeight="40.0" prefWidth="200.0" promptText="Categoria 2" visibleRowCount="5" />
+            <ComboBox id="comboBoxWage" fx:id="comboBoxWage" layoutX="530.0" layoutY="188.0" onAction="#comboBoxClick" prefHeight="40.0" prefWidth="200.0" promptText="Bodega" visibleRowCount="5" />
             <TextField id="tfOneCategory" fx:id="tfOneCategory" layoutX="160.0" layoutY="112.0" prefHeight="40.0" prefWidth="200.0" promptText="123456789abcdef" visible="false">
                <font>
                   <Font name="Tahoma Bold" size="20.0" />

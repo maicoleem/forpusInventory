@@ -7,10 +7,7 @@ import com.forpus.forpus_inventory.persistence.crud.DeleteHQL;
 import com.forpus.forpus_inventory.persistence.crud.FoundHQL;
 import com.forpus.forpus_inventory.persistence.crud.SaveHQL;
 import com.forpus.forpus_inventory.persistence.crud.SearchHQL;
-import com.forpus.forpus_inventory.persistence.entity.CategoryoneClass;
-import com.forpus.forpus_inventory.persistence.entity.CategorythreeClass;
-import com.forpus.forpus_inventory.persistence.entity.CategorytwoClass;
-import com.forpus.forpus_inventory.persistence.entity.WarehouseClass;
+import com.forpus.forpus_inventory.persistence.entity.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,6 +22,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class WareController {
@@ -43,7 +41,7 @@ public class WareController {
     @FXML
     public TableColumn<Object, Object> c7;
     @FXML
-    public TableColumn c8;
+    public TableColumn<Object, Object> c8;
     @FXML
     public TableColumn c9;
     @FXML
@@ -105,13 +103,13 @@ public class WareController {
     @FXML
     public TextField tfSale;
     @FXML
-    public ComboBox comboBoxThree;
+    public ComboBox<String> comboBoxThree;
     @FXML
-    public ComboBox comboBoxOne;
+    public ComboBox<String> comboBoxOne;
     @FXML
-    public ComboBox comboBoxTwo;
+    public ComboBox<String> comboBoxTwo;
     @FXML
-    public ComboBox comboBoxWage;
+    public ComboBox<String> comboBoxWage;
     @FXML
     public Button buttonProducts;
     @FXML
@@ -276,15 +274,7 @@ public class WareController {
 
             case "WarehouseClass":
                 //busca y pone datos en la tabla
-                SearchHQL.searchHQL();
-                tableWare.getItems().clear();
-                c1.setText("Codigo");
-                c1.setCellValueFactory(new PropertyValueFactory<>("idWarehouse"));
-                c2.setText("Bodega");
-                c2.setCellValueFactory(new PropertyValueFactory<>("name"));
-                ObservableList<WarehouseClass> datesWare = FXCollections.observableArrayList(ConstantsWare.wareList);
-                tableWare.setItems(datesWare);
-
+                tableLoad();
                 //busca el codigo de la warehouse y pone el nombre
                 if(FoundHQL.workerFound()){
                     tfOneCategory.setText(ConstantsWare.ware.getName());
@@ -294,7 +284,39 @@ public class WareController {
                     alertSend("La bodega no existe");
                     save.setDisable(false);
                 }
-
+                break;
+            case "ServiceClass":
+                //busca y pone datos en la tabla
+                tableLoad();
+                //carga los datos del combobox
+                comboBoxLoad();
+                //busca los datos del servicio
+                if(FoundHQL.workerFound()){
+                    tfOneCategory.setText(ConstantsWare.service.getName());
+                    save.setDisable(false);
+                    remove.setDisable(false);
+                }else{
+                    alertSend("El servicio no existe");
+                    save.setDisable(false);
+                }
+                break;
+            case "ProductClass":
+                //busca y pone datos en la tabla
+                tableLoad();
+                //carga los datos del combobox
+                comboBoxLoad();
+                //busca los datos del servicio
+                if(FoundHQL.workerFound()){
+                    tfProduct.setText(ConstantsWare.product.getName());
+                    tfBuy.setText(ConstantsWare.product.getPurchasePrice());
+                    tfSale.setText(ConstantsWare.product.getSalePrice());
+                    tfProfit.setText(ConstantsWare.product.getProfit());
+                    save.setDisable(false);
+                    remove.setDisable(false);
+                }else{
+                    alertSend("El producto no existe");
+                    save.setDisable(false);
+                }
                 break;
             default:
                 break;
@@ -530,9 +552,12 @@ public class WareController {
                 labelOneCategory.setText("Bodega");
                 tfOneCategory.setVisible(true);
 
-
+                //busca y pone datos en la tabla
+                tableLoad();
                 break;
             case "buttonService":
+                Constant.entity = "ServiceClass";
+
                 labelCode.setText(Constant.lblCode);
                 labelOneCategory.setText("Producto");
                 labelTwoCategory.setText("Precio");
@@ -566,8 +591,11 @@ public class WareController {
                 labelCost.setVisible(true);
                 labelConsumed.setVisible(true);
 
+                //busca y pone datos en la tabla
+                tableLoad();
                 break;
             case "buttonProducts":
+                Constant.entity = "ProductClass";
 
                 labelCode.setText(Constant.lblCode);
                 labelOneCategory.setText("Categoria 1");
@@ -698,12 +726,241 @@ public class WareController {
         bThreeRemove.setDisable(true);
         remove.setDisable(true);
 
+        //botones del crud
+        search.setStyle("-fx-background-color: #1BA1E2; ");
+        save.setStyle("-fx-background-color: #1BA1E2; ");
+        found.setStyle("-fx-background-color: #1BA1E2; ");
+        cancel.setStyle("-fx-background-color: #1BA1E2; ");
+        remove.setStyle("-fx-background-color: #1BA1E2; ");
+        save.setDisable(true);
+        remove.setDisable(true);
+        //tabla
         c1.setText("C1");
+        c2.setText("C2");
+        //combobox
+        comboBoxOne.getItems().clear();
+        comboBoxTwo.getItems().clear();
+        comboBoxThree.getItems().clear();
+        comboBoxWage.getItems().clear();
     }
+
+    //carga datos a la tabla
+    public void tableLoad(){
+        switch (Constant.entity){
+            case "CategoryoneClass":
+                SearchHQL.searchHQL();
+                c1.setText("Categoria Uno");
+                c1.setCellValueFactory(new PropertyValueFactory<>("categoryOne"));
+                ObservableList<CategoryoneClass> dates = FXCollections.observableArrayList(ConstantsWare.categoryOneList);
+                tableWare.getItems().clear();
+                tableWare.setItems(dates);
+                break;
+
+            case "WarehouseClass":
+                //busca y pone datos en la tabla
+                SearchHQL.searchHQL();
+                tableWare.getItems().clear();
+                c1.setText("Codigo");
+                c1.setCellValueFactory(new PropertyValueFactory<>("idWarehouse"));
+                c2.setText("Bodega");
+                c2.setCellValueFactory(new PropertyValueFactory<>("name"));
+                ObservableList<WarehouseClass> datesWare = FXCollections.observableArrayList(ConstantsWare.wareList);
+                tableWare.setItems(datesWare);
+                break;
+            case "ServiceClass":
+                SearchHQL.searchHQL();
+                tableWare.getItems().clear();
+                c1.setText("Codigo");
+                c1.setCellValueFactory(new PropertyValueFactory<>("idService"));
+                c2.setText("Servicio");
+                c2.setCellValueFactory(new PropertyValueFactory<>("name"));
+                c3.setText("Pago por Hora");
+                c3.setCellValueFactory(new PropertyValueFactory<>("payForHour"));
+                c4.setText("Horas");
+                c4.setCellValueFactory(new PropertyValueFactory<>("hour"));
+                c5.setText("Costo");
+                c5.setCellValueFactory(new PropertyValueFactory<>("cost"));
+                ObservableList<ServiceClass> datesService = FXCollections.observableArrayList(ConstantsWare.serviceList);
+                tableWare.setItems(datesService);
+                break;
+            case "ProductClass":
+                SearchHQL.searchHQL();
+                tableWare.getItems().clear();
+                c1.setText("Codigo");
+                c1.setCellValueFactory(new PropertyValueFactory<>("idProduct"));
+                c2.setText("Producto");
+                c2.setCellValueFactory(new PropertyValueFactory<>("name"));
+                c3.setText("Categoria 1");
+                c3.setCellValueFactory(new PropertyValueFactory<>("idOne"));
+                c4.setText("Categoria 2");
+                c4.setCellValueFactory(new PropertyValueFactory<>("idTwo"));
+                c5.setText("Categoria 3");
+                c5.setCellValueFactory(new PropertyValueFactory<>("idThree"));
+                c6.setText("Precio de compra");
+                c6.setCellValueFactory(new PropertyValueFactory<>("purchasePrice"));
+                c7.setText("Precio de venta");
+                c7.setCellValueFactory(new PropertyValueFactory<>("salePrice"));
+                c8.setText("Profit");
+                c8.setCellValueFactory(new PropertyValueFactory<>("profit"));
+                ObservableList<ProductClass> datesProduct = FXCollections.observableArrayList(ConstantsWare.productList);
+                tableWare.setItems(datesProduct);
+                break;
+            default:
+                break;
+        }
+
+    }
+
+    //carga datos a lso combobox
+    public void comboBoxLoad(){
+        ArrayList<String> listProduct = new ArrayList<>();
+        comboBoxOne.getItems().clear();
+        comboBoxTwo.getItems().clear();
+        comboBoxThree.getItems().clear();
+        comboBoxWage.getItems().clear();
+
+        if(Constant.entity == "ServiceClass"){
+
+            Constant.entity = "ProductClass";
+
+            SearchHQL.searchHQL();
+            if(ConstantsWare.productList !=null){
+                for(ProductClass a: ConstantsWare.productList){
+                    String product = a.getName();
+                    if(product != null) {
+                        listProduct.add(product);
+                    }
+                }
+            }
+
+            ObservableList<String> comboBoxProduct = FXCollections.observableArrayList(listProduct);
+            comboBoxOne.getItems().addAll(comboBoxProduct);
+
+            Constant.entity = "WarehouseClass";
+            SearchHQL.searchHQL();
+            listProduct.clear();
+
+           for(int i = 0; i < ConstantsWare.wareList.length; i = i+1){
+                String product = ConstantsWare.wareList[i].getName();
+                if(product != null) {
+                    listProduct.add(product);
+                }
+           }
+            comboBoxWage.getItems().addAll(listProduct);
+
+            Constant.entity = "ServiceClass";
+
+        } else if (Constant.entity == "ProductClass") {
+
+            Constant.entity = "CategoryoneClass";
+            SearchHQL.searchHQL();
+
+            if(ConstantsWare.categoryOneList !=null){
+                for(CategoryoneClass a: ConstantsWare.categoryOneList){
+                    String product = a.getCategoryOne();
+                    if(product != null) {
+                        listProduct.add(product);
+                    }
+                }
+            }
+            comboBoxOne.getItems().addAll(listProduct);
+
+            Constant.entity = "WarehouseClass";
+            SearchHQL.searchHQL();
+            listProduct.clear();
+
+            if(ConstantsWare.wareList !=null){
+                for(WarehouseClass a: ConstantsWare.wareList){
+                    String product = a.getName();
+                    if(product != null) {
+                        listProduct.add(product);
+                    }
+                }
+            }
+            comboBoxWage.getItems().addAll(listProduct);
+
+            Constant.entity ="ProductClass";
+        }else {
+            System.out.println("transmutar falta el combobox");
+                //lista para las cantidades de producto
+        }
+    }
+
     public void alertSend(String massage){
         Alert alertMassage = new Alert(Alert.AlertType.INFORMATION);
         alertMassage.setTitle("Freya Style--//--Forpus Company");
         alertMassage.setContentText(massage);
         alertMassage.show();
     }
+
+    public void comboBoxClick(ActionEvent event) {
+        ComboBox<String> cBoxChange = (ComboBox<String>) event.getSource();
+        ArrayList<String> listProduct = new ArrayList<>();
+        if(Constant.entity == "ProductClass"){
+            switch (cBoxChange.getId()){
+                case "comboBoxOne":
+                    //limpia el comboBOx
+                    comboBoxTwo.getItems().clear();
+                    //Crea la lista de categorias 2
+                    Constant.entity = "CategorytwoClass";
+                    SearchHQL.searchHQL();
+                    //Obtiene el id del item seleccionado en el combobox 1
+                    Constant.entity = "CategoryoneClass";
+                    Constant.tfCode = cBoxChange.getValue();
+                    FoundHQL.workerFound();
+                    //realiza esto si la lista de categoria 2 no es nulo
+                    if(ConstantsWare.categoryTwoList !=null){
+                        //for each para iterar la lista de categoria 2
+                        for(CategorytwoClass a: ConstantsWare.categoryTwoList){
+                            //obtiene los nombres de la categoria dos
+                            String product = a.getCategoryTwo();
+                            //si el nombre no es nulo y el id corresponde al id de la categoria 1 lo agrega a la lista
+                            if(product != null && a.getIdCategoryOne() == ConstantsWare.one.getIdOne()) {
+                                listProduct.add(product);
+                            }
+
+                        }
+                    }
+                    //carga el combobox 2
+                    comboBoxTwo.getItems().addAll(listProduct);
+                    //devuelve las constantes a los valores iniciales
+                    Constant.entity ="ProductClass";
+                    Constant.tfCode = tfCode.getText();
+                    break;
+                case "comboBoxTwo":
+
+                    comboBoxThree.getItems().clear();
+
+                    Constant.entity = "CategorythreeClass";
+                    SearchHQL.searchHQL();
+
+                    Constant.entity = "CategorytwoClass";
+                    Constant.tfName = cBoxChange.getValue();
+                    FoundHQL.workerFound();
+
+                    if(ConstantsWare.categoryThreeList !=null){
+                        for(CategorythreeClass a: ConstantsWare.categoryThreeList){
+                            String product = a.getCategoryThree();
+                            if(product != null && a.getIdTwoThree() == ConstantsWare.two.getIdTwo()) {
+                                listProduct.add(product);
+                            }
+                        }
+                    }
+                    comboBoxThree.getItems().addAll(listProduct);
+
+                    Constant.entity ="ProductClass";
+                    Constant.tfCode = tfCode.getText();
+                    break;
+                default:
+                    break;
+            }
+        }else{
+            if (cBoxChange.getId().equals("comboBoxOne")) {
+                System.out.println("como pongo el precio de cada producto??????");
+            }
+        }
+
+
+    }
+
 }
