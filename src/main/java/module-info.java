@@ -18,6 +18,7 @@ module com.forpus.forpus_inventory {
     opens com.forpus.forpus_inventory.controller to javafx.fxml;
     opens com.forpus.styles to javafx.fxml;
     opens com.forpus.forpus_inventory.persistence.entity;
+    opens com.forpus.forpus_inventory.domain.services;
     exports com.forpus.forpus_inventory.controller;
     exports com.forpus.forpus_inventory;
 

@@ -1,10 +1,11 @@
 package com.forpus.forpus_inventory.persistence.entity;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "ware_product", schema = "inventoryaccounting", catalog = "")
+@Table(name = "ware_product", schema = "inventoryaccounting")
 public class WareProductClass {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -22,6 +23,8 @@ public class WareProductClass {
     @ManyToOne(optional = false)
     @JoinColumn(name = "id_ware", referencedColumnName = "id_warehouse", nullable = false)
     private WarehouseClass warehouseByIdWare;
+    @OneToMany(mappedBy = "wareProductByIdProductWare")
+    private Collection<ProductpriceClass> productpricesByIdWareProduct;
 
     public int getIdWareProduct() {
         return idWareProduct;
@@ -74,5 +77,11 @@ public class WareProductClass {
 
     public void setWarehouseByIdWare(WarehouseClass warehouseByIdWare) {
         this.warehouseByIdWare = warehouseByIdWare;
+    }
+    public void setProductpricesByIdWareProduct(Collection<ProductpriceClass> productpricesByIdWareProduct) {
+        this.productpricesByIdWareProduct = productpricesByIdWareProduct;
+    }
+    public Collection<ProductpriceClass> getProductpricesByIdWareProduct() {
+        return productpricesByIdWareProduct;
     }
 }

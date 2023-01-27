@@ -19,5 +19,15 @@ public class ConstantsWare {
     public static WarehouseClass[] wareList = null;
     public static ServiceClass[] serviceList = null;
     public static ProductClass[] productList = null;
+    public static String tfOne = null;
+    public static String tfTwo = null;
+    public static String tfThree = null;
+    public static String tfWare = null;
+    public static String tfBuy = null;
+    public static String tfSale = null;
+    public static String tfProfit = null;
+    public static String tf10th = null;
+    public static String tfCost = null;
+    public static String tfConsumed = null;
 
 }

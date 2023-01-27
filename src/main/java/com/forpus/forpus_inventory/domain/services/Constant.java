@@ -47,7 +47,7 @@ public class Constant {
     public static ProvidersClass[] providersList = null;
     public static WorkersClass[] workersList = null;
     public static CompanyClass[] companyList = null;
-    public static String[] entityForean= {"CategoryoneClass", "WarehouseClass"};
+    public static String[] entityForean= {"CategoryoneClass", "WarehouseClass", "ServiceClass", "ProductClass"};
 
     public static Boolean isEntityForeanKey(String entity){
 

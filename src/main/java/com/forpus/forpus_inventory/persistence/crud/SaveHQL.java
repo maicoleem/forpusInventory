@@ -1,5 +1,6 @@
 package com.forpus.forpus_inventory.persistence.crud;
 
+import com.forpus.forpus_inventory.controller.WareController;
 import com.forpus.forpus_inventory.domain.services.Constant;
 import com.forpus.forpus_inventory.domain.services.ConstantsWare;
 import com.forpus.forpus_inventory.persistence.Session.SessionDB;
@@ -7,6 +8,7 @@ import com.forpus.forpus_inventory.persistence.entity.*;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import java.security.Provider;
 import java.util.Objects;
 
 public class SaveHQL {
@@ -162,12 +164,104 @@ public class SaveHQL {
                     session.getTransaction().commit();
                     System.out.println("Bodega Guardada");
                     break;
+                case "ProductClass":
+
+                    //guarda o actualiza el producto
+                    ProductClass product = new ProductClass();
+                    product.setIdProduct(Constant.tfCode);
+                    product.setName(Constant.tfName);
+                    if(ConstantsWare.tfOne != null){
+                        product.setIdOne(Integer.valueOf(ConstantsWare.tfOne));
+                    }
+                    if(ConstantsWare.tfTwo != null) {
+                        product.setIdTwo(Integer.valueOf(ConstantsWare.tfTwo));
+                    }
+                    if(ConstantsWare.tfThree != null) {
+                        product.setIdThree(Integer.valueOf(ConstantsWare.tfThree));
+                    }
+
+                    if(ConstantsWare.tfWare == null){
+                        ConstantsWare.tfWare = "Withou";
+                        product.setIdWage(ConstantsWare.tfWare);
+                    }else{
+                        product.setIdWage(ConstantsWare.ware.getIdWarehouse());
+                    }
+
+                    product.setPurchasePrice(ConstantsWare.tfBuy);
+
+                    product.setSalePrice(ConstantsWare.tfSale);
+
+                    product.setProfit(ConstantsWare.tfProfit);
+
+                    product.setAmount(Integer.valueOf(ConstantsWare.tfConsumed));
+
+                    session.beginTransaction();
+
+                    if(saveOrUpdate.equals("save")){
+                        session.save(product);
+                    }else{
+                        session.update(product);
+                    }
+                    session.getTransaction().commit();
+                    System.out.println("Producto Guardada");
+
+                    //guarada o actualiza el producto en bodega
+
+                    WareProductClass wp = new WareProductClass();
+                    wp.setIdProduct(product.getIdProduct());
+                    wp.setProductByIdProduct(product);
+
+                    Constant.entity = "WarehouseClass";
+                    Constant.tfCode = ConstantsWare.tfWare;
+                    FoundHQL.workerFound();
+                    wp.setIdWare(ConstantsWare.ware.getIdWarehouse());
+                    wp.setWarehouseByIdWare(ConstantsWare.ware);
+
+                    session.beginTransaction();
+                    session.saveOrUpdate(wp);
+                    session.getTransaction().commit();
+
+                    //guarda o actualiza el precio del producto
+                    ProductpriceClass pP = new ProductpriceClass();
+                    pP.setPrice(Integer.parseInt(ConstantsWare.tfBuy));
+                    pP.setAmount(Integer.parseInt(ConstantsWare.tfConsumed));
+                    pP.setIdProductWare(wp.getIdWareProduct());
+                    pP.setWareProductByIdProductWare(wp);
+                    session.beginTransaction();
+                    session.saveOrUpdate(pP);
+                    session.getTransaction().commit();
+                    break;
+                case "ServiceClass":
+                    ServiceClass service = new ServiceClass();
+                    service.setIdService(Constant.tfCode);
+                    service.setName(Constant.tfName);
+                    service.setIdProduct(ConstantsWare.tfOne);
+
+
+                    service.setIdWare(ConstantsWare.tfWare);
+                    service.setPayForHour(ConstantsWare.tfBuy);
+
+                    service.setHour(ConstantsWare.tfProfit);
+                    service.setCost(ConstantsWare.tfCost);
+
+                    session.beginTransaction();
+
+                    if(saveOrUpdate.equals("save")){
+                        session.save(service);
+                    }else{
+                        session.update(service);
+                    }
+                    session.getTransaction().commit();
+                    System.out.println("Producto Guardada");
+                    break;
                 default:
                     break;
             }
             return true;
         }catch (Exception i){
+            System.out.println("Error en SaveHQL");
             System.out.println(i);
+            i.printStackTrace();
             return false;
         }
     }

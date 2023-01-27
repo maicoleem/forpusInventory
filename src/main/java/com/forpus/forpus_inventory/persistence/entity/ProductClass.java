@@ -17,6 +17,9 @@ public class ProductClass {
     @Column(name = "purchase_price", nullable = false, length = 20)
     private String purchasePrice;
     @Basic
+    @Column(name = "amount", nullable = false, length = 6)
+    private Integer amount;
+    @Basic
     @Column(name = "sale_price", nullable = false, length = 20)
     private String salePrice;
     @Basic
@@ -65,6 +68,9 @@ public class ProductClass {
     public void setPurchasePrice(String purchasePrice) {
         this.purchasePrice = purchasePrice;
     }
+    public Integer getAmount() { return amount; }
+
+    public void setAmount(Integer amount) { this.amount = amount;}
 
     public String getSalePrice() {
         return salePrice;
@@ -127,12 +133,12 @@ public class ProductClass {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ProductClass that = (ProductClass) o;
-        return Objects.equals(idProduct, that.idProduct) && Objects.equals(name, that.name) && Objects.equals(purchasePrice, that.purchasePrice) && Objects.equals(salePrice, that.salePrice) && Objects.equals(profit, that.profit) && Objects.equals(idOne, that.idOne) && Objects.equals(idTwo, that.idTwo) && Objects.equals(idThree, that.idThree) && Objects.equals(idWage, that.idWage) && Objects.equals(idService, that.idService);
+        return Objects.equals(idProduct, that.idProduct) && Objects.equals(name, that.name) && Objects.equals(purchasePrice, that.purchasePrice) && Objects.equals(amount, that.amount) && Objects.equals(salePrice, that.salePrice) && Objects.equals(profit, that.profit) && Objects.equals(idOne, that.idOne) && Objects.equals(idTwo, that.idTwo) && Objects.equals(idThree, that.idThree) && Objects.equals(idWage, that.idWage) && Objects.equals(idService, that.idService);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idProduct, name, purchasePrice, salePrice, profit, idOne, idTwo, idThree, idWage, idService);
+        return Objects.hash(idProduct, name, purchasePrice, amount, salePrice, profit, idOne, idTwo, idThree, idWage, idService);
     }
 
     public Collection<ServiceProductClass> getServiceProductsByIdProduct() {

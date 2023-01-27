@@ -3,6 +3,7 @@ package com.forpus.forpus_inventory.controller;
 import com.forpus.forpus_inventory.HelloApplication;
 import com.forpus.forpus_inventory.domain.services.Constant;
 import com.forpus.forpus_inventory.domain.services.ConstantsWare;
+import com.forpus.forpus_inventory.domain.services.TableShow;
 import com.forpus.forpus_inventory.persistence.crud.DeleteHQL;
 import com.forpus.forpus_inventory.persistence.crud.FoundHQL;
 import com.forpus.forpus_inventory.persistence.crud.SaveHQL;
@@ -165,8 +166,10 @@ public class WareController {
         switch (idButton){
             case "save":
                 Constant.tfCode = tfCode.getText();
+
                 if(!Objects.equals(Constant.tfCode, "")){
-                    Constant.tfName = tfOneCategory.getText();
+                    saveDates();
+                    Constant.tfCode = tfCode.getText();
                     if(SaveHQL.workerInsertUpdate()){
                         if(Objects.equals(Constant.messageSave, "Creado")){
                             alertSend("Se han guardado los datos");
@@ -276,7 +279,7 @@ public class WareController {
                 //busca y pone datos en la tabla
                 tableLoad();
                 //busca el codigo de la warehouse y pone el nombre
-                if(FoundHQL.workerFound()){
+                if(found){
                     tfOneCategory.setText(ConstantsWare.ware.getName());
                     save.setDisable(false);
                     remove.setDisable(false);
@@ -291,7 +294,7 @@ public class WareController {
                 //carga los datos del combobox
                 comboBoxLoad();
                 //busca los datos del servicio
-                if(FoundHQL.workerFound()){
+                if(found){
                     tfOneCategory.setText(ConstantsWare.service.getName());
                     save.setDisable(false);
                     remove.setDisable(false);
@@ -306,11 +309,15 @@ public class WareController {
                 //carga los datos del combobox
                 comboBoxLoad();
                 //busca los datos del servicio
-                if(FoundHQL.workerFound()){
+                if(found){
                     tfProduct.setText(ConstantsWare.product.getName());
+
                     tfBuy.setText(ConstantsWare.product.getPurchasePrice());
+
                     tfSale.setText(ConstantsWare.product.getSalePrice());
+
                     tfProfit.setText(ConstantsWare.product.getProfit());
+
                     save.setDisable(false);
                     remove.setDisable(false);
                 }else{
@@ -321,6 +328,84 @@ public class WareController {
             default:
                 break;
         }
+    }
+    //funcion para salvar datos
+    public void saveDates(){
+        switch (Constant.entity){
+            case "ProductClass":
+
+                idValorComboBox(comboBoxOne.getValue(), "CategoryoneClass");
+
+                if(ConstantsWare.one != null){
+                    ConstantsWare.tfOne = String.valueOf(ConstantsWare.one.getIdOne());
+                    idValorComboBox(comboBoxTwo.getValue(), "CategorytwoClass");
+
+                    if(ConstantsWare.two != null){
+                        ConstantsWare.tfTwo = String.valueOf(ConstantsWare.two.getIdTwo());
+                        idValorComboBox(comboBoxThree.getValue(), "CategorythreeClass");
+
+                        if(ConstantsWare.three != null){
+                            ConstantsWare.tfThree = String.valueOf(ConstantsWare.three.getIdThree());
+                            System.out.println(ConstantsWare.three);
+                        }
+                    }
+                }
+
+                idValorComboBox(comboBoxWage.getValue(), "WarehouseClass");
+
+                if(ConstantsWare.ware != null){
+                    ConstantsWare.tfWare = ConstantsWare.ware.getIdWarehouse();
+                }
+                Constant.entity = "ProductClass";
+
+                Constant.tfName = tfProduct.getText();
+
+                Constant.tfCode = tfCode.getText();
+
+                ConstantsWare.tfBuy = tfBuy.getText();
+
+                ConstantsWare.tfSale = tfSale.getText();
+
+                ConstantsWare.tfProfit = tfProfit.getText();
+
+                ConstantsWare.tfConsumed = tfConsumed.getText();
+
+                break;
+            case "CategoryoneClass":
+            case "WarehouseClass":
+                Constant.tfName = tfOneCategory.getText();
+                break;
+            case "Service Class":
+                Constant.tfName = tfProduct.getText();
+
+                idValorComboBox(comboBoxOne.getValue(), "ProductClass");
+                if(ConstantsWare.product != null){
+                    ConstantsWare.tfOne = String.valueOf(ConstantsWare.product.getIdProduct());
+
+                    /*idValorComboBox(comboBoxTwo.getValue(), "CategotytwoClass");
+                    if(ConstantsWare.two != null){
+                        ConstantsWare.tfTwo = String.valueOf(ConstantsWare.two.getIdTwo());
+                    }*/
+                }
+                ConstantsWare.tfThree = tfThreeCategory1.getText();
+
+                idValorComboBox(comboBoxTwo.getValue(), "WarehouseClass");
+                if(ConstantsWare.ware != null){
+                    ConstantsWare.tfWare = String.valueOf(ConstantsWare.ware.getIdWarehouse());
+                }
+                Constant.entity = "ServiceClass";
+
+                ConstantsWare.tfBuy = tfBuy.getText();
+                ConstantsWare.tfSale = tfSale.getText();
+                ConstantsWare.tfProfit = tfProfit.getText();
+                ConstantsWare.tf10th = tfConsumed.getText();
+                ConstantsWare.tfCost = tfCost.getText();
+
+                break;
+            default:
+                break;
+        }
+
     }
 
     //botones check para categorias pricnipalmente
@@ -573,6 +658,10 @@ public class WareController {
                 comboBoxWage.setVisible(true);
                 comboBoxTwo.setVisible(true);
 
+                comboBoxOne.setPromptText("Producto");
+                comboBoxTwo.setPromptText("Precio");
+                comboBoxWage.setPromptText("Bodega");
+
                 tfThreeCategory1.setVisible(true);
                 tfBuy.setVisible(true);
                 tfProfit.setVisible(true);
@@ -607,6 +696,7 @@ public class WareController {
                 labelProduct.setText("Producto");
                 labelSale.setText("Precio Venta");
                 labelWage.setText("Bodega");
+                labelConsumed.setText("Cantidad");
 
                 labelBuy.setVisible(true);
                 labelSale.setVisible(true);
@@ -615,14 +705,21 @@ public class WareController {
                 labelTwoCategory.setVisible(true);
                 labelWage.setVisible(true);
                 labelThreeCategory.setVisible(true);
+                labelConsumed.setVisible(true);
 
                 comboBoxOne.setVisible(true);
                 comboBoxTwo.setVisible(true);
                 comboBoxThree.setVisible(true);
                 comboBoxWage.setVisible(true);
 
+                comboBoxOne.setPromptText("Categoria 1");
+                comboBoxTwo.setPromptText("Categoria 2");
+                comboBoxThree.setPromptText("Categoria 3");
+                comboBoxWage.setPromptText("Bodega");
+
                 tfBuy.setVisible(true);
                 tfProduct.setVisible(true);
+                tfConsumed.setVisible(true);
                 tfSale.setVisible(true);
                 tfProfit.setVisible(true);
 
@@ -737,6 +834,13 @@ public class WareController {
         //tabla
         c1.setText("C1");
         c2.setText("C2");
+        c3.setText("C3");
+        c4.setText("C4");
+        c5.setText("C5");
+        c6.setText("C6");
+        c7.setText("C7");
+        c8.setText("C8");
+        c9.setText("C9");
         //combobox
         comboBoxOne.getItems().clear();
         comboBoxTwo.getItems().clear();
@@ -784,26 +888,79 @@ public class WareController {
                 tableWare.setItems(datesService);
                 break;
             case "ProductClass":
-                SearchHQL.searchHQL();
-                tableWare.getItems().clear();
-                c1.setText("Codigo");
-                c1.setCellValueFactory(new PropertyValueFactory<>("idProduct"));
-                c2.setText("Producto");
-                c2.setCellValueFactory(new PropertyValueFactory<>("name"));
-                c3.setText("Categoria 1");
-                c3.setCellValueFactory(new PropertyValueFactory<>("idOne"));
-                c4.setText("Categoria 2");
-                c4.setCellValueFactory(new PropertyValueFactory<>("idTwo"));
-                c5.setText("Categoria 3");
-                c5.setCellValueFactory(new PropertyValueFactory<>("idThree"));
-                c6.setText("Precio de compra");
-                c6.setCellValueFactory(new PropertyValueFactory<>("purchasePrice"));
-                c7.setText("Precio de venta");
-                c7.setCellValueFactory(new PropertyValueFactory<>("salePrice"));
-                c8.setText("Profit");
-                c8.setCellValueFactory(new PropertyValueFactory<>("profit"));
-                ObservableList<ProductClass> datesProduct = FXCollections.observableArrayList(ConstantsWare.productList);
-                tableWare.setItems(datesProduct);
+                if(!FoundHQL.workerFound()){
+                    SearchHQL.searchHQL();
+                    tableWare.getItems().clear();
+                    c1.setText("Codigo");
+                    c1.setCellValueFactory(new PropertyValueFactory<>("idProduct"));
+                    c2.setText("Producto");
+                    c2.setCellValueFactory(new PropertyValueFactory<>("name"));
+                    c3.setText("Categoria 1");
+                    c3.setCellValueFactory(new PropertyValueFactory<>("idOne"));
+                    c4.setText("Categoria 2");
+                    c4.setCellValueFactory(new PropertyValueFactory<>("idTwo"));
+                    c5.setText("Categoria 3");
+                    c5.setCellValueFactory(new PropertyValueFactory<>("idThree"));
+                    c6.setText("Precio de compra");
+                    c6.setCellValueFactory(new PropertyValueFactory<>("purchasePrice"));
+                    c7.setText("Precio de venta");
+                    c7.setCellValueFactory(new PropertyValueFactory<>("salePrice"));
+                    c8.setText("Profit");
+                    c8.setCellValueFactory(new PropertyValueFactory<>("profit"));
+                    ObservableList<ProductClass> datesProduct = FXCollections.observableArrayList(ConstantsWare.productList);
+                    tableWare.setItems(datesProduct);
+                }else{
+                    //como el producto existe se debe de poner las bodegas, los precios y las cantidades
+                    //los precios y las cantidades estan en la tabla productPrice
+                    //la bodega esta en la tabla WareProduct
+
+                    //---obtener el codigo de la bodega
+                    //---idValorComboBox(comboBoxWage.getValue(), "WarehouseClass");
+
+                    //obtener el codigo del producto
+                    Constant.tfCode = tfCode.getText();
+                    //array list
+                    ArrayList<TableShow> listProducts = new ArrayList<>();
+                    //obtener la lista de bodegas con el producto ConstantsWare.product.getWareProductsByIdProduct();
+                    for(WareProductClass a: ConstantsWare.product.getWareProductsByIdProduct()){
+                        System.out.println(a);
+                        //evalua si la bodega corresponde a la selecionada
+                        //--if(a.getIdWare() == ConstantsWare.ware.getIdWarehouse()){
+                            //Lista de ProductPrices que tiene el producto y la bodega
+                            a.getProductpricesByIdWareProduct();
+                            //ciclo para convertirlos en objetos de tipo table show
+                            for(ProductpriceClass b: a.getProductpricesByIdWareProduct()){
+                                TableShow objeto = new TableShow();
+                                //codigo del producto
+                                objeto.setC1(ConstantsWare.product.getIdProduct());
+                                //nombre del producto
+                                objeto.setC2(ConstantsWare.product.getName());
+                                //Bodega del producto
+                                objeto.setC3(a.getWarehouseByIdWare().getName());
+                                //Cantidad
+                                objeto.setC4(String.valueOf(b.getAmount()));
+                                //Precio de compra
+                                objeto.setC5(String.valueOf(b.getPrice()));
+                                listProducts.add(objeto);
+                            }
+
+                        //--}
+                    }
+                    //pone los datos en la tabla
+                    tableWare.getItems().clear();
+                    c1.setText("Codigo");
+                    c1.setCellValueFactory(new PropertyValueFactory<>("c1"));
+                    c2.setText("Producto");
+                    c2.setCellValueFactory(new PropertyValueFactory<>("c2"));
+                    c3.setText("Bodega");
+                    c3.setCellValueFactory(new PropertyValueFactory<>("c3"));
+                    c4.setText("Cantidad");
+                    c4.setCellValueFactory(new PropertyValueFactory<>("c4"));
+                    c5.setText("Precio de compra");
+                    c5.setCellValueFactory(new PropertyValueFactory<>("c5"));
+                    ObservableList<TableShow> datesTableShow = FXCollections.observableArrayList(listProducts);
+                    tableWare.setItems(datesTableShow);
+                }
                 break;
             default:
                 break;
@@ -885,14 +1042,6 @@ public class WareController {
                 //lista para las cantidades de producto
         }
     }
-
-    public void alertSend(String massage){
-        Alert alertMassage = new Alert(Alert.AlertType.INFORMATION);
-        alertMassage.setTitle("Freya Style--//--Forpus Company");
-        alertMassage.setContentText(massage);
-        alertMassage.show();
-    }
-
     public void comboBoxClick(ActionEvent event) {
         ComboBox<String> cBoxChange = (ComboBox<String>) event.getSource();
         ArrayList<String> listProduct = new ArrayList<>();
@@ -904,11 +1053,13 @@ public class WareController {
                     //Crea la lista de categorias 2
                     Constant.entity = "CategorytwoClass";
                     SearchHQL.searchHQL();
+
                     //Obtiene el id del item seleccionado en el combobox 1
                     Constant.entity = "CategoryoneClass";
                     Constant.tfCode = cBoxChange.getValue();
                     FoundHQL.workerFound();
                     //realiza esto si la lista de categoria 2 no es nulo
+
                     if(ConstantsWare.categoryTwoList !=null){
                         //for each para iterar la lista de categoria 2
                         for(CategorytwoClass a: ConstantsWare.categoryTwoList){
@@ -926,6 +1077,7 @@ public class WareController {
                     //devuelve las constantes a los valores iniciales
                     Constant.entity ="ProductClass";
                     Constant.tfCode = tfCode.getText();
+
                     break;
                 case "comboBoxTwo":
 
@@ -951,16 +1103,49 @@ public class WareController {
                     Constant.entity ="ProductClass";
                     Constant.tfCode = tfCode.getText();
                     break;
+                case "comboBoxThree":
+                    Constant.entity = "CategorythreeClass";
+                    Constant.tfName = cBoxChange.getValue();
+                    FoundHQL.workerFound();
+
+                    Constant.entity ="ProductClass";
+                    Constant.tfCode = tfCode.getText();
+                    break;
+                case "comboBoxWage":
+                    Constant.entity = "WarehouseClass";
+                    Constant.tfName = cBoxChange.getValue();
+                    FoundHQL.workerFound();
+
+                    Constant.entity ="ProductClass";
+                    Constant.tfCode = tfCode.getText();
+                    break;
                 default:
                     break;
             }
+            System.out.println(cBoxChange.getValue());
         }else{
             if (cBoxChange.getId().equals("comboBoxOne")) {
                 System.out.println("como pongo el precio de cada producto??????");
             }
         }
+    }
+    //Obtiene id del valor los combobox
+    public void idValorComboBox(String valueComboBox, String entity){
+        Constant.entity = entity;
+        Constant.tfCode = valueComboBox;
+        if(Objects.equals(entity, "WarehouseClass")){
+            FoundHQL.wareFound();
+        }else{
+            FoundHQL.workerFound();
+        }
 
+    }
 
+    public void alertSend(String massage){
+        Alert alertMassage = new Alert(Alert.AlertType.INFORMATION);
+        alertMassage.setTitle("Freya Style--//--Forpus Company");
+        alertMassage.setContentText(massage);
+        alertMassage.show();
     }
 
 }

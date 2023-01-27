@@ -85,7 +85,6 @@ public class FoundHQL {
                     Query queryThree = session.createQuery(qThree);
                     queryThree.setParameter(1, Constant.tfName);
                     CategorythreeClass three = (CategorythreeClass) queryThree.uniqueResult();
-
                     if(three == null){
                         return false;
                     }else{
@@ -97,7 +96,6 @@ public class FoundHQL {
                     Query queryWare = session.createQuery(qWare);
                     queryWare.setParameter(1, Constant.tfCode);
                     WarehouseClass ware = (WarehouseClass) queryWare.uniqueResult();
-
                     if(ware == null){
                         return false;
                     }else{
@@ -135,6 +133,23 @@ public class FoundHQL {
             System.out.println(i);
             return false;
         }
+    }
+
+    public static boolean wareFound(){
+        //check hibernate connection and database
+        SessionDB.session();
+        Session session = SessionDB.sessionHibernate;
+
+        String qWare = "from "+ Constant.entity +" C where C.name in(?1)";
+        Query queryWare = session.createQuery(qWare);
+        queryWare.setParameter(1, Constant.tfCode);
+        WarehouseClass ware = (WarehouseClass) queryWare.uniqueResult();
+        if(ware == null){
+            return false;
+        }else{
+            ConstantsWare.ware = ware;
+        }
+        return true;
     }
 
 }
