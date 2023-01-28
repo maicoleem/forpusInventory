@@ -151,7 +151,12 @@ public class WareController {
     public Button buttonSP;
     @FXML
     public TableView tableWare;
+    @FXML
     public Label labelProfitSale;
+    @FXML
+    public Button buttonRTable;
+    @FXML
+    public Button buttonRTT;
 
     @FXML //botones del CRUD
     public void buttonCRUD(ActionEvent event) {
@@ -301,24 +306,66 @@ public class WareController {
                 break;
             case "ServiceClass":
                 if(found){
-                    tfOneCategory.setText(ConstantsWare.service.getName());
+                    tfProduct.setText(ConstantsWare.service.getName());
+                    tfCost.setText(ConstantsWare.service.getCost());
+                    tfConsumed.setText(ConstantsWare.service.getProfit());
+                    tfProfit.setText(ConstantsWare.service.getHour());
+                    tfBuy.setText(ConstantsWare.service.getPayForHour());
+
+                    if(!ConstantsWare.service.getServiceProductsByIdService().isEmpty()){
+
+                        Constant.listTableShow.clear();
+
+                        for(ServiceProductClass sp: ConstantsWare.service.getServiceProductsByIdService()){
+                            TableShow tableShow = new TableShow();
+                            //producto {buscar el producto con el id}
+                            Constant.entity = "ProductClass";
+                            Constant.tfCode = sp.getIdProduct();
+                            FoundHQL.workerFound();
+                            tableShow.setC1(ConstantsWare.product.getName());
+                            //precio {buscarlo en la tabla productPrice}
+                            tableShow.setC2(sp.getPrice());
+                            //contenido
+                            tableShow.setC3(sp.getContents());
+                            //consumo
+                            tableShow.setC4(sp.getConsume());
+                            //costo
+                            Integer pC = Integer.valueOf(tableShow.getC2());
+                            Integer cM = Integer.valueOf(tableShow.getC3());
+                            Integer cT = Integer.valueOf(tableShow.getC4());
+
+                            int cost = ((pC * cM) / cT);
+
+                            System.out.println(cost);
+
+                            tableShow.setC5(String.valueOf(cost));
+                            Constant.listTableShow.add(tableShow);
+                        }
+                        System.out.println(Constant.listTableShow);
+
+                        Constant.entity = "ServiceTableShow";
+                        tableLoad();
+                        Constant.entity = "ServiceClass";
+
+                        Constant.tfCode = tfCode.getText();
+                    }
                     save.setDisable(false);
                     remove.setDisable(false);
+
                 }else{
                     alertSend("El servicio no existe");
+                    //busca los datos de los servicios
+                    Constant.entity = "ServiceClass";
+                    //busca y pone datos en la tabla
+                    tableLoad();
                     save.setDisable(false);
                 }
-
-                Constant.entity = "ServiceClass";
-                comboBoxLoad();
-                //busca los datos del servicio
-                Constant.entity = "ServiceClass";
-                //busca y pone datos en la tabla
-                tableLoad();
                 //carga los datos del combobox
                 Constant.entity = "ServiceClass";
-
+                comboBoxLoad();
+                Constant.entity = "ServiceClass";
                 break;
+
             case "ProductClass":
                 //busca los datos del servicio
                 if(found){
@@ -443,6 +490,7 @@ public class WareController {
                         sP.setIdService(Constant.tfCode);
                         sP.setContents(t.getC4());
                         sP.setConsume(t.getC3());
+                        sP.setPrice(t.getC2());
 
                         Constant.entity = "ProductClass";
                         Constant.tfCode = t.getC1();
@@ -758,6 +806,7 @@ public class WareController {
                 labelCost.setVisible(true);
                 labelConsumed.setVisible(true);
                 buttonSP.setVisible(true);
+                buttonRTable.setVisible(true);
 
                 break;
             case "buttonProducts":
@@ -834,6 +883,7 @@ public class WareController {
                 tfWare.setVisible(true);
 
                 bTwo.setVisible(true);
+                buttonRTT.setVisible(true);
                 buttonUAM.setVisible(true);
                 buttonMAU.setVisible(true);
 
@@ -896,6 +946,8 @@ public class WareController {
         buttonMAU.setVisible(false);
         bTwoRemove.setVisible(false);
         buttonSP.setVisible(false);
+        buttonRTable.setVisible(false);
+        buttonRTT.setVisible(false);
 
         bTwo.setDisable(true);
         bThree.setDisable(true);
@@ -1060,7 +1112,6 @@ public class WareController {
                     }
                     break;
                 case "ServiceTableShow":
-
                     tableWare.getItems().clear();
                     c1.setText("Producto");
                     c1.setCellValueFactory(new PropertyValueFactory<>("c1"));
@@ -1072,7 +1123,7 @@ public class WareController {
                     c4.setCellValueFactory(new PropertyValueFactory<>("c4"));
                     c5.setText("Costo");
                     c5.setCellValueFactory(new PropertyValueFactory<>("c5"));
-
+                    System.out.println("Escape the fate");
                     ObservableList<TableShow> datesSTS = FXCollections.observableArrayList(Constant.listTableShow);
                     tableWare.setItems(datesSTS);
                     break;
@@ -1080,7 +1131,7 @@ public class WareController {
                     break;
             }
         }catch (Exception i){
-            System.out.println("Error");
+            System.out.println("Error en Table load --Warecontroller");
             System.out.println(i);
             i.printStackTrace();
         }
@@ -1333,5 +1384,35 @@ public class WareController {
                labelProfitSale.setText(String.valueOf(v));
            }
 
+    }
+    public void removeTable(ActionEvent event) {
+
+        int a = tableWare.getSelectionModel().getSelectedIndex();
+        String nameProduct = (String) c1.getCellData(a);
+
+        if (nameProduct != null) {
+
+            //elimina de la tabla
+            tableWare.getItems().remove(a);
+
+            //elimina del array list
+            Constant.listTableShow.remove(a);
+
+            //Busca y elimina de la tabla service product
+            if (!ConstantsWare.service.getServiceProductsByIdService().isEmpty() && Objects.equals(Constant.entity, "ServiceClass")) {
+                Constant.entity = "ProductClass";
+                Constant.tfCode = nameProduct;
+                FoundHQL.wareFound();
+
+                Constant.entity = "ServiceProductClass";
+                Constant.tfCode = ConstantsWare.product.getIdProduct();
+                Constant.tfName = tfCode.getText();
+                if (FoundHQL.wareFound()) {
+                    DeleteHQL.deleteForean();
+                }
+                Constant.entity ="ServiceClass";
+                Constant.tfCode = tfCode.getText();
+            }
+        }
     }
 }

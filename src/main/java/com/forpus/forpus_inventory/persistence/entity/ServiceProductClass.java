@@ -16,6 +16,10 @@ public class ServiceProductClass {
     @Basic
     @Column(name = "id_product",insertable = false, updatable = false, nullable = false, length = 6)
     private String idProduct;
+
+    @Basic
+    @Column(name = "price", nullable = false, length = 20)
+    private String price;
     @Basic
     @Column(name = "contents", nullable = false, length = 20)
     private String contents;
@@ -52,6 +56,12 @@ public class ServiceProductClass {
     public void setIdProduct(String idProduct) {
         this.idProduct = idProduct;
     }
+    public String getPrice() {
+        return price;
+    }
+    public void setPrice(String price) {
+        this.price = price;
+    }
 
     public String getContents() {
         return contents;
@@ -74,12 +84,12 @@ public class ServiceProductClass {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ServiceProductClass that = (ServiceProductClass) o;
-        return id == that.id && Objects.equals(idService, that.idService) && Objects.equals(idProduct, that.idProduct) && Objects.equals(contents, that.contents) && Objects.equals(consume, that.consume);
+        return id == that.id && Objects.equals(idService, that.idService) && Objects.equals(idProduct, that.idProduct) && Objects.equals(price, that.price) && Objects.equals(contents, that.contents) && Objects.equals(consume, that.consume);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, idService, idProduct, contents, consume);
+        return Objects.hash(id, idService, idProduct, price, contents, consume);
     }
 
     public ServiceClass getServiceByIdService() {

@@ -13,7 +13,6 @@ public class FoundHQL {
             //check hibernate connection and database
             SessionDB.session();
             Session session = SessionDB.sessionHibernate;
-
             switch (Constant.entity){
                 case "CompanyClass":
                     CompanyClass company = session.load(CompanyClass.class, Constant.tfCode);
@@ -39,7 +38,6 @@ public class FoundHQL {
                     break;
                 case "ProvidersClass":
                     ProvidersClass provider = session.load(ProvidersClass.class, Constant.tfCode);
-                    System.out.println(Constant.tfCode);
                     Constant.tfName = provider.getName();
                     Constant.tfPhone = provider.getPhoneNumber();
                     Constant.tfAddress = provider.getAddress();
@@ -107,6 +105,7 @@ public class FoundHQL {
                     Query queryService = session.createQuery(qService);
                     queryService.setParameter(1, Constant.tfCode);
                     ServiceClass service = (ServiceClass) queryService.uniqueResult();
+
                     if(service == null){
                         return false;
                     }else{
@@ -173,6 +172,29 @@ public class FoundHQL {
                         return false;
                     } else {
                         ConstantsWare.product = product;
+                    }
+                    break;
+                case "ProductpriceClass":
+                    String qPP = "from "+ Constant.entity +" C where C.id in(?1)";
+                    Query queryPP = session.createQuery(qPP);
+                    queryPP.setParameter(1, Constant.tfCode);
+                    ProductpriceClass pP = (ProductpriceClass) queryPP.uniqueResult();
+                    if(pP == null){
+                        return false;
+                    }else{
+                        ConstantsWare.productPrice = pP;
+                    }
+                    break;
+                case "ServiceProductClass":
+                    String qSP = "from "+ Constant.entity +" C where C.idProduct in(?1) and C.idService in(?2)";
+                    Query querySP = session.createQuery(qSP);
+                    querySP.setParameter(1, Constant.tfCode);
+                    querySP.setParameter(2, Constant.tfName);
+                    ServiceProductClass pSP = (ServiceProductClass) querySP.uniqueResult();
+                    if(pSP == null){
+                        return false;
+                    }else{
+                        ConstantsWare.serviceProduct = pSP;
                     }
                     break;
                 default:

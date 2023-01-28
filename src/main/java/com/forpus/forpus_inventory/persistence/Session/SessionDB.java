@@ -27,6 +27,7 @@ public class SessionDB {
             sessionHibernate.close();
             return (sessionHibernate = null);
         }catch (Exception e){
+            System.out.println("Error "+ e);
             e.printStackTrace();
         }
         return (sessionHibernate = null);

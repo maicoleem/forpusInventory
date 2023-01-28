@@ -96,13 +96,10 @@ public class SearchHQL {
                     break;
                 case "ProductClass":
                     ConstantsWare.productList = null;
-                    System.out.println("buscando en la ProductClass");
                     String hql11 = "FROM "+ Constant.entity;
-                    System.out.println("buscando en la ProductClass" + hql11);
                     Query query11 = session.createQuery(hql11);
                     List<ProductClass> results11 = query11.list();
                     ConstantsWare.productList = results11.toArray(new ProductClass[0]);
-                    System.out.println("buscando en la ProductClass");
                     break;
 
                 default:

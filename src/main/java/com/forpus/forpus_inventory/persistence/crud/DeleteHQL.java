@@ -65,6 +65,7 @@ public class DeleteHQL {
                     break;
             }
             session.getTransaction().commit();
+            SessionDB.sessionClose();
             return true;
         }catch (Exception i){
 
@@ -104,12 +105,29 @@ public class DeleteHQL {
                     ProductClass product = entityManager.find(ProductClass.class, ConstantsWare.product.getIdProduct());
                     entityManager.remove(product);
                     break;
+                case "ServiceClass":
+                    /*
+                    if(!ConstantsWare.sPListArray.isEmpty()) {
+                        for (ServiceProductClass p : ConstantsWare.sPListArray) {
+                            ServiceProductClass sP = entityManager.find(ServiceProductClass.class, p.getId());
+                            entityManager.remove(sP);
+                        }
+                    }*/
+
+                    ServiceClass service = entityManager.find(ServiceClass.class, ConstantsWare.service.getIdService());
+                    entityManager.remove(service);
+                    break;
+                case "ServiceProductClass":
+                    ServiceProductClass SP = entityManager.find(ServiceProductClass.class, ConstantsWare.serviceProduct.getId());
+                    entityManager.remove(SP);
+                    break;
                 default:
                     break;
             }
             entityManager.flush();
             entityManager.clear();
             entityManager.getTransaction().commit();
+            SessionDB.sessionClose();
             System.out.println("borrado");
 
         }catch (Exception e){
