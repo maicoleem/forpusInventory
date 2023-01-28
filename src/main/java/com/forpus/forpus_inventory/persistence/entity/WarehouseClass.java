@@ -13,9 +13,9 @@ public class WarehouseClass {
     @Basic
     @Column(name = "name", nullable = false, length = 20)
     private String name;
-    @OneToMany(mappedBy = "warehouseByIdWare")
+    @OneToMany(mappedBy = "warehouseByIdWare", cascade = CascadeType.ALL, orphanRemoval = true)
     private Collection<ServiceClass> servicesByIdWarehouse;
-    @OneToMany(mappedBy = "warehouseByIdWare")
+    @OneToMany(mappedBy = "warehouseByIdWare", cascade = CascadeType.MERGE, orphanRemoval = true)
     private Collection<WareProductClass> wareProductsByIdWarehouse;
 
     public String getIdWarehouse() {

@@ -3,6 +3,8 @@ package com.forpus.forpus_inventory.domain.services;
 import com.forpus.forpus_inventory.persistence.entity.*;
 import javafx.scene.control.Button;
 
+import java.util.ArrayList;
+
 public class ConstantsWare {
     public static Button blueToWhite = null;
     public static String idOption = "";
@@ -13,12 +15,16 @@ public class ConstantsWare {
     public static WarehouseClass ware = null;
     public static ServiceClass service = null;
     public static ProductClass product = null;
+    public static ServiceProductClass serviceProduct = null;
+    public static ProductpriceClass productPrice = null;
     public static CategoryoneClass[] categoryOneList = null;
     public static CategorytwoClass[] categoryTwoList = null;
     public static CategorythreeClass[] categoryThreeList = null;
     public static WarehouseClass[] wareList = null;
     public static ServiceClass[] serviceList = null;
     public static ProductClass[] productList = null;
+    public static ServiceProductClass[] serviceProductList = null;
+    public static ArrayList<ServiceProductClass> sPListArray = new ArrayList<>();
     public static String tfOne = null;
     public static String tfTwo = null;
     public static String tfThree = null;

@@ -124,6 +124,17 @@ public class FoundHQL {
                         ConstantsWare.product = product;
                     }
                     break;
+                case "ProductpriceClass":
+                    String qPP = "from "+ Constant.entity +" C where C.price in(?1)";
+                    Query queryPP = session.createQuery(qPP);
+                    queryPP.setParameter(1, Constant.tfCode);
+                    ProductpriceClass pP = (ProductpriceClass) queryPP.uniqueResult();
+                    if(pP == null){
+                        return false;
+                    }else{
+                        ConstantsWare.productPrice = pP;
+                    }
+                    break;
                 default:
                     break;
             }
@@ -135,21 +146,44 @@ public class FoundHQL {
         }
     }
 
-    public static boolean wareFound(){
-        //check hibernate connection and database
-        SessionDB.session();
-        Session session = SessionDB.sessionHibernate;
+    public static boolean wareFound() {
+        try {
+            //check hibernate connection and database
+            SessionDB.session();
+            Session session = SessionDB.sessionHibernate;
 
-        String qWare = "from "+ Constant.entity +" C where C.name in(?1)";
-        Query queryWare = session.createQuery(qWare);
-        queryWare.setParameter(1, Constant.tfCode);
-        WarehouseClass ware = (WarehouseClass) queryWare.uniqueResult();
-        if(ware == null){
+            switch (Constant.entity) {
+                case "WarehouseClass":
+                    String qWare = "from " + Constant.entity + " C where C.name in(?1)";
+                    Query queryWare = session.createQuery(qWare);
+                    queryWare.setParameter(1, Constant.tfCode);
+                    WarehouseClass ware = (WarehouseClass) queryWare.uniqueResult();
+                    if (ware == null) {
+                        return false;
+                    } else {
+                        ConstantsWare.ware = ware;
+                    }
+                    break;
+                case "ProductClass":
+                    String qProduct = "from " + Constant.entity + " C where C.name in(?1)";
+                    Query queryProduct = session.createQuery(qProduct);
+                    queryProduct.setParameter(1, Constant.tfCode);
+                    ProductClass product = (ProductClass) queryProduct.uniqueResult();
+                    if (product == null) {
+                        return false;
+                    } else {
+                        ConstantsWare.product = product;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            return true;
+        } catch (Exception i){
+            //SessionDB.sessionClose();
+            System.out.println(i);
             return false;
-        }else{
-            ConstantsWare.ware = ware;
         }
-        return true;
     }
 
 }

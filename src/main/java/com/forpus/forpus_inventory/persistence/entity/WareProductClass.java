@@ -23,7 +23,7 @@ public class WareProductClass {
     @ManyToOne(optional = false)
     @JoinColumn(name = "id_ware", referencedColumnName = "id_warehouse", nullable = false)
     private WarehouseClass warehouseByIdWare;
-    @OneToMany(mappedBy = "wareProductByIdProductWare")
+    @OneToMany(mappedBy = "wareProductByIdProductWare", cascade = CascadeType.MERGE, orphanRemoval = true)
     private Collection<ProductpriceClass> productpricesByIdWareProduct;
 
     public int getIdWareProduct() {

@@ -109,7 +109,6 @@ public class SaveHQL {
                     session.getTransaction().commit();
                     session.close();
                     System.out.println("Socio Creada");
-
                     break;
                 case "ProvidersClass":
                     ProvidersClass provider = new ProvidersClass();
@@ -186,18 +185,18 @@ public class SaveHQL {
                     }else{
                         product.setIdWage(ConstantsWare.ware.getIdWarehouse());
                     }
-
-                    product.setPurchasePrice(ConstantsWare.tfBuy);
-
                     product.setSalePrice(ConstantsWare.tfSale);
-
                     product.setProfit(ConstantsWare.tfProfit);
 
-                    product.setAmount(Integer.valueOf(ConstantsWare.tfConsumed));
-
+                    if(saveOrUpdate.equals("save")){
+                        product.setPurchasePrice(ConstantsWare.tfBuy);
+                        product.setAmount(Integer.valueOf(ConstantsWare.tfConsumed));
+                    }
                     session.beginTransaction();
 
                     if(saveOrUpdate.equals("save")){
+                        product.setPurchasePrice(ConstantsWare.tfBuy);
+                        product.setAmount(Integer.valueOf(ConstantsWare.tfConsumed));
                         session.save(product);
                     }else{
                         session.update(product);
@@ -205,44 +204,55 @@ public class SaveHQL {
                     session.getTransaction().commit();
                     System.out.println("Producto Guardada");
 
-                    //guarada o actualiza el producto en bodega
+                    //guarada el producto en bodega
+                    if(saveOrUpdate.equals("save")){
+                        WareProductClass wp = new WareProductClass();
+                        wp.setIdProduct(product.getIdProduct());
+                        wp.setProductByIdProduct(product);
 
-                    WareProductClass wp = new WareProductClass();
-                    wp.setIdProduct(product.getIdProduct());
-                    wp.setProductByIdProduct(product);
+                        Constant.entity = "WarehouseClass";
+                        Constant.tfCode = ConstantsWare.tfWare;
+                        FoundHQL.workerFound();
+                        wp.setIdWare(ConstantsWare.ware.getIdWarehouse());
+                        wp.setWarehouseByIdWare(ConstantsWare.ware);
 
-                    Constant.entity = "WarehouseClass";
-                    Constant.tfCode = ConstantsWare.tfWare;
-                    FoundHQL.workerFound();
-                    wp.setIdWare(ConstantsWare.ware.getIdWarehouse());
-                    wp.setWarehouseByIdWare(ConstantsWare.ware);
+                        session.beginTransaction();
+                        session.saveOrUpdate(wp);
+                        session.getTransaction().commit();
 
-                    session.beginTransaction();
-                    session.saveOrUpdate(wp);
+                        //guarda o actualiza el precio del producto
+                        ProductpriceClass pP = new ProductpriceClass();
+                        pP.setPrice(Integer.parseInt(ConstantsWare.tfBuy));
+                        pP.setAmount(Integer.parseInt(ConstantsWare.tfConsumed));
+                        pP.setIdProductWare(wp.getIdWareProduct());
+                        pP.setWareProductByIdProductWare(wp);
+                        session.beginTransaction();
+                        session.saveOrUpdate(pP);
+
+                    }
                     session.getTransaction().commit();
 
-                    //guarda o actualiza el precio del producto
-                    ProductpriceClass pP = new ProductpriceClass();
-                    pP.setPrice(Integer.parseInt(ConstantsWare.tfBuy));
-                    pP.setAmount(Integer.parseInt(ConstantsWare.tfConsumed));
-                    pP.setIdProductWare(wp.getIdWareProduct());
-                    pP.setWareProductByIdProductWare(wp);
-                    session.beginTransaction();
-                    session.saveOrUpdate(pP);
-                    session.getTransaction().commit();
+                    Constant.entity = "ProductClass";
                     break;
                 case "ServiceClass":
                     ServiceClass service = new ServiceClass();
+
                     service.setIdService(Constant.tfCode);
+
+                    System.out.println(Constant.tfCode);
                     service.setName(Constant.tfName);
-                    service.setIdProduct(ConstantsWare.tfOne);
 
+                    service.setProfit(ConstantsWare.tfProfit);
 
-                    service.setIdWare(ConstantsWare.tfWare);
                     service.setPayForHour(ConstantsWare.tfBuy);
 
-                    service.setHour(ConstantsWare.tfProfit);
+                    service.setIdWare(ConstantsWare.tfWare);
+
+                    service.setHour(ConstantsWare.tfThree);
+
                     service.setCost(ConstantsWare.tfCost);
+
+                    System.out.println(ConstantsWare.tfCost);
 
                     session.beginTransaction();
 
@@ -252,11 +262,22 @@ public class SaveHQL {
                         session.update(service);
                     }
                     session.getTransaction().commit();
-                    System.out.println("Producto Guardada");
+                    System.out.println("Servicio Guardado");
+
+                    session.beginTransaction();
+                    for(ServiceProductClass sp: ConstantsWare.sPListArray){
+                        sp.setServiceByIdService(service);
+                        session.saveOrUpdate(sp);
+                    }
+                    session.getTransaction().commit();
+                    System.out.println("Servicio Producto Guardado");
+
                     break;
                 default:
                     break;
             }
+            SessionDB.sessionClose();
+            System.out.println(SessionDB.sessionHibernate);
             return true;
         }catch (Exception i){
             System.out.println("Error en SaveHQL");

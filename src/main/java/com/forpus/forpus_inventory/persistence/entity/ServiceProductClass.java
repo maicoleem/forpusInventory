@@ -22,9 +22,6 @@ public class ServiceProductClass {
     @Basic
     @Column(name = "consume", nullable = false, length = 20)
     private String consume;
-    @Basic
-    @Column(name = "profit", nullable = false, length = 20)
-    private String profit;
     @ManyToOne
     @JoinColumn(name = "id_service", referencedColumnName = "id_service", nullable = false)
     private ServiceClass serviceByIdService;
@@ -72,25 +69,17 @@ public class ServiceProductClass {
         this.consume = consume;
     }
 
-    public String getProfit() {
-        return profit;
-    }
-
-    public void setProfit(String profit) {
-        this.profit = profit;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ServiceProductClass that = (ServiceProductClass) o;
-        return id == that.id && Objects.equals(idService, that.idService) && Objects.equals(idProduct, that.idProduct) && Objects.equals(contents, that.contents) && Objects.equals(consume, that.consume) && Objects.equals(profit, that.profit);
+        return id == that.id && Objects.equals(idService, that.idService) && Objects.equals(idProduct, that.idProduct) && Objects.equals(contents, that.contents) && Objects.equals(consume, that.consume);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, idService, idProduct, contents, consume, profit);
+        return Objects.hash(id, idService, idProduct, contents, consume);
     }
 
     public ServiceClass getServiceByIdService() {

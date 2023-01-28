@@ -100,6 +100,10 @@ public class DeleteHQL {
                     WarehouseClass ware = entityManager.find(WarehouseClass.class, ConstantsWare.ware.getIdWarehouse());
                     entityManager.remove(ware);
                     break;
+                case "ProductClass":
+                    ProductClass product = entityManager.find(ProductClass.class, ConstantsWare.product.getIdProduct());
+                    entityManager.remove(product);
+                    break;
                 default:
                     break;
             }

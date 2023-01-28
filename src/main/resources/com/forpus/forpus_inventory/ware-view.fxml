@@ -190,27 +190,27 @@
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
-            <TextField fx:id="tfCode" layoutX="160.0" layoutY="36.0" prefHeight="40.0" prefWidth="200.0" promptText="123456789abcdef">
+            <TextField fx:id="tfCode" layoutX="160.0" layoutY="36.0" prefHeight="40.0" prefWidth="200.0">
                <font>
                   <Font name="Tahoma Bold" size="20.0" />
                </font>
             </TextField>
-            <TextField fx:id="tfProduct" layoutX="530.0" layoutY="36.0" prefHeight="40.0" prefWidth="200.0" promptText="123456789abcdef">
+            <TextField fx:id="tfProduct" layoutX="530.0" layoutY="36.0" prefHeight="40.0" prefWidth="200.0">
                <font>
                   <Font name="Tahoma Bold" size="20.0" />
                </font>
             </TextField>
-            <TextField fx:id="tfBuy" layoutX="160.0" layoutY="264.0" prefHeight="40.0" prefWidth="200.0" promptText="123456789abcdef">
+            <TextField fx:id="tfBuy" layoutX="160.0" layoutY="264.0" onKeyTyped="#isNumber" prefHeight="40.0" prefWidth="200.0">
                <font>
                   <Font name="Tahoma Bold" size="20.0" />
                </font>
             </TextField>
-            <TextField fx:id="tfProfit" layoutX="160.0" layoutY="340.0" prefHeight="40.0" prefWidth="200.0" promptText="123456789abcdef">
+            <TextField id="tfProfit" fx:id="tfProfit" layoutX="160.0" layoutY="340.0" onKeyTyped="#isNumber" prefHeight="40.0" prefWidth="200.0">
                <font>
                   <Font name="Tahoma Bold" size="20.0" />
                </font>
             </TextField>
-            <TextField fx:id="tfSale" layoutX="530.0" layoutY="264.0" prefHeight="40.0" prefWidth="200.0" promptText="123456789abcdef">
+            <TextField fx:id="tfSale" layoutX="530.0" layoutY="264.0" onKeyTyped="#isNumber" prefHeight="40.0" prefWidth="200.0">
                <font>
                   <Font name="Tahoma Bold" size="20.0" />
                </font>
@@ -219,12 +219,12 @@
             <ComboBox id="comboBoxOne" fx:id="comboBoxOne" layoutX="160.0" layoutY="112.0" onAction="#comboBoxClick" prefHeight="40.0" prefWidth="200.0" promptText="Categoria 1" visibleRowCount="5" />
             <ComboBox id="comboBoxTwo" fx:id="comboBoxTwo" layoutX="530.0" layoutY="112.0" onAction="#comboBoxClick" prefHeight="40.0" prefWidth="200.0" promptText="Categoria 2" visibleRowCount="5" />
             <ComboBox id="comboBoxWage" fx:id="comboBoxWage" layoutX="530.0" layoutY="188.0" onAction="#comboBoxClick" prefHeight="40.0" prefWidth="200.0" promptText="Bodega" visibleRowCount="5" />
-            <TextField id="tfOneCategory" fx:id="tfOneCategory" layoutX="160.0" layoutY="112.0" prefHeight="40.0" prefWidth="200.0" promptText="123456789abcdef" visible="false">
+            <TextField id="tfOneCategory" fx:id="tfOneCategory" layoutX="160.0" layoutY="112.0" prefHeight="40.0" prefWidth="200.0" visible="false">
                <font>
                   <Font name="Tahoma Bold" size="20.0" />
                </font>
             </TextField>
-            <TextField id="tfThreeCategory1" fx:id="tfThreeCategory1" disable="true" layoutX="160.0" layoutY="188.0" prefHeight="40.0" prefWidth="200.0" promptText="123456789abcdef" visible="false">
+            <TextField id="tfThreeCategory1" fx:id="tfThreeCategory1" disable="true" layoutX="160.0" layoutY="188.0" onKeyTyped="#isNumber" prefHeight="40.0" prefWidth="200.0" visible="false">
                <font>
                   <Font name="Tahoma Bold" size="20.0" />
                </font>
@@ -234,12 +234,12 @@
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
-            <TextField id="tfConsumed" fx:id="tfConsumed" layoutX="530.0" layoutY="336.0" prefHeight="40.0" prefWidth="200.0" promptText="123456789abcdef" visible="false">
+            <TextField id="tfConsumed" fx:id="tfConsumed" layoutX="530.0" layoutY="336.0" onKeyTyped="#isNumber" prefHeight="40.0" prefWidth="200.0" visible="false">
                <font>
                   <Font name="Tahoma Bold" size="20.0" />
                </font>
             </TextField>
-            <TextField id="tfWare" fx:id="tfWare" layoutX="530.0" layoutY="190.0" prefHeight="40.0" prefWidth="200.0" promptText="123456789abcdef" visible="false">
+            <TextField id="tfWare" fx:id="tfWare" layoutX="530.0" layoutY="190.0" prefHeight="40.0" prefWidth="200.0" visible="false">
                <font>
                   <Font name="Tahoma Bold" size="20.0" />
                </font>
@@ -299,8 +299,22 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Label id="labelProfitSale" fx:id="labelProfitSale" alignment="CENTER" contentDisplay="CENTER" layoutX="749.0" layoutY="264.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Precio venta">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Button id="buttonSP" fx:id="buttonSP" layoutX="763.0" layoutY="102.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCheck" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button" visible="false">
+               <graphic>
+                  <ImageView fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/check.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children></Pane>
-      <TextField id="tfCost" fx:id="tfCost" layoutX="810.0" layoutY="560.0" prefHeight="40.0" prefWidth="200.0" promptText="123456789abcdef" visible="false">
+      <TextField id="tfCost" fx:id="tfCost" layoutX="810.0" layoutY="560.0" onKeyTyped="#isNumber" prefHeight="40.0" prefWidth="200.0" visible="false">
          <font>
             <Font name="Tahoma Bold" size="20.0" />
          </font>
