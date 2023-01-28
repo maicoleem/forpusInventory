@@ -24,6 +24,7 @@ public class ConstantsWare {
     public static ServiceClass[] serviceList = null;
     public static ProductClass[] productList = null;
     public static ServiceProductClass[] serviceProductList = null;
+    public static ProductpriceClass[] productPriceList = null;
     public static ArrayList<ServiceProductClass> sPListArray = new ArrayList<>();
     public static String tfOne = null;
     public static String tfTwo = null;

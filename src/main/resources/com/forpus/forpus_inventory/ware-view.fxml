@@ -331,6 +331,9 @@
                   </ImageView>
                </graphic>
             </Button>
+            <ComboBox id="comboBoxPrice" fx:id="comboBoxPrice" layoutX="160.0" layoutY="340.0" onAction="#comboBoxClick" prefHeight="40.0" prefWidth="200.0" promptText="Precio" visibleRowCount="5" />
+            <ComboBox id="comboBoxProducto" fx:id="comboBoxProduct" layoutX="160.0" layoutY="264.0" onAction="#comboBoxClick" prefHeight="40.0" prefWidth="200.0" promptText="Producto" visibleRowCount="5" />
+            <ComboBox id="comboBoxWare" fx:id="comboBoxWare" layoutX="530.0" layoutY="264.0" onAction="#comboBoxClick" prefHeight="40.0" prefWidth="200.0" promptText="Bodega" visibleRowCount="5" />
          </children></Pane>
       <TextField id="tfCost" fx:id="tfCost" layoutX="810.0" layoutY="560.0" onKeyTyped="#isNumber" prefHeight="40.0" prefWidth="200.0" visible="false">
          <font>
