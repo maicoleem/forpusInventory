@@ -174,17 +174,6 @@ public class FoundHQL {
                         ConstantsWare.product = product;
                     }
                     break;
-                case "ProductpriceClass":
-                    String qPP = "from "+ Constant.entity +" C where C.id in(?1)";
-                    Query queryPP = session.createQuery(qPP);
-                    queryPP.setParameter(1, Constant.tfCode);
-                    ProductpriceClass pP = (ProductpriceClass) queryPP.uniqueResult();
-                    if(pP == null){
-                        return false;
-                    }else{
-                        ConstantsWare.productPrice = pP;
-                    }
-                    break;
                 case "ServiceProductClass":
                     String qSP = "from "+ Constant.entity +" C where C.idProduct in(?1) and C.idService in(?2)";
                     Query querySP = session.createQuery(qSP);
@@ -195,6 +184,31 @@ public class FoundHQL {
                         return false;
                     }else{
                         ConstantsWare.serviceProduct = pSP;
+                    }
+                    break;
+                case "WareProductClass":
+                    String qWP = "from "+ Constant.entity +" C where C.idProduct in(?1) and C.idWare in(?2)";
+                    Query queryWP = session.createQuery(qWP);
+                    queryWP.setParameter(1, Constant.tfCode);
+                    queryWP.setParameter(2, Constant.tfName);
+                    WareProductClass pWP = (WareProductClass) queryWP.uniqueResult();
+                    if(pWP == null){
+                        return false;
+                    }else{
+                        ConstantsWare.wareProduct = pWP;
+                    }
+                    break;
+                case "ProductpriceClass":
+                    String qPPT = "from "+ Constant.entity +" C where C.idProductWare in(?1) and C.price in(?2)";
+                    Query queryPPT = session.createQuery(qPPT);
+                    queryPPT.setParameter(1, Integer.valueOf(Constant.tfCode));
+                    queryPPT.setParameter(2, Integer.valueOf(Constant.tfName));
+                    ProductpriceClass pPT = (ProductpriceClass) queryPPT.uniqueResult();
+
+                    if(pPT == null){
+                        return false;
+                    }else{
+                        ConstantsWare.productPrice = pPT;
                     }
                     break;
                 default:

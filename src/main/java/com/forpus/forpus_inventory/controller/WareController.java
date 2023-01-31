@@ -22,13 +22,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.swing.plaf.basic.BasicListUI;
-import javax.swing.text.TabExpander;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
 
 
@@ -156,14 +151,13 @@ public class WareController {
     @FXML
     public Button buttonRTable;
     @FXML
-    public Button buttonRTT;
+    public ComboBox<String> comboBoxPrice;
     @FXML
-    public ComboBox comboBoxPrice;
+    public ComboBox<String> comboBoxWare;
     @FXML
-    public ComboBox comboBoxWare;
+    public ComboBox<String> comboBoxProductTT;
     @FXML
-    public ComboBox comboBoxProduct;
-
+    public Label labelTransmute;
     @FXML //botones del CRUD
     public void buttonCRUD(ActionEvent event) {
 
@@ -868,39 +862,49 @@ public class WareController {
                 break;
             case "buttonTransmute":
                 Constant.entity = "Transmute";
-                labelCode.setText(Constant.lblCode);
-                labelOneCategory.setText("Cantidad");
-                labelThreeCategory.setText("Código");
-                labelWage.setText("Producto");
-                labelBuy.setText("Cantidad");
-                labelProfit.setText("Profit");
-                labelProduct.setText("Producto");
-                labelConsumed.setText("Precio Venta");
 
-                labelBuy.setVisible(true);
-                labelProfit.setVisible(true);
-                labelProduct.setVisible(true);
-                labelWage.setVisible(true);
-                labelThreeCategory.setVisible(true);
-                labelConsumed.setVisible(true);
-                labelCost.setVisible(true);
-
+                labelOneCategory.setVisible(true);
+                labelOneCategory.setText("Producto");
                 comboBoxOne.setVisible(true);
+
+                labelTwoCategory.setVisible(true);
+                labelTwoCategory.setText("Bodega");
+                comboBoxTwo.setVisible(true);
+
+                labelThreeCategory.setVisible(true);
+                labelThreeCategory.setText("Precio");
                 comboBoxThree.setVisible(true);
 
-                tfBuy.setVisible(true);
-                tfProduct.setVisible(true);
-                tfProfit.setVisible(true);
-                tfThreeCategory1.setVisible(true);
-                tfConsumed.setVisible(true);
-                tfCost.setVisible(true);
+                labelWage.setVisible(true);
+                labelWage.setText("Cantidad");
                 tfWare.setVisible(true);
 
-                bTwo.setVisible(true);
-                buttonRTT.setVisible(true);
-                buttonUAM.setVisible(true);
-                buttonMAU.setVisible(true);
+                labelBuy.setVisible(true);
+                labelBuy.setText("Producto");
+                comboBoxProductTT.setVisible(true);
 
+                labelSale.setVisible(true);
+                labelSale.setText("Bodega");
+                comboBoxWare.setVisible(true);
+
+                labelProfit.setVisible(true);
+                labelProfit.setText("Precio");
+                comboBoxPrice.setVisible(true);
+
+                labelConsumed.setVisible(true);
+                labelConsumed.setText("Cantidad");
+                tfConsumed.setVisible(true);
+
+                labelCode.setVisible(false);
+                tfCode.setVisible(false);
+                buttonMAU.setVisible(true);
+                buttonUAM.setVisible(true);
+                buttonSP.setVisible(true);
+                buttonRTable.setVisible(true);
+                labelTransmute.setVisible(true);
+                labelTransmute.setText("");
+
+                comboBoxLoad();
                 break;
             default:
                 break;
@@ -923,11 +927,16 @@ public class WareController {
         labelCost.setVisible(false);
         labelConsumed.setVisible(false);
         labelProfitSale.setVisible(false);
+        labelCode.setVisible(true);
+        labelTransmute.setVisible(false);
 
         comboBoxOne.setVisible(false);
         comboBoxTwo.setVisible(false);
         comboBoxThree.setVisible(false);
         comboBoxWage.setVisible(false);
+        comboBoxPrice.setVisible(false);
+        comboBoxProductTT.setVisible(false);
+        comboBoxWare.setVisible(false);
 
         tfBuy.setVisible(false);
         tfProduct.setVisible(false);
@@ -938,6 +947,7 @@ public class WareController {
         tfCost.setVisible(false);
         tfConsumed.setVisible(false);
         tfWare.setVisible(false);
+        tfCode.setVisible(true);
 
         tfCode.setDisable(false);
         tfOneCategory.setDisable(false);
@@ -962,7 +972,6 @@ public class WareController {
         bTwoRemove.setVisible(false);
         buttonSP.setVisible(false);
         buttonRTable.setVisible(false);
-        buttonRTT.setVisible(false);
 
         bTwo.setDisable(true);
         bThree.setDisable(true);
@@ -1157,7 +1166,6 @@ public class WareController {
     //carga datos a lso combobox
     public void comboBoxLoad() {
         ArrayList<String> listProduct = new ArrayList<>();
-
         comboBoxOne.getItems().clear();
         comboBoxTwo.getItems().clear();
         comboBoxThree.getItems().clear();
@@ -1166,7 +1174,6 @@ public class WareController {
         if (Constant.entity == "ServiceClass") {
 
             Constant.entity = "ProductClass";
-
             SearchHQL.searchHQL();
             if (ConstantsWare.productList != null) {
                 for (ProductClass a : ConstantsWare.productList) {
@@ -1194,7 +1201,8 @@ public class WareController {
 
             Constant.entity = "ServiceClass";
 
-        } else if (Constant.entity == "ProductClass") {
+        }
+        else if (Objects.equals(Constant.entity, "ProductClass")) {
 
             Constant.entity = "CategoryoneClass";
             SearchHQL.searchHQL();
@@ -1226,7 +1234,21 @@ public class WareController {
             Constant.entity = "ProductClass";
         } else {
             System.out.println("transmutar falta el combobox");
-            //lista para las cantidades de producto
+            Constant.entity = "ProductClass";
+            SearchHQL.searchHQL();
+            if (ConstantsWare.productList != null) {
+                for (ProductClass a : ConstantsWare.productList) {
+                    String product = a.getName();
+                    if (product != null) {
+                        listProduct.add(product);
+                    }
+                }
+            }
+            ObservableList<String> comboBoxProducts = FXCollections.observableArrayList(listProduct);
+            comboBoxOne.getItems().addAll(comboBoxProducts);
+            comboBoxProductTT.getItems().addAll(comboBoxProducts);
+            Constant.entity = "Transmute";
+
         }
     }
 
@@ -1316,8 +1338,16 @@ public class WareController {
         else if (Constant.entity == "Transmute") {
             switch (cBoxChange.getId()) {
                 case "comboBoxOne":
-                    //limpia el comboBOx
-                    comboBoxTwo.getItems().clear();
+                case "comboBoxProductTT":
+
+                    if(Objects.equals(cBoxChange.getId(), "comboBoxOne")){
+                        //limpia el comboBOx
+                        comboBoxTwo.getItems().clear();
+                        labelTransmute.setText("");
+
+                    }else{
+                        comboBoxWare.getItems().clear();
+                    }
                     //Crea la lista de productos
                     Constant.entity = "ProductClass";
                     SearchHQL.searchHQL();
@@ -1337,42 +1367,68 @@ public class WareController {
                             listProduct.add(ware);
                         }
                     }
-                    //carga el combobox 2
-                    comboBoxTwo.getItems().addAll(listProduct);
+
+                    if(Objects.equals(cBoxChange.getId(), "comboBoxProductTT")){
+                        comboBoxWare.getItems().addAll(listProduct);
+
+                    }else{
+                        //carga el combobox 2
+                        comboBoxTwo.getItems().addAll(listProduct);
+                    }
                     //devuelve las constantes a los valores iniciales
                     Constant.entity = "Transmute";
 
                     break;
                 case "comboBoxTwo":
+                case "comboBoxWare":
+
+                    if(Objects.equals(cBoxChange.getId(), "comboBoxTwo")){
                     //limpia el comboBOx
                     comboBoxThree.getItems().clear();
+                    }else{
+                    comboBoxPrice.getItems().clear();
+                    }
+
+
                     //Crea la lista de precios-producto
                     Constant.entity = "ProductpriceClass";
                     SearchHQL.searchHQL();
 
                     //get of id del item seleccionado en el combobox 2
-                    Constant.tfCode = cBoxChange.getValue();
+                    Constant.tfAddress = cBoxChange.getValue();
 
                     for (WareProductClass w : ConstantsWare.product.getWareProductsByIdProduct()) {
-                        if (Objects.equals(w.getIdWare(), Constant.tfCode)) {
+                        if (Objects.equals(w.getIdWare(), Constant.tfAddress)){
                             if (ConstantsWare.productPriceList != null) {
+                                Constant.entity ="WareProductClass";
+                                Constant.tfCode = ConstantsWare.product.getIdProduct();
+                                Constant.tfName = Constant.tfAddress;
+                                FoundHQL.wareFound();
                                 for (ProductpriceClass pp : ConstantsWare.productPriceList) {
-                                    String price = String.valueOf(pp.getPrice());
-                                    listProduct.add(price);
+                                    if(ConstantsWare.wareProduct != null && pp.getIdProductWare() == ConstantsWare.wareProduct.getIdWareProduct()){
+                                        String price = String.valueOf(pp.getPrice());
+                                        listProduct.add(price);
+                                    }
                                 }
                             }
                         }
                     }
-                    //carga el combobox 2
-                    comboBoxThree.getItems().addAll(listProduct);
+
+                    if(Objects.equals(cBoxChange.getId(), "comboBoxTwo")){
+                        //carga el combobox 2
+                        comboBoxThree.getItems().addAll(listProduct);
+                    }else{
+                        comboBoxPrice.getItems().addAll(listProduct);
+                    }
                     //devuelve las constantes a los valores iniciales
                     Constant.entity = "Transmute";
                     break;
-                case "comboBoxWage":
-                    Constant.entity = "WarehouseClass";
-                    Constant.tfName = cBoxChange.getValue();
-                    FoundHQL.workerFound();
-
+                case "comboBoxThree":
+                    Constant.entity = "ProductpriceClass";
+                    Constant.tfCode = String.valueOf(ConstantsWare.wareProduct.getIdWareProduct());
+                    Constant.tfName = comboBoxThree.getValue();
+                    FoundHQL.wareFound();
+                    labelTransmute.setText(String.valueOf(ConstantsWare.productPrice.getAmount()));
                     Constant.entity = "Transmute";
                     break;
                 default:

@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="+busca un servicio y que retorna los productos usados&#10;+permite eliminar productos de servicios&#10;+Se pueden eliminar los servicios&#10;--Falta completar la trnasmutación">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Se comenzo a hacer le diseño de la trnasmutacción&#10;-falta alistar lso combbox&#10;-flta darle el formato para mostrar los los javafx form cuando se de click en transmutar&#10;-falta crear y configurar los botones para agregar y eliminar de la tabla view&#10;-----En la tabla view debe de quedar el id de la calse ProducpriceClass para poder luego realizarle el update.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/WareController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/WareController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsWare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsWare.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/FoundHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/FoundHQL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SearchHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SearchHQL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/ware-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/ware-view.fxml" afterDir="false" />
     </list>
@@ -134,7 +135,9 @@
       <workItem from="1674751285837" duration="21476000" />
       <workItem from="1674787912222" duration="8877000" />
       <workItem from="1674832860648" duration="29856000" />
-      <workItem from="1674926585899" duration="16449000" />
+      <workItem from="1674926585899" duration="16607000" />
+      <workItem from="1675105759930" duration="5171000" />
+      <workItem from="1675125671013" duration="6987000" />
     </task>
     <task id="LOCAL-00001" summary="first: I create the project with javaFX, I add the dependencies of mySQL and hibernate into the pom.xml.&#10;Second: I add file hibernate.cfg.xml {i do file-project structure -Facets -hibernate -choose module}&#10;third: I add database &#10;fourth: I do mapping of the tables of database&#10;fifth:for the  connection I had do several config:&#10;-I add in module-info.java requires for hibernate and I add opens com.forpus.forpus_inventory.module that is where are the class of the tables that use hibernate.">
       <created>1674089245612</created>
@@ -241,7 +244,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674943460386</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Se comenzo a hacer le diseño de la trnasmutacción&#10;-falta alistar lso combbox&#10;-flta darle el formato para mostrar los los javafx form cuando se de click en transmutar&#10;-falta crear y configurar los botones para agregar y eliminar de la tabla view&#10;-----En la tabla view debe de quedar el id de la calse ProducpriceClass para poder luego realizarle el update.">
+      <created>1674950091476</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1674950091476</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,7 +271,8 @@
     <MESSAGE value="Ahora se puden guardar productos, se modifico la vista de la tabla y de los combobox de la pestaña productos, falta poder eliminar productos y la parte de cantidad toca pensar si se deja o si se elimna" />
     <MESSAGE value="*La cantida en productos se desactivo cuando el produto ya existe, es decir, solo espara para ingresar cantidades con productos sin registros&#10;*Se termino el diseño de carga de productos en la tabla&#10;+Se modifico el diseño de los servicios, ahora los servicios se pueden crear y salvar.&#10;/////////////////////&#10;--Falta poder buscar un servicio y que retorne los productos usados&#10;--Falta poder eliminar servicios&#10;--Falta completar la trnasmutación" />
     <MESSAGE value="+busca un servicio y que retorna los productos usados&#10;+permite eliminar productos de servicios&#10;+Se pueden eliminar los servicios&#10;--Falta completar la trnasmutación" />
-    <option name="LAST_COMMIT_MESSAGE" value="+busca un servicio y que retorna los productos usados&#10;+permite eliminar productos de servicios&#10;+Se pueden eliminar los servicios&#10;--Falta completar la trnasmutación" />
+    <MESSAGE value="Se comenzo a hacer le diseño de la trnasmutacción&#10;-falta alistar lso combbox&#10;-flta darle el formato para mostrar los los javafx form cuando se de click en transmutar&#10;-falta crear y configurar los botones para agregar y eliminar de la tabla view&#10;-----En la tabla view debe de quedar el id de la calse ProducpriceClass para poder luego realizarle el update." />
+    <option name="LAST_COMMIT_MESSAGE" value="Se comenzo a hacer le diseño de la trnasmutacción&#10;-falta alistar lso combbox&#10;-flta darle el formato para mostrar los los javafx form cuando se de click en transmutar&#10;-falta crear y configurar los botones para agregar y eliminar de la tabla view&#10;-----En la tabla view debe de quedar el id de la calse ProducpriceClass para poder luego realizarle el update." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

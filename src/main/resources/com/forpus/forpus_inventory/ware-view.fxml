@@ -271,12 +271,12 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button id="buttonUAM" fx:id="buttonUAM" layoutX="793.0" layoutY="198.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="25.0" prefWidth="150.0" styleClass="buttonBlue" text="Uno A Muchos" visible="false">
+            <Button id="buttonUAM" fx:id="buttonUAM" layoutX="188.0" layoutY="36.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="40.0" prefWidth="164.0" styleClass="buttonBlue" text="Uno A Muchos" visible="false">
                <font>
                   <Font name="Tahoma Bold" size="12.0" />
                </font>
             </Button>
-            <Button id="buttonMAU" fx:id="buttonMAU" layoutX="793.0" layoutY="150.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="25.0" prefWidth="150.0" styleClass="buttonBlue" text="Muchos A Uno" visible="false">
+            <Button id="buttonMAU" fx:id="buttonMAU" layoutX="552.0" layoutY="36.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="40.0" prefWidth="157.0" styleClass="buttonBlue" text="Muchos A Uno" visible="false">
                <font>
                   <Font name="Tahoma Bold" size="12.0" />
                </font>
@@ -304,7 +304,7 @@
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
-            <Button id="buttonSP" fx:id="buttonSP" layoutX="763.0" layoutY="102.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCheck" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button" visible="false">
+            <Button id="buttonSP" fx:id="buttonSP" layoutX="773.0" layoutY="122.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCheck" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button" visible="false">
                <graphic>
                   <ImageView fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -313,7 +313,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button id="buttonRTable" fx:id="buttonRTable" layoutX="756.0" layoutY="187.0" maxHeight="60.0" maxWidth="60.0" minHeight="47.0" minWidth="60.0" mnemonicParsing="false" onAction="#removeTable" prefHeight="60.0" prefWidth="50.0" styleClass="buttonBlue" text="button" visible="false">
+            <Button id="buttonRTable" fx:id="buttonRTable" layoutX="848.0" layoutY="122.0" maxHeight="60.0" maxWidth="60.0" minHeight="47.0" minWidth="60.0" mnemonicParsing="false" onAction="#removeTable" prefHeight="60.0" prefWidth="50.0" styleClass="buttonBlue" text="button" visible="false">
                <graphic>
                   <ImageView fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -322,18 +322,14 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button id="buttonRTT" fx:id="buttonRTT" layoutX="460.0" layoutY="102.0" maxHeight="60.0" maxWidth="60.0" minHeight="47.0" minWidth="60.0" mnemonicParsing="false" onAction="#removeTable" prefHeight="60.0" prefWidth="50.0" styleClass="buttonBlue" text="button" visible="false">
-               <graphic>
-                  <ImageView fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/cancel.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <ComboBox id="comboBoxPrice" fx:id="comboBoxPrice" layoutX="160.0" layoutY="340.0" onAction="#comboBoxClick" prefHeight="40.0" prefWidth="200.0" promptText="Precio" visibleRowCount="5" />
-            <ComboBox id="comboBoxProducto" fx:id="comboBoxProduct" layoutX="160.0" layoutY="264.0" onAction="#comboBoxClick" prefHeight="40.0" prefWidth="200.0" promptText="Producto" visibleRowCount="5" />
-            <ComboBox id="comboBoxWare" fx:id="comboBoxWare" layoutX="530.0" layoutY="264.0" onAction="#comboBoxClick" prefHeight="40.0" prefWidth="200.0" promptText="Bodega" visibleRowCount="5" />
+            <ComboBox id="comboBoxPrice" fx:id="comboBoxPrice" layoutX="160.0" layoutY="340.0" onAction="#comboBoxClick" prefHeight="40.0" prefWidth="200.0" promptText="Precio" visible="false" visibleRowCount="5" />
+            <ComboBox id="comboBoxProductTT" fx:id="comboBoxProductTT" layoutX="160.0" layoutY="264.0" onAction="#comboBoxClick" prefHeight="40.0" prefWidth="200.0" promptText="Producto" visible="false" visibleRowCount="5" />
+            <ComboBox id="comboBoxWare" fx:id="comboBoxWare" layoutX="530.0" layoutY="264.0" onAction="#comboBoxClick" prefHeight="40.0" prefWidth="200.0" promptText="Bodega" visible="false" visibleRowCount="5" />
+            <Label id="labelTransmute" fx:id="labelTransmute" alignment="CENTER" contentDisplay="CENTER" layoutX="773.0" layoutY="188.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="labelTransmute" visible="false">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
          </children></Pane>
       <TextField id="tfCost" fx:id="tfCost" layoutX="810.0" layoutY="560.0" onKeyTyped="#isNumber" prefHeight="40.0" prefWidth="200.0" visible="false">
          <font>

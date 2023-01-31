@@ -108,6 +108,13 @@ public class SearchHQL {
                     List<ProductpriceClass> results12 = query12.list();
                     ConstantsWare.productPriceList = results12.toArray(new ProductpriceClass[0]);
                     break;
+                case "WareProductClass":
+                    ConstantsWare.wareProductList = null;
+                    String hql13 = "FROM "+ Constant.entity;
+                    Query query13 = session.createQuery(hql13);
+                    List<WareProductClass> results13 = query13.list();
+                    ConstantsWare.wareProductList = results13.toArray(new WareProductClass[0]);
+                    break;
 
                 default:
                     break;

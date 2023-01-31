@@ -17,6 +17,7 @@ public class ConstantsWare {
     public static ProductClass product = null;
     public static ServiceProductClass serviceProduct = null;
     public static ProductpriceClass productPrice = null;
+    public static WareProductClass wareProduct = null;
     public static CategoryoneClass[] categoryOneList = null;
     public static CategorytwoClass[] categoryTwoList = null;
     public static CategorythreeClass[] categoryThreeList = null;
@@ -25,6 +26,7 @@ public class ConstantsWare {
     public static ProductClass[] productList = null;
     public static ServiceProductClass[] serviceProductList = null;
     public static ProductpriceClass[] productPriceList = null;
+    public static WareProductClass[] wareProductList = null;
     public static ArrayList<ServiceProductClass> sPListArray = new ArrayList<>();
     public static String tfOne = null;
     public static String tfTwo = null;
