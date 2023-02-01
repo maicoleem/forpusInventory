@@ -22,6 +22,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import javax.persistence.Table;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -505,6 +507,26 @@ public class WareController {
 
                 }
                 break;
+            case "Transmute":
+                //crear lista de productPrice que se deben actualizar
+                ConstantsWare.pPListArray.clear();
+                if (!Constant.listTableShow.isEmpty()) {
+                    for (TableShow t : Constant.listTableShow) {
+                        ProductpriceClass pP = new ProductpriceClass();
+                        pP.setIdPrice(Integer.valueOf(t.getC1()));
+                        pP.setIdProductWare(Integer.valueOf(t.getC4()));
+                        pP.setAmount(Integer.valueOf(t.getC8()));
+                        pP.setPrice(Integer.valueOf(t.getC5()));
+                        Constant.entity = "ProductpriceClassID";
+                        Constant.tfCode = t.getC1();
+                        FoundHQL.wareFound();
+                        pP.setWareProductByIdProductWare(ConstantsWare.productPrice.getWareProductByIdProductWare());
+                        ConstantsWare.pPListArray.add(pP);
+                    }
+                    Constant.entity = "Transmute";
+                }
+
+                break;
             default:
                 break;
         }
@@ -611,7 +633,7 @@ public class WareController {
                 }
                 break;
             case "buttonSP":
-                if (Constant.entity == "ServiceClass") {
+                if (Objects.equals(Constant.entity, "ServiceClass")) {
                     TableShow tableShow = new TableShow();
                     //producto
                     tableShow.setC1(comboBoxOne.getValue());
@@ -635,6 +657,43 @@ public class WareController {
                     Constant.entity = "ServiceTableShow";
                     tableLoad();
                     Constant.entity = "ServiceClass";
+                } else if (Objects.equals(Constant.entity, "Transmute")) {
+                    int amount = Integer.valueOf(tfWare.getText());
+                    int amountI = ConstantsWare.productPrice.getAmount();
+                    int amountF = amountI - amount;
+
+                    if(amountI > amount){
+                        TableShow tableT = new TableShow();
+                        //Id de productPrice
+                        tableT.setC1(String.valueOf(ConstantsWare.productPrice.getIdPrice()));
+                        //Name Product
+                        tableT.setC2(ConstantsWare.product.getName());
+                        //ware
+                        tableT.setC3(comboBoxTwo.getValue());
+                        //ID WareProduct
+                        tableT.setC4(String.valueOf(ConstantsWare.wareProduct.getIdWareProduct()));
+                        //Price
+                        tableT.setC5(String.valueOf(ConstantsWare.productPrice.getPrice()));
+                        //Amount (total)
+                        tableT.setC6(String.valueOf(ConstantsWare.productPrice.getAmount()));
+                        //Amount que se va a usar
+                        tableT.setC7(tfWare.getText());
+                        //Amount que se Final
+                        tableT.setC8(String.valueOf(amountF));
+                        //Cost
+                        int price1 = ConstantsWare.productPrice.getPrice();
+                        int cost = price1 * amount;
+                        tableT.setC9(String.valueOf(cost));
+
+                        Constant.listTableShow.add(tableT);
+                        System.out.println(tableT);
+                        System.out.println(Constant.listTableShow);
+                        Constant.entity = "TransmuteTableShow";
+                        tableLoad();
+                        Constant.entity = "Transmute";
+                    }else{
+                        alertSend("La cantidad supera el stock");
+                    }
 
                 }
                 break;
@@ -738,7 +797,6 @@ public class WareController {
         ConstantsWare.idOption = buttonOption.getId();
         options(ConstantsWare.idOption);
     }
-
     //botones de arriba, para dar formato al view
     protected void options(String option) {
         clean();
@@ -895,6 +953,12 @@ public class WareController {
                 labelConsumed.setText("Cantidad");
                 tfConsumed.setVisible(true);
 
+                labelCost.setVisible(true);
+                labelCost.setText("");
+
+                labelProfitSale.setVisible(true);
+                labelProfitSale.setText("");
+
                 labelCode.setVisible(false);
                 tfCode.setVisible(false);
                 buttonMAU.setVisible(true);
@@ -911,7 +975,6 @@ public class WareController {
         }
         tableLoad();
     }
-
     //botones de arriba para dar formato al view
     protected void clean() {
         if (!Constant.listTableShow.isEmpty()) {
@@ -1005,7 +1068,6 @@ public class WareController {
         comboBoxThree.getItems().clear();
         comboBoxWage.getItems().clear();
     }
-
     //carga datos a la tabla
     public void tableLoad() {
         tableWare.getItems().clear();
@@ -1152,6 +1214,30 @@ public class WareController {
                     ObservableList<TableShow> datesSTS = FXCollections.observableArrayList(Constant.listTableShow);
                     tableWare.setItems(datesSTS);
                     break;
+                case "TransmuteTableShow":
+                    tableWare.getItems().clear();
+                    c1.setText("ID PP");
+                    c1.setCellValueFactory(new PropertyValueFactory<>("c1"));
+                    c2.setText("Producto");
+                    c2.setCellValueFactory(new PropertyValueFactory<>("c2"));
+                    c3.setText("Bodega");
+                    c3.setCellValueFactory(new PropertyValueFactory<>("c3"));
+                    c4.setText("ID BP");
+                    c4.setCellValueFactory(new PropertyValueFactory<>("c4"));
+                    c5.setText("Precio");
+                    c5.setCellValueFactory(new PropertyValueFactory<>("c5"));
+                    c6.setText("Cantidad I");
+                    c6.setCellValueFactory(new PropertyValueFactory<>("c6"));
+                    c7.setText("Cantidad U");
+                    c7.setCellValueFactory(new PropertyValueFactory<>("c7"));
+                    c8.setText("Cantidad F");
+                    c8.setCellValueFactory(new PropertyValueFactory<>("c8"));
+                    c9.setText("Costo");
+                    c9.setCellValueFactory(new PropertyValueFactory<>("c9"));
+                    System.out.println("Escape the fate");
+                    ObservableList<TableShow> datesTTT = FXCollections.observableArrayList(Constant.listTableShow);
+                    tableWare.setItems(datesTTT);
+                    break;
                 default:
                     break;
             }
@@ -1162,7 +1248,6 @@ public class WareController {
         }
 
     }
-
     //carga datos a lso combobox
     public void comboBoxLoad() {
         ArrayList<String> listProduct = new ArrayList<>();
@@ -1251,7 +1336,6 @@ public class WareController {
 
         }
     }
-
     public void comboBoxClick(ActionEvent event) {
         ComboBox<String> cBoxChange = (ComboBox<String>) event.getSource();
         ArrayList<String> listProduct = new ArrayList<>();
@@ -1335,7 +1419,7 @@ public class WareController {
             }
             System.out.println(cBoxChange.getValue());
         }
-        else if (Constant.entity == "Transmute") {
+        else if (Objects.equals(Constant.entity, "Transmute")) {
             switch (cBoxChange.getId()) {
                 case "comboBoxOne":
                 case "comboBoxProductTT":
@@ -1424,12 +1508,25 @@ public class WareController {
                     Constant.entity = "Transmute";
                     break;
                 case "comboBoxThree":
+                case "comboBoxPrice":
                     Constant.entity = "ProductpriceClass";
                     Constant.tfCode = String.valueOf(ConstantsWare.wareProduct.getIdWareProduct());
-                    Constant.tfName = comboBoxThree.getValue();
+                    if(Objects.equals(cBoxChange.getId(), "comboBoxThree")){
+                        Constant.tfName = comboBoxThree.getValue();
+                    }else{
+                        Constant.tfName = comboBoxPrice.getValue();
+                        Constant.tfSalary = "transmute";
+                    }
                     FoundHQL.wareFound();
-                    labelTransmute.setText(String.valueOf(ConstantsWare.productPrice.getAmount()));
+                    Constant.tfSalary = "";
+
+                    if(Objects.equals(cBoxChange.getId(), "comboBoxThree")){
+                        labelTransmute.setText(String.valueOf(ConstantsWare.productPrice.getAmount()));
+                    }else{
+                        labelProfitSale.setText(String.valueOf(ConstantsWare.productPriceTransmute.getAmount()));
+                    }
                     Constant.entity = "Transmute";
+
                     break;
                 default:
                     break;
@@ -1556,4 +1653,22 @@ public class WareController {
             }
         }
 
+    public void buttonMany(ActionEvent event) {
+        Button button = (Button) event.getSource();
+
+        int inicial = Integer.valueOf(labelProfitSale.getText());
+        int cambio = Integer.valueOf(tfConsumed.getText());
+        int f;
+
+        if(Objects.equals(buttonUAM.getId(), button.getId())){
+            f = cambio - inicial;
+        }else{
+            f = cambio + inicial;
+        }
+        labelCost.setText(String.valueOf(f));
+        ConstantsWare.productPriceTransmute.setAmount(f);
+        save.setDisable(false);
+        Constant.entity = "Transmute";
+        tfCode.setText("Transmute");
+    }
 }

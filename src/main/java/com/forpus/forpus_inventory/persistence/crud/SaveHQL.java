@@ -273,6 +273,19 @@ public class SaveHQL {
                     System.out.println("Servicio Producto Guardado");
 
                     break;
+                case "Transmute":
+                    session.beginTransaction();
+                    session.update(ConstantsWare.productPriceTransmute);
+                    session.getTransaction().commit();
+
+                    session.beginTransaction();
+                    for(ProductpriceClass p: ConstantsWare.pPListArray){
+                        ProductpriceClass L = session.get(ProductpriceClass.class, p.getIdPrice());
+                        L.setAmount(p.getAmount());
+                        session.update(L);
+                        session.getTransaction().commit();
+                    }
+                    break;
                 default:
                     break;
             }

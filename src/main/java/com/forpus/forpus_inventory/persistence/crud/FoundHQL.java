@@ -7,6 +7,8 @@ import com.forpus.forpus_inventory.persistence.entity.*;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import java.util.Objects;
+
 public class FoundHQL {
     public static boolean workerFound(){
         try{
@@ -209,8 +211,24 @@ public class FoundHQL {
                         return false;
                     }else{
                         ConstantsWare.productPrice = pPT;
+                        if(Objects.equals(Constant.tfSalary, "transmute")){
+                            ConstantsWare.productPriceTransmute = pPT;
+                        }
                     }
                     break;
+                case "ProductpriceClassID":
+                    Constant.entity = "ProductpriceClass";
+                    String qPrice = "from "+ Constant.entity +" C where C.idPrice in(?1)";
+                    Query queryPrice = session.createQuery(qPrice);
+                    queryPrice.setParameter(1, Integer.valueOf(Constant.tfCode));
+                    ProductpriceClass price = (ProductpriceClass) queryPrice.uniqueResult();
+                    if(price == null){
+                        return false;
+                    }else{
+                        ConstantsWare.productPrice = price;
+                    }
+                    break;
+
                 default:
                     break;
             }
