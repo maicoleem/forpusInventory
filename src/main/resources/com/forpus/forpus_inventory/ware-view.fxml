@@ -341,5 +341,10 @@
             <Font name="Tahoma Bold" size="19.0" />
          </font>
       </Label>
+      <Label id="labelCosttrans" fx:id="labelCostTrans" alignment="CENTER" contentDisplay="CENTER" layoutX="844.0" layoutY="550.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="trans" visible="false">
+         <font>
+            <Font name="Tahoma Bold" size="19.0" />
+         </font>
+      </Label>
     </children>
 </Pane>

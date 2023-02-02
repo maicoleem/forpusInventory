@@ -160,6 +160,9 @@ public class WareController {
     public ComboBox<String> comboBoxProductTT;
     @FXML
     public Label labelTransmute;
+    @FXML
+    public Label labelCostTrans;
+
     @FXML //botones del CRUD
     public void buttonCRUD(ActionEvent event) {
 
@@ -729,7 +732,6 @@ public class WareController {
     private void buttonSlide(ActionEvent event) throws IOException {
         slide(event);
     }
-
     @FXML//botones derechos
     static void slide(ActionEvent event) throws IOException {
         Button buttonSlide = (Button) event.getSource();
@@ -746,7 +748,6 @@ public class WareController {
         }
         slideChange(buttonSlide.getId(), event);
     }
-
     @FXML //botones de lado derecho
     static void slideChange(String blue, ActionEvent event) throws IOException {
         switch (blue) {
@@ -778,7 +779,6 @@ public class WareController {
         }
 
     }
-
     @FXML //botones de arriba
     public void buttonsOptions(ActionEvent event) {
         Button buttonOption = (Button) event.getSource();
@@ -959,6 +959,9 @@ public class WareController {
                 labelProfitSale.setVisible(true);
                 labelProfitSale.setText("");
 
+                labelCostTrans.setVisible(true);
+                labelCostTrans.setText("");
+
                 labelCode.setVisible(false);
                 tfCode.setVisible(false);
                 buttonMAU.setVisible(true);
@@ -992,6 +995,7 @@ public class WareController {
         labelProfitSale.setVisible(false);
         labelCode.setVisible(true);
         labelTransmute.setVisible(false);
+        labelCostTrans.setVisible(false);
 
         comboBoxOne.setVisible(false);
         comboBoxTwo.setVisible(false);
@@ -1656,15 +1660,41 @@ public class WareController {
     public void buttonMany(ActionEvent event) {
         Button button = (Button) event.getSource();
 
-        int inicial = Integer.valueOf(labelProfitSale.getText());
-        int cambio = Integer.valueOf(tfConsumed.getText());
+        final int inicial = Integer.valueOf(labelProfitSale.getText());
+        final int cambio = Integer.valueOf(tfConsumed.getText());
         int f;
+        int h;
+        int g = 1;
+
 
         if(Objects.equals(buttonUAM.getId(), button.getId())){
-            f = cambio - inicial;
+            f = inicial - cambio;
+            g = 1;
+
         }else{
             f = cambio + inicial;
+            g = -1;
         }
+
+        for(TableShow  t: Constant.listTableShow){
+            //C6 inicial
+            int init = Integer.valueOf(t.getC6());
+            //C7 cambio
+            int chang = Integer.valueOf(t.getC7());
+            //C8 final
+            int fi = init + (g * chang);
+            t.setC8(String.valueOf(fi));
+        }
+        h = 0;
+        for(TableShow  t: Constant.listTableShow){
+            int cost = Integer.valueOf(t.getC9());
+            h = h + cost;
+        }
+        labelCostTrans.setText(String.valueOf(h));
+
+        Constant.entity = "TransmuteTableShow";
+        tableLoad();
+
         labelCost.setText(String.valueOf(f));
         ConstantsWare.productPriceTransmute.setAmount(f);
         save.setDisable(false);
