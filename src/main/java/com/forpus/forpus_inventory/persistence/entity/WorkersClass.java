@@ -1,6 +1,7 @@
 package com.forpus.forpus_inventory.persistence.entity;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -27,6 +28,20 @@ public class WorkersClass {
     @Basic
     @Column(name = "Password", nullable = false, length = 15)
     private String password;
+    @Basic
+    @Column(name = "bank", nullable = true, length = 20)
+    private String bank;
+    @Basic
+    @Column(name = "cash", nullable = true, length = 20)
+    private String cash;
+    @Basic
+    @Column(name = "payable", nullable = true, length = 20)
+    private String payable;
+    @Basic
+    @Column(name = "receivable", nullable = true, length = 20)
+    private String receivable;
+    @OneToMany(mappedBy = "workersByIdCustomer")
+    private Collection<InvoiceClass> invoicesByIdentificationCard;
 
     public String getIdentificationCard() {
         return identificationCard;
@@ -83,17 +98,55 @@ public class WorkersClass {
     public void setPassword(String password) {
         this.password = password;
     }
+    public String getBank() {
+        return bank;
+    }
+
+    public void setBank(String bank) {
+        this.bank = bank;
+    }
+
+    public String getCash() {
+        return cash;
+    }
+
+    public void setCash(String cash) {
+        this.cash = cash;
+    }
+
+    public String getPayable() {
+        return payable;
+    }
+
+    public void setPayable(String payable) {
+        this.payable = payable;
+    }
+
+    public String getReceivable() {
+        return receivable;
+    }
+
+    public void setReceivable(String receivable) {
+        this.receivable = receivable;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         WorkersClass that = (WorkersClass) o;
-        return identificationCard == that.identificationCard && wage == that.wage && phoneNumber == that.phoneNumber && Objects.equals(name, that.name) && Objects.equals(job, that.job) && Objects.equals(address, that.address) && Objects.equals(password, that.password);
+        return Objects.equals(identificationCard, that.identificationCard) && Objects.equals(name, that.name) && Objects.equals(job, that.job) && Objects.equals(wage, that.wage) && Objects.equals(phoneNumber, that.phoneNumber) && Objects.equals(address, that.address) && Objects.equals(password, that.password) && Objects.equals(bank, that.bank) && Objects.equals(cash, that.cash) && Objects.equals(payable, that.payable) && Objects.equals(receivable, that.receivable);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(identificationCard, name, job, wage, phoneNumber, address, password);
+        return Objects.hash(identificationCard, name, job, wage, phoneNumber, address, password, bank, cash, payable, receivable);
+    }
+    public Collection<InvoiceClass> getInvoicesByIdentificationCard() {
+        return invoicesByIdentificationCard;
+    }
+
+    public void setInvoicesByIdentificationCard(Collection<InvoiceClass> invoicesByIdentificationCard) {
+        this.invoicesByIdentificationCard = invoicesByIdentificationCard;
     }
 }

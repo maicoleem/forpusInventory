@@ -1,6 +1,7 @@
 package com.forpus.forpus_inventory.persistence.entity;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -21,6 +22,20 @@ public class ProvidersClass {
     @Basic
     @Column(name = "Email", nullable = false, length = 20)
     private String email;
+    @Basic
+    @Column(name = "bank", nullable = true, length = 20)
+    private String bank;
+    @Basic
+    @Column(name = "cash", nullable = true, length = 20)
+    private String cash;
+    @Basic
+    @Column(name = "payable", nullable = true, length = 20)
+    private String payable;
+    @Basic
+    @Column(name = "receivable", nullable = true, length = 20)
+    private String receivable;
+    @OneToMany(mappedBy = "providersByIdCustomer")
+    private Collection<InvoiceClass> invoicesByNit;
 
     public String getNit() {
         return nit;
@@ -62,16 +77,54 @@ public class ProvidersClass {
         this.email = email;
     }
 
+    public String getBank() {
+        return bank;
+    }
+
+    public void setBank(String bank) {
+        this.bank = bank;
+    }
+
+    public String getCash() {
+        return cash;
+    }
+
+    public void setCash(String cash) {
+        this.cash = cash;
+    }
+
+    public String getPayable() {
+        return payable;
+    }
+
+    public void setPayable(String payable) {
+        this.payable = payable;
+    }
+
+    public String getReceivable() {
+        return receivable;
+    }
+
+    public void setReceivable(String receivable) {
+        this.receivable = receivable;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ProvidersClass that = (ProvidersClass) o;
-        return Objects.equals(nit, that.nit) && Objects.equals(name, that.name) && Objects.equals(phoneNumber, that.phoneNumber) && Objects.equals(address, that.address) && Objects.equals(email, that.email);
+        return Objects.equals(nit, that.nit) && Objects.equals(name, that.name) && Objects.equals(phoneNumber, that.phoneNumber) && Objects.equals(address, that.address) && Objects.equals(email, that.email) && Objects.equals(bank, that.bank) && Objects.equals(cash, that.cash) && Objects.equals(payable, that.payable) && Objects.equals(receivable, that.receivable);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nit, name, phoneNumber, address, email);
+        return Objects.hash(nit, name, phoneNumber, address, email, bank, cash, payable, receivable);
+    }
+    public Collection<InvoiceClass> getInvoicesByNit() {
+        return invoicesByNit;
+    }
+    public void setInvoicesByNit(Collection<InvoiceClass> invoicesByNit) {
+        this.invoicesByNit = invoicesByNit;
     }
 }

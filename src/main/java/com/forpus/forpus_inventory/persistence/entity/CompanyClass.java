@@ -1,6 +1,7 @@
 package com.forpus.forpus_inventory.persistence.entity;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -27,6 +28,27 @@ public class CompanyClass {
     @Basic
     @Column(name = "Social", nullable = false, length = 20)
     private String social;
+    @Basic
+    @Column(name = "bank", nullable = true, length = 20)
+    private String bank;
+    @Basic
+    @Column(name = "cash", nullable = true, length = 20)
+    private String cash;
+    @Basic
+    @Column(name = "payable", nullable = true, length = 20)
+    private String payable;
+    @Basic
+    @Column(name = "receivable", nullable = true, length = 20)
+    private String receivable;
+    @Basic
+    @Column(name = "utilities", nullable = true, length = 20)
+    private String utilities;
+    @Basic
+    @Column(name = "total", nullable = true, length = 20)
+    private String total;
+    @OneToMany(mappedBy = "companyByIdCustomer")
+    private Collection<InvoiceClass> invoicesByIdCompanyNit;
+
 
     public String getIdCompanyNIT() {
         return idCompanyNIT;
@@ -84,16 +106,65 @@ public class CompanyClass {
         this.social = social;
     }
 
+    public String getBank() {
+        return bank;
+    }
+
+    public void setBank(String bank) {
+        this.bank = bank;
+    }
+
+    public String getCash() {
+        return cash;
+    }
+
+    public void setCash(String cash) {
+        this.cash = cash;
+    }
+
+    public String getPayable() {
+        return payable;
+    }
+
+    public void setPayable(String payable) {
+        this.payable = payable;
+    }
+
+    public String getReceivable() {
+        return receivable;
+    }
+
+    public void setReceivable(String receivable) {
+        this.receivable = receivable;
+    }
+
+    public String getUtilities() {
+        return utilities;
+    }
+
+    public void setUtilities(String utilities) {
+        this.utilities = utilities;
+    }
+
+    public String getTotal() {
+        return total;
+    }
+
+    public void setTotal(String total) {
+        this.total = total;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CompanyClass that = (CompanyClass) o;
-        return idCompanyNIT == that.idCompanyNIT && Objects.equals(name, that.name) && Objects.equals(password, that.password) && Objects.equals(addres, that.addres) && Objects.equals(phoneNumber, that.phoneNumber) && Objects.equals(web, that.web) && Objects.equals(social, that.social);
+        return Objects.equals(idCompanyNIT, that.idCompanyNIT) && Objects.equals(name, that.name) && Objects.equals(password, that.password) && Objects.equals(addres, that.addres) && Objects.equals(phoneNumber, that.phoneNumber) && Objects.equals(web, that.web) && Objects.equals(social, that.social) && Objects.equals(bank, that.bank) && Objects.equals(cash, that.cash) && Objects.equals(payable, that.payable) && Objects.equals(receivable, that.receivable) && Objects.equals(utilities, that.utilities) && Objects.equals(total, that.total);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idCompanyNIT, name, password, addres, phoneNumber, web, social);
+        return Objects.hash(idCompanyNIT, name, password, addres, phoneNumber, web, social, bank, cash, payable, receivable, utilities, total);
     }
 }

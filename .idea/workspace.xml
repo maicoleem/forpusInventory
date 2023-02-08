@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="** Se crean y configurar los botones para agregar y eliminar de la tabla view&#10;**Table view configurada&#10;+Metodo salvat y de muchos a uno configurada*&#10;--Falta configorar el metodo de uno a muchos&#10;--Falta configurar como se van activando los botones para evitar errores">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="**Se configura el metodo MAU y UAM&#10;--Falta configurar como se van activando los botones para evitar errores">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/accounting-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/purchases-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/sales-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/WareController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/WareController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/ware-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/ware-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/CustomerClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/CustomerClass.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +82,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="ImportMappingsDialog.RecentPackages">
+      <recent name="tablas" />
       <recent name="com.forpus" />
       <recent name="" />
     </key>
@@ -136,7 +139,10 @@
       <workItem from="1675105759930" duration="5171000" />
       <workItem from="1675125671013" duration="7688000" />
       <workItem from="1675214391191" duration="10093000" />
-      <workItem from="1675305266291" duration="2544000" />
+      <workItem from="1675305266291" duration="2618000" />
+      <workItem from="1675393777736" duration="3458000" />
+      <workItem from="1675562100506" duration="3553000" />
+      <workItem from="1675816895237" duration="3627000" />
     </task>
     <task id="LOCAL-00001" summary="first: I create the project with javaFX, I add the dependencies of mySQL and hibernate into the pom.xml.&#10;Second: I add file hibernate.cfg.xml {i do file-project structure -Facets -hibernate -choose module}&#10;third: I add database &#10;fourth: I do mapping of the tables of database&#10;fifth:for the  connection I had do several config:&#10;-I add in module-info.java requires for hibernate and I add opens com.forpus.forpus_inventory.module that is where are the class of the tables that use hibernate.">
       <created>1674089245612</created>
@@ -264,7 +270,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675227171386</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="**Se configura el metodo MAU y UAM&#10;--Falta configurar como se van activando los botones para evitar errores">
+      <created>1675307875979</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1675307875979</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -287,7 +300,8 @@
     <MESSAGE value="Se comenzo a hacer le diseño de la trnasmutacción&#10;-falta alistar lso combbox&#10;-flta darle el formato para mostrar los los javafx form cuando se de click en transmutar&#10;-falta crear y configurar los botones para agregar y eliminar de la tabla view&#10;-----En la tabla view debe de quedar el id de la calse ProducpriceClass para poder luego realizarle el update." />
     <MESSAGE value="**SE alistaron los combobox&#10;**Se dio diseñoa la pestaña transmutar&#10;-falta crear y configurar los botones para agregar y eliminar de la tabla view&#10;-----En la tabla view debe de quedar el id de la calse ProducpriceClass para poder luego realizarle el update." />
     <MESSAGE value="** Se crean y configurar los botones para agregar y eliminar de la tabla view&#10;**Table view configurada&#10;+Metodo salvat y de muchos a uno configurada*&#10;--Falta configorar el metodo de uno a muchos&#10;--Falta configurar como se van activando los botones para evitar errores" />
-    <option name="LAST_COMMIT_MESSAGE" value="** Se crean y configurar los botones para agregar y eliminar de la tabla view&#10;**Table view configurada&#10;+Metodo salvat y de muchos a uno configurada*&#10;--Falta configorar el metodo de uno a muchos&#10;--Falta configurar como se van activando los botones para evitar errores" />
+    <MESSAGE value="**Se configura el metodo MAU y UAM&#10;--Falta configurar como se van activando los botones para evitar errores" />
+    <option name="LAST_COMMIT_MESSAGE" value="**Se configura el metodo MAU y UAM&#10;--Falta configurar como se van activando los botones para evitar errores" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
