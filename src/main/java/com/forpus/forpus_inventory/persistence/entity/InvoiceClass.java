@@ -42,19 +42,19 @@ public class InvoiceClass {
     @Column(name = "utilities", nullable = false, length = 20)
     private String utilities;
     @ManyToOne
-    @JoinColumn(name = "idCustomer", referencedColumnName = "idCompanyNIT", nullable = false)
+    @JoinColumn(name = "idCustomer", referencedColumnName = "idCompanyNIT", nullable = false, insertable = false, updatable = false)
     private CompanyClass companyByIdCustomer;
     @ManyToOne
-    @JoinColumn(name = "idCustomer", referencedColumnName = "idCustomer", nullable = false)
+    @JoinColumn(name = "idCustomer", referencedColumnName = "idCustomer", nullable = false, insertable = false, updatable = false)
     private CustomerClass customerByIdCustomer;
     @ManyToOne
-    @JoinColumn(name = "idCustomer", referencedColumnName = "IdentificationCard", nullable = false)
+    @JoinColumn(name = "idCustomer", referencedColumnName = "IdentificationCard", nullable = false, insertable = false, updatable = false)
     private PartnersClass partnersByIdCustomer;
     @ManyToOne
-    @JoinColumn(name = "idCustomer", referencedColumnName = "Nit", nullable = false)
+    @JoinColumn(name = "idCustomer", referencedColumnName = "Nit", nullable = false, insertable = false, updatable = false)
     private ProvidersClass providersByIdCustomer;
     @ManyToOne
-    @JoinColumn(name = "idCustomer", referencedColumnName = "IdentificationCard", nullable = false)
+    @JoinColumn(name = "idCustomer", referencedColumnName = "IdentificationCard", nullable = false, insertable = false, updatable = false)
     private WorkersClass workersByIdCustomer;
     @OneToMany(mappedBy = "invoiceByIdInvoice")
     private Collection<WareinvoiceClass> wareinvoicesByIdInvoice;

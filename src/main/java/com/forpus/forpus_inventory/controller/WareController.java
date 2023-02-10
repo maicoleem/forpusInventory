@@ -762,9 +762,28 @@ public class WareController {
             case "bDash":
                 break;
             case "bAccounting":
+                FXMLLoader fxmlLoaderAccounting = new FXMLLoader(HelloApplication.class.getResource("accounting-view.fxml"));
+                Scene sceneAccounting = new Scene(fxmlLoaderAccounting.load());
+                Stage stageAccounting = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stageAccounting.setTitle("Forpus Inventory");
+                stageAccounting.setScene(sceneAccounting);
+                stageAccounting.show();
                 break;
             case "bBuy":
+                FXMLLoader fxmlLoaderBuy = new FXMLLoader(HelloApplication.class.getResource("purchases-view.fxml"));
+                Scene sceneBuy = new Scene(fxmlLoaderBuy.load());
+                Stage stageBuy = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stageBuy.setTitle("Forpus Inventory");
+                stageBuy.setScene(sceneBuy);
+                stageBuy.show();
+                break;
             case "bSale":
+                FXMLLoader fxmlLoaderSales = new FXMLLoader(HelloApplication.class.getResource("sales-view.fxml"));
+                Scene sceneSales = new Scene(fxmlLoaderSales.load());
+                Stage stageSales = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stageSales.setTitle("Forpus Inventory");
+                stageSales.setScene(sceneSales);
+                stageSales.show();
                 break;
             case "bSettings":
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("settings-view.fxml"));

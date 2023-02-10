@@ -49,7 +49,6 @@ public class CompanyClass {
     @OneToMany(mappedBy = "companyByIdCustomer")
     private Collection<InvoiceClass> invoicesByIdCompanyNit;
 
-
     public String getIdCompanyNIT() {
         return idCompanyNIT;
     }

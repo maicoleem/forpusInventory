@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "wareinvoice", schema = "inventoryaccounting", catalog = "")
+@Table(name = "wareinvoice", schema = "inventoryaccounting")
 public class WareinvoiceClass {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -32,7 +32,7 @@ public class WareinvoiceClass {
     @Column(name = "amount", nullable = false)
     private int amount;
     @ManyToOne
-    @JoinColumn(name = "idInvoice", referencedColumnName = "idInvoice", nullable = false)
+    @JoinColumn(name = "idInvoice", referencedColumnName = "idInvoice", nullable = false, insertable = false, updatable = false)
     private InvoiceClass invoiceByIdInvoice;
 
     public int getIdWareInvoice() {
