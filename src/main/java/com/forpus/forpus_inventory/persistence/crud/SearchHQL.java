@@ -1,6 +1,7 @@
 package com.forpus.forpus_inventory.persistence.crud;
 
 import com.forpus.forpus_inventory.domain.services.Constant;
+import com.forpus.forpus_inventory.domain.services.ConstantsAccounting;
 import com.forpus.forpus_inventory.domain.services.ConstantsWare;
 import com.forpus.forpus_inventory.persistence.Session.SessionDB;
 import com.forpus.forpus_inventory.persistence.entity.*;
@@ -115,7 +116,13 @@ public class SearchHQL {
                     List<WareProductClass> results13 = query13.list();
                     ConstantsWare.wareProductList = results13.toArray(new WareProductClass[0]);
                     break;
-
+                case "TaxesClass":
+                    ConstantsAccounting.taxesList = null;
+                    String hql14 = "FROM "+ Constant.entity;
+                    Query query14 = session.createQuery(hql14);
+                    List<TaxesClass> results14 = query14.list();
+                    ConstantsAccounting.taxesList = results14.toArray(new TaxesClass[0]);
+                    break;
                 default:
                     break;
             }

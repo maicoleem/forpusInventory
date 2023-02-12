@@ -2,6 +2,7 @@ package com.forpus.forpus_inventory.persistence.crud;
 
 import com.forpus.forpus_inventory.controller.WareController;
 import com.forpus.forpus_inventory.domain.services.Constant;
+import com.forpus.forpus_inventory.domain.services.ConstantsAccounting;
 import com.forpus.forpus_inventory.domain.services.ConstantsWare;
 import com.forpus.forpus_inventory.persistence.Session.SessionDB;
 import com.forpus.forpus_inventory.persistence.entity.*;
@@ -285,6 +286,15 @@ public class SaveHQL {
                         session.update(L);
                         session.getTransaction().commit();
                     }
+                    break;
+                case "TaxesClass":
+                    session.beginTransaction();
+                    for(TaxesClass tx: ConstantsAccounting.taxesList){
+                        TaxesClass L = session.get(TaxesClass.class, tx.getIdTaxes());
+                        L.setTaxes(tx.getTaxes());
+                        session.update(L);
+                    }
+                    session.getTransaction().commit();
                     break;
                 default:
                     break;

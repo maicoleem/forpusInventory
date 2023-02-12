@@ -136,6 +136,9 @@ public class FoundHQL {
                         ConstantsWare.productPrice = pP;
                     }
                     break;
+                case "TaxesClass":
+                    SearchHQL.searchHQL();
+                    break;
                 default:
                     break;
             }

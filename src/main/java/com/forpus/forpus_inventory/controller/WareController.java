@@ -762,6 +762,7 @@ public class WareController {
             case "bDash":
                 break;
             case "bAccounting":
+                Constant.entity = "TaxesClass";
                 FXMLLoader fxmlLoaderAccounting = new FXMLLoader(HelloApplication.class.getResource("accounting-view.fxml"));
                 Scene sceneAccounting = new Scene(fxmlLoaderAccounting.load());
                 Stage stageAccounting = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -1619,7 +1620,7 @@ public class WareController {
         }
 
     }
-    public void alertSend (String massage){
+    public static void alertSend (String massage){
         Alert alertMassage = new Alert(Alert.AlertType.INFORMATION);
         alertMassage.setTitle("Freya Style--//--Forpus Company");
         alertMassage.setContentText(massage);

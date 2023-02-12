@@ -69,7 +69,7 @@
                                 <Image url="@../images/dashboard.png" />
                             </image></ImageView>
                     </graphic></Button>
-                <Button id="bAccounting" fx:id="buttonAccountingPB" layoutX="5.0" layoutY="284.2" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSlide" prefHeight="60.0" prefWidth="60.0" styleClass="buttonSide" text="Button">
+                <Button id="bAccounting" fx:id="buttonAccountingPB" layoutX="5.0" layoutY="284.2" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSlide" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #F5F5F5;" styleClass="buttonSide" text="Button">
                     <graphic>
                         <ImageView fitHeight="111.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -131,93 +131,23 @@
                     </font>
                 </Button>
             </children></Pane>
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="153.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Código">
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="153.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="BOLD">
             <font>
                 <Font name="Tahoma Bold" size="19.0" />
             </font></Label>
-
-        <TableView layoutX="78.0" layoutY="366.0" prefHeight="249.0" prefWidth="817.0">
-            <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
-            </columns>
-        </TableView>
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="395.0" layoutY="153.0" prefHeight="40.0" prefWidth="305.0" styleClass="labelGrey" text="Nombre producto">
+        <TextField fx:id="tfBold" alignment="CENTER_RIGHT" layoutX="242.0" layoutY="153.0" onAction="#numeric" onKeyTyped="#numeric" prefHeight="40.0" prefWidth="142.0" promptText="99.9">
+         <font>
+            <Font name="Tahoma Bold" size="14.0" />
+         </font></TextField>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="102.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="IVA">
             <font>
                 <Font name="Tahoma Bold" size="19.0" />
             </font>
         </Label>
-        <TextField layoutX="242.0" layoutY="153.0" prefHeight="40.0" prefWidth="142.0" />
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="102.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Proveedor">
-            <font>
-                <Font name="Tahoma Bold" size="19.0" />
-            </font>
-        </Label>
-        <TextField layoutX="242.0" layoutY="102.0" prefHeight="40.0" prefWidth="142.0" />
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="395.0" layoutY="102.0" prefHeight="40.0" prefWidth="305.0" styleClass="labelGrey" text="Nombre proveedor">
-            <font>
-                <Font name="Tahoma Bold" size="19.0" />
-            </font>
-        </Label>
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="78.0" layoutY="628.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Total">
-            <font>
-                <Font name="Tahoma Bold" size="19.0" />
-            </font>
-        </Label>
-        <Button id="search" fx:id="search1" layoutX="714.0" layoutY="143.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
-            <graphic>
-                <ImageView id="search" fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/search.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-        </Button>
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="278.0" layoutY="628.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Caja">
-            <font>
-                <Font name="Tahoma Bold" size="19.0" />
-            </font>
-        </Label>
-        <TextField layoutX="439.0" layoutY="628.0" prefHeight="40.0" prefWidth="142.0" />
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="279.0" layoutY="684.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Banco">
-            <font>
-                <Font name="Tahoma Bold" size="19.0" />
-            </font>
-        </Label>
-        <TextField layoutX="440.0" layoutY="684.0" prefHeight="40.0" prefWidth="142.0" />
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="852.0" layoutY="92.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Caja">
-            <font>
-                <Font name="Tahoma Bold" size="19.0" />
-            </font>
-        </Label>
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="852.0" layoutY="142.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Banco">
-            <font>
-                <Font name="Tahoma Bold" size="19.0" />
-            </font>
-        </Label>
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="852.0" layoutY="193.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Deudas">
-            <font>
-                <Font name="Tahoma Bold" size="19.0" />
-            </font>
-        </Label>
-        <Button id="search" fx:id="search11" layoutX="734.0" layoutY="299.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
-            <graphic>
-                <ImageView id="search" fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/search.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-        </Button>
-        <Button id="search" fx:id="search111" layoutX="814.0" layoutY="299.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
-            <graphic>
-                <ImageView id="search" fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/search.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-        </Button>
+        <TextField fx:id="tfIva" alignment="CENTER_RIGHT" layoutX="242.0" layoutY="102.0" onKeyTyped="#numeric" prefHeight="40.0" prefWidth="142.0" promptText="99.9">
+         <font>
+            <Font name="Tahoma Bold" size="14.0" />
+         </font></TextField>
     </children>
 
 </Pane>
