@@ -1,24 +1,23 @@
 package com.forpus.forpus_inventory.controller;
 
-import com.forpus.forpus_inventory.HelloApplication;
 import com.forpus.forpus_inventory.domain.services.Constant;
 import com.forpus.forpus_inventory.domain.services.ConstantsAccounting;
-import com.forpus.forpus_inventory.persistence.crud.DeleteHQL;
+import com.forpus.forpus_inventory.domain.services.ConstantsWare;
+import com.forpus.forpus_inventory.domain.services.TableShow;
 import com.forpus.forpus_inventory.persistence.crud.FoundHQL;
 import com.forpus.forpus_inventory.persistence.crud.SaveHQL;
 import com.forpus.forpus_inventory.persistence.crud.SearchHQL;
+import com.forpus.forpus_inventory.persistence.entity.ProductpriceClass;
 import com.forpus.forpus_inventory.persistence.entity.TaxesClass;
+import com.forpus.forpus_inventory.persistence.entity.WareProductClass;
+import com.forpus.forpus_inventory.persistence.entity.WarehouseClass;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -36,8 +35,27 @@ public class AccountingController {
     public Button save;
     public Button search;
     public Button remove;
+    @FXML
     public TextField tfBold;
+    @FXML
     public TextField tfIva;
+    @FXML
+    public Button buttonTaxes;
+    public Button buttonStock;
+    public Button buttonAccounting;
+    public Button buttonInput;
+    public Button buttonReceivable;
+    public Label labelIVA;
+    public Label labelBold;
+    public ComboBox<String> comboBoxWare;
+    public ComboBox comboBoxProduct;
+    public TableView<TableShow> tableMain;
+    public TableColumn<Object, Object> c1;
+    public TableColumn<Object, Object> c2;
+    public TableColumn<Object, Object> c3;
+    public TableColumn<Object, Object> c4;
+
+    public TableColumn<Object, Object> c5;
 
     @FXML
     protected void buttonSlide(ActionEvent event) throws IOException {
@@ -134,8 +152,160 @@ public class AccountingController {
 
     @FXML
     public void buttonsOptions(ActionEvent event) {
+        Button button = (Button) event.getSource();
+        switch (button.getId()){
+            case "buttonTaxes":
+                Constant.entity = "TaxesClass";
+                clean();
+                labelBold.setVisible(true);
+                labelIVA.setVisible(true);
+
+                labelIVA.setText("IVA");
+                labelBold.setText("BOLD");
+
+                tfBold.setVisible(true);
+                tfIva.setVisible(true);
+                break;
+            case "buttonStock":
+                clean();
+                Constant.entity = "WarehouseClass";
+                labelIVA.setVisible(true);
+                labelIVA.setText("Bodega");
+                labelBold.setVisible(true);
+                labelBold.setText("Producto");
+                comboBoxProduct.setVisible(true);
+                comboBoxWare.setVisible(true);
+                comboBoxLoad();
+                tableMain.setVisible(true);
+
+                /*
+                Debe de mostrar todos los poductos, filtro por bodega y producto
+                Debe de mostar el dinero que se tiene en el inventatio, precio de compra
+                ¿Debe de mostrar las utilidades esperadas?
+                * */
+                break;
+            case "buttonAccounting":
+                /*Debe de mostrar el registro de los clientes, la empresa,
+                 los trabajadores, los socios y los proveedores
+                * */
+                Constant.entity = "Accounting";
+                break;
+            case "buttonInput":
+                //Se debe de porder hacer ingresos de dinero a la cuenta de la compañia
+                Constant.entity = "PartnersClass";
+                break;
+            case "buttonReceivable":
+                //Se debe de poder visualizar las deudas que tiene la empresa
+                // y las deudas de los cleintes de la empresa
+                Constant.entity = "facture";
+                break;
+            default:
+                break;
+        }
+
+
+    }
+    public void comboBoxLoad(){
+     comboBoxWare.getItems().clear();
+     comboBoxProduct.getItems().clear();
+        ArrayList<String> listComboBox = new ArrayList<>();
+        switch (Constant.entity){
+            case "WarehouseClass":
+                //Carga las Bodegas en el comboBox
+                SearchHQL.searchHQL();
+                for (int i = 0; i < ConstantsWare.wareList.length; i = i + 1) {
+                    String product = ConstantsWare.wareList[i].getIdWarehouse();
+                    if (product != null) {
+                        listComboBox.add(product);
+                    }
+                }
+                comboBoxWare.getItems().addAll(listComboBox);
+                //Carga los productos
+                Constant.entity = "ProductClass";
+                listComboBox.clear();
+                SearchHQL.searchHQL();
+                for (int i = 0; i < ConstantsWare.productList.length; i = i + 1) {
+                    String product = ConstantsWare.productList[i].getName();
+                    if (product != null) {
+                        listComboBox.add(product);
+                    }
+                }
+                //regresa constante
+                Constant.entity = "WarehouseClass";
+                break;
+            default:
+                break;
+        }
+    }
+    public void comboBoxClick(ActionEvent event) {
+        ComboBox comboBox = (ComboBox) event.getSource();
+        tableLoad(Constant.entity, comboBox.getId());
     }
 
+    public void tableLoad(String entity, String idComboBox){
+        tableMain.getItems().clear();
+        Constant.listTableShow.clear();
+        c1.setText("C1");
+        c2.setText("C2");
+        c3.setText("C3");
+        c4.setText("C4");
+        c5.setText("C5");
+
+        try{
+            switch (entity){
+                case "WarehouseClass":
+                    //carga todos los productos que hay en esa bodega
+                    /*producto, cantidad, precio
+                    * */
+                    if(Objects.equals(idComboBox, "comboBoxWare")){
+                        //obtiene la lista de productos en la bodega
+                        ConstantsWare.wareProductList = null;
+                        Constant.tfCode = comboBoxWare.getValue();
+                        FoundHQL.workerFound();
+                        ConstantsWare.wareProductList = ConstantsWare.ware.getWareProductsByIdWarehouse().toArray(new WareProductClass[0]);
+                        //Obtiene lista de productPrice
+                        Constant.entity = "ProductpriceClass";
+                        SearchHQL.searchHQL();
+                        Constant.entity = "WarehouseClass";
+                        for(WareProductClass wP: ConstantsWare.wareProductList){
+                            for(ProductpriceClass pP: ConstantsWare.productPriceList){
+                                if(wP.getIdWareProduct() == pP.getIdProductWare()){
+                                    TableShow tableShow = new TableShow();
+                                    Constant.entity = "ProductClass";
+                                    Constant.tfCode = wP.getIdProduct();
+                                    FoundHQL.workerFound();
+                                    Constant.entity = "WarehouseClass";
+                                    tableShow.setC1(ConstantsWare.product.getName());
+                                    tableShow.setC2(String.valueOf(pP.getAmount()));
+                                    tableShow.setC3(String.valueOf(pP.getPrice()));
+                                    tableShow.setC4(ConstantsWare.product.getSalePrice());
+                                    Constant.listTableShow.add(tableShow);
+                                }
+                            }
+                        }
+                    }
+
+                    c1.setText("Produto");
+                    c1.setCellValueFactory(new PropertyValueFactory<>("c1"));
+                    c2.setText("Cantidad");
+                    c2.setCellValueFactory(new PropertyValueFactory<>("c2"));
+                    c3.setText("Precio");
+                    c3.setCellValueFactory(new PropertyValueFactory<>("c3"));
+                    c4.setText("Precio Venta");
+                    c4.setCellValueFactory(new PropertyValueFactory<>("c4"));
+                    ObservableList<TableShow> datesTTT = FXCollections.observableArrayList(Constant.listTableShow);
+                    tableMain.setItems(datesTTT);
+
+                    break;
+                default:
+                    break;
+            }
+        }catch (Exception i){
+            System.out.println(i + " Error al cargar la tabla (tableLoad)");
+            i.printStackTrace();
+        }
+
+    }
 
     public void numeric(KeyEvent keyEvent) {
 
@@ -173,8 +343,22 @@ public class AccountingController {
         }
     }
     public void clean(){
+        labelBold.setVisible(false);
+        labelIVA.setVisible(false);
+
+        tfBold.setVisible(false);
+        tfIva.setVisible(false);
+
         tfBold.setText("");
         tfIva.setText("");
         save.setDisable(true);
+
+        comboBoxProduct.setVisible(false);
+        comboBoxWare.setVisible(false);
+
+        tableMain.setVisible(false);
+
     }
+
+
 }

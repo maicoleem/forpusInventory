@@ -105,41 +105,41 @@
         </Pane>
         <Pane layoutX="70.0" prefHeight="70.0" prefWidth="954.0" styleClass="paneGrey">
             <children>
-                <Button id="buttonCategory" fx:id="buttonCategory" layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Impuestos">
+                <Button id="buttonTaxes" fx:id="buttonTaxes" layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Impuestos">
                     <font>
                         <Font name="Tahoma Bold" size="20.0" />
                     </font>
                 </Button>
-                <Button id="buttonWare" fx:id="buttonWare" layoutX="160.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Inventario">
+                <Button id="buttonStock" fx:id="buttonStock" layoutX="160.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Inventario">
                     <font>
                         <Font name="Tahoma Bold" size="20.0" />
                     </font>
                 </Button>
-                <Button id="buttonService" fx:id="buttonService" layoutX="315.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Cuentas">
+                <Button id="buttonAccounting" fx:id="buttonAccounting" layoutX="315.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Cuentas">
                     <font>
                         <Font name="Tahoma Bold" size="20.0" />
                     </font>
                 </Button>
-                <Button id="buttonProducts" fx:id="buttonProducts" layoutX="470.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Aportes">
+                <Button id="buttonInput" fx:id="buttonInput" layoutX="470.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Aportes">
                     <font>
                         <Font name="Tahoma Bold" size="20.0" />
                     </font>
                 </Button>
-                <Button id="buttonTransmute" fx:id="buttonTransmute" layoutX="625.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Pendientes">
+                <Button id="buttonReceivable" fx:id="buttonReceivable" layoutX="625.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Pendientes">
                     <font>
                         <Font name="Tahoma Bold" size="20.0" />
                     </font>
                 </Button>
             </children></Pane>
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="153.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="BOLD">
+        <Label id="labelBold" fx:id="labelBold" alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="153.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="BOLD">
             <font>
                 <Font name="Tahoma Bold" size="19.0" />
             </font></Label>
-        <TextField fx:id="tfBold" alignment="CENTER_RIGHT" layoutX="242.0" layoutY="153.0" onAction="#numeric" onKeyTyped="#numeric" prefHeight="40.0" prefWidth="142.0" promptText="99.9">
+        <TextField fx:id="tfBold" alignment="CENTER_RIGHT" layoutX="242.0" layoutY="153.0" onKeyTyped="#numeric" prefHeight="40.0" prefWidth="142.0" promptText="99.9">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font></TextField>
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="102.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="IVA">
+        <Label id="labelIVA" fx:id="labelIVA" alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="102.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="IVA">
             <font>
                 <Font name="Tahoma Bold" size="19.0" />
             </font>
@@ -148,6 +148,17 @@
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font></TextField>
+      <ComboBox id="comboBoxWare" fx:id="comboBoxWare" layoutX="242.0" layoutY="102.0" onAction="#comboBoxClick" prefHeight="40.0" prefWidth="142.0" visible="false" />
+      <ComboBox id="comboBoxProduct" fx:id="comboBoxProduct" layoutX="242.0" layoutY="153.0" onAction="#comboBoxClick" prefHeight="40.0" prefWidth="142.0" visible="false" />
+      <TableView id="tableMain" fx:id="tableMain" layoutX="93.0" layoutY="221.0" prefHeight="256.0" prefWidth="655.0" visible="false">
+        <columns>
+          <TableColumn id="c1" fx:id="c1" prefWidth="75.0" text="C1" />
+          <TableColumn id="c2" fx:id="c2" prefWidth="75.0" text="C2" />
+            <TableColumn id="c3" fx:id="c3" prefWidth="75.0" text="C3" />
+            <TableColumn id="c4" fx:id="c4" prefWidth="75.0" text="C4" />
+            <TableColumn id="c5" fx:id="c5" prefWidth="75.0" text="C5" />
+        </columns>
+      </TableView>
     </children>
 
 </Pane>
