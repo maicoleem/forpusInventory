@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="--Falta configurar como se van activando los botones para evitar errores en transmutar&#10;&#10;**Se agregaron los impuestos TaxesClass">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="--Falta configurar como se van activando los botones para evitar errores en transmutar&#10;&#10;**Se esta modificando la pestaña de inventario, la idea es que con los comobobox se puedan mostrar en la tabla los productos con sus precios y cantidades&#10;**La tabla agrega productos con el comboboxware&#10;--falta combobox product&#10;--falta un indicador de color de cual combobox esta activado">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/AccountingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/AccountingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsAccounting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsAccounting.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/accounting-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/accounting-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -146,7 +145,8 @@
       <workItem from="1675998080252" duration="2582000" />
       <workItem from="1676084777954" duration="612000" />
       <workItem from="1676231611615" duration="11555000" />
-      <workItem from="1676343778931" duration="7054000" />
+      <workItem from="1676343778931" duration="7177000" />
+      <workItem from="1677026379797" duration="8498000" />
     </task>
     <task id="LOCAL-00001" summary="first: I create the project with javaFX, I add the dependencies of mySQL and hibernate into the pom.xml.&#10;Second: I add file hibernate.cfg.xml {i do file-project structure -Facets -hibernate -choose module}&#10;third: I add database &#10;fourth: I do mapping of the tables of database&#10;fifth:for the  connection I had do several config:&#10;-I add in module-info.java requires for hibernate and I add opens com.forpus.forpus_inventory.module that is where are the class of the tables that use hibernate.">
       <created>1674089245612</created>
@@ -302,7 +302,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676244557666</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="--Falta configurar como se van activando los botones para evitar errores en transmutar&#10;&#10;**Se esta modificando la pestaña de inventario, la idea es que con los comobobox se puedan mostrar en la tabla los productos con sus precios y cantidades&#10;**La tabla agrega productos con el comboboxware&#10;--falta combobox product&#10;--falta un indicador de color de cual combobox esta activado">
+      <created>1676350952174</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1676350952174</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -329,7 +336,8 @@
     <MESSAGE value="--Falta configurar como se van activando los botones para evitar errores en transmutar&#10;&#10;**Se agregaron las tablas para poder hacer los movimientos de dinero y compraventa de productos" />
     <MESSAGE value="--Falta configurar como se van activando los botones para evitar errores en transmutar&#10;&#10;**Se corrigio el doble mapeo con   @ManyToOne&#10;                                     @JoinColumn(name = &quot;idCustomer&quot;, referencedColumnName = &quot;IdentificationCard&quot;, nullable = false, insertable = false, updatable = false)&#10;**Se agragaron las tablas al mapeon en el archivo de hibernate" />
     <MESSAGE value="--Falta configurar como se van activando los botones para evitar errores en transmutar&#10;&#10;**Se agregaron los impuestos TaxesClass" />
-    <option name="LAST_COMMIT_MESSAGE" value="--Falta configurar como se van activando los botones para evitar errores en transmutar&#10;&#10;**Se agregaron los impuestos TaxesClass" />
+    <MESSAGE value="--Falta configurar como se van activando los botones para evitar errores en transmutar&#10;&#10;**Se esta modificando la pestaña de inventario, la idea es que con los comobobox se puedan mostrar en la tabla los productos con sus precios y cantidades&#10;**La tabla agrega productos con el comboboxware&#10;--falta combobox product&#10;--falta un indicador de color de cual combobox esta activado" />
+    <option name="LAST_COMMIT_MESSAGE" value="--Falta configurar como se van activando los botones para evitar errores en transmutar&#10;&#10;**Se esta modificando la pestaña de inventario, la idea es que con los comobobox se puedan mostrar en la tabla los productos con sus precios y cantidades&#10;**La tabla agrega productos con el comboboxware&#10;--falta combobox product&#10;--falta un indicador de color de cual combobox esta activado" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

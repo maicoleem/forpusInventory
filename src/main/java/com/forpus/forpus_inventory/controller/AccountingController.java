@@ -10,7 +10,6 @@ import com.forpus.forpus_inventory.persistence.crud.SearchHQL;
 import com.forpus.forpus_inventory.persistence.entity.ProductpriceClass;
 import com.forpus.forpus_inventory.persistence.entity.TaxesClass;
 import com.forpus.forpus_inventory.persistence.entity.WareProductClass;
-import com.forpus.forpus_inventory.persistence.entity.WarehouseClass;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,6 +20,7 @@ import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class AccountingController {
@@ -48,7 +48,7 @@ public class AccountingController {
     public Label labelIVA;
     public Label labelBold;
     public ComboBox<String> comboBoxWare;
-    public ComboBox comboBoxProduct;
+    public ComboBox<String> comboBoxProduct;
     public TableView<TableShow> tableMain;
     public TableColumn<Object, Object> c1;
     public TableColumn<Object, Object> c2;
@@ -56,6 +56,19 @@ public class AccountingController {
     public TableColumn<Object, Object> c4;
 
     public TableColumn<Object, Object> c5;
+    public TextField tfCode;
+    public Label labelCode;
+    public Button bSearchCode;
+    public Button bCancelCode;
+    public TableView tableTwo;
+    public TableColumn c21;
+    public TableColumn c22;
+    public TableColumn c23;
+    public TableColumn c24;
+    public TableColumn c25;
+    public Label labelNameShow;
+    public Label labelPhone;
+    public Label labelAddress;
 
     @FXML
     protected void buttonSlide(ActionEvent event) throws IOException {
@@ -189,6 +202,26 @@ public class AccountingController {
                  los trabajadores, los socios y los proveedores
                 * */
                 Constant.entity = "Accounting";
+                tfCode.setVisible(true);
+                labelCode.setVisible(true);
+                bSearchCode.setVisible(true);
+                bCancelCode.setVisible(true);
+                tableTwo.setVisible(true);
+                labelNameShow.setVisible(true);
+                labelPhone.setVisible(true);
+                labelAddress.setVisible(true);
+
+                labelIVA.setVisible(true);
+                labelIVA.setText("TIPO");
+                labelBold.setVisible(true);
+                labelBold.setText("NOMBRE");
+
+                comboBoxWare.setVisible(true);
+                comboBoxProduct.setVisible(true);
+                tableMain.setVisible(true);
+
+                comboBoxLoad();
+
                 break;
             case "buttonInput":
                 //Se debe de porder hacer ingresos de dinero a la cuenta de la compañia
@@ -220,6 +253,7 @@ public class AccountingController {
                     }
                 }
                 comboBoxWare.getItems().addAll(listComboBox);
+
                 //Carga los productos
                 Constant.entity = "ProductClass";
                 listComboBox.clear();
@@ -230,8 +264,15 @@ public class AccountingController {
                         listComboBox.add(product);
                     }
                 }
+                comboBoxProduct.getItems().addAll(listComboBox);
                 //regresa constante
                 Constant.entity = "WarehouseClass";
+                break;
+            case "Accounting":
+                //Carga los tipos de cuentas que existen
+                String [] typesAccounting = {"Compañia", "Cliente", "Socio", "Proveedor", "Trabajador"};
+                comboBoxWare.getItems().addAll(typesAccounting);
+                Constant.entity = "Accounting";
                 break;
             default:
                 break;
@@ -239,7 +280,78 @@ public class AccountingController {
     }
     public void comboBoxClick(ActionEvent event) {
         ComboBox comboBox = (ComboBox) event.getSource();
-        tableLoad(Constant.entity, comboBox.getId());
+
+        String idComboBox = comboBox.getId();
+
+        switch (Constant.entity){
+            case "WarehouseClass":
+                tableLoad(Constant.entity, idComboBox);
+                break;
+            case "Accounting":
+                if(Objects.equals(idComboBox, "comboBoxWare")){
+                    comboBoxProduct.getItems().clear();
+                    ArrayList<String> listComboBoxName = new ArrayList<>();
+                    switch (comboBoxWare.getValue()){
+                        case "Compañia":
+                            Constant.entity = "CompanyClass";
+                            SearchHQL.searchHQL();
+                            for (int i = 0; i < Constant.companiesList.length; i = i + 1) {
+                                String product = Constant.companiesList[i].getName();
+                                if (product != null) {
+                                    listComboBoxName.add(product);
+                                }
+                            }
+                            break;
+                        case "Cliente":
+                            Constant.entity = "CustomerClass";
+                            SearchHQL.searchHQL();
+                            for(int i = 0; i< Constant.customersList.length; i = i + 1){
+                                String product = Constant.customersList[i].getName();
+                                if (product != null) {
+                                    listComboBoxName.add(product);
+                                }
+                            }
+                            break;
+                        case "Socio":
+                            Constant.entity = "PartnersClass";
+                            SearchHQL.searchHQL();
+                            for(int i = 0; i< Constant.partnersList.length; i = i + 1){
+                                String product = Constant.partnersList[i].getName();
+                                if (product != null) {
+                                    listComboBoxName.add(product);
+                                }
+                            }
+                            break;
+                        case "Proveedor":
+                            Constant.entity = "ProvidersClass";
+                            SearchHQL.searchHQL();
+                            for(int i = 0; i< Constant.providersList.length; i = i + 1){
+                                String product = Constant.providersList[i].getName();
+                                if (product != null) {
+                                    listComboBoxName.add(product);
+                                }
+                            }
+                            break;
+                        case "Trabajador":
+                            Constant.entity = "WorkersClass";
+                            SearchHQL.searchHQL();
+                            for(int i = 0; i< Constant.workersList.length; i = i + 1){
+                                String product = Constant.workersList[i].getName();
+                                if (product != null) {
+                                    listComboBoxName.add(product);
+                                }
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                    comboBoxProduct.getItems().addAll(listComboBoxName);
+                }
+                Constant.entity = "Accounting";
+                break;
+            default:
+                break;
+        }
     }
 
     public void tableLoad(String entity, String idComboBox){
@@ -270,15 +382,40 @@ public class AccountingController {
                         for(WareProductClass wP: ConstantsWare.wareProductList){
                             for(ProductpriceClass pP: ConstantsWare.productPriceList){
                                 if(wP.getIdWareProduct() == pP.getIdProductWare()){
-                                    TableShow tableShow = new TableShow();
                                     Constant.entity = "ProductClass";
                                     Constant.tfCode = wP.getIdProduct();
                                     FoundHQL.workerFound();
                                     Constant.entity = "WarehouseClass";
+                                    TableShow tableShow = new TableShow();
                                     tableShow.setC1(ConstantsWare.product.getName());
                                     tableShow.setC2(String.valueOf(pP.getAmount()));
                                     tableShow.setC3(String.valueOf(pP.getPrice()));
                                     tableShow.setC4(ConstantsWare.product.getSalePrice());
+                                    tableShow.setC5(wP.getIdWare());
+                                    Constant.listTableShow.add(tableShow);
+                                }
+                            }
+                        }
+                    }else{
+                        //obtiene la lista de productos en la bodega
+                        ConstantsWare.wareProductList = null;
+                        Constant.tfCode = comboBoxProduct.getValue();
+                        Constant.entity = "ProductClass";
+                        FoundHQL.wareFound();
+                        ConstantsWare.wareProductList = ConstantsWare.product.getWareProductsByIdProduct().toArray(new WareProductClass[0]);
+                        //Obtiene lista de productPrice
+                        Constant.entity = "ProductpriceClass";
+                        SearchHQL.searchHQL();
+                        Constant.entity = "WarehouseClass";
+                        for(WareProductClass wP: ConstantsWare.wareProductList){
+                            for(ProductpriceClass pP: ConstantsWare.productPriceList){
+                                if(wP.getIdWareProduct() == pP.getIdProductWare()){
+                                    TableShow tableShow = new TableShow();
+                                    tableShow.setC1(ConstantsWare.product.getName());
+                                    tableShow.setC2(String.valueOf(pP.getAmount()));
+                                    tableShow.setC3(String.valueOf(pP.getPrice()));
+                                    tableShow.setC4(ConstantsWare.product.getSalePrice());
+                                    tableShow.setC5(wP.getIdWare());
                                     Constant.listTableShow.add(tableShow);
                                 }
                             }
@@ -293,9 +430,10 @@ public class AccountingController {
                     c3.setCellValueFactory(new PropertyValueFactory<>("c3"));
                     c4.setText("Precio Venta");
                     c4.setCellValueFactory(new PropertyValueFactory<>("c4"));
+                    c5.setText("Bodega");
+                    c5.setCellValueFactory(new PropertyValueFactory<>("c5"));
                     ObservableList<TableShow> datesTTT = FXCollections.observableArrayList(Constant.listTableShow);
                     tableMain.setItems(datesTTT);
-
                     break;
                 default:
                     break;
@@ -345,18 +483,27 @@ public class AccountingController {
     public void clean(){
         labelBold.setVisible(false);
         labelIVA.setVisible(false);
+        labelCode.setVisible(false);
+        labelNameShow.setVisible(false);
+        labelPhone.setVisible(false);
+        labelAddress.setVisible(false);
 
         tfBold.setVisible(false);
         tfIva.setVisible(false);
+        tfCode.setVisible(false);
 
         tfBold.setText("");
         tfIva.setText("");
+
         save.setDisable(true);
+        bSearchCode.setVisible(false);
+        bCancelCode.setVisible(false);
 
         comboBoxProduct.setVisible(false);
         comboBoxWare.setVisible(false);
 
         tableMain.setVisible(false);
+        tableTwo.setVisible(false);
 
     }
 

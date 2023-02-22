@@ -150,7 +150,7 @@
          </font></TextField>
       <ComboBox id="comboBoxWare" fx:id="comboBoxWare" layoutX="242.0" layoutY="102.0" onAction="#comboBoxClick" prefHeight="40.0" prefWidth="142.0" visible="false" />
       <ComboBox id="comboBoxProduct" fx:id="comboBoxProduct" layoutX="242.0" layoutY="153.0" onAction="#comboBoxClick" prefHeight="40.0" prefWidth="142.0" visible="false" />
-      <TableView id="tableMain" fx:id="tableMain" layoutX="93.0" layoutY="221.0" prefHeight="256.0" prefWidth="655.0" visible="false">
+      <TableView id="tableMain" fx:id="tableMain" layoutX="104.0" layoutY="349.0" prefHeight="256.0" prefWidth="376.0" visible="false">
         <columns>
           <TableColumn id="c1" fx:id="c1" prefWidth="75.0" text="C1" />
           <TableColumn id="c2" fx:id="c2" prefWidth="75.0" text="C2" />
@@ -159,6 +159,50 @@
             <TableColumn id="c5" fx:id="c5" prefWidth="75.0" text="C5" />
         </columns>
       </TableView>
+      <TextField id="tfCode" fx:id="tfCode" alignment="CENTER_RIGHT" layoutX="555.0" layoutY="102.0" onKeyTyped="#numeric" prefHeight="40.0" prefWidth="142.0" promptText="99.9" visible="false">
+         <font>
+            <Font name="Tahoma Bold" size="14.0" />
+         </font>
+      </TextField>
+      <Label id="labelCode" fx:id="labelCode" alignment="CENTER" contentDisplay="CENTER" layoutX="390.0" layoutY="102.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="CODIGO" visible="false">
+         <font>
+            <Font name="Tahoma Bold" size="19.0" />
+         </font>
+      </Label>
+      <Button id="bSearchCode" fx:id="bSearchCode" layoutX="400.0" layoutY="154.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="159.0" styleClass="buttonBlue" text="BUSCAR" visible="false">
+         <font>
+            <Font name="Tahoma Bold" size="20.0" />
+         </font>
+      </Button>
+      <Button id="bCancelCode" fx:id="bCancelCode" layoutX="571.0" layoutY="154.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="142.0" styleClass="buttonBlue" text="CANCELAR" visible="false">
+         <font>
+            <Font name="Tahoma Bold" size="20.0" />
+         </font>
+      </Button>
+      <TableView id="tableTwo" fx:id="tableTwo" layoutX="516.0" layoutY="349.0" prefHeight="256.0" prefWidth="376.0" visible="false">
+         <columns>
+            <TableColumn id="c1" fx:id="c21" prefWidth="75.0" text="C1" />
+            <TableColumn id="c2" fx:id="c22" prefWidth="75.0" text="C2" />
+            <TableColumn id="c3" fx:id="c23" prefWidth="75.0" text="C3" />
+            <TableColumn id="c4" fx:id="c24" prefWidth="75.0" text="C4" />
+            <TableColumn id="c5" fx:id="c25" prefWidth="75.0" text="C5" />
+         </columns>
+      </TableView>
+      <Label id="labelNameShow" fx:id="labelNameShow" contentDisplay="CENTER" layoutX="94.0" layoutY="224.0" prefHeight="40.0" prefWidth="425.0" styleClass="labelGrey" text=" NOMBRE:" visible="false">
+         <font>
+            <Font name="Tahoma Bold" size="19.0" />
+         </font>
+      </Label>
+      <Label id="labelPhone" fx:id="labelPhone" contentDisplay="CENTER" layoutX="534.0" layoutY="224.0" prefHeight="40.0" prefWidth="346.0" styleClass="labelGrey" text=" TELEFONO:" visible="false">
+         <font>
+            <Font name="Tahoma Bold" size="19.0" />
+         </font>
+      </Label>
+      <Label id="labelAddress" fx:id="labelAddress" contentDisplay="CENTER" layoutX="94.0" layoutY="279.0" prefHeight="40.0" prefWidth="790.0" styleClass="labelGrey" text=" DIRECCIÓN:" visible="false">
+         <font>
+            <Font name="Tahoma Bold" size="19.0" />
+         </font>
+      </Label>
     </children>
 
 </Pane>
