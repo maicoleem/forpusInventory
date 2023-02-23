@@ -169,7 +169,7 @@
             <Font name="Tahoma Bold" size="19.0" />
          </font>
       </Label>
-      <Button id="bSearchCode" fx:id="bSearchCode" layoutX="400.0" layoutY="154.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="159.0" styleClass="buttonBlue" text="BUSCAR" visible="false">
+      <Button id="bSearchCode" fx:id="bSearchCode" layoutX="400.0" layoutY="154.0" mnemonicParsing="false" onAction="#search" prefHeight="39.0" prefWidth="159.0" styleClass="buttonBlue" text="BUSCAR" visible="false">
          <font>
             <Font name="Tahoma Bold" size="20.0" />
          </font>

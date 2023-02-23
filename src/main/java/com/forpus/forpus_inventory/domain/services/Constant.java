@@ -46,6 +46,14 @@ public class Constant {
     public static ProvidersClass[] providersList = null;
     public static WorkersClass[] workersList = null;
     public static CompanyClass[] companyList = null;
+
+    //Objectos de las entitys
+    public static CompanyClass company = null;
+    public static CustomerClass customer = null;
+    public static PartnersClass partners = null;
+    public static ProvidersClass provider = null;
+    public static WorkersClass worker = null;
+
     public static String[] entityForean= {"CategoryoneClass", "WarehouseClass", "ServiceClass", "ProductClass"};
     public static ArrayList<TableShow> listTableShow = new ArrayList<>();
 
