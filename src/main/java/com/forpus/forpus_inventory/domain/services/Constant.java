@@ -56,6 +56,7 @@ public class Constant {
 
     public static String[] entityForean= {"CategoryoneClass", "WarehouseClass", "ServiceClass", "ProductClass"};
     public static ArrayList<TableShow> listTableShow = new ArrayList<>();
+    public static ArrayList<TableShow> listTableShow2 = new ArrayList<>();
 
     public static Boolean isEntityForeanKey(String entity){
 

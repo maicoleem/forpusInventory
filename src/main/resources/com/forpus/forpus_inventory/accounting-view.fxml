@@ -135,7 +135,7 @@
             <font>
                 <Font name="Tahoma Bold" size="19.0" />
             </font></Label>
-        <TextField fx:id="tfBold" alignment="CENTER_RIGHT" layoutX="242.0" layoutY="153.0" onKeyTyped="#numeric" prefHeight="40.0" prefWidth="142.0" promptText="99.9">
+        <TextField fx:id="tfBold" alignment="CENTER_RIGHT" layoutX="242.0" layoutY="153.0" onAction="#changeMoney" onKeyTyped="#numeric" prefHeight="40.0" prefWidth="142.0" promptText="99.9">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font></TextField>
@@ -150,7 +150,7 @@
          </font></TextField>
       <ComboBox id="comboBoxWare" fx:id="comboBoxWare" layoutX="242.0" layoutY="102.0" onAction="#comboBoxClick" prefHeight="40.0" prefWidth="142.0" visible="false" />
       <ComboBox id="comboBoxProduct" fx:id="comboBoxProduct" layoutX="242.0" layoutY="153.0" onAction="#comboBoxClick" prefHeight="40.0" prefWidth="142.0" visible="false" />
-      <TableView id="tableMain" fx:id="tableMain" layoutX="104.0" layoutY="349.0" prefHeight="256.0" prefWidth="376.0" visible="false">
+      <TableView id="tableMain" fx:id="tableMain" layoutX="104.0" layoutY="349.0" onMouseClicked="#tableSelection" prefHeight="256.0" prefWidth="376.0" visible="false">
         <columns>
           <TableColumn id="c1" fx:id="c1" prefWidth="75.0" text="C1" />
           <TableColumn id="c2" fx:id="c2" prefWidth="75.0" text="C2" />
@@ -203,6 +203,16 @@
             <Font name="Tahoma Bold" size="19.0" />
          </font>
       </Label>
+      <Label id="labelCash" fx:id="labelCash" alignment="CENTER" contentDisplay="CENTER" layoutX="395.0" layoutY="154.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="BOLD" visible="false">
+         <font>
+            <Font name="Tahoma Bold" size="19.0" />
+         </font>
+      </Label>
+      <TextField id="tfCash" fx:id="tfCash" alignment="CENTER_RIGHT" layoutX="558.0" layoutY="154.0" onAction="#changeMoney" onKeyTyped="#numeric" prefHeight="40.0" prefWidth="142.0" promptText="99.9" visible="false">
+         <font>
+            <Font name="Tahoma Bold" size="14.0" />
+         </font>
+      </TextField>
     </children>
 
 </Pane>

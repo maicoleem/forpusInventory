@@ -1,6 +1,7 @@
 package com.forpus.forpus_inventory.persistence.crud;
 
 import com.forpus.forpus_inventory.domain.services.Constant;
+import com.forpus.forpus_inventory.domain.services.ConstantsAccounting;
 import com.forpus.forpus_inventory.domain.services.ConstantsWare;
 import com.forpus.forpus_inventory.persistence.Session.SessionDB;
 import com.forpus.forpus_inventory.persistence.entity.*;
@@ -143,6 +144,10 @@ public class FoundHQL {
                     break;
                 case "TaxesClass":
                     SearchHQL.searchHQL();
+                    break;
+                case "InvoiceClass":
+                    InvoiceClass invoice = session.load(InvoiceClass.class, Constant.tfCode);
+                    ConstantsAccounting.invoice = invoice;
                     break;
                 default:
                     break;

@@ -95,6 +95,14 @@ public class CustomerClass {
         return receivable;
     }
 
+    public Collection<InvoiceClass> getInvoicesByIdCustomer() {
+        return invoicesByIdCustomer;
+    }
+
+    public void setInvoicesByIdCustomer(Collection<InvoiceClass> invoicesByIdCustomer) {
+        this.invoicesByIdCustomer = invoicesByIdCustomer;
+    }
+
     public void setReceivable(String receivable) {
         this.receivable = receivable;
     }

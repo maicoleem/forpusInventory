@@ -7,9 +7,7 @@ import com.forpus.forpus_inventory.domain.services.TableShow;
 import com.forpus.forpus_inventory.persistence.crud.FoundHQL;
 import com.forpus.forpus_inventory.persistence.crud.SaveHQL;
 import com.forpus.forpus_inventory.persistence.crud.SearchHQL;
-import com.forpus.forpus_inventory.persistence.entity.ProductpriceClass;
-import com.forpus.forpus_inventory.persistence.entity.TaxesClass;
-import com.forpus.forpus_inventory.persistence.entity.WareProductClass;
+import com.forpus.forpus_inventory.persistence.entity.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,10 +15,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class AccountingController {
@@ -60,15 +58,17 @@ public class AccountingController {
     public Label labelCode;
     public Button bSearchCode;
     public Button bCancelCode;
-    public TableView tableTwo;
-    public TableColumn c21;
-    public TableColumn c22;
-    public TableColumn c23;
-    public TableColumn c24;
-    public TableColumn c25;
+    public TableView<TableShow> tableTwo;
+    public TableColumn<Object, Object> c21;
+    public TableColumn<Object, Object> c22;
+    public TableColumn<Object, Object> c23;
+    public TableColumn<Object, Object> c24;
+    public TableColumn<Object, Object> c25;
     public Label labelNameShow;
     public Label labelPhone;
     public Label labelAddress;
+    public Label labelCash;
+    public TextField tfCash;
 
     @FXML
     protected void buttonSlide(ActionEvent event) throws IOException {
@@ -92,12 +92,10 @@ public class AccountingController {
         }
         crudEjecuted(buttonCRUD.getId());
     }
-
     public void crudEjecuted(String idButton) {
 
         switch (idButton) {
             case "save":
-
                 saveDates();
                 if (SaveHQL.workerInsertUpdate()) {
                     if (Objects.equals(Constant.messageSave, "Creado")) {
@@ -158,6 +156,22 @@ public class AccountingController {
                 }
                 save.setDisable(false);
                 break;
+            case "PartnersClass":
+                if(!"Error".equals(labelNameShow.getText())){
+                    InvoiceClass invoice = new InvoiceClass();
+                    invoice.setBank(tfBold.getText());
+                    invoice.setCash(tfCash.getText());
+                    invoice.setTaxes("0");
+                    invoice.setIndebtedness("0");
+                    invoice.setTotal("0");
+                    invoice.setDate("0");
+                    invoice.setTotalBuy("0");
+                    invoice.setUtilities("0");
+
+                    //crear cuentas genericas para evitar errores o ver si se puede hacer sin eso
+
+                }
+                break;
             default:
                 break;
         }
@@ -201,6 +215,7 @@ public class AccountingController {
                 /*Debe de mostrar el registro de los clientes, la empresa,
                  los trabajadores, los socios y los proveedores
                 * */
+                clean();
                 Constant.entity = "Accounting";
                 tfCode.setVisible(true);
                 labelCode.setVisible(true);
@@ -226,12 +241,32 @@ public class AccountingController {
                 break;
             case "buttonInput":
                 //Se debe de porder hacer ingresos de dinero a la cuenta de la compañia
+                clean();
                 Constant.entity = "PartnersClass";
+
+                labelIVA.setVisible(true);
+                labelIVA.setText("Socio");
+                comboBoxWare.setVisible(true);
+
+                labelBold.setVisible(true);
+                labelBold.setText("Banco");
+                tfBold.setVisible(true);
+
+                labelCash.setVisible(true);
+                labelCash.setText("Efectivo");
+                tfCash.setVisible(true);
+
+                labelNameShow.setVisible(true);
+                labelNameShow.setText(" Aporte a Capital Total: 0");
+
+                comboBoxLoad();
+
                 break;
             case "buttonReceivable":
                 //Se debe de poder visualizar las deudas que tiene la empresa
                 // y las deudas de los cleintes de la empresa
                 Constant.entity = "facture";
+
                 break;
             default:
                 break;
@@ -274,6 +309,17 @@ public class AccountingController {
                 String [] typesAccounting = {"Compañia", "Cliente", "Socio", "Proveedor", "Trabajador"};
                 comboBoxWare.getItems().addAll(typesAccounting);
                 Constant.entity = "Accounting";
+                break;
+            case "PartnersClass":
+                ConstantsAccounting.entity = "PartnersClass";
+                SearchHQL.searchHQL();
+                for(int i = 0; i< Constant.partnersList.length; i = i + 1){
+                    String product = Constant.partnersList[i].getName();
+                    if (product != null) {
+                        listComboBox.add(product);
+                    }
+                }
+                comboBoxWare.getItems().addAll(listComboBox);
                 break;
             default:
                 break;
@@ -391,7 +437,7 @@ public class AccountingController {
                         case "WorkersClass":
                             for(int i = 0; i< Constant.workersList.length; i = i + 1){
                                 String product = Constant.workersList[i].getName();
-                                if (product.equals(Constant.workersList[i].getIdentificationCard())) {
+                                if (product.equals(comboBoxProduct.getValue())) {
                                     tfCode.setText(Constant.workersList[i].getIdentificationCard());
                                 }
                             }
@@ -403,6 +449,17 @@ public class AccountingController {
                 }
                 Constant.entity = "Accounting";
                 break;
+            case "PartnersClass":
+                tfCash.setText("0");
+                tfBold.setText("0");
+                labelNameShow.setText("");
+                for(int i = 0; i< Constant.partnersList.length; i = i + 1){
+                    String product = Constant.partnersList[i].getName();
+                    if (product.equals(comboBoxProduct.getValue())) {
+                        Constant.partners = Constant.partnersList[i];
+                    }
+                }
+                break;
             default:
                 break;
         }
@@ -410,7 +467,6 @@ public class AccountingController {
 
     public void tableLoad(String entity, String idComboBox){
         tableMain.getItems().clear();
-        Constant.listTableShow.clear();
         c1.setText("C1");
         c2.setText("C2");
         c3.setText("C3");
@@ -423,6 +479,7 @@ public class AccountingController {
                     //carga todos los productos que hay en esa bodega
                     /*producto, cantidad, precio
                     * */
+                    Constant.listTableShow.clear();
                     if(Objects.equals(idComboBox, "comboBoxWare")){
                         //obtiene la lista de productos en la bodega
                         ConstantsWare.wareProductList = null;
@@ -489,6 +546,36 @@ public class AccountingController {
                     ObservableList<TableShow> datesTTT = FXCollections.observableArrayList(Constant.listTableShow);
                     tableMain.setItems(datesTTT);
                     break;
+                case "Accounting":
+                   if(idComboBox.equals("tableMain")){
+                       c1.setText("ID");
+                       c1.setCellValueFactory(new PropertyValueFactory<>("c1"));
+                       c2.setText("Fecha");
+                       c2.setCellValueFactory(new PropertyValueFactory<>("c2"));
+                       c3.setText("Total");
+                       c3.setCellValueFactory(new PropertyValueFactory<>("c3"));
+                       c4.setText("Deuda");
+                       c4.setCellValueFactory(new PropertyValueFactory<>("c4"));
+                       c5.setText("Utilidad");
+                       c5.setCellValueFactory(new PropertyValueFactory<>("c5"));
+                       ObservableList<TableShow> datesIv = FXCollections.observableArrayList(Constant.listTableShow);
+                       tableMain.setItems(datesIv);
+                   }
+                   if(idComboBox.equals("tableTwo")){
+                       c21.setText("Producto");
+                       c21.setCellValueFactory(new PropertyValueFactory<>("c1"));
+                       c22.setText("Cantidad");
+                       c22.setCellValueFactory(new PropertyValueFactory<>("c2"));
+                       c23.setText("P. Venta");
+                       c23.setCellValueFactory(new PropertyValueFactory<>("c3"));
+                       c24.setText("P. Compra");
+                       c24.setCellValueFactory(new PropertyValueFactory<>("c4"));
+                       c25.setText("ID factura");
+                       c25.setCellValueFactory(new PropertyValueFactory<>("c5"));
+                       ObservableList<TableShow> dateWIv = FXCollections.observableArrayList(Constant.listTableShow2);
+                       tableTwo.setItems(dateWIv);
+                   }
+                    break;
                 default:
                     break;
             }
@@ -541,6 +628,7 @@ public class AccountingController {
         labelNameShow.setVisible(false);
         labelPhone.setVisible(false);
         labelAddress.setVisible(false);
+        labelCash.setVisible(false);
 
         tfBold.setVisible(false);
         tfIva.setVisible(false);
@@ -549,6 +637,7 @@ public class AccountingController {
 
         tfBold.setText("");
         tfIva.setText("");
+        tfCash.setText("");
 
         save.setDisable(true);
         bSearchCode.setVisible(false);
@@ -559,6 +648,8 @@ public class AccountingController {
 
         tableMain.setVisible(false);
         tableTwo.setVisible(false);
+        tableMain.getItems().clear();
+        tableTwo.getItems().clear();
 
     }
 
@@ -566,31 +657,123 @@ public class AccountingController {
         Constant.entity = ConstantsAccounting.entity;
         Constant.tfCode = tfCode.getText();
         FoundHQL.workerFound();
+        Constant.entity = "Accounting";
         switch (ConstantsAccounting.entity){
             case "CompanyClass":
-                labelNameShow.setText("NOMBRE: " + Constant.company.getName());
-                labelPhone.setText("TELEFONO: " + Constant.company.getPhoneNumber());
-                labelAddress.setText("DIRECCIÓN: "+ Constant.company.getAddres());
+                labelNameShow.setText(" NOMBRE: " + Constant.company.getName());
+                labelPhone.setText(" TELEFONO: " + Constant.company.getPhoneNumber());
+                labelAddress.setText(" DIRECCIÓN: "+ Constant.company.getAddres());
+                ConstantsAccounting.invoiceList = Constant.company.getInvoicesByIdCompanyNit().toArray(new InvoiceClass[0]);
+                tableNull();
                 break;
             case "CustomerClass":
-                labelNameShow.setText("NOMBRE: " + Constant.customer.getName());
-                labelPhone.setText("TELEFONO: " + Constant.customer.getPhoneNumber());
-                labelAddress.setText("DIRECCIÓN: "+ Constant.customer.getAddres());
+                labelNameShow.setText(" NOMBRE: " + Constant.customer.getName());
+                labelPhone.setText(" TELEFONO: " + Constant.customer.getPhoneNumber());
+                labelAddress.setText(" DIRECCIÓN: "+ Constant.customer.getAddres());
+                ConstantsAccounting.invoiceList = Constant.customer.getInvoicesByIdCustomer().toArray(new InvoiceClass[0]);
+                tableNull();
                 break;
             case "PartnersClass":
-                labelNameShow.setText("NOMBRE: " + Constant.partners.getName());
-                labelPhone.setText("TELEFONO: " + Constant.partners.getPhoneNumber());
-                labelAddress.setText("DIRECCIÓN: "+ Constant.partners.getAddress());
+                labelNameShow.setText(" NOMBRE: " + Constant.partners.getName());
+                labelPhone.setText(" TELEFONO: " + Constant.partners.getPhoneNumber());
+                labelAddress.setText(" DIRECCIÓN: "+ Constant.partners.getAddress());
+                ConstantsAccounting.invoiceList = Constant.partners.getInvoicesByIdentificationCard().toArray(new InvoiceClass[0]);
+                tableNull();
                 break;
             case "ProvidersClass":
-                labelNameShow.setText("NOMBRE: " + Constant.provider.getName());
-                labelPhone.setText("TELEFONO: " + Constant.provider.getPhoneNumber());
-                labelAddress.setText("DIRECCIÓN: "+ Constant.provider.getAddress());
+                labelNameShow.setText(" NOMBRE: " + Constant.provider.getName());
+                labelPhone.setText(" TELEFONO: " + Constant.provider.getPhoneNumber());
+                labelAddress.setText(" DIRECCIÓN: "+ Constant.provider.getAddress());
+                ConstantsAccounting.invoiceList = Constant.provider.getInvoicesByNit().toArray(new InvoiceClass[0]);
+                tableNull();
                 break;
             case "WorkersClass":
-                labelNameShow.setText("NOMBRE: " + Constant.worker.getName());
-                labelPhone.setText("TELEFONO: " + Constant.worker.getPhoneNumber());
-                labelAddress.setText("DIRECCIÓN: "+ Constant.worker.getAddress());
+                labelNameShow.setText(" NOMBRE: " + Constant.worker.getName());
+                labelPhone.setText(" TELEFONO: " + Constant.worker.getPhoneNumber());
+                labelAddress.setText(" DIRECCIÓN: "+ Constant.worker.getAddress());
+                ConstantsAccounting.invoiceList = Constant.worker.getInvoicesByIdentificationCard().toArray(new InvoiceClass[0]);
+                tableNull();
+                break;
+            default:
+                break;
+        }
+
+    }
+    public void tableSelection(MouseEvent mouseEvent) {
+        if(ConstantsAccounting.invoiceList.length != 0) {
+            TableShow tableSelected = tableMain.getSelectionModel().getSelectedItem();
+            InvoiceClass invoice = new InvoiceClass();
+            invoice.setIdInvoice(Integer.valueOf(tableSelected.getC1()));
+            invoice.setDate(tableSelected.getC2());
+            invoice.setTotal(tableSelected.getC3());
+            invoice.setIndebtedness(tableSelected.getC4());
+            invoice.setUtilities(tableSelected.getC5());
+            Constant.entity = "InvoiceClass";
+            Constant.tfCode = String.valueOf(invoice.getIdInvoice());
+            FoundHQL.workerFound();
+            Constant.entity = "Accounting";
+            ConstantsAccounting.wareInvoiceList = ConstantsAccounting.invoice.getWareinvoicesByIdInvoice().toArray(new WareinvoiceClass[0]);
+            forInvoice();
+        }
+    }
+
+    public void forInvoice(){
+        for(WareinvoiceClass wiv: ConstantsAccounting.wareInvoiceList){
+            TableShow tableShow2 = new TableShow();
+            tableShow2.setC1(wiv.getProductName());
+            tableShow2.setC2(String.valueOf(wiv.getAmount()));
+            tableShow2.setC3(wiv.getPriceSale());
+            tableShow2.setC4(String.valueOf(wiv.getIdProductPrice()));
+            tableShow2.setC5(String.valueOf(wiv.getIdInvoice()));
+            Constant.listTableShow2.add(tableShow2);
+        }
+        tableLoad(Constant.entity, "tableTwo");
+    }
+
+    public void tableNull(){
+        Constant.listTableShow.clear();
+        Constant.listTableShow2.clear();
+        System.out.println(ConstantsAccounting.invoiceList.length);
+        if(ConstantsAccounting.invoiceList.length != 0) {
+            for (InvoiceClass iv : ConstantsAccounting.invoiceList) {
+                TableShow tableShow = new TableShow();
+                tableShow.setC1(String.valueOf(iv.getIdInvoice()));
+                tableShow.setC2(iv.getDate());
+                tableShow.setC3(iv.getTotal());
+                tableShow.setC4(iv.getIndebtedness());
+                tableShow.setC5(iv.getUtilities());
+                Constant.listTableShow.add(tableShow);
+                if (Constant.listTableShow.size() == 1) {
+                    ConstantsAccounting.wareInvoiceList = iv.getWareinvoicesByIdInvoice().toArray(new WareinvoiceClass[0]);
+                    forInvoice();
+                }
+            }
+        }else{
+            TableShow tableShow = new TableShow();
+            tableShow.setC1("null");
+            tableShow.setC2("null");
+            tableShow.setC3("null");
+            tableShow.setC4("null");
+            tableShow.setC5("null");
+            Constant.listTableShow.add(tableShow);
+            Constant.listTableShow2.add(tableShow);
+            tableLoad(Constant.entity, "tableTwo");
+        }
+        tableLoad(Constant.entity, "tableMain");
+    }
+
+    public void changeMoney(ActionEvent event) {
+        switch (Constant.entity){
+            case "PartnersClass":
+                try{
+                    int cash = Integer.valueOf(tfCash.getText());
+                    int bank = Integer.valueOf(tfBold.getText());
+                    int total = cash + bank;
+                    String input = String.valueOf(total);
+                    labelNameShow.setText(" Aporte a Capital Total: " + input);
+                }catch (Exception i){
+                    labelNameShow.setText("Error");
+                }
                 break;
             default:
                 break;

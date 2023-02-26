@@ -46,6 +46,15 @@ public class CompanyClass {
     @Basic
     @Column(name = "total", nullable = true, length = 20)
     private String total;
+
+    public Collection<InvoiceClass> getInvoicesByIdCompanyNit() {
+        return invoicesByIdCompanyNit;
+    }
+
+    public void setInvoicesByIdCompanyNit(Collection<InvoiceClass> invoicesByIdCompanyNit) {
+        this.invoicesByIdCompanyNit = invoicesByIdCompanyNit;
+    }
+
     @OneToMany(mappedBy = "companyByIdCustomer")
     private Collection<InvoiceClass> invoicesByIdCompanyNit;
 
