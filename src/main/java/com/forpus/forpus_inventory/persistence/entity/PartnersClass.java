@@ -31,7 +31,7 @@ public class PartnersClass {
     @Basic
     @Column(name = "receivable", nullable = true, length = 20)
     private String receivable;
-    @OneToMany(mappedBy = "partnersByIdCustomer")
+    @OneToMany(mappedBy = "partnersByIdPartners")
     private Collection<InvoiceClass> invoicesByIdentificationCard;
 
     public String getIdentificationCard() {

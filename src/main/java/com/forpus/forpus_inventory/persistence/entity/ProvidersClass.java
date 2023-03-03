@@ -34,7 +34,7 @@ public class ProvidersClass {
     @Basic
     @Column(name = "receivable", nullable = true, length = 20)
     private String receivable;
-    @OneToMany(mappedBy = "providersByIdCustomer")
+    @OneToMany(mappedBy = "providersByIdProviders")
     private Collection<InvoiceClass> invoicesByNit;
 
     public String getNit() {

@@ -93,7 +93,6 @@ public class AccountingController {
         crudEjecuted(buttonCRUD.getId());
     }
     public void crudEjecuted(String idButton) {
-
         switch (idButton) {
             case "save":
                 saveDates();
@@ -142,7 +141,6 @@ public class AccountingController {
                 break;
         }
     }
-
     private void differentiateBetweenEntities(boolean workerFound) {
         switch (Constant.entity){
             case "TaxesClass":
@@ -158,7 +156,10 @@ public class AccountingController {
                 break;
             case "PartnersClass":
                 if(!"Error".equals(labelNameShow.getText())){
+                    //Crea la factura
                     InvoiceClass invoice = new InvoiceClass();
+                    //invoice.setIdBill();
+                    //invoice.setIdCustomer();
                     invoice.setBank(tfBold.getText());
                     invoice.setCash(tfCash.getText());
                     invoice.setTaxes("0");
@@ -167,8 +168,9 @@ public class AccountingController {
                     invoice.setDate("0");
                     invoice.setTotalBuy("0");
                     invoice.setUtilities("0");
+                    invoice.setPartnersByIdPartners(Constant.partners);
+                    //Cambia el saldo de la compañia
 
-                    //crear cuentas genericas para evitar errores o ver si se puede hacer sin eso
 
                 }
                 break;
@@ -176,7 +178,6 @@ public class AccountingController {
                 break;
         }
     }
-
     @FXML
     public void buttonsOptions(ActionEvent event) {
         Button button = (Button) event.getSource();
@@ -452,7 +453,7 @@ public class AccountingController {
             case "PartnersClass":
                 tfCash.setText("0");
                 tfBold.setText("0");
-                labelNameShow.setText("");
+                labelNameShow.setText("Aporte Total: ");
                 for(int i = 0; i< Constant.partnersList.length; i = i + 1){
                     String product = Constant.partnersList[i].getName();
                     if (product.equals(comboBoxProduct.getValue())) {
@@ -464,7 +465,6 @@ public class AccountingController {
                 break;
         }
     }
-
     public void tableLoad(String entity, String idComboBox){
         tableMain.getItems().clear();
         c1.setText("C1");
@@ -585,7 +585,6 @@ public class AccountingController {
         }
 
     }
-
     public void numeric(KeyEvent keyEvent) {
 
         switch (Constant.entity){
@@ -617,6 +616,18 @@ public class AccountingController {
                         tf.setText("100");
                     }
                 }
+
+            case "PartnersClass":
+                try{
+                    int cash = Integer.valueOf(tfCash.getText());
+                    int bank = Integer.valueOf(tfBold.getText());
+                    int total = cash + bank;
+                    String input = String.valueOf(total);
+                    labelNameShow.setText(" Aporte a Capital Total: " + input);
+                }catch (Exception i){
+                    labelNameShow.setText("Error");
+                }
+                break;
             default:
                 break;
         }
@@ -652,7 +663,6 @@ public class AccountingController {
         tableTwo.getItems().clear();
 
     }
-
     public void search(ActionEvent event) {
         Constant.entity = ConstantsAccounting.entity;
         Constant.tfCode = tfCode.getText();
@@ -716,7 +726,6 @@ public class AccountingController {
             forInvoice();
         }
     }
-
     public void forInvoice(){
         for(WareinvoiceClass wiv: ConstantsAccounting.wareInvoiceList){
             TableShow tableShow2 = new TableShow();
@@ -729,7 +738,6 @@ public class AccountingController {
         }
         tableLoad(Constant.entity, "tableTwo");
     }
-
     public void tableNull(){
         Constant.listTableShow.clear();
         Constant.listTableShow2.clear();
@@ -761,23 +769,6 @@ public class AccountingController {
         }
         tableLoad(Constant.entity, "tableMain");
     }
-
     public void changeMoney(ActionEvent event) {
-        switch (Constant.entity){
-            case "PartnersClass":
-                try{
-                    int cash = Integer.valueOf(tfCash.getText());
-                    int bank = Integer.valueOf(tfBold.getText());
-                    int total = cash + bank;
-                    String input = String.valueOf(total);
-                    labelNameShow.setText(" Aporte a Capital Total: " + input);
-                }catch (Exception i){
-                    labelNameShow.setText("Error");
-                }
-                break;
-            default:
-                break;
-        }
-
     }
 }

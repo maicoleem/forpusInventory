@@ -55,7 +55,7 @@ public class CompanyClass {
         this.invoicesByIdCompanyNit = invoicesByIdCompanyNit;
     }
 
-    @OneToMany(mappedBy = "companyByIdCustomer")
+    @OneToMany(mappedBy = "companyByIdCompany")
     private Collection<InvoiceClass> invoicesByIdCompanyNit;
 
     public String getIdCompanyNIT() {

@@ -40,7 +40,7 @@ public class WorkersClass {
     @Basic
     @Column(name = "receivable", nullable = true, length = 20)
     private String receivable;
-    @OneToMany(mappedBy = "workersByIdCustomer")
+    @OneToMany(mappedBy = "workersByIdWorkers")
     private Collection<InvoiceClass> invoicesByIdentificationCard;
 
     public String getIdentificationCard() {

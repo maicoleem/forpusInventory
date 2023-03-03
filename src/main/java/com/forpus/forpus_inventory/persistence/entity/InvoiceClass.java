@@ -12,11 +12,23 @@ public class InvoiceClass {
     @Column(name = "idInvoice", nullable = false)
     private int idInvoice;
     @Basic
-    @Column(name = "idBill", nullable = false)
+    @Column(name = "idBill", nullable = true)
     private int idBill;
     @Basic
-    @Column(name = "idCustomer", nullable = false, length = 20)
+    @Column(name = "idCustomer", nullable = true, length = 20)
     private String idCustomer;
+    @Basic
+    @Column(name = "idCompany", nullable = true, length = 20)
+    private String idCompany;
+    @Basic
+    @Column(name = "idPartners", nullable = true, length = 20)
+    private String idPartners;
+    @Basic
+    @Column(name = "idProviders", nullable = true, length = 20)
+    private String idProviders;
+    @Basic
+    @Column(name = "idWorkers", nullable = true, length = 20)
+    private String idWorkers;
     @Basic
     @Column(name = "bank", nullable = false, length = 20)
     private String bank;
@@ -42,20 +54,20 @@ public class InvoiceClass {
     @Column(name = "utilities", nullable = false, length = 20)
     private String utilities;
     @ManyToOne
-    @JoinColumn(name = "idCustomer", referencedColumnName = "idCompanyNIT", nullable = false, insertable = false, updatable = false)
-    private CompanyClass companyByIdCustomer;
+    @JoinColumn(name = "idCompany", referencedColumnName = "idCompanyNIT", nullable = true, insertable = false, updatable = false)
+    private CompanyClass companyByIdCompany;
     @ManyToOne
-    @JoinColumn(name = "idCustomer", referencedColumnName = "idCustomer", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "idCustomer", referencedColumnName = "idCustomer", nullable = true, insertable = false, updatable = false)
     private CustomerClass customerByIdCustomer;
     @ManyToOne
-    @JoinColumn(name = "idCustomer", referencedColumnName = "IdentificationCard", nullable = false, insertable = false, updatable = false)
-    private PartnersClass partnersByIdCustomer;
+    @JoinColumn(name = "idPartners", referencedColumnName = "IdentificationCard", nullable = true, insertable = false, updatable = false)
+    private PartnersClass partnersByIdPartners;
     @ManyToOne
-    @JoinColumn(name = "idCustomer", referencedColumnName = "Nit", nullable = false, insertable = false, updatable = false)
-    private ProvidersClass providersByIdCustomer;
+    @JoinColumn(name = "idProviders", referencedColumnName = "Nit", nullable = true, insertable = false, updatable = false)
+    private ProvidersClass providersByIdProviders;
     @ManyToOne
-    @JoinColumn(name = "idCustomer", referencedColumnName = "IdentificationCard", nullable = false, insertable = false, updatable = false)
-    private WorkersClass workersByIdCustomer;
+    @JoinColumn(name = "idWorkers", referencedColumnName = "IdentificationCard", nullable = true, insertable = false, updatable = false)
+    private WorkersClass workersByIdWorkers;
     @OneToMany(mappedBy = "invoiceByIdInvoice")
     private Collection<WareinvoiceClass> wareinvoicesByIdInvoice;
 
@@ -152,20 +164,20 @@ public class InvoiceClass {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         InvoiceClass that = (InvoiceClass) o;
-        return idInvoice == that.idInvoice && idBill == that.idBill && Objects.equals(idCustomer, that.idCustomer) && Objects.equals(bank, that.bank) && Objects.equals(cash, that.cash) && Objects.equals(taxes, that.taxes) && Objects.equals(indebtedness, that.indebtedness) && Objects.equals(total, that.total) && Objects.equals(date, that.date) && Objects.equals(totalBuy, that.totalBuy) && Objects.equals(utilities, that.utilities);
+        return idInvoice == that.idInvoice && idBill == that.idBill && Objects.equals(idCustomer, that.idCustomer) && Objects.equals(idCompany, that.idCompany) && Objects.equals(idPartners, that.idPartners) && Objects.equals(idProviders, that.idProviders) && Objects.equals(idWorkers, that.idWorkers) && Objects.equals(bank, that.bank) && Objects.equals(cash, that.cash) && Objects.equals(taxes, that.taxes) && Objects.equals(indebtedness, that.indebtedness) && Objects.equals(total, that.total) && Objects.equals(date, that.date) && Objects.equals(totalBuy, that.totalBuy) && Objects.equals(utilities, that.utilities);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idInvoice, idBill, idCustomer, bank, cash, taxes, indebtedness, total, date, totalBuy, utilities);
+        return Objects.hash(idInvoice, idBill, idCustomer, idCompany, idPartners, idProviders, idWorkers, bank, cash, taxes, indebtedness, total, date, totalBuy, utilities);
     }
 
-    public CompanyClass getCompanyByIdCustomer() {
-        return companyByIdCustomer;
+    public CompanyClass getCompanyByIdCompany() {
+        return companyByIdCompany;
     }
 
-    public void setCompanyByIdCustomer(CompanyClass companyByIdCustomer) {
-        this.companyByIdCustomer = companyByIdCustomer;
+    public void setCompanyByIdCompany(CompanyClass companyByIdCompany) {
+        this.companyByIdCompany = companyByIdCompany;
     }
 
     public CustomerClass getCustomerByIdCustomer() {
@@ -176,34 +188,30 @@ public class InvoiceClass {
         this.customerByIdCustomer = customerByIdCustomer;
     }
 
-    public PartnersClass getPartnersByIdCustomer() {
-        return partnersByIdCustomer;
+    public PartnersClass getPartnersByIdPartners() {
+        return partnersByIdPartners;
     }
 
-    public void setPartnersByIdCustomer(PartnersClass partnersByIdCustomer) {
-        this.partnersByIdCustomer = partnersByIdCustomer;
+    public void setPartnersByIdPartners(PartnersClass partnersByIdPartners) {
+        this.partnersByIdPartners = partnersByIdPartners;
     }
 
-    public ProvidersClass getProvidersByIdCustomer() {
-        return providersByIdCustomer;
+    public ProvidersClass getProvidersByIdProviders() {
+        return providersByIdProviders;
     }
 
-    public void setProvidersByIdCustomer(ProvidersClass providersByIdCustomer) {
-        this.providersByIdCustomer = providersByIdCustomer;
+    public void setProvidersByIdProviders(ProvidersClass providersByIdProviders) {
+        this.providersByIdProviders = providersByIdProviders;
     }
-
-    public WorkersClass getWorkersByIdCustomer() {
-        return workersByIdCustomer;
+    public WorkersClass getWorkersByIdWorkers() {
+        return workersByIdWorkers;
     }
-
-    public void setWorkersByIdCustomer(WorkersClass workersByIdCustomer) {
-        this.workersByIdCustomer = workersByIdCustomer;
+    public void setWorkersByIdWorkers(WorkersClass workersByIdWorkers) {
+        this.workersByIdWorkers = workersByIdWorkers;
     }
-
     public Collection<WareinvoiceClass> getWareinvoicesByIdInvoice() {
         return wareinvoicesByIdInvoice;
     }
-
     public void setWareinvoicesByIdInvoice(Collection<WareinvoiceClass> wareinvoicesByIdInvoice) {
         this.wareinvoicesByIdInvoice = wareinvoicesByIdInvoice;
     }

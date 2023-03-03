@@ -135,7 +135,7 @@
             <font>
                 <Font name="Tahoma Bold" size="19.0" />
             </font></Label>
-        <TextField fx:id="tfBold" alignment="CENTER_RIGHT" layoutX="242.0" layoutY="153.0" onAction="#changeMoney" onKeyTyped="#numeric" prefHeight="40.0" prefWidth="142.0" promptText="99.9">
+        <TextField id="tfBold" fx:id="tfBold" alignment="CENTER_RIGHT" layoutX="242.0" layoutY="153.0" onAction="#changeMoney" onKeyTyped="#numeric" prefHeight="40.0" prefWidth="142.0" promptText="99.9">
          <font>
             <Font name="Tahoma Bold" size="14.0" />
          </font></TextField>
