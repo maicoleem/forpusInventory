@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="+Se termino la parte de cuentas&#10;*Se inicia con los aportes, estamos en la creación del incoice para poder guardar los datos en la DB.&#10;-linea 171 AccountingController.java">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Se reaizo modificación de las tablas y el mapeo para separar las claves foraneas y poder dejarlas nulas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/AccountingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/AccountingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/CompanyClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/CompanyClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/InvoiceClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/InvoiceClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/PartnersClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/PartnersClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/ProvidersClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/ProvidersClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/WorkersClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/WorkersClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/accounting-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/accounting-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,7 +154,7 @@
       <workItem from="1677209227583" duration="4922000" />
       <workItem from="1677371779258" duration="9795000" />
       <workItem from="1677636572572" duration="623000" />
-      <workItem from="1677861370916" duration="7836000" />
+      <workItem from="1677861370916" duration="16940000" />
     </task>
     <task id="LOCAL-00001" summary="first: I create the project with javaFX, I add the dependencies of mySQL and hibernate into the pom.xml.&#10;Second: I add file hibernate.cfg.xml {i do file-project structure -Facets -hibernate -choose module}&#10;third: I add database &#10;fourth: I do mapping of the tables of database&#10;fifth:for the  connection I had do several config:&#10;-I add in module-info.java requires for hibernate and I add opens com.forpus.forpus_inventory.module that is where are the class of the tables that use hibernate.">
       <created>1674089245612</created>
@@ -341,7 +338,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677382216611</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Se reaizo modificación de las tablas y el mapeo para separar las claves foraneas y poder dejarlas nulas">
+      <created>1677873529033</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1677873529033</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -372,7 +376,8 @@
     <MESSAGE value="Se realizo el diseño de cuentas, la idea es que los combobox escojan el typo y con el codigo o con el segundo combobox se pueda escoger el codigo del usuario al cual darle buscar salen sus datos y las facturas incluyendo lo que ha comprado tablamain facturas -- tabla2 productos." />
     <MESSAGE value="Se esta editando el boton buscar&#10;+Carga los datos en los label&#10;-falta cargar los datos en las tablas" />
     <MESSAGE value="+Se termino la parte de cuentas&#10;*Se inicia con los aportes, estamos en la creación del incoice para poder guardar los datos en la DB.&#10;-linea 171 AccountingController.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="+Se termino la parte de cuentas&#10;*Se inicia con los aportes, estamos en la creación del incoice para poder guardar los datos en la DB.&#10;-linea 171 AccountingController.java" />
+    <MESSAGE value="Se reaizo modificación de las tablas y el mapeo para separar las claves foraneas y poder dejarlas nulas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se reaizo modificación de las tablas y el mapeo para separar las claves foraneas y poder dejarlas nulas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

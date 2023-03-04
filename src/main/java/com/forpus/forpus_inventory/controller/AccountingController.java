@@ -137,6 +137,11 @@ public class AccountingController {
                         tx.setTaxes(tfBold.getText());
                     }
                 }
+            case "PartnersClass":
+                Constant.tfCode = String.valueOf(ConstantsAccounting.invoice.getIdInvoice());
+                Constant.entity = "InvoiceClass";
+
+                break;
             default:
                 break;
         }
@@ -160,6 +165,7 @@ public class AccountingController {
                     InvoiceClass invoice = new InvoiceClass();
                     //invoice.setIdBill();
                     //invoice.setIdCustomer();
+                    invoice.setIdPartners(Constant.partners.getIdentificationCard());
                     invoice.setBank(tfBold.getText());
                     invoice.setCash(tfCash.getText());
                     invoice.setTaxes("0");
@@ -168,16 +174,82 @@ public class AccountingController {
                     invoice.setDate("0");
                     invoice.setTotalBuy("0");
                     invoice.setUtilities("0");
+                    invoice.setRUtilities("0");
                     invoice.setPartnersByIdPartners(Constant.partners);
-                    //Cambia el saldo de la compañia
 
+                    ConstantsAccounting.invoice = invoice;
 
+                    //Cambia el saldo de la compañia y partner
+                    int bank = Integer.valueOf(invoice.getBank());
+                    int cash = Integer.valueOf(invoice.getCash());
+                    int receivable = Integer.valueOf(invoice.getIndebtedness());
+                    int total = Integer.valueOf(invoice.getTotal());
+                    final int payable = 0;
+                    int rUtilities = Integer.valueOf(invoice.getRUtilities());
+                    int utilities = Integer.valueOf(invoice.getUtilities());
+
+                    companyAccounting("PartnersClass",bank,cash,total,receivable,rUtilities, payable, utilities);
+                    ConstantsAccounting.invoice.setIdCompany(Constant.company.getIdCompanyNIT());
+                    partnerAccounting("PartnersClass",bank,cash,0,payable);
+                    save.setDisable(false);
                 }
                 break;
             default:
                 break;
         }
     }
+
+    public void companyAccounting(String entity, int bank, int cash, int total, int receivable, int uReceivable, int payable, int utilities){
+        Constant.entity = "CompanyClass";
+        Constant.tfCode = "1";
+        FoundHQL.workerFound();
+        Constant.entity = entity;
+
+        int actuallyBank = Integer.valueOf(Constant.company.getBank());
+        int actuallyCash = Integer.valueOf(Constant.company.getCash());
+        int actuallyTotal = Integer.valueOf(Constant.company.getTotal());
+        int actuallyReceivable = Integer.valueOf(Constant.company.getReceivable());
+        int actuallyUReceivable = Integer.valueOf(Constant.company.getUReceivable());
+        int actuallyPayable = Integer.valueOf(Constant.company.getPayable());
+        int actuallyUtilities = Integer.valueOf(Constant.company.getUtilities());
+
+        int newBank = bank + actuallyBank;
+        int newCash = cash + actuallyCash;
+        int newTotal = total + actuallyTotal;
+        int newReceivable = receivable + actuallyReceivable;
+        int newUReceivable = uReceivable + actuallyUReceivable;
+        int newPayable = payable + actuallyPayable;
+        int newUtilities = utilities + actuallyUtilities;
+
+        Constant.company.setBank(String.valueOf(newBank));
+        Constant.company.setCash(String.valueOf(newCash));
+        Constant.company.setTotal(String.valueOf(newTotal));
+        Constant.company.setReceivable(String.valueOf(newReceivable));
+        Constant.company.setUReceivable(String.valueOf(newUReceivable));
+        Constant.company.setPayable(String.valueOf(newPayable));
+        Constant.company.setUtilities(String.valueOf(newUtilities));
+
+    }
+
+    public void partnerAccounting(String entity, int bank, int cash, int receivable, int payable){
+
+        int actuallyBank = Integer.valueOf(Constant.partners.getBank());
+        int actuallyCash = Integer.valueOf(Constant.partners.getCash());
+        int actuallyReceivable = Integer.valueOf(Constant.partners.getReceivable());
+        int actuallyPayable = Integer.valueOf(Constant.partners.getPayable());
+
+        int newBank = bank + actuallyBank;
+        int newCash = cash + actuallyCash;
+        int newReceivable = receivable + actuallyReceivable;
+        int newPayable = payable + actuallyPayable;
+
+        Constant.partners.setBank(String.valueOf(newBank));
+        Constant.partners.setCash(String.valueOf(newCash));
+        Constant.partners.setReceivable(String.valueOf(newReceivable));
+        Constant.partners.setPayable(String.valueOf(newPayable));
+
+    }
+
     @FXML
     public void buttonsOptions(ActionEvent event) {
         Button button = (Button) event.getSource();
@@ -453,10 +525,10 @@ public class AccountingController {
             case "PartnersClass":
                 tfCash.setText("0");
                 tfBold.setText("0");
-                labelNameShow.setText("Aporte Total: ");
+                labelNameShow.setText(" Aporte Total: ");
                 for(int i = 0; i< Constant.partnersList.length; i = i + 1){
                     String product = Constant.partnersList[i].getName();
-                    if (product.equals(comboBoxProduct.getValue())) {
+                    if (product.equals(comboBoxWare.getValue())) {
                         Constant.partners = Constant.partnersList[i];
                     }
                 }
@@ -645,6 +717,7 @@ public class AccountingController {
         tfIva.setVisible(false);
         tfCode.setVisible(false);
         tfCode.setDisable(true);
+        tfCash.setVisible(false);
 
         tfBold.setText("");
         tfIva.setText("");

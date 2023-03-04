@@ -36,7 +36,7 @@ public class InvoiceClass {
     @Column(name = "cash", nullable = false, length = 20)
     private String cash;
     @Basic
-    @Column(name = "taxes", nullable = false, length = 20)
+    @Column(name = "taxes", nullable = true, length = 20)
     private String taxes;
     @Basic
     @Column(name = "indebtedness", nullable = false, length = 20)
@@ -48,11 +48,14 @@ public class InvoiceClass {
     @Column(name = "date", nullable = false, length = 20)
     private String date;
     @Basic
-    @Column(name = "totalBuy", nullable = false, length = 20)
+    @Column(name = "totalBuy", nullable = true, length = 20)
     private String totalBuy;
     @Basic
-    @Column(name = "utilities", nullable = false, length = 20)
+    @Column(name = "utilities", nullable = true, length = 20)
     private String utilities;
+    @Basic
+    @Column(name = "rUtilities", nullable = true, length = 20)
+    private String rUtilities;
     @ManyToOne
     @JoinColumn(name = "idCompany", referencedColumnName = "idCompanyNIT", nullable = true, insertable = false, updatable = false)
     private CompanyClass companyByIdCompany;
@@ -93,6 +96,38 @@ public class InvoiceClass {
 
     public void setIdCustomer(String idCustomer) {
         this.idCustomer = idCustomer;
+    }
+
+    public String getIdCompany() {
+        return idCompany;
+    }
+
+    public void setIdCompany(String idCompany) {
+        this.idCompany = idCompany;
+    }
+
+    public String getIdPartners() {
+        return idPartners;
+    }
+
+    public void setIdPartners(String idPartners) {
+        this.idPartners = idPartners;
+    }
+
+    public String getIdProviders() {
+        return idProviders;
+    }
+
+    public void setIdProviders(String idProviders) {
+        this.idProviders = idProviders;
+    }
+
+    public String getIdWorkers() {
+        return idWorkers;
+    }
+
+    public void setIdWorkers(String idWorkers) {
+        this.idWorkers = idWorkers;
     }
 
     public String getBank() {
@@ -159,17 +194,25 @@ public class InvoiceClass {
         this.utilities = utilities;
     }
 
+    public String getRUtilities() {
+        return rUtilities;
+    }
+
+    public void setRUtilities(String rUtilities) {
+        this.rUtilities = rUtilities;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         InvoiceClass that = (InvoiceClass) o;
-        return idInvoice == that.idInvoice && idBill == that.idBill && Objects.equals(idCustomer, that.idCustomer) && Objects.equals(idCompany, that.idCompany) && Objects.equals(idPartners, that.idPartners) && Objects.equals(idProviders, that.idProviders) && Objects.equals(idWorkers, that.idWorkers) && Objects.equals(bank, that.bank) && Objects.equals(cash, that.cash) && Objects.equals(taxes, that.taxes) && Objects.equals(indebtedness, that.indebtedness) && Objects.equals(total, that.total) && Objects.equals(date, that.date) && Objects.equals(totalBuy, that.totalBuy) && Objects.equals(utilities, that.utilities);
+        return idInvoice == that.idInvoice && idBill == that.idBill && Objects.equals(idCustomer, that.idCustomer) && Objects.equals(idCompany, that.idCompany) && Objects.equals(idPartners, that.idPartners) && Objects.equals(idProviders, that.idProviders) && Objects.equals(idWorkers, that.idWorkers) && Objects.equals(bank, that.bank) && Objects.equals(cash, that.cash) && Objects.equals(taxes, that.taxes) && Objects.equals(indebtedness, that.indebtedness) && Objects.equals(total, that.total) && Objects.equals(date, that.date) && Objects.equals(totalBuy, that.totalBuy) && Objects.equals(utilities, that.utilities) && Objects.equals(rUtilities, that.rUtilities);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idInvoice, idBill, idCustomer, idCompany, idPartners, idProviders, idWorkers, bank, cash, taxes, indebtedness, total, date, totalBuy, utilities);
+        return Objects.hash(idInvoice, idBill, idCustomer, idCompany, idPartners, idProviders, idWorkers, bank, cash, taxes, indebtedness, total, date, totalBuy, utilities, rUtilities);
     }
 
     public CompanyClass getCompanyByIdCompany() {

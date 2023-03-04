@@ -41,6 +41,9 @@ public class CompanyClass {
     @Column(name = "receivable", nullable = true, length = 20)
     private String receivable;
     @Basic
+    @Column(name = "uReceivable", nullable = true, length = 20)
+    private String uReceivable;
+    @Basic
     @Column(name = "utilities", nullable = true, length = 20)
     private String utilities;
     @Basic
@@ -141,7 +144,12 @@ public class CompanyClass {
     public String getReceivable() {
         return receivable;
     }
-
+    public String getUReceivable() {
+        return uReceivable;
+    }
+    public void setUReceivable(String uReceivable) {
+        this.uReceivable = uReceivable;
+    }
     public void setReceivable(String receivable) {
         this.receivable = receivable;
     }
@@ -168,11 +176,11 @@ public class CompanyClass {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CompanyClass that = (CompanyClass) o;
-        return Objects.equals(idCompanyNIT, that.idCompanyNIT) && Objects.equals(name, that.name) && Objects.equals(password, that.password) && Objects.equals(addres, that.addres) && Objects.equals(phoneNumber, that.phoneNumber) && Objects.equals(web, that.web) && Objects.equals(social, that.social) && Objects.equals(bank, that.bank) && Objects.equals(cash, that.cash) && Objects.equals(payable, that.payable) && Objects.equals(receivable, that.receivable) && Objects.equals(utilities, that.utilities) && Objects.equals(total, that.total);
+        return Objects.equals(idCompanyNIT, that.idCompanyNIT) && Objects.equals(name, that.name) && Objects.equals(password, that.password) && Objects.equals(addres, that.addres) && Objects.equals(phoneNumber, that.phoneNumber) && Objects.equals(web, that.web) && Objects.equals(social, that.social) && Objects.equals(bank, that.bank) && Objects.equals(cash, that.cash) && Objects.equals(payable, that.payable) && Objects.equals(receivable, that.receivable) && Objects.equals(uReceivable, that.uReceivable) && Objects.equals(utilities, that.utilities) && Objects.equals(total, that.total);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idCompanyNIT, name, password, addres, phoneNumber, web, social, bank, cash, payable, receivable, utilities, total);
+        return Objects.hash(idCompanyNIT, name, password, addres, phoneNumber, web, social, bank, cash, payable, receivable, uReceivable, utilities, total);
     }
 }

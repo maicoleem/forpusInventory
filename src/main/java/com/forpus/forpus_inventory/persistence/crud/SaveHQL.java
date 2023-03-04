@@ -296,6 +296,23 @@ public class SaveHQL {
                     }
                     session.getTransaction().commit();
                     break;
+                case "InvoiceClass":
+                    //incia la transferencia de datos
+                    session.beginTransaction();
+                    //guarda los datos
+                    session.save(ConstantsAccounting.invoice);
+                    //realiza el envio a la base de datos
+                    session.getTransaction().commit();
+
+                    session.beginTransaction();
+                    session.update(Constant.company);
+                    session.getTransaction().commit();
+
+                    session.beginTransaction();
+                    session.update(Constant.partners);
+                    session.getTransaction().commit();
+
+                    break;
                 default:
                     break;
             }
