@@ -123,6 +123,13 @@ public class SearchHQL {
                     List<TaxesClass> results14 = query14.list();
                     ConstantsAccounting.taxesList = results14.toArray(new TaxesClass[0]);
                     break;
+                case "MoveinvoiceClass":
+                    ConstantsAccounting.debtList = null;
+                    String hql15 = "FROM "+ Constant.entity;
+                    Query query15 = session.createQuery(hql15);
+                    List<MoveinvoiceClass> results15 = query15.list();
+                    ConstantsAccounting.debtList = results15.toArray(new MoveinvoiceClass[0]);
+                    break;
                 default:
                     break;
             }

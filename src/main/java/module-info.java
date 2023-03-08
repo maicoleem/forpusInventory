@@ -22,7 +22,7 @@ module com.forpus.forpus_inventory {
     opens com.forpus.forpus_inventory.domain.services;
     exports com.forpus.forpus_inventory.controller;
     exports com.forpus.forpus_inventory;
-
+    exports com.forpus.forpus_inventory.persistence.entity;
 
 
 }

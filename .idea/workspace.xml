@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Se reaizo modificación de las tablas y el mapeo para separar las claves foraneas y poder dejarlas nulas">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="se relizo la primer prueba de guardado de la factura con exicto.&#10;&#10;-Falta cambiar Constant.entity por ConstantsAcouunting.entity para evitar problemas en el SQL de hibernate&#10;-Falta corregir la contabilidad de las cuentas por ejemplo si un socio puede sacar dinero o adquirir deuda">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/AccountingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/AccountingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/CompanyClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/CompanyClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsAccounting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsAccounting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SearchHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SearchHQL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/InvoiceClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/InvoiceClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/accounting-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/accounting-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +62,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "import_schema_mapping": "<schema-mapping>\n  <databases>\n    <list>\n      <schema-mapping-item>\n        <source-data-source-id>d160867a-a828-41a2-9bb2-b2de3721b983</source-data-source-id>\n        <source-path>schema/&quot;inventoryaccounting&quot;</source-path>\n        <target-data-source-id>d160867a-a828-41a2-9bb2-b2de3721b983</target-data-source-id>\n        <target-path>schema/&quot;inventoryaccounting&quot;</target-path>\n      </schema-mapping-item>\n    </list>\n  </databases>\n</schema-mapping>",
     "last_directory_selection": "C:/Users/Teemo/OneDrive/java/proyecto1/forpus_inventory/src/main/java/com/forpus/forpus_inventory",
     "last_opened_file_path": "C:/Users/Teemo/.m2/repository/org/hibernate/hibernate-core/5.6.14.Final/hibernate-core-5.6.14.Final.jar",
     "list.type.of.created.stylesheet": "CSS",
@@ -95,7 +98,7 @@
       <module name="forpus_inventory" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.forpus.forpus_inventory.*" />
+          <option name="PATTERN" value="com.forpus.forpus_inventory.persistence.entity.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -154,7 +157,8 @@
       <workItem from="1677209227583" duration="4922000" />
       <workItem from="1677371779258" duration="9795000" />
       <workItem from="1677636572572" duration="623000" />
-      <workItem from="1677861370916" duration="16940000" />
+      <workItem from="1677861370916" duration="17064000" />
+      <workItem from="1678227539069" duration="11294000" />
     </task>
     <task id="LOCAL-00001" summary="first: I create the project with javaFX, I add the dependencies of mySQL and hibernate into the pom.xml.&#10;Second: I add file hibernate.cfg.xml {i do file-project structure -Facets -hibernate -choose module}&#10;third: I add database &#10;fourth: I do mapping of the tables of database&#10;fifth:for the  connection I had do several config:&#10;-I add in module-info.java requires for hibernate and I add opens com.forpus.forpus_inventory.module that is where are the class of the tables that use hibernate.">
       <created>1674089245612</created>
@@ -345,14 +349,20 @@
       <option name="project" value="LOCAL" />
       <updated>1677873529033</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="se relizo la primer prueba de guardado de la factura con exicto.&#10;&#10;-Falta cambiar Constant.entity por ConstantsAcouunting.entity para evitar problemas en el SQL de hibernate&#10;-Falta corregir la contabilidad de las cuentas por ejemplo si un socio puede sacar dinero o adquirir deuda">
+      <created>1677893051177</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1677893051177</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="first: I create the project with javaFX, I add the dependencies of mySQL and hibernate into the pom.xml.&#10;Second: I add file hibernate.cfg.xml {i do file-project structure -Facets -hibernate -choose module}&#10;third: I add database &#10;fourth: I do mapping of the tables of database&#10;fifth:for the  connection I had do several config:&#10;-I add in module-info.java requires for hibernate and I add opens com.forpus.forpus_inventory.module that is where are the class of the tables that use hibernate." />
     <MESSAGE value="I create the first view of the application and create the folders to package the classes, trying to follow the domain-oriented architectural structure" />
     <MESSAGE value="reorganice el proyecto y consulte como hacer para saltar otra view, luego las funciones." />
     <MESSAGE value="I add css file and diretory styles." />
@@ -377,7 +387,8 @@
     <MESSAGE value="Se esta editando el boton buscar&#10;+Carga los datos en los label&#10;-falta cargar los datos en las tablas" />
     <MESSAGE value="+Se termino la parte de cuentas&#10;*Se inicia con los aportes, estamos en la creación del incoice para poder guardar los datos en la DB.&#10;-linea 171 AccountingController.java" />
     <MESSAGE value="Se reaizo modificación de las tablas y el mapeo para separar las claves foraneas y poder dejarlas nulas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se reaizo modificación de las tablas y el mapeo para separar las claves foraneas y poder dejarlas nulas" />
+    <MESSAGE value="se relizo la primer prueba de guardado de la factura con exicto.&#10;&#10;-Falta cambiar Constant.entity por ConstantsAcouunting.entity para evitar problemas en el SQL de hibernate&#10;-Falta corregir la contabilidad de las cuentas por ejemplo si un socio puede sacar dinero o adquirir deuda" />
+    <option name="LAST_COMMIT_MESSAGE" value="se relizo la primer prueba de guardado de la factura con exicto.&#10;&#10;-Falta cambiar Constant.entity por ConstantsAcouunting.entity para evitar problemas en el SQL de hibernate&#10;-Falta corregir la contabilidad de las cuentas por ejemplo si un socio puede sacar dinero o adquirir deuda" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

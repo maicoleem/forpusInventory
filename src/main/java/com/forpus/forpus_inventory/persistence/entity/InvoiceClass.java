@@ -74,6 +74,9 @@ public class InvoiceClass {
     @OneToMany(mappedBy = "invoiceByIdInvoice")
     private Collection<WareinvoiceClass> wareinvoicesByIdInvoice;
 
+    @OneToMany(mappedBy = "invoiceByIdInvoice")
+    private Collection<MoveinvoiceClass> moveinvoicesByIdInvoice;
+
     public int getIdInvoice() {
         return idInvoice;
     }
@@ -257,5 +260,12 @@ public class InvoiceClass {
     }
     public void setWareinvoicesByIdInvoice(Collection<WareinvoiceClass> wareinvoicesByIdInvoice) {
         this.wareinvoicesByIdInvoice = wareinvoicesByIdInvoice;
+    }
+    public Collection<MoveinvoiceClass> getMoveinvoicesByIdInvoice() {
+        return moveinvoicesByIdInvoice;
+    }
+
+    public void setMoveinvoicesByIdInvoice(Collection<MoveinvoiceClass> moveinvoicesByIdInvoice) {
+        this.moveinvoicesByIdInvoice = moveinvoicesByIdInvoice;
     }
 }

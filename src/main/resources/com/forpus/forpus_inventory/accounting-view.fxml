@@ -174,7 +174,7 @@
             <Font name="Tahoma Bold" size="20.0" />
          </font>
       </Button>
-      <Button id="bCancelCode" fx:id="bCancelCode" layoutX="571.0" layoutY="154.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="142.0" styleClass="buttonBlue" text="CANCELAR" visible="false">
+      <Button id="bCancelCode" fx:id="bCancelCode" layoutX="571.0" layoutY="154.0" mnemonicParsing="false" onAction="#cancel" prefHeight="39.0" prefWidth="142.0" styleClass="buttonBlue" text="CANCELAR" visible="false">
          <font>
             <Font name="Tahoma Bold" size="20.0" />
          </font>
@@ -213,6 +213,8 @@
             <Font name="Tahoma Bold" size="14.0" />
          </font>
       </TextField>
+      <CheckBox id="checkBoxDebt" fx:id="checkBoxDebt" layoutX="819.0" layoutY="114.0" mnemonicParsing="false" onAction="#checkBox" text="CheckBox" visible="false" />
+      <CheckBox id="checkBoxPay" fx:id="checkBoxPay" layoutX="819.0" layoutY="146.0" mnemonicParsing="false" onAction="#checkBox" text="CheckBox" visible="false" />
     </children>
 
 </Pane>
