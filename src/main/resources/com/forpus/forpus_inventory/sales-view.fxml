@@ -105,17 +105,17 @@
         </Pane>
         <Pane layoutX="70.0" prefHeight="70.0" prefWidth="954.0" styleClass="paneGrey">
             <children>
-                <Button id="buttonCategory" fx:id="buttonCategory" layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="PRODUCTO">
+                <Button id="buttonProduct0" fx:id="buttonProduct0" layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="PRODUCTO">
                     <font>
                         <Font name="Tahoma Bold" size="20.0" />
                     </font>
                 </Button>
-                <Button id="buttonWare" fx:id="buttonWare" layoutX="160.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="SERVICIOS">
+                <Button id="buttonService" fx:id="buttonService" layoutX="160.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="SERVICIOS">
                     <font>
                         <Font name="Tahoma Bold" size="20.0" />
                     </font>
                 </Button>
-                <Button id="buttonService" fx:id="buttonService" layoutX="315.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="CREDITOS">
+                <Button id="buttonCredit" fx:id="buttonCredit" layoutX="315.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="CREDITOS">
                     <font>
                         <Font name="Tahoma Bold" size="20.0" />
                     </font>

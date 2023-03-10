@@ -5,10 +5,9 @@ import com.forpus.forpus_inventory.persistence.crud.SearchHQL;
 import com.forpus.forpus_inventory.persistence.entity.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 
@@ -33,6 +32,11 @@ public class SearchController {
     public TableColumn<Object, Object> c7;
     @FXML
     public Button button;
+    public ComboBox<String> comboBoxSearch;
+    public Label labelCodeSearch;
+    public Label labelNameSearch;
+    public Label labelCodeSearch2;
+    public Label labelNameSearch2;
 
     @FXML
     public void company(){
@@ -77,7 +81,6 @@ public class SearchController {
         ObservableList<WorkersClass> dates = FXCollections.observableArrayList(Constant.workersList);
         tableView.setItems(dates);
     }
-
     public void partner(){
         Constant.entity = "PartnersClass";
         SearchHQL.searchHQL();
@@ -96,7 +99,6 @@ public class SearchController {
         ObservableList<PartnersClass> dates = FXCollections.observableArrayList(Constant.partnersList);
         tableView.setItems(dates);
     }
-
     public void providers(){
         Constant.entity = "ProvidersClass";
         SearchHQL.searchHQL();
@@ -116,7 +118,6 @@ public class SearchController {
         ObservableList<ProvidersClass> dates = FXCollections.observableArrayList(Constant.providersList);
         tableView.setItems(dates);
     }
-
     public void customer(){
         Constant.entity = "CustomerClass";
         SearchHQL.searchHQL();
@@ -135,6 +136,32 @@ public class SearchController {
         ObservableList<CustomerClass> dates = FXCollections.observableArrayList(Constant.customersList);
         tableView.setItems(dates);
     }
-
-
+    public void comboBoxLoad(){
+        comboBoxSearch.getItems().clear();
+        String [] typesAccounting = {"Compañia", "Cliente", "Socio", "Proveedor", "Trabajador"};
+        comboBoxSearch.getItems().addAll(typesAccounting);
+    }
+    public void comboBoxClick(ActionEvent event) {
+        ComboBox comboBox = (ComboBox) event.getSource();
+        switch (comboBox.getValue().toString()){
+            case "Compañia":
+                company();
+                break;
+            case "Cliente":
+                customer();
+                break;
+            case "Socio":
+                partner();
+                break;
+            case "Proveedor":
+                providers();
+                break;
+            case "Trabajador":
+                worker();
+                break;
+            default:
+                comboBoxLoad();
+                break;
+        }
+    }
 }

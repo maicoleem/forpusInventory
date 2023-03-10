@@ -332,21 +332,7 @@ public class SettingController implements Initializable {
                 break;
             case "search":
                 if(SearchHQL.searchHQL()){
-                    try{
-                        FXMLLoader search = new FXMLLoader(HelloApplication.class.getResource("search-view.fxml"));
-                        Parent root = search.load();
-                        Scene sceneSearch = new Scene(root);
-                        Stage stage = new Stage();
-
-                        stage.initModality(Modality.APPLICATION_MODAL);
-                        stage.setScene(sceneSearch);
-
-                        stage.showAndWait();
-
-
-                    }catch (Exception e){
-                        System.out.println(e);
-                    }
+                    SalesController.searchCrud();
 
                 }else{
                     Alert alertSearch = new Alert(Alert.AlertType.INFORMATION);
