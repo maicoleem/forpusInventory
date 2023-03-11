@@ -6,13 +6,20 @@ import com.forpus.forpus_inventory.persistence.crud.SearchHQL;
 import com.forpus.forpus_inventory.persistence.entity.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import org.hibernate.jdbc.WorkExecutor;
+
+import javax.persistence.Table;
+import java.util.Objects;
 
 public class SearchController {
     @FXML
@@ -40,6 +47,8 @@ public class SearchController {
     public Label labelNameSearch;
     public Label labelCodeSearch2;
     public Label labelNameSearch2;
+    public Button buttonCopyName;
+    public Button buttonCopyCode;
 
     @FXML
     public void company(){
@@ -167,12 +176,46 @@ public class SearchController {
                 break;
         }
     }
-
     public void tableSelect(MouseEvent mouseEvent) {
-        TableShow select = (TableShow) tableView.getSelectionModel().getSelectedItem();
-        labelNameSearch.setText(select.getC2());
-    }
+        Object tShow = tableView.getSelectionModel().getSelectedItem();
 
+        String name = "Nombre:";
+        String code = "Codigo";
+
+        switch (tShow.getClass().toString()){
+            case "class com.forpus.forpus_inventory.persistence.entity.CustomerClass" :
+                CustomerClass customer = (CustomerClass) tShow;
+                name = customer.getName();
+                code = customer.getIdCustomer();
+                break;
+            case "class com.forpus.forpus_inventory.persistence.entity.CompanyClass":
+                CompanyClass company = (CompanyClass) tShow;
+                name = company.getName();
+                code = company.getIdCompanyNIT();
+                break;
+            case "class com.forpus.forpus_inventory.persistence.entity.PartnersClass":
+                PartnersClass partner = (PartnersClass) tShow;
+                name = partner.getName();
+                code = partner.getIdentificationCard();
+                break;
+            case "class com.forpus.forpus_inventory.persistence.entity.ProvidersClass":
+                ProvidersClass provider = (ProvidersClass) tShow;
+                name = provider.getName();
+                code = provider.getNit();
+                break;
+            case "class com.forpus.forpus_inventory.persistence.entity.WorkersClass":
+                WorkersClass worker = (WorkersClass) tShow;
+                name = worker.getName();
+                code = worker.getIdentificationCard();
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + tShow.getClass());
+        }
+
+        labelCodeSearch2.setText(code);
+        labelNameSearch2.setText(name);
+
+    }
     public void tableNull(){
         c1.setCellValueFactory(null);
         c2.setCellValueFactory(null);
@@ -187,4 +230,17 @@ public class SearchController {
         comboBoxLoad();
     }
 
+
+    public void cpString(ActionEvent event) {
+        Button button = (Button) event.getSource();
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        ClipboardContent content = new ClipboardContent();
+
+        if(Objects.equals(button.getId(), "buttonCopyCode")){
+            content.putString(labelCodeSearch2.getText());
+        }else{
+            content.putString(labelNameSearch2.getText());
+        }
+        clipboard.setContent(content);
+    }
 }

@@ -19,8 +19,8 @@
 
         </columns>
       </TableView>
-      <Button id="buttonCompanySearch" layoutX="123.0" layoutY="79.0" mnemonicParsing="false" onAction="#company" prefHeight="30.0" prefWidth="70.0" styleClass="buttonBlue" text="Company" />
-      <Button id="buttonPartnerSearch" layoutX="333.0" layoutY="79.0" mnemonicParsing="false" onAction="#partner" prefHeight="30.0" prefWidth="70.0" styleClass="buttonBlue" text="Partner" />
+      <Button id="buttonCopyCode" fx:id="buttonCopyCode" layoutX="123.0" layoutY="79.0" mnemonicParsing="false" onAction="#cpString" prefHeight="30.0" prefWidth="70.0" styleClass="buttonBlue" text="Copy" />
+      <Button id="buttonCopyName" fx:id="buttonCopyName" layoutX="333.0" layoutY="79.0" mnemonicParsing="false" onAction="#cpString" prefHeight="30.0" prefWidth="70.0" styleClass="buttonBlue" text="Copy" />
       <ComboBox id="comboBoxSearch" fx:id="comboBoxSearch" layoutX="17.0" layoutY="14.0" onAction="#comboBoxClick" prefHeight="36.0" prefWidth="91.0" promptText="Cliente" visibleRowCount="5" />
       <Label id="labelCodeSearch" fx:id="labelCodeSearch" alignment="CENTER" contentDisplay="CENTER" layoutX="17.0" layoutY="79.0" prefHeight="30.0" prefWidth="91.0" styleClass="labelGrey" text="Codigo" textAlignment="CENTER">
          <font>

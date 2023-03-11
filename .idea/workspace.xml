@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;  &#10;**Se esta diseñando y mejorando el view de search-view.fxml">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;  &#10;**Se esta diseñando y mejorando el view de search-view.fxml&#10;**Se carga el comboBox apenas inicia la ventana y se elimino el error que daba al cambiar de datos en la tabla">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SalesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SalesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SearchController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/search-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/search-view.fxml" afterDir="false" />
     </list>
@@ -158,7 +157,8 @@
       <workItem from="1677861370916" duration="17064000" />
       <workItem from="1678227539069" duration="12297000" />
       <workItem from="1678400427665" duration="14956000" />
-      <workItem from="1678500629089" duration="3214000" />
+      <workItem from="1678500629089" duration="3380000" />
+      <workItem from="1678555262077" duration="4577000" />
     </task>
     <task id="LOCAL-00001" summary="first: I create the project with javaFX, I add the dependencies of mySQL and hibernate into the pom.xml.&#10;Second: I add file hibernate.cfg.xml {i do file-project structure -Facets -hibernate -choose module}&#10;third: I add database &#10;fourth: I do mapping of the tables of database&#10;fifth:for the  connection I had do several config:&#10;-I add in module-info.java requires for hibernate and I add opens com.forpus.forpus_inventory.module that is where are the class of the tables that use hibernate.">
       <created>1674089245612</created>
@@ -377,14 +377,20 @@
       <option name="project" value="LOCAL" />
       <updated>1678420221445</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;  &#10;**Se esta diseñando y mejorando el view de search-view.fxml&#10;**Se carga el comboBox apenas inicia la ventana y se elimino el error que daba al cambiar de datos en la tabla">
+      <created>1678504003711</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1678504003711</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="1. the ids of buttons and labels and text field were change in setting-view.xml&#10;2. the style of buttons when click is okay&#10;3. the functionality for the button save is okay but missing update the dates." />
     <MESSAGE value="first create the functions for all the buttons of the CRUD, create the new view and its application to fetch all the information from the table" />
     <MESSAGE value="Se crearon las nuevas tablas con sus relaciones, se mapearon y e tuvo que adicionar al las clases de las entidades dos parametros para que no se mapeara dos veces las mismas tablas por las claves foraneas, se comenzo el diseño de la pestaña de almacenamiento falta diseñar la parte de la transmutación y el crud." />
     <MESSAGE value="Se creo el CRUD para las categorias, se agregaron màs botones.&#10;Para realizar el borrado de datos se tuvo que implementar un nuevo metodo en la clase DeleteHQL debido a que los metodos con session.delete(objeto) y el query no funcionaban, daban un error." />
@@ -409,7 +415,8 @@
     <MESSAGE value="+Se cambio las entity a ConstantsAccounting.entity&#10;+Los socios no pueden sacar dinero solo aportar; siempre hacen ingresos los socios y los clientes, ciempre hacen egresos los trabajadores y los proveedores&#10;-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}" />
     <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;&#10;++Se agrego el diseño para realizar una venta" />
     <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;  &#10;**Se esta diseñando y mejorando el view de search-view.fxml" />
-    <option name="LAST_COMMIT_MESSAGE" value="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;  &#10;**Se esta diseñando y mejorando el view de search-view.fxml" />
+    <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;  &#10;**Se esta diseñando y mejorando el view de search-view.fxml&#10;**Se carga el comboBox apenas inicia la ventana y se elimino el error que daba al cambiar de datos en la tabla" />
+    <option name="LAST_COMMIT_MESSAGE" value="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;  &#10;**Se esta diseñando y mejorando el view de search-view.fxml&#10;**Se carga el comboBox apenas inicia la ventana y se elimino el error que daba al cambiar de datos en la tabla" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
