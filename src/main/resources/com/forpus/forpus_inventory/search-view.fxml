@@ -4,10 +4,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane id="panelWhite" fx:id="paneWhite" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseMoved="#comboBoxLoad" opacity="0.93" prefHeight="436.0" prefWidth="703.0" stylesheets="@../styles/style-default.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.forpus.forpus_inventory.controller.SearchController">
+<Pane id="panelWhite" fx:id="paneWhite" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.93" prefHeight="436.0" prefWidth="703.0" stylesheets="@../styles/style-default.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.forpus.forpus_inventory.controller.SearchController">
 
    <children>
-      <TableView id="tableView" fx:id="tableView" layoutX="3.0" layoutY="159.0" prefHeight="270.0" prefWidth="695.0">
+      <TableView id="tableView" fx:id="tableView" layoutX="3.0" layoutY="159.0" onMouseClicked="#tableSelect" prefHeight="270.0" prefWidth="695.0">
         <columns>
             <TableColumn id="C1" fx:id="c1" maxWidth="500.0" minWidth="50.0" prefWidth="100.0" text="C1" />
             <TableColumn id="C2" fx:id="c2" prefWidth="100.0" text="C2" />
@@ -21,9 +21,6 @@
       </TableView>
       <Button id="buttonCompanySearch" layoutX="123.0" layoutY="79.0" mnemonicParsing="false" onAction="#company" prefHeight="30.0" prefWidth="70.0" styleClass="buttonBlue" text="Company" />
       <Button id="buttonPartnerSearch" layoutX="333.0" layoutY="79.0" mnemonicParsing="false" onAction="#partner" prefHeight="30.0" prefWidth="70.0" styleClass="buttonBlue" text="Partner" />
-      <Button id="buttonWorkerSearch" layoutX="584.0" layoutY="52.0" mnemonicParsing="false" onAction="#worker" prefHeight="30.0" prefWidth="70.0" styleClass="buttonBlue" text="Workers" />
-      <Button id="buttonCustomerSearch" layoutX="606.0" layoutY="83.0" mnemonicParsing="false" onAction="#customer" prefHeight="30.0" prefWidth="70.0" styleClass="buttonBlue" text="Customer" />
-      <Button id="buttonProvidersSearch" layoutX="619.0" layoutY="113.0" mnemonicParsing="false" onAction="#providers" prefHeight="30.0" prefWidth="70.0" styleClass="buttonBlue" text="Providers" />
       <ComboBox id="comboBoxSearch" fx:id="comboBoxSearch" layoutX="17.0" layoutY="14.0" onAction="#comboBoxClick" prefHeight="36.0" prefWidth="91.0" promptText="Cliente" visibleRowCount="5" />
       <Label id="labelCodeSearch" fx:id="labelCodeSearch" alignment="CENTER" contentDisplay="CENTER" layoutX="17.0" layoutY="79.0" prefHeight="30.0" prefWidth="91.0" styleClass="labelGrey" text="Codigo" textAlignment="CENTER">
          <font>

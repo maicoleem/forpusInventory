@@ -12,6 +12,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.Window;
+import javafx.stage.WindowEvent;
 
 import javax.naming.spi.ObjectFactory;
 import java.io.IOException;

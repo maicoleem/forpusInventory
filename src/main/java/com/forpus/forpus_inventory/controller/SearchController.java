@@ -1,14 +1,17 @@
 package com.forpus.forpus_inventory.controller;
 
 import com.forpus.forpus_inventory.domain.services.Constant;
+import com.forpus.forpus_inventory.domain.services.TableShow;
 import com.forpus.forpus_inventory.persistence.crud.SearchHQL;
 import com.forpus.forpus_inventory.persistence.entity.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 public class SearchController {
@@ -75,8 +78,6 @@ public class SearchController {
         c5.setCellValueFactory(new PropertyValueFactory<>("PhoneNumber"));
         c6.setText("Dirección");
         c6.setCellValueFactory(new PropertyValueFactory<>("Address"));
-        c7.setText("Instagram");
-        c7.setCellValueFactory(new PropertyValueFactory<>("Social"));
 
         ObservableList<WorkersClass> dates = FXCollections.observableArrayList(Constant.workersList);
         tableView.setItems(dates);
@@ -89,7 +90,7 @@ public class SearchController {
         c2.setText("Nombre");
         c2.setCellValueFactory(new PropertyValueFactory<>("Name"));
         c3.setText("Telefono");
-        c3.setCellValueFactory(new PropertyValueFactory<>("Phone"));
+        c3.setCellValueFactory(new PropertyValueFactory<>("PhoneNumber"));
         c4.setText("Dirección");
         c4.setCellValueFactory(new PropertyValueFactory<>("Address"));
         c5.setText("C5");
@@ -109,7 +110,7 @@ public class SearchController {
         c3.setText("Telefono");
         c3.setCellValueFactory(new PropertyValueFactory<>("PhoneNumber"));
         c4.setText("Dirección");
-        c4.setCellValueFactory(new PropertyValueFactory<>("Addres"));
+        c4.setCellValueFactory(new PropertyValueFactory<>("Address"));
         c5.setText("Email");
         c5.setCellValueFactory(new PropertyValueFactory<>("Email"));
         c6.setText("C6");
@@ -119,6 +120,7 @@ public class SearchController {
         tableView.setItems(dates);
     }
     public void customer(){
+
         Constant.entity = "CustomerClass";
         SearchHQL.searchHQL();
         c1.setText("Cedula");
@@ -136,6 +138,7 @@ public class SearchController {
         ObservableList<CustomerClass> dates = FXCollections.observableArrayList(Constant.customersList);
         tableView.setItems(dates);
     }
+    @FXML
     public void comboBoxLoad(){
         comboBoxSearch.getItems().clear();
         String [] typesAccounting = {"Compañia", "Cliente", "Socio", "Proveedor", "Trabajador"};
@@ -143,6 +146,7 @@ public class SearchController {
     }
     public void comboBoxClick(ActionEvent event) {
         ComboBox comboBox = (ComboBox) event.getSource();
+        tableNull();
         switch (comboBox.getValue().toString()){
             case "Compañia":
                 company();
@@ -160,8 +164,27 @@ public class SearchController {
                 worker();
                 break;
             default:
-                comboBoxLoad();
                 break;
         }
     }
+
+    public void tableSelect(MouseEvent mouseEvent) {
+        TableShow select = (TableShow) tableView.getSelectionModel().getSelectedItem();
+        labelNameSearch.setText(select.getC2());
+    }
+
+    public void tableNull(){
+        c1.setCellValueFactory(null);
+        c2.setCellValueFactory(null);
+        c3.setCellValueFactory(null);
+        c4.setCellValueFactory(null);
+        c5.setCellValueFactory(null);
+        c6.setCellValueFactory(null);
+        c7.setCellValueFactory(null);
+    }
+    @FXML
+    public void initialize() {
+        comboBoxLoad();
+    }
+
 }
