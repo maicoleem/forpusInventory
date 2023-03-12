@@ -1,11 +1,13 @@
 package com.forpus.forpus_inventory.controller;
 
 import com.forpus.forpus_inventory.domain.services.Constant;
+import com.forpus.forpus_inventory.domain.services.ConstantsSearch;
 import com.forpus.forpus_inventory.domain.services.TableShow;
 import com.forpus.forpus_inventory.persistence.crud.SearchHQL;
 import com.forpus.forpus_inventory.persistence.entity.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -14,8 +16,10 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import org.hibernate.jdbc.Work;
 import org.hibernate.jdbc.WorkExecutor;
 
 import javax.persistence.Table;
@@ -49,6 +53,13 @@ public class SearchController {
     public Label labelNameSearch2;
     public Button buttonCopyName;
     public Button buttonCopyCode;
+    public TextField tfFiltrate1;
+    public TextField tfFiltrate2;
+    public TextField tfFiltrate3;
+    public TextField tfFiltrate4;
+    public TextField tfFiltrate5;
+    public TextField tfFiltrate6;
+    public TextField tfFiltrate7;
 
     @FXML
     public void company(){
@@ -159,22 +170,28 @@ public class SearchController {
         switch (comboBox.getValue().toString()){
             case "Compañia":
                 company();
+                ConstantsSearch.classTable = "CompanyClass";
                 break;
             case "Cliente":
                 customer();
+                ConstantsSearch.classTable = "CustomerClass";
                 break;
             case "Socio":
                 partner();
+                ConstantsSearch.classTable = "PartnersClass";
                 break;
             case "Proveedor":
                 providers();
+                ConstantsSearch.classTable = "ProvidersClass";
                 break;
             case "Trabajador":
                 worker();
+                ConstantsSearch.classTable = "WorkersClass";
                 break;
             default:
                 break;
         }
+        ConstantsSearch.listTable = tableView.getItems();
     }
     public void tableSelect(MouseEvent mouseEvent) {
         Object tShow = tableView.getSelectionModel().getSelectedItem();
@@ -229,8 +246,6 @@ public class SearchController {
     public void initialize() {
         comboBoxLoad();
     }
-
-
     public void cpString(ActionEvent event) {
         Button button = (Button) event.getSource();
         Clipboard clipboard = Clipboard.getSystemClipboard();
@@ -242,5 +257,40 @@ public class SearchController {
             content.putString(labelNameSearch2.getText());
         }
         clipboard.setContent(content);
+    }
+
+    public void filterTable(KeyEvent keyEvent) {
+            TextField tfID = (TextField) keyEvent.getSource();
+            System.out.println(tfID.getId());
+        switch (ConstantsSearch.classTable){
+            case "CustomerClass" :
+                ObservableList<CustomerClass> listOne = ConstantsSearch.listTable;
+                FilteredList<CustomerClass> filteredCode = new FilteredList<CustomerClass>(listOne, s -> s.getIdCustomer().contains(tfFiltrate1.getText()) && s.getName().contains(tfFiltrate2.getText()) && s.getPhoneNumber().contains(tfFiltrate3.getText()) && s.getAddres().contains(tfFiltrate4.getText()));
+                tableView.setItems(filteredCode);
+                break;
+
+            case "CompanyClass":
+                ObservableList<CompanyClass> listCompany = ConstantsSearch.listTable;
+                FilteredList<CompanyClass> filteredListCompany = new FilteredList<>(listCompany, s -> s.getIdCompanyNIT().contains(tfFiltrate1.getText()) && s.getName().contains(tfFiltrate2.getText()) && s.getPassword().contains(tfFiltrate3.getText()) && s.getAddres().contains(tfFiltrate4.getText()) && s.getPhoneNumber().contains(tfFiltrate5.getText()) && s.getWeb().contains(tfFiltrate6.getText()) && s.getSocial().contains(tfFiltrate7.getText()));
+                tableView.setItems(filteredListCompany);
+                break;
+            case "PartnersClass":
+                ObservableList<PartnersClass> listPartners = ConstantsSearch.listTable;
+                FilteredList<PartnersClass> filteredListPartner = new FilteredList<PartnersClass>(listPartners, s -> s.getIdentificationCard().contains(tfFiltrate1.getText()) && s.getName().contains(tfFiltrate2.getText()) && s.getPhoneNumber().contains(tfFiltrate3.getText()) && s.getAddress().contains(tfFiltrate4.getText()));
+                tableView.setItems(filteredListPartner);
+                break;
+            case "ProvidersClass":
+                ObservableList<ProvidersClass> listProviders = ConstantsSearch.listTable;
+                FilteredList<ProvidersClass> filteredListProviders = new FilteredList<>(listProviders, s -> s.getNit().contains(tfFiltrate1.getText()) && s.getName().contains(tfFiltrate2.getText()) && s.getPhoneNumber().contains(tfFiltrate3.getText()) & s.getAddress().contains(tfFiltrate4.getText()) && s.getEmail().contains(tfFiltrate5.getText()));
+                tableView.setItems(filteredListProviders);
+                break;
+            case "WorkersClass":
+                ObservableList<WorkersClass> listWorkers = ConstantsSearch.listTable;
+                FilteredList<WorkersClass> filteredListWorkers = new FilteredList<>(listWorkers, s-> s.getIdentificationCard().contains(tfFiltrate1.getText()) && s.getName().contains(tfFiltrate2.getText()) && s.getJob().contains(tfFiltrate3.getText()) && s.getWage().contains(tfFiltrate4.getText()) && s.getPhoneNumber().contains(tfFiltrate5.getText()) && s.getAddress().contains(tfFiltrate7.getText()));
+                tableView.setItems(filteredListWorkers);
+                break;
+            default:
+                break;
+        }
     }
 }
