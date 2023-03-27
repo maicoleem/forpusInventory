@@ -15,15 +15,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import javax.persistence.Table;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -47,7 +44,7 @@ public class WareController {
     @FXML
     public TableColumn<Object, Object> c8;
     @FXML
-    public TableColumn c9;
+    public TableColumn<Object, Object> c9;
     @FXML
     public Button found;
     @FXML
@@ -1300,19 +1297,7 @@ public class WareController {
         }
         else if (Objects.equals(Constant.entity, "ProductClass")) {
 
-            Constant.entity = "CategoryoneClass";
-            SearchHQL.searchHQL();
-
-            if (ConstantsWare.categoryOneList != null) {
-                for (CategoryoneClass a : ConstantsWare.categoryOneList) {
-                    String product = a.getCategoryOne();
-                    if (product != null) {
-                        listProduct.add(product);
-                    }
-                }
-            }
-            comboBoxOne.getItems().addAll(listProduct);
-
+            comboBoxOne.getItems().addAll(categoryOne(listProduct));
             Constant.entity = "WarehouseClass";
             SearchHQL.searchHQL();
             listProduct.clear();
@@ -1356,30 +1341,8 @@ public class WareController {
                 case "comboBoxOne":
                     //limpia el comboBOx
                     comboBoxTwo.getItems().clear();
-                    //Crea la lista de categorias 2
-                    Constant.entity = "CategorytwoClass";
-                    SearchHQL.searchHQL();
-
-                    //Obtiene el id del item seleccionado en el combobox 1
-                    Constant.entity = "CategoryoneClass";
-                    Constant.tfCode = cBoxChange.getValue();
-                    FoundHQL.workerFound();
-                    //realiza esto si la lista de categoria 2 no es nulo
-
-                    if (ConstantsWare.categoryTwoList != null) {
-                        //for each para iterar la lista de categoria 2
-                        for (CategorytwoClass a : ConstantsWare.categoryTwoList) {
-                            //obtiene los nombres de la categoria dos
-                            String product = a.getCategoryTwo();
-                            //si el nombre no es nulo y el id corresponde al id de la categoria 1 lo agrega a la lista
-                            if (product != null && a.getIdCategoryOne() == ConstantsWare.one.getIdOne()) {
-                                listProduct.add(product);
-                            }
-
-                        }
-                    }
                     //carga el combobox 2
-                    comboBoxTwo.getItems().addAll(listProduct);
+                    comboBoxTwo.getItems().addAll(categoryTwo(listProduct, cBoxChange.getValue()));
                     //devuelve las constantes a los valores iniciales
                     Constant.entity = "ProductClass";
                     Constant.tfCode = tfCode.getText();
@@ -1388,23 +1351,7 @@ public class WareController {
                 case "comboBoxTwo":
 
                     comboBoxThree.getItems().clear();
-
-                    Constant.entity = "CategorythreeClass";
-                    SearchHQL.searchHQL();
-
-                    Constant.entity = "CategorytwoClass";
-                    Constant.tfName = cBoxChange.getValue();
-                    FoundHQL.workerFound();
-
-                    if (ConstantsWare.categoryThreeList != null) {
-                        for (CategorythreeClass a : ConstantsWare.categoryThreeList) {
-                            String product = a.getCategoryThree();
-                            if (product != null && a.getIdTwoThree() == ConstantsWare.two.getIdTwo()) {
-                                listProduct.add(product);
-                            }
-                        }
-                    }
-                    comboBoxThree.getItems().addAll(listProduct);
+                    comboBoxThree.getItems().addAll(categoryThree(listProduct, cBoxChange.getValue()));
 
                     Constant.entity = "ProductClass";
                     Constant.tfCode = tfCode.getText();
@@ -1633,6 +1580,7 @@ public class WareController {
         }
 
     }
+
     public void removeTable (ActionEvent event){
 
             int a = tableWare.getSelectionModel().getSelectedIndex();
@@ -1707,5 +1655,63 @@ public class WareController {
         save.setDisable(false);
         Constant.entity = "Transmute";
         tfCode.setText("Transmute");
+    }
+
+    public static ArrayList<String> categoryOne(ArrayList<String> listProduct){
+        Constant.entity = "CategoryoneClass";
+        SearchHQL.searchHQL();
+        if (ConstantsWare.categoryOneList != null) {
+            for (CategoryoneClass a : ConstantsWare.categoryOneList) {
+                String product = a.getCategoryOne();
+                if (product != null) {
+                    listProduct.add(product);
+                }
+            }
+        }
+        return listProduct;
+    }
+
+    public static ArrayList<String> categoryTwo(ArrayList<String> listProduct, String valueOne){
+        //Crea la lista de categorias 2
+        Constant.entity = "CategorytwoClass";
+        SearchHQL.searchHQL();
+        //limpia la lista de entrada
+        listProduct.clear();
+        //Obtiene el id del item seleccionado en el combobox 1
+        Constant.entity = "CategoryoneClass";
+        Constant.tfCode = valueOne;
+        FoundHQL.workerFound();
+        //realiza esto si la lista de categoria 2 no es nulo
+        if (ConstantsWare.categoryTwoList != null) {
+            //for each para iterar la lista de categoria 2
+            for (CategorytwoClass a : ConstantsWare.categoryTwoList) {
+                //obtiene los nombres de la categoria dos
+                String product = a.getCategoryTwo();
+                //si el nombre no es nulo y el id corresponde al id de la categoria 1 lo agrega a la lista
+                if (product != null && a.getIdCategoryOne() == ConstantsWare.one.getIdOne()) {
+                    listProduct.add(product);
+                }
+
+            }
+        }
+        return listProduct;
+    }
+    public static ArrayList<String> categoryThree(ArrayList<String> listProduct, String valueComboBox){
+        Constant.entity = "CategorythreeClass";
+        SearchHQL.searchHQL();
+
+        Constant.entity = "CategorytwoClass";
+        Constant.tfName = valueComboBox;
+        FoundHQL.workerFound();
+
+        if (ConstantsWare.categoryThreeList != null) {
+            for (CategorythreeClass a : ConstantsWare.categoryThreeList) {
+                String product = a.getCategoryThree();
+                if (product != null && a.getIdTwoThree() == ConstantsWare.two.getIdTwo()) {
+                    listProduct.add(product);
+                }
+            }
+        }
+        return listProduct;
     }
 }

@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;  &#10;**Ahora se puede filtrar la tabla&#10;-falta agregar productos y servicios en la busquedad">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsPurchases.java" afterDir="false" />
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;&#10;**Se modifico la view de purchases-view.fxml, se parametrizo la busquedad de proveedor y producto, falta poder agregar un producto nuevo y agregar a la tabla de compras (de ahi en adelante)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/PurchasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/PurchasesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/WareController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/WareController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsPurchases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsPurchases.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/purchases-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/purchases-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -162,7 +162,9 @@
       <workItem from="1678500629089" duration="3380000" />
       <workItem from="1678555262077" duration="4649000" />
       <workItem from="1678592587959" duration="3613000" />
-      <workItem from="1678636602868" duration="26828000" />
+      <workItem from="1678636602868" duration="26942000" />
+      <workItem from="1679799539769" duration="1016000" />
+      <workItem from="1679844637396" duration="31101000" />
     </task>
     <task id="LOCAL-00001" summary="first: I create the project with javaFX, I add the dependencies of mySQL and hibernate into the pom.xml.&#10;Second: I add file hibernate.cfg.xml {i do file-project structure -Facets -hibernate -choose module}&#10;third: I add database &#10;fourth: I do mapping of the tables of database&#10;fifth:for the  connection I had do several config:&#10;-I add in module-info.java requires for hibernate and I add opens com.forpus.forpus_inventory.module that is where are the class of the tables that use hibernate.">
       <created>1674089245612</created>
@@ -402,14 +404,20 @@
       <option name="project" value="LOCAL" />
       <updated>1678650045026</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;&#10;**Se modifico la view de purchases-view.fxml, se parametrizo la busquedad de proveedor y producto, falta poder agregar un producto nuevo y agregar a la tabla de compras (de ahi en adelante)">
+      <created>1678677620619</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1678677620619</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Se creo el CRUD para las categorias, se agregaron màs botones.&#10;Para realizar el borrado de datos se tuvo que implementar un nuevo metodo en la clase DeleteHQL debido a que los metodos con session.delete(objeto) y el query no funcionaban, daban un error." />
     <MESSAGE value="Se creo el crud para la bodegas." />
     <MESSAGE value="Se creo el FoundHQL.java y el SearchHQL.java para los productos y los servicios, ademas se configuro los comobobox para los productos.&#10;-faltan los demàs elementos del crud&#10;-falta dar formato a la view&#10;-falta la transmutacion" />
     <MESSAGE value="Ahora se puden guardar productos, se modifico la vista de la tabla y de los combobox de la pestaña productos, falta poder eliminar productos y la parte de cantidad toca pensar si se deja o si se elimna" />
@@ -434,7 +442,8 @@
     <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;  &#10;**Se esta diseñando y mejorando el view de search-view.fxml&#10;**Se carga el comboBox apenas inicia la ventana y se elimino el error que daba al cambiar de datos en la tabla" />
     <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;  &#10;**Se esta diseñando y mejorando el view de search-view.fxml&#10;**Se crea la funcionalidad de seleccionar un elemento de la talba y copiar el codigo o el nombre&#10;&#10;--Falta poder filtar la tabla" />
     <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;  &#10;**Ahora se puede filtrar la tabla&#10;-falta agregar productos y servicios en la busquedad" />
-    <option name="LAST_COMMIT_MESSAGE" value="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;  &#10;**Ahora se puede filtrar la tabla&#10;-falta agregar productos y servicios en la busquedad" />
+    <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;&#10;**Se modifico la view de purchases-view.fxml, se parametrizo la busquedad de proveedor y producto, falta poder agregar un producto nuevo y agregar a la tabla de compras (de ahi en adelante)" />
+    <option name="LAST_COMMIT_MESSAGE" value="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;&#10;**Se modifico la view de purchases-view.fxml, se parametrizo la busquedad de proveedor y producto, falta poder agregar un producto nuevo y agregar a la tabla de compras (de ahi en adelante)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
