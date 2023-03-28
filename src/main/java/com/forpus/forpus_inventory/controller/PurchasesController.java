@@ -645,4 +645,7 @@ public class PurchasesController {
         pay();
         buttonCheckIn.setDisable(ConstantsPurchases.checkin);
     }
+
+
+
 }
