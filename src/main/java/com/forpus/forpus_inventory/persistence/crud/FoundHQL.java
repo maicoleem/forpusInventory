@@ -241,6 +241,17 @@ public class FoundHQL {
                         ConstantsWare.productPrice = price;
                     }
                     break;
+                case "InvoiceClass":
+                    String qInv = "from "+ Constant.entity +" C where C.idBill in(?1)";
+                    Query queryInv = session.createQuery(qInv);
+                    queryInv.setParameter(1, Integer.valueOf(Constant.tfCode));
+                    InvoiceClass inv = (InvoiceClass) queryInv.uniqueResult();
+                    if(inv == null){
+                        return false;
+                    }else{
+                        ConstantsAccounting.invoice = inv;
+                    }
+                    break;
 
                 default:
                     break;

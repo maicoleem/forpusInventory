@@ -3,6 +3,7 @@ package com.forpus.forpus_inventory.controller;
 import com.forpus.forpus_inventory.domain.services.*;
 import com.forpus.forpus_inventory.persistence.crud.DeleteHQL;
 import com.forpus.forpus_inventory.persistence.crud.FoundHQL;
+import com.forpus.forpus_inventory.persistence.crud.SaveHQL;
 import com.forpus.forpus_inventory.persistence.crud.SearchHQL;
 import com.forpus.forpus_inventory.persistence.entity.*;
 import javafx.collections.FXCollections;
@@ -15,9 +16,11 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.util.converter.IntegerStringConverter;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Objects;
 
 public class PurchasesController {
@@ -532,16 +535,17 @@ public class PurchasesController {
         ObservableList<ProductClass> datesTTT = FXCollections.observableArrayList(ConstantsPurchases.productTableList);
         tableMain.setItems(datesTTT);
         labelTotal2.setText("0");
+
         for(ProductClass p: tableMain.getItems()){
-            int price = Integer.parseInt(p.getPurchasePrice());
-            int amount = p.getAmount();
-            int subtotal = price * amount;
+
+            int subtotal = ConstantsPurchases.subtotalProduct(String.valueOf(p.getAmount()), p.getPurchasePrice());
 
             int balance = Integer.valueOf(labelTotal2.getText());
 
             int total = subtotal + balance;
             labelTotal2.setText(String.valueOf(total));
         }
+
         labelTotal3.setText(labelTotal2.getText());
         costTaxes();
 
@@ -644,8 +648,64 @@ public class PurchasesController {
     public void payment(KeyEvent keyEvent) {
         pay();
         buttonCheckIn.setDisable(ConstantsPurchases.checkin);
+
     }
+    public void checkinInvoice(ActionEvent event) {
+        /*Crea un invoice solo con los datos necesarios para
+        *obtener la id, es obligatorio ingresar
+        *bak, cash, date y total
+        * con el idBill se encuentra la factura
+        * */
+        InvoiceClass invoice = new InvoiceClass();
+        invoice.setBank(tfBank.getText());
+        invoice.setCash(tfCash.getText());
+        invoice.setTotal(labelTotal3.getText());
+        invoice.setDate(ConstantsPurchases.dateActually());
+        invoice.setIdBill(666);
+        ConstantsAccounting.invoice = invoice;
+        Constant.entity = "InvoiceClass";
 
+        if(SaveHQL.workerInsertUpdate()){
+        //si se guarda la factura, ahora la recupera.
+            Constant.tfCode = "666";
+            FoundHQL.wareFound();
 
+            //cada producto debe de crear un wareinvoice
+            for(ProductClass p: ConstantsPurchases.productTableList){
+                WareinvoiceClass wi = new WareinvoiceClass();
+
+                wi.setIdInvoice(ConstantsAccounting.invoice.getIdInvoice());
+                wi.setIdProduct(p.getIdProduct());
+                wi.setProductName(p.getName());
+                wi.setPriceSale(p.getSalePrice());
+                wi.setPriceBuy(Integer.parseInt(p.getPurchasePrice()));
+                wi.setAmount(p.getAmount());
+                //idProductPrice es inecesario
+                wi.setIdProductPrice(6);
+                //agrega el wareproduct a la lista
+                ConstantsPurchases.wareInvoiceList.add(wi);
+            }
+            //Actualiza la invoice
+            ConstantsAccounting.invoice.setIdCompany(Constant.company.getIdCompanyNIT());
+            ConstantsAccounting.invoice.setIdProviders(Constant.provider.getNit());
+            ConstantsAccounting.invoice.setTaxes(labelIVA2.getText());
+            ConstantsAccounting.invoice.setTotalBuy(labelTotal3.getText());
+            ConstantsAccounting.invoice.setUtilities("0");
+            ConstantsAccounting.invoice.setRUtilities("0");
+
+            //Actualiza la cuenta de la compañia y el proveedor
+            ConstantsPurchases.invoiceType = "purchaseFromSupplier";
+            Constant.entity = "CompanyClass";
+            Constant.tfCode = "1";
+            FoundHQL.workerFound();
+            ConstantsPurchases.purchaseCompany(ConstantsAccounting.invoice.getBank(), ConstantsAccounting.invoice.getCash(), ConstantsAccounting.invoice.getIndebtedness());
+            ConstantsPurchases.purchaseProvider(ConstantsAccounting.invoice.getBank(), ConstantsAccounting.invoice.getCash(), ConstantsAccounting.invoice.getIndebtedness());
+
+            //Aqui se genera el sql que manda a guardar y actualizar todos los datos
+            SaveHQL.workerInsertUpdate();
+
+        }
+
+    }
 
 }

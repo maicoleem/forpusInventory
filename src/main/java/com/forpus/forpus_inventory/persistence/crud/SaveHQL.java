@@ -3,6 +3,7 @@ package com.forpus.forpus_inventory.persistence.crud;
 import com.forpus.forpus_inventory.controller.WareController;
 import com.forpus.forpus_inventory.domain.services.Constant;
 import com.forpus.forpus_inventory.domain.services.ConstantsAccounting;
+import com.forpus.forpus_inventory.domain.services.ConstantsPurchases;
 import com.forpus.forpus_inventory.domain.services.ConstantsWare;
 import com.forpus.forpus_inventory.persistence.Session.SessionDB;
 import com.forpus.forpus_inventory.persistence.entity.*;
@@ -300,18 +301,33 @@ public class SaveHQL {
                     //incia la transferencia de datos
                     session.beginTransaction();
                     //guarda los datos
-                    session.save(ConstantsAccounting.invoice);
+                    session.saveOrUpdate(ConstantsAccounting.invoice);
                     //realiza el envio a la base de datos
                     session.getTransaction().commit();
 
-                    session.beginTransaction();
-                    session.update(Constant.company);
-                    session.getTransaction().commit();
+                    switch (ConstantsPurchases.invoiceType){
+                        case "socialContribution":
+                            session.beginTransaction();
+                            session.update(Constant.company);
+                            session.getTransaction().commit();
 
-                    session.beginTransaction();
-                    session.update(Constant.partners);
-                    session.getTransaction().commit();
+                            session.beginTransaction();
+                            session.update(Constant.partners);
+                            session.getTransaction().commit();
+                            break;
+                        case "purchaseFromSupplier":
+                            //guarda el ware product
 
+                            //guarda la compañia
+
+                            //guarda el proveedor
+
+                            //actualiza los productos
+
+                            break;
+                        default:
+                            break;
+                    }
                     break;
                 default:
                     break;

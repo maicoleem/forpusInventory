@@ -1,9 +1,6 @@
 package com.forpus.forpus_inventory.controller;
 
-import com.forpus.forpus_inventory.domain.services.Constant;
-import com.forpus.forpus_inventory.domain.services.ConstantsAccounting;
-import com.forpus.forpus_inventory.domain.services.ConstantsWare;
-import com.forpus.forpus_inventory.domain.services.TableShow;
+import com.forpus.forpus_inventory.domain.services.*;
 import com.forpus.forpus_inventory.persistence.crud.FoundHQL;
 import com.forpus.forpus_inventory.persistence.crud.SaveHQL;
 import com.forpus.forpus_inventory.persistence.crud.SearchHQL;
@@ -192,8 +189,12 @@ public class AccountingController {
 
                     ConstantsAccounting.invoice = invoice;
 
+                    //El invoicetype dice que cuentas se veran afectadas
+                    ConstantsPurchases.invoiceType = "socialContribution";
+
                     companyAccounting("PartnersClass",bank,cash,total,receivable,rUtilities, payable, utilities);
                     ConstantsAccounting.invoice.setIdCompany(Constant.company.getIdCompanyNIT());
+
                     partnerAccounting("PartnersClass",bank,cash,0,payable);
                     save.setDisable(false);
                 }

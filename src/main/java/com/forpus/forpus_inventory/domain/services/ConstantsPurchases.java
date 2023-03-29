@@ -5,7 +5,10 @@ import com.forpus.forpus_inventory.persistence.entity.ProductClass;
 import com.forpus.forpus_inventory.persistence.entity.WareinvoiceClass;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class ConstantsPurchases {
 
@@ -16,6 +19,9 @@ public class ConstantsPurchases {
     public static Boolean checkin = true;
     public static InvoiceClass invoice = null;
     public static WareinvoiceClass wareInvoice = null;
+    public static ArrayList<WareinvoiceClass> wareInvoiceList = new ArrayList<>();
+
+    public static String invoiceType = null;
 
     //Este metodo permite calcular el subtotal  de cada producto
     public static Integer subtotalProduct(String amount, String price){
@@ -60,5 +66,51 @@ public class ConstantsPurchases {
 
         return rUtilities;
     }
+    //Fecha
+    public static String dateActually(){
+        // Obteniendo la fecha actual del sistema.
+        Date dateActually = new Date(Calendar.getInstance().getTimeInMillis());
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        return formatter.format(dateActually);
+    }
 
+    public static void purchaseCompany(String bank, String cash, String payable){
+
+        int bankChange = Integer.parseInt(bank);
+        int cashChange = Integer.parseInt(cash);
+        int payableChange = Integer.parseInt(payable);
+
+        int bankOld = Integer.parseInt(Constant.company.getBank());
+        int cashOld = Integer.parseInt(Constant.company.getCash());
+        int payableOld = Integer.parseInt(Constant.company.getPayable());
+        int totalOld = Integer.parseInt(Constant.company.getTotal());
+
+        int bankNew = bankOld - bankChange;
+        int cashNew = cashOld - cashChange;
+        int payableNew = payableOld + payableChange;
+        int totalNew = totalOld - bankNew - cashNew;
+
+        Constant.company.setBank(String.valueOf(bankNew));
+        Constant.company.setCash(String.valueOf(cashNew));
+        Constant.company.setPayable(String.valueOf(payableNew));
+        Constant.company.setTotal(String.valueOf(totalNew));
+    }
+    public static void purchaseProvider(String bank, String cash, String receivable){
+
+        int bankChange = Integer.parseInt(bank);
+        int cashChange = Integer.parseInt(cash);
+        int receivableChange = Integer.parseInt(receivable);
+
+        int bankOld = Integer.parseInt(Constant.provider.getBank());
+        int cashOld = Integer.parseInt(Constant.provider.getCash());
+        int receivableOld = Integer.parseInt(Constant.provider.getReceivable());
+
+        int bankNew = bankOld + bankChange;
+        int cashNew = cashOld + cashChange;
+        int receivableNew = receivableOld + receivableChange;
+
+        Constant.provider.setBank(String.valueOf(bankNew));
+        Constant.provider.setCash(String.valueOf(cashNew));
+        Constant.provider.setReceivable(String.valueOf(receivableNew));
+    }
 }

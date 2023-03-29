@@ -256,7 +256,7 @@
         </Pane>
         <Pane id="panelCheckIn" fx:id="panelCheckIn" layoutX="805.0" layoutY="569.0" prefHeight="117.0" prefWidth="159.0">
             <children>
-                <Button id="buttonCheckIn" fx:id="buttonCheckIn" layoutX="9.0" layoutY="70.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="142.0" styleClass="buttonBlue" text="FACTURAR" />
+                <Button id="buttonCheckIn" fx:id="buttonCheckIn" layoutX="9.0" layoutY="70.0" mnemonicParsing="false" onAction="#checkinInvoice" prefHeight="40.0" prefWidth="142.0" styleClass="buttonBlue" text="FACTURAR" />
                 <Button id="buttonQuote" fx:id="buttonQuote" layoutX="9.0" layoutY="14.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="142.0" styleClass="buttonBlue" text="COTIZACIÒN" />
             </children>
         </Pane>
