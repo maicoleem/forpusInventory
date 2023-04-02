@@ -13,6 +13,7 @@ import java.util.Date;
 public class ConstantsPurchases {
 
     public static String entity = null;
+    public static String entityForInvoice = null;
     public static ArrayList<ProductClass> productTableList = new ArrayList<>();
     public static Boolean iva = false;
     public static Boolean boldP = false;
@@ -73,7 +74,6 @@ public class ConstantsPurchases {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         return formatter.format(dateActually);
     }
-
     public static void purchaseCompany(String bank, String cash, String payable){
 
         int bankChange = Integer.parseInt(bank);

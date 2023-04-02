@@ -659,11 +659,13 @@ public class PurchasesController {
         InvoiceClass invoice = new InvoiceClass();
         invoice.setBank(tfBank.getText());
         invoice.setCash(tfCash.getText());
+        invoice.setIndebtedness(labelDebt.getText());
         invoice.setTotal(labelTotal3.getText());
         invoice.setDate(ConstantsPurchases.dateActually());
         invoice.setIdBill(666);
         ConstantsAccounting.invoice = invoice;
         Constant.entity = "InvoiceClass";
+        ConstantsPurchases.invoiceType = "purchaseFromSupplier";
 
         if(SaveHQL.workerInsertUpdate()){
         //si se guarda la factura, ahora la recupera.
@@ -685,6 +687,13 @@ public class PurchasesController {
                 //agrega el wareproduct a la lista
                 ConstantsPurchases.wareInvoiceList.add(wi);
             }
+
+            //Busca la compañia
+            ConstantsPurchases.invoiceType = "purchaseFromSupplier";
+            Constant.entity = "CompanyClass";
+            Constant.tfCode = "1";
+            FoundHQL.workerFound();
+
             //Actualiza la invoice
             ConstantsAccounting.invoice.setIdCompany(Constant.company.getIdCompanyNIT());
             ConstantsAccounting.invoice.setIdProviders(Constant.provider.getNit());
@@ -692,17 +701,19 @@ public class PurchasesController {
             ConstantsAccounting.invoice.setTotalBuy(labelTotal3.getText());
             ConstantsAccounting.invoice.setUtilities("0");
             ConstantsAccounting.invoice.setRUtilities("0");
+            ConstantsAccounting.invoice.setIdBill(0);
 
             //Actualiza la cuenta de la compañia y el proveedor
-            ConstantsPurchases.invoiceType = "purchaseFromSupplier";
-            Constant.entity = "CompanyClass";
-            Constant.tfCode = "1";
-            FoundHQL.workerFound();
             ConstantsPurchases.purchaseCompany(ConstantsAccounting.invoice.getBank(), ConstantsAccounting.invoice.getCash(), ConstantsAccounting.invoice.getIndebtedness());
             ConstantsPurchases.purchaseProvider(ConstantsAccounting.invoice.getBank(), ConstantsAccounting.invoice.getCash(), ConstantsAccounting.invoice.getIndebtedness());
+            ConstantsPurchases.entityForInvoice = "ProvidersClass";
 
             //Aqui se genera el sql que manda a guardar y actualizar todos los datos
-            SaveHQL.workerInsertUpdate();
+            if(SaveHQL.saveInvoice()){
+                WareController.alertSend("Datos guardados con exito");
+            }else {
+                WareController.alertSend("Error al guardar los datos");
+            }
 
         }
 

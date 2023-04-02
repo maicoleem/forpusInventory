@@ -56,8 +56,6 @@ public class SaveHQL {
             //check hibernate connection and database
             SessionDB.session();
             Session session = SessionDB.session().getSession();
-            System.out.println(Constant.entity);
-            System.out.println(Constant.tfCode);
             switch (Constant.entity){
                 case "CompanyClass":
                     CompanyClass company = new CompanyClass();
@@ -301,7 +299,7 @@ public class SaveHQL {
                     //incia la transferencia de datos
                     session.beginTransaction();
                     //guarda los datos
-                    session.saveOrUpdate(ConstantsAccounting.invoice);
+                    session.save(ConstantsAccounting.invoice);
                     //realiza el envio a la base de datos
                     session.getTransaction().commit();
 
@@ -408,6 +406,53 @@ public class SaveHQL {
             SessionDB.sessionClose();
             e.printStackTrace();
             System.out.println(e);
+            return false;
+        }
+    }
+
+    /**here go to code for save the invoice
+     * */
+    public static boolean saveInvoice(){
+        //primero salva la invoice
+        try{
+            SessionDB.session();
+            Session session = SessionDB.session().getSession();
+            session.beginTransaction();
+            session.update(ConstantsAccounting.invoice);
+            session.getTransaction().commit();
+            System.out.println("Invocie Update");
+            //segundo salva los ware invoice
+            session.beginTransaction();
+            for(WareinvoiceClass wI: ConstantsPurchases.wareInvoiceList){
+                session.save(wI);
+            }
+            session.getTransaction().commit();
+            // tercero actualiza las cuentas
+            session.beginTransaction();
+            session.update(Constant.company);
+            session.getTransaction().commit();
+            session.beginTransaction();
+            switch (ConstantsPurchases.entityForInvoice){
+                case "ProvidersClass":
+                    session.update(Constant.provider);
+                    break;
+                case "WorkersClass":
+                    session.update(Constant.worker);
+                    break;
+                case "CustomerClass":
+                    session.update(Constant.customer);
+                    break;
+                case "PartnersClass":
+                    session.update(Constant.partners);
+                    break;
+                default:
+                    System.out.println("error al actuañizar los datos");
+                    break;
+            }
+            session.getTransaction().commit();
+            return true;
+        }catch (Exception i){
+            i.printStackTrace();
             return false;
         }
     }

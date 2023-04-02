@@ -39,7 +39,7 @@ public class InvoiceClass {
     @Column(name = "taxes", nullable = true, length = 20)
     private String taxes;
     @Basic
-    @Column(name = "indebtedness", nullable = false, length = 20)
+    @Column(name = "indebtedness", nullable = true, length = 20)
     private String indebtedness;
     @Basic
     @Column(name = "total", nullable = false, length = 20)
