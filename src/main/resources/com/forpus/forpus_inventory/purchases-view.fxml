@@ -126,7 +126,7 @@
                 <Font name="Tahoma Bold" size="19.0" />
             </font></Label>
 
-        <TableView id="tableMain" fx:id="tableMain" layoutX="88.0" layoutY="352.0" prefHeight="204.0" prefWidth="918.0">
+        <TableView id="tableMain" fx:id="tableMain" layoutX="88.0" layoutY="352.0" prefHeight="204.0" prefWidth="750.0">
             <columns>
                 <TableColumn id="c1" fx:id="c1" prefWidth="75.0" text="CODIGO" />
                 <TableColumn id="c2" fx:id="c2" prefWidth="75.0" text="PRODUCTO" />
@@ -294,6 +294,34 @@
             <TableColumn id="c3" fx:id="c23" prefWidth="75.0" text="CANTIDAD" />
             <TableColumn id="c4" fx:id="c24" prefWidth="75.0" text="COSTO" />
             <TableColumn id="c10" fx:id="c25" prefWidth="75.0" text="BODEGA" />
+         </columns>
+      </TableView>
+      <TableView id="tableInvoice" fx:id="tableInvoice" layoutX="87.0" layoutY="143.0" prefHeight="200.0" prefWidth="455.0" visible="false">
+        <columns>
+          <TableColumn fx:id="i1" prefWidth="90.0" text="FACTURA" />
+            <TableColumn fx:id="i2" prefWidth="90.0" text="FECHA" />
+            <TableColumn fx:id="i3" prefWidth="90.0" text="PROVEEDOR" />
+            <TableColumn fx:id="i4" prefWidth="90.0" text="DEUDA" />
+            <TableColumn fx:id="i5" prefWidth="90.0" text="TOTAL" />
+        </columns>
+      </TableView>
+      <TableView id="tableWareInv" fx:id="tableWareInv" layoutX="592.0" layoutY="143.0" prefHeight="200.0" prefWidth="364.0" visible="false">
+         <columns>
+            <TableColumn fx:id="wi1" prefWidth="90.0" text="CODIGO" />
+            <TableColumn fx:id="wi2" prefWidth="90.0" text="PRODUCTO" />
+            <TableColumn fx:id="wi3" prefWidth="90.0" text="CANTIDAD" />
+            <TableColumn fx:id="wi4" prefWidth="90.0" text="PRECIO" />
+         </columns>
+      </TableView>
+      <TableView id="tableMoveInv" fx:id="tableMoveInv" layoutX="89.0" layoutY="352.0" prefHeight="200.0" prefWidth="631.0" visible="false">
+         <columns>
+            <TableColumn fx:id="m1" prefWidth="90.0" text="ID" />
+            <TableColumn fx:id="m2" prefWidth="90.0" text="FECHA" />
+            <TableColumn fx:id="m3" prefWidth="90.0" text="FACTURA" />
+            <TableColumn fx:id="m4" prefWidth="90.0" text="DEUDA" />
+            <TableColumn fx:id="m5" prefWidth="90.0" text="EFECTIVO" />
+            <TableColumn fx:id="m6" prefWidth="90.0" text="BANCO" />
+            <TableColumn fx:id="m7" prefWidth="90.0" text="SUBTOTAL" />
          </columns>
       </TableView>
     </children>

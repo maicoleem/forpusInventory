@@ -102,6 +102,25 @@ public class PurchasesController {
     public TableColumn<Object, Object> c23;
     public TableColumn<Object, Object> c24;
     public TableColumn<Object, Object> c25;
+    public TableView<InvoiceClass> tableInvoice;
+    public TableView tableWareInv;
+    public TableColumn i1;
+    public TableColumn i2;
+    public TableColumn i3;
+    public TableColumn i4;
+    public TableColumn i5;
+    public TableColumn wi1;
+    public TableColumn wi2;
+    public TableColumn wi3;
+    public TableColumn wi4;
+    public TableView tableMoveInv;
+    public TableColumn m1;
+    public TableColumn m2;
+    public TableColumn m3;
+    public TableColumn m4;
+    public TableColumn m5;
+    public TableColumn m6;
+    public TableColumn m7;
 
     @FXML
     protected void buttonSlide(ActionEvent event) throws IOException {
@@ -213,6 +232,18 @@ public class PurchasesController {
                 break;
             case "buttonCredit":
                 clear();
+                labelProvider.setVisible(a);
+                tfProvider.setVisible(a);
+
+                tableInvoice.setVisible(a);
+                tableMoveInv.setVisible(a);
+                tableWareInv.setVisible(a);
+
+                buttonProvider.setVisible(a);
+
+                panelCheckIn.setVisible(a);
+                panelPayment.setVisible(a);
+                panelTotal.setVisible(a);
                 break;
             default:
                 break;
@@ -258,6 +289,9 @@ public class PurchasesController {
 
         tableMain.setVisible(a);
         tableService.setVisible(a);
+        tableInvoice.setVisible(a);
+        tableMoveInv.setVisible(a);
+        tableWareInv.setVisible(a);
 
         panelCheckIn.setVisible(a);
         panelPayment.setVisible(a);
@@ -897,7 +931,8 @@ public class PurchasesController {
             ConstantsAccounting.invoice.setTotalBuy(labelTotal3.getText());
             ConstantsAccounting.invoice.setUtilities("0");
             ConstantsAccounting.invoice.setRUtilities("0");
-            ConstantsAccounting.invoice.setIdBill(0);
+            //idBIll se usa para guardar la deuda actual
+            ConstantsAccounting.invoice.setIdBill(Integer.parseInt(ConstantsAccounting.invoice.getIndebtedness()));
 
             //Actualiza la cuenta de la compañia y el proveedor
             ConstantsPurchases.purchaseCompany(ConstantsAccounting.invoice.getBank(), ConstantsAccounting.invoice.getCash(), ConstantsAccounting.invoice.getIndebtedness());

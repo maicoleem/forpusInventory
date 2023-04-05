@@ -490,6 +490,7 @@ public class SaveHQL {
                             session.getTransaction().commit();
                         }
                     }
+                    moveInvoiceNew();
                     break;
                 case "Service":
                     //Actualiza los servicios o los crea
@@ -498,6 +499,7 @@ public class SaveHQL {
                         session.saveOrUpdate(s);
                     }
                     session.getTransaction().commit();
+                    moveInvoiceNew();
                     break;
                 default:
                     break;
@@ -508,7 +510,29 @@ public class SaveHQL {
             return false;
         }
     }
-
+ public static void moveInvoiceNew(){
+     try{
+         SessionDB.session();
+         Session session = SessionDB.session().getSession();
+     //guarda la deuda
+     if(!Objects.equals(ConstantsAccounting.invoice.getIndebtedness(), "0")){
+         MoveinvoiceClass mi = new MoveinvoiceClass();
+         mi.setIdInvoice(ConstantsAccounting.invoice.getIdInvoice());
+         mi.setDate(ConstantsAccounting.invoice.getDate());
+         mi.setDebt(Integer.parseInt(ConstantsAccounting.invoice.getIndebtedness()));
+         mi.setPayCash(0);
+         mi.setPayBank(0);
+         mi.setSubtotal(0);
+         session.beginTransaction();
+         session.save(mi);
+         session.getTransaction().commit();
+     }
+     }catch (Exception i){
+         i.printStackTrace();
+         System.out.println("Error en MoveInvoiceNew- SAveHQL");
+         System.out.println(i);
+     }
+ }
 }
 
 
