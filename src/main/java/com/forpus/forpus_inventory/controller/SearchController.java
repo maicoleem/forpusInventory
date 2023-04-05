@@ -9,6 +9,7 @@ import com.forpus.forpus_inventory.persistence.entity.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.concurrent.Service;
 import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -158,7 +159,7 @@ public class SearchController {
         ObservableList<CustomerClass> dates = FXCollections.observableArrayList(Constant.customersList);
         tableView.setItems(dates);
     }
-    public void prodct(){
+    public void product(){
         Constant.entity = "ProductClass";
         SearchHQL.searchHQL();
         c1.setText("Codigo");
@@ -179,10 +180,31 @@ public class SearchController {
         tableView.setItems(datesProduct);
 
     }
+    public void service(){
+        Constant.entity = "ServiceClass";
+        SearchHQL.searchHQL();
+        c1.setText("Codigo");
+        c1.setCellValueFactory(new PropertyValueFactory<>("idService"));
+        c2.setText("Servicio");
+        c2.setCellValueFactory(new PropertyValueFactory<>("name"));
+        c3.setText("Precio");
+        c3.setCellValueFactory(new PropertyValueFactory<>("cost"));
+        c4.setText("Bodega");
+        c4.setCellValueFactory(new PropertyValueFactory<>("idWare"));
+        c5.setText("Costo Hora");
+        c5.setCellValueFactory(new PropertyValueFactory<>("payForHour"));
+        c6.setText("Horas");
+        c6.setCellValueFactory(new PropertyValueFactory<>("hour"));
+        c7.setText("Profit");
+        c7.setCellValueFactory(new PropertyValueFactory<>("profit"));
+        ObservableList<ServiceClass> datesService = FXCollections.observableArrayList(ConstantsWare.serviceList);
+        tableView.setItems(datesService);
+    }
+
     @FXML
     public void comboBoxLoad(){
         comboBoxSearch.getItems().clear();
-        String [] typesAccounting = {"Compañia", "Cliente", "Socio", "Proveedor", "Trabajador", "Producto"};
+        String [] typesAccounting = {"Compañia", "Cliente", "Socio", "Proveedor", "Trabajador", "Producto", "Servicio"};
         comboBoxSearch.getItems().addAll(typesAccounting);
     }
     public void comboBoxClick(ActionEvent event) {
@@ -210,8 +232,12 @@ public class SearchController {
                 ConstantsSearch.classTable = "WorkersClass";
                 break;
             case "Producto":
-                prodct();
+                product();
                 ConstantsSearch.classTable = "ProductClass";
+                break;
+            case "Servicio":
+                service();
+                ConstantsSearch.classTable = "ServiceClass";
                 break;
             default:
                 break;
@@ -254,6 +280,11 @@ public class SearchController {
                 ProductClass product = (ProductClass) tShow;
                 name = product.getName();
                 code = product.getIdProduct();
+                break;
+            case "class com.forpus.forpus_inventory.persistence.entity.ServiceClass":
+                ServiceClass service = (ServiceClass) tShow;
+                name = service.getName();
+                code = service.getIdService();
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + tShow.getClass());
@@ -323,8 +354,13 @@ public class SearchController {
                 ObservableList<ProductClass> listProduct = ConstantsSearch.listTable;
                 System.out.println(ConstantsSearch.listTable);
                 FilteredList<ProductClass> filteredListProduct = new FilteredList<ProductClass>(listProduct, s-> s.getIdProduct().contains(tfFiltrate1.getText()) && s.getName().contains(tfFiltrate2.getText()) && s.getPurchasePrice().contains(tfFiltrate6.getText()) && s.getSalePrice().contains(tfFiltrate7.getText()));
-                //&& s.getIdOne().toString().contains(tfFiltrate3.getText()) && s.getIdTwo().toString().contains(tfFiltrate4.getText()) && s.getIdThree().toString().contains(tfFiltrate5.getText())
                 tableView.setItems(filteredListProduct);
+                break;
+            case "ServiceClass":
+                ObservableList<ServiceClass> listService = ConstantsSearch.listTable;
+                System.out.println(ConstantsSearch.listTable);
+                FilteredList<ServiceClass> filteredListService = new FilteredList<ServiceClass>(listService, s-> s.getIdService().contains(tfFiltrate1.getText()) && s.getName().contains(tfFiltrate2.getText()) && s.getCost().contains(tfFiltrate3.getText()) && s.getIdWare().contains(tfFiltrate4.getText()) && s.getPayForHour().contains(tfFiltrate5.getText()) && s.getHour().contains(tfFiltrate6.getText()) && s.getProfit().contains(tfFiltrate7.getText()));
+                tableView.setItems(filteredListService);
                 break;
             default:
                 break;

@@ -1,7 +1,6 @@
 package com.forpus.forpus_inventory.controller;
 
 import com.forpus.forpus_inventory.domain.services.*;
-import com.forpus.forpus_inventory.persistence.crud.DeleteHQL;
 import com.forpus.forpus_inventory.persistence.crud.FoundHQL;
 import com.forpus.forpus_inventory.persistence.crud.SaveHQL;
 import com.forpus.forpus_inventory.persistence.crud.SearchHQL;
@@ -16,11 +15,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.util.converter.IntegerStringConverter;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.Objects;
 
 public class PurchasesController {
@@ -100,6 +96,12 @@ public class PurchasesController {
     public Label labelTotal1;
     public Label labelDebt;
     public Label labelSubTotal1;
+    public TableView<ServiceClass> tableService;
+    public TableColumn<Object, Object> c21;
+    public TableColumn<Object, Object> c22;
+    public TableColumn<Object, Object> c23;
+    public TableColumn<Object, Object> c24;
+    public TableColumn<Object, Object> c25;
 
     @FXML
     protected void buttonSlide(ActionEvent event) throws IOException {
@@ -113,10 +115,11 @@ public class PurchasesController {
     public void buttonsOptions(ActionEvent event) {
         Button button = (Button) event.getSource();
         clear();
+        final boolean a = true;
         switch (button.getId()){
             case "buttonProduct0":
                 ConstantsPurchases.entity = "Purchases";
-                final boolean a = true;
+                ConstantsPurchases.entityForInvoice = "ProvidersClass";
                 labelProvider.setVisible(a);
                 labelNameProvider.setVisible(a);
                 labelProduct.setVisible(a);
@@ -160,9 +163,53 @@ public class PurchasesController {
 
                 checkProduct.setVisible(a);
                 checkSale.setVisible(a);
+
+                labelProduct.setText("Producto");
+                labelNameProduct.setText("Nombre Producto");
+
                 break;
             case "buttonService":
                 clear();
+                ConstantsPurchases.entity = "Service";
+                ConstantsPurchases.entityForInvoice = "ProvidersClass";
+                labelProvider.setVisible(a);
+                labelNameProvider.setVisible(a);
+                labelProduct.setVisible(a);
+                labelNameProduct.setVisible(a);
+                labelPrice.setVisible(a);
+                labelOff.setVisible(a);
+                labelAmount.setVisible(a);
+
+                tfProvider.setVisible(a);
+                tfProduct.setVisible(a);
+                tfPrice.setVisible(a);
+                tfOff.setVisible(a);
+                tfAmount.setVisible(a);
+
+                buttonProvider.setVisible(a);
+                buttonProduct.setVisible(a);
+                buttonRegister.setVisible(a);
+                buttonSuppress.setVisible(a);
+
+                search.setVisible(a);
+                save.setVisible(a);
+                found.setVisible(a);
+                cancel.setVisible(a);
+                remove.setVisible(a);
+
+                comboBoxWare.setVisible(a);
+
+                tableService.setVisible(a);
+
+                panelCheckIn.setVisible(a);
+                panelPayment.setVisible(a);
+                panelTotal.setVisible(a);
+
+                checkProduct.setVisible(a);
+
+                labelProduct.setText("Servicio");
+                labelNameProduct.setText("Nombre Servicio");
+
                 break;
             case "buttonCredit":
                 clear();
@@ -210,6 +257,7 @@ public class PurchasesController {
         comboBoxPrice.setVisible(a);
 
         tableMain.setVisible(a);
+        tableService.setVisible(a);
 
         panelCheckIn.setVisible(a);
         panelPayment.setVisible(a);
@@ -217,7 +265,22 @@ public class PurchasesController {
         checkSale.setVisible(a);
         checkProduct.setVisible(a);
 
+        labelTotal2.setText("0");
+        labelTotal3.setText("0");
+        labelIVA2.setText("0");
+        labelBold2.setText("0");
+        tfCash.setText("0");
+        tfBank.setText("0");
+        labelPay.setText("0");
+        labelDebt.setText("0");
+        tfProvider.setText("");
+        labelProvider.setText("Proveedor");
+
         ConstantsPurchases.productTableList.clear();
+        ConstantsPurchases.serviceTableList.clear();
+        ConstantsPurchases.wareInvoiceList.clear();
+        tableService.getItems().clear();
+        tableMain.getItems().clear();
     }
     public void providerFound(ActionEvent event) {
         Constant.entity = "ProvidersClass";
@@ -227,43 +290,63 @@ public class PurchasesController {
         checkSale();
     }
     public void productFound(ActionEvent event) {
+        switch (ConstantsPurchases.entity){
+            case "Purchases":
+                Constant.entity = "ProductClass";
+                Constant.tfCode = tfProduct.getText();
+                if(checkProduct.isSelected()){
+                    checkProductIsTrue();
+                }else{
+                    comboBoxPrice.getItems().clear();
+                    FoundHQL.workerFound();
+                    labelNameProduct.setText(ConstantsWare.product.getName());
+                    /*Obtener la lista de precios del producto
+                     *Crear array donde estaran los precios
+                     * Hacer un for para buscar en todas las bodegas
+                     * Hacer un for para buscar los precios
+                     * Adicionar al combobox
+                     * */
+                    ArrayList<String> listProduct = new ArrayList<>();
+                    for(WareProductClass w: ConstantsWare.product.getWareProductsByIdProduct()){
+                        for(ProductpriceClass p: w.getProductpricesByIdWareProduct()){
+                            String price = String.valueOf(p.getPrice());
+                            listProduct.add(price);
+                        }
+                    }
+                    comboBoxPrice.getItems().addAll(listProduct);
+                    tfOff.setText("0");
+                    tfAmount.setText("1");
+                    tfProfit.setText("30");
+                }
+                break;
+            case "Service":
+                Constant.entity = "ServiceClass";
+                Constant.tfCode = tfProduct.getText();
+                if(checkProduct.isSelected()){
+                    checkProductIsTrue();
+                }else{
+                    comboBoxPrice.getItems().clear();
+                    FoundHQL.workerFound();
+                    labelNameProduct.setText(ConstantsWare.service.getName());
+                    tfPrice.setText(ConstantsWare.service.getCost());
 
-        Constant.entity = "ProductClass";
-        Constant.tfCode = tfProduct.getText();
-
-        if(checkProduct.isSelected()){
-            if(FoundHQL.workerFound()){
-                tfProductName.setDisable(true);
-               String message = "El codigo ya existe";
-               WareController.alertSend(message);
-
-            }else{
-                tfProductName.setDisable(false);
-            }
+                    tfOff.setText("0");
+                    tfAmount.setText("1");
+                    tfProfit.setText("30");
+                }
+                break;
+            default:
+                break;
+        }
+    }
+    public void checkProductIsTrue(){
+        if(FoundHQL.workerFound()){
+            tfProductName.setDisable(true);
+            String message = "El codigo ya existe";
+            WareController.alertSend(message);
 
         }else{
-
-            comboBoxPrice.getItems().clear();
-            FoundHQL.workerFound();
-            labelNameProduct.setText(ConstantsWare.product.getName());
-            /*Obtener la lista de precios del producto
-             *Crear array donde estaran los precios
-             * Hacer un for para buscar en todas las bodegas
-             * Hacer un for para buscar los precios
-             * Adicionar al combobox
-             * */
-            ArrayList<String> listProduct = new ArrayList<>();
-            for(WareProductClass w: ConstantsWare.product.getWareProductsByIdProduct()){
-                for(ProductpriceClass p: w.getProductpricesByIdWareProduct()){
-                    String price = String.valueOf(p.getPrice());
-                    listProduct.add(price);
-                }
-            }
-            comboBoxPrice.getItems().addAll(listProduct);
-
-            tfOff.setText("0");
-            tfAmount.setText("1");
-            tfProfit.setText("30");
+            tfProductName.setDisable(false);
         }
     }
     public void checkProduct(ActionEvent event) {
@@ -275,8 +358,6 @@ public class PurchasesController {
             labelNameProduct.setVisible(false);
             comboBoxOne.getItems().clear();
             comboBoxOne.getItems().addAll(WareController.categoryOne(listProduct));
-
-
 
         }else{
             tfProductName.setVisible(false);
@@ -350,38 +431,75 @@ public class PurchasesController {
         }else{
             //precio actual
             tfPriceSale.setDisable(true);
-            tfPriceSale.setText(ConstantsWare.product.getSalePrice());
+            switch (ConstantsPurchases.entity){
+                case "Purchases":
+                    tfPriceSale.setText(ConstantsWare.product.getSalePrice());
+                    break;
+                case "Service":
+                    tfPriceSale.setText(tfPrice.getText());
+                    tfProfit.setText("30");
+                    break;
+                default:
+                    break;
+            }
         }
     }
     public void register(ActionEvent event) {
         if(verify()){
-            if(checkProduct.isSelected()){
-                ProductClass product = new ProductClass();
-                product.setIdProduct(tfProduct.getText());
-                product.setName(tfProductName.getText());
-                product.setPurchasePrice(tfPrice.getText());
-                product.setAmount(Integer.valueOf(tfAmount.getText()));
-                product.setSalePrice(tfPriceSale.getText());
-                product.setProfit(tfProfit.getText());
-                product.setIdOne(ConstantsWare.one.getIdOne());
-                if(ConstantsWare.two != null){
-                    product.setIdTwo(ConstantsWare.two.getIdTwo());
-                }
-                if(ConstantsWare.three != null){
-                    product.setIdThree(ConstantsWare.three.getIdThree());
-                }
-                product.setIdWage(comboBoxWare.getValue());
-                ConstantsPurchases.productTableList.add(product);
 
-            }else{
-                ConstantsWare.product.setPurchasePrice(tfPrice.getText());
-                ConstantsWare.product.setAmount(Integer.valueOf(tfAmount.getText()));
-                ConstantsWare.product.setSalePrice(tfPriceSale.getText());
-                ConstantsWare.product.setProfit(tfProfit.getText());
-                ConstantsWare.product.setIdWage(comboBoxWare.getValue());
-                System.out.println(ConstantsWare.product);
-                ConstantsPurchases.productTableList.add(ConstantsWare.product);
+            switch (ConstantsPurchases.entity){
+                case "Purchases":
+                    if(checkProduct.isSelected()){
+                        ProductClass product = new ProductClass();
+                        product.setIdProduct(tfProduct.getText());
+                        product.setName(tfProductName.getText());
+                        product.setPurchasePrice(tfPrice.getText());
+                        product.setAmount(Integer.valueOf(tfAmount.getText()));
+                        product.setSalePrice(tfPriceSale.getText());
+                        product.setProfit(tfProfit.getText());
+                        product.setIdOne(ConstantsWare.one.getIdOne());
+                        if(ConstantsWare.two != null){
+                            product.setIdTwo(ConstantsWare.two.getIdTwo());
+                        }
+                        if(ConstantsWare.three != null){
+                            product.setIdThree(ConstantsWare.three.getIdThree());
+                        }
+                        product.setIdWage(comboBoxWare.getValue());
+                        ConstantsPurchases.productTableList.add(product);
+
+                    }else{
+                        ConstantsWare.product.setPurchasePrice(tfPrice.getText());
+                        ConstantsWare.product.setAmount(Integer.valueOf(tfAmount.getText()));
+                        ConstantsWare.product.setSalePrice(tfPriceSale.getText());
+                        ConstantsWare.product.setProfit(tfProfit.getText());
+                        ConstantsWare.product.setIdWage(comboBoxWare.getValue());
+                        System.out.println(ConstantsWare.product);
+                        ConstantsPurchases.productTableList.add(ConstantsWare.product);
+                    }
+                    break;
+                case "Service":
+                    tfPriceSale.setText(tfPrice.getText());
+                    if(checkProduct.isSelected()){
+                        ServiceClass service = new ServiceClass();
+                        service.setIdService(tfProduct.getText());
+                        service.setName(tfProductName.getText());
+                        service.setCost(tfPrice.getText());
+                        service.setProfit(tfProfit.getText());
+                        service.setIdWare(comboBoxWare.getValue());
+                        service.setHour(tfAmount.getText());
+                        service.setPayForHour("1");
+                        ConstantsPurchases.serviceTableList.add(service);
+
+                    }else{
+                        ConstantsWare.service.setCost(tfPrice.getText());
+                        ConstantsWare.service.setHour(tfAmount.getText());
+                        ConstantsPurchases.serviceTableList.add(ConstantsWare.service);
+                    }
+                    break;
+                default:
+                    break;
             }
+
             tableLoad();
         }
     }
@@ -432,6 +550,9 @@ public class PurchasesController {
         tfBank.setTextFormatter(createNumericTextFormatter());
         tfCash.setTextFormatter(createNumericTextFormatter());
 
+        ConstantsPurchases.entity = "Purchases";
+        ConstantsPurchases.entityForInvoice = "ProvidersClass";
+
         taxesIVABOLD();
 
         c1.setCellValueFactory(new PropertyValueFactory<>("idProduct"));
@@ -444,6 +565,12 @@ public class PurchasesController {
         c8.setCellValueFactory(new PropertyValueFactory<>("idTwo"));
         c9.setCellValueFactory(new PropertyValueFactory<>("idThree"));
         c10.setCellValueFactory(new PropertyValueFactory<>("idWage"));
+
+        c21.setCellValueFactory(new PropertyValueFactory<>("idService"));
+        c22.setCellValueFactory(new PropertyValueFactory<>("name"));
+        c23.setCellValueFactory(new PropertyValueFactory<>("hour"));
+        c24.setCellValueFactory(new PropertyValueFactory<>("cost"));
+        c25.setCellValueFactory(new PropertyValueFactory<>("idWare"));
     }
     // Crear un TextFormatter que solo permita números
     public static TextFormatter<Integer> createNumericTextFormatter() {
@@ -530,37 +657,47 @@ public class PurchasesController {
 
     }
     public void tableLoad(){
-        tableMain.getItems().clear();
 
-        ObservableList<ProductClass> datesTTT = FXCollections.observableArrayList(ConstantsPurchases.productTableList);
-        tableMain.setItems(datesTTT);
-        labelTotal2.setText("0");
+        switch (ConstantsPurchases.entity){
+            case "Purchases":
+                tableMain.getItems().clear();
+                ObservableList<ProductClass> datesTTT = FXCollections.observableArrayList(ConstantsPurchases.productTableList);
+                tableMain.setItems(datesTTT);
+                labelTotal2.setText("0");
+                //Obtiene el total sin Taxes
+                for(ProductClass p: tableMain.getItems()){
 
-        for(ProductClass p: tableMain.getItems()){
+                    int subtotal = ConstantsPurchases.subtotalProduct(String.valueOf(p.getAmount()), p.getPurchasePrice());
 
-            int subtotal = ConstantsPurchases.subtotalProduct(String.valueOf(p.getAmount()), p.getPurchasePrice());
+                    int balance = Integer.valueOf(labelTotal2.getText());
 
-            int balance = Integer.valueOf(labelTotal2.getText());
+                    int total = subtotal + balance;
+                    labelTotal2.setText(String.valueOf(total));
+                }
 
-            int total = subtotal + balance;
-            labelTotal2.setText(String.valueOf(total));
+                break;
+            case "Service":
+                tableService.getItems().clear();
+                ObservableList<ServiceClass> datServices = FXCollections.observableArrayList(ConstantsPurchases.serviceTableList);
+                tableService.setItems(datServices);
+                labelTotal2.setText("0");
+                for(ServiceClass p: tableService.getItems()){
+
+                    int subtotal = ConstantsPurchases.subtotalProduct(String.valueOf(p.getHour()), p.getCost());
+
+                    int balance = Integer.valueOf(labelTotal2.getText());
+
+                    int total = subtotal + balance;
+
+                    labelTotal2.setText(String.valueOf(total));
+                }
+
+                break;
+            default:
+                break;
         }
-
         labelTotal3.setText(labelTotal2.getText());
         costTaxes();
-
-        if(ConstantsPurchases.iva){
-            int iva = Integer.valueOf(labelIVA2.getText());
-            int subtotal = Integer.valueOf(labelTotal3.getText());
-            int total = iva + subtotal;
-            labelTotal3.setText(String.valueOf(total));
-        }
-        if(ConstantsPurchases.boldP){
-            int bold = Integer.valueOf(labelBold2.getText());
-            int subtotal = Integer.valueOf(labelTotal3.getText());
-            int total = bold + subtotal;
-            labelTotal3.setText(String.valueOf(total));
-        }
         tfProduct.setText("");
         tfProductName.setText("");
         labelNameProduct.setText("");
@@ -615,6 +752,18 @@ public class PurchasesController {
             int subtotal = Integer.valueOf(labelTotal2.getText());
             int boldSubtotal = (int) (boldTaxes * subtotal / 100);
             labelBold2.setText(String.valueOf(boldSubtotal));
+        }
+        if(ConstantsPurchases.iva){
+            int iva = Integer.valueOf(labelIVA2.getText());
+            int subtotal = Integer.valueOf(labelTotal3.getText());
+            int total = iva + subtotal;
+            labelTotal3.setText(String.valueOf(total));
+        }
+        if(ConstantsPurchases.boldP){
+            int bold = Integer.valueOf(labelBold2.getText());
+            int subtotal = Integer.valueOf(labelTotal3.getText());
+            int total = bold + subtotal;
+            labelTotal3.setText(String.valueOf(total));
         }
     }
     public void taxesIVABOLD(){
@@ -672,22 +821,69 @@ public class PurchasesController {
             Constant.tfCode = "666";
             FoundHQL.wareFound();
 
-            //cada producto debe de crear un wareinvoice
-            for(ProductClass p: ConstantsPurchases.productTableList){
-                WareinvoiceClass wi = new WareinvoiceClass();
 
-                wi.setIdInvoice(ConstantsAccounting.invoice.getIdInvoice());
-                wi.setIdProduct(p.getIdProduct());
-                wi.setProductName(p.getName());
-                wi.setPriceSale(p.getSalePrice());
-                wi.setPriceBuy(Integer.parseInt(p.getPurchasePrice()));
-                wi.setAmount(p.getAmount());
-                //idProductPrice es inecesario
-                wi.setIdProductPrice(6);
-                //agrega el wareproduct a la lista
-                ConstantsPurchases.wareInvoiceList.add(wi);
+            switch (ConstantsPurchases.entity){
+                case "Purchases":
+                    //cada producto debe de crear un wareinvoice
+                    for(ProductClass p: ConstantsPurchases.productTableList){
+                        WareinvoiceClass wi = new WareinvoiceClass();
+
+                        wi.setIdInvoice(ConstantsAccounting.invoice.getIdInvoice());
+                        wi.setIdProduct(p.getIdProduct());
+                        wi.setProductName(p.getName());
+                        wi.setPriceSale(p.getSalePrice());
+                        wi.setPriceBuy(Integer.parseInt(p.getPurchasePrice()));
+                        wi.setAmount(p.getAmount());
+                        //idProductPrice es inecesario
+                        wi.setIdProductPrice(6);
+                        //agrega el wareproduct a la lista
+                        ConstantsPurchases.wareInvoiceList.add(wi);
+
+                        //actualiza los productos
+                        try{
+                            for(WareProductClass wp: p.getWareProductsByIdProduct()){
+                                //Si la bodega corresponde a una registrada
+                                if(Objects.equals(wp.getIdWare(), p.getIdWage())){
+                                    for(ProductpriceClass pp: wp.getProductpricesByIdWareProduct()){
+                                        //si el precio es el registrado
+                                        if(pp.getPrice() == Integer.parseInt(p.getPurchasePrice())){
+                                            //agrega el objeto productprice a la lista para actualizar
+                                            //actualiza la cantidad en inventario
+                                            pp.setAmount(p.getAmount() + pp.getAmount());
+                                            //guarda la cantidad actualizada
+                                            ConstantsPurchases.pPriceUpdateList.add(pp);
+                                        }
+                                    }
+                                }
+                            }
+                        }catch (Exception i){
+                            //en caso de error es porque el producto es nuevo o tiene nuevo precio
+                            ConstantsPurchases.productNewList.add(p);
+                        }
+
+                    }
+                    break;
+                case "Service":
+                    //cada servicio debe de crear un wareinvoice
+                    for(ServiceClass s: ConstantsPurchases.serviceTableList){
+                        WareinvoiceClass wiS = new WareinvoiceClass();
+
+                        wiS.setIdInvoice(ConstantsAccounting.invoice.getIdInvoice());
+                        wiS.setIdProduct(s.getIdService());
+                        wiS.setProductName(s.getName());
+                        wiS.setPriceSale(s.getCost());
+                        wiS.setPriceBuy(Integer.parseInt(s.getCost()));
+                        wiS.setAmount(Integer.parseInt(s.getHour()));
+                        //idProductPrice es inecesario
+                        wiS.setIdProductPrice(6);
+                        //agrega el wareproduct a la lista
+                        ConstantsPurchases.wareInvoiceList.add(wiS);
+                    }
+                    break;
+                default:
+                    System.out.println("Error en  ConstantsPurchases.entity");
+                    break;
             }
-
             //Busca la compañia
             ConstantsPurchases.invoiceType = "purchaseFromSupplier";
             Constant.entity = "CompanyClass";
@@ -706,10 +902,10 @@ public class PurchasesController {
             //Actualiza la cuenta de la compañia y el proveedor
             ConstantsPurchases.purchaseCompany(ConstantsAccounting.invoice.getBank(), ConstantsAccounting.invoice.getCash(), ConstantsAccounting.invoice.getIndebtedness());
             ConstantsPurchases.purchaseProvider(ConstantsAccounting.invoice.getBank(), ConstantsAccounting.invoice.getCash(), ConstantsAccounting.invoice.getIndebtedness());
-            ConstantsPurchases.entityForInvoice = "ProvidersClass";
 
             //Aqui se genera el sql que manda a guardar y actualizar todos los datos
             if(SaveHQL.saveInvoice()){
+
                 WareController.alertSend("Datos guardados con exito");
             }else {
                 WareController.alertSend("Error al guardar los datos");

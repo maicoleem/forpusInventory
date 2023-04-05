@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="-Se debe de seguir planteando la contabilidad&#10;&#10;-Falta poder generar una cotización y la factura&#10;-Falta codigo para que SaveHQL guarde los datos de la compra &#10;**++**Se crearon los metodos y constantes que permiten guardar los datos de la generación de la factura">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="-Se debe de seguir planteando la contabilidad&#10;&#10;**Se guardaron los datos exitosamente para la factura de compra">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/PurchasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/PurchasesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SearchController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsPurchases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsPurchases.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/InvoiceClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/InvoiceClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/purchases-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/purchases-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +168,9 @@
       <workItem from="1680046743952" duration="8546000" />
       <workItem from="1680450703362" duration="1058000" />
       <workItem from="1680451811177" duration="1671000" />
-      <workItem from="1680454401371" duration="3271000" />
+      <workItem from="1680454401371" duration="4680000" />
+      <workItem from="1680559982592" duration="13768000" />
+      <workItem from="1680646079318" duration="7226000" />
     </task>
     <task id="LOCAL-00001" summary="first: I create the project with javaFX, I add the dependencies of mySQL and hibernate into the pom.xml.&#10;Second: I add file hibernate.cfg.xml {i do file-project structure -Facets -hibernate -choose module}&#10;third: I add database &#10;fourth: I do mapping of the tables of database&#10;fifth:for the  connection I had do several config:&#10;-I add in module-info.java requires for hibernate and I add opens com.forpus.forpus_inventory.module that is where are the class of the tables that use hibernate.">
       <created>1674089245612</created>
@@ -428,14 +431,20 @@
       <option name="project" value="LOCAL" />
       <updated>1680056432243</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="-Se debe de seguir planteando la contabilidad&#10;&#10;**Se guardaron los datos exitosamente para la factura de compra">
+      <created>1680457856056</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1680457856056</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Ahora se puden guardar productos, se modifico la vista de la tabla y de los combobox de la pestaña productos, falta poder eliminar productos y la parte de cantidad toca pensar si se deja o si se elimna" />
     <MESSAGE value="*La cantida en productos se desactivo cuando el produto ya existe, es decir, solo espara para ingresar cantidades con productos sin registros&#10;*Se termino el diseño de carga de productos en la tabla&#10;+Se modifico el diseño de los servicios, ahora los servicios se pueden crear y salvar.&#10;/////////////////////&#10;--Falta poder buscar un servicio y que retorne los productos usados&#10;--Falta poder eliminar servicios&#10;--Falta completar la trnasmutación" />
     <MESSAGE value="+busca un servicio y que retorna los productos usados&#10;+permite eliminar productos de servicios&#10;+Se pueden eliminar los servicios&#10;--Falta completar la trnasmutación" />
     <MESSAGE value="Se comenzo a hacer le diseño de la trnasmutacción&#10;-falta alistar lso combbox&#10;-flta darle el formato para mostrar los los javafx form cuando se de click en transmutar&#10;-falta crear y configurar los botones para agregar y eliminar de la tabla view&#10;-----En la tabla view debe de quedar el id de la calse ProducpriceClass para poder luego realizarle el update." />
@@ -460,7 +469,8 @@
     <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;&#10;**Se modifico la view de purchases-view.fxml, se parametrizo la busquedad de proveedor y producto, falta poder agregar un producto nuevo y agregar a la tabla de compras (de ahi en adelante)" />
     <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;+Se crearon los metodos y variables para poder generar la factura, falta completar más metodos por si se necesitan.&#10;&#10;-Falta poder generar una cotización y la factura" />
     <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;&#10;-Falta poder generar una cotización y la factura&#10;-Falta codigo para que SaveHQL guarde los datos de la compra &#10;**++**Se crearon los metodos y constantes que permiten guardar los datos de la generación de la factura" />
-    <option name="LAST_COMMIT_MESSAGE" value="-Se debe de seguir planteando la contabilidad&#10;&#10;-Falta poder generar una cotización y la factura&#10;-Falta codigo para que SaveHQL guarde los datos de la compra &#10;**++**Se crearon los metodos y constantes que permiten guardar los datos de la generación de la factura" />
+    <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;&#10;**Se guardaron los datos exitosamente para la factura de compra" />
+    <option name="LAST_COMMIT_MESSAGE" value="-Se debe de seguir planteando la contabilidad&#10;&#10;**Se guardaron los datos exitosamente para la factura de compra" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

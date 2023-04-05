@@ -287,5 +287,14 @@
       <CheckBox id="checkSale" fx:id="checkSale" layoutX="835.0" layoutY="248.0" mnemonicParsing="false" onAction="#checkSale" prefHeight="27.0" prefWidth="136.0" text="Precio Nuevo" />
       <TextField id="tfProductName" fx:id="tfProductName" disable="true" layoutX="454.0" layoutY="138.0" prefHeight="40.0" prefWidth="275.0" promptText="Nombre Producto" visible="false" />
       <Button id="buttonSuppress" fx:id="buttonSuppress" layoutX="843.0" layoutY="301.0" mnemonicParsing="false" onAction="#suppress" prefHeight="40.0" prefWidth="142.0" styleClass="buttonBlue" text="SUPRIMIR" />
+      <TableView id="tableService" fx:id="tableService" layoutX="89.0" layoutY="353.0" prefHeight="204.0" prefWidth="750.0" visible="false">
+         <columns>
+            <TableColumn id="c1" fx:id="c21" prefWidth="75.0" text="CODIGO" />
+            <TableColumn id="c2" fx:id="c22" prefWidth="75.0" text="SERVICIO" />
+            <TableColumn id="c3" fx:id="c23" prefWidth="75.0" text="CANTIDAD" />
+            <TableColumn id="c4" fx:id="c24" prefWidth="75.0" text="COSTO" />
+            <TableColumn id="c10" fx:id="c25" prefWidth="75.0" text="BODEGA" />
+         </columns>
+      </TableView>
     </children>
 </Pane>

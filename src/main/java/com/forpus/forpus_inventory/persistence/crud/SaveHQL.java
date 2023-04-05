@@ -169,6 +169,7 @@ public class SaveHQL {
                     ProductClass product = new ProductClass();
                     product.setIdProduct(Constant.tfCode);
                     product.setName(Constant.tfName);
+
                     if(ConstantsWare.tfOne != null){
                         product.setIdOne(Integer.valueOf(ConstantsWare.tfOne));
                     }
@@ -185,6 +186,7 @@ public class SaveHQL {
                     }else{
                         product.setIdWage(ConstantsWare.ware.getIdWarehouse());
                     }
+
                     product.setSalePrice(ConstantsWare.tfSale);
                     product.setProfit(ConstantsWare.tfProfit);
 
@@ -192,8 +194,8 @@ public class SaveHQL {
                         product.setPurchasePrice(ConstantsWare.tfBuy);
                         product.setAmount(Integer.valueOf(ConstantsWare.tfConsumed));
                     }
-                    session.beginTransaction();
 
+                    session.beginTransaction();
                     if(saveOrUpdate.equals("save")){
                         product.setPurchasePrice(ConstantsWare.tfBuy);
                         product.setAmount(Integer.valueOf(ConstantsWare.tfConsumed));
@@ -431,7 +433,6 @@ public class SaveHQL {
             session.beginTransaction();
             session.update(Constant.company);
             session.getTransaction().commit();
-            session.beginTransaction();
             switch (ConstantsPurchases.entityForInvoice){
                 case "ProvidersClass":
                     session.update(Constant.provider);
@@ -449,7 +450,58 @@ public class SaveHQL {
                     System.out.println("error al actuañizar los datos");
                     break;
             }
-            session.getTransaction().commit();
+            //Falta actualizar/salvar los productos y los servicios
+            switch (ConstantsPurchases.entity){
+                case "Purchases":
+                    //actualiza el inventario
+                    if(!ConstantsPurchases.pPriceUpdateList.isEmpty()){
+                        session.beginTransaction();
+                        for(ProductpriceClass pp: ConstantsPurchases.pPriceUpdateList){
+                            session.update(pp);
+                        }
+                        session.getTransaction().commit();
+                    }
+                    if(!ConstantsPurchases.productNewList.isEmpty()){
+                       //salva el producto
+                        for(ProductClass pt: ConstantsPurchases.productNewList){
+                            session.beginTransaction();
+                            session.save(pt);
+                            session.getTransaction().commit();
+
+                            WareProductClass wp = new WareProductClass();
+                            wp.setIdProduct(pt.getIdProduct());
+                            wp.setProductByIdProduct(pt);
+                            Constant.entity = "WarehouseClass";
+                            Constant.tfCode = pt.getIdWage();
+                            FoundHQL.workerFound();
+                            wp.setIdWare(ConstantsWare.ware.getIdWarehouse());
+                            wp.setWarehouseByIdWare(ConstantsWare.ware);
+                            session.beginTransaction();
+                            session.save(wp);
+                            session.getTransaction().commit();
+
+                            ProductpriceClass pP = new ProductpriceClass();
+                            pP.setPrice(Integer.parseInt(pt.getPurchasePrice()));
+                            pP.setAmount(pt.getAmount());
+                            pP.setIdProductWare(wp.getIdWareProduct());
+                            pP.setWareProductByIdProductWare(wp);
+                            session.beginTransaction();
+                            session.save(pP);
+                            session.getTransaction().commit();
+                        }
+                    }
+                    break;
+                case "Service":
+                    //Actualiza los servicios o los crea
+                    session.beginTransaction();
+                    for(ServiceClass s: ConstantsPurchases.serviceTableList){
+                        session.saveOrUpdate(s);
+                    }
+                    session.getTransaction().commit();
+                    break;
+                default:
+                    break;
+            }
             return true;
         }catch (Exception i){
             i.printStackTrace();

@@ -1,8 +1,6 @@
 package com.forpus.forpus_inventory.domain.services;
 
-import com.forpus.forpus_inventory.persistence.entity.InvoiceClass;
-import com.forpus.forpus_inventory.persistence.entity.ProductClass;
-import com.forpus.forpus_inventory.persistence.entity.WareinvoiceClass;
+import com.forpus.forpus_inventory.persistence.entity.*;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import java.text.SimpleDateFormat;
@@ -18,8 +16,9 @@ public class ConstantsPurchases {
     public static Boolean iva = false;
     public static Boolean boldP = false;
     public static Boolean checkin = true;
-    public static InvoiceClass invoice = null;
-    public static WareinvoiceClass wareInvoice = null;
+    public static ArrayList<ServiceClass> serviceTableList = new ArrayList<>();
+    public static ArrayList<ProductpriceClass> pPriceUpdateList = new ArrayList<>();
+    public static ArrayList<ProductClass> productNewList = new ArrayList<>();
     public static ArrayList<WareinvoiceClass> wareInvoiceList = new ArrayList<>();
 
     public static String invoiceType = null;
