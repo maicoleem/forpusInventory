@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="-Se debe de seguir planteando la contabilidad&#10;&#10;**Se realizo el backend de servicios.">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="**Se esta editando la view para pagar los creditos&#10;&#10;--falta funcionalidad">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/PurchasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/PurchasesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsPurchases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsPurchases.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SearchHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SearchHQL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/purchases-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/purchases-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -168,7 +170,8 @@
       <workItem from="1680451811177" duration="1671000" />
       <workItem from="1680454401371" duration="4680000" />
       <workItem from="1680559982592" duration="13768000" />
-      <workItem from="1680646079318" duration="13465000" />
+      <workItem from="1680646079318" duration="13792000" />
+      <workItem from="1680736413683" duration="6344000" />
     </task>
     <task id="LOCAL-00001" summary="first: I create the project with javaFX, I add the dependencies of mySQL and hibernate into the pom.xml.&#10;Second: I add file hibernate.cfg.xml {i do file-project structure -Facets -hibernate -choose module}&#10;third: I add database &#10;fourth: I do mapping of the tables of database&#10;fifth:for the  connection I had do several config:&#10;-I add in module-info.java requires for hibernate and I add opens com.forpus.forpus_inventory.module that is where are the class of the tables that use hibernate.">
       <created>1674089245612</created>
@@ -443,14 +446,20 @@
       <option name="project" value="LOCAL" />
       <updated>1680657058186</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="**Se esta editando la view para pagar los creditos&#10;&#10;--falta funcionalidad">
+      <created>1680666485383</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1680666485383</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="+busca un servicio y que retorna los productos usados&#10;+permite eliminar productos de servicios&#10;+Se pueden eliminar los servicios&#10;--Falta completar la trnasmutación" />
     <MESSAGE value="Se comenzo a hacer le diseño de la trnasmutacción&#10;-falta alistar lso combbox&#10;-flta darle el formato para mostrar los los javafx form cuando se de click en transmutar&#10;-falta crear y configurar los botones para agregar y eliminar de la tabla view&#10;-----En la tabla view debe de quedar el id de la calse ProducpriceClass para poder luego realizarle el update." />
     <MESSAGE value="**SE alistaron los combobox&#10;**Se dio diseñoa la pestaña transmutar&#10;-falta crear y configurar los botones para agregar y eliminar de la tabla view&#10;-----En la tabla view debe de quedar el id de la calse ProducpriceClass para poder luego realizarle el update." />
     <MESSAGE value="** Se crean y configurar los botones para agregar y eliminar de la tabla view&#10;**Table view configurada&#10;+Metodo salvat y de muchos a uno configurada*&#10;--Falta configorar el metodo de uno a muchos&#10;--Falta configurar como se van activando los botones para evitar errores" />
@@ -475,7 +484,8 @@
     <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;&#10;-Falta poder generar una cotización y la factura&#10;-Falta codigo para que SaveHQL guarde los datos de la compra &#10;**++**Se crearon los metodos y constantes que permiten guardar los datos de la generación de la factura" />
     <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;&#10;**Se guardaron los datos exitosamente para la factura de compra" />
     <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;&#10;**Se realizo el backend de servicios." />
-    <option name="LAST_COMMIT_MESSAGE" value="-Se debe de seguir planteando la contabilidad&#10;&#10;**Se realizo el backend de servicios." />
+    <MESSAGE value="**Se esta editando la view para pagar los creditos&#10;&#10;--falta funcionalidad" />
+    <option name="LAST_COMMIT_MESSAGE" value="**Se esta editando la view para pagar los creditos&#10;&#10;--falta funcionalidad" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -319,7 +319,6 @@ public class SearchController {
         }
         clipboard.setContent(content);
     }
-
     public void filterTable(KeyEvent keyEvent) {
             TextField tfID = (TextField) keyEvent.getSource();
             System.out.println(tfID.getId());

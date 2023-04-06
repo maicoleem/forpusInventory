@@ -296,7 +296,7 @@
             <TableColumn id="c10" fx:id="c25" prefWidth="75.0" text="BODEGA" />
          </columns>
       </TableView>
-      <TableView id="tableInvoice" fx:id="tableInvoice" layoutX="87.0" layoutY="143.0" prefHeight="200.0" prefWidth="455.0" visible="false">
+      <TableView id="tableInvoice" fx:id="tableInvoice" layoutX="87.0" layoutY="143.0" onKeyPressed="#invoiceView" onMouseClicked="#invoiceView" prefHeight="200.0" prefWidth="455.0" visible="false">
         <columns>
           <TableColumn fx:id="i1" prefWidth="90.0" text="FACTURA" />
             <TableColumn fx:id="i2" prefWidth="90.0" text="FECHA" />

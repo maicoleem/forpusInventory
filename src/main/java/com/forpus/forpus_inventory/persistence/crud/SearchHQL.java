@@ -2,6 +2,7 @@ package com.forpus.forpus_inventory.persistence.crud;
 
 import com.forpus.forpus_inventory.domain.services.Constant;
 import com.forpus.forpus_inventory.domain.services.ConstantsAccounting;
+import com.forpus.forpus_inventory.domain.services.ConstantsPurchases;
 import com.forpus.forpus_inventory.domain.services.ConstantsWare;
 import com.forpus.forpus_inventory.persistence.Session.SessionDB;
 import com.forpus.forpus_inventory.persistence.entity.*;
@@ -10,6 +11,7 @@ import org.hibernate.jdbc.Work;
 import org.hibernate.query.Query;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -124,12 +126,38 @@ public class SearchHQL {
                     ConstantsAccounting.taxesList = results14.toArray(new TaxesClass[0]);
                     break;
                 case "MoveinvoiceClass":
-                    ConstantsAccounting.debtList = null;
-                    String hql15 = "FROM "+ Constant.entity;
-                    Query query15 = session.createQuery(hql15);
-                    List<MoveinvoiceClass> results15 = query15.list();
-                    ConstantsAccounting.debtList = results15.toArray(new MoveinvoiceClass[0]);
+                    if(ConstantsPurchases.entityForInvoice.equals("ProvidersClass")){
+                        ConstantsPurchases.moveInvoiceList.clear();
+                        String hql15 = "FROM "+ Constant.entity +" C where C.idInvoice in(?1)";
+                        Query query15 = session.createQuery(hql15);
+                        query15.setParameter(1, Integer.valueOf(Constant.tfCode));
+                        List<MoveinvoiceClass> results15 = query15.list();
+                        ConstantsPurchases.moveInvoiceList = (ArrayList<MoveinvoiceClass>) results15;
+                    }else {
+                        ConstantsAccounting.debtList = null;
+                        String hql15 = "FROM "+ Constant.entity;
+                        Query query15 = session.createQuery(hql15);
+                        List<MoveinvoiceClass> results15 = query15.list();
+                        ConstantsAccounting.debtList = results15.toArray(new MoveinvoiceClass[0]);
+                    }
+
                     break;
+                case "InvoiceClass":
+                    ConstantsPurchases.invoiceList = null;
+                    String hql16 = "FROM "+ Constant.entity;
+                    Query query16 = session.createQuery(hql16);
+                    List<InvoiceClass> results16 = query16.list();
+                    ConstantsPurchases.invoiceList = (ArrayList<InvoiceClass>) results16;
+                    break;
+                case "WareinvoiceClass":
+                    ConstantsPurchases.wareInvoiceList = null;
+                    String hql17 = "FROM "+ Constant.entity +" C where C.idInvoice in(?1)";
+                    Query query17 = session.createQuery(hql17);
+                    query17.setParameter(1, Integer.valueOf(Constant.tfCode));
+                    List<WareinvoiceClass> results17 = query17.list();
+                    ConstantsPurchases.wareInvoiceList = (ArrayList<WareinvoiceClass>) results17;
+                    break;
+
                 default:
                     break;
             }

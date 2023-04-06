@@ -1,5 +1,6 @@
 package com.forpus.forpus_inventory.domain.services;
 
+import com.forpus.forpus_inventory.persistence.crud.SearchHQL;
 import com.forpus.forpus_inventory.persistence.entity.*;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -20,10 +21,11 @@ public class ConstantsPurchases {
     public static ArrayList<ProductpriceClass> pPriceUpdateList = new ArrayList<>();
     public static ArrayList<ProductClass> productNewList = new ArrayList<>();
     public static ArrayList<WareinvoiceClass> wareInvoiceList = new ArrayList<>();
-
+    public static ArrayList<InvoiceClass> invoiceList = new ArrayList<>();
+    public static ArrayList<MoveinvoiceClass> moveInvoiceList = new ArrayList<>();
     public static String invoiceType = null;
 
-    //Este metodo permite calcular el subtotal  de cada producto
+    //Este metodo permite calcular el subtotal de cada producto
     public static Integer subtotalProduct(String amount, String price){
         int a = Integer.parseInt(amount);
         int p = Integer.parseInt(price);
@@ -111,5 +113,21 @@ public class ConstantsPurchases {
         Constant.provider.setBank(String.valueOf(bankNew));
         Constant.provider.setCash(String.valueOf(cashNew));
         Constant.provider.setReceivable(String.valueOf(receivableNew));
+    }
+
+    public static void listInvoiceSearch(){
+        Constant.entity ="InvoiceClass";
+        SearchHQL.searchHQL();
+    }
+    public static void listWareInvoiceSearch(InvoiceClass idInvoice){
+        Constant.entity ="WareinvoiceClass";
+        Constant.tfCode = String.valueOf(idInvoice.getIdInvoice());
+        SearchHQL.searchHQL();
+    }
+
+    public static void listMoveSearch(InvoiceClass idInvoice){
+        Constant.entity ="MoveinvoiceClass";
+        Constant.tfCode = String.valueOf(idInvoice.getIdInvoice());
+        SearchHQL.searchHQL();
     }
 }

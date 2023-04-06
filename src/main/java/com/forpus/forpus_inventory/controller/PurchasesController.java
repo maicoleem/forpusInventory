@@ -103,24 +103,24 @@ public class PurchasesController {
     public TableColumn<Object, Object> c24;
     public TableColumn<Object, Object> c25;
     public TableView<InvoiceClass> tableInvoice;
-    public TableView tableWareInv;
-    public TableColumn i1;
-    public TableColumn i2;
-    public TableColumn i3;
-    public TableColumn i4;
-    public TableColumn i5;
-    public TableColumn wi1;
-    public TableColumn wi2;
-    public TableColumn wi3;
-    public TableColumn wi4;
-    public TableView tableMoveInv;
-    public TableColumn m1;
-    public TableColumn m2;
-    public TableColumn m3;
-    public TableColumn m4;
-    public TableColumn m5;
-    public TableColumn m6;
-    public TableColumn m7;
+    public TableView<WareinvoiceClass> tableWareInv;
+    public TableColumn<Object, Object> i1;
+    public TableColumn<Object, Object> i2;
+    public TableColumn<Object, Object> i3;
+    public TableColumn<Object, Object> i4;
+    public TableColumn<Object, Object> i5;
+    public TableColumn<Object, Object> wi1;
+    public TableColumn<Object, Object> wi2;
+    public TableColumn<Object, Object> wi3;
+    public TableColumn<Object, Object> wi4;
+    public TableView<MoveinvoiceClass> tableMoveInv;
+    public TableColumn<Object, Object> m1;
+    public TableColumn<Object, Object> m2;
+    public TableColumn<Object, Object> m3;
+    public TableColumn<Object, Object> m4;
+    public TableColumn<Object, Object> m5;
+    public TableColumn<Object, Object> m6;
+    public TableColumn<Object, Object> m7;
 
     @FXML
     protected void buttonSlide(ActionEvent event) throws IOException {
@@ -232,6 +232,8 @@ public class PurchasesController {
                 break;
             case "buttonCredit":
                 clear();
+                ConstantsPurchases.entity = "Credit";
+                ConstantsPurchases.entityForInvoice = "ProvidersClass";
                 labelProvider.setVisible(a);
                 tfProvider.setVisible(a);
 
@@ -244,6 +246,9 @@ public class PurchasesController {
                 panelCheckIn.setVisible(a);
                 panelPayment.setVisible(a);
                 panelTotal.setVisible(a);
+                labelNameProvider.setVisible(a);
+
+                tableLoad();
                 break;
             default:
                 break;
@@ -313,6 +318,8 @@ public class PurchasesController {
         ConstantsPurchases.productTableList.clear();
         ConstantsPurchases.serviceTableList.clear();
         ConstantsPurchases.wareInvoiceList.clear();
+        ConstantsPurchases.invoiceList.clear();
+
         tableService.getItems().clear();
         tableMain.getItems().clear();
     }
@@ -605,6 +612,26 @@ public class PurchasesController {
         c23.setCellValueFactory(new PropertyValueFactory<>("hour"));
         c24.setCellValueFactory(new PropertyValueFactory<>("cost"));
         c25.setCellValueFactory(new PropertyValueFactory<>("idWare"));
+
+        i1.setCellValueFactory(new PropertyValueFactory<>("idInvoice"));
+        i2.setCellValueFactory(new PropertyValueFactory<>("date"));
+        i3.setCellValueFactory(new PropertyValueFactory<>("idProviders"));
+        i4.setCellValueFactory(new PropertyValueFactory<>("idBill"));
+        i5.setCellValueFactory(new PropertyValueFactory<>("total"));
+
+        wi1.setCellValueFactory(new PropertyValueFactory<>("idWareInvoice"));
+        wi2.setCellValueFactory(new PropertyValueFactory<>("productName"));
+        wi3.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        wi4.setCellValueFactory(new PropertyValueFactory<>("priceBuy"));
+
+        m1.setCellValueFactory(new PropertyValueFactory<>("id"));
+        m2.setCellValueFactory(new PropertyValueFactory<>("date"));
+        m3.setCellValueFactory(new PropertyValueFactory<>("idInvoice"));
+        m4.setCellValueFactory(new PropertyValueFactory<>("debt"));
+        m5.setCellValueFactory(new PropertyValueFactory<>("payCash"));
+        m6.setCellValueFactory(new PropertyValueFactory<>("payBank"));
+        m7.setCellValueFactory(new PropertyValueFactory<>("subtotal"));
+
     }
     // Crear un TextFormatter que solo permita números
     public static TextFormatter<Integer> createNumericTextFormatter() {
@@ -725,25 +752,32 @@ public class PurchasesController {
 
                     labelTotal2.setText(String.valueOf(total));
                 }
-
+                break;
+            case "Credit":
+                ConstantsPurchases.listInvoiceSearch();
+                tableInvoice.getItems().clear();
+                ObservableList<InvoiceClass> invoiceTable = FXCollections.observableArrayList(ConstantsPurchases.invoiceList);
+                tableInvoice.setItems(invoiceTable);
                 break;
             default:
                 break;
         }
-        labelTotal3.setText(labelTotal2.getText());
-        costTaxes();
-        tfProduct.setText("");
-        tfProductName.setText("");
-        labelNameProduct.setText("");
-        comboBoxPrice.getItems().clear();
-        tfPrice.setText("0");
-        tfOff.setText("0");
-        tfAmount.setText("0");
-        tfProfit.setText("0");
-        tfPriceSale.setText("0");
-        comboBoxWare.getItems().clear();
-        pay();
 
+        if(!ConstantsPurchases.entity.equals("Credit")){
+            labelTotal3.setText(labelTotal2.getText());
+            costTaxes();
+            tfProduct.setText("");
+            tfProductName.setText("");
+            labelNameProduct.setText("");
+            comboBoxPrice.getItems().clear();
+            tfPrice.setText("0");
+            tfOff.setText("0");
+            tfAmount.setText("0");
+            tfProfit.setText("0");
+            tfPriceSale.setText("0");
+            comboBoxWare.getItems().clear();
+            pay();
+        }
     }
     public void suppress(ActionEvent event) {
 
@@ -949,5 +983,21 @@ public class PurchasesController {
         }
 
     }
+    public void invoiceView() {
+        //System.out.println(tableInvoice.getSelectionModel().isEmpty());
+        InvoiceClass invoiceSelected = tableInvoice.getSelectionModel().getSelectedItem();
+        ConstantsPurchases.listWareInvoiceSearch(invoiceSelected);
+        tableWareInv.getItems().clear();
+        ObservableList<WareinvoiceClass> wiTable = FXCollections.observableArrayList(ConstantsPurchases.wareInvoiceList);
+        tableWareInv.setItems(wiTable);
 
+        ConstantsPurchases.listMoveSearch(invoiceSelected);
+        if(!ConstantsPurchases.moveInvoiceList.isEmpty()){
+            tableMoveInv.getItems().clear();
+            ObservableList<MoveinvoiceClass> miTable = FXCollections.observableArrayList(ConstantsPurchases.moveInvoiceList);
+            tableMoveInv.setItems(miTable);
+        }else {
+            tableMoveInv.getItems().clear();
+        }
+    }
 }
