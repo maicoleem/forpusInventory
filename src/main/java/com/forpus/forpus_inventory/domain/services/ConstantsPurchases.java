@@ -24,6 +24,7 @@ public class ConstantsPurchases {
     public static ArrayList<InvoiceClass> invoiceList = new ArrayList<>();
     public static ArrayList<MoveinvoiceClass> moveInvoiceList = new ArrayList<>();
     public static String invoiceType = null;
+    public static MoveinvoiceClass moveInv = null;
 
     //Este metodo permite calcular el subtotal de cada producto
     public static Integer subtotalProduct(String amount, String price){

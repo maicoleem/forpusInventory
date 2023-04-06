@@ -329,6 +329,17 @@ public class SaveHQL {
                             break;
                     }
                     break;
+                case "MoveinvoiceClass":
+                    //salva el movimiento
+                    session.beginTransaction();
+                    session.save(ConstantsPurchases.moveInv);
+                    session.getTransaction().commit();
+                    //actualiza la factura
+                    session.beginTransaction();
+                    ConstantsAccounting.invoice.setIdBill(ConstantsPurchases.moveInv.getSubtotal());
+                    session.update(ConstantsAccounting.invoice);
+                    session.getTransaction().commit();
+                    break;
                 default:
                     break;
             }
@@ -510,11 +521,11 @@ public class SaveHQL {
             return false;
         }
     }
- public static void moveInvoiceNew(){
+     public static void moveInvoiceNew(){
      try{
          SessionDB.session();
          Session session = SessionDB.session().getSession();
-     //guarda la deuda
+     //guarda deuda (inicio)
      if(!Objects.equals(ConstantsAccounting.invoice.getIndebtedness(), "0")){
          MoveinvoiceClass mi = new MoveinvoiceClass();
          mi.setIdInvoice(ConstantsAccounting.invoice.getIdInvoice());
@@ -522,7 +533,7 @@ public class SaveHQL {
          mi.setDebt(Integer.parseInt(ConstantsAccounting.invoice.getIndebtedness()));
          mi.setPayCash(0);
          mi.setPayBank(0);
-         mi.setSubtotal(0);
+         mi.setSubtotal(mi.getDebt());
          session.beginTransaction();
          session.save(mi);
          session.getTransaction().commit();

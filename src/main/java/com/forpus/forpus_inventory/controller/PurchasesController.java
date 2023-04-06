@@ -121,6 +121,7 @@ public class PurchasesController {
     public TableColumn<Object, Object> m5;
     public TableColumn<Object, Object> m6;
     public TableColumn<Object, Object> m7;
+    public TextField tfTaxes;
 
     @FXML
     protected void buttonSlide(ActionEvent event) throws IOException {
@@ -178,6 +179,13 @@ public class PurchasesController {
 
                 panelCheckIn.setVisible(a);
                 panelPayment.setVisible(a);
+                buttonIVA.setVisible(a);
+                buttonBold.setVisible(a);
+                labelIVA.setText("IVA");
+                labelIVA2.setVisible(a);
+                labelBold.setVisible(a);
+                labelBold2.setVisible(a);
+
                 panelTotal.setVisible(a);
 
                 checkProduct.setVisible(a);
@@ -222,6 +230,13 @@ public class PurchasesController {
 
                 panelCheckIn.setVisible(a);
                 panelPayment.setVisible(a);
+                buttonIVA.setVisible(a);
+                buttonBold.setVisible(a);
+                labelIVA.setText("IVA");
+                labelIVA2.setVisible(a);
+                labelBold.setVisible(a);
+                labelBold2.setVisible(a);
+
                 panelTotal.setVisible(a);
 
                 checkProduct.setVisible(a);
@@ -241,12 +256,23 @@ public class PurchasesController {
                 tableMoveInv.setVisible(a);
                 tableWareInv.setVisible(a);
 
+                tfTaxes.setVisible(a);
+
                 buttonProvider.setVisible(a);
+                search.setVisible(a);
 
                 panelCheckIn.setVisible(a);
                 panelPayment.setVisible(a);
+                buttonIVA.setVisible(!a);
+                buttonBold.setVisible(!a);
+                labelIVA.setText("Mora");
+                labelIVA2.setVisible(!a);
+                labelBold.setVisible(!a);
+                labelBold2.setVisible(!a);
+
                 panelTotal.setVisible(a);
                 labelNameProvider.setVisible(a);
+
 
                 tableLoad();
                 break;
@@ -274,6 +300,7 @@ public class PurchasesController {
         tfProfit.setVisible(a);
         tfPriceSale.setVisible(a);
         tfProductName.setVisible(a);
+        tfTaxes.setVisible(a);
 
         buttonProvider.setVisible(a);
         buttonProduct.setVisible(a);
@@ -590,6 +617,7 @@ public class PurchasesController {
         tfOff.setTextFormatter(createNumericTextFormatter());
         tfBank.setTextFormatter(createNumericTextFormatter());
         tfCash.setTextFormatter(createNumericTextFormatter());
+        tfTaxes.setTextFormatter(createNumericTextFormatter());
 
         ConstantsPurchases.entity = "Purchases";
         ConstantsPurchases.entityForInvoice = "ProvidersClass";
@@ -984,13 +1012,16 @@ public class PurchasesController {
 
     }
     public void invoiceView() {
-        //System.out.println(tableInvoice.getSelectionModel().isEmpty());
+        //carga los productos de la factura
         InvoiceClass invoiceSelected = tableInvoice.getSelectionModel().getSelectedItem();
+        ConstantsAccounting.invoice = invoiceSelected;
         ConstantsPurchases.listWareInvoiceSearch(invoiceSelected);
+
         tableWareInv.getItems().clear();
         ObservableList<WareinvoiceClass> wiTable = FXCollections.observableArrayList(ConstantsPurchases.wareInvoiceList);
         tableWareInv.setItems(wiTable);
 
+        //Carga la tabla de deudas si tiene
         ConstantsPurchases.listMoveSearch(invoiceSelected);
         if(!ConstantsPurchases.moveInvoiceList.isEmpty()){
             tableMoveInv.getItems().clear();
@@ -999,5 +1030,39 @@ public class PurchasesController {
         }else {
             tableMoveInv.getItems().clear();
         }
+
+        //Carga la deuda pendiente de pagar
+        if(0 != invoiceSelected.getIdBill()){
+            labelTotal2.setText(String.valueOf(invoiceSelected.getIdBill()));
+            labelTotal3.setText(labelTotal2.getText());
+            tfTaxes.setText("0");
+        }
+    }
+    public void sobreCost(KeyEvent keyEvent) {
+        int subtotal = Integer.parseInt(labelTotal2.getText());
+        int sobreCosto = Integer.parseInt(tfTaxes.getText());
+        int total = subtotal +sobreCosto;
+        labelTotal3.setText(String.valueOf(total));
+    }
+    public void quote(ActionEvent event) {
+
+        MoveinvoiceClass mi = new MoveinvoiceClass();
+
+        mi.setDate(ConstantsPurchases.dateActually());
+        mi.setDebt(Integer.parseInt(labelTotal2.getText()));
+        mi.setPayCash(Integer.parseInt(tfCash.getText()));
+        mi.setPayBank(Integer.parseInt(tfBank.getText()));
+        mi.setSubtotal(Integer.parseInt(labelDebt.getText()));
+        mi.setInvoiceByIdInvoice(ConstantsAccounting.invoice);
+        mi.setIdInvoice(ConstantsAccounting.invoice.getIdInvoice());
+
+        ConstantsPurchases.moveInv = mi;
+
+        Constant.entity = "MoveinvoiceClass";
+        SaveHQL.insertWorker("save");
+
+        tableLoad();
+
+
     }
 }

@@ -32,6 +32,7 @@ public class MoveinvoiceClass {
     @JoinColumn(name = "idInvoice", referencedColumnName = "idInvoice", nullable = false, insertable = false, updatable = false)
     private InvoiceClass invoiceByIdInvoice;
 
+
     public int getId() {
         return id;
     }
@@ -100,4 +101,12 @@ public class MoveinvoiceClass {
     public int hashCode() {
         return Objects.hash(id, idInvoice, date, debt, payCash, payBank, subtotal);
     }
+
+    public InvoiceClass getInvoiceByIdInvoice() {
+        return invoiceByIdInvoice;
+    }
+    public void setInvoiceByIdInvoice(InvoiceClass invoiceByIdInvoice) {
+        this.invoiceByIdInvoice = invoiceByIdInvoice;
+    }
+
 }
