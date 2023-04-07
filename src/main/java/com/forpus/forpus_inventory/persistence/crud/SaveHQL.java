@@ -316,14 +316,7 @@ public class SaveHQL {
                             session.getTransaction().commit();
                             break;
                         case "purchaseFromSupplier":
-                            //guarda el ware product
-
-                            //guarda la compañia
-
-                            //guarda el proveedor
-
-                            //actualiza los productos
-
+                          //la idea es que esta opción detenga la ejecución
                             break;
                         default:
                             break;
@@ -511,6 +504,17 @@ public class SaveHQL {
                     }
                     session.getTransaction().commit();
                     moveInvoiceNew();
+                    break;
+                case "SaleProduct":
+                    //para guardar datos de la venta de un producto
+                    //actualiza el inventario
+                    if(!ConstantsPurchases.pPriceUpdateList.isEmpty()){
+                        session.beginTransaction();
+                        for(ProductpriceClass pp: ConstantsPurchases.pPriceUpdateList){
+                            session.update(pp);
+                        }
+                        session.getTransaction().commit();
+                    }
                     break;
                 default:
                     break;

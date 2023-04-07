@@ -19,6 +19,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import static com.forpus.forpus_inventory.domain.services.ConstantsPurchases.createNumericTextFormatter;
+
 public class PurchasesController {
     public Button buttonWarePB;
     public Button buttonDashPB;
@@ -662,16 +664,7 @@ public class PurchasesController {
 
     }
     // Crear un TextFormatter que solo permita números
-    public static TextFormatter<Integer> createNumericTextFormatter() {
-        return new TextFormatter<>(new IntegerStringConverter(), 0,
-                change -> {
-                    String newText = change.getControlNewText();
-                    if (newText.matches("\\d*")) {
-                        return change;
-                    }
-                    return null;
-                });
-    }
+
     public Boolean verify(){
         String falseFor = "";
         try {

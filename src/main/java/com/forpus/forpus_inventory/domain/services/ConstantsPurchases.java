@@ -2,6 +2,8 @@ package com.forpus.forpus_inventory.domain.services;
 
 import com.forpus.forpus_inventory.persistence.crud.SearchHQL;
 import com.forpus.forpus_inventory.persistence.entity.*;
+import javafx.scene.control.TextFormatter;
+import javafx.util.converter.IntegerStringConverter;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import java.text.SimpleDateFormat;
@@ -25,6 +27,7 @@ public class ConstantsPurchases {
     public static ArrayList<MoveinvoiceClass> moveInvoiceList = new ArrayList<>();
     public static String invoiceType = null;
     public static MoveinvoiceClass moveInv = null;
+    public static String totalSale = "0";
 
     //Este metodo permite calcular el subtotal de cada producto
     public static Integer subtotalProduct(String amount, String price){
@@ -35,8 +38,23 @@ public class ConstantsPurchases {
     //Este metodo permite calcular el monto que costaron los productos.
     public static Integer totalBuyProduct(ArrayList<ProductClass> productList){
         int totalBuy = 0;
+        int sale = 0;
         for(ProductClass pt:productList){
             totalBuy = totalBuy + subtotalProduct(String.valueOf(pt.getAmount()), pt.getPurchasePrice());
+            sale = sale + subtotalProduct(String.valueOf(pt.getAmount()), pt.getSalePrice());
+            totalSale = String.valueOf(sale);
+        }
+        return totalBuy;
+    }
+
+    public static Integer totalCostService(ArrayList<ServiceClass> serviceList){
+        int totalBuy = 0;
+        int sale = 0;
+        for(ServiceClass pt:serviceList){
+            totalBuy = totalBuy + subtotalProduct(String.valueOf(pt.getHour()), pt.getCost());
+            //guarda el precio de venta
+            sale = sale + subtotalProduct(String.valueOf(pt.getHour()), pt.getProfit());
+            totalSale = String.valueOf(sale);
         }
         return totalBuy;
     }
@@ -130,5 +148,16 @@ public class ConstantsPurchases {
         Constant.entity ="MoveinvoiceClass";
         Constant.tfCode = String.valueOf(idInvoice.getIdInvoice());
         SearchHQL.searchHQL();
+    }
+
+    public static TextFormatter<Integer> createNumericTextFormatter() {
+        return new TextFormatter<>(new IntegerStringConverter(), 0,
+                change -> {
+                    String newText = change.getControlNewText();
+                    if (newText.matches("\\d*")) {
+                        return change;
+                    }
+                    return null;
+                });
     }
 }
