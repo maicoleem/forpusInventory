@@ -13,7 +13,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
-import javafx.util.converter.IntegerStringConverter;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -284,6 +283,7 @@ public class PurchasesController {
     }
     public void clear(){
         final boolean a = false;
+
         labelProvider.setVisible(a);
         labelNameProvider.setVisible(a);
         labelProduct.setVisible(a);
@@ -777,8 +777,21 @@ public class PurchasesController {
             case "Credit":
                 ConstantsPurchases.listInvoiceSearch();
                 tableInvoice.getItems().clear();
-                ObservableList<InvoiceClass> invoiceTable = FXCollections.observableArrayList(ConstantsPurchases.invoiceList);
-                tableInvoice.setItems(invoiceTable);
+                try{
+                    ArrayList<InvoiceClass> invoiceFiltrate = new ArrayList<>();
+
+                    for(InvoiceClass iv: ConstantsPurchases.invoiceList){
+                        if(iv.getIdProviders() != null){
+                            invoiceFiltrate.add(iv);
+                        }
+                    }
+                    ObservableList<InvoiceClass> invoiceTable =
+                            FXCollections.observableArrayList(invoiceFiltrate);
+                    tableInvoice.setItems(invoiceTable);
+                }catch (Exception i){
+                    System.out.println(i);
+                    WareController.alertSend("Sin Facturas de clientes");
+                }
                 break;
             default:
                 break;

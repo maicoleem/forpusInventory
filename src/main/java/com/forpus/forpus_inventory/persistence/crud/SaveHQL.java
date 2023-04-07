@@ -515,6 +515,7 @@ public class SaveHQL {
                         }
                         session.getTransaction().commit();
                     }
+                    moveInvoiceNew();
                     break;
                 default:
                     break;

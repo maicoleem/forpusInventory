@@ -216,7 +216,7 @@
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
-            <TextField id="tfTaxes" fx:id="tfTaxes" layoutX="172.0" layoutY="103.0" onKeyTyped="#sobreCost" prefHeight="40.0" prefWidth="159.0" text="0" />
+            <TextField id="tfTaxes" fx:id="tfTaxes" layoutX="172.0" layoutY="103.0" onKeyTyped="#sobreCost" prefHeight="40.0" prefWidth="159.0" text="0" visible="false" />
             </children>
         </Pane>
         <Pane id="panelPayment" fx:id="panelPayment" layoutX="445.0" layoutY="558.0" prefHeight="204.0" prefWidth="290.0">

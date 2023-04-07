@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="**Se termino toda la funcionalidad de compras &#10;&#10;--Falta mejorar el diseño">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="**Se realizo el backend de venta de productos&#10;&#10;--revisar backend&#10;--revisar la facturación de servicios en compras--">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/PurchasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/PurchasesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SalesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SalesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsPurchases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsPurchases.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsSales.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsSales.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SearchHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SearchHQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/purchases-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/purchases-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/sales-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/sales-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -174,7 +175,9 @@
       <workItem from="1680646079318" duration="13792000" />
       <workItem from="1680736413683" duration="6447000" />
       <workItem from="1680750915036" duration="4305000" />
-      <workItem from="1680794970145" duration="29212000" />
+      <workItem from="1680794970145" duration="29322000" />
+      <workItem from="1680883101932" duration="2014000" />
+      <workItem from="1680885140765" duration="12271000" />
     </task>
     <task id="LOCAL-00001" summary="first: I create the project with javaFX, I add the dependencies of mySQL and hibernate into the pom.xml.&#10;Second: I add file hibernate.cfg.xml {i do file-project structure -Facets -hibernate -choose module}&#10;third: I add database &#10;fourth: I do mapping of the tables of database&#10;fifth:for the  connection I had do several config:&#10;-I add in module-info.java requires for hibernate and I add opens com.forpus.forpus_inventory.module that is where are the class of the tables that use hibernate.">
       <created>1674089245612</created>
@@ -470,14 +473,20 @@
       <option name="project" value="LOCAL" />
       <updated>1680755204114</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="**Se realizo el backend de venta de productos&#10;&#10;--revisar backend&#10;--revisar la facturación de servicios en compras--">
+      <created>1680838569549</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1680838569549</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="** Se crean y configurar los botones para agregar y eliminar de la tabla view&#10;**Table view configurada&#10;+Metodo salvat y de muchos a uno configurada*&#10;--Falta configorar el metodo de uno a muchos&#10;--Falta configurar como se van activando los botones para evitar errores" />
     <MESSAGE value="**Se configura el metodo MAU y UAM&#10;--Falta configurar como se van activando los botones para evitar errores" />
     <MESSAGE value="--Falta configurar como se van activando los botones para evitar errores en transmutar&#10;&#10;**Se agregaron las tablas para poder hacer los movimientos de dinero y compraventa de productos" />
     <MESSAGE value="--Falta configurar como se van activando los botones para evitar errores en transmutar&#10;&#10;**Se corrigio el doble mapeo con   @ManyToOne&#10;                                     @JoinColumn(name = &quot;idCustomer&quot;, referencedColumnName = &quot;IdentificationCard&quot;, nullable = false, insertable = false, updatable = false)&#10;**Se agragaron las tablas al mapeon en el archivo de hibernate" />
@@ -502,7 +511,8 @@
     <MESSAGE value="**Se esta editando la view para pagar los creditos&#10;&#10;--falta funcionalidad" />
     <MESSAGE value="**Las tablas de la pestaña credito ya funcionan&#10;&#10;--Falta poder guardar movimientos &#10;&#10;--el subtotal del ultimo movimiento debe ser igual a idBill de la factura." />
     <MESSAGE value="**Se termino toda la funcionalidad de compras &#10;&#10;--Falta mejorar el diseño" />
-    <option name="LAST_COMMIT_MESSAGE" value="**Se termino toda la funcionalidad de compras &#10;&#10;--Falta mejorar el diseño" />
+    <MESSAGE value="**Se realizo el backend de venta de productos&#10;&#10;--revisar backend&#10;--revisar la facturación de servicios en compras--" />
+    <option name="LAST_COMMIT_MESSAGE" value="**Se realizo el backend de venta de productos&#10;&#10;--revisar backend&#10;--revisar la facturación de servicios en compras--" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

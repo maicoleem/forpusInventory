@@ -14,11 +14,17 @@ public class ConstantsSales {
     public static String rUtilities = "0";
     public static Integer utilitiesPer (int sale, int buy){
         return ((sale - buy) * 100)/buy;
-        //416 y 426
     }
     public static String taxes (String ivaI, String boldB){
         int iva = Integer.parseInt(ivaI);
         int bold = Integer.parseInt(boldB);
+
+        if(!ConstantsPurchases.iva){
+            iva = 0;
+        }
+        if(!ConstantsPurchases.boldP){
+            bold = 0;
+        }
         return String.valueOf(iva + bold);
     }
     public static String utilities (String totalSale, String totalBuy, String taxes, String debt, String total){
@@ -54,7 +60,11 @@ public class ConstantsSales {
             rBuy = "0";
             rUtilities = "0";
         }
-
+        System.out.println(totalSale + "sale-buy" + totalBuy + "-taxes" + taxes + "-debt" + debt + "-total" + total);
+        System.out.println(pay + "pagado");
+        System.out.println(utilities + "utilidades");
+        System.out.println(rBuy + "lo que falta para pagar la inversión");
+        System.out.println(rUtilities + "la que falta para completar las utilidades");
 
         return String.valueOf((sale - buy));
     }

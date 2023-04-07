@@ -126,6 +126,7 @@ public class SearchHQL {
                     ConstantsAccounting.taxesList = results14.toArray(new TaxesClass[0]);
                     break;
                 case "MoveinvoiceClass":
+
                     if(ConstantsPurchases.entityForInvoice.equals("ProvidersClass")){
                         ConstantsPurchases.moveInvoiceList.clear();
                         String hql15 = "FROM "+ Constant.entity +" C where C.idInvoice in(?1)";

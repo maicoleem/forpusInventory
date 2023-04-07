@@ -19,90 +19,24 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Objects;
-
 import static com.forpus.forpus_inventory.domain.services.ConstantsPurchases.createNumericTextFormatter;
 
 public class SalesController {
-    public Button buttonWarePB;
-    public Button buttonDashPB;
-    public Button buttonAccountingPB;
-    public Button buttonBuyPB;
-    public Button buttonSalePB;
-    public Button buttonSettingsPB;
-    public Button found;
-    public Button cancel;
-    public Button save;
-    public Button search;
-    public Button remove;
-    public Button buttonService;
-    public Label labelClient;
-    public TableView<ProductClass> tableMain;
-    public Label labelNameClient;
-    public TextField tfClient;
-    public ComboBox<String> comboBoxAmount;
-    public Button buttonClient;
-    public Label labelProduct;
-    public TextField tfProduct;
-    public Label labelNameProduct;
-    public Button buttonProduct;
-    public Label labelAmount;
-    public Label labelPriceBuy;
-    public Label labelPriceSale;
-    public TextField tfOff;
-    public Label labelOff;
-    public Label labelNote;
-    public TextField tfNote;
-    public Button buttonRegister;
-    public Pane panelTotal;
-    public Label labelBold;
-    public Button buttonBold;
-    public Label labelIVA;
-    public Label labelTotal2;
-    public Label labelTotal;
-    public Button buttonIVA;
-    public Pane panelPayment;
-    public Label labelCash;
-    public Label labelBank;
-    public Label labelSubTotal;
-    public TextField tfBank;
-    public TextField tfCash;
-    public Label labelPay;
-    public Pane panelCheckIn;
-    public Button buttonCheckIn;
-    public Button buttonQuote;
-    public Label labelOff2;
-    public Button buttonCredit;
-    public Button buttonProduct0;
+
     public TableColumn<Object, Object> c1;
     public TableColumn<Object, Object> c2;
-    public TableColumn c3;
-    public TableColumn c4;
+    public TableColumn<Object, Object> c3;
+    public TableColumn<Object, Object> c4;
     public TableColumn c5;
     public TableColumn c6;
     public TableColumn c7;
     public TableColumn c8;
     public TableColumn c9;
     public TableColumn c10;
-    public ComboBox<String> comboBoxPrice;
-    public Label labelNameCliente;
-    public Label labelCliente;
-    public TextField tfCliente;
-    public Button buttonCliente;
-    public Label labelSubTota2;
-    public Label labelIVA2;
-    public Label labelBold2;
-    public TextField tfTaxes;
-    public Label labelDebt;
-    public TextField tfPriceSale;
-    public TextField tfAmount;
-    public ComboBox<String> comboBoxWare;
-    public Button buttonSuppress;
-    public TextField tfProductName;
+
     public TableView<ServiceClass> tableService;
     public TableColumn c21;
     public TableColumn c22;
@@ -115,12 +49,12 @@ public class SalesController {
     public TableColumn i3;
     public TableColumn i4;
     public TableColumn i5;
-    public TableView tableWareInv;
+    public TableView<WareinvoiceClass> tableWareInv;
     public TableColumn wi1;
     public TableColumn wi2;
     public TableColumn wi3;
     public TableColumn wi4;
-    public TableView tableMoveInv;
+    public TableView<MoveinvoiceClass> tableMoveInv;
     public TableColumn m1;
     public TableColumn m2;
     public TableColumn m3;
@@ -128,7 +62,65 @@ public class SalesController {
     public TableColumn m5;
     public TableColumn m6;
     public TableColumn m7;
+    public Button found;
+    public Button cancel;
+    public Button save;
+    public Button search;
+    public Button remove;
+    public Button buttonWarePB;
+    public Button buttonDashPB;
+    public Button buttonAccountingPB;
+    public Button buttonBuyPB;
+    public Button buttonSalePB;
+    public Button buttonSettingsPB;
+    public Button buttonProduct0;
+    public Button buttonService;
+    public Button buttonCredit;
+    public Label labelCliente;
+    public TableView<ProductClass> tableMain;
+    public Label labelNameCliente;
+    public TextField tfCliente;
+    public ComboBox<String> comboBoxPrice;
+    public Button buttonCliente;
+    public Label labelProduct;
+    public TextField tfProduct;
+    public Label labelNameProduct;
+    public Button buttonProduct;
+    public TextField tfOff;
+    public Label labelOff;
+    public Button buttonRegister;
+    public Pane panelTotal;
+    public Label labelBold;
+    public Button buttonBold;
+    public Label labelIVA;
+    public Label labelSubTota2;
+    public Label labelTotal;
+    public Button buttonIVA;
+    public Label labelTotal2;
+    public Label labelIVA2;
+    public Label labelBold2;
+    public Label labelSubTotal;
+    public TextField tfTaxes;
+    public Pane panelPayment;
+    public Label labelCash;
+    public Label labelBank;
+    public TextField tfCash;
+    public TextField tfBank;
+    public Label labelDebt;
+    public Label labelPay;
+    public Pane panelCheckIn;
+    public Button buttonCheckIn;
+    public Button buttonQuote;
+    public Label labelPriceSale;
+    public TextField tfPriceSale;
+    public Label labelAmount;
+    public TextField tfAmount;
+    public ComboBox<String> comboBoxWare;
+    public TextField tfProductName;
+    public Button buttonSuppress;
+    public ComboBox<String> comboBoxAmount;
     public Label labelUtilities;
+
     public void initialize() {
 
         tfAmount.setTextFormatter(createNumericTextFormatter());
@@ -140,6 +132,7 @@ public class SalesController {
 
         Constant.entity = "CustomerClass";
         ConstantsSales.salesOption = "Product";
+        ConstantsPurchases.entity = "SaleProduct";
 
         taxesIVABOLD();
 
@@ -195,12 +188,14 @@ public class SalesController {
         }
     }
     public void clean(){
+
         final boolean a = false;
+
         labelProduct.setVisible(a);
         labelNameProduct.setVisible(a);
         labelOff.setVisible(a);
         labelAmount.setVisible(a);
-        labelPriceSale.setVisible(a);
+        labelUtilities.setVisible(a);
 
         tfProduct.setVisible(a);
         tfOff.setVisible(a);
@@ -230,6 +225,14 @@ public class SalesController {
         tableWareInv.setVisible(a);
 
         panelCheckIn.setVisible(a);
+        buttonCheckIn.setVisible(!a);
+        buttonIVA.setVisible(!a);
+        buttonBold.setVisible(!a);
+        labelIVA.setText("IVA");
+        labelIVA2.setVisible(!a);
+        labelBold.setVisible(!a);
+        labelBold2.setVisible(!a);
+
         panelPayment.setVisible(a);
         panelTotal.setVisible(a);
 
@@ -248,7 +251,6 @@ public class SalesController {
 
         tableService.getItems().clear();
         tableMain.getItems().clear();
-
 
     }
     @FXML
@@ -303,22 +305,23 @@ public class SalesController {
                 panelPayment.setVisible(a);
                 panelCheckIn.setVisible(a);
                 panelTotal.setVisible(a);
-                labelClient.setVisible(a);
-                labelNameClient.setVisible(a);
+
                 labelProduct.setVisible(a);
                 labelProduct.setText("Producto");
                 labelNameProduct.setVisible(a);
+                labelNameProduct.setText("Nombre Producto");
+                labelNameCliente.setVisible(a);
                 labelAmount.setVisible(a);
-                labelPriceBuy.setVisible(a);
-                labelPriceSale.setVisible(a);
-                labelOff2.setVisible(a);
-                labelOff.setVisible(a);
-                labelNote.setVisible(a);
+                labelUtilities.setVisible(a);
 
-                tfClient.setVisible(a);
+                labelPriceSale.setVisible(a);
+                labelOff.setVisible(a);
+
                 tfProduct.setVisible(a);
                 tfOff.setVisible(a);
-                tfNote.setVisible(a);
+                tfAmount.setVisible(a);
+                tfAmount.setText("1");
+                tfPriceSale.setVisible(a);
 
                 comboBoxAmount.setVisible(a);
                 comboBoxWare.setVisible(a);
@@ -327,8 +330,15 @@ public class SalesController {
                 tableMain.setVisible(a);
 
                 buttonProduct.setVisible(a);
-                buttonClient.setVisible(a);
                 buttonRegister.setVisible(a);
+                search.setVisible(a);
+                save.setVisible(a);
+                found.setVisible(a);
+                cancel.setVisible(a);
+                remove.setVisible(a);
+                buttonSuppress.setVisible(a);
+
+                taxesIVABOLD();
 
                 break;
             case "buttonService":
@@ -336,9 +346,72 @@ public class SalesController {
                 Constant.entity = "CustomerClass";
                 ConstantsPurchases.entity = "Service";
 
+                panelPayment.setVisible(a);
+                panelCheckIn.setVisible(a);
+                panelTotal.setVisible(a);
+
+                labelProduct.setVisible(a);
+                labelProduct.setText("Servicio");
+                labelNameProduct.setVisible(a);
+                labelNameProduct.setText("Nombre Servicio");
+                labelNameCliente.setVisible(a);
+                labelAmount.setVisible(a);
+
+                labelPriceSale.setVisible(a);
+                labelOff.setVisible(a);
+
+                tfProduct.setVisible(a);
+                tfOff.setVisible(a);
+                tfAmount.setVisible(a);
+                tfPriceSale.setVisible(a);
+
+                comboBoxWare.setVisible(a);
+                comboBoxPrice.setVisible(a);
+
+                tableService.setVisible(a);
+
+                buttonProduct.setVisible(a);
+                buttonRegister.setVisible(a);
+                search.setVisible(a);
+                save.setVisible(a);
+                found.setVisible(a);
+                cancel.setVisible(a);
+                remove.setVisible(a);
+                buttonSuppress.setVisible(a);
+
+                taxesIVABOLD();
+
                 break;
             case "buttonCredit":
-                clean();
+                ConstantsSales.salesOption = "Credit";
+                Constant.entity = "CustomerClass";
+                ConstantsPurchases.entity = "customersDebt";
+                ConstantsPurchases.entityForInvoice = "CustomersClass";
+
+                tableInvoice.setVisible(a);
+                tableMoveInv.setVisible(a);
+                tableWareInv.setVisible(a);
+                labelNameCliente.setVisible(a);
+                labelCliente.setVisible(a);
+                buttonCliente.setVisible(a);
+
+                search.setVisible(a);
+
+                tfTaxes.setVisible(a);
+
+                panelPayment.setVisible(a);
+                buttonIVA.setVisible(!a);
+                buttonBold.setVisible(!a);
+                labelIVA.setText("Mora");
+                labelIVA2.setVisible(!a);
+                labelBold.setVisible(!a);
+                labelBold2.setVisible(!a);
+                panelTotal.setVisible(a);
+                panelCheckIn.setVisible(a);
+                buttonCheckIn.setVisible(!a);
+
+                tableLoad();
+
                 break;
             default:
                 break;
@@ -346,9 +419,9 @@ public class SalesController {
     }
     public void clientFound(ActionEvent event) {
         Constant.entity = "CustomerClass";
-        Constant.tfCode = tfClient.getText();
+        Constant.tfCode = tfCliente.getText();
         FoundHQL.workerFound();
-        labelNameClient.setText(Constant.customer.getName());
+        labelNameCliente.setText(Constant.customer.getName());
     }
     public void productFound(ActionEvent event) {
         switch (ConstantsSales.salesOption){
@@ -383,8 +456,9 @@ public class SalesController {
                 comboBoxPrice.getItems().addAll(listProduct);
                 comboBoxAmount.getItems().addAll(listAmount);
                 tfOff.setText("0");
-                tfAmount.setText("0");
+                tfAmount.setText("1");
                 tfPriceSale.setText(ConstantsWare.product.getSalePrice());
+                labelUtilities.setText("0");
                 break;
             case "Service":
                 Constant.entity = "ServiceClass";
@@ -397,6 +471,7 @@ public class SalesController {
                 comboBoxWare.setValue(ConstantsWare.service.getIdWare());
                 tfOff.setText("0");
                 tfAmount.setText("1");
+                labelUtilities.setText("0");
                 break;
             default:
                 break;
@@ -455,21 +530,26 @@ public class SalesController {
             case "comboBoxWare":
                 ArrayList<String> listProduct = new ArrayList<>();
                 ArrayList<String> listAmount = new ArrayList<>();
+                String price = "";
+                String amount = "";
                 for(WareProductClass w: ConstantsWare.product.getWareProductsByIdProduct()){
                     if(cb.getValue().equals(w.getIdWare())){
                         ConstantsSales.wareProduct = w;
                         for(ProductpriceClass p: w.getProductpricesByIdWareProduct()){
-                            String price = String.valueOf(p.getPrice());
+                            price = String.valueOf(p.getPrice());
                             listProduct.add(price);
-                            comboBoxPrice.setValue(price);
-                            String amount = String.valueOf(p.getAmount());
+                            amount = String.valueOf(p.getAmount());
                             listAmount.add(amount);
-                            comboBoxAmount.setValue(amount);
                         }
                     }
                 }
+                comboBoxPrice.getItems().clear();
+                comboBoxAmount.getItems().clear();
                 comboBoxPrice.getItems().addAll(listProduct);
                 comboBoxAmount.getItems().addAll(listAmount);
+                comboBoxPrice.setValue(price);
+                comboBoxAmount.setValue(amount);
+                changeSale();
                 break;
             case "comboBoxAmount":
                 for(ProductpriceClass pp: ConstantsSales.wareProduct.getProductpricesByIdWareProduct()){
@@ -533,7 +613,7 @@ public class SalesController {
             if(tfAmount.getText().isEmpty()){
                 falseFor = "Amount";
             }else{
-                int a = Integer.valueOf(tfAmount.getText());
+                int a = Integer.parseInt(tfAmount.getText());
                 if(a <= 0){
                     falseFor = "Amount";
                 }
@@ -542,7 +622,7 @@ public class SalesController {
             if(tfPriceSale.getText().isEmpty()){
                 falseFor = "Sale";
             }else{
-                int v = Integer.valueOf(tfPriceSale.getText());
+                int v = Integer.parseInt(tfPriceSale.getText());
                 if(v <= 0){
                     falseFor = "Sale";
                 }
@@ -612,16 +692,28 @@ public class SalesController {
             case "Credit":
                 ConstantsPurchases.listInvoiceSearch();
                 tableInvoice.getItems().clear();
-                ConstantsPurchases.invoiceList.removeIf(s -> s.getIdCustomer().isBlank());
-                ObservableList<InvoiceClass> invoiceTable =
-                        FXCollections.observableArrayList(ConstantsPurchases.invoiceList);
-                tableInvoice.setItems(invoiceTable);
+                try{
+
+                    ArrayList<InvoiceClass> invoiceFiltrate = new ArrayList<>();
+
+                    for(InvoiceClass iv: ConstantsPurchases.invoiceList){
+                        if(iv.getIdCustomer() != null){
+                            invoiceFiltrate.add(iv);
+                        }
+                    }
+                    ObservableList<InvoiceClass> invoiceTable =
+                            FXCollections.observableArrayList(invoiceFiltrate);
+                    tableInvoice.setItems(invoiceTable);
+                }catch (Exception i){
+                    System.out.println(i);
+                    WareController.alertSend("Sin Facturas de clientes");
+                }
                 break;
             default:
                 break;
         }
 
-        if(!ConstantsPurchases.entity.equals("Credit")){
+        if(!ConstantsSales.salesOption.equals("Credit")){
 
             labelTotal2.setText(labelSubTota2.getText());
 
@@ -644,6 +736,7 @@ public class SalesController {
         }
     }
     public void costTaxes(){
+
         if(!labelIVA.getText().equals("IVA")){
             double ivaTaxes = Double.valueOf(labelIVA.getText());
             int subtotal = Integer.valueOf(labelTotal2.getText());
@@ -775,7 +868,6 @@ public class SalesController {
             Constant.tfCode = "666";
             FoundHQL.wareFound();
 
-
             switch (ConstantsSales.salesOption){
                 case "Product":
                     //cada producto debe de crear un wareinvoice
@@ -898,6 +990,7 @@ public class SalesController {
         tableWareInv.setItems(wiTable);
 
         //Carga la tabla de deudas si tiene
+        ConstantsPurchases.entityForInvoice = "ProvidersClass";
         ConstantsPurchases.listMoveSearch(invoiceSelected);
         if(!ConstantsPurchases.moveInvoiceList.isEmpty()){
             tableMoveInv.getItems().clear();
