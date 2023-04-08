@@ -1,30 +1,45 @@
 package com.forpus.forpus_inventory.persistence.crud;
 
+import com.forpus.forpus_inventory.domain.services.Constant;
 import com.forpus.forpus_inventory.persistence.Session.SessionDB;
 import com.forpus.forpus_inventory.persistence.entity.CompanyClass;
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import com.forpus.forpus_inventory.persistence.entity.WorkersClass;
 import org.hibernate.Query;
 import org.hibernate.Session;
-public class SingUp {
-    @FXML
-    private Label lblSingUp;
 
-    public static String name = "";
-    public static String password = "";
-    public static boolean companySingUP(){
-        try{//check hibernate connection and database
+/**
+ * <h1>SingUP</h1>
+ * search in data base the user and password
+ * <p>
+ * if the user and password math, login.
+ * </p>
+ * */
+
+public class SingUp {
+    /**
+     * @param name is the username
+     * @param password is the password the user
+     * @return true if the name and password match with the database
+     * */
+    public static boolean companySingUP(String name, String password){
+        try{
             SessionDB.session();
             Session session = SessionDB.sessionHibernate;
-            //SessionDB.session().getSession();
-
-            //set the search query by name and get the password
             Query query = session.createQuery("from CompanyClass C where C.name in(?1)");
             query.setParameter(1, name);
-            CompanyClass company = (CompanyClass) query.uniqueResult();
-            return password.equals(company.getPassword());
+            Constant.company = (CompanyClass) query.uniqueResult();
+            return password.equals(Constant.company.getPassword());
         }catch (Exception e){
-            System.out.println("Error ejecutando el query");
+            try{
+                SessionDB.session();
+                Session session = SessionDB.sessionHibernate;
+                Query query = session.createQuery("from WorkersClass C where C.name in(?1)");
+                query.setParameter(1, name);
+                Constant.workerLogin = (WorkersClass) query.uniqueResult();
+                return password.equals(Constant.workerLogin.getPassword());
+            }catch (Exception i){
+                System.out.println("Error ejecutando el query");
+            }
         }
         return false;
     }

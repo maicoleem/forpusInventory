@@ -53,6 +53,7 @@ public class Constant {
     public static PartnersClass partners = null;
     public static ProvidersClass provider = null;
     public static WorkersClass worker = null;
+    public static WorkersClass workerLogin = null;
 
     public static String[] entityForean= {"CategoryoneClass", "WarehouseClass", "ServiceClass", "ProductClass"};
     public static ArrayList<TableShow> listTableShow = new ArrayList<>();

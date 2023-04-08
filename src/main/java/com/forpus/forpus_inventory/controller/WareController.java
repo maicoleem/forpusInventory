@@ -847,7 +847,7 @@ public class WareController {
                 labelProduct.setText("Servicio");
                 labelSale.setText("Consumido");
                 labelWage.setText("Bodega");
-                labelConsumed.setText("Profit");
+                labelConsumed.setText("P. Venta");
 
 
                 comboBoxOne.setVisible(true);

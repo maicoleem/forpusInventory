@@ -6,7 +6,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -14,6 +13,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
 
+/**<h1>HelloController</h1>
+ * If the Class that controller the view, the user input the user and password for sing in.
+ * */
 public class HelloController {
     @FXML
     private Label lblSingUp;
@@ -23,15 +25,15 @@ public class HelloController {
 
     @FXML
     private PasswordField password;
-
+    /**
+     * This method captures the username and password to log in, sending the date to the Class
+     * {@code SingUp} with the method companySingUp. return the view if the sing up was successful.
+     * */
     @FXML
     protected void onButtonClick(ActionEvent event) throws IOException {
-        SingUp.name = userName.getText();
-        SingUp.password = password.getText();
-        SingUp.companySingUP();
-        if(SingUp.companySingUP()){
-            lblSingUp.setText("Success");
 
+        if(SingUp.companySingUP(userName.getText(), password.getText())){
+            lblSingUp.setText("Success");
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("settings-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
