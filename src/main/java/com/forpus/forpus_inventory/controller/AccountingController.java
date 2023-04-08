@@ -137,8 +137,9 @@ public class AccountingController {
                     }
                 }
             case "PartnersClass":
-                Constant.tfCode = String.valueOf(ConstantsAccounting.invoice.getIdInvoice());
                 Constant.entity = "InvoiceClass";
+                ConstantsPurchases.invoiceType = "socialContribution";
+                SaveHQL.insertWorker("save");
 
                 break;
             default:
@@ -170,12 +171,11 @@ public class AccountingController {
                     invoice.setTaxes("0");
                     invoice.setIndebtedness("0");
                     invoice.setTotal("0");
-                    java.util.Date date = new Date();
-                    invoice.setDate(String.valueOf(date));
+                    invoice.setDate(ConstantsPurchases.dateActually());
                     invoice.setTotalBuy("0");
                     invoice.setUtilities("0");
                     invoice.setRUtilities("0");
-                    invoice.setPartnersByIdPartners(Constant.partners);
+                    //invoice.setPartnersByIdPartners(Constant.partners);
 
                     //Cambia el saldo de la compañia y partner
                     int bank = Integer.valueOf(invoice.getBank());
