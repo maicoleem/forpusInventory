@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="**las tablas cargan correctamente los objetos de tipo invoice y tipo wareInvoice.&#10;se corrigio como buscaba los wareInvoice y como la hacer click en la tableMain se modifica la tabla2">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="**Los aportesquedan guardados, se modifico el envio de datos a la base de datos para los aportes sociales">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/AccountingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/AccountingController.java" afterDir="false" />
     </list>
@@ -558,6 +558,34 @@
           <properties class="org.hibernate.exception.SQLGrammarException" package="org.hibernate.exception" />
           <option name="timeStamp" value="8" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/AccountingController.java</url>
+          <line>980</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/AccountingController.java</url>
+          <line>344</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/AccountingController.java</url>
+          <line>982</line>
+          <properties class="com.forpus.forpus_inventory.controller.AccountingController" method="tableNull">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/AccountingController.java</url>
+          <line>966</line>
+          <properties class="com.forpus.forpus_inventory.controller.AccountingController" method="forInvoice">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

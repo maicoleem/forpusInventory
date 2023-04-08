@@ -754,7 +754,8 @@ public class AccountingController {
                     tableMain.setItems(datesTTT);
                     break;
                 case "Accounting":
-                   if(idComboBox.equals("tableMain")){
+                case "Debt":
+                    if(idComboBox.equals("tableMain")){
                        tableMain.getItems().clear();
                        c1.setText("ID");
                        c1.setCellValueFactory(new PropertyValueFactory<>("c1"));
@@ -887,6 +888,8 @@ public class AccountingController {
     public void search(ActionEvent event) {
         Constant.tfCode = tfCode.getText();
         FoundHQL.workerFound();
+        System.out.println(Constant.entity);
+        ConstantsAccounting.invoiceList = null;
         switch (Constant.entity){
             case "CompanyClass":
                 labelNameShow.setText(" NOMBRE: " + Constant.company.getName());
@@ -900,6 +903,7 @@ public class AccountingController {
                 labelPhone.setText(" TELEFONO: " + Constant.customer.getPhoneNumber());
                 labelAddress.setText(" DIRECCIÓN: "+ Constant.customer.getAddres());
                 ConstantsAccounting.invoiceList = Constant.customer.getInvoicesByIdCustomer().toArray(new InvoiceClass[0]);
+                System.out.println(ConstantsAccounting.invoiceList);
                 tableNull();
                 break;
             case "PartnersClass":
@@ -934,6 +938,7 @@ public class AccountingController {
                 System.out.println("nada");
                 break;
             case "Accounting":
+            case "Debt":
                 try{
                     if(ConstantsAccounting.invoiceList.length != 0) {
 
@@ -954,27 +959,7 @@ public class AccountingController {
                     System.out.println(e);
                 }
                 break;
-            case "Debt":
-                try{
-                    if(ConstantsAccounting.invoiceList.length != 0) {
-                        TableShow tableSelected1 = tableMain.getSelectionModel().getSelectedItem();
-                        InvoiceClass invoice1 = new InvoiceClass();
-                        invoice1.setIdInvoice(Integer.valueOf(tableSelected1.getC1()));
-                        invoice1.setDate(tableSelected1.getC2());
-                        invoice1.setTotal(tableSelected1.getC3());
-                        invoice1.setIndebtedness(tableSelected1.getC4());
-                        invoice1.setUtilities(tableSelected1.getC5());
-                        Constant.entity = "InvoiceClass";
-                        Constant.tfCode = String.valueOf(invoice1.getIdInvoice());
-                        FoundHQL.workerFound();
-                        ConstantsAccounting.debtList = ConstantsAccounting.invoice.getMoveinvoicesByIdInvoice().toArray(new MoveinvoiceClass[0]);
-                        forInvoice();
-                    }
-                }catch (Exception e){
-                    System.out.println(e);
-                }
 
-                break;
             default:
                 break;
         }
@@ -998,14 +983,25 @@ public class AccountingController {
     public void tableNull(){
         Constant.listTableShow.clear();
         Constant.listTableShow2.clear();
-        System.out.println(ConstantsAccounting.invoiceList.length);
+
+        if(ConstantsAccounting.entity.equals("Debt") && ConstantsAccounting.invoiceList.length != 0){
+            for(InvoiceClass iv: ConstantsAccounting.invoiceList){
+                if(iv.getIdBill() != 0){
+                    ConstantsPurchases.invoiceCredit.add(iv);
+                }
+            }
+            ConstantsAccounting.invoiceList = null;
+            ConstantsAccounting.invoiceList = ConstantsPurchases.invoiceCredit.toArray(new InvoiceClass[0]);
+            ConstantsPurchases.invoiceCredit.clear();
+        }
+
         if(ConstantsAccounting.invoiceList.length != 0) {
             for (InvoiceClass iv : ConstantsAccounting.invoiceList) {
                 TableShow tableShow = new TableShow();
                 tableShow.setC1(String.valueOf(iv.getIdInvoice()));
                 tableShow.setC2(iv.getDate());
                 tableShow.setC3(iv.getTotal());
-                tableShow.setC4(iv.getIndebtedness());
+                tableShow.setC4(String.valueOf(iv.getIdBill()));
                 tableShow.setC5(iv.getUtilities());
                 Constant.listTableShow.add(tableShow);
                 if (Constant.listTableShow.size() == 1) {
