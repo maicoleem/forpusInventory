@@ -514,10 +514,12 @@ public class AccountingController {
                         default:
                             break;
                     }
+                    Constant.tfSalary = Constant.entity;
                     comboBoxProduct.getItems().addAll(listComboBoxName);
                     tfCode.setDisable(false);
                 }
                 if(Objects.equals(idComboBox, "comboBoxProduct") && comboBoxProduct.getValue() != null){
+                    Constant.entity = Constant.tfSalary;
                     switch (Constant.entity){
                         case "CompanyClass":
                             for (int i = 0; i < Constant.companiesList.length; i = i + 1) {
@@ -564,6 +566,8 @@ public class AccountingController {
                     }
 
                 }
+                tableMain.getItems().clear();
+                tableTwo.getItems().clear();
                 ConstantsAccounting.entity = "Accounting";
                 break;
             case "PartnersClass":
@@ -673,16 +677,10 @@ public class AccountingController {
         }
     }
     public void tableLoad(String entity, String idComboBox){
-        tableMain.getItems().clear();
-        c1.setText("C1");
-        c2.setText("C2");
-        c3.setText("C3");
-        c4.setText("C4");
-        c5.setText("C5");
-
         try{
             switch (entity){
                 case "WarehouseClass":
+                    tableMain.getItems().clear();
                     //carga todos los productos que hay en esa bodega
                     /*producto, cantidad, precio
                     * */
@@ -757,6 +755,7 @@ public class AccountingController {
                     break;
                 case "Accounting":
                    if(idComboBox.equals("tableMain")){
+                       tableMain.getItems().clear();
                        c1.setText("ID");
                        c1.setCellValueFactory(new PropertyValueFactory<>("c1"));
                        c2.setText("Fecha");
@@ -929,7 +928,7 @@ public class AccountingController {
         }
 
     }
-    public void tableSelection(MouseEvent mouseEvent) {
+    public void tableSelection() {
         switch (ConstantsAccounting.entity){
             case "WarehouseClass":
                 System.out.println("nada");
@@ -937,21 +936,21 @@ public class AccountingController {
             case "Accounting":
                 try{
                     if(ConstantsAccounting.invoiceList.length != 0) {
+
                         TableShow tableSelected = tableMain.getSelectionModel().getSelectedItem();
-                        InvoiceClass invoice = new InvoiceClass();
-                        invoice.setIdInvoice(Integer.valueOf(tableSelected.getC1()));
-                        invoice.setDate(tableSelected.getC2());
-                        invoice.setTotal(tableSelected.getC3());
-                        invoice.setIndebtedness(tableSelected.getC4());
-                        invoice.setUtilities(tableSelected.getC5());
+
                         Constant.entity = "InvoiceClass";
-                        Constant.tfCode = String.valueOf(invoice.getIdInvoice());
+                        Constant.tfCode = String.valueOf(tableSelected.getC1());
                         FoundHQL.workerFound();
+
+                        Constant.entity = "WareinvoiceClass";
+                        SearchHQL.searchHQL();
+
                         Constant.entity = "Accounting";
-                        ConstantsAccounting.wareInvoiceList = ConstantsAccounting.invoice.getWareinvoicesByIdInvoice().toArray(new WareinvoiceClass[0]);
                         forInvoice();
                     }
                 }catch (Exception e){
+                    e.printStackTrace();
                     System.out.println(e);
                 }
                 break;
@@ -981,7 +980,10 @@ public class AccountingController {
         }
     }
     public void forInvoice(){
-        for(WareinvoiceClass wiv: ConstantsAccounting.wareInvoiceList){
+
+        Constant.listTableShow2.clear();
+
+        for(WareinvoiceClass wiv: ConstantsPurchases.wareInvoiceList){
             TableShow tableShow2 = new TableShow();
             tableShow2.setC1(wiv.getProductName());
             tableShow2.setC2(String.valueOf(wiv.getAmount()));
@@ -990,6 +992,7 @@ public class AccountingController {
             tableShow2.setC5(String.valueOf(wiv.getIdInvoice()));
             Constant.listTableShow2.add(tableShow2);
         }
+
         tableLoad(ConstantsAccounting.entity, "tableTwo");
     }
     public void tableNull(){

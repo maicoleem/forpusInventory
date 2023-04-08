@@ -146,7 +146,7 @@ public class FoundHQL {
                     SearchHQL.searchHQL();
                     break;
                 case "InvoiceClass":
-                    InvoiceClass invoice = session.load(InvoiceClass.class, Constant.tfCode);
+                    InvoiceClass invoice = session.load(InvoiceClass.class, Integer.valueOf(Constant.tfCode));
                     ConstantsAccounting.invoice = invoice;
                     break;
                 default:

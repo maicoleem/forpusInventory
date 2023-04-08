@@ -150,7 +150,7 @@
          </font></TextField>
       <ComboBox id="comboBoxWare" fx:id="comboBoxWare" layoutX="242.0" layoutY="102.0" onAction="#comboBoxClick" prefHeight="40.0" prefWidth="142.0" visible="false" />
       <ComboBox id="comboBoxProduct" fx:id="comboBoxProduct" layoutX="242.0" layoutY="153.0" onAction="#comboBoxClick" prefHeight="40.0" prefWidth="142.0" visible="false" />
-      <TableView id="tableMain" fx:id="tableMain" layoutX="104.0" layoutY="349.0" onMouseClicked="#tableSelection" prefHeight="256.0" prefWidth="376.0" visible="false">
+      <TableView id="tableMain" fx:id="tableMain" layoutX="104.0" layoutY="349.0" onKeyPressed="#tableSelection" onMouseClicked="#tableSelection" prefHeight="256.0" prefWidth="376.0" visible="false">
         <columns>
           <TableColumn id="c1" fx:id="c1" prefWidth="75.0" text="C1" />
           <TableColumn id="c2" fx:id="c2" prefWidth="75.0" text="C2" />
