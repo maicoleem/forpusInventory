@@ -126,7 +126,7 @@
                 <Font name="Tahoma Bold" size="19.0" />
             </font></Label>
 
-        <TableView id="tableMain" fx:id="tableMain" layoutX="88.0" layoutY="352.0" prefHeight="204.0" prefWidth="750.0">
+        <TableView id="tableMain" fx:id="tableMain" layoutX="88.0" layoutY="346.0" prefHeight="204.0" prefWidth="750.0">
             <columns>
                 <TableColumn id="c1" fx:id="c1" prefWidth="75.0" text="CODIGO" />
                 <TableColumn id="c2" fx:id="c2" prefWidth="75.0" text="PRODUCTO" />
@@ -146,7 +146,7 @@
             </font>
         </Label>
         <TextField id="tfProvider" fx:id="tfProvider" layoutX="240.0" layoutY="86.0" prefHeight="40.0" prefWidth="142.0" />
-        <ComboBox id="comboBoxPrice" fx:id="comboBoxPrice" layoutX="243.0" layoutY="190.0" onAction="#cbPrice" prefHeight="40.0" prefWidth="136.0" promptText="Precio" />
+        <ComboBox id="comboBoxPrice" fx:id="comboBoxPrice" layoutX="358.0" layoutY="190.0" onAction="#cbPrice" prefHeight="40.0" prefWidth="103.0" promptText="Precio" />
         <Button id="buttonProvider" fx:id="buttonProvider" layoutX="391.0" layoutY="86.0" mnemonicParsing="false" onAction="#providerFound" prefHeight="40.0" prefWidth="45.0" styleClass="buttonBlue" text="OK" />
         <Label id="labelProduct" fx:id="labelProduct" alignment="CENTER" contentDisplay="CENTER" layoutX="78.0" layoutY="138.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Producto">
             <font>
@@ -165,14 +165,14 @@
                 <Font name="Tahoma Bold" size="19.0" />
             </font>
         </Label>
-        <TextField id="tfOff" fx:id="tfOff" layoutX="678.0" layoutY="190.0" prefHeight="40.0" prefWidth="45.0" />
-        <Label id="labelOff" fx:id="labelOff" alignment="CENTER" contentDisplay="CENTER" layoutX="515.0" layoutY="190.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Descuento">
+        <TextField id="tfOff" fx:id="tfOff" layoutX="628.0" layoutY="190.0" prefHeight="40.0" prefWidth="45.0" />
+        <Label id="labelOff" fx:id="labelOff" alignment="CENTER" contentDisplay="CENTER" layoutX="470.0" layoutY="190.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Descuento">
             <font>
                 <Font name="Tahoma Bold" size="19.0" />
             </font>
         </Label>
-        <Button id="buttonRegister" fx:id="buttonRegister" layoutX="693.0" layoutY="301.0" mnemonicParsing="false" onAction="#register" prefHeight="40.0" prefWidth="142.0" styleClass="buttonBlue" text="REGISTRAR" />
-        <Pane id="panelTotal" fx:id="panelTotal" layoutX="77.0" layoutY="554.0" prefHeight="204.0" prefWidth="349.0">
+        <Button id="buttonRegister" fx:id="buttonRegister" layoutX="553.0" layoutY="295.0" mnemonicParsing="false" onAction="#register" prefHeight="40.0" prefWidth="97.0" styleClass="buttonBlue" text="REGISTRAR" />
+        <Pane id="panelTotal" fx:id="panelTotal" layoutX="86.0" layoutY="561.0" prefHeight="204.0" prefWidth="349.0">
             <children>
                 <Label id="labelBold" fx:id="labelBold" alignment="CENTER" contentDisplay="CENTER" layoutX="69.0" layoutY="147.0" prefHeight="40.0" prefWidth="81.0" styleClass="labelGrey" text="BOLD">
                     <font>
@@ -261,33 +261,33 @@
                 <Button id="buttonQuote" fx:id="buttonQuote" layoutX="9.0" layoutY="14.0" mnemonicParsing="false" onAction="#quote" prefHeight="40.0" prefWidth="142.0" styleClass="buttonBlue" text="COTIZACIÒN" />
             </children>
         </Pane>
-      <TextField id="tfPrice" fx:id="tfPrice" layoutX="395.0" layoutY="190.0" onKeyTyped="#priceNew" prefHeight="40.0" prefWidth="107.0" />
-      <Label id="labelPriceSale" fx:id="labelPriceSale" alignment="CENTER" contentDisplay="CENTER" layoutX="550.0" layoutY="243.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Precio Venta">
+      <TextField id="tfPrice" fx:id="tfPrice" layoutX="240.0" layoutY="190.0" onKeyTyped="#priceNew" prefHeight="40.0" prefWidth="107.0" />
+      <Label id="labelPriceSale" fx:id="labelPriceSale" alignment="CENTER" contentDisplay="CENTER" layoutX="295.0" layoutY="242.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Precio Venta">
          <font>
             <Font name="Tahoma Bold" size="19.0" />
          </font>
       </Label>
-      <TextField id="tfPriceSale" fx:id="tfPriceSale" layoutX="703.0" layoutY="243.0" prefHeight="40.0" prefWidth="122.0" />
+      <TextField id="tfPriceSale" fx:id="tfPriceSale" layoutX="453.0" layoutY="243.0" prefHeight="40.0" prefWidth="122.0" />
       <Label id="labelAmount" fx:id="labelAmount" alignment="CENTER" contentDisplay="CENTER" layoutX="77.0" layoutY="243.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Cantidad">
          <font>
             <Font name="Tahoma Bold" size="19.0" />
          </font>
       </Label>
-      <TextField id="tfAmount" fx:id="tfAmount" layoutX="240.0" layoutY="243.0" prefHeight="40.0" prefWidth="70.0" />
-      <Label id="labelProfit" fx:id="labelProfit" alignment="CENTER" contentDisplay="CENTER" layoutX="316.0" layoutY="243.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Profit">
+      <TextField id="tfAmount" fx:id="tfAmount" layoutX="240.0" layoutY="243.0" prefHeight="40.0" prefWidth="45.0" />
+      <Label id="labelProfit" fx:id="labelProfit" alignment="CENTER" contentDisplay="CENTER" layoutX="582.0" layoutY="242.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Profit">
          <font>
             <Font name="Tahoma Bold" size="19.0" />
          </font>
       </Label>
-      <TextField id="tfProfit" fx:id="tfProfit" layoutX="471.0" layoutY="243.0" onKeyTyped="#priceSale" prefHeight="40.0" prefWidth="70.0" />
-      <ComboBox id="comboBoxOne" fx:id="comboBoxOne" layoutX="92.0" layoutY="301.0" onAction="#categorySelected" prefHeight="40.0" prefWidth="136.0" promptText="Categoria 1" />
-      <ComboBox id="comboBoxTwo" fx:id="comboBoxTwo" layoutX="242.0" layoutY="301.0" onAction="#categorySelected" prefHeight="40.0" prefWidth="136.0" promptText="Categoria 2" />
-      <ComboBox id="comboBoxThree" fx:id="comboBoxThree" layoutX="389.0" layoutY="301.0" prefHeight="40.0" prefWidth="136.0" promptText="Categoria 3" />
-      <ComboBox id="comboBoxWare" fx:id="comboBoxWare" layoutX="537.0" layoutY="301.0" prefHeight="40.0" prefWidth="136.0" promptText="Bodega" />
+      <TextField id="tfProfit" fx:id="tfProfit" layoutX="740.0" layoutY="242.0" onKeyTyped="#priceSale" prefHeight="40.0" prefWidth="53.0" />
+      <ComboBox id="comboBoxOne" fx:id="comboBoxOne" layoutX="213.0" layoutY="294.0" onAction="#categorySelected" prefHeight="40.0" prefWidth="103.0" promptText="Categoria 1" />
+      <ComboBox id="comboBoxTwo" fx:id="comboBoxTwo" layoutX="331.0" layoutY="294.0" onAction="#categorySelected" prefHeight="40.0" prefWidth="103.0" promptText="Categoria 2" />
+      <ComboBox id="comboBoxThree" fx:id="comboBoxThree" layoutX="443.0" layoutY="294.0" prefHeight="40.0" prefWidth="103.0" promptText="Categoria 3" />
+      <ComboBox id="comboBoxWare" fx:id="comboBoxWare" layoutX="102.0" layoutY="294.0" prefHeight="40.0" prefWidth="103.0" promptText="Bodega" />
       <CheckBox id="checkProduct" fx:id="checkProduct" layoutX="751.0" layoutY="142.0" mnemonicParsing="false" onAction="#checkProduct" prefHeight="27.0" prefWidth="136.0" text="Producto Nuevo" />
-      <CheckBox id="checkSale" fx:id="checkSale" layoutX="835.0" layoutY="248.0" mnemonicParsing="false" onAction="#checkSale" prefHeight="27.0" prefWidth="136.0" text="Precio Nuevo" />
+      <CheckBox id="checkSale" fx:id="checkSale" layoutX="803.0" layoutY="248.0" mnemonicParsing="false" onAction="#checkSale" prefHeight="27.0" prefWidth="136.0" text="Precio Nuevo" />
       <TextField id="tfProductName" fx:id="tfProductName" disable="true" layoutX="454.0" layoutY="138.0" prefHeight="40.0" prefWidth="275.0" promptText="Nombre Producto" visible="false" />
-      <Button id="buttonSuppress" fx:id="buttonSuppress" layoutX="843.0" layoutY="301.0" mnemonicParsing="false" onAction="#suppress" prefHeight="40.0" prefWidth="142.0" styleClass="buttonBlue" text="SUPRIMIR" />
+      <Button id="buttonSuppress" fx:id="buttonSuppress" layoutX="658.0" layoutY="295.0" mnemonicParsing="false" onAction="#suppress" prefHeight="40.0" prefWidth="97.0" styleClass="buttonBlue" text="SUPRIMIR" />
       <TableView id="tableService" fx:id="tableService" layoutX="89.0" layoutY="353.0" prefHeight="204.0" prefWidth="750.0" visible="false">
          <columns>
             <TableColumn id="c1" fx:id="c21" prefWidth="75.0" text="CODIGO" />

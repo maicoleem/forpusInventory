@@ -280,7 +280,7 @@
                 <TableColumn id="c1" fx:id="c21" prefWidth="100.0" text="CODIGO" />
                 <TableColumn id="c2" fx:id="c22" prefWidth="200.0" text="SERVICIO" />
                 <TableColumn id="c3" fx:id="c23" prefWidth="100.0" text="CANTIDAD" />
-                <TableColumn id="c4" fx:id="c24" prefWidth="100.0" text="COSTO" />
+                <TableColumn id="c4" fx:id="c24" prefWidth="100.0" text="PRECIO" />
                 <TableColumn id="c10" fx:id="c25" prefWidth="100.0" text="BODEGA" />
             </columns>
         </TableView>
@@ -288,7 +288,7 @@
             <columns>
                 <TableColumn fx:id="i1" prefWidth="90.0" text="FACTURA" />
                 <TableColumn fx:id="i2" prefWidth="90.0" text="FECHA" />
-                <TableColumn fx:id="i3" prefWidth="90.0" text="PROVEEDOR" />
+                <TableColumn fx:id="i3" prefWidth="90.0" text="CLIENTE" />
                 <TableColumn fx:id="i4" prefWidth="90.0" text="DEUDA" />
                 <TableColumn fx:id="i5" prefWidth="90.0" text="TOTAL" />
             </columns>

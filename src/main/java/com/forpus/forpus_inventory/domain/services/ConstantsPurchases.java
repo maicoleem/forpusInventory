@@ -25,6 +25,7 @@ public class ConstantsPurchases {
     public static ArrayList<WareinvoiceClass> wareInvoiceList = new ArrayList<>();
     public static ArrayList<InvoiceClass> invoiceList = new ArrayList<>();
     public static ArrayList<MoveinvoiceClass> moveInvoiceList = new ArrayList<>();
+    public static  ArrayList<InvoiceClass> invoiceCredit = new ArrayList<>();
     public static String invoiceType = null;
     public static MoveinvoiceClass moveInv = null;
     public static String totalSale = "0";

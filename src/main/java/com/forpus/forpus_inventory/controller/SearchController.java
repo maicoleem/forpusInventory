@@ -306,6 +306,8 @@ public class SearchController {
     @FXML
     public void initialize() {
         comboBoxLoad();
+        customer();
+        ConstantsSearch.classTable = "CustomerClass";
     }
     public void cpString(ActionEvent event) {
         Button button = (Button) event.getSource();

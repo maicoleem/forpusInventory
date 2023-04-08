@@ -7,6 +7,7 @@ import com.forpus.forpus_inventory.persistence.crud.SearchHQL;
 import com.forpus.forpus_inventory.persistence.entity.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -16,6 +17,7 @@ import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 import static com.forpus.forpus_inventory.domain.services.ConstantsPurchases.createNumericTextFormatter;
@@ -194,6 +196,7 @@ public class PurchasesController {
 
                 labelProduct.setText("Producto");
                 labelNameProduct.setText("Nombre Producto");
+                taxesIVABOLD();
 
                 break;
             case "buttonService":
@@ -244,7 +247,7 @@ public class PurchasesController {
 
                 labelProduct.setText("Servicio");
                 labelNameProduct.setText("Nombre Servicio");
-
+                taxesIVABOLD();
                 break;
             case "buttonCredit":
                 clear();
@@ -355,9 +358,20 @@ public class PurchasesController {
     public void providerFound(ActionEvent event) {
         Constant.entity = "ProvidersClass";
         Constant.tfCode = tfProvider.getText();
-        FoundHQL.workerFound();
-        labelNameProvider.setText(Constant.provider.getName());
-        checkSale();
+        if(FoundHQL.workerFound()){
+            labelNameProvider.setText(Constant.provider.getName());
+            checkSale();
+        }
+        if(Objects.equals(ConstantsPurchases.entity, "Credit")){
+            ObservableList<InvoiceClass> listOne = FXCollections.observableArrayList(ConstantsPurchases.invoiceCredit);
+            if(!tfProvider.getText().isBlank()) {
+                FilteredList<InvoiceClass> filteredCode = new FilteredList<InvoiceClass>(listOne, s -> s.getIdProviders().contains(tfProvider.getText()));
+                tableInvoice.setItems(filteredCode);
+            }else {
+                tableInvoice.setItems(listOne);
+                labelNameProvider.setText("Nombre Proveedor");
+            }
+        }
     }
     public void productFound(ActionEvent event) {
         switch (ConstantsPurchases.entity){
@@ -400,8 +414,13 @@ public class PurchasesController {
                     labelNameProduct.setText(ConstantsWare.service.getName());
                     tfPrice.setText(ConstantsWare.service.getCost());
 
+                    comboBoxWare.getItems().clear();
+                    comboBoxWare.getItems().add(ConstantsWare.service.getIdWare());
+                    comboBoxWare.setValue(ConstantsWare.service.getIdWare());
+
                     tfOff.setText("0");
                     tfAmount.setText("1");
+                    tfPriceSale.setText(ConstantsWare.service.getProfit());
                     tfProfit.setText("30");
                 }
                 break;
@@ -417,6 +436,17 @@ public class PurchasesController {
 
         }else{
             tfProductName.setDisable(false);
+        }
+        if(ConstantsPurchases.entity.equals("Service")){
+            Constant.entity = "WarehouseClass";
+            SearchHQL.searchHQL();
+            comboBoxWare.getItems().clear();
+            ArrayList<String> wares = new ArrayList<>();
+            for(WarehouseClass wh: ConstantsWare.wareList) {
+                wares.add(wh.getIdWarehouse());
+            }
+            comboBoxWare.getItems().addAll(wares);
+            comboBoxWare.setValue(ConstantsWare.service.getIdWare());
         }
     }
     public void checkProduct(ActionEvent event) {
@@ -783,6 +813,7 @@ public class PurchasesController {
                     for(InvoiceClass iv: ConstantsPurchases.invoiceList){
                         if(iv.getIdProviders() != null){
                             invoiceFiltrate.add(iv);
+                            ConstantsPurchases.invoiceCredit.add(iv);
                         }
                     }
                     ObservableList<InvoiceClass> invoiceTable =
@@ -1035,6 +1066,9 @@ public class PurchasesController {
             tableMoveInv.setItems(miTable);
         }else {
             tableMoveInv.getItems().clear();
+            labelTotal2.setText("0");
+            labelTotal3.setText("0");
+            tfTaxes.setText("0");
         }
 
         //Carga la deuda pendiente de pagar

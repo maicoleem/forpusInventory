@@ -8,6 +8,7 @@ import com.forpus.forpus_inventory.persistence.crud.SearchHQL;
 import com.forpus.forpus_inventory.persistence.entity.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,38 +31,38 @@ public class SalesController {
     public TableColumn<Object, Object> c2;
     public TableColumn<Object, Object> c3;
     public TableColumn<Object, Object> c4;
-    public TableColumn c5;
-    public TableColumn c6;
-    public TableColumn c7;
-    public TableColumn c8;
-    public TableColumn c9;
-    public TableColumn c10;
+    public TableColumn<Object, Object> c5;
+    public TableColumn<Object, Object> c6;
+    public TableColumn<Object, Object> c7;
+    public TableColumn<Object, Object> c8;
+    public TableColumn<Object, Object> c9;
+    public TableColumn<Object, Object> c10;
 
     public TableView<ServiceClass> tableService;
-    public TableColumn c21;
-    public TableColumn c22;
-    public TableColumn c23;
-    public TableColumn c24;
-    public TableColumn c25;
+    public TableColumn<Object, Object> c21;
+    public TableColumn<Object, Object> c22;
+    public TableColumn<Object, Object> c23;
+    public TableColumn<Object, Object> c24;
+    public TableColumn<Object, Object> c25;
     public TableView<InvoiceClass> tableInvoice;
-    public TableColumn i1;
-    public TableColumn i2;
-    public TableColumn i3;
-    public TableColumn i4;
-    public TableColumn i5;
+    public TableColumn<Object, Object> i1;
+    public TableColumn<Object, Object> i2;
+    public TableColumn<Object, Object> i3;
+    public TableColumn<Object, Object> i4;
+    public TableColumn<Object, Object> i5;
     public TableView<WareinvoiceClass> tableWareInv;
-    public TableColumn wi1;
-    public TableColumn wi2;
-    public TableColumn wi3;
-    public TableColumn wi4;
+    public TableColumn<Object, Object> wi1;
+    public TableColumn<Object, Object> wi2;
+    public TableColumn<Object, Object> wi3;
+    public TableColumn<Object, Object> wi4;
     public TableView<MoveinvoiceClass> tableMoveInv;
-    public TableColumn m1;
-    public TableColumn m2;
-    public TableColumn m3;
-    public TableColumn m4;
-    public TableColumn m5;
-    public TableColumn m6;
-    public TableColumn m7;
+    public TableColumn<Object, Object> m1;
+    public TableColumn<Object, Object> m2;
+    public TableColumn<Object, Object> m3;
+    public TableColumn<Object, Object> m4;
+    public TableColumn<Object, Object> m5;
+    public TableColumn<Object, Object> m6;
+    public TableColumn<Object, Object> m7;
     public Button found;
     public Button cancel;
     public Button save;
@@ -150,12 +151,12 @@ public class SalesController {
         c21.setCellValueFactory(new PropertyValueFactory<>("idService"));
         c22.setCellValueFactory(new PropertyValueFactory<>("name"));
         c23.setCellValueFactory(new PropertyValueFactory<>("hour"));
-        c24.setCellValueFactory(new PropertyValueFactory<>("cost"));
+        c24.setCellValueFactory(new PropertyValueFactory<>("profit"));
         c25.setCellValueFactory(new PropertyValueFactory<>("idWare"));
 
         i1.setCellValueFactory(new PropertyValueFactory<>("idInvoice"));
         i2.setCellValueFactory(new PropertyValueFactory<>("date"));
-        i3.setCellValueFactory(new PropertyValueFactory<>("idProviders"));
+        i3.setCellValueFactory(new PropertyValueFactory<>("idCustomer"));
         i4.setCellValueFactory(new PropertyValueFactory<>("idBill"));
         i5.setCellValueFactory(new PropertyValueFactory<>("total"));
 
@@ -420,8 +421,21 @@ public class SalesController {
     public void clientFound(ActionEvent event) {
         Constant.entity = "CustomerClass";
         Constant.tfCode = tfCliente.getText();
-        FoundHQL.workerFound();
-        labelNameCliente.setText(Constant.customer.getName());
+
+        if(FoundHQL.workerFound()) {
+            labelNameCliente.setText(Constant.customer.getName());
+        }
+
+        if(Objects.equals(ConstantsSales.salesOption, "Credit")){
+            ObservableList<InvoiceClass> listOne = FXCollections.observableArrayList(ConstantsPurchases.invoiceCredit);
+            if(!tfCliente.getText().isBlank()){
+                FilteredList<InvoiceClass> filteredCode = new FilteredList<InvoiceClass>(listOne, s -> s.getIdCustomer().contains(tfCliente.getText()));
+                tableInvoice.setItems(filteredCode);
+            }else{
+                tableInvoice.setItems(listOne);
+                labelNameCliente.setText("Nombre Cliente");
+            }
+        }
     }
     public void productFound(ActionEvent event) {
         switch (ConstantsSales.salesOption){
@@ -467,8 +481,14 @@ public class SalesController {
                 FoundHQL.workerFound();
                 labelNameProduct.setText(ConstantsWare.service.getName());
                 tfPriceSale.setText(ConstantsWare.service.getProfit());
+
+                comboBoxPrice.getItems().clear();
+                comboBoxWare.getItems().clear();
+                comboBoxPrice.getItems().add(ConstantsWare.service.getCost());
+                comboBoxWare.getItems().add(ConstantsWare.service.getIdWare());
                 comboBoxPrice.setValue(ConstantsWare.service.getCost());
                 comboBoxWare.setValue(ConstantsWare.service.getIdWare());
+
                 tfOff.setText("0");
                 tfAmount.setText("1");
                 labelUtilities.setText("0");
@@ -526,7 +546,8 @@ public class SalesController {
     }
     public void pxndx(ActionEvent event) {
         ComboBox cb = (ComboBox) event.getSource();
-        switch (cb.getId()){
+        if( ConstantsSales.salesOption.equals("Product")){
+            switch (cb.getId()){
             case "comboBoxWare":
                 ArrayList<String> listProduct = new ArrayList<>();
                 ArrayList<String> listAmount = new ArrayList<>();
@@ -567,6 +588,7 @@ public class SalesController {
                 break;
             default:
                 break;
+        }
         }
     }
     public void register(ActionEvent event) {
@@ -699,10 +721,12 @@ public class SalesController {
                     for(InvoiceClass iv: ConstantsPurchases.invoiceList){
                         if(iv.getIdCustomer() != null){
                             invoiceFiltrate.add(iv);
+                            ConstantsPurchases.invoiceCredit.add(iv);
                         }
                     }
                     ObservableList<InvoiceClass> invoiceTable =
                             FXCollections.observableArrayList(invoiceFiltrate);
+                    ConstantsPurchases.invoiceList = invoiceFiltrate;
                     tableInvoice.setItems(invoiceTable);
                 }catch (Exception i){
                     System.out.println(i);
@@ -998,6 +1022,9 @@ public class SalesController {
             tableMoveInv.setItems(miTable);
         }else {
             tableMoveInv.getItems().clear();
+            labelSubTota2.setText("0");
+            labelTotal2.setText("0");
+            tfTaxes.setText("0");
         }
 
         //Carga la deuda pendiente de pagar
