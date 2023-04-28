@@ -13,6 +13,7 @@ public class Constant {
     public static String buttonOptionsID = null;
 
     public static String entity = null;
+    public static Boolean isAdmin = false;
     public static final String lblCompany= "Empresa";
     public static final String lblName= "Nombre";
     public static final String lblCode = "Código";
