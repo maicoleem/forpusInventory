@@ -20,11 +20,6 @@ public class FoundHQL {
                 case "CompanyClass":
                     CompanyClass company = session.load(CompanyClass.class, Constant.tfCode);
                     Constant.company = company;
-                    Constant.tfName = company.getName();
-                    Constant.tfPhone = company.getPhoneNumber();
-                    Constant.tfAddress = company.getAddres();
-                    Constant.tfJob = company.getWeb();
-                    Constant.tfSalary = company.getSocial();
                     break;
                 case "CustomerClass":
                     CustomerClass customer = session.load(CustomerClass.class, Constant.tfCode);

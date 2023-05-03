@@ -14,7 +14,10 @@ public class Constant {
 
     public static String entity = null;
     public static Boolean isAdmin = false;
-    public static final String lblCompany= "Empresa";
+    public static String admin = "Admin";
+    public static String title (){
+        return "Forpus Inventory:// " + Constant.admin;
+    }
     public static final String lblName= "Nombre";
     public static final String lblCode = "Código";
     public static final String lblNIT = "NIT";
@@ -27,7 +30,6 @@ public class Constant {
     public static final String lblSalary = "Salario";
     public static final String lblJob = "Cargo";
     public static final String lblEmail = "Email";
-
     //string para CRUD
     public static String tfCode = "";
     public static String tfName = "";
@@ -39,24 +41,21 @@ public class Constant {
 
     //CRUD se salvaron los datos?????
     public static String messageSave = "";
-
     //lista de todos los datos
     public static CompanyClass[] companiesList = null;
     public static CustomerClass[] customersList = null;
     public static PartnersClass[] partnersList = null;
     public static ProvidersClass[] providersList = null;
     public static WorkersClass[] workersList = null;
-    public static CompanyClass[] companyList = null;
-
     //Objectos de las entitys
     public static CompanyClass company = null;
+    public static CompanyClass companyLogin = null;
     public static CustomerClass customer = null;
     public static PartnersClass partners = null;
     public static ProvidersClass provider = null;
     public static WorkersClass worker = null;
     public static WorkersClass workerLogin = null;
-
-    public static String[] entityForean= {"CategoryoneClass", "WarehouseClass", "ServiceClass", "ProductClass"};
+    public static String[] entityForean = {"CategoryoneClass", "WarehouseClass", "ServiceClass", "ProductClass"};
     public static ArrayList<TableShow> listTableShow = new ArrayList<>();
     public static ArrayList<TableShow> listTableShow2 = new ArrayList<>();
 

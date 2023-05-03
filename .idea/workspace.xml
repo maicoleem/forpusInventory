@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="*now you can log in with a worker&#10;*The documentation of the code and revision of cada part continue">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="El modulo de settings quedo diferenciado para admin y user, se corrigieron errores de diseño y al crear como al borrar usuarios.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/FinanceController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/finance-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/WareController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/WareController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/Constant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SingUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SingUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/accounting-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/accounting-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +181,12 @@
       <workItem from="1680911330780" duration="12436000" />
       <workItem from="1680960848377" duration="1184000" />
       <workItem from="1680972760419" duration="7281000" />
-      <workItem from="1682645593646" duration="4223000" />
+      <workItem from="1682645593646" duration="4284000" />
+      <workItem from="1682730196110" duration="2591000" />
+      <workItem from="1682956140757" duration="9276000" />
+      <workItem from="1683074385651" duration="4924000" />
+      <workItem from="1683169306257" duration="2027000" />
+      <workItem from="1683241131633" duration="5143000" />
     </task>
     <task id="LOCAL-00001" summary="first: I create the project with javaFX, I add the dependencies of mySQL and hibernate into the pom.xml.&#10;Second: I add file hibernate.cfg.xml {i do file-project structure -Facets -hibernate -choose module}&#10;third: I add database &#10;fourth: I do mapping of the tables of database&#10;fifth:for the  connection I had do several config:&#10;-I add in module-info.java requires for hibernate and I add opens com.forpus.forpus_inventory.module that is where are the class of the tables that use hibernate.">
       <created>1674089245612</created>
@@ -507,15 +517,27 @@
       <option name="project" value="LOCAL" />
       <updated>1680984890566</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="agregada variable booleana que permite guardar si es admin la cuenta">
+      <created>1682651238996</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1682651238996</updated>
+    </task>
+    <task id="LOCAL-00049" summary="El modulo de settings quedo diferenciado para admin y user, se corrigieron errores de diseño y al crear como al borrar usuarios.">
+      <created>1683081280331</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1683081280331</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="--Falta configurar como se van activando los botones para evitar errores en transmutar&#10;&#10;**Se esta modificando la pestaña de inventario, la idea es que con los comobobox se puedan mostrar en la tabla los productos con sus precios y cantidades&#10;**La tabla agrega productos con el comboboxware&#10;--falta combobox product&#10;--falta un indicador de color de cual combobox esta activado" />
-    <MESSAGE value="Se realizo el diseño de cuentas, la idea es que los combobox escojan el typo y con el codigo o con el segundo combobox se pueda escoger el codigo del usuario al cual darle buscar salen sus datos y las facturas incluyendo lo que ha comprado tablamain facturas -- tabla2 productos." />
     <MESSAGE value="Se esta editando el boton buscar&#10;+Carga los datos en los label&#10;-falta cargar los datos en las tablas" />
     <MESSAGE value="+Se termino la parte de cuentas&#10;*Se inicia con los aportes, estamos en la creación del incoice para poder guardar los datos en la DB.&#10;-linea 171 AccountingController.java" />
     <MESSAGE value="Se reaizo modificación de las tablas y el mapeo para separar las claves foraneas y poder dejarlas nulas" />
@@ -539,7 +561,9 @@
     <MESSAGE value="--falta cambiar los textos de los labels y textfield cuando se realizan cambios de opciones y/o operaciones como facturar&#10;&#10;**los servicios de PurchasesController: cargan el costo como precio de compra, se puede colocar la bodega y se modifico la vista general&#10;**la opcion de creditos de compras y venatas: se adiciono el filtrado de la tableInvoice.&#10;**la compra y venta de productos se audito que se gestionara el stock y los calculos de contabilidad" />
     <MESSAGE value="**las tablas cargan correctamente los objetos de tipo invoice y tipo wareInvoice.&#10;se corrigio como buscaba los wareInvoice y como la hacer click en la tableMain se modifica la tabla2" />
     <MESSAGE value="*now you can log in with a worker&#10;*The documentation of the code and revision of cada part continue" />
-    <option name="LAST_COMMIT_MESSAGE" value="*now you can log in with a worker&#10;*The documentation of the code and revision of cada part continue" />
+    <MESSAGE value="agregada variable booleana que permite guardar si es admin la cuenta" />
+    <MESSAGE value="El modulo de settings quedo diferenciado para admin y user, se corrigieron errores de diseño y al crear como al borrar usuarios." />
+    <option name="LAST_COMMIT_MESSAGE" value="El modulo de settings quedo diferenciado para admin y user, se corrigieron errores de diseño y al crear como al borrar usuarios." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -578,11 +602,6 @@
           <line>344</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java</url>
-          <line>284</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/AccountingController.java</url>
           <line>982</line>
@@ -591,15 +610,6 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/AccountingController.java</url>
-          <line>966</line>
-          <properties class="com.forpus.forpus_inventory.controller.AccountingController" method="forInvoice">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -20,6 +20,9 @@ public class DeleteHQL {
             //check hibernate connection and database
             SessionDB.session();
             Session session = SessionDB.sessionHibernate;
+
+            session.beginTransaction();
+
             switch (Constant.entity){
                 case "CompanyClass":
                     CompanyClass company = session.load(CompanyClass.class, Constant.tfCode);
@@ -46,12 +49,10 @@ public class DeleteHQL {
                     Query query = session.createQuery(q);
                     query.setParameter(1, ConstantsWare.one.getIdOne());
                     query.executeUpdate();
-
                     break;
                 case "CategorytwoClass":
                     CategorytwoClass two = session.load(CategorytwoClass.class, ConstantsWare.two.getIdTwo());
                     session.delete(two);
-
                     break;
                 case "CategorythreeClass":
                     CategorythreeClass three = session.load(CategorythreeClass.class, ConstantsWare.three.getIdThree());
@@ -64,11 +65,12 @@ public class DeleteHQL {
                 default:
                     break;
             }
+
             session.getTransaction().commit();
             SessionDB.sessionClose();
+
             return true;
         }catch (Exception i){
-
             SessionDB.sessionClose();
             System.out.println(i);
             i.printStackTrace();

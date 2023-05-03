@@ -11,7 +11,7 @@ public class CompanyClass {
     @Column(name = "idCompanyNIT", nullable = false, length = 20)
     private String idCompanyNIT;
     @Basic
-    @Column(name = "Name", nullable = false, length = 10)
+    @Column(name = "Name", nullable = false, length = 20)
     private String name;
     @Basic
     @Column(name = "Password", nullable = false, length = 10)

@@ -130,7 +130,8 @@
                         <Font name="Tahoma Bold" size="20.0" />
                     </font>
                 </Button>
-            </children></Pane>
+            </children>
+        </Pane>
         <Label id="labelBold" fx:id="labelBold" alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="153.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="BOLD">
             <font>
                 <Font name="Tahoma Bold" size="19.0" />

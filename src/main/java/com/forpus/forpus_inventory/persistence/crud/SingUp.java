@@ -29,8 +29,10 @@ public class SingUp {
             Query query = session.createQuery("from CompanyClass C where C.name in(?1)");
             query.setParameter(1, name);
             Constant.company = (CompanyClass) query.uniqueResult();
+            Constant.companyLogin = Constant.company;
             if(password.equals(Constant.company.getPassword())){
                 Constant.isAdmin = true;
+                Constant.admin = "Usuario: "+ Constant.company.getName() + " Tipo: Admin";
             }
             return password.equals(Constant.company.getPassword());
         }catch (Exception e){
@@ -41,7 +43,13 @@ public class SingUp {
                 query.setParameter(1, name);
                 Constant.workerLogin = (WorkersClass) query.uniqueResult();
                 if(password.equals(Constant.workerLogin.getPassword())){
-                    Constant.isAdmin = Constant.workerLogin.getWage().equals("ADMIN");
+                    Constant.isAdmin = Constant.workerLogin.getJob().contains("ADMIN");
+                    if(Constant.isAdmin){
+                        Constant.admin = "Usuario: "+ Constant.workerLogin.getName() + " Tipo: Admin";
+                    }else{
+                        Constant.admin = "Usuario: "+ Constant.workerLogin.getName() + " Tipo: User";
+                    }
+
                 }
                 return password.equals(Constant.workerLogin.getPassword());
             }catch (Exception i){

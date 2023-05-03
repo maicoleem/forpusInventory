@@ -6,6 +6,7 @@ import com.forpus.forpus_inventory.persistence.crud.DeleteHQL;
 import com.forpus.forpus_inventory.persistence.crud.FoundHQL;
 import com.forpus.forpus_inventory.persistence.crud.SaveHQL;
 import com.forpus.forpus_inventory.persistence.crud.SearchHQL;
+import com.forpus.forpus_inventory.persistence.entity.CompanyClass;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -69,6 +70,7 @@ public class SettingController implements Initializable {
     public Button cancel;
     @FXML
     public Button found;
+    public Button buttonSingOut;
     @FXML
     Pane paneWhite;
     @FXML
@@ -106,42 +108,41 @@ public class SettingController implements Initializable {
         }
         crudEjecuted(buttonCRUD.getId());
     }
-
     @FXML
     protected void buttonSlide(ActionEvent event) throws IOException {
         WareController.slide(event);
 
     }
-
     public void changeLabelsText(String idButton){
         Constant.buttonOptionsID = idButton;
-
         changeOptions();
-
         switch (idButton){
             case "buttonCompany":
                 Constant.entity = "CompanyClass";
+                company("CompanyClass");
+
+                textFieldIdentificationCard.setText(Constant.company.getIdCompanyNIT());
+                textFieldIdentificationCard.setDisable(true);
+                textFieldName.setText(Constant.company.getName());
+                textFieldPhone.setText(Constant.company.getPhoneNumber());
+                textFieldAddress.setText(Constant.company.getAddres());
+                textFieldJob.setText(Constant.company.getWeb());
+                textFieldSalary.setText(Constant.company.getSocial());
+
                 //labels
-                labelIdentificationCard.setText(Constant.lblNIT);
-                labelIdentificationCard.setVisible(true);
-
-                labelName.setText(Constant.lblCompany);
-                labelName.setVisible(true);
-
-                labelPhone.setText(Constant.lblPhone);
-                labelPhone.setVisible(true);
-
-                labelAddress.setText(Constant.lblAddress);
-                labelAddress.setVisible(true);
-
                 labelJob.setText(Constant.lblWeb);
-                labelJob.setVisible(true);
-
                 labelSalary.setText(Constant.lblInstagram);
-                labelSalary.setVisible(true);
+                labelIdentificationCard.setText(Constant.lblNIT);
 
+                labelIdentificationCard.setVisible(true);
+                labelName.setVisible(true);
+                labelPhone.setVisible(true);
+                labelAddress.setVisible(true);
+                labelJob.setVisible(true);
+                labelSalary.setVisible(true);
                 labelPassword.setText(Constant.lblPassword);
                 labelPassword.setVisible(false);
+
                 //textFields
                 textFieldIdentificationCard.setVisible(true);
                 textFieldName.setVisible(true);
@@ -150,6 +151,15 @@ public class SettingController implements Initializable {
                 textFieldJob.setVisible(true);
                 textFieldSalary.setVisible(true);
                 textFieldPassword.setVisible(false);
+
+                //buttons
+                save.setVisible(Constant.isAdmin);
+                save.setDisable(!Constant.isAdmin);
+                search.setVisible(Constant.isAdmin);
+                cancel.setVisible(Constant.isAdmin);
+
+                found.setVisible(false);
+                remove.setVisible(false);
 
                 break;
             case "buttonPartners":
@@ -190,6 +200,15 @@ public class SettingController implements Initializable {
                 textFieldSalary.setVisible(false);
                 textFieldPassword.setVisible(false);
 
+                //butonsAdmin
+                save.setVisible(true);
+                save.setDisable(true);
+                search.setVisible(true);
+                found.setVisible(true);
+                remove.setVisible(Constant.isAdmin);
+                remove.setDisable(true);
+                cancel.setVisible(true);
+
                 break;
             case "buttonWorkers":
                 Constant.entity ="WorkersClass";
@@ -216,10 +235,18 @@ public class SettingController implements Initializable {
                 textFieldSalary.setVisible(true);
                 textFieldPassword.setVisible(true);
 
+                //butonsAdmin
+                save.setVisible(Constant.isAdmin);
+                save.setDisable(true);
+                search.setVisible(Constant.isAdmin);
+                found.setVisible(Constant.isAdmin);
+                remove.setVisible(Constant.isAdmin);
+                remove.setDisable(true);
+                cancel.setVisible(Constant.isAdmin);
+
                 break;
 
             //textFields
-
             case "buttonProviders":
                 Constant.entity ="ProvidersClass";
                 //labels
@@ -252,6 +279,15 @@ public class SettingController implements Initializable {
                 textFieldSalary.setVisible(false);
                 textFieldPassword.setVisible(false);
 
+                //butonsAdmin
+                save.setVisible(true);
+                save.setDisable(true);
+                search.setVisible(true);
+                found.setVisible(true);
+                remove.setVisible(Constant.isAdmin);
+                remove.setDisable(true);
+                cancel.setVisible(true);
+
                 break;
             case "buttonAccount":
 
@@ -276,6 +312,7 @@ public class SettingController implements Initializable {
 
                 labelPassword.setText(Constant.lblPassword);
                 labelPassword.setVisible(false);
+
                 //textFields
                 textFieldIdentificationCard.setVisible(true);
                 textFieldName.setVisible(true);
@@ -285,6 +322,14 @@ public class SettingController implements Initializable {
                 textFieldSalary.setVisible(false);
                 textFieldPassword.setVisible(false);
 
+                if (Constant.workerLogin != null) {
+                    textFieldIdentificationCard.setText(Constant.workerLogin.getIdentificationCard());
+                    textFieldName.setText(Constant.workerLogin.getName());
+                }else {
+                    textFieldIdentificationCard.setText(Constant.company.getIdCompanyNIT());
+                    textFieldName.setText(Constant.company.getName());
+                }
+
                 //buttons
                 save.setVisible(false);
                 remove.setVisible(false);
@@ -292,15 +337,15 @@ public class SettingController implements Initializable {
                 search.setVisible(false);
                 cancel.setVisible(false);
 
+                buttonSingOut.setVisible(true);
+
                 break;
             default:
                 System.out.println("ERROR");
                 break;
         }
     }
-
     public void crudEjecuted(String idButton){
-
         switch (idButton){
             case "save":
                 Constant.tfCode = textFieldIdentificationCard.getText();
@@ -327,8 +372,7 @@ public class SettingController implements Initializable {
                 }else{
                     alertSend("Por favor digitar código");
                 }
-                System.out.println(Constant.entity);
-
+                changeOptions();
                 break;
             case "search":
                 if(SearchHQL.searchHQL()){
@@ -341,7 +385,8 @@ public class SettingController implements Initializable {
                     alertSearch.show();
                 }
                 break;
-            case "deleted":
+            case "remove":
+
                 Constant.tfCode = textFieldIdentificationCard.getText();
 
                 Alert alertDelete = new Alert(Alert.AlertType.INFORMATION);
@@ -354,6 +399,7 @@ public class SettingController implements Initializable {
                     alertDelete.setContentText("Error al eliminar datos");
                 }
                 alertDelete.show();
+                changeOptions();
                 break;
             case "cancel":
                 //textFields
@@ -385,22 +431,24 @@ public class SettingController implements Initializable {
             default:
                 break;
         }
-
     }
     public void changeOptions(){
-        save.setDisable(true);
-        remove.setDisable(true);
+
         textFieldIdentificationCard.setDisable(false);
 
-        //buttons
-        save.setVisible(true);
-        remove.setVisible(true);
-        found.setVisible(true);
-        search.setVisible(true);
-        cancel.setVisible(true);
-
+        remove.setVisible(Constant.isAdmin);
+        remove.setDisable(true);
+        remove.setStyle("-fx-background-color: #1BA1E2; ");
+        save.setStyle("-fx-background-color: #1BA1E2; ");
+        save.setDisable(true);
+        found.setStyle("-fx-background-color: #1BA1E2; ");
+        cancel.setStyle("-fx-background-color: #1BA1E2; ");
+        search.setStyle("-fx-background-color: #1BA1E2; ");
         //textFields
+        buttonSingOut.setVisible(false);
+
         textFieldIdentificationCard.setText("");
+
         textFieldName.setText("");
         textFieldPhone.setText("");
         textFieldAddress.setText("");
@@ -408,15 +456,24 @@ public class SettingController implements Initializable {
         textFieldSalary.setText("");
         textFieldPassword.setText("");
     }
-
     public void alertSend(String massage){
         Alert alertMassage = new Alert(Alert.AlertType.INFORMATION);
         alertMassage.setTitle("Freya Style--//--Forpus Company");
         alertMassage.setContentText(massage);
         alertMassage.show();
     }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        buttonWorkers.setVisible(Constant.isAdmin);
+        buttonPartners.setVisible(Constant.isAdmin);
     }
+
+    //found the company
+    public static CompanyClass company(String entityClassNotChange){
+        Constant.entity = "CompanyClass";
+        SearchHQL.searchHQL();
+        Constant.company = Constant.companiesList[0];
+        return Constant.company;
+    }
+
 }

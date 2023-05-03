@@ -56,25 +56,20 @@ public class SaveHQL {
             //check hibernate connection and database
             SessionDB.session();
             Session session = SessionDB.session().getSession();
+
             switch (Constant.entity){
                 case "CompanyClass":
-                    CompanyClass company = new CompanyClass();
-                    company.setIdCompanyNIT(Constant.tfCode);
-                    company.setName(Constant.tfName);
-                    company.setPhoneNumber(Constant.tfPhone);
-                    company.setAddres(Constant.tfAddress);
-                    company.setWeb(Constant.tfJob);
-                    company.setPassword("789");
-                    company.setSocial(Constant.tfSalary);
-
+                    Constant.company.setName(Constant.tfName);
+                    Constant.company.setPhoneNumber(Constant.tfPhone);
+                    Constant.company.setAddres(Constant.tfAddress);
+                    Constant.company.setWeb(Constant.tfJob);
+                    Constant.company.setSocial(Constant.tfSalary);
                     session.beginTransaction();
-                   if(saveOrUpdate.equals("save")){
-                        session.save(company);
-                   }else{
-                       session.update(company);
-                   }
+                    session.update(Constant.company);
                     session.getTransaction().commit();
-                    System.out.println("Datos guardados");
+
+                    System.out.println("Datos Actualizados Compañia");
+
                     break;
                 case "CustomerClass":
                     CustomerClass customer = new CustomerClass();
@@ -85,6 +80,10 @@ public class SaveHQL {
 
                     session.beginTransaction();
                     if(saveOrUpdate.equals("save")){
+                        customer.setBank("0");
+                        customer.setCash("0");
+                        customer.setPayable("0");
+                        customer.setReceivable("0");
                         session.save(customer);
                     }else{
                         session.update(customer);
@@ -102,6 +101,12 @@ public class SaveHQL {
                     session.beginTransaction();
 
                     if(saveOrUpdate.equals("save")){
+
+                        partnert.setBank("0");
+                        partnert.setCash("0");
+                        partnert.setPayable("0");
+                        partnert.setReceivable("0");
+
                         session.save(partnert);
                     }else{
                         session.update(partnert);
@@ -121,6 +126,12 @@ public class SaveHQL {
 
                     session.beginTransaction();
                     if(saveOrUpdate.equals("save")){
+
+                        provider.setBank("0");
+                        provider.setCash("0");
+                        provider.setPayable("0");
+                        provider.setReceivable("0");
+
                         session.save(provider);
                     }else{
                         session.update(provider);
@@ -140,7 +151,14 @@ public class SaveHQL {
                     worker.setPassword(Constant.tfPassword);
 
                     session.beginTransaction();
+
                     if(saveOrUpdate.equals("save")){
+
+                        worker.setBank("0");
+                        worker.setCash("0");
+                        worker.setPayable("0");
+                        worker.setReceivable("0");
+
                         session.save(worker);
                     }else{
                         session.update(worker);
@@ -154,7 +172,6 @@ public class SaveHQL {
                     ware.setName(Constant.tfName);
 
                     session.beginTransaction();
-
                     if(saveOrUpdate.equals("save")){
                         session.save(ware);
                     }else{

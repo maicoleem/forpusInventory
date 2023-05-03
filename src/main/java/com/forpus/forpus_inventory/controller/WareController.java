@@ -739,18 +739,24 @@ public class WareController {
                 FXMLLoader fxmlLoaderWare = new FXMLLoader(HelloApplication.class.getResource("ware-view.fxml"));
                 Scene sceneWare = new Scene(fxmlLoaderWare.load());
                 Stage stageWare = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stageWare.setTitle("Forpus Inventory");
+                stageWare.setTitle(Constant.title());
                 stageWare.setScene(sceneWare);
                 stageWare.show();
                 break;
             case "bDash":
+                FXMLLoader fxmlLoaderDash = new FXMLLoader(HelloApplication.class.getResource("finance-view.fxml"));
+                Scene sceneDash = new Scene(fxmlLoaderDash.load());
+                Stage stageDash = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stageDash.setTitle(Constant.title());
+                stageDash.setScene(sceneDash);
+                stageDash.show();
                 break;
             case "bAccounting":
                 Constant.entity = "TaxesClass";
                 FXMLLoader fxmlLoaderAccounting = new FXMLLoader(HelloApplication.class.getResource("accounting-view.fxml"));
                 Scene sceneAccounting = new Scene(fxmlLoaderAccounting.load());
                 Stage stageAccounting = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stageAccounting.setTitle("Forpus Inventory");
+                stageAccounting.setTitle(Constant.title());
                 stageAccounting.setScene(sceneAccounting);
                 stageAccounting.show();
                 break;
@@ -758,7 +764,7 @@ public class WareController {
                 FXMLLoader fxmlLoaderBuy = new FXMLLoader(HelloApplication.class.getResource("purchases-view.fxml"));
                 Scene sceneBuy = new Scene(fxmlLoaderBuy.load());
                 Stage stageBuy = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stageBuy.setTitle("Forpus Inventory");
+                stageBuy.setTitle(Constant.title());
                 stageBuy.setScene(sceneBuy);
                 stageBuy.show();
                 break;
@@ -766,7 +772,7 @@ public class WareController {
                 FXMLLoader fxmlLoaderSales = new FXMLLoader(HelloApplication.class.getResource("sales-view.fxml"));
                 Scene sceneSales = new Scene(fxmlLoaderSales.load());
                 Stage stageSales = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stageSales.setTitle("Forpus Inventory");
+                stageSales.setTitle(Constant.title());
                 stageSales.setScene(sceneSales);
                 stageSales.show();
                 break;
@@ -774,9 +780,17 @@ public class WareController {
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("settings-view.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setTitle("Forpus Inventory");
+                stage.setTitle(Constant.title());
                 stage.setScene(scene);
                 stage.show();
+                break;
+            case "buttonSingOut":
+                FXMLLoader fxmlLoaderSing = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+                Scene sceneSing = new Scene(fxmlLoaderSing.load());
+                Stage stageSing = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stageSing.setTitle("Forpus Inventory");
+                stageSing.setScene(sceneSing);
+                stageSing.show();
                 break;
             default:
                 break;
