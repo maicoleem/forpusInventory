@@ -68,7 +68,7 @@
         </Button>
         <Pane id="panelBlue" prefHeight="768.0" prefWidth="70.0">
             <children>
-                <Button id="bWare" fx:id="buttonWarePB" layoutX="5.0" layoutY="94.7" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSlide" prefHeight="60.0" prefWidth="60.0" styleClass="buttonSide" text="Button">
+                <Button id="bWare" fx:id="buttonWarePB" layoutX="5.0" layoutY="94.7" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSlide" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #F5F5F5;" styleClass="buttonSide" text="Button">
                     <graphic>
                         <ImageView fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                             <image>

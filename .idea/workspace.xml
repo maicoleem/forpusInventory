@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="El modulo de settings quedo diferenciado para admin y user, se corrigieron errores de diseño y al crear como al borrar usuarios.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/FinanceController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/finance-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/WareController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/WareController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/Constant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SingUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SingUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/accounting-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/accounting-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/purchases-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/purchases-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/sales-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/sales-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/settings-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/settings-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/ware-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/ware-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,14 +183,8 @@
       <workItem from="1682956140757" duration="9276000" />
       <workItem from="1683074385651" duration="4924000" />
       <workItem from="1683169306257" duration="2027000" />
-      <workItem from="1683241131633" duration="5143000" />
-    </task>
-    <task id="LOCAL-00001" summary="first: I create the project with javaFX, I add the dependencies of mySQL and hibernate into the pom.xml.&#10;Second: I add file hibernate.cfg.xml {i do file-project structure -Facets -hibernate -choose module}&#10;third: I add database &#10;fourth: I do mapping of the tables of database&#10;fifth:for the  connection I had do several config:&#10;-I add in module-info.java requires for hibernate and I add opens com.forpus.forpus_inventory.module that is where are the class of the tables that use hibernate.">
-      <created>1674089245612</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1674089245612</updated>
+      <workItem from="1683241131633" duration="5207000" />
+      <workItem from="1683404707470" duration="1115000" />
     </task>
     <task id="LOCAL-00002" summary="I create the first view of the application and create the folders to package the classes, trying to follow the domain-oriented architectural structure">
       <created>1674100113588</created>
@@ -531,14 +522,20 @@
       <option name="project" value="LOCAL" />
       <updated>1683081280331</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="El modulo de settings quedo diferenciado para admin y user, se corrigieron errores de diseño y al crear como al borrar usuarios.">
+      <created>1683255137265</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1683255137265</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Se esta editando el boton buscar&#10;+Carga los datos en los label&#10;-falta cargar los datos en las tablas" />
     <MESSAGE value="+Se termino la parte de cuentas&#10;*Se inicia con los aportes, estamos en la creación del incoice para poder guardar los datos en la DB.&#10;-linea 171 AccountingController.java" />
     <MESSAGE value="Se reaizo modificación de las tablas y el mapeo para separar las claves foraneas y poder dejarlas nulas" />
     <MESSAGE value="se relizo la primer prueba de guardado de la factura con exicto.&#10;&#10;-Falta cambiar Constant.entity por ConstantsAcouunting.entity para evitar problemas en el SQL de hibernate&#10;-Falta corregir la contabilidad de las cuentas por ejemplo si un socio puede sacar dinero o adquirir deuda" />
@@ -562,6 +559,7 @@
     <MESSAGE value="**las tablas cargan correctamente los objetos de tipo invoice y tipo wareInvoice.&#10;se corrigio como buscaba los wareInvoice y como la hacer click en la tableMain se modifica la tabla2" />
     <MESSAGE value="*now you can log in with a worker&#10;*The documentation of the code and revision of cada part continue" />
     <MESSAGE value="agregada variable booleana que permite guardar si es admin la cuenta" />
+    <MESSAGE value="Se inicia con la creación dle dash, para ver los estados financieros del aplicativo." />
     <MESSAGE value="El modulo de settings quedo diferenciado para admin y user, se corrigieron errores de diseño y al crear como al borrar usuarios." />
     <option name="LAST_COMMIT_MESSAGE" value="El modulo de settings quedo diferenciado para admin y user, se corrigieron errores de diseño y al crear como al borrar usuarios." />
   </component>

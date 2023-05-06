@@ -77,7 +77,7 @@
                             </image>
                         </ImageView>
                     </graphic></Button>
-                <Button id="bBuy" fx:id="buttonBuyPB" layoutX="5.0" layoutY="379.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSlide" prefHeight="60.0" prefWidth="60.0" styleClass="buttonSide" text="Button">
+                <Button id="bBuy" fx:id="buttonBuyPB" layoutX="5.0" layoutY="379.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSlide" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #F5F5F5;" styleClass="buttonSide" text="Button">
                     <graphic>
                         <ImageView fitHeight="48.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                             <image>

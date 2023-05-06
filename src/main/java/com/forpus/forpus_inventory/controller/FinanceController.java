@@ -19,4 +19,10 @@ public class FinanceController {
         WareController.slide(event);
 
     }
+
+    public void buttonCRUD(ActionEvent event) {
+    }
+
+    public void buttonsOptions(ActionEvent event) {
+    }
 }
