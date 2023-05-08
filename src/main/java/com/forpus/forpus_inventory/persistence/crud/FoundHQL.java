@@ -18,8 +18,8 @@ public class FoundHQL {
             Session session = SessionDB.sessionHibernate;
             switch (Constant.entity){
                 case "CompanyClass":
-                    CompanyClass company = session.load(CompanyClass.class, Constant.tfCode);
-                    Constant.company = company;
+                    Query queryCompany = session.createQuery("from CompanyClass");
+                    Constant.company = (CompanyClass) queryCompany.uniqueResult();
                     break;
                 case "CustomerClass":
                     CustomerClass customer = session.load(CustomerClass.class, Constant.tfCode);

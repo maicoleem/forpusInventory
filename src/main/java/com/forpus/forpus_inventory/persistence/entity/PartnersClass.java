@@ -1,6 +1,7 @@
 package com.forpus.forpus_inventory.persistence.entity;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Collection;
 import java.util.Objects;
 

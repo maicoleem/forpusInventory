@@ -1,7 +1,9 @@
 package com.forpus.forpus_inventory.domain.services;
 
+import com.forpus.forpus_inventory.persistence.crud.FoundHQL;
 import com.forpus.forpus_inventory.persistence.crud.SearchHQL;
 import com.forpus.forpus_inventory.persistence.entity.*;
+import javafx.scene.control.FocusModel;
 import javafx.scene.control.TextFormatter;
 import javafx.util.converter.IntegerStringConverter;
 
@@ -104,12 +106,11 @@ public class ConstantsPurchases {
         int bankOld = Integer.parseInt(Constant.company.getBank());
         int cashOld = Integer.parseInt(Constant.company.getCash());
         int payableOld = Integer.parseInt(Constant.company.getPayable());
-        int totalOld = Integer.parseInt(Constant.company.getTotal());
 
         int bankNew = bankOld - bankChange;
         int cashNew = cashOld - cashChange;
         int payableNew = payableOld + payableChange;
-        int totalNew = totalOld - bankNew - cashNew;
+        int totalNew = bankNew + cashNew;
 
         Constant.company.setBank(String.valueOf(bankNew));
         Constant.company.setCash(String.valueOf(cashNew));
@@ -134,7 +135,6 @@ public class ConstantsPurchases {
         Constant.provider.setCash(String.valueOf(cashNew));
         Constant.provider.setReceivable(String.valueOf(receivableNew));
     }
-
     public static void listInvoiceSearch(){
         Constant.entity ="InvoiceClass";
         SearchHQL.searchHQL();
@@ -143,6 +143,13 @@ public class ConstantsPurchases {
         Constant.entity ="WareinvoiceClass";
         Constant.tfCode = String.valueOf(idInvoice.getIdInvoice());
         SearchHQL.searchHQL();
+
+        Constant.entity ="ProvidersClass";
+        Constant.tfCode = idInvoice.getIdProviders();
+        FoundHQL.workerFound();
+
+        Constant.entity ="CompanyClass";
+        FoundHQL.workerFound();
     }
 
     public static void listMoveSearch(InvoiceClass idInvoice){

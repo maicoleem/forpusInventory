@@ -599,7 +599,6 @@ public class PurchasesController {
                 default:
                     break;
             }
-
             tableLoad();
         }
     }
@@ -641,6 +640,10 @@ public class PurchasesController {
     }
     @FXML
     public void initialize() {
+
+        ConstantsWare.one = null;
+        ConstantsWare.two = null;
+        ConstantsWare.three = null;
 
         tfAmount.setTextFormatter(createNumericTextFormatter());
         tfProfit.setTextFormatter(createNumericTextFormatter());
@@ -694,7 +697,6 @@ public class PurchasesController {
 
     }
     // Crear un TextFormatter que solo permita números
-
     public Boolean verify(){
         String falseFor = "";
         try {
@@ -841,6 +843,9 @@ public class PurchasesController {
             tfProfit.setText("0");
             tfPriceSale.setText("0");
             comboBoxWare.getItems().clear();
+            ConstantsWare.one = null;
+            ConstantsWare.two = null;
+            ConstantsWare.three = null;
             pay();
         }
     }
@@ -948,7 +953,6 @@ public class PurchasesController {
         ConstantsAccounting.invoice = invoice;
         Constant.entity = "InvoiceClass";
         ConstantsPurchases.invoiceType = "purchaseFromSupplier";
-
         if(SaveHQL.workerInsertUpdate()){
         //si se guarda la factura, ahora la recupera.
             Constant.tfCode = "666";
@@ -1046,7 +1050,6 @@ public class PurchasesController {
             }
 
         }
-
     }
     public void invoiceView() {
         //carga los productos de la factura
@@ -1102,7 +1105,6 @@ public class PurchasesController {
         SaveHQL.insertWorker("save");
 
         tableLoad();
-
 
     }
 }

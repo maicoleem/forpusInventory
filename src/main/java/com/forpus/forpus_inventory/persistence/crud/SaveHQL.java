@@ -349,6 +349,31 @@ public class SaveHQL {
                     ConstantsAccounting.invoice.setIdBill(ConstantsPurchases.moveInv.getSubtotal());
                     session.update(ConstantsAccounting.invoice);
                     session.getTransaction().commit();
+
+                    switch (ConstantsPurchases.entityForInvoice){
+                        case "ProvidersClass":
+                            ConstantsPurchases.purchaseCompany(String.valueOf(ConstantsPurchases.moveInv.getPayBank()),
+                                    String.valueOf(ConstantsPurchases.moveInv.getPayCash()),
+                                    String.valueOf((-1 *(
+                                            ConstantsPurchases.moveInv.getPayCash() +
+                                            ConstantsPurchases.moveInv.getPayBank()))));
+                            session.beginTransaction();
+                            session.update(Constant.company);
+                            session.getTransaction().commit();
+
+                            ConstantsPurchases.purchaseProvider(String.valueOf(ConstantsPurchases.moveInv.getPayBank()),
+                                    String.valueOf(ConstantsPurchases.moveInv.getPayCash()),
+                                    String.valueOf((-1 *
+                                            (ConstantsPurchases.moveInv.getPayCash() +
+                                            ConstantsPurchases.moveInv.getPayBank()))));
+                            session.beginTransaction();
+                            session.update(Constant.provider);
+                            session.getTransaction().commit();
+                            break;
+                        default:
+                            break;
+                    }
+
                     break;
                 default:
                     break;
