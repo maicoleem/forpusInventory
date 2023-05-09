@@ -18,7 +18,6 @@ import java.util.List;
 public class SearchHQL {
 
     public static boolean searchHQL(){
-
         try{
             //check hibernate connection and database
             SessionDB.session();
@@ -166,6 +165,39 @@ public class SearchHQL {
         }catch (Exception i){
             //SessionDB.sessionClose();
             System.out.println(i);
+            i.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean invoiceIdBill(String typeEntity){
+
+        try{
+            SessionDB.session();
+            Session session = SessionDB.sessionHibernate;
+            ConstantsPurchases.invoiceList = null;
+            switch (typeEntity){
+                case "ProvidersClass":
+                    String hql16 = "from InvoiceClass C where C.idBill > 0 and C.idProviders is not null";
+                    Query query16 = session.createQuery(hql16);
+                    List<InvoiceClass> results16 = query16.list();
+                    ConstantsPurchases.invoiceList = (ArrayList<InvoiceClass>) results16;
+                    break;
+                case "CustomerClass":
+                    String hqlC = "from InvoiceClass C where C.idBill > 0 and C.idCustomer is not null";
+                    Query queryC = session.createQuery(hqlC);
+                    List<InvoiceClass> resultsC = queryC.list();
+                    ConstantsPurchases.invoiceList = (ArrayList<InvoiceClass>) resultsC;
+                    break;
+                case "WorkersClass":
+                    String hqlW = "from InvoiceClass C where C.idBill > 0 and C.idWorkers is not null";
+                    Query queryW = session.createQuery(hqlW);
+                    List<InvoiceClass> resultsW = queryW.list();
+                    ConstantsPurchases.invoiceList = (ArrayList<InvoiceClass>) resultsW;
+                    break;
+            }
+            return true;
+        }catch (Exception i){
             i.printStackTrace();
             return false;
         }

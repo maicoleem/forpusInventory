@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Diseño: the view buttons (left side) now change of color to white when someone is selected">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="En finanzas &#10;+aportes sociales: ok&#10;+Cuentas de la compañia: ok&#10;+Productos: ok&#10;Cuentas por pagar esta en proceso ya se verifico que se registren correctamente los pagos.&#10;falta adicionarlos a la tabla&#10;Falta cuentas por cobrar">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/FinanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/FinanceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/PurchasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/PurchasesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsPurchases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsPurchases.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/FoundHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/FoundHQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/PartnersClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/PartnersClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SearchHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SearchHQL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/finance-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/finance-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -189,14 +185,8 @@
       <workItem from="1683241131633" duration="5207000" />
       <workItem from="1683404707470" duration="2839000" />
       <workItem from="1683415598014" duration="3609000" />
-      <workItem from="1683498245759" duration="12204000" />
-    </task>
-    <task id="LOCAL-00003" summary="reorganice el proyecto y consulte como hacer para saltar otra view, luego las funciones.">
-      <created>1674184513640</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1674184513640</updated>
+      <workItem from="1683498245759" duration="12362000" />
+      <workItem from="1683600181223" duration="2747000" />
     </task>
     <task id="LOCAL-00004" summary="I add css file and diretory styles.">
       <created>1674200072112</created>
@@ -534,14 +524,20 @@
       <option name="project" value="LOCAL" />
       <updated>1683406041559</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="En finanzas &#10;+aportes sociales: ok&#10;+Cuentas de la compañia: ok&#10;+Productos: ok&#10;Cuentas por pagar esta en proceso ya se verifico que se registren correctamente los pagos.&#10;falta adicionarlos a la tabla&#10;Falta cuentas por cobrar">
+      <created>1683512646420</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1683512646420</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Se reaizo modificación de las tablas y el mapeo para separar las claves foraneas y poder dejarlas nulas" />
     <MESSAGE value="se relizo la primer prueba de guardado de la factura con exicto.&#10;&#10;-Falta cambiar Constant.entity por ConstantsAcouunting.entity para evitar problemas en el SQL de hibernate&#10;-Falta corregir la contabilidad de las cuentas por ejemplo si un socio puede sacar dinero o adquirir deuda" />
     <MESSAGE value="+Se cambio las entity a ConstantsAccounting.entity&#10;+Los socios no pueden sacar dinero solo aportar; siempre hacen ingresos los socios y los clientes, ciempre hacen egresos los trabajadores y los proveedores&#10;-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}" />
     <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;&#10;++Se agrego el diseño para realizar una venta" />
@@ -566,7 +562,8 @@
     <MESSAGE value="Se inicia con la creación dle dash, para ver los estados financieros del aplicativo." />
     <MESSAGE value="El modulo de settings quedo diferenciado para admin y user, se corrigieron errores de diseño y al crear como al borrar usuarios." />
     <MESSAGE value="Diseño: the view buttons (left side) now change of color to white when someone is selected" />
-    <option name="LAST_COMMIT_MESSAGE" value="Diseño: the view buttons (left side) now change of color to white when someone is selected" />
+    <MESSAGE value="En finanzas &#10;+aportes sociales: ok&#10;+Cuentas de la compañia: ok&#10;+Productos: ok&#10;Cuentas por pagar esta en proceso ya se verifico que se registren correctamente los pagos.&#10;falta adicionarlos a la tabla&#10;Falta cuentas por cobrar" />
+    <option name="LAST_COMMIT_MESSAGE" value="En finanzas &#10;+aportes sociales: ok&#10;+Cuentas de la compañia: ok&#10;+Productos: ok&#10;Cuentas por pagar esta en proceso ya se verifico que se registren correctamente los pagos.&#10;falta adicionarlos a la tabla&#10;Falta cuentas por cobrar" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

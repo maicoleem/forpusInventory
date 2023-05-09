@@ -138,23 +138,23 @@
               </columns>
             </TableView>
             </children></Pane>
-      <Pane layoutX="567.0" layoutY="217.0" prefHeight="231.0" prefWidth="377.0">
+      <Pane id="panelPassives" layoutX="567.0" layoutY="217.0" prefHeight="231.0" prefWidth="377.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="11.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Pasivos">
                <font>
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="178.0" layoutY="14.0" prefHeight="40.0" prefWidth="196.0" styleClass="labelGrey" text="Disponible">
+            <Label id="passivesTotal" fx:id="passivesTotal" alignment="CENTER" contentDisplay="CENTER" layoutX="178.0" layoutY="14.0" prefHeight="40.0" prefWidth="196.0" styleClass="labelGrey" text="Disponible">
                <font>
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
-            <TableView layoutX="5.0" layoutY="75.0" prefHeight="123.0" prefWidth="368.0">
+            <TableView id="tablePassives" fx:id="tablePassives" layoutX="5.0" layoutY="75.0" prefHeight="123.0" prefWidth="368.0">
                <columns>
-                  <TableColumn prefWidth="135.0" text="ACREEDOR" />
-                  <TableColumn prefWidth="126.0" text="FECHA" />
-                  <TableColumn prefWidth="106.0" text="SUBTOTAL" />
+                  <TableColumn id="ps1" fx:id="ps1" prefWidth="135.0" text="ACREEDOR" />
+                  <TableColumn id="ps2" fx:id="ps2" prefWidth="126.0" text="FECHA" />
+                  <TableColumn id="ps3" fx:id="ps3" prefWidth="106.0" text="SUBTOTAL" />
                </columns>
             </TableView>
          </children>

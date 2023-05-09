@@ -1,13 +1,11 @@
 package com.forpus.forpus_inventory.controller;
 
 import com.forpus.forpus_inventory.domain.services.Constant;
+import com.forpus.forpus_inventory.domain.services.ConstantsPurchases;
 import com.forpus.forpus_inventory.domain.services.ConstantsWare;
 import com.forpus.forpus_inventory.persistence.crud.FoundHQL;
 import com.forpus.forpus_inventory.persistence.crud.SearchHQL;
-import com.forpus.forpus_inventory.persistence.entity.PartnersClass;
-import com.forpus.forpus_inventory.persistence.entity.ProductClass;
-import com.forpus.forpus_inventory.persistence.entity.ProductpriceClass;
-import com.forpus.forpus_inventory.persistence.entity.WareProductClass;
+import com.forpus.forpus_inventory.persistence.entity.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -43,6 +41,11 @@ public class FinanceController {
     public TableColumn<Object, Object> p3;
     public TableColumn<Object, Object> p4;
     public Label productTotal;
+    public TableView<InvoiceClass> tablePassives;
+    public Label passivesTotal;
+    public TableColumn<Object, Object> ps1;
+    public TableColumn<Object, Object> ps2;
+    public TableColumn<Object, Object> ps3;
 
     @FXML
     protected void buttonSlide(ActionEvent event) throws IOException {
@@ -64,6 +67,11 @@ public class FinanceController {
         p3.setCellValueFactory(new PropertyValueFactory<>("purchasePrice"));
         p4.setCellValueFactory(new PropertyValueFactory<>("profit"));
         productFinance();
+
+        ps1.setCellValueFactory(new PropertyValueFactory<>("idProviders"));
+        ps2.setCellValueFactory(new PropertyValueFactory<>("date"));
+        ps3.setCellValueFactory(new PropertyValueFactory<>("idBill"));
+        passivesFinance();
 
     }
     //FUNCION PARA CARGAR LOS SALDOS DE LA EMPRESA
@@ -132,6 +140,34 @@ public class FinanceController {
             WareController.alertSend("Sin Productos");
         }
 
+    }
+    //METODO PARA CARGAR LOS PASIVOS (CUENTAS POR PAGAR)
+    public void passivesFinance(){
+
+        try {
+            SearchHQL.invoiceIdBill("ProvidersClass");
+            ConstantsPurchases.invoiceCredit = ConstantsPurchases.invoiceList;
+            SearchHQL.invoiceIdBill("WorkersClass");
+            ConstantsPurchases.invoiceList.addAll(ConstantsPurchases.invoiceCredit);
+            ConstantsPurchases.invoiceCredit.clear();
+            int total = 0;
+            for(InvoiceClass iv: ConstantsPurchases.invoiceList){
+                total = total + iv.getIdBill();
+                if(iv.getIdProviders() == null){
+                    iv.setIdProviders(iv.getIdWorkers());
+                }
+                ConstantsPurchases.invoiceCredit.add(iv);
+            }
+
+            tablePassives.getItems().clear();
+            ObservableList<InvoiceClass> passives = FXCollections.observableArrayList(ConstantsPurchases.invoiceCredit);
+            tablePassives.setItems(passives);
+
+            passivesTotal.setText(String.valueOf(total));
+        } catch (Exception i){
+            i.printStackTrace();
+            WareController.alertSend("Sin Deudas");
+        }
     }
     public void buttonCRUD(ActionEvent event) {
     }
