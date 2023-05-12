@@ -958,8 +958,8 @@ public class SalesController {
             ConstantsPurchases.invoiceType = "purchaseFromSupplier";
             ConstantsPurchases.entityForInvoice = "CustomerClass";
             Constant.entity = "CompanyClass";
-            Constant.tfCode = "1";
             FoundHQL.workerFound();
+            System.out.println(Constant.company.getIdCompanyNIT());
 
             //Actualiza la invoice
             ConstantsAccounting.invoice.setIdCompany(Constant.company.getIdCompanyNIT());

@@ -15,6 +15,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -46,6 +48,12 @@ public class FinanceController {
     public TableColumn<Object, Object> ps1;
     public TableColumn<Object, Object> ps2;
     public TableColumn<Object, Object> ps3;
+    public TableView<InvoiceClass> tableReceivable;
+    public TableColumn<Object, Object> r1;
+    public TableColumn<Object, Object> r2;
+    public TableColumn<Object, Object> r3;
+    public Label totalReceivable;
+    public Pane panelReceivable;
 
     @FXML
     protected void buttonSlide(ActionEvent event) throws IOException {
@@ -73,6 +81,10 @@ public class FinanceController {
         ps3.setCellValueFactory(new PropertyValueFactory<>("idBill"));
         passivesFinance();
 
+        r1.setCellValueFactory(new PropertyValueFactory<>("idCustomer"));
+        r2.setCellValueFactory(new PropertyValueFactory<>("date"));
+        r3.setCellValueFactory(new PropertyValueFactory<>("idBill"));
+        receivable();
     }
     //FUNCION PARA CARGAR LOS SALDOS DE LA EMPRESA
     public void companyFinance(){
@@ -167,6 +179,30 @@ public class FinanceController {
         } catch (Exception i){
             i.printStackTrace();
             WareController.alertSend("Sin Deudas");
+        }
+    }
+    //METODO PARA CARGAR LAS CUENTAS POR COBRAR
+    public void receivable(){
+        try {
+            SearchHQL.invoiceIdBill("CustomerClass");
+            int total = 0;
+
+            if(!ConstantsPurchases.invoiceCredit.isEmpty()){
+                ConstantsPurchases.invoiceCredit.clear();
+            }
+
+            for(InvoiceClass iv: ConstantsPurchases.invoiceList){
+                total = total + iv.getIdBill();
+                ConstantsPurchases.invoiceCredit.add(iv);
+                totalReceivable.setText(String.valueOf(total));
+            }
+
+            tableReceivable.getItems().clear();
+            ObservableList<InvoiceClass> receivable = FXCollections.observableArrayList(ConstantsPurchases.invoiceCredit);
+            tableReceivable.setItems(receivable);
+
+        }catch (Exception i){
+            i.printStackTrace();
         }
     }
     public void buttonCRUD(ActionEvent event) {
