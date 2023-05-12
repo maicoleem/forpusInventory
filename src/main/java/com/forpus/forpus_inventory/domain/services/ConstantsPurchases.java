@@ -93,9 +93,11 @@ public class ConstantsPurchases {
     //Fecha
     public static String dateActually(){
         // Obteniendo la fecha actual del sistema.
-        Date dateActually = new Date(Calendar.getInstance().getTimeInMillis());
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        return formatter.format(dateActually);
+        Calendar calendar = Calendar.getInstance();
+        //Date dateActually = new Date(Calendar.getInstance().getTimeInMillis());
+        //SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        //formatter.format(dateActually);
+        return String.valueOf(calendar.getTime());
     }
     public static void purchaseCompany(String bank, String cash, String payable){
 

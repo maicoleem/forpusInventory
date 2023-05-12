@@ -9,7 +9,10 @@ import com.forpus.forpus_inventory.persistence.entity.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.LineChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -17,8 +20,13 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class FinanceController {
 
@@ -54,6 +62,17 @@ public class FinanceController {
     public TableColumn<Object, Object> r3;
     public Label totalReceivable;
     public Pane panelReceivable;
+    public Button buttonFinances;
+    public Button buttonGraphics;
+    public Button buttonDB;
+    public Pane panelProducts;
+    public Pane panelPassives;
+    public Pane panelPartners;
+    public Pane panelFinance;
+    public LineChart chartSales;
+    public LineChart chartPurchases;
+    public BarChart chartProducts;
+    public BarChart chartCustomers;
 
     @FXML
     protected void buttonSlide(ActionEvent event) throws IOException {
@@ -205,8 +224,62 @@ public class FinanceController {
             i.printStackTrace();
         }
     }
+    //METODO PARA CARGAR LAS VENTAS EN EL GRAFICO
+    public void graphicsSales() throws ParseException {
+        Constant.entity = "InvoiceClass";
+        SearchHQL.searchHQL();
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat format = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy");
+        for(InvoiceClass iv:ConstantsPurchases.invoiceList){
+            Date date = format.parse(iv.getDate());
+            calendar.setTime(date);
+            System.out.println(calendar.get(Calendar.MONTH) + 1);
+        }
+
+
+    }
     public void buttonCRUD(ActionEvent event) {
     }
     public void buttonsOptions(ActionEvent event) {
+        clear();
+        Button button = (Button) event.getSource();
+        final boolean a = true;
+        switch (button.getId()){
+            case "buttonFinances":
+                panelPartners.setVisible(a);
+                panelPassives.setVisible(a);
+                panelProducts.setVisible(a);
+                panelReceivable.setVisible(a);
+                panelFinance.setVisible(a);
+                break;
+            case "buttonGraphics":
+                chartCustomers.setVisible(a);
+                chartProducts.setVisible(a);
+                chartPurchases.setVisible(a);
+                chartSales.setVisible(a);
+
+                try {
+                    graphicsSales();
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
+            case "buttonDB":
+                break;
+        }
+    }
+
+    public void clear(){
+        final boolean a = false;
+        panelPartners.setVisible(a);
+        panelPassives.setVisible(a);
+        panelProducts.setVisible(a);
+        panelReceivable.setVisible(a);
+        panelFinance.setVisible(a);
+        chartCustomers.setVisible(a);
+        chartProducts.setVisible(a);
+        chartPurchases.setVisible(a);
+        chartSales.setVisible(a);
+
     }
 }

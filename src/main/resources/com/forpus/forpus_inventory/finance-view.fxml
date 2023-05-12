@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -60,23 +61,23 @@
         </Pane>
         <Pane layoutX="70.0" prefHeight="70.0" prefWidth="954.0" styleClass="paneGrey">
             <children>
-                <Button id="buttonTaxes" fx:id="buttonTaxes" layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Finanzas">
+                <Button id="buttonFinances" fx:id="buttonFinances" layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Finanzas">
                     <font>
                         <Font name="Tahoma Bold" size="20.0" />
                     </font>
                 </Button>
-                <Button id="buttonStock" fx:id="buttonStock" layoutX="160.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Graficos">
+                <Button id="buttonGraphics" fx:id="buttonGraphics" layoutX="160.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Graficos">
                     <font>
                         <Font name="Tahoma Bold" size="20.0" />
                     </font>
                 </Button>
-                <Button id="buttonAccounting" fx:id="buttonAccounting" layoutX="315.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Datos">
+                <Button id="buttonDB" fx:id="buttonDB" layoutX="315.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Datos">
                     <font>
                         <Font name="Tahoma Bold" size="20.0" />
                     </font>
                 </Button>
             </children></Pane>
-      <Pane id="pCompany" layoutX="70.0" layoutY="70.0" prefHeight="113.0" prefWidth="751.0">
+      <Pane id="panelFinance" fx:id="panelFinance" layoutX="70.0" layoutY="70.0" prefHeight="113.0" prefWidth="751.0">
          <children>
               <Label alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="14.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Disponible">
                   <font>
@@ -117,7 +118,7 @@
                </font>
             </Button>
          </children></Pane>
-        <Pane id="panelProducts" layoutX="100.0" layoutY="214.0" prefHeight="231.0" prefWidth="377.0">
+        <Pane id="panelProducts" fx:id="panelProducts" layoutX="100.0" layoutY="214.0" prefHeight="231.0" prefWidth="377.0">
             <children>
                 <Label alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="11.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Activos">
                     <font>
@@ -138,7 +139,7 @@
               </columns>
             </TableView>
             </children></Pane>
-      <Pane id="panelPassives" layoutX="567.0" layoutY="217.0" prefHeight="231.0" prefWidth="377.0">
+      <Pane id="panelPassives" fx:id="panelPassives" layoutX="567.0" layoutY="217.0" prefHeight="231.0" prefWidth="377.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="11.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Pasivos">
                <font>
@@ -180,7 +181,7 @@
             </TableView>
          </children>
       </Pane>
-      <Pane id="panelPartners" layoutX="570.0" layoutY="459.0" prefHeight="231.0" prefWidth="377.0">
+      <Pane id="panelPartners" fx:id="panelPartners" layoutX="570.0" layoutY="459.0" prefHeight="231.0" prefWidth="377.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="11.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Aportes">
                <font>
@@ -202,6 +203,38 @@
             </TableView>
          </children>
       </Pane>
+      <LineChart id="chartSales" fx:id="chartSales" layoutX="67.0" layoutY="74.0" prefHeight="348.0" prefWidth="482.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </LineChart>
+      <LineChart id="chartPurchases" fx:id="chartPurchases" layoutX="532.0" layoutY="75.0" prefHeight="348.0" prefWidth="482.0">
+         <xAxis>
+            <CategoryAxis side="BOTTOM" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis side="LEFT" />
+         </yAxis>
+      </LineChart>
+      <BarChart id="chartProducts" fx:id="chartProducts" layoutX="70.0" layoutY="437.0" prefHeight="316.0" prefWidth="482.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <BarChart id="chartCustomers" fx:id="chartCustomers" layoutX="529.0" layoutY="435.0" prefHeight="316.0" prefWidth="482.0">
+         <xAxis>
+            <CategoryAxis side="BOTTOM" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis side="LEFT" />
+         </yAxis>
+      </BarChart>
 
     </children>
 </Pane>

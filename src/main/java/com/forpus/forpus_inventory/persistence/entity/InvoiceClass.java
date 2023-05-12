@@ -45,7 +45,7 @@ public class InvoiceClass {
     @Column(name = "total", nullable = false, length = 20)
     private String total;
     @Basic
-    @Column(name = "date", nullable = false, length = 20)
+    @Column(name = "date", nullable = false, length = 30)
     private String date;
     @Basic
     @Column(name = "totalBuy", nullable = true, length = 20)
