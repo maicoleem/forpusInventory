@@ -7,12 +7,10 @@ import com.forpus.forpus_inventory.domain.services.ConstantsWare;
 import com.forpus.forpus_inventory.persistence.Session.SessionDB;
 import com.forpus.forpus_inventory.persistence.entity.*;
 import org.hibernate.Session;
-import org.hibernate.jdbc.Work;
 import org.hibernate.query.Query;
 
-import java.sql.ResultSet;
+import javax.persistence.criteria.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class SearchHQL {
@@ -200,6 +198,71 @@ public class SearchHQL {
         }catch (Exception i){
             i.printStackTrace();
             return false;
+        }
+    }
+
+    public static boolean invoiceEntity(String typeEntity){
+
+        try{
+            SessionDB.session();
+            Session session = SessionDB.sessionHibernate;
+            ConstantsPurchases.invoiceList = null;
+            switch (typeEntity){
+                case "ProvidersClass":
+                    String hql16 = "from InvoiceClass C where C.idProviders is not null";
+                    Query query16 = session.createQuery(hql16);
+                    List<InvoiceClass> results16 = query16.list();
+                    ConstantsPurchases.invoiceList = (ArrayList<InvoiceClass>) results16;
+                    break;
+                case "CustomerClass":
+                    String hqlC = "from InvoiceClass C where C.idCustomer is not null";
+                    Query queryC = session.createQuery(hqlC);
+                    List<InvoiceClass> resultsC = queryC.list();
+                    ConstantsPurchases.invoiceList = (ArrayList<InvoiceClass>) resultsC;
+                    break;
+                case "WorkersClass":
+                    String hqlW = "from InvoiceClass C where C.idWorkers is not null";
+                    Query queryW = session.createQuery(hqlW);
+                    List<InvoiceClass> resultsW = queryW.list();
+                    ConstantsPurchases.invoiceList = (ArrayList<InvoiceClass>) resultsW;
+                    break;
+            }
+            return true;
+        }catch (Exception i){
+            i.printStackTrace();
+            return false;
+        }
+    }
+    public static void wareInvoice(){
+
+        try{
+            SessionDB.session();
+            Session session = SessionDB.sessionHibernate;
+            ConstantsPurchases.invoiceList = null;
+
+            // Crear un objeto CriteriaBuilder para construir la consulta
+            CriteriaBuilder builder = session.getCriteriaBuilder();
+
+            // Crear un objeto CriteriaQuery para definir la consulta y establecer la entidad de la tabla
+            CriteriaQuery<WareinvoiceClass> query = builder.createQuery(WareinvoiceClass.class);
+            Root<WareinvoiceClass> root = query.from(WareinvoiceClass.class);
+
+            // Definir las expresiones de selección y agrupación de la consulta
+            Expression<String> idProduct = root.get("idProduct");
+            Expression<Long> amount = builder.sum(root.get("amount"));
+            query.multiselect(idProduct, amount);
+            query.groupBy(idProduct);
+
+            // Filtrar por proveedor no nulo
+            Join<WareinvoiceClass, InvoiceClass> join = root.join("invoiceByIdInvoice", JoinType.INNER);
+            Predicate proveedorNotNull = builder.isNotNull(join.get("idCustomer"));
+            query.where(proveedorNotNull);
+
+            // Ejecutar la consulta y obtener los resultados
+            List<WareinvoiceClass> resultados = session.createQuery(query).getResultList();
+            ConstantsPurchases.wareInvoiceList = (ArrayList<WareinvoiceClass>) resultados;
+        }catch (Exception i){
+            i.printStackTrace();
         }
     }
 }

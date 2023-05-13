@@ -203,23 +203,15 @@
             </TableView>
          </children>
       </Pane>
-      <LineChart id="chartSales" fx:id="chartSales" layoutX="67.0" layoutY="74.0" prefHeight="348.0" prefWidth="482.0">
-        <xAxis>
-          <CategoryAxis side="BOTTOM" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis side="LEFT" />
-        </yAxis>
-      </LineChart>
-      <LineChart id="chartPurchases" fx:id="chartPurchases" layoutX="532.0" layoutY="75.0" prefHeight="348.0" prefWidth="482.0">
+      <LineChart id="chartPurchases" fx:id="chartPurchases" animated="false" layoutX="532.0" layoutY="75.0" prefHeight="348.0" prefWidth="482.0">
          <xAxis>
-            <CategoryAxis side="BOTTOM" />
+            <CategoryAxis animated="false" side="BOTTOM" />
          </xAxis>
          <yAxis>
-            <NumberAxis side="LEFT" />
+            <NumberAxis animated="false" side="LEFT" />
          </yAxis>
       </LineChart>
-      <BarChart id="chartProducts" fx:id="chartProducts" layoutX="70.0" layoutY="437.0" prefHeight="316.0" prefWidth="482.0">
+      <BarChart id="chartProducts" fx:id="chartProducts" animated="false" layoutX="70.0" layoutY="437.0" prefHeight="316.0" prefWidth="482.0">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -235,6 +227,14 @@
             <NumberAxis side="LEFT" />
          </yAxis>
       </BarChart>
+      <LineChart id="chartSales" fx:id="chartSales" layoutX="69.0" layoutY="73.0" prefHeight="358.0" prefWidth="471.0">
+        <xAxis>
+          <CategoryAxis animated="false" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis animated="false" side="LEFT" />
+        </yAxis>
+      </LineChart>
 
     </children>
 </Pane>

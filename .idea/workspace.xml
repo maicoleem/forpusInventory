@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Se termino la pestaña finanzas.">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Se estan configurando la fecha para poder construir los graficos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/FinanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/FinanceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsPurchases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsPurchases.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/InvoiceClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/InvoiceClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SearchHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SearchHQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/WareinvoiceClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/WareinvoiceClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/finance-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/finance-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -188,14 +188,9 @@
       <workItem from="1683415598014" duration="3609000" />
       <workItem from="1683498245759" duration="12362000" />
       <workItem from="1683600181223" duration="2780000" />
-      <workItem from="1683847642877" duration="11020000" />
-    </task>
-    <task id="LOCAL-00006" summary="first create the functions for all the buttons of the CRUD, create the new view and its application to fetch all the information from the table">
-      <created>1674363644711</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1674363644711</updated>
+      <workItem from="1683847642877" duration="11167000" />
+      <workItem from="1683936014069" duration="7297000" />
+      <workItem from="1683943338757" duration="8754000" />
     </task>
     <task id="LOCAL-00007" summary="Se crearon las nuevas tablas con sus relaciones, se mapearon y e tuvo que adicionar al las clases de las entidades dos parametros para que no se mapeara dos veces las mismas tablas por las claves foraneas, se comenzo el diseño de la pestaña de almacenamiento falta diseñar la parte de la transmutación y el crud.">
       <created>1674531989984</created>
@@ -533,14 +528,20 @@
       <option name="project" value="LOCAL" />
       <updated>1683850570744</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Se estan configurando la fecha para poder construir los graficos">
+      <created>1683860775561</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1683860775561</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;&#10;++Se agrego el diseño para realizar una venta" />
     <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;  &#10;**Se esta diseñando y mejorando el view de search-view.fxml" />
     <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;  &#10;**Se esta diseñando y mejorando el view de search-view.fxml&#10;**Se carga el comboBox apenas inicia la ventana y se elimino el error que daba al cambiar de datos en la tabla" />
     <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;  &#10;**Se esta diseñando y mejorando el view de search-view.fxml&#10;**Se crea la funcionalidad de seleccionar un elemento de la talba y copiar el codigo o el nombre&#10;&#10;--Falta poder filtar la tabla" />
@@ -565,7 +566,8 @@
     <MESSAGE value="En finanzas &#10;+aportes sociales: ok&#10;+Cuentas de la compañia: ok&#10;+Productos: ok&#10;Cuentas por pagar esta en proceso ya se verifico que se registren correctamente los pagos.&#10;falta adicionarlos a la tabla&#10;Falta cuentas por cobrar" />
     <MESSAGE value="Ahora se puede ver los pasivos de la compañia en finaceView.&#10;&#10;Falta cuentas por cobrar" />
     <MESSAGE value="Se termino la pestaña finanzas." />
-    <option name="LAST_COMMIT_MESSAGE" value="Se termino la pestaña finanzas." />
+    <MESSAGE value="Se estan configurando la fecha para poder construir los graficos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se estan configurando la fecha para poder construir los graficos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

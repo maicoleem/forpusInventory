@@ -99,6 +99,13 @@ public class WareinvoiceClass {
         this.amount = amount;
     }
 
+    public WareinvoiceClass(String idProduct, Long amount) {
+        this.idProduct = idProduct;
+        this.amount = Math.toIntExact(amount);
+    }
+    public WareinvoiceClass() {
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
