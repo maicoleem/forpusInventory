@@ -219,7 +219,7 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </BarChart>
-      <BarChart id="chartCustomers" fx:id="chartCustomers" layoutX="529.0" layoutY="435.0" prefHeight="316.0" prefWidth="482.0">
+      <BarChart id="chartCustomers" fx:id="chartCustomers" animated="false" layoutX="529.0" layoutY="435.0" prefHeight="316.0" prefWidth="482.0">
          <xAxis>
             <CategoryAxis side="BOTTOM" />
          </xAxis>

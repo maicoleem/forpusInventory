@@ -234,7 +234,6 @@ public class SearchHQL {
         }
     }
     public static void wareInvoice(){
-
         try{
             SessionDB.session();
             Session session = SessionDB.sessionHibernate;
@@ -261,6 +260,31 @@ public class SearchHQL {
             // Ejecutar la consulta y obtener los resultados
             List<WareinvoiceClass> resultados = session.createQuery(query).getResultList();
             ConstantsPurchases.wareInvoiceList = (ArrayList<WareinvoiceClass>) resultados;
+        }catch (Exception i){
+            i.printStackTrace();
+        }
+    }
+
+    public static void customersFinance(){
+        try{
+            SessionDB.session();
+            Session session = SessionDB.sessionHibernate;
+            ConstantsPurchases.invoiceList = null;
+
+            // Crear un objeto CriteriaBuilder para construir la consulta
+            CriteriaBuilder builder = session.getCriteriaBuilder();
+
+            // Crear un objeto CriteriaQuery para definir la consulta y establecer la entidad de la tabla
+            CriteriaQuery<CustomerClass> query = builder.createQuery(CustomerClass.class);
+            Root<CustomerClass> root = query.from(CustomerClass.class);
+
+            // Definir las expresiones de selección y agrupación de la consulta
+            query.select(root)
+                    .orderBy(builder.desc(builder.sum(root.get("cash"), root.get("bank"))));
+
+            // Ejecutar la consulta y obtener los resultados
+            List<CustomerClass> resultados = session.createQuery(query).getResultList();
+            Constant.customersList = resultados.toArray(new CustomerClass[0]);
         }catch (Exception i){
             i.printStackTrace();
         }

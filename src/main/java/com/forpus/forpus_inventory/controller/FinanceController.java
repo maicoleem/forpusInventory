@@ -72,7 +72,7 @@ public class FinanceController {
     @FXML
     public LineChart<String , Number> chartPurchases;
     public BarChart<String, Number> chartProducts;
-    public BarChart chartCustomers;
+    public BarChart<String, Number> chartCustomers;
     @FXML
     protected void buttonSlide(ActionEvent event) throws IOException {
         WareController.slide(event);
@@ -257,6 +257,23 @@ public class FinanceController {
         chartProducts.setTitle("PRODUCTOS");
         chartProducts.getData().add(series);
     }
+    public void graphicsCustomers(){
+        SearchHQL.customersFinance();
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        series.setName("CLIENTES");
+
+        for (int i = 0; i < 10 && i < Constant.customersList.length; i++) {
+            CustomerClass result = Constant.customersList[i];
+            String nameCustomer = result.getName();
+            int amount = Integer.parseInt(result.getBank()) + Integer.parseInt(result.getCash());
+            // Aquí puedes hacer lo que necesites con los valores de idProduct y amount
+            series.getData().add(new XYChart.Data<>(nameCustomer, amount));
+        }
+        chartCustomers.getData().clear();
+        chartCustomers.setTitle("CLIENTES");
+        chartCustomers.getData().add(series);
+    }
+
     public XYChart.Series<String, Number> graphics() throws ParseException {
 
         int m1 = 0, m2 = 0, m3 = 0, m4 = 0, m5 = 0, m6 = 0
@@ -347,6 +364,7 @@ public class FinanceController {
                     graphicsSales();
                     graphicsPurchases();
                     graphicsProducts();
+                    graphicsCustomers();
                 } catch (ParseException e) {
                     throw new RuntimeException(e);
                 }
