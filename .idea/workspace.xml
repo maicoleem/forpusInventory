@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Se contruyeron los graficos de ventas, compras y productos, queda pendiente el de usuarios.">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Se terminaron las graficas.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/DataBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/properties.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/FinanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/FinanceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SearchHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SearchHQL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/finance-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/finance-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -190,14 +192,9 @@
       <workItem from="1683847642877" duration="11167000" />
       <workItem from="1683936014069" duration="7297000" />
       <workItem from="1683943338757" duration="8813000" />
-      <workItem from="1684009689942" duration="2357000" />
-    </task>
-    <task id="LOCAL-00008" summary="Se creo el CRUD para las categorias, se agregaron màs botones.&#10;Para realizar el borrado de datos se tuvo que implementar un nuevo metodo en la clase DeleteHQL debido a que los metodos con session.delete(objeto) y el query no funcionaban, daban un error.">
-      <created>1674615364085</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1674615364085</updated>
+      <workItem from="1684009689942" duration="2805000" />
+      <workItem from="1684094719103" duration="6972000" />
+      <workItem from="1684104039938" duration="4432000" />
     </task>
     <task id="LOCAL-00009" summary="Se creo el crud para la bodegas.">
       <created>1674675240101</created>
@@ -535,14 +532,20 @@
       <option name="project" value="LOCAL" />
       <updated>1683953001714</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Se terminaron las graficas.">
+      <created>1684014745215</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1684014745216</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;  &#10;**Se esta diseñando y mejorando el view de search-view.fxml&#10;**Se carga el comboBox apenas inicia la ventana y se elimino el error que daba al cambiar de datos en la tabla" />
     <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;  &#10;**Se esta diseñando y mejorando el view de search-view.fxml&#10;**Se crea la funcionalidad de seleccionar un elemento de la talba y copiar el codigo o el nombre&#10;&#10;--Falta poder filtar la tabla" />
     <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;  &#10;**Ahora se puede filtrar la tabla&#10;-falta agregar productos y servicios en la busquedad" />
     <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;&#10;**Se modifico la view de purchases-view.fxml, se parametrizo la busquedad de proveedor y producto, falta poder agregar un producto nuevo y agregar a la tabla de compras (de ahi en adelante)" />
@@ -567,7 +570,8 @@
     <MESSAGE value="Se termino la pestaña finanzas." />
     <MESSAGE value="Se estan configurando la fecha para poder construir los graficos" />
     <MESSAGE value="Se contruyeron los graficos de ventas, compras y productos, queda pendiente el de usuarios." />
-    <option name="LAST_COMMIT_MESSAGE" value="Se contruyeron los graficos de ventas, compras y productos, queda pendiente el de usuarios." />
+    <MESSAGE value="Se terminaron las graficas." />
+    <option name="LAST_COMMIT_MESSAGE" value="Se terminaron las graficas." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

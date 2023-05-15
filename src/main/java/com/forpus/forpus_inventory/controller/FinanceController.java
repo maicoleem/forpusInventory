@@ -3,6 +3,7 @@ package com.forpus.forpus_inventory.controller;
 import com.forpus.forpus_inventory.domain.services.Constant;
 import com.forpus.forpus_inventory.domain.services.ConstantsPurchases;
 import com.forpus.forpus_inventory.domain.services.ConstantsWare;
+import com.forpus.forpus_inventory.persistence.crud.DataBase;
 import com.forpus.forpus_inventory.persistence.crud.FoundHQL;
 import com.forpus.forpus_inventory.persistence.crud.SearchHQL;
 import com.forpus.forpus_inventory.persistence.entity.*;
@@ -17,8 +18,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 import org.hibernate.event.spi.SaveOrUpdateEvent;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -67,6 +71,12 @@ public class FinanceController {
     public Pane panelPassives;
     public Pane panelPartners;
     public Pane panelFinance;
+    public Button buttonExport;
+    public Label labelRuta;
+    public Pane panelDB;
+    public Button buttonBackUp;
+    public Button buttonRestore;
+    public Button buttonCorte;
     @FXML
     private LineChart<String , Number> chartSales;
     @FXML
@@ -386,5 +396,31 @@ public class FinanceController {
         chartPurchases.setVisible(a);
         chartSales.setVisible(a);
 
+    }
+
+    public void export(ActionEvent event) {
+
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        File selectedDirectory = directoryChooser.showDialog(null);
+
+        if (selectedDirectory != null) {
+            // Hacer algo con la ruta seleccionada
+            labelRuta.setText(selectedDirectory.getAbsolutePath());
+        }
+    }
+
+    public void restore(ActionEvent event) {
+    }
+
+    public void corte(ActionEvent event) {
+    }
+
+    public void backup(ActionEvent event) {
+        DataBase.backUp(escaparCaracteres(labelRuta.getText()));
+    }
+    public static String escaparCaracteres(String cadena) {
+        String cadenaEscapada = cadena.replace("\\", "\\\\");
+        cadenaEscapada += "\\backup.sql";
+        return cadenaEscapada;
     }
 }

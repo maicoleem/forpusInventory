@@ -203,7 +203,7 @@
             </TableView>
          </children>
       </Pane>
-      <LineChart id="chartPurchases" fx:id="chartPurchases" animated="false" layoutX="532.0" layoutY="75.0" prefHeight="348.0" prefWidth="482.0">
+      <LineChart id="chartPurchases" fx:id="chartPurchases" animated="false" layoutX="532.0" layoutY="75.0" prefHeight="348.0" prefWidth="482.0" visible="false">
          <xAxis>
             <CategoryAxis animated="false" side="BOTTOM" />
          </xAxis>
@@ -211,7 +211,7 @@
             <NumberAxis animated="false" side="LEFT" />
          </yAxis>
       </LineChart>
-      <BarChart id="chartProducts" fx:id="chartProducts" animated="false" layoutX="70.0" layoutY="437.0" prefHeight="316.0" prefWidth="482.0">
+      <BarChart id="chartProducts" fx:id="chartProducts" animated="false" layoutX="70.0" layoutY="437.0" prefHeight="316.0" prefWidth="482.0" visible="false">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -219,7 +219,7 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </BarChart>
-      <BarChart id="chartCustomers" fx:id="chartCustomers" animated="false" layoutX="529.0" layoutY="435.0" prefHeight="316.0" prefWidth="482.0">
+      <BarChart id="chartCustomers" fx:id="chartCustomers" animated="false" layoutX="529.0" layoutY="435.0" prefHeight="316.0" prefWidth="482.0" visible="false">
          <xAxis>
             <CategoryAxis side="BOTTOM" />
          </xAxis>
@@ -227,7 +227,7 @@
             <NumberAxis side="LEFT" />
          </yAxis>
       </BarChart>
-      <LineChart id="chartSales" fx:id="chartSales" layoutX="69.0" layoutY="73.0" prefHeight="358.0" prefWidth="471.0">
+      <LineChart id="chartSales" fx:id="chartSales" layoutX="69.0" layoutY="73.0" prefHeight="358.0" prefWidth="471.0" visible="false">
         <xAxis>
           <CategoryAxis animated="false" side="BOTTOM" />
         </xAxis>
@@ -235,6 +235,35 @@
           <NumberAxis animated="false" side="LEFT" />
         </yAxis>
       </LineChart>
+      <Pane id="panelDB" fx:id="panelDB" layoutX="81.0" layoutY="83.0" prefHeight="200.0" prefWidth="918.0">
+         <children>
+            <Button id="buttonExport" fx:id="buttonExport" layoutX="8.0" layoutY="14.0" mnemonicParsing="false" onAction="#export" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="RUTA">
+               <font>
+                  <Font name="Tahoma Bold" size="20.0" />
+               </font>
+            </Button>
+            <Label id="labelRuta" fx:id="labelRuta" alignment="CENTER" contentDisplay="CENTER" layoutX="178.0" layoutY="21.0" prefHeight="48.0" prefWidth="556.0" styleClass="labelGrey" text="ruta">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Button id="buttonBackUp" fx:id="buttonBackUp" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onAction="#backup" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="BACKUP">
+               <font>
+                  <Font name="Tahoma Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button id="buttonRestore" fx:id="buttonRestore" layoutX="178.0" layoutY="90.0" mnemonicParsing="false" onAction="#restore" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="RECUPERAR">
+               <font>
+                  <Font name="Tahoma Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button id="buttonCorte" fx:id="buttonCorte" layoutX="342.0" layoutY="90.0" mnemonicParsing="false" onAction="#corte" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="CORTE">
+               <font>
+                  <Font name="Tahoma Bold" size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
 
     </children>
 </Pane>
