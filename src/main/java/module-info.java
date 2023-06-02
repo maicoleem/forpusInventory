@@ -13,6 +13,8 @@ module com.forpus.forpus_inventory {
     requires java.naming;
     requires java.sql;
     requires java.desktop;
+    requires org.apache.poi.poi;
+    requires org.apache.poi.ooxml;
     //requires eu.hansolo.tilesfx;
 
     opens com.forpus.forpus_inventory to javafx.fxml;

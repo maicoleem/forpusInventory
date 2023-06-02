@@ -1,6 +1,7 @@
 package com.forpus.forpus_inventory.controller;
 
 import com.forpus.forpus_inventory.domain.services.Constant;
+import com.forpus.forpus_inventory.domain.services.ConstantsFinance;
 import com.forpus.forpus_inventory.domain.services.ConstantsPurchases;
 import com.forpus.forpus_inventory.domain.services.ConstantsWare;
 import com.forpus.forpus_inventory.persistence.crud.DataBase;
@@ -12,15 +13,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
-import org.hibernate.event.spi.SaveOrUpdateEvent;
 
 import java.io.File;
 import java.io.IOException;
@@ -77,6 +73,13 @@ public class FinanceController {
     public Button buttonBackUp;
     public Button buttonRestore;
     public Button buttonCorte;
+    public Label labelRuta2;
+    public Button buttonRuta3;
+    public Label labelRuta3;
+    public Button buttonRuta2;
+    public Button buttonDownload;
+    public Button buttonUpload;
+    public ComboBox<String> cbBoxCuentas;
     @FXML
     private LineChart<String , Number> chartSales;
     @FXML
@@ -113,6 +116,8 @@ public class FinanceController {
         r2.setCellValueFactory(new PropertyValueFactory<>("date"));
         r3.setCellValueFactory(new PropertyValueFactory<>("idBill"));
         receivable();
+
+        cbBoxCuentas.getItems().addAll(ConstantsFinance.cuentas);
     }
     //FUNCION PARA CARGAR LOS SALDOS DE LA EMPRESA
     public void companyFinance(){
@@ -380,6 +385,7 @@ public class FinanceController {
                 }
                 break;
             case "buttonDB":
+                panelDB.setVisible(a);
                 break;
         }
     }
@@ -395,17 +401,29 @@ public class FinanceController {
         chartProducts.setVisible(a);
         chartPurchases.setVisible(a);
         chartSales.setVisible(a);
-
+        panelDB.setVisible(a);
     }
 
     public void export(ActionEvent event) {
+
+        Button button = (Button) event.getSource();
 
         DirectoryChooser directoryChooser = new DirectoryChooser();
         File selectedDirectory = directoryChooser.showDialog(null);
 
         if (selectedDirectory != null) {
             // Hacer algo con la ruta seleccionada
-            labelRuta.setText(selectedDirectory.getAbsolutePath());
+            switch (button.getId()){
+                case "buttonExport":
+                    labelRuta.setText(selectedDirectory.getAbsolutePath());
+                    break;
+                case "buttonRuta2":
+                    labelRuta2.setText(selectedDirectory.getAbsolutePath());
+                    break;
+                case "buttonRuta3":
+                    labelRuta3.setText(selectedDirectory.getAbsolutePath());
+                    break;
+            }
         }
     }
 
@@ -414,13 +432,39 @@ public class FinanceController {
 
     public void corte(ActionEvent event) {
     }
-
+    //DESCARGA EL SQL DE LA BASE DE DATOS
     public void backup(ActionEvent event) {
         DataBase.backUp(escaparCaracteres(labelRuta.getText()));
+
     }
     public static String escaparCaracteres(String cadena) {
-        String cadenaEscapada = cadena.replace("\\", "\\\\");
-        cadenaEscapada += "\\backup.sql";
-        return cadenaEscapada;
+        return cadena.replace("\\", "\\\\");
+    }
+
+    public void tablas(ActionEvent event) {
+
+        String entity1 = cbBoxCuentas.getValue();
+        String entity2;
+        switch (entity1){
+            case "Clientes":
+                entity2 = "CustomerClass";
+                break;
+            case "Trabajadores":
+                entity2 = "WorkersClass";
+                break;
+            case  "Proveedores":
+                entity2 = "ProvidersClass";
+                break;
+            case "Socios":
+                entity2 = "PartnersClass";
+                break;
+            default:
+                entity2 = "null";
+                break;
+        }
+        DataBase.downloadTable(escaparCaracteres(labelRuta.getText()),entity2);
+    }
+
+    public void cbCuentas(ActionEvent event) {
     }
 }
