@@ -17,6 +17,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.io.IOException;
@@ -428,6 +429,9 @@ public class FinanceController {
     }
 
     public void restore(ActionEvent event) {
+        String entity1 = cbBoxCuentas.getValue();
+        String entity2 =cbClass(entity1);
+        DataBase.importTable(escaparCaracteres(labelRuta2.getText()),entity2);
     }
 
     public void corte(ActionEvent event) {
@@ -444,6 +448,10 @@ public class FinanceController {
     public void tablas(ActionEvent event) {
 
         String entity1 = cbBoxCuentas.getValue();
+        String entity2 =cbClass(entity1);
+        DataBase.downloadTable(escaparCaracteres(labelRuta.getText()),entity2);
+    }
+    public static String cbClass(String entity1){
         String entity2;
         switch (entity1){
             case "Clientes":
@@ -458,13 +466,34 @@ public class FinanceController {
             case "Socios":
                 entity2 = "PartnersClass";
                 break;
+            case "Productos":
+                entity2 = "ProductClass";
+                break;
+            case "Servicios":
+                entity2 = "ServiceClass";
+                break;
             default:
                 entity2 = "null";
                 break;
         }
-        DataBase.downloadTable(escaparCaracteres(labelRuta.getText()),entity2);
+        return  entity2;
     }
 
     public void cbCuentas(ActionEvent event) {
     }
+    public void importExcel(ActionEvent event) {
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Seleccione el archivo de Excel");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Archivos de Excel", "*.xlsx"));
+
+        File selectedFile = fileChooser.showOpenDialog(null);
+
+        if (selectedFile != null) {
+            String selectedFilePath = selectedFile.getAbsolutePath();
+            labelRuta2.setText(selectedFilePath);
+        }
+    }
+
+
 }

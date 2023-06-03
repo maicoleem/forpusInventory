@@ -262,12 +262,12 @@
                   <Font name="Tahoma Bold" size="20.0" />
                </font>
             </Button>
-            <Button id="buttonRuta2" fx:id="buttonRuta2" layoutX="14.0" layoutY="268.0" mnemonicParsing="false" onAction="#export" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="RUTA">
+            <Button id="buttonRuta2" fx:id="buttonRuta2" layoutX="14.0" layoutY="268.0" mnemonicParsing="false" onAction="#importExcel" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="RUTA">
                <font>
                   <Font name="Tahoma Bold" size="20.0" />
                </font>
             </Button>
-            <Label id="labelRuta2" fx:id="labelRuta2" alignment="CENTER" contentDisplay="CENTER" layoutX="184.0" layoutY="274.0" prefHeight="48.0" prefWidth="471.0" styleClass="labelGrey" text="ruta">
+            <Label id="labelRuta2" fx:id="labelRuta2" alignment="CENTER" contentDisplay="CENTER" layoutX="184.0" layoutY="274.0" prefHeight="48.0" prefWidth="471.0" styleClass="labelGrey" text="ruta cargar">
                <font>
                   <Font name="Tahoma Bold" size="19.0" />
                </font>

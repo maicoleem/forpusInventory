@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Se terminaron las graficas.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsFinance.java" afterDir="false" />
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Se pueden descargar las tablas de la base de datos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/FinanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/FinanceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/Session/SessionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/Session/SessionDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsFinance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsFinance.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/DataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/ProductClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/ProductClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/finance-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/finance-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -199,14 +197,8 @@
       <workItem from="1684104039938" duration="6151000" />
       <workItem from="1684452882663" duration="9271000" />
       <workItem from="1685492324177" duration="1414000" />
-      <workItem from="1685664468676" duration="5518000" />
-    </task>
-    <task id="LOCAL-00010" summary="Se creo el crud para la bodegas.">
-      <created>1674675347484</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1674675347484</updated>
+      <workItem from="1685664468676" duration="6771000" />
+      <workItem from="1685801340384" duration="8873000" />
     </task>
     <task id="LOCAL-00011" summary="Se creo el crud para la bodegas.">
       <created>1674675365692</created>
@@ -544,14 +536,20 @@
       <option name="project" value="LOCAL" />
       <updated>1684109521584</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Se pueden descargar las tablas de la base de datos">
+      <created>1685670993844</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1685670993844</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;  &#10;**Se esta diseñando y mejorando el view de search-view.fxml&#10;**Se crea la funcionalidad de seleccionar un elemento de la talba y copiar el codigo o el nombre&#10;&#10;--Falta poder filtar la tabla" />
     <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;  &#10;**Ahora se puede filtrar la tabla&#10;-falta agregar productos y servicios en la busquedad" />
     <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;&#10;**Se modifico la view de purchases-view.fxml, se parametrizo la busquedad de proveedor y producto, falta poder agregar un producto nuevo y agregar a la tabla de compras (de ahi en adelante)" />
     <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;+Se crearon los metodos y variables para poder generar la factura, falta completar más metodos por si se necesitan.&#10;&#10;-Falta poder generar una cotización y la factura" />
@@ -576,7 +574,8 @@
     <MESSAGE value="Se estan configurando la fecha para poder construir los graficos" />
     <MESSAGE value="Se contruyeron los graficos de ventas, compras y productos, queda pendiente el de usuarios." />
     <MESSAGE value="Se terminaron las graficas." />
-    <option name="LAST_COMMIT_MESSAGE" value="Se terminaron las graficas." />
+    <MESSAGE value="Se pueden descargar las tablas de la base de datos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se pueden descargar las tablas de la base de datos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -628,15 +627,6 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/FinanceController.java</url>
-          <line>443</line>
-          <properties class="com.forpus.forpus_inventory.controller.FinanceController" method="tablas">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

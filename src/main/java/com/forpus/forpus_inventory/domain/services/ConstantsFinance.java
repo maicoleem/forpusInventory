@@ -4,5 +4,5 @@ import java.util.ArrayList;
 
 public class ConstantsFinance {
 
-    public static String[] cuentas = {"Clientes", "Trabajadores", "Proveedores", "Socios"};
+    public static String[] cuentas = {"Clientes", "Trabajadores", "Proveedores", "Socios", "Productos", "Servicios"};
 }

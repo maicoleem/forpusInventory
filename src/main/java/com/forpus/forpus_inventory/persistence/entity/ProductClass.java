@@ -42,7 +42,7 @@ public class ProductClass {
     private String idService;
     @OneToMany(mappedBy = "productByIdProduct")
     private Collection<ServiceProductClass> serviceProductsByIdProduct;
-    @OneToMany(mappedBy = "productByIdProduct", cascade = CascadeType.MERGE, orphanRemoval = true)
+    @OneToMany(mappedBy = "productByIdProduct", cascade = CascadeType.PERSIST)
     private Collection<WareProductClass> wareProductsByIdProduct;
 
     public String getIdProduct() {

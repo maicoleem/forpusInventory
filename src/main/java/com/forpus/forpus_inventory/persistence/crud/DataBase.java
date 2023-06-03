@@ -3,18 +3,14 @@ package com.forpus.forpus_inventory.persistence.crud;
 import com.forpus.forpus_inventory.controller.WareController;
 import com.forpus.forpus_inventory.domain.services.ConstantsWare;
 import com.forpus.forpus_inventory.persistence.Session.SessionDB;
-import com.forpus.forpus_inventory.persistence.entity.CustomerClass;
-import com.forpus.forpus_inventory.persistence.entity.PartnersClass;
-import com.forpus.forpus_inventory.persistence.entity.ProvidersClass;
-import com.forpus.forpus_inventory.persistence.entity.WorkersClass;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import com.forpus.forpus_inventory.persistence.entity.*;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.ss.*;
+import org.apache.xmlbeans.soap.SOAPArrayType;
 import org.hibernate.Metamodel;
 import org.hibernate.Session;
+import org.hibernate.event.spi.SaveOrUpdateEvent;
 import org.hibernate.query.Query;
 
 import javax.persistence.EntityManager;
@@ -22,6 +18,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.metamodel.Attribute;
 import javax.persistence.metamodel.EntityType;
 import javax.swing.plaf.basic.BasicEditorPaneUI;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -92,6 +89,14 @@ public class DataBase {
                 queryStr = "FROM ProvidersClass";
                 entityClass = ProvidersClass.class;
                 break;
+            case "ProductClass":
+                queryStr = "FROM ProductClass";
+                entityClass = ProductClass.class;
+                break;
+            case "ServiceClass":
+                queryStr = "FROM ServiceClass";
+                entityClass = ServiceClass.class;
+                break;
             default:
                 queryStr = "FROM PartnersClass";
                 entityClass = PartnersClass.class;
@@ -153,4 +158,113 @@ public class DataBase {
         }*/
         return true;
     }
+    public static void importTable(String path, String entity) {
+        SessionDB.session();
+        Metamodel metamodel = SessionDB.metamodel();
+        Session session = SessionDB.sessionHibernate;
+
+        try (FileInputStream inputStream = new FileInputStream(path)) {
+            session.beginTransaction();
+            Workbook workbook = new XSSFWorkbook(inputStream);
+            Sheet sheet = workbook.getSheetAt(0);
+
+            Row headerRow = sheet.getRow(0);
+            int columnCount = headerRow.getPhysicalNumberOfCells();
+            String[] columnNames = new String[columnCount];
+
+            for (int i = 0; i < columnCount; i++) {
+                Cell cell = headerRow.getCell(i);
+                columnNames[i] = cell.getStringCellValue();
+            }
+
+            Class<?> entityClass;
+            switch (entity) {
+                case "CustomerClass":
+                    entityClass = CustomerClass.class;
+                    break;
+                case "WorkersClass":
+                    entityClass = WorkersClass.class;
+                    break;
+                case "ProvidersClass":
+                    entityClass = ProvidersClass.class;
+                    break;
+                case "ProductClass":
+                    entityClass = ProductClass.class;
+                    break;
+                case "ServiceClass":
+                    entityClass = ServiceClass.class;
+                    break;
+                default:
+                    entityClass = PartnersClass.class;
+                    break;
+            }
+
+            for (int i = 1; i < sheet.getLastRowNum(); i++) {
+                Row dataRow = sheet.getRow(i);
+                Object entityObject = entityClass.newInstance();
+                String idValue = null;
+                Field idField = null;
+
+                for (int j = 0; j < columnCount; j++) {
+                    Cell cell = dataRow.getCell(j);
+                    String propertyName = columnNames[j];
+
+                    Field field = entityClass.getDeclaredField(propertyName);
+                    field.setAccessible(true);
+
+                    if (cell == null || cell.getCellType() == CellType.BLANK) {
+                        // Si la celda está vacía, establecer el valor del campo como null
+                        field.set(entityObject, null);
+                    } else {
+                        // Si la celda no está vacía, establecer el valor del campo según el tipo de dato
+                        if (field.getType() == String.class) {
+                            field.set(entityObject, cell.getStringCellValue());
+                        } else if (field.getType() == Integer.class) {
+                            field.set(entityObject, (int) cell.getNumericCellValue());
+                        } else if (field.getType() == Double.class) {
+                            field.set(entityObject, cell.getNumericCellValue());
+                        }
+                    }
+                }
+
+                switch (entity) {
+                    case "CustomerClass":
+                        entityClass = CustomerClass.class;
+                        break;
+                    case "WorkersClass":
+                        entityClass = WorkersClass.class;
+                        break;
+                    case "ProvidersClass":
+                        entityClass = ProvidersClass.class;
+                        break;
+                    case "ProductClass":
+                        // Obtener el valor del identificador en la fila 1, columna 3
+                        Cell idCell = sheet.getRow(i).getCell(1);
+                        idValue = idCell.getStringCellValue();
+                        idField = entityClass.getDeclaredField("idProduct");
+                        break;
+                    case "ServiceClass":
+                        entityClass = ServiceClass.class;
+                        break;
+                    default:
+                        entityClass = PartnersClass.class;
+                        break;
+                }
+                // Asignar el valor del identificador al objeto entityObject
+                idField.setAccessible(true);
+                idField.set(entityObject, idValue);
+
+                entityObject = session.merge(entityObject);
+
+            }
+
+            session.getTransaction().commit();
+            workbook.close();
+        } catch (IOException | IllegalAccessException | InstantiationException | NoSuchFieldException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
 }
