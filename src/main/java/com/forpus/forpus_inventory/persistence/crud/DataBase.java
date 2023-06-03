@@ -162,9 +162,13 @@ public class DataBase {
         SessionDB.session();
         Metamodel metamodel = SessionDB.metamodel();
         Session session = SessionDB.sessionHibernate;
+        Cell idCell;
 
         try (FileInputStream inputStream = new FileInputStream(path)) {
-            session.beginTransaction();
+
+            if(!session.beginTransaction().isActive()){
+                session.beginTransaction();
+            }
             Workbook workbook = new XSSFWorkbook(inputStream);
             Sheet sheet = workbook.getSheetAt(0);
 
@@ -229,28 +233,44 @@ public class DataBase {
 
                 switch (entity) {
                     case "CustomerClass":
-                        entityClass = CustomerClass.class;
+                        // Obtener el valor del identificador en la fila 1, columna 3
+                        idCell = sheet.getRow(i).getCell(4);
+                        idValue = idCell.getStringCellValue();
+                        idField = entityClass.getDeclaredField("idCustomer");
                         break;
                     case "WorkersClass":
-                        entityClass = WorkersClass.class;
+                        // Obtener el valor del identificador en la fila 1, columna 3
+                        idCell = sheet.getRow(i).getCell(8);
+                        idValue = idCell.getStringCellValue();
+                        idField = entityClass.getDeclaredField("identificationCard");
                         break;
                     case "ProvidersClass":
-                        entityClass = ProvidersClass.class;
+                        // Obtener el valor del identificador en la fila 1, columna 3
+                        idCell = sheet.getRow(i).getCell(2);
+                        idValue = idCell.getStringCellValue();
+                        idField = entityClass.getDeclaredField("nit");
                         break;
                     case "ProductClass":
                         // Obtener el valor del identificador en la fila 1, columna 3
-                        Cell idCell = sheet.getRow(i).getCell(1);
+                        idCell = sheet.getRow(i).getCell(1);
                         idValue = idCell.getStringCellValue();
                         idField = entityClass.getDeclaredField("idProduct");
                         break;
                     case "ServiceClass":
-                        entityClass = ServiceClass.class;
+                        // Obtener el valor del identificador en la fila 1, columna 3
+                        idCell = sheet.getRow(i).getCell(0);
+                        idValue = idCell.getStringCellValue();
+                        idField = entityClass.getDeclaredField("idService");
                         break;
                     default:
-                        entityClass = PartnersClass.class;
+                        // Obtener el valor del identificador en la fila 1, columna 3
+                        idCell = sheet.getRow(i).getCell(5);
+                        idValue = idCell.getStringCellValue();
+                        idField = entityClass.getDeclaredField("identificationCard");
                         break;
                 }
                 // Asignar el valor del identificador al objeto entityObject
+                System.out.println(idValue);
                 idField.setAccessible(true);
                 idField.set(entityObject, idValue);
 
@@ -259,11 +279,10 @@ public class DataBase {
             }
 
             session.getTransaction().commit();
+            System.out.println("274");
             workbook.close();
         } catch (IOException | IllegalAccessException | InstantiationException | NoSuchFieldException e) {
             e.printStackTrace();
-        } finally {
-            session.close();
         }
     }
 

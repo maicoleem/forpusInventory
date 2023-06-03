@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Se pueden descargar las tablas de la base de datos">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Esta en proceso la importación de datos a las tablas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/FinanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/FinanceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsFinance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsFinance.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/DataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/ProductClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/ProductClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/finance-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/finance-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,14 +194,8 @@
       <workItem from="1684452882663" duration="9271000" />
       <workItem from="1685492324177" duration="1414000" />
       <workItem from="1685664468676" duration="6771000" />
-      <workItem from="1685801340384" duration="8873000" />
-    </task>
-    <task id="LOCAL-00011" summary="Se creo el crud para la bodegas.">
-      <created>1674675365692</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1674675365692</updated>
+      <workItem from="1685801340384" duration="9023000" />
+      <workItem from="1685823760000" duration="1854000" />
     </task>
     <task id="LOCAL-00012" summary="Se creo el FoundHQL.java y el SearchHQL.java para los productos y los servicios, ademas se configuro los comobobox para los productos.&#10;-faltan los demàs elementos del crud&#10;-falta dar formato a la view&#10;-falta la transmutacion">
       <created>1674705896081</created>
@@ -543,14 +533,20 @@
       <option name="project" value="LOCAL" />
       <updated>1685670993844</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Esta en proceso la importación de datos a las tablas">
+      <created>1685811588463</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1685811588463</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;  &#10;**Ahora se puede filtrar la tabla&#10;-falta agregar productos y servicios en la busquedad" />
     <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;&#10;**Se modifico la view de purchases-view.fxml, se parametrizo la busquedad de proveedor y producto, falta poder agregar un producto nuevo y agregar a la tabla de compras (de ahi en adelante)" />
     <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;+Se crearon los metodos y variables para poder generar la factura, falta completar más metodos por si se necesitan.&#10;&#10;-Falta poder generar una cotización y la factura" />
     <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;&#10;-Falta poder generar una cotización y la factura&#10;-Falta codigo para que SaveHQL guarde los datos de la compra &#10;**++**Se crearon los metodos y constantes que permiten guardar los datos de la generación de la factura" />
@@ -575,7 +571,8 @@
     <MESSAGE value="Se contruyeron los graficos de ventas, compras y productos, queda pendiente el de usuarios." />
     <MESSAGE value="Se terminaron las graficas." />
     <MESSAGE value="Se pueden descargar las tablas de la base de datos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se pueden descargar las tablas de la base de datos" />
+    <MESSAGE value="Esta en proceso la importación de datos a las tablas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Esta en proceso la importación de datos a las tablas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
