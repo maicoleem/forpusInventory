@@ -4,9 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Esta en proceso la importación de datos a las tablas">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Importacion de datos esta casi completo, falta crear plantillas de los excel para no crear posibles conflictos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/AccountingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/AccountingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/PurchasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/PurchasesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SalesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SalesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsSales.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsSales.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/DataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/FoundHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/FoundHQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/ProductClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/ProductClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/WareinvoiceClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/WareinvoiceClass.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +48,10 @@
       </MavenImportingSettings>
     </option>
   </component>
+  <component name="MigrationScriptOptions">
+    <option name="ignoreImplicitObjects" value="true" />
+    <option name="ignoreSourceCode" value="false" />
+  </component>
   <component name="ProjectId" id="2KVzOwgdpcMq5qg2qhMhQygzXz1" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -69,7 +82,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -196,6 +209,8 @@
       <workItem from="1685664468676" duration="6771000" />
       <workItem from="1685801340384" duration="9023000" />
       <workItem from="1685823760000" duration="1854000" />
+      <workItem from="1685920678882" duration="8797000" />
+      <workItem from="1685929505631" duration="2651000" />
     </task>
     <task id="LOCAL-00012" summary="Se creo el FoundHQL.java y el SearchHQL.java para los productos y los servicios, ademas se configuro los comobobox para los productos.&#10;-faltan los demàs elementos del crud&#10;-falta dar formato a la view&#10;-falta la transmutacion">
       <created>1674705896081</created>

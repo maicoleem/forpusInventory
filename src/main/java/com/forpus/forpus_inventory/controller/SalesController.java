@@ -20,6 +20,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.hibernate.event.spi.SaveOrUpdateEvent;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -531,7 +533,7 @@ public class SalesController {
             int off = Integer.parseInt(tfOff.getText());
             int saleOld = Integer.parseInt(ConstantsWare.product.getSalePrice());
             int price = Integer.parseInt(comboBoxPrice.getValue());
-            int sale = saleOld - (saleOld * off / 100);
+            int sale = saleOld -off; //(saleOld * off / 100);
             tfPriceSale.setText(String.valueOf(sale));
             labelUtilities.setText(String.valueOf(ConstantsSales.utilitiesPer(sale, price)));
         }
@@ -539,7 +541,7 @@ public class SalesController {
             int off = Integer.parseInt(tfOff.getText());
             int saleOld = Integer.parseInt(ConstantsWare.service.getProfit());
             int price = Integer.parseInt(ConstantsWare.service.getCost());
-            int sale = saleOld - (saleOld * off / 100);
+            int sale = saleOld -off; //(saleOld * off / 100);
             tfPriceSale.setText(String.valueOf(sale));
             labelUtilities.setText(String.valueOf(ConstantsSales.utilitiesPer(sale, price)));
         }
@@ -596,16 +598,12 @@ public class SalesController {
 
             switch (ConstantsSales.salesOption){
                 case "Product":
-                    int utilities = Integer.parseInt(labelUtilities.getText());
-                    int price = Integer.parseInt(comboBoxPrice.getValue());
-                    int profit = utilities * 100 / price;
-
                         ConstantsWare.product.setPurchasePrice(comboBoxPrice.getValue());
                         ConstantsWare.product.setAmount(Integer.valueOf(tfAmount.getText()));
                         ConstantsWare.product.setSalePrice(tfPriceSale.getText());
-                        ConstantsWare.product.setProfit(String.valueOf(profit));
+                        ConstantsWare.product.setProfit(labelUtilities.getText());
                         ConstantsWare.product.setIdWage(comboBoxWare.getValue());
-
+                        ConstantsWare.product.setOffSale(Integer.parseInt(tfOff.getText()));
                         ConstantsPurchases.productTableList.add(ConstantsWare.product);
 
                     break;
@@ -676,6 +674,7 @@ public class SalesController {
         }catch (Exception i){
             i.printStackTrace();
             WareController.alertSend(String.valueOf(i));
+            System.out.println("verify es un metodo");
             System.out.println(falseFor);
             return false;
         }
@@ -883,8 +882,10 @@ public class SalesController {
         invoice.setTotal(labelTotal2.getText());
         invoice.setDate(ConstantsPurchases.dateActually());
         invoice.setIdBill(666);
+
         ConstantsAccounting.invoice = invoice;
         Constant.entity = "InvoiceClass";
+        Constant.tfCode = "";
         ConstantsPurchases.invoiceType = "saleFromProduct";
 
         if(SaveHQL.workerInsertUpdate()){
@@ -897,19 +898,18 @@ public class SalesController {
                     //cada producto debe de crear un wareinvoice
                     for(ProductClass p: ConstantsPurchases.productTableList){
                         WareinvoiceClass wi = new WareinvoiceClass();
-
                         wi.setIdInvoice(ConstantsAccounting.invoice.getIdInvoice());
                         wi.setIdProduct(p.getIdProduct());
                         wi.setProductName(p.getName());
                         wi.setPriceSale(p.getSalePrice());
                         wi.setPriceBuy(Integer.parseInt(p.getPurchasePrice()));
                         wi.setAmount(p.getAmount());
-                        //idProductPrice es inecesario
-                        wi.setIdProductPrice(6);
+                        wi.setOffSale(p.getOffSale());
+                        wi.setIndexWare(ConstantsPurchases.productTableList.indexOf(p));
                         //agrega el wareproduct a la lista
                         ConstantsPurchases.wareInvoiceList.add(wi);
 
-                        //actualiza los productos
+                        //actualiza los productos en product price
                         try{
                             for(WareProductClass wp: p.getWareProductsByIdProduct()){
                                 //Si la bodega corresponde a una registrada
@@ -945,7 +945,7 @@ public class SalesController {
                         wiS.setPriceBuy(Integer.parseInt(s.getCost()));
                         wiS.setAmount(Integer.parseInt(s.getHour()));
                         //idProductPrice es inecesario
-                        wiS.setIdProductPrice(6);
+                        wiS.setIndexWare(ConstantsPurchases.serviceTableList.indexOf(s));
                         //agrega el wareproduct a la lista
                         ConstantsPurchases.wareInvoiceList.add(wiS);
                     }
@@ -959,7 +959,6 @@ public class SalesController {
             ConstantsPurchases.entityForInvoice = "CustomerClass";
             Constant.entity = "CompanyClass";
             FoundHQL.workerFound();
-            System.out.println(Constant.company.getIdCompanyNIT());
 
             //Actualiza la invoice
             ConstantsAccounting.invoice.setIdCompany(Constant.company.getIdCompanyNIT());
@@ -976,9 +975,8 @@ public class SalesController {
 
             //en caso de deudas hace
             ConstantsAccounting.invoice.setUtilities( ConstantsSales.utilities(ConstantsPurchases.totalSale,
-             ConstantsAccounting.invoice.getTotalBuy(), ConstantsAccounting.invoice.getTaxes(),
-             ConstantsAccounting.invoice.getIndebtedness(), ConstantsAccounting.invoice.getTotal() ));
-
+            ConstantsAccounting.invoice.getTotalBuy(), ConstantsAccounting.invoice.getTaxes(),
+            ConstantsAccounting.invoice.getIndebtedness(), ConstantsAccounting.invoice.getTotal() ));
 
             ConstantsAccounting.invoice.setRUtilities(ConstantsSales.rUtilities);
 
@@ -987,10 +985,10 @@ public class SalesController {
 
             //Actualiza la cuenta de la compañia y el proveedor
             ConstantsSales.saleCompany(ConstantsAccounting.invoice.getBank(),
-                    ConstantsAccounting.invoice.getCash(), ConstantsAccounting.invoice.getIndebtedness(),
-                    ConstantsAccounting.invoice.getRUtilities(), ConstantsAccounting.invoice.getUtilities());
+            ConstantsAccounting.invoice.getCash(), ConstantsAccounting.invoice.getIndebtedness(),
+            ConstantsAccounting.invoice.getRUtilities(), ConstantsAccounting.invoice.getUtilities());
             ConstantsSales.saleCustomer(ConstantsAccounting.invoice.getBank(), ConstantsAccounting.invoice.getCash(),
-                    ConstantsAccounting.invoice.getIndebtedness());
+            ConstantsAccounting.invoice.getIndebtedness());
 
             //Aqui se genera el sql que manda a guardar y actualizar todos los datos
             //--Falta codigo para salvar los datos--

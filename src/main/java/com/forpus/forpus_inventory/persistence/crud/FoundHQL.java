@@ -7,6 +7,7 @@ import com.forpus.forpus_inventory.persistence.Session.SessionDB;
 import com.forpus.forpus_inventory.persistence.entity.*;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.event.spi.SaveOrUpdateEvent;
 
 import java.util.Objects;
 
@@ -149,7 +150,8 @@ public class FoundHQL {
             }
             return true;
         }catch (Exception i){
-            //SessionDB.sessionClose();
+            System.out.println("workerFound");
+            System.out.println(Constant.entity);
             System.out.println(i);
             return false;
         }
@@ -253,7 +255,7 @@ public class FoundHQL {
             }
             return true;
         } catch (Exception i){
-            //SessionDB.sessionClose();
+            System.out.println("error en foundHQL.wareFound");
             System.out.println(i);
             return false;
         }

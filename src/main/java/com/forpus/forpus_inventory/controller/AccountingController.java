@@ -973,7 +973,7 @@ public class AccountingController {
             tableShow2.setC1(wiv.getProductName());
             tableShow2.setC2(String.valueOf(wiv.getAmount()));
             tableShow2.setC3(wiv.getPriceSale());
-            tableShow2.setC4(String.valueOf(wiv.getIdProductPrice()));
+            tableShow2.setC4(String.valueOf(wiv.getIndexWare()));
             tableShow2.setC5(String.valueOf(wiv.getIdInvoice()));
             Constant.listTableShow2.add(tableShow2);
         }

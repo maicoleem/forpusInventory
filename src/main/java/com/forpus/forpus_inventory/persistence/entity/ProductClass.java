@@ -40,11 +40,13 @@ public class ProductClass {
     @Basic
     @Column(name = "id_Service", nullable = true, length = 6)
     private String idService;
+    @Basic
+    @Column(name = "off_sale", nullable = true)
+    private Integer offSale;
     @OneToMany(mappedBy = "productByIdProduct")
     private Collection<ServiceProductClass> serviceProductsByIdProduct;
     @OneToMany(mappedBy = "productByIdProduct", cascade = CascadeType.PERSIST)
     private Collection<WareProductClass> wareProductsByIdProduct;
-
     public String getIdProduct() {
         return idProduct;
     }
@@ -133,12 +135,12 @@ public class ProductClass {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ProductClass that = (ProductClass) o;
-        return Objects.equals(idProduct, that.idProduct) && Objects.equals(name, that.name) && Objects.equals(purchasePrice, that.purchasePrice) && Objects.equals(amount, that.amount) && Objects.equals(salePrice, that.salePrice) && Objects.equals(profit, that.profit) && Objects.equals(idOne, that.idOne) && Objects.equals(idTwo, that.idTwo) && Objects.equals(idThree, that.idThree) && Objects.equals(idWage, that.idWage) && Objects.equals(idService, that.idService);
+        return Objects.equals(idProduct, that.idProduct) && Objects.equals(name, that.name) && Objects.equals(purchasePrice, that.purchasePrice) && Objects.equals(amount, that.amount) && Objects.equals(salePrice, that.salePrice) && Objects.equals(profit, that.profit) && Objects.equals(idOne, that.idOne) && Objects.equals(idTwo, that.idTwo) && Objects.equals(idThree, that.idThree) && Objects.equals(idWage, that.idWage) && Objects.equals(idService, that.idService) && Objects.equals(offSale, that.offSale);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idProduct, name, purchasePrice, amount, salePrice, profit, idOne, idTwo, idThree, idWage, idService);
+        return Objects.hash(idProduct, name, purchasePrice, amount, salePrice, profit, idOne, idTwo, idThree, idWage, idService, offSale);
     }
 
     public Collection<ServiceProductClass> getServiceProductsByIdProduct() {
@@ -155,5 +157,13 @@ public class ProductClass {
 
     public void setWareProductsByIdProduct(Collection<WareProductClass> wareProductsByIdProduct) {
         this.wareProductsByIdProduct = wareProductsByIdProduct;
+    }
+
+    public Integer getOffSale() {
+        return offSale;
+    }
+
+    public void setOffSale(Integer offSale) {
+        this.offSale = offSale;
     }
 }

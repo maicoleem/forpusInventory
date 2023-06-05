@@ -9,6 +9,7 @@ import com.forpus.forpus_inventory.persistence.Session.SessionDB;
 import com.forpus.forpus_inventory.persistence.entity.*;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.event.spi.SaveOrUpdateEvent;
 
 import java.security.Provider;
 import java.util.Objects;
@@ -29,31 +30,13 @@ public class SaveHQL {
         }
     }
 
-    public static boolean searchWorker(){
-        SessionDB.session();
-        Session session = SessionDB.session().getSession();
-        //set the search query by name and get the password
-        try{
-            String q = "from "+ Constant.entity +" C where C.id in(?1)";
-            Query query = session.createQuery(q);
-            System.out.println(query);
-            query.setParameter(1, Constant.tfCode);
-            CompanyClass company = (CompanyClass) query.uniqueResult();
-            if(company != null){
-                return true;
-            }
-
-        }catch (Exception e){
-            System.out.println(e);
-
-            return false;
-        }
-        return false;
-    }
-
     public static boolean insertWorker(String saveOrUpdate){
+
         try{
             //check hibernate connection and database
+            if(SessionDB.sessionHibernate.isOpen()){
+                SessionDB.sessionClose();
+            }
             SessionDB.session();
             Session session = SessionDB.session().getSession();
 
@@ -378,7 +361,6 @@ public class SaveHQL {
                 default:
                     break;
             }
-            SessionDB.sessionClose();
             System.out.println(SessionDB.sessionHibernate);
             return true;
         }catch (Exception i){
@@ -461,17 +443,20 @@ public class SaveHQL {
     /**here go to code for save the invoice
      * */
     public static boolean saveInvoice(){
-        //primero salva la invoice
         try{
+
             SessionDB.session();
             Session session = SessionDB.session().getSession();
             session.beginTransaction();
+            System.out.println("actualiza invoice");
+            //primero actualiza la invoice
             session.update(ConstantsAccounting.invoice);
             session.getTransaction().commit();
-            System.out.println("Invocie Update");
             //segundo salva los ware invoice
+
             session.beginTransaction();
             for(WareinvoiceClass wI: ConstantsPurchases.wareInvoiceList){
+                System.out.println("guardando porductos en WareInvoice");
                 session.save(wI);
             }
             session.getTransaction().commit();
@@ -497,6 +482,7 @@ public class SaveHQL {
                     break;
             }
             //Falta actualizar/salvar los productos y los servicios
+            System.out.println(ConstantsPurchases.entity);
             switch (ConstantsPurchases.entity){
                 case "Purchases":
                     //actualiza el inventario
@@ -562,6 +548,7 @@ public class SaveHQL {
                 default:
                     break;
             }
+
             return true;
         }catch (Exception i){
             i.printStackTrace();

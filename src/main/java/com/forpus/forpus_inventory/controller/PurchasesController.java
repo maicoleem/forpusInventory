@@ -971,8 +971,7 @@ public class PurchasesController {
                         wi.setPriceSale(p.getSalePrice());
                         wi.setPriceBuy(Integer.parseInt(p.getPurchasePrice()));
                         wi.setAmount(p.getAmount());
-                        //idProductPrice es inecesario
-                        wi.setIdProductPrice(6);
+                        wi.setIndexWare(ConstantsPurchases.productTableList.indexOf(p));
                         //agrega el wareproduct a la lista
                         ConstantsPurchases.wareInvoiceList.add(wi);
 
@@ -1011,8 +1010,7 @@ public class PurchasesController {
                         wiS.setPriceSale(s.getCost());
                         wiS.setPriceBuy(Integer.parseInt(s.getCost()));
                         wiS.setAmount(Integer.parseInt(s.getHour()));
-                        //idProductPrice es inecesario
-                        wiS.setIdProductPrice(6);
+                        wiS.setIndexWare(ConstantsPurchases.productTableList.indexOf(s));
                         //agrega el wareproduct a la lista
                         ConstantsPurchases.wareInvoiceList.add(wiS);
                     }

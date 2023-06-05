@@ -23,8 +23,11 @@ public class WareinvoiceClass {
     @Column(name = "priceSale", nullable = false, length = 20)
     private String priceSale;
     @Basic
-    @Column(name = "idProductPrice", nullable = false)
-    private int idProductPrice;
+    @Column(name = "off_sale", nullable = false, length = 10)
+    private int offSale;
+    @Basic
+    @Column(name = "indexWare", nullable = false, length = 6)
+    private int indexWare;
     @Basic
     @Column(name = "priceBuy", nullable = false)
     private int priceBuy;
@@ -75,12 +78,20 @@ public class WareinvoiceClass {
         this.priceSale = priceSale;
     }
 
-    public int getIdProductPrice() {
-        return idProductPrice;
+    public int getOffSale() {
+        return offSale;
     }
 
-    public void setIdProductPrice(int idProductPrice) {
-        this.idProductPrice = idProductPrice;
+    public void setOffSale(int offSale) {
+        this.offSale = offSale;
+    }
+
+    public int getIndexWare() {
+        return indexWare;
+    }
+
+    public void setIndexWare(int index) {
+        this.indexWare = indexWare;
     }
 
     public int getPriceBuy() {
@@ -111,12 +122,12 @@ public class WareinvoiceClass {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         WareinvoiceClass that = (WareinvoiceClass) o;
-        return idWareInvoice == that.idWareInvoice && idInvoice == that.idInvoice && idProductPrice == that.idProductPrice && priceBuy == that.priceBuy && amount == that.amount && Objects.equals(idProduct, that.idProduct) && Objects.equals(productName, that.productName) && Objects.equals(priceSale, that.priceSale);
+        return idWareInvoice == that.idWareInvoice && idInvoice == that.idInvoice && indexWare == that.indexWare && priceBuy == that.priceBuy && amount == that.amount && Objects.equals(idProduct, that.idProduct) && Objects.equals(productName, that.productName) && Objects.equals(priceSale, that.priceSale) && Objects.equals(offSale, that.offSale);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idWareInvoice, idInvoice, idProduct, productName, priceSale, idProductPrice, priceBuy, amount);
+        return Objects.hash(idWareInvoice, idInvoice, idProduct, productName, priceSale, offSale , indexWare, priceBuy, amount);
     }
 
     public InvoiceClass getInvoiceByIdInvoice() {

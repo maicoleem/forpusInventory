@@ -60,11 +60,11 @@ public class ConstantsSales {
             rBuy = "0";
             rUtilities = "0";
         }
-        System.out.println(totalSale + "sale-buy" + totalBuy + "-taxes" + taxes + "-debt" + debt + "-total" + total);
-        System.out.println(pay + "pagado");
-        System.out.println(utilities + "utilidades");
-        System.out.println(rBuy + "lo que falta para pagar la inversión");
-        System.out.println(rUtilities + "la que falta para completar las utilidades");
+        //System.out.println(totalSale + "sale-buy" + totalBuy + "-taxes" + taxes + "-debt" + debt + "-total" + total);
+        //System.out.println(pay + "pagado");
+        //System.out.println(utilities + "utilidades");
+        //System.out.println(rBuy + "lo que falta para pagar la inversión");
+        //System.out.println(rUtilities + "la que falta para completar las utilidades");
 
         return String.valueOf((sale - buy));
     }
