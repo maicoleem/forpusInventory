@@ -254,9 +254,14 @@
                 </Label>
             </children>
         </Pane>
-        <Pane id="panelCheckIn" fx:id="panelCheckIn" layoutX="764.0" layoutY="548.0" prefHeight="117.0" prefWidth="159.0">
+        <Pane id="panelCheckIn" fx:id="panelCheckIn" layoutX="709.0" layoutY="548.0" prefHeight="117.0" prefWidth="305.0">
             <children>
-                <Button id="buttonCheckIn" fx:id="buttonCheckIn" layoutX="9.0" layoutY="70.0" mnemonicParsing="false" onAction="#checkinInvoice" prefHeight="40.0" prefWidth="142.0" styleClass="buttonBlue" text="FACTURAR" />
+                <Button id="buttonCheckIn" fx:id="buttonCheckIn" layoutX="9.0" layoutY="70.0" mnemonicParsing="false" onAction="#checkinInvoice" prefHeight="40.0" prefWidth="142.0" styleClass="buttonBlue" text="REGISTRAR" />
+                <Button id="buttonFactura" fx:id="buttonFactura" layoutX="160.0" layoutY="68.0" mnemonicParsing="false" onAction="#facturar" prefHeight="40.0" prefWidth="142.0" styleClass="buttonBlue" text="FACTURA" />
+                <TextField id="tfFactura" fx:id="tfFactura" alignment="CENTER" layoutX="183.0" layoutY="19.0" prefHeight="40.0" prefWidth="98.0" text="1">
+               <font>
+                  <Font name="Calibri Bold" size="18.0" />
+               </font></TextField>
                 <Button id="buttonQuote" fx:id="buttonQuote" layoutX="9.0" layoutY="9.0" mnemonicParsing="false" onAction="#quote" prefHeight="40.0" prefWidth="142.0" styleClass="buttonBlue" text="COTIZACIÒN" />
             </children>
         </Pane>

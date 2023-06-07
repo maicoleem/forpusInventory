@@ -1,6 +1,7 @@
 package com.forpus.forpus_inventory.controller;
 
 import com.forpus.forpus_inventory.HelloApplication;
+import com.forpus.forpus_inventory.domain.repository.ReportGenerator;
 import com.forpus.forpus_inventory.domain.services.*;
 import com.forpus.forpus_inventory.persistence.crud.FoundHQL;
 import com.forpus.forpus_inventory.persistence.crud.SaveHQL;
@@ -123,6 +124,8 @@ public class SalesController {
     public Button buttonSuppress;
     public ComboBox<String> comboBoxAmount;
     public Label labelUtilities;
+    public Button buttonFactura;
+    public TextField tfFactura;
 
     public void initialize() {
 
@@ -1037,5 +1040,16 @@ public class SalesController {
         int sobreCosto = Integer.parseInt(tfTaxes.getText());
         int total = subtotal +sobreCosto;
         labelTotal2.setText(String.valueOf(total));
+    }
+
+    public void facturar(ActionEvent event) {
+        String entity = Constant.entity;
+
+        Constant.entity = "InvoiceClass";
+        Constant.tfCode = tfFactura.getText();
+        FoundHQL.workerFound();
+        ReportGenerator.generateReport();
+        Constant.entity = entity;
+
     }
 }

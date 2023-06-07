@@ -15,16 +15,22 @@ module com.forpus.forpus_inventory {
     requires java.desktop;
     requires org.apache.poi.poi;
     requires org.apache.poi.ooxml;
+    requires jasperreports;
     //requires eu.hansolo.tilesfx;
 
     opens com.forpus.forpus_inventory to javafx.fxml;
     opens com.forpus.forpus_inventory.controller to javafx.fxml;
     opens com.forpus.styles to javafx.fxml;
+    opens com.forpus.jasper_report to javafx.fxml;
     opens com.forpus.forpus_inventory.persistence.entity;
     opens com.forpus.forpus_inventory.domain.services;
-    exports com.forpus.forpus_inventory.controller;
+
     exports com.forpus.forpus_inventory;
+    exports com.forpus.forpus_inventory.controller;
     exports com.forpus.forpus_inventory.persistence.entity;
+    exports com.forpus.forpus_inventory.domain.repository;
+
+
 
 
 }

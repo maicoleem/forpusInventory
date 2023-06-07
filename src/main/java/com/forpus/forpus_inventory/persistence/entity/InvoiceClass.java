@@ -56,6 +56,9 @@ public class InvoiceClass {
     @Basic
     @Column(name = "rUtilities", nullable = true, length = 20)
     private String rUtilities;
+    @Basic
+    @Column(name = "observations", nullable = true, length = 100)
+    private String observations;
     @ManyToOne
     @JoinColumn(name = "idCompany", referencedColumnName = "idCompanyNIT", nullable = true, insertable = false, updatable = false)
     private CompanyClass companyByIdCompany;
@@ -210,12 +213,12 @@ public class InvoiceClass {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         InvoiceClass that = (InvoiceClass) o;
-        return idInvoice == that.idInvoice && idBill == that.idBill && Objects.equals(idCustomer, that.idCustomer) && Objects.equals(idCompany, that.idCompany) && Objects.equals(idPartners, that.idPartners) && Objects.equals(idProviders, that.idProviders) && Objects.equals(idWorkers, that.idWorkers) && Objects.equals(bank, that.bank) && Objects.equals(cash, that.cash) && Objects.equals(taxes, that.taxes) && Objects.equals(indebtedness, that.indebtedness) && Objects.equals(total, that.total) && Objects.equals(date, that.date) && Objects.equals(totalBuy, that.totalBuy) && Objects.equals(utilities, that.utilities) && Objects.equals(rUtilities, that.rUtilities);
+        return idInvoice == that.idInvoice && idBill == that.idBill && Objects.equals(idCustomer, that.idCustomer) && Objects.equals(idCompany, that.idCompany) && Objects.equals(idPartners, that.idPartners) && Objects.equals(idProviders, that.idProviders) && Objects.equals(idWorkers, that.idWorkers) && Objects.equals(bank, that.bank) && Objects.equals(cash, that.cash) && Objects.equals(taxes, that.taxes) && Objects.equals(indebtedness, that.indebtedness) && Objects.equals(total, that.total) && Objects.equals(date, that.date) && Objects.equals(totalBuy, that.totalBuy) && Objects.equals(utilities, that.utilities) && Objects.equals(rUtilities, that.rUtilities) && Objects.equals(observations, that.observations);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idInvoice, idBill, idCustomer, idCompany, idPartners, idProviders, idWorkers, bank, cash, taxes, indebtedness, total, date, totalBuy, utilities, rUtilities);
+        return Objects.hash(idInvoice, idBill, idCustomer, idCompany, idPartners, idProviders, idWorkers, bank, cash, taxes, indebtedness, total, date, totalBuy, utilities, rUtilities, observations);
     }
 
     public CompanyClass getCompanyByIdCompany() {
@@ -267,5 +270,13 @@ public class InvoiceClass {
 
     public void setMoveinvoicesByIdInvoice(Collection<MoveinvoiceClass> moveinvoicesByIdInvoice) {
         this.moveinvoicesByIdInvoice = moveinvoicesByIdInvoice;
+    }
+
+    public String getObservations() {
+        return observations;
+    }
+
+    public void setObservations(String observations) {
+        this.observations = observations;
     }
 }

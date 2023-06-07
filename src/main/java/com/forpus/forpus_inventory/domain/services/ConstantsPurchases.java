@@ -23,6 +23,7 @@ public class ConstantsPurchases {
     public static Boolean checkin = true;
     public static ArrayList<ServiceClass> serviceTableList = new ArrayList<>();
     public static ArrayList<ProductpriceClass> pPriceUpdateList = new ArrayList<>();
+    public static ArrayList<WareProductClass> wareProductList = new ArrayList<>();
     public static ArrayList<ProductClass> productNewList = new ArrayList<>();
     public static ArrayList<WareinvoiceClass> wareInvoiceList = new ArrayList<>();
     public static ArrayList<InvoiceClass> invoiceList = new ArrayList<>();

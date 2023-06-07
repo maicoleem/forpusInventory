@@ -1,4 +1,8 @@
 package com.forpus.forpus_inventory.persistence.crud;
+import com.forpus.forpus_inventory.controller.WareController;
+import com.forpus.forpus_inventory.domain.services.Constant;
+import com.forpus.forpus_inventory.domain.services.ConstantsPurchases;
+import com.forpus.forpus_inventory.domain.services.ConstantsWare;
 import com.forpus.forpus_inventory.persistence.Session.SessionDB;
 import com.forpus.forpus_inventory.persistence.entity.*;
 import org.apache.poi.ss.usermodel.*;
@@ -13,10 +17,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
-import java.util.List;
-import java.util.Objects;
-import java.util.Properties;
-import java.util.Set;
+import java.util.*;
 
 
 public class DataBase {
@@ -149,6 +150,36 @@ public class DataBase {
         return true;
     }
     public static void importTable(String path, String entity) {
+
+        //borra los datos de la tabla a la que se le van a importar los datos
+        deleteAllData(entity);
+
+        Class<?> entityClass;
+        switch (entity) {
+            case "CustomerClass":
+                entityClass = CustomerClass.class;
+                break;
+            case "WorkersClass":
+                entityClass = WorkersClass.class;
+                break;
+            case "ProvidersClass":
+                entityClass = ProvidersClass.class;
+                break;
+            case "ProductClass":
+                entityClass = ProductClass.class;
+                break;
+            case "ServiceClass":
+                entityClass = ServiceClass.class;
+                break;
+            default:
+                entityClass = PartnersClass.class;
+                break;
+        }
+
+        //check hibernate connection and database
+        if(SessionDB.sessionHibernate.isOpen()){
+            SessionDB.sessionClose();
+        }
         SessionDB.session();
         Metamodel metamodel = SessionDB.metamodel();
         Session session = SessionDB.sessionHibernate;
@@ -169,28 +200,6 @@ public class DataBase {
             for (int i = 0; i < columnCount; i++) {
                 Cell cell = headerRow.getCell(i);
                 columnNames[i] = cell.getStringCellValue();
-            }
-
-            Class<?> entityClass;
-            switch (entity) {
-                case "CustomerClass":
-                    entityClass = CustomerClass.class;
-                    break;
-                case "WorkersClass":
-                    entityClass = WorkersClass.class;
-                    break;
-                case "ProvidersClass":
-                    entityClass = ProvidersClass.class;
-                    break;
-                case "ProductClass":
-                    entityClass = ProductClass.class;
-                    break;
-                case "ServiceClass":
-                    entityClass = ServiceClass.class;
-                    break;
-                default:
-                    entityClass = PartnersClass.class;
-                    break;
             }
 
             for (int i = 1; i < sheet.getLastRowNum(); i++) {
@@ -224,25 +233,25 @@ public class DataBase {
                 switch (entity) {
                     case "CustomerClass":
                         // Obtener el valor del identificador en la fila 1, columna 3
-                        idCell = sheet.getRow(i).getCell(4);
+                        idCell = sheet.getRow(i).getCell(0);
                         idValue = idCell.getStringCellValue();
                         idField = entityClass.getDeclaredField("idCustomer");
                         break;
                     case "WorkersClass":
                         // Obtener el valor del identificador en la fila 1, columna 3
-                        idCell = sheet.getRow(i).getCell(8);
+                        idCell = sheet.getRow(i).getCell(0);
                         idValue = idCell.getStringCellValue();
                         idField = entityClass.getDeclaredField("identificationCard");
                         break;
                     case "ProvidersClass":
                         // Obtener el valor del identificador en la fila 1, columna 3
-                        idCell = sheet.getRow(i).getCell(2);
+                        idCell = sheet.getRow(i).getCell(0);
                         idValue = idCell.getStringCellValue();
                         idField = entityClass.getDeclaredField("nit");
                         break;
                     case "ProductClass":
                         // Obtener el valor del identificador en la fila 1, columna 3
-                        idCell = sheet.getRow(i).getCell(1);
+                        idCell = sheet.getRow(i).getCell(0);
                         idValue = idCell.getStringCellValue();
                         idField = entityClass.getDeclaredField("idProduct");
                         break;
@@ -254,26 +263,113 @@ public class DataBase {
                         break;
                     default:
                         // Obtener el valor del identificador en la fila 1, columna 3
-                        idCell = sheet.getRow(i).getCell(5);
+                        idCell = sheet.getRow(i).getCell(0);
                         idValue = idCell.getStringCellValue();
                         idField = entityClass.getDeclaredField("identificationCard");
                         break;
                 }
                 // Asignar el valor del identificador al objeto entityObject
-                System.out.println(idValue);
                 idField.setAccessible(true);
                 idField.set(entityObject, idValue);
 
                 entityObject = session.merge(entityObject);
 
+                if(entity.equals("ProductClass")){
+                    warePrice();
+                }
             }
 
             session.getTransaction().commit();
-            System.out.println("274");
             workbook.close();
         } catch (IOException | IllegalAccessException | InstantiationException | NoSuchFieldException e) {
             e.printStackTrace();
         }
     }
+    private static void warePrice(){
+        try {
+            //check hibernate connection and database
+            if (SessionDB.sessionHibernate.isOpen()) {
+                SessionDB.sessionClose();
+            }
+            SessionDB.session();
+            Session session = SessionDB.session().getSession();
+
+            Constant.entity = "ProductClass";
+            SearchHQL.searchHQL();
+
+            int i = 1;
+
+            ConstantsPurchases.wareProductList.clear();
+            ConstantsPurchases.pPriceUpdateList.clear();
+
+            session.beginTransaction();
+
+            for(ProductClass p:  ConstantsWare.productList ){
+                //Crea la ware product
+                WareProductClass wp = new WareProductClass();
+                wp.setIdWare("BD01");
+                wp.setIdProduct(p.getIdProduct());
+                wp.setIdWareProduct(i);
+                session.save(wp);
+
+                //Crea el product price
+                ProductpriceClass price = new ProductpriceClass();
+                price.setPrice(Integer.parseInt(p.getPurchasePrice()));
+                price.setIdPrice(i);
+                price.setAmount(p.getAmount());
+                price.setIdProductWare(i);
+                session.save(price);
+            }
+            session.getTransaction().commit();
+        }catch (Exception i){
+            WareController.alertSend("Error en creación de bodegas y precios de productos");
+            i.printStackTrace();
+        }
+
+    }
+
+    private static void deleteAllData(String entity) {
+        try {
+            // Obtén una instancia de sesión de Hibernate
+            Session session = SessionDB.session().getSession();
+
+            // Inicia una transacción
+            session.beginTransaction();
+
+            // Crea y ejecuta las consultas de eliminación para cada tabla
+            switch (entity) {
+                case "CustomerClass":
+                    session.createQuery("DELETE FROM CustomerClass").executeUpdate();
+                    break;
+                case "WorkersClass":
+                    session.createQuery("DELETE FROM WorkersClass").executeUpdate();
+                    break;
+                case "ProvidersClass":
+                    session.createQuery("DELETE FROM ProvidersClass").executeUpdate();
+                    break;
+                case "ProductClass":
+                    session.createQuery("DELETE FROM ProductClass").executeUpdate();
+                    session.createQuery("DELETE FROM WareProductClass").executeUpdate();
+                    session.createQuery("DELETE FROM ProductpriceClass").executeUpdate();
+                    break;
+                case "ServiceClass":
+                    session.createQuery("DELETE FROM ServiceClass").executeUpdate();
+                    break;
+                case "PartnersClass":
+                    session.createQuery("DELETE FROM PartnersClass").executeUpdate();
+                    break;
+                default:
+                    break;
+            }
+            // Confirma la transacción
+            session.getTransaction().commit();
+
+            // Cierra la sesión
+            SessionDB.sessionClose();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
