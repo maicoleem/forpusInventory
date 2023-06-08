@@ -213,6 +213,7 @@ public class SalesController {
         buttonProduct.setVisible(a);
         buttonRegister.setVisible(a);
         buttonSuppress.setVisible(a);
+        buttonFactura.setVisible(a);
 
         search.setVisible(a);
         save.setVisible(a);
@@ -250,14 +251,24 @@ public class SalesController {
         labelPay.setText("0");
         labelDebt.setText("0");
 
-        ConstantsPurchases.productTableList.clear();
-        ConstantsPurchases.serviceTableList.clear();
-        ConstantsPurchases.wareInvoiceList.clear();
-        ConstantsPurchases.invoiceList.clear();
-
-        tableService.getItems().clear();
-        tableMain.getItems().clear();
-
+        if(!ConstantsPurchases.productTableList.isEmpty()){
+            ConstantsPurchases.productTableList.clear();
+        }
+        if(!ConstantsPurchases.serviceTableList.isEmpty()){
+            ConstantsPurchases.serviceTableList.clear();
+        }
+        if(!ConstantsPurchases.wareInvoiceList.isEmpty()){
+            ConstantsPurchases.wareInvoiceList.clear();
+        }
+        if(!ConstantsPurchases.invoiceList.isEmpty()){
+            ConstantsPurchases.invoiceList.clear();
+        }
+        if(!tableService.getItems().isEmpty()){
+            tableService.getItems().clear();
+        }
+        if(!tableMain.getItems().isEmpty()){
+            tableMain.getItems().clear();
+        }
     }
     @FXML
     protected void buttonSlide(ActionEvent event) throws IOException {
@@ -302,6 +313,7 @@ public class SalesController {
         Button button = (Button) event.getSource();
         clean();
         final boolean a = true;
+        System.out.println(button.getId());
         switch (button.getId()){
             case "buttonProduct0":
                 ConstantsSales.salesOption = "Product";
@@ -343,6 +355,8 @@ public class SalesController {
                 cancel.setVisible(a);
                 remove.setVisible(a);
                 buttonSuppress.setVisible(a);
+                buttonFactura.setVisible(a);
+                buttonQuote.setText("COTIZACIÓN");
 
                 taxesIVABOLD();
 
@@ -384,7 +398,8 @@ public class SalesController {
                 cancel.setVisible(a);
                 remove.setVisible(a);
                 buttonSuppress.setVisible(a);
-
+                buttonFactura.setVisible(a);
+                buttonQuote.setText("COTIZACIÓN");
                 taxesIVABOLD();
 
                 break;
@@ -415,7 +430,8 @@ public class SalesController {
                 panelTotal.setVisible(a);
                 panelCheckIn.setVisible(a);
                 buttonCheckIn.setVisible(!a);
-
+                buttonFactura.setVisible(a);
+                buttonQuote.setText("REGISTRAR PAGO");
                 tableLoad();
 
                 break;
@@ -853,24 +869,28 @@ public class SalesController {
     }
     public void quote(ActionEvent event) {
 
-        MoveinvoiceClass mi = new MoveinvoiceClass();
+        Button button = (Button) event.getSource();
+        if(button.getText().equals("REGISTRAR PAGO")) {
 
-        mi.setDate(ConstantsPurchases.dateActually());
-        mi.setDebt(Integer.parseInt(labelTotal2.getText()));
-        mi.setPayCash(Integer.parseInt(tfCash.getText()));
-        mi.setPayBank(Integer.parseInt(tfBank.getText()));
-        mi.setSubtotal(Integer.parseInt(labelDebt.getText()));
-        mi.setInvoiceByIdInvoice(ConstantsAccounting.invoice);
-        mi.setIdInvoice(ConstantsAccounting.invoice.getIdInvoice());
+            MoveinvoiceClass mi = new MoveinvoiceClass();
 
-        ConstantsPurchases.moveInv = mi;
+            mi.setDate(ConstantsPurchases.dateActually());
+            mi.setDebt(Integer.parseInt(labelTotal2.getText()));
+            mi.setPayCash(Integer.parseInt(tfCash.getText()));
+            mi.setPayBank(Integer.parseInt(tfBank.getText()));
+            mi.setSubtotal(Integer.parseInt(labelDebt.getText()));
+            mi.setInvoiceByIdInvoice(ConstantsAccounting.invoice);
+            mi.setIdInvoice(ConstantsAccounting.invoice.getIdInvoice());
 
-        Constant.entity = "MoveinvoiceClass";
-        SaveHQL.insertWorker("save");
+            ConstantsPurchases.moveInv = mi;
 
-        tableLoad();
+            Constant.entity = "MoveinvoiceClass";
+            SaveHQL.insertWorker("save");
 
-
+            tableLoad();
+        }else {
+            cotizar(button.getText());
+        }
     }
     public void checkinInvoice(ActionEvent event) {
         /*Crea un invoice solo con los datos necesarios para
@@ -878,6 +898,8 @@ public class SalesController {
          *bak, cash, date y total
          * con el idBill se encuentra la factura
          * */
+        Button button = (Button) event.getSource();
+
         InvoiceClass invoice = new InvoiceClass();
         invoice.setBank(tfBank.getText());
         invoice.setCash(tfCash.getText());
@@ -896,67 +918,8 @@ public class SalesController {
             Constant.tfCode = "666";
             FoundHQL.wareFound();
 
-            switch (ConstantsSales.salesOption){
-                case "Product":
-                    //cada producto debe de crear un wareinvoice
-                    for(ProductClass p: ConstantsPurchases.productTableList){
-                        WareinvoiceClass wi = new WareinvoiceClass();
-                        wi.setIdInvoice(ConstantsAccounting.invoice.getIdInvoice());
-                        wi.setIdProduct(p.getIdProduct());
-                        wi.setProductName(p.getName());
-                        wi.setPriceSale(p.getSalePrice());
-                        wi.setPriceBuy(Integer.parseInt(p.getPurchasePrice()));
-                        wi.setAmount(p.getAmount());
-                        wi.setOffSale(p.getOffSale());
-                        wi.setIndexWare(ConstantsPurchases.productTableList.indexOf(p));
-                        //agrega el wareproduct a la lista
-                        ConstantsPurchases.wareInvoiceList.add(wi);
+            generadorWareAndPrice(button.getId());
 
-                        //actualiza los productos en product price
-                        try{
-                            for(WareProductClass wp: p.getWareProductsByIdProduct()){
-                                //Si la bodega corresponde a una registrada
-                                if(Objects.equals(wp.getIdWare(), p.getIdWage())){
-                                    for(ProductpriceClass pp: wp.getProductpricesByIdWareProduct()){
-                                        //si el precio es el registrado
-                                        if(pp.getPrice() == Integer.parseInt(p.getPurchasePrice())){
-                                            //agrega el objeto productprice a la lista para actualizar
-                                            //actualiza la cantidad en inventario
-                                            pp.setAmount( - p.getAmount() + pp.getAmount());
-                                            //guarda la cantidad actualizada
-                                            ConstantsPurchases.pPriceUpdateList.add(pp);
-                                        }
-                                    }
-                                }
-                            }
-                        }catch (Exception i){
-                            //en caso de error es porque el producto es nuevo o tiene nuevo precio
-                            System.out.println("Error en la lista de venta");
-                            ConstantsPurchases.productNewList.add(p);
-                        }
-
-                    }
-                    break;
-                case "Service":
-                    //cada servicio debe de crear un wareinvoice
-                    for(ServiceClass s: ConstantsPurchases.serviceTableList){
-                        WareinvoiceClass wiS = new WareinvoiceClass();
-                        wiS.setIdInvoice(ConstantsAccounting.invoice.getIdInvoice());
-                        wiS.setIdProduct(s.getIdService());
-                        wiS.setProductName(s.getName());
-                        wiS.setPriceSale(s.getProfit());
-                        wiS.setPriceBuy(Integer.parseInt(s.getCost()));
-                        wiS.setAmount(Integer.parseInt(s.getHour()));
-                        //idProductPrice es inecesario
-                        wiS.setIndexWare(ConstantsPurchases.serviceTableList.indexOf(s));
-                        //agrega el wareproduct a la lista
-                        ConstantsPurchases.wareInvoiceList.add(wiS);
-                    }
-                    break;
-                default:
-                    System.out.println("Error en  ConstantsPurchases.entity");
-                    break;
-            }
             //Busca la compañia
             ConstantsPurchases.invoiceType = "purchaseFromSupplier";
             ConstantsPurchases.entityForInvoice = "CustomerClass";
@@ -1050,6 +1013,100 @@ public class SalesController {
         FoundHQL.workerFound();
         ReportGenerator.generateReport();
         Constant.entity = entity;
+
+    }
+    public void cotizar(String button){
+        //buscar y guardar la compañia
+        CompanyClass company = ReportGenerator.companyFound();
+        //guardar el cliente
+        CustomerClass customer = ReportGenerator.customerInvoice(tfCliente.getText());
+        //Guardar los wareInvoice
+        generadorWareAndPrice(button);
+        //guardar el total (iva)
+        int iva = Integer.parseInt(labelIVA2.getText());
+        int subtotal = Integer.parseInt(labelSubTota2.getText());
+        //generar la cotización con jasper Report
+        ReportGenerator.generadorCotizar(company,customer,ConstantsPurchases.wareInvoiceList,subtotal, iva);
+    }
+
+    public static void generadorWareAndPrice(String button){
+        switch (ConstantsSales.salesOption){
+            case "Product":
+                //cada producto debe de crear un wareinvoice
+                if(!ConstantsPurchases.wareInvoiceList.isEmpty()){
+                    ConstantsPurchases.wareInvoiceList.clear();
+                }
+                for(ProductClass p: ConstantsPurchases.productTableList){
+                    WareinvoiceClass wi = new WareinvoiceClass();
+                    if(button.equals("buttonCheckIn")){
+                        wi.setIdInvoice(ConstantsAccounting.invoice.getIdInvoice());
+                    }
+                    wi.setIdProduct(p.getIdProduct());
+                    wi.setProductName(p.getName());
+                    wi.setPriceSale(p.getSalePrice());
+                    wi.setPriceBuy(Integer.parseInt(p.getPurchasePrice()));
+                    wi.setAmount(p.getAmount());
+                    wi.setOffSale(p.getOffSale());
+                    wi.setIndexWare(ConstantsPurchases.productTableList.indexOf(p) + 1);
+                    //agrega el wareproduct a la lista
+                    ConstantsPurchases.wareInvoiceList.add(wi);
+
+                    //actualiza los productos en product price
+                    try{
+                        if(!ConstantsPurchases.pPriceUpdateList.isEmpty()){
+                            ConstantsPurchases.pPriceUpdateList.clear();
+                        }
+                        for(WareProductClass wp: p.getWareProductsByIdProduct()){
+                            //Si la bodega corresponde a una registrada
+                            if(Objects.equals(wp.getIdWare(), p.getIdWage())){
+                                for(ProductpriceClass pp: wp.getProductpricesByIdWareProduct()){
+                                    //si el precio es el registrado
+                                    if(pp.getPrice() == Integer.parseInt(p.getPurchasePrice())){
+                                        //agrega el objeto productprice a la lista para actualizar
+                                        //actualiza la cantidad en inventario
+                                        pp.setAmount( - p.getAmount() + pp.getAmount());
+                                        //guarda la cantidad actualizada
+                                        ConstantsPurchases.pPriceUpdateList.add(pp);
+                                    }
+                                }
+                            }
+                        }
+                    }catch (Exception i){
+                        //en caso de error es porque el producto es nuevo o tiene nuevo precio
+                        WareController.alertSend("Error en la lista de venta");
+                        ConstantsPurchases.productNewList.add(p);
+                    }
+
+                }
+                break;
+            case "Service":
+                //cada servicio debe de crear un wareinvoice
+                if(!ConstantsPurchases.wareInvoiceList.isEmpty()){
+                    ConstantsPurchases.wareInvoiceList.clear();
+                }
+                for(ServiceClass s: ConstantsPurchases.serviceTableList){
+                    WareinvoiceClass wiS = new WareinvoiceClass();
+
+                    if(button.equals("buttonCheckIn")){
+                        wiS.setIdInvoice(ConstantsAccounting.invoice.getIdInvoice());
+                    }
+
+                    wiS.setIdProduct(s.getIdService());
+                    wiS.setProductName(s.getName());
+                    wiS.setPriceSale(s.getProfit());
+                    wiS.setPriceBuy(Integer.parseInt(s.getCost()));
+                    wiS.setAmount(Integer.parseInt(s.getHour()));
+                    wiS.setAmount(Integer.parseInt(s.getHour()));
+                    //idProductPrice es inecesario
+                    wiS.setIndexWare(ConstantsPurchases.serviceTableList.indexOf(s) + 1);
+                    //agrega el wareproduct a la lista
+                    ConstantsPurchases.wareInvoiceList.add(wiS);
+                }
+                break;
+            default:
+                System.out.println("Error en  SalesController.entity");
+                break;
+        }
 
     }
 }

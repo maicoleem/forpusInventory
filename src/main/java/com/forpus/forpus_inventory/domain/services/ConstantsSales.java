@@ -1,10 +1,5 @@
 package com.forpus.forpus_inventory.domain.services;
-
-import com.forpus.forpus_inventory.persistence.entity.ProductClass;
 import com.forpus.forpus_inventory.persistence.entity.WareProductClass;
-
-import java.util.ArrayList;
-
 public class ConstantsSales {
 
     public static String salesOption = null;

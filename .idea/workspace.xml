@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Se modifico las entidades de WareinvoiceClass y ProductClass, para acoplarlas a el jasper Report, que esta en elaboración. Para evitar modificaciones en la DB es mejor cerrar sesion antes de guardar algun cambio">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/repository/ReportGenerator.java" afterDir="false" />
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Quedan el reporte de la factura listo.&#10;&#10;Las importaciones de datos borran las tablas cuidado** &#10;&#10;La importación de productos crea las bodegas y los precios de compra&#10;&#10;queda pendiente arreglar los formatos de excel para la importación de datos y las pruebas&#10;&#10;--queda pendiente la modificación de los botones de registrar, cotizar y facturar en ventas y compras">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SalesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SalesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsPurchases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsPurchases.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/DataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/InvoiceClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/InvoiceClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/repository/ReportGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/repository/ReportGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsSales.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsSales.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/sales-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/sales-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -216,14 +212,8 @@
       <workItem from="1685920678882" duration="8797000" />
       <workItem from="1685929505631" duration="2815000" />
       <workItem from="1686013345876" duration="13780000" />
-      <workItem from="1686096672256" duration="5233000" />
-    </task>
-    <task id="LOCAL-00013" summary="Ahora se puden guardar productos, se modifico la vista de la tabla y de los combobox de la pestaña productos, falta poder eliminar productos y la parte de cantidad toca pensar si se deja o si se elimna">
-      <created>1674778017445</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1674778017445</updated>
+      <workItem from="1686096672256" duration="5740000" />
+      <workItem from="1686178224914" duration="8864000" />
     </task>
     <task id="LOCAL-00014" summary="*La cantida en productos se desactivo cuando el produto ya existe, es decir, solo espara para ingresar cantidades con productos sin registros&#10;*Se termino el diseño de carga de productos en la tabla&#10;+Se modifico el diseño de los servicios, ahora los servicios se pueden crear y salvar.&#10;/////////////////////&#10;--Falta poder buscar un servicio y que retorne los productos usados&#10;--Falta poder eliminar servicios&#10;--Falta completar la trnasmutación">
       <created>1674866970903</created>
@@ -561,14 +551,20 @@
       <option name="project" value="LOCAL" />
       <updated>1685932296987</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Quedan el reporte de la factura listo.&#10;&#10;Las importaciones de datos borran las tablas cuidado** &#10;&#10;La importación de productos crea las bodegas y los precios de compra&#10;&#10;queda pendiente arreglar los formatos de excel para la importación de datos y las pruebas&#10;&#10;--queda pendiente la modificación de los botones de registrar, cotizar y facturar en ventas y compras">
+      <created>1686105329990</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1686105329990</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;&#10;-Falta poder generar una cotización y la factura&#10;-Falta codigo para que SaveHQL guarde los datos de la compra &#10;**++**Se crearon los metodos y constantes que permiten guardar los datos de la generación de la factura" />
     <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;&#10;**Se guardaron los datos exitosamente para la factura de compra" />
     <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;&#10;**Se realizo el backend de servicios." />
     <MESSAGE value="**Se esta editando la view para pagar los creditos&#10;&#10;--falta funcionalidad" />
@@ -593,7 +589,8 @@
     <MESSAGE value="Esta en proceso la importación de datos a las tablas" />
     <MESSAGE value="Se modifico las entidades de WareinvoiceClass y ProductClass, para acoplarlas a el jasper Report, que esta en elaboración" />
     <MESSAGE value="Se modifico las entidades de WareinvoiceClass y ProductClass, para acoplarlas a el jasper Report, que esta en elaboración. Para evitar modificaciones en la DB es mejor cerrar sesion antes de guardar algun cambio" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se modifico las entidades de WareinvoiceClass y ProductClass, para acoplarlas a el jasper Report, que esta en elaboración. Para evitar modificaciones en la DB es mejor cerrar sesion antes de guardar algun cambio" />
+    <MESSAGE value="Quedan el reporte de la factura listo.&#10;&#10;Las importaciones de datos borran las tablas cuidado** &#10;&#10;La importación de productos crea las bodegas y los precios de compra&#10;&#10;queda pendiente arreglar los formatos de excel para la importación de datos y las pruebas&#10;&#10;--queda pendiente la modificación de los botones de registrar, cotizar y facturar en ventas y compras" />
+    <option name="LAST_COMMIT_MESSAGE" value="Quedan el reporte de la factura listo.&#10;&#10;Las importaciones de datos borran las tablas cuidado** &#10;&#10;La importación de productos crea las bodegas y los precios de compra&#10;&#10;queda pendiente arreglar los formatos de excel para la importación de datos y las pruebas&#10;&#10;--queda pendiente la modificación de los botones de registrar, cotizar y facturar en ventas y compras" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

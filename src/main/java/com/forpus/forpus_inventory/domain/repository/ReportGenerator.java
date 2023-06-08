@@ -1,6 +1,7 @@
 package com.forpus.forpus_inventory.domain.repository;
 import com.forpus.forpus_inventory.domain.services.Constant;
 import com.forpus.forpus_inventory.domain.services.ConstantsAccounting;
+import com.forpus.forpus_inventory.domain.services.ConstantsPurchases;
 import com.forpus.forpus_inventory.persistence.crud.FoundHQL;
 import com.forpus.forpus_inventory.persistence.entity.CompanyClass;
 import com.forpus.forpus_inventory.persistence.entity.CustomerClass;
@@ -12,6 +13,7 @@ import net.sf.jasperreports.swing.JRViewer;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,9 +31,8 @@ public class ReportGenerator {
             // Obtener los datos para la tabla (en este caso, una lista de objetos WareInvoice)
             List<WareinvoiceClass> invoiceData = obtenerDatosDeFactura();
 
-            for(WareinvoiceClass w: invoiceData){
-                System.out.println(w);
-            }
+            WareinvoiceClass wi = invoiceData.get(0);
+            invoiceData.add(0, wi);
 
             // Convertir la lista de datos en un origen de datos JRBeanCollectionDataSource
             JRBeanArrayDataSource sourceData = new JRBeanArrayDataSource(invoiceData.toArray());
@@ -94,7 +95,7 @@ public class ReportGenerator {
         return Constant.company;
     }
 
-    private static CustomerClass customerInvoice(String idCustomer){
+    public static CustomerClass customerInvoice(String idCustomer){
         String entity = Constant.entity;
         String code = Constant.tfCode;
         Constant.entity = "CustomerClass";
@@ -111,5 +112,58 @@ public class ReportGenerator {
         Constant.tfCode = code;
         Constant.entity = entity;
         return Constant.customer;
+    }
+
+    public static void generadorCotizar(CompanyClass company, CustomerClass customer, ArrayList<WareinvoiceClass> wareInvoice, int subtotal, int iva){
+        // Ruta al archivo del informe de JasperReports (.jASPERT)
+        String reportPath = "C:\\Users\\Teemo\\OneDrive\\java\\proyecto1\\forpus_inventory\\src\\main\\resources\\com\\forpus\\jasper_report\\Cotizar.jrxml";
+
+        try {
+            WareinvoiceClass wI = wareInvoice.get(0);
+            wareInvoice.add(0, wI);
+            // Convertir la lista de datos en un origen de datos JRBeanCollectionDataSource
+            JRBeanArrayDataSource sourceData = new JRBeanArrayDataSource(wareInvoice.toArray());
+
+            // Parámetros del informe
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("LOGO", "ruta/al/logo.png");
+            parameters.put("wareInvoice", sourceData);
+            parameters.put("DATE", ConstantsPurchases.dateActually());
+            parameters.put("NAME_COMPANY", company.getName());
+            parameters.put("NIT_EMPRESA", company.getIdCompanyNIT());
+            parameters.put("PHONE_COMPANY", company.getPhoneNumber());
+            parameters.put("CUSTOMER", customer.getName());
+            parameters.put("NIT_CUSTOMER", customer.getIdCustomer());
+            parameters.put("PHONE_CUSTOMER", customer.getPhoneNumber());
+            parameters.put("OBSERVATIONS", "COTIZACIÓN VALIDA POR 1 MES");
+            parameters.put("SUBTOTAL", String.valueOf(subtotal));
+            parameters.put("TOTAL", String.valueOf(iva + subtotal));
+            parameters.put("IVA", String.valueOf(iva));
+
+            // Compilar el informe
+            JasperReport jasperReport = JasperCompileManager.compileReport(reportPath);
+
+            // Llenar el informe con datos y parámetros
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, sourceData);
+
+            // Crear la vista previa del informe
+            JRViewer viewer = new JRViewer(jasperPrint);
+
+            // Establecer las dimensiones deseadas
+            viewer.setPreferredSize(new Dimension(1000, 800));
+
+            // Crear un diálogo para mostrar la vista previa
+            JDialog dialog = new JDialog();
+            dialog.getContentPane().add(viewer);
+            dialog.setTitle("Vista previa del informe");
+            dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+            dialog.pack();
+            dialog.setLocationRelativeTo(null);
+            dialog.setVisible(true);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }
