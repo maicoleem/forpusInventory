@@ -118,6 +118,8 @@ public class FinanceController {
         r3.setCellValueFactory(new PropertyValueFactory<>("idBill"));
         receivable();
 
+        buttonFinances.setStyle("-fx-background-color: #F5F5F5;");
+
         cbBoxCuentas.getItems().addAll(ConstantsFinance.cuentas);
     }
     //FUNCION PARA CARGAR LOS SALDOS DE LA EMPRESA
@@ -364,6 +366,7 @@ public class FinanceController {
         final boolean a = true;
         switch (button.getId()){
             case "buttonFinances":
+                buttonFinances.setStyle("-fx-background-color: #F5F5F5;");
                 panelPartners.setVisible(a);
                 panelPassives.setVisible(a);
                 panelProducts.setVisible(a);
@@ -371,6 +374,7 @@ public class FinanceController {
                 panelFinance.setVisible(a);
                 break;
             case "buttonGraphics":
+                buttonGraphics.setStyle("-fx-background-color: #F5F5F5;");
                 chartCustomers.setVisible(a);
                 chartProducts.setVisible(a);
                 chartPurchases.setVisible(a);
@@ -387,6 +391,7 @@ public class FinanceController {
                 break;
             case "buttonDB":
                 panelDB.setVisible(a);
+                buttonDB.setStyle("-fx-background-color: #F5F5F5;");
                 break;
         }
     }
@@ -403,6 +408,10 @@ public class FinanceController {
         chartPurchases.setVisible(a);
         chartSales.setVisible(a);
         panelDB.setVisible(a);
+
+        buttonFinances.setStyle("-fx-background-color: #1BA1E2;");
+        buttonGraphics.setStyle("-fx-background-color: #1BA1E2;");
+        buttonDB.setStyle("-fx-background-color: #1BA1E2;");
     }
 
     public void export(ActionEvent event) {

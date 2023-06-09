@@ -55,21 +55,21 @@
         </Button>
         <Pane id="panelBlue" prefHeight="768.0" prefWidth="70.0">
             <children>
-                <Button id="bWare" fx:id="buttonWarePB" layoutX="5.0" layoutY="94.7" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSlide" prefHeight="60.0" prefWidth="60.0" styleClass="buttonSide" text="Button">
+                <Button id="bWare" fx:id="bWare" layoutX="5.0" layoutY="94.7" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSlide" prefHeight="60.0" prefWidth="60.0" styleClass="buttonSide" text="Button">
                     <graphic>
                         <ImageView fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../images/inventory.png" />
                             </image></ImageView>
                     </graphic></Button>
-                <Button id="bDash" fx:id="buttonDashPB" layoutX="5.0" layoutY="189.5" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSlide" prefHeight="60.0" prefWidth="60.0" styleClass="buttonSide" text="Button">
+                <Button id="bDash" fx:id="bDash" layoutX="5.0" layoutY="189.5" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSlide" prefHeight="60.0" prefWidth="60.0" styleClass="buttonSide" text="Button">
                     <graphic>
                         <ImageView fitHeight="111.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../images/dashboard.png" />
                             </image></ImageView>
                     </graphic></Button>
-                <Button id="bAccounting" fx:id="buttonAccountingPB" layoutX="5.0" layoutY="284.2" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSlide" prefHeight="60.0" prefWidth="60.0" styleClass="buttonSide" text="Button">
+                <Button id="bAccounting" fx:id="bAccounting" layoutX="5.0" layoutY="284.2" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSlide" prefHeight="60.0" prefWidth="60.0" styleClass="buttonSide" text="Button">
                     <graphic>
                         <ImageView fitHeight="111.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -77,7 +77,7 @@
                             </image>
                         </ImageView>
                     </graphic></Button>
-                <Button id="bBuy" fx:id="buttonBuyPB" layoutX="5.0" layoutY="379.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSlide" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #F5F5F5;" styleClass="buttonSide" text="Button">
+                <Button id="bBuy" fx:id="bBuy" layoutX="5.0" layoutY="379.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSlide" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #F5F5F5;" styleClass="buttonSide" text="Button">
                     <graphic>
                         <ImageView fitHeight="48.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -85,7 +85,7 @@
                             </image>
                         </ImageView>
                     </graphic></Button>
-                <Button id="bSale" fx:id="buttonSalePB" layoutX="5.0" layoutY="473.7" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSlide" prefHeight="60.0" prefWidth="60.0" styleClass="buttonSide" text="Button">
+                <Button id="bSale" fx:id="bSale" layoutX="5.0" layoutY="473.7" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSlide" prefHeight="60.0" prefWidth="60.0" styleClass="buttonSide" text="Button">
                     <graphic>
                         <ImageView fitHeight="48.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -93,7 +93,7 @@
                             </image>
                         </ImageView>
                     </graphic></Button>
-                <Button id="bSettings" fx:id="buttonSettingsPB" layoutX="5.0" layoutY="568.5" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSlide" prefHeight="60.0" prefWidth="60.0" styleClass="buttonSide" text="Button">
+                <Button id="bSettings" fx:id="bSettings" layoutX="5.0" layoutY="568.5" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSlide" prefHeight="60.0" prefWidth="60.0" styleClass="buttonSide" text="Button">
                     <graphic>
                         <ImageView fitHeight="60.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -257,8 +257,8 @@
         </Pane>
         <Pane id="panelCheckIn" fx:id="panelCheckIn" layoutX="805.0" layoutY="569.0" prefHeight="117.0" prefWidth="159.0">
             <children>
-                <Button id="buttonCheckIn" fx:id="buttonCheckIn" layoutX="9.0" layoutY="70.0" mnemonicParsing="false" onAction="#checkinInvoice" prefHeight="40.0" prefWidth="142.0" styleClass="buttonBlue" text="FACTURAR" />
-                <Button id="buttonQuote" fx:id="buttonQuote" layoutX="9.0" layoutY="14.0" mnemonicParsing="false" onAction="#quote" prefHeight="40.0" prefWidth="142.0" styleClass="buttonBlue" text="COTIZACIÒN" />
+                <Button id="buttonCheckIn" fx:id="buttonCheckIn" layoutX="9.0" layoutY="70.0" mnemonicParsing="false" onAction="#checkinInvoice" prefHeight="40.0" prefWidth="142.0" styleClass="buttonBlue" text="REGISTRAR" />
+                <Button id="buttonQuote" fx:id="buttonQuote" layoutX="9.0" layoutY="14.0" mnemonicParsing="false" onAction="#quote" prefHeight="40.0" prefWidth="142.0" styleClass="buttonBlue" text="PAGO" />
             </children>
         </Pane>
       <TextField id="tfPrice" fx:id="tfPrice" layoutX="240.0" layoutY="190.0" onKeyTyped="#priceNew" prefHeight="40.0" prefWidth="107.0" />

@@ -20,10 +20,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-
+import javafx.fxml.Initializable;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 
 public class WareController {
@@ -159,7 +161,10 @@ public class WareController {
     public Label labelTransmute;
     @FXML
     public Label labelCostTrans;
-
+    @FXML
+    public void initialize(){
+        buttonCategory.setStyle("-fx-background-color: #F5F5F5;");
+    }
     @FXML //botones del CRUD
     public void buttonCRUD(ActionEvent event) {
 
@@ -177,7 +182,6 @@ public class WareController {
         }
         crudEjecuted(buttonCRUD.getId());
     }
-
     public void crudEjecuted(String idButton) {
 
         switch (idButton) {
@@ -267,7 +271,6 @@ public class WareController {
         }
 
     }
-
     //fucnion para que el crud haga diferentes cosas dependiendo de la entity
     public void differentiateBetweenEntities(Boolean found) {
         switch (Constant.entity) {
@@ -388,7 +391,6 @@ public class WareController {
                 break;
         }
     }
-
     //funcion para salvar datos
     public void saveDates() {
         switch (Constant.entity) {
@@ -519,7 +521,6 @@ public class WareController {
         }
 
     }
-
     //botones check para categorias pricnipalmente
     public void buttonCheck(ActionEvent event) {
         Button buttonCheck = (Button) event.getSource();
@@ -689,7 +690,6 @@ public class WareController {
         }
 
     }
-
     @FXML //boton remover para las categorias
     public void buttonRemoveCate(ActionEvent event) {
 
@@ -711,7 +711,6 @@ public class WareController {
                 break;
         }
     }
-
     @FXML //botones del lado derecho
     private void buttonSlide(ActionEvent event) throws IOException {
         slide(event);
@@ -820,6 +819,7 @@ public class WareController {
         clean();
         switch (option) {
             case "buttonCategory":
+                buttonCategory.setStyle("-fx-background-color: #F5F5F5;");
 
                 Constant.entity = "CategoryoneClass";
 
@@ -843,13 +843,14 @@ public class WareController {
                 break;
             case "buttonWare":
                 Constant.entity = "WarehouseClass";
-
+                buttonWare.setStyle("-fx-background-color: #F5F5F5;");
                 labelCode.setText(Constant.lblCode);
                 labelOneCategory.setText("Bodega");
                 tfOneCategory.setVisible(true);
 
                 break;
             case "buttonService":
+                buttonService.setStyle("-fx-background-color: #F5F5F5; ");
                 Constant.entity = "ServiceClass";
 
                 labelCode.setText(Constant.lblCode);
@@ -894,6 +895,7 @@ public class WareController {
 
                 break;
             case "buttonProducts":
+                buttonProducts.setStyle("-fx-background-color: #F5F5F5;");
                 Constant.entity = "ProductClass";
 
                 labelCode.setText(Constant.lblCode);
@@ -937,6 +939,7 @@ public class WareController {
 
                 break;
             case "buttonTransmute":
+                buttonTransmute.setStyle("-fx-background-color: #F5F5F5;");
                 Constant.entity = "Transmute";
 
                 labelOneCategory.setVisible(true);
@@ -1089,6 +1092,12 @@ public class WareController {
         comboBoxTwo.getItems().clear();
         comboBoxThree.getItems().clear();
         comboBoxWage.getItems().clear();
+
+        buttonCategory.setStyle("-fx-background-color: #1BA1E2; ");
+        buttonWare.setStyle("-fx-background-color: #1BA1E2;");
+        buttonService.setStyle("-fx-background-color: #1BA1E2; ");
+        buttonProducts.setStyle("-fx-background-color: #1BA1E2;");
+        buttonTransmute.setStyle("-fx-background-color: #1BA1E2;");
     }
     //carga datos a la tabla
     public void tableLoad() {
@@ -1107,10 +1116,20 @@ public class WareController {
             switch (Constant.entity) {
                 case "CategoryoneClass":
                     SearchHQL.searchHQL();
+
                     c1.setText("Categoria Uno");
                     c1.setCellValueFactory(new PropertyValueFactory<>("categoryOne"));
                     ObservableList<CategoryoneClass> dates = FXCollections.observableArrayList(ConstantsWare.categoryOneList);
                     tableWare.setItems(dates);
+
+                    c2.setCellValueFactory(new PropertyValueFactory<>(null));
+                    c3.setCellValueFactory(new PropertyValueFactory<>(null));
+                    c4.setCellValueFactory(new PropertyValueFactory<>(null));
+                    c5.setCellValueFactory(new PropertyValueFactory<>(null));
+                    c6.setCellValueFactory(new PropertyValueFactory<>(null));
+                    c7.setCellValueFactory(new PropertyValueFactory<>(null));
+                    c8.setCellValueFactory(new PropertyValueFactory<>(null));
+                    c9.setCellValueFactory(new PropertyValueFactory<>(null));
                     break;
 
                 case "WarehouseClass":
@@ -1121,6 +1140,14 @@ public class WareController {
                     c1.setCellValueFactory(new PropertyValueFactory<>("idWarehouse"));
                     c2.setText("Bodega");
                     c2.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+                    c3.setCellValueFactory(new PropertyValueFactory<>(null));
+                    c4.setCellValueFactory(new PropertyValueFactory<>(null));
+                    c5.setCellValueFactory(new PropertyValueFactory<>(null));
+                    c6.setCellValueFactory(new PropertyValueFactory<>(null));
+                    c7.setCellValueFactory(new PropertyValueFactory<>(null));
+                    c8.setCellValueFactory(new PropertyValueFactory<>(null));
+                    c9.setCellValueFactory(new PropertyValueFactory<>(null));
                     ObservableList<WarehouseClass> datesWare = FXCollections.observableArrayList(ConstantsWare.wareList);
                     tableWare.setItems(datesWare);
                     break;
@@ -1137,6 +1164,11 @@ public class WareController {
                     c4.setCellValueFactory(new PropertyValueFactory<>("hour"));
                     c5.setText("Costo");
                     c5.setCellValueFactory(new PropertyValueFactory<>("cost"));
+
+                    c6.setCellValueFactory(new PropertyValueFactory<>(null));
+                    c7.setCellValueFactory(new PropertyValueFactory<>(null));
+                    c8.setCellValueFactory(new PropertyValueFactory<>(null));
+                    c9.setCellValueFactory(new PropertyValueFactory<>(null));
                     ObservableList<ServiceClass> datesService = FXCollections.observableArrayList(ConstantsWare.serviceList);
                     tableWare.setItems(datesService);
                     break;
@@ -1161,6 +1193,7 @@ public class WareController {
                         c7.setCellValueFactory(new PropertyValueFactory<>("salePrice"));
                         c8.setText("Profit");
                         c8.setCellValueFactory(new PropertyValueFactory<>("profit"));
+                        c9.setCellValueFactory(new PropertyValueFactory<>(null));
                         ObservableList<ProductClass> datesProduct = FXCollections.observableArrayList(ConstantsWare.productList);
                         tableWare.setItems(datesProduct);
                     } else {
@@ -1216,6 +1249,12 @@ public class WareController {
                         c4.setCellValueFactory(new PropertyValueFactory<>("c4"));
                         c5.setText("Precio de compra");
                         c5.setCellValueFactory(new PropertyValueFactory<>("c5"));
+
+                        c6.setCellValueFactory(new PropertyValueFactory<>(null));
+                        c7.setCellValueFactory(new PropertyValueFactory<>(null));
+                        c8.setCellValueFactory(new PropertyValueFactory<>(null));
+                        c9.setCellValueFactory(new PropertyValueFactory<>(null));
+
                         ObservableList<TableShow> datesTableShow = FXCollections.observableArrayList(listProducts);
                         tableWare.setItems(datesTableShow);
                     }
@@ -1232,7 +1271,12 @@ public class WareController {
                     c4.setCellValueFactory(new PropertyValueFactory<>("c4"));
                     c5.setText("Costo");
                     c5.setCellValueFactory(new PropertyValueFactory<>("c5"));
-                    System.out.println("Escape the fate");
+
+                    c6.setCellValueFactory(new PropertyValueFactory<>(null));
+                    c7.setCellValueFactory(new PropertyValueFactory<>(null));
+                    c8.setCellValueFactory(new PropertyValueFactory<>(null));
+                    c9.setCellValueFactory(new PropertyValueFactory<>(null));
+
                     ObservableList<TableShow> datesSTS = FXCollections.observableArrayList(Constant.listTableShow);
                     tableWare.setItems(datesSTS);
                     break;
@@ -1256,7 +1300,6 @@ public class WareController {
                     c8.setCellValueFactory(new PropertyValueFactory<>("c8"));
                     c9.setText("Costo");
                     c9.setCellValueFactory(new PropertyValueFactory<>("c9"));
-                    System.out.println("Escape the fate");
                     ObservableList<TableShow> datesTTT = FXCollections.observableArrayList(Constant.listTableShow);
                     tableWare.setItems(datesTTT);
                     break;
@@ -1266,7 +1309,6 @@ public class WareController {
         } catch (Exception i) {
             System.out.println("Error en Table load --Warecontroller");
             System.out.println(i);
-            i.printStackTrace();
         }
 
     }
@@ -1594,7 +1636,6 @@ public class WareController {
         }
 
     }
-
     public void removeTable (ActionEvent event){
 
             int a = tableWare.getSelectionModel().getSelectedIndex();
@@ -1625,7 +1666,6 @@ public class WareController {
                 }
             }
         }
-
     public void buttonMany(ActionEvent event) {
         Button button = (Button) event.getSource();
 
@@ -1670,7 +1710,6 @@ public class WareController {
         Constant.entity = "Transmute";
         tfCode.setText("Transmute");
     }
-
     public static ArrayList<String> categoryOne(ArrayList<String> listProduct){
         Constant.entity = "CategoryoneClass";
         SearchHQL.searchHQL();
@@ -1684,7 +1723,6 @@ public class WareController {
         }
         return listProduct;
     }
-
     public static ArrayList<String> categoryTwo(ArrayList<String> listProduct, String valueOne){
         //Crea la lista de categorias 2
         Constant.entity = "CategorytwoClass";

@@ -29,6 +29,7 @@ public class SingUp {
             Query query = session.createQuery("from CompanyClass C where C.name in(?1)");
             query.setParameter(1, name);
             Constant.company = (CompanyClass) query.uniqueResult();
+            //VARIABLE DONDE SE ALMACENA LA COMPAÑIA QUE INICIO SESION
             Constant.companyLogin = Constant.company;
             if(password.equals(Constant.company.getPassword())){
                 Constant.isAdmin = true;
@@ -41,8 +42,10 @@ public class SingUp {
                 Session session = SessionDB.sessionHibernate;
                 Query query = session.createQuery("from WorkersClass C where C.name in(?1)");
                 query.setParameter(1, name);
+                //VARIABLE DONDE SE ALMACENA LA COMPAÑIA QUE INICIO SESION
                 Constant.workerLogin = (WorkersClass) query.uniqueResult();
                 if(password.equals(Constant.workerLogin.getPassword())){
+                    //VARIABLE QUE GUARDA SI EL USUARIO ES ADMIN
                     Constant.isAdmin = Constant.workerLogin.getJob().contains("ADMIN");
                     if(Constant.isAdmin){
                         Constant.admin = "Usuario: "+ Constant.workerLogin.getName() + " Tipo: Admin";

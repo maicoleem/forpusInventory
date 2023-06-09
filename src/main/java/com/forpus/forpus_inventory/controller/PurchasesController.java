@@ -14,21 +14,13 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
-
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
 
 import static com.forpus.forpus_inventory.domain.services.ConstantsPurchases.createNumericTextFormatter;
 
 public class PurchasesController {
-    public Button buttonWarePB;
-    public Button buttonDashPB;
-    public Button buttonAccountingPB;
-    public Button buttonBuyPB;
-    public Button buttonSalePB;
-    public Button buttonSettingsPB;
     public Button found;
     public Button cancel;
     public Button save;
@@ -126,6 +118,13 @@ public class PurchasesController {
     public TableColumn<Object, Object> m7;
     public TextField tfTaxes;
 
+    public Button bDash;
+    public Button bAccounting;
+    public Button bBuy;
+    public Button bSale;
+    public Button bSettings;
+    public Button bWare;
+
     @FXML
     protected void buttonSlide(ActionEvent event) throws IOException {
         WareController.slide(event);
@@ -141,6 +140,7 @@ public class PurchasesController {
         final boolean a = true;
         switch (button.getId()){
             case "buttonProduct0":
+                buttonProduct0.setStyle("-fx-background-color: #F5F5F5; ");
                 ConstantsPurchases.entity = "Purchases";
                 ConstantsPurchases.entityForInvoice = "ProvidersClass";
                 labelProvider.setVisible(a);
@@ -200,7 +200,7 @@ public class PurchasesController {
 
                 break;
             case "buttonService":
-                clear();
+                buttonService.setStyle("-fx-background-color: #F5F5F5; ");
                 ConstantsPurchases.entity = "Service";
                 ConstantsPurchases.entityForInvoice = "ProvidersClass";
                 labelProvider.setVisible(a);
@@ -250,7 +250,7 @@ public class PurchasesController {
                 taxesIVABOLD();
                 break;
             case "buttonCredit":
-                clear();
+                buttonCredit.setStyle("-fx-background-color: #F5F5F5; ");
                 ConstantsPurchases.entity = "Credit";
                 ConstantsPurchases.entityForInvoice = "ProvidersClass";
                 labelProvider.setVisible(a);
@@ -273,6 +273,7 @@ public class PurchasesController {
                 labelIVA2.setVisible(!a);
                 labelBold.setVisible(!a);
                 labelBold2.setVisible(!a);
+                buttonQuote.setVisible(a);
 
                 panelTotal.setVisible(a);
                 labelNameProvider.setVisible(a);
@@ -336,6 +337,8 @@ public class PurchasesController {
         checkSale.setVisible(a);
         checkProduct.setVisible(a);
 
+        buttonQuote.setVisible(a);
+
         labelTotal2.setText("0");
         labelTotal3.setText("0");
         labelIVA2.setText("0");
@@ -346,14 +349,29 @@ public class PurchasesController {
         labelDebt.setText("0");
         tfProvider.setText("");
         labelProvider.setText("Proveedor");
-
-        ConstantsPurchases.productTableList.clear();
-        ConstantsPurchases.serviceTableList.clear();
-        ConstantsPurchases.wareInvoiceList.clear();
-        ConstantsPurchases.invoiceList.clear();
+        try {
+            if(!ConstantsPurchases.productTableList.isEmpty()) {
+                ConstantsPurchases.productTableList.clear();
+            }
+            if(!ConstantsPurchases.serviceTableList.isEmpty()) {
+                ConstantsPurchases.serviceTableList.clear();
+            }
+            if(!ConstantsPurchases.wareInvoiceList.isEmpty()) {
+                ConstantsPurchases.wareInvoiceList.clear();
+            }
+            if(ConstantsPurchases.invoiceList != null) {
+                ConstantsPurchases.invoiceList.clear();
+            }
+        }catch (Exception i){
+            i.printStackTrace();
+        }
 
         tableService.getItems().clear();
         tableMain.getItems().clear();
+
+        buttonProduct0.setStyle("-fx-background-color: #1BA1E2; ");
+        buttonService.setStyle("-fx-background-color: #1BA1E2; ");
+        buttonCredit.setStyle("-fx-background-color: #1BA1E2; ");
     }
     public void providerFound(ActionEvent event) {
         Constant.entity = "ProvidersClass";
@@ -694,6 +712,15 @@ public class PurchasesController {
         m5.setCellValueFactory(new PropertyValueFactory<>("payCash"));
         m6.setCellValueFactory(new PropertyValueFactory<>("payBank"));
         m7.setCellValueFactory(new PropertyValueFactory<>("subtotal"));
+
+        bSettings.setDisable(false);
+        bSale.setDisable(false);
+        bBuy.setDisable(false);
+        bAccounting.setDisable(!Constant.isAdmin);
+        bDash.setDisable(!Constant.isAdmin);
+        bWare.setDisable(!Constant.isAdmin);
+
+        buttonProduct0.setStyle("-fx-background-color: #F5F5F5; ");
 
     }
     // Crear un TextFormatter que solo permita números

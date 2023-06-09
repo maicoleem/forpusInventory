@@ -1,6 +1,5 @@
 package com.forpus.forpus_inventory.controller;
 
-import com.forpus.forpus_inventory.HelloApplication;
 import com.forpus.forpus_inventory.domain.services.Constant;
 import com.forpus.forpus_inventory.persistence.crud.DeleteHQL;
 import com.forpus.forpus_inventory.persistence.crud.FoundHQL;
@@ -9,21 +8,13 @@ import com.forpus.forpus_inventory.persistence.crud.SearchHQL;
 import com.forpus.forpus_inventory.persistence.entity.CompanyClass;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 
 public class SettingController implements Initializable {
     public Button buttonPartners;
@@ -71,6 +62,12 @@ public class SettingController implements Initializable {
     @FXML
     public Button found;
     public Button buttonSingOut;
+    public Button bWare;
+    public Button bDash;
+    public Button bAccounting;
+    public Button bBuy;
+    public Button bSale;
+    public Button bSettings;
     @FXML
     Pane paneWhite;
     @FXML
@@ -466,8 +463,14 @@ public class SettingController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         buttonWorkers.setVisible(Constant.isAdmin);
         buttonPartners.setVisible(Constant.isAdmin);
-    }
 
+        bSettings.setDisable(false);
+        bSale.setDisable(false);
+        bBuy.setDisable(false);
+        bAccounting.setDisable(!Constant.isAdmin);
+        bDash.setDisable(!Constant.isAdmin);
+        bWare.setDisable(!Constant.isAdmin);
+    }
     //found the company
     public static CompanyClass company(String entityClassNotChange){
         Constant.entity = "CompanyClass";

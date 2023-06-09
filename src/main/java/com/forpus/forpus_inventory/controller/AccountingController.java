@@ -70,6 +70,10 @@ public class AccountingController {
     public CheckBox checkBoxDebt;
     public CheckBox checkBoxPay;
 
+    public void initialize(){
+        buttonTaxes.setStyle("-fx-background-color: #F5F5F5;");
+    }
+
     @FXML
     protected void buttonSlide(ActionEvent event) throws IOException {
         WareController.slide(event);
@@ -255,11 +259,12 @@ public class AccountingController {
     @FXML
     public void buttonsOptions(ActionEvent event) {
         Button button = (Button) event.getSource();
+        clean();
         switch (button.getId()){
             case "buttonTaxes":
+                buttonTaxes.setStyle("-fx-background-color: #F5F5F5;");
                 ConstantsAccounting.entity = "TaxesClass";
                 Constant.entity = "TaxesClass";
-                clean();
                 labelBold.setVisible(true);
                 labelIVA.setVisible(true);
 
@@ -270,7 +275,7 @@ public class AccountingController {
                 tfIva.setVisible(true);
                 break;
             case "buttonStock":
-                clean();
+                buttonStock.setStyle("-fx-background-color: #F5F5F5;");
                 ConstantsAccounting.entity = "WarehouseClass";
                 labelIVA.setVisible(true);
                 labelIVA.setText("Bodega");
@@ -291,7 +296,7 @@ public class AccountingController {
                 /*Debe de mostrar el registro de los clientes, la empresa,
                  los trabajadores, los socios y los proveedores
                 * */
-                clean();
+                buttonAccounting.setStyle("-fx-background-color: #F5F5F5;");
                 ConstantsAccounting.entity = "Accounting";
                 tfCode.setVisible(true);
                 labelCode.setVisible(true);
@@ -317,7 +322,7 @@ public class AccountingController {
                 break;
             case "buttonInput":
                 //Se debe de porder hacer ingresos de dinero a la cuenta de la compañia
-                clean();
+                buttonInput.setStyle("-fx-background-color: #F5F5F5;");
                 ConstantsAccounting.entity = "PartnersClass";
 
                 labelIVA.setVisible(true);
@@ -341,7 +346,8 @@ public class AccountingController {
             case "buttonReceivable":
                 //Se debe de poder visualizar las deudas que tiene la empresa
                 // y las deudas de los cleintes de la empresa
-                clean();
+
+                buttonReceivable.setStyle("-fx-background-color: #F5F5F5;");
                 ConstantsAccounting.entity = "Debt";
 
                 tfCode.setVisible(true);
@@ -379,7 +385,10 @@ public class AccountingController {
 
     }
     public void comboBoxLoad(){
-     comboBoxWare.getItems().clear();
+     if(comboBoxWare.getItems() != null){
+        comboBoxWare.getItems().clear();
+     }
+
      comboBoxProduct.getItems().clear();
         ArrayList<String> listComboBox = new ArrayList<>();
         switch (ConstantsAccounting.entity){
@@ -881,8 +890,11 @@ public class AccountingController {
         tableMain.getItems().clear();
         tableTwo.getItems().clear();
 
-
-
+        buttonTaxes.setStyle("-fx-background-color: #1BA1E2;");
+        buttonStock.setStyle("-fx-background-color: #1BA1E2;");
+        buttonAccounting.setStyle("-fx-background-color: #1BA1E2;");
+        buttonReceivable.setStyle("-fx-background-color: #1BA1E2;");
+        buttonInput.setStyle("-fx-background-color: #1BA1E2;");
     }
     @FXML
     public void search(ActionEvent event) {

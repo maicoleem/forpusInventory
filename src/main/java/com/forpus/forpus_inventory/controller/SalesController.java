@@ -21,8 +21,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.hibernate.event.spi.SaveOrUpdateEvent;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -126,6 +124,12 @@ public class SalesController {
     public Label labelUtilities;
     public Button buttonFactura;
     public TextField tfFactura;
+    public Button bWare;
+    public Button bDash;
+    public Button bAccounting;
+    public Button bBuy;
+    public Button bSale;
+    public Button bSettings;
 
     public void initialize() {
 
@@ -177,6 +181,15 @@ public class SalesController {
         m5.setCellValueFactory(new PropertyValueFactory<>("payCash"));
         m6.setCellValueFactory(new PropertyValueFactory<>("payBank"));
         m7.setCellValueFactory(new PropertyValueFactory<>("subtotal"));
+
+        bSettings.setDisable(false);
+        bSale.setDisable(false);
+        bBuy.setDisable(false);
+        bAccounting.setDisable(!Constant.isAdmin);
+        bDash.setDisable(!Constant.isAdmin);
+        bWare.setDisable(!Constant.isAdmin);
+
+        buttonProduct0.setStyle("-fx-background-color: #F5F5F5; ");
 
     }
     //Carga las taxaqs de impuestos
@@ -251,6 +264,10 @@ public class SalesController {
         labelPay.setText("0");
         labelDebt.setText("0");
 
+        buttonProduct0.setStyle("-fx-background-color: #1BA1E2; ");
+        buttonService.setStyle("-fx-background-color: #1BA1E2; ");
+        buttonCredit.setStyle("-fx-background-color: #1BA1E2; ");
+
         if(!ConstantsPurchases.productTableList.isEmpty()){
             ConstantsPurchases.productTableList.clear();
         }
@@ -316,6 +333,7 @@ public class SalesController {
         System.out.println(button.getId());
         switch (button.getId()){
             case "buttonProduct0":
+                buttonProduct0.setStyle("-fx-background-color: #F5F5F5; ");
                 ConstantsSales.salesOption = "Product";
                 Constant.entity = "CustomerClass";
                 ConstantsPurchases.entity = "SaleProduct";
@@ -362,6 +380,7 @@ public class SalesController {
 
                 break;
             case "buttonService":
+                buttonService.setStyle("-fx-background-color: #F5F5F5; ");
                 ConstantsSales.salesOption = "Service";
                 Constant.entity = "CustomerClass";
                 ConstantsPurchases.entity = "Service";
@@ -404,6 +423,7 @@ public class SalesController {
 
                 break;
             case "buttonCredit":
+                buttonCredit.setStyle("-fx-background-color: #F5F5F5; ");
                 ConstantsSales.salesOption = "Credit";
                 Constant.entity = "CustomerClass";
                 ConstantsPurchases.entity = "customersDebt";
@@ -1028,7 +1048,6 @@ public class SalesController {
         //generar la cotización con jasper Report
         ReportGenerator.generadorCotizar(company,customer,ConstantsPurchases.wareInvoiceList,subtotal, iva);
     }
-
     public static void generadorWareAndPrice(String button){
         switch (ConstantsSales.salesOption){
             case "Product":

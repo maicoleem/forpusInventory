@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Quedan el reporte de la factura listo.&#10;&#10;Las importaciones de datos borran las tablas cuidado** &#10;&#10;La importación de productos crea las bodegas y los precios de compra&#10;&#10;queda pendiente arreglar los formatos de excel para la importación de datos y las pruebas&#10;&#10;--queda pendiente la modificación de los botones de registrar, cotizar y facturar en ventas y compras">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Las importaciones de datos borran las tablas cuidado** &#10;&#10;La importación de productos crea las bodegas y los precios de compra&#10;&#10;Formatos de excel listos&#10;&#10;se modificaron los botones de registrar, cotizar y facturar en SalesController&#10;&#10;Falta probar los formatos de excel&#10;&#10;Falta revisar el funcionamiento - entrando en etapa alpha">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/AccountingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/AccountingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/FinanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/FinanceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/PurchasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/PurchasesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SalesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SalesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/repository/ReportGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/repository/ReportGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsSales.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsSales.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SettingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SettingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/WareController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/WareController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SingUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SingUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/purchases-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/purchases-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/sales-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/sales-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -213,14 +218,8 @@
       <workItem from="1685929505631" duration="2815000" />
       <workItem from="1686013345876" duration="13780000" />
       <workItem from="1686096672256" duration="5740000" />
-      <workItem from="1686178224914" duration="8864000" />
-    </task>
-    <task id="LOCAL-00014" summary="*La cantida en productos se desactivo cuando el produto ya existe, es decir, solo espara para ingresar cantidades con productos sin registros&#10;*Se termino el diseño de carga de productos en la tabla&#10;+Se modifico el diseño de los servicios, ahora los servicios se pueden crear y salvar.&#10;/////////////////////&#10;--Falta poder buscar un servicio y que retorne los productos usados&#10;--Falta poder eliminar servicios&#10;--Falta completar la trnasmutación">
-      <created>1674866970903</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1674866970903</updated>
+      <workItem from="1686178224914" duration="8954000" />
+      <workItem from="1686266345488" duration="7571000" />
     </task>
     <task id="LOCAL-00015" summary="+busca un servicio y que retorna los productos usados&#10;+permite eliminar productos de servicios&#10;+Se pueden eliminar los servicios&#10;--Falta completar la trnasmutación">
       <created>1674943460386</created>
@@ -558,14 +557,20 @@
       <option name="project" value="LOCAL" />
       <updated>1686105329990</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Las importaciones de datos borran las tablas cuidado** &#10;&#10;La importación de productos crea las bodegas y los precios de compra&#10;&#10;Formatos de excel listos&#10;&#10;se modificaron los botones de registrar, cotizar y facturar en SalesController&#10;&#10;Falta probar los formatos de excel&#10;&#10;Falta revisar el funcionamiento - entrando en etapa alpha">
+      <created>1686190335527</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1686190335527</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;&#10;**Se guardaron los datos exitosamente para la factura de compra" />
     <MESSAGE value="-Se debe de seguir planteando la contabilidad&#10;&#10;**Se realizo el backend de servicios." />
     <MESSAGE value="**Se esta editando la view para pagar los creditos&#10;&#10;--falta funcionalidad" />
     <MESSAGE value="**Las tablas de la pestaña credito ya funcionan&#10;&#10;--Falta poder guardar movimientos &#10;&#10;--el subtotal del ultimo movimiento debe ser igual a idBill de la factura." />
@@ -590,7 +595,8 @@
     <MESSAGE value="Se modifico las entidades de WareinvoiceClass y ProductClass, para acoplarlas a el jasper Report, que esta en elaboración" />
     <MESSAGE value="Se modifico las entidades de WareinvoiceClass y ProductClass, para acoplarlas a el jasper Report, que esta en elaboración. Para evitar modificaciones en la DB es mejor cerrar sesion antes de guardar algun cambio" />
     <MESSAGE value="Quedan el reporte de la factura listo.&#10;&#10;Las importaciones de datos borran las tablas cuidado** &#10;&#10;La importación de productos crea las bodegas y los precios de compra&#10;&#10;queda pendiente arreglar los formatos de excel para la importación de datos y las pruebas&#10;&#10;--queda pendiente la modificación de los botones de registrar, cotizar y facturar en ventas y compras" />
-    <option name="LAST_COMMIT_MESSAGE" value="Quedan el reporte de la factura listo.&#10;&#10;Las importaciones de datos borran las tablas cuidado** &#10;&#10;La importación de productos crea las bodegas y los precios de compra&#10;&#10;queda pendiente arreglar los formatos de excel para la importación de datos y las pruebas&#10;&#10;--queda pendiente la modificación de los botones de registrar, cotizar y facturar en ventas y compras" />
+    <MESSAGE value="Las importaciones de datos borran las tablas cuidado** &#10;&#10;La importación de productos crea las bodegas y los precios de compra&#10;&#10;Formatos de excel listos&#10;&#10;se modificaron los botones de registrar, cotizar y facturar en SalesController&#10;&#10;Falta probar los formatos de excel&#10;&#10;Falta revisar el funcionamiento - entrando en etapa alpha" />
+    <option name="LAST_COMMIT_MESSAGE" value="Las importaciones de datos borran las tablas cuidado** &#10;&#10;La importación de productos crea las bodegas y los precios de compra&#10;&#10;Formatos de excel listos&#10;&#10;se modificaron los botones de registrar, cotizar y facturar en SalesController&#10;&#10;Falta probar los formatos de excel&#10;&#10;Falta revisar el funcionamiento - entrando en etapa alpha" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -623,29 +629,14 @@
           <properties class="net.sf.jasperreports.engine.JRException" package="net.sf.jasperreports.engine" />
           <option name="timeStamp" value="18" />
         </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="22" />
+        </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/AccountingController.java</url>
-          <line>980</line>
+          <line>992</line>
           <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/AccountingController.java</url>
-          <line>344</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/PurchasesController.java</url>
-          <line>643</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/AccountingController.java</url>
-          <line>982</line>
-          <properties class="com.forpus.forpus_inventory.controller.AccountingController" method="tableNull">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
