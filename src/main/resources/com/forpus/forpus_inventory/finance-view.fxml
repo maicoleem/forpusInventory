@@ -247,48 +247,48 @@
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
-            <Button id="buttonBackUp" fx:id="buttonBackUp" layoutX="661.0" layoutY="14.0" mnemonicParsing="false" onAction="#backup" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="BACKUP">
+            <Button id="buttonBackUp" fx:id="buttonBackUp" disable="true" layoutX="661.0" layoutY="14.0" mnemonicParsing="false" onAction="#backup" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="BACKUP">
                <font>
                   <Font name="Tahoma Bold" size="20.0" />
                </font>
             </Button>
-            <Button id="buttonRestore" fx:id="buttonRestore" layoutX="673.0" layoutY="268.0" mnemonicParsing="false" onAction="#restore" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="RECUPERAR">
+            <Button id="buttonRestore" fx:id="buttonRestore" disable="true" layoutX="684.0" layoutY="157.0" mnemonicParsing="false" onAction="#restore" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="RECUPERAR">
                <font>
                   <Font name="Tahoma Bold" size="20.0" />
                </font>
             </Button>
-            <Button id="buttonCorte" fx:id="buttonCorte" layoutX="673.0" layoutY="343.0" mnemonicParsing="false" onAction="#corte" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="CORTE">
+            <Button id="buttonCorte" fx:id="buttonCorte" layoutX="684.0" layoutY="231.0" mnemonicParsing="false" onAction="#corte" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="CORTE" visible="false">
                <font>
                   <Font name="Tahoma Bold" size="20.0" />
                </font>
             </Button>
-            <Button id="buttonRuta2" fx:id="buttonRuta2" layoutX="14.0" layoutY="268.0" mnemonicParsing="false" onAction="#importExcel" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="RUTA">
+            <Button id="buttonRuta2" fx:id="buttonRuta2" layoutX="12.0" layoutY="157.0" mnemonicParsing="false" onAction="#importExcel" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="RUTA">
                <font>
                   <Font name="Tahoma Bold" size="20.0" />
                </font>
             </Button>
-            <Label id="labelRuta2" fx:id="labelRuta2" alignment="CENTER" contentDisplay="CENTER" layoutX="184.0" layoutY="274.0" prefHeight="48.0" prefWidth="471.0" styleClass="labelGrey" text="ruta cargar">
+            <Label id="labelRuta2" fx:id="labelRuta2" alignment="CENTER" contentDisplay="CENTER" layoutX="190.0" layoutY="163.0" prefHeight="48.0" prefWidth="471.0" styleClass="labelGrey" text="ruta cargar">
                <font>
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
-            <Button id="buttonRuta3" fx:id="buttonRuta3" layoutX="14.0" layoutY="343.0" mnemonicParsing="false" onAction="#export" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="RUTA">
+            <Button id="buttonRuta3" fx:id="buttonRuta3" layoutX="12.0" layoutY="231.0" mnemonicParsing="false" onAction="#export" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="RUTA" visible="false">
                <font>
                   <Font name="Tahoma Bold" size="20.0" />
                </font>
             </Button>
-            <Label id="labelRuta3" fx:id="labelRuta3" alignment="CENTER" contentDisplay="CENTER" layoutX="184.0" layoutY="349.0" prefHeight="48.0" prefWidth="471.0" styleClass="labelGrey" text="ruta">
+            <Label id="labelRuta3" fx:id="labelRuta3" alignment="CENTER" contentDisplay="CENTER" layoutX="190.0" layoutY="231.0" prefHeight="48.0" prefWidth="471.0" styleClass="labelGrey" text="ruta" visible="false">
                <font>
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
-            <ComboBox id="cbBoxCuentas" fx:id="cbBoxCuentas" layoutX="15.0" layoutY="98.0" onAction="#cbCuentas" prefHeight="40.0" prefWidth="143.0" promptText="REGISTROS" />
-            <Button id="buttonDownload" fx:id="buttonDownload" layoutX="178.0" layoutY="98.0" mnemonicParsing="false" onAction="#tablas" prefHeight="40.0" prefWidth="156.0" styleClass="buttonBlue" text="DESCARGAR">
+            <ComboBox id="cbBoxCuentas" fx:id="cbBoxCuentas" layoutX="15.0" layoutY="98.0" onAction="#cbCuentas" prefHeight="40.0" prefWidth="143.0" promptText="Clientes" />
+            <Button id="buttonDownload" fx:id="buttonDownload" disable="true" layoutX="178.0" layoutY="98.0" mnemonicParsing="false" onAction="#tablas" prefHeight="40.0" prefWidth="156.0" styleClass="buttonBlue" text="DESCARGAR">
                <font>
                   <Font name="Tahoma Bold" size="20.0" />
                </font>
             </Button>
-            <Button id="buttonUpload" fx:id="buttonUpload" layoutX="352.0" layoutY="98.0" mnemonicParsing="false" onAction="#tablas" prefHeight="40.0" prefWidth="156.0" styleClass="buttonBlue" text="CARGAR">
+            <Button id="buttonDeleted" fx:id="buttonDeleted" layoutX="35.0" layoutY="386.0" mnemonicParsing="false" onAction="#deletedDB" prefHeight="40.0" prefWidth="156.0" styleClass="buttonBlue" text="BORRAR">
                <font>
                   <Font name="Tahoma Bold" size="20.0" />
                </font>

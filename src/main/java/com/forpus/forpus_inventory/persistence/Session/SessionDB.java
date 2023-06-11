@@ -17,7 +17,6 @@ public class SessionDB {
             if(sessionHibernate == null){
                     SessionFactory sF = new Configuration().configure().buildSessionFactory();
                     sessionHibernate = sF.openSession();
-                System.out.println("Session open");
              }
        }catch (Exception e){
              e.printStackTrace();
@@ -33,9 +32,9 @@ public class SessionDB {
             sessionHibernate.close();
             return (sessionHibernate = null);
         }catch (Exception e){
-            System.out.println("Error "+ e);
-            e.printStackTrace();
+            System.out.println("Error Al Cerrar Session"+ e);
         }
+        System.out.println("Session cerrada");
         return (sessionHibernate = null);
     }
 

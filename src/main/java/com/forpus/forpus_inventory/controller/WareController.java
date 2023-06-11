@@ -4,6 +4,7 @@ import com.forpus.forpus_inventory.HelloApplication;
 import com.forpus.forpus_inventory.domain.services.Constant;
 import com.forpus.forpus_inventory.domain.services.ConstantsWare;
 import com.forpus.forpus_inventory.domain.services.TableShow;
+import com.forpus.forpus_inventory.persistence.Session.SessionDB;
 import com.forpus.forpus_inventory.persistence.crud.DeleteHQL;
 import com.forpus.forpus_inventory.persistence.crud.FoundHQL;
 import com.forpus.forpus_inventory.persistence.crud.SaveHQL;
@@ -20,13 +21,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import javafx.fxml.Initializable;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.ResourceBundle;
-
 
 public class WareController {
     @FXML
@@ -163,6 +160,7 @@ public class WareController {
     public Label labelCostTrans;
     @FXML
     public void initialize(){
+        SessionDB.sessionClose();
         buttonCategory.setStyle("-fx-background-color: #F5F5F5;");
     }
     @FXML //botones del CRUD

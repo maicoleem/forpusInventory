@@ -4,8 +4,10 @@ import com.forpus.forpus_inventory.domain.services.Constant;
 import com.forpus.forpus_inventory.domain.services.ConstantsFinance;
 import com.forpus.forpus_inventory.domain.services.ConstantsPurchases;
 import com.forpus.forpus_inventory.domain.services.ConstantsWare;
+import com.forpus.forpus_inventory.persistence.Session.SessionDB;
 import com.forpus.forpus_inventory.persistence.crud.DataBase;
 import com.forpus.forpus_inventory.persistence.crud.FoundHQL;
+import com.forpus.forpus_inventory.persistence.crud.SaveHQL;
 import com.forpus.forpus_inventory.persistence.crud.SearchHQL;
 import com.forpus.forpus_inventory.persistence.entity.*;
 import javafx.collections.FXCollections;
@@ -79,7 +81,6 @@ public class FinanceController {
     public Label labelRuta3;
     public Button buttonRuta2;
     public Button buttonDownload;
-    public Button buttonUpload;
     public ComboBox<String> cbBoxCuentas;
     @FXML
     private LineChart<String , Number> chartSales;
@@ -92,6 +93,8 @@ public class FinanceController {
         WareController.slide(event);
     }
     public void initialize() {
+        SessionDB.sessionClose();
+
         //CARGA LA LIQUIDEZ
         companyFinance();
 
@@ -397,6 +400,7 @@ public class FinanceController {
     }
 
     public void clear(){
+        SessionDB.sessionClose();
         final boolean a = false;
         panelPartners.setVisible(a);
         panelPassives.setVisible(a);
@@ -430,11 +434,11 @@ public class FinanceController {
                 case "buttonRuta2":
                     labelRuta2.setText(selectedDirectory.getAbsolutePath());
                     break;
-                case "buttonRuta3":
-                    labelRuta3.setText(selectedDirectory.getAbsolutePath());
-                    break;
             }
         }
+
+        buttonBackUp.setDisable(!labelRuta.getText().contains("\\"));
+        buttonDownload.setDisable(!labelRuta.getText().contains("\\"));
     }
 
     public void restore(ActionEvent event) {
@@ -455,7 +459,6 @@ public class FinanceController {
     }
 
     public void tablas(ActionEvent event) {
-
         String entity1 = cbBoxCuentas.getValue();
         String entity2 =cbClass(entity1);
         DataBase.downloadTable(escaparCaracteres(labelRuta.getText()),entity2);
@@ -502,7 +505,41 @@ public class FinanceController {
             String selectedFilePath = selectedFile.getAbsolutePath();
             labelRuta2.setText(selectedFilePath);
         }
+
+        buttonRestore.setDisable(!labelRuta2.getText().contains("xlsx"));
+
     }
 
 
+    public void deletedDB(ActionEvent event) {
+        DataBase.deleteAllData("todos");
+        String entity = Constant.entity;
+        Constant.entity = "CompanyClass";
+        if(FoundHQL.workerFound()) {
+
+            Constant.tfName = Constant.company.getName();
+            Constant.tfPhone = Constant.company.getPhoneNumber();
+            Constant.tfAddress = Constant.company.getAddres();
+            Constant.tfJob = Constant.company.getWeb();
+            Constant.tfSalary = Constant.company.getSocial();
+            Constant.company.setPayable("0");
+            Constant.company.setUtilities("0");
+            Constant.company.setCash("0");
+            Constant.company.setBank("0");
+            Constant.company.setReceivable("0");
+            Constant.company.setReceivable("0");
+            Constant.company.setTotal("0");
+
+            SaveHQL.insertWorker("update");
+
+        }
+
+        Constant.entity = "WarehouseClass";
+        Constant.tfCode = "BD01";
+        Constant.tfName = "BODEGA 01";
+        SaveHQL.insertWorker("save");
+
+        Constant.entity = entity;
+
+    }
 }
