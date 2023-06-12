@@ -130,6 +130,7 @@ public class SalesController {
     public Button bBuy;
     public Button bSale;
     public Button bSettings;
+    public TextField tfOffPer;
 
     public void initialize() {
 
@@ -139,6 +140,7 @@ public class SalesController {
         tfBank.setTextFormatter(createNumericTextFormatter());
         tfCash.setTextFormatter(createNumericTextFormatter());
         tfTaxes.setTextFormatter(createNumericTextFormatter());
+        tfOffPer.setTextFormatter(createNumericTextFormatter());
 
         Constant.entity = "CustomerClass";
         ConstantsSales.salesOption = "Product";
@@ -227,6 +229,7 @@ public class SalesController {
         buttonRegister.setVisible(a);
         buttonSuppress.setVisible(a);
         buttonFactura.setVisible(a);
+        tfOffPer.setVisible(a);
 
         search.setVisible(a);
         save.setVisible(a);
@@ -330,7 +333,6 @@ public class SalesController {
         Button button = (Button) event.getSource();
         clean();
         final boolean a = true;
-        System.out.println(button.getId());
         switch (button.getId()){
             case "buttonProduct0":
                 buttonProduct0.setStyle("-fx-background-color: #F5F5F5; ");
@@ -349,6 +351,8 @@ public class SalesController {
                 labelNameCliente.setVisible(a);
                 labelAmount.setVisible(a);
                 labelUtilities.setVisible(a);
+
+                tfOffPer.setVisible(a);
 
                 labelPriceSale.setVisible(a);
                 labelOff.setVisible(a);
@@ -388,6 +392,8 @@ public class SalesController {
                 panelPayment.setVisible(a);
                 panelCheckIn.setVisible(a);
                 panelTotal.setVisible(a);
+
+                tfOffPer.setVisible(a);
 
                 labelProduct.setVisible(a);
                 labelProduct.setText("Servicio");
@@ -442,6 +448,7 @@ public class SalesController {
 
                 panelPayment.setVisible(a);
                 buttonIVA.setVisible(!a);
+                tfOffPer.setVisible(!a);
                 buttonBold.setVisible(!a);
                 labelIVA.setText("Mora");
                 labelIVA2.setVisible(!a);
@@ -587,49 +594,53 @@ public class SalesController {
     }
     public void pxndx(ActionEvent event) {
         ComboBox cb = (ComboBox) event.getSource();
-        if( ConstantsSales.salesOption.equals("Product")){
-            switch (cb.getId()){
-            case "comboBoxWare":
-                ArrayList<String> listProduct = new ArrayList<>();
-                ArrayList<String> listAmount = new ArrayList<>();
-                String price = "";
-                String amount = "";
-                for(WareProductClass w: ConstantsWare.product.getWareProductsByIdProduct()){
-                    if(cb.getValue().equals(w.getIdWare())){
-                        ConstantsSales.wareProduct = w;
-                        for(ProductpriceClass p: w.getProductpricesByIdWareProduct()){
-                            price = String.valueOf(p.getPrice());
-                            listProduct.add(price);
-                            amount = String.valueOf(p.getAmount());
-                            listAmount.add(amount);
+        try {
+            if (ConstantsSales.salesOption.equals("Product")) {
+                switch (cb.getId()) {
+                    case "comboBoxWare":
+                        ArrayList<String> listProduct = new ArrayList<>();
+                        ArrayList<String> listAmount = new ArrayList<>();
+                        String price = "";
+                        String amount = "";
+                        for (WareProductClass w : ConstantsWare.product.getWareProductsByIdProduct()) {
+                            if (cb.getValue().equals(w.getIdWare())) {
+                                ConstantsSales.wareProduct = w;
+                                for (ProductpriceClass p : w.getProductpricesByIdWareProduct()) {
+                                    price = String.valueOf(p.getPrice());
+                                    listProduct.add(price);
+                                    amount = String.valueOf(p.getAmount());
+                                    listAmount.add(amount);
+                                }
+                            }
                         }
-                    }
+                        comboBoxPrice.getItems().clear();
+                        comboBoxAmount.getItems().clear();
+                        comboBoxPrice.getItems().addAll(listProduct);
+                        comboBoxAmount.getItems().addAll(listAmount);
+                        comboBoxPrice.setValue(price);
+                        comboBoxAmount.setValue(amount);
+                        changeSale();
+                        break;
+                    case "comboBoxAmount":
+                        for (ProductpriceClass pp : ConstantsSales.wareProduct.getProductpricesByIdWareProduct()) {
+                            if (cb.getValue().equals(pp.getAmount())) {
+                                comboBoxPrice.setValue(String.valueOf(pp.getPrice()));
+                            }
+                        }
+                        break;
+                    case "comboBoxPrice":
+                        for (ProductpriceClass pp : ConstantsSales.wareProduct.getProductpricesByIdWareProduct()) {
+                            if (cb.getValue().equals(pp.getPrice())) {
+                                comboBoxAmount.setValue(String.valueOf(pp.getAmount()));
+                            }
+                        }
+                        break;
+                    default:
+                        break;
                 }
-                comboBoxPrice.getItems().clear();
-                comboBoxAmount.getItems().clear();
-                comboBoxPrice.getItems().addAll(listProduct);
-                comboBoxAmount.getItems().addAll(listAmount);
-                comboBoxPrice.setValue(price);
-                comboBoxAmount.setValue(amount);
-                changeSale();
-                break;
-            case "comboBoxAmount":
-                for(ProductpriceClass pp: ConstantsSales.wareProduct.getProductpricesByIdWareProduct()){
-                    if(cb.getValue().equals(pp.getAmount())){
-                        comboBoxPrice.setValue(String.valueOf(pp.getPrice()));
-                    }
-                }
-                break;
-            case "comboBoxPrice":
-                for(ProductpriceClass pp: ConstantsSales.wareProduct.getProductpricesByIdWareProduct()){
-                    if(cb.getValue().equals(pp.getPrice())){
-                        comboBoxAmount.setValue(String.valueOf(pp.getAmount()));
-                    }
-                }
-                break;
-            default:
-                break;
-        }
+            }
+        }catch (Exception i){
+            System.out.println(i + " ComboBox en blanco");
         }
     }
     public void register(ActionEvent event) {
@@ -690,6 +701,15 @@ public class SalesController {
             if(comboBoxWare.getValue() == null || comboBoxWare.getValue().isBlank()){
                 falseFor = "Ware";
             }
+            if(comboBoxAmount.getValue() == null || comboBoxAmount.getValue().isBlank()){
+                falseFor = "amountCB";
+            }else {
+                int amount = Integer.parseInt(tfAmount.getText());
+                int stock = Integer.parseInt(comboBoxAmount.getValue());
+                if(amount > stock){
+                    falseFor = "amountCB";
+                }
+            }
 
             switch (falseFor){
                 case "Name":
@@ -706,6 +726,9 @@ public class SalesController {
                     return false;
                 case "Ware":
                     WareController.alertSend("Digitar la bodega del producto");
+                    return false;
+                case "amountCB":
+                    WareController.alertSend("No se cuenta con suficiente stock");
                     return false;
                 default:
                     return true;
@@ -729,7 +752,7 @@ public class SalesController {
                 labelSubTota2.setText("0");
                 //Obtiene el total sin Taxes
                 for(ProductClass p: tableMain.getItems()){
-                    int subtotal = ConstantsPurchases.subtotalProduct(String.valueOf(p.getAmount()), p.getSalePrice());
+                    int subtotal = ConstantsPurchases.subtotalProduct(String.valueOf(p.getAmount()), p.getSalePrice(), "0");
                     int balance = Integer.valueOf(labelSubTota2.getText());
                     int total = subtotal + balance;
                     labelSubTota2.setText(String.valueOf(total));
@@ -742,7 +765,7 @@ public class SalesController {
                 labelSubTota2.setText("0");
 
                 for(ServiceClass p: tableService.getItems()){
-                    int subtotal = ConstantsPurchases.subtotalProduct(String.valueOf(p.getHour()), p.getProfit());
+                    int subtotal = ConstantsPurchases.subtotalProduct(String.valueOf(p.getHour()), p.getProfit(), "0");
                     int balance = Integer.valueOf(labelSubTota2.getText());
                     int total = subtotal + balance;
 
@@ -1024,7 +1047,6 @@ public class SalesController {
         int total = subtotal +sobreCosto;
         labelTotal2.setText(String.valueOf(total));
     }
-
     public void facturar(ActionEvent event) {
         String entity = Constant.entity;
 
@@ -1127,5 +1149,17 @@ public class SalesController {
                 break;
         }
 
+    }
+
+    public void offPercentage() {
+        try {
+            int offPer = Integer.parseInt(tfOffPer.getText());
+            int saleOld = Integer.parseInt(ConstantsWare.product.getSalePrice());
+            int off = (saleOld * offPer) / 100;
+            tfOff.setText(String.valueOf(off));
+            changeOff();
+        }catch (Exception i) {
+            System.out.println(i + " Porcentaje de descuento nulo");
+        }
     }
 }

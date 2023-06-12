@@ -162,6 +162,7 @@ public class WareController {
     public void initialize(){
         SessionDB.sessionClose();
         buttonCategory.setStyle("-fx-background-color: #F5F5F5;");
+        options("buttonCategory");
     }
     @FXML //botones del CRUD
     public void buttonCRUD(ActionEvent event) {

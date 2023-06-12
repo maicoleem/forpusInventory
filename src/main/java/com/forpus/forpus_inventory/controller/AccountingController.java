@@ -5,9 +5,12 @@ import com.forpus.forpus_inventory.persistence.crud.FoundHQL;
 import com.forpus.forpus_inventory.persistence.crud.SaveHQL;
 import com.forpus.forpus_inventory.persistence.crud.SearchHQL;
 import com.forpus.forpus_inventory.persistence.entity.*;
+import javafx.beans.property.ObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -72,6 +75,7 @@ public class AccountingController {
 
     public void initialize(){
         buttonTaxes.setStyle("-fx-background-color: #F5F5F5;");
+        options("buttonTaxes");
     }
 
     @FXML
@@ -259,8 +263,12 @@ public class AccountingController {
     @FXML
     public void buttonsOptions(ActionEvent event) {
         Button button = (Button) event.getSource();
+        options(button.getId());
+    }
+
+    public void options(String idButton){
         clean();
-        switch (button.getId()){
+        switch (idButton){
             case "buttonTaxes":
                 buttonTaxes.setStyle("-fx-background-color: #F5F5F5;");
                 ConstantsAccounting.entity = "TaxesClass";
@@ -381,13 +389,15 @@ public class AccountingController {
             default:
                 break;
         }
-
-
     }
     public void comboBoxLoad(){
-     if(comboBoxWare.getItems() != null){
-        comboBoxWare.getItems().clear();
-     }
+        try {
+            if (comboBoxWare.getItems() != null) {
+                comboBoxWare.getItems().clear();
+            }
+        }catch (Exception i){
+            System.out.println(i + " Error al borrar la comboBoxWare");
+        }
 
      comboBoxProduct.getItems().clear();
         ArrayList<String> listComboBox = new ArrayList<>();
@@ -464,7 +474,7 @@ public class AccountingController {
                 if(Objects.equals(idComboBox, "comboBoxWare")){
                     comboBoxProduct.getItems().clear();
                     ArrayList<String> listComboBoxName = new ArrayList<>();
-                    switch (comboBoxWare.getValue()){
+                    try{switch (comboBoxWare.getValue()){
                         case "Compañia":
                             Constant.entity = "CompanyClass";
                             ConstantsAccounting.entity = "CompanyClass";
@@ -522,6 +532,9 @@ public class AccountingController {
                             break;
                         default:
                             break;
+                    }
+                    }catch (Exception i){
+                        System.out.println(i + " Error en cargar los datos de la comboBoxWare en cuentas");
                     }
                     Constant.tfSalary = Constant.entity;
                     comboBoxProduct.getItems().addAll(listComboBoxName);
@@ -799,7 +812,6 @@ public class AccountingController {
             }
         }catch (Exception i){
             System.out.println(i + " Error al cargar la tabla (tableLoad)");
-            i.printStackTrace();
         }
 
     }

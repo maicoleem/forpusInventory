@@ -164,7 +164,7 @@
             </font>
         </Label>
         <Button id="buttonProduct" fx:id="buttonProduct" layoutX="389.0" layoutY="138.0" mnemonicParsing="false" onAction="#productFound" prefHeight="40.0" prefWidth="45.0" styleClass="buttonBlue" text="OK" />
-        <TextField id="tfOff" fx:id="tfOff" layoutX="752.0" layoutY="187.0" onKeyPressed="#changeOff" prefHeight="40.0" prefWidth="60.0" text="0" />
+        <TextField id="tfOff" fx:id="tfOff" layoutX="752.0" layoutY="187.0" onKeyPressed="#changeOff" prefHeight="40.0" prefWidth="60.0" promptText="\\$" text="0" />
         <Label id="labelOff" fx:id="labelOff" alignment="CENTER" contentDisplay="CENTER" layoutX="590.0" layoutY="187.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Descuento">
             <font>
                 <Font name="Tahoma Bold" size="19.0" />
@@ -323,6 +323,7 @@
             <Font name="Tahoma Bold" size="19.0" />
          </font>
       </Label>
+      <TextField id="tfOffPer" fx:id="tfOffPer" layoutX="823.0" layoutY="187.0" onKeyPressed="#offPercentage" prefHeight="40.0" prefWidth="60.0" promptText="1 - 100" />
     </children>
 
 </Pane>

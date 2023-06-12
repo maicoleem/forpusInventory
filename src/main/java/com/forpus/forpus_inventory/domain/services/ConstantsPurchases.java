@@ -34,18 +34,21 @@ public class ConstantsPurchases {
     public static String totalSale = "0";
 
     //Este metodo permite calcular el subtotal de cada producto
-    public static Integer subtotalProduct(String amount, String price){
+    public static Integer subtotalProduct(String amount, String price, String off){
         int a = Integer.parseInt(amount);
         int p = Integer.parseInt(price);
-        return a * p;
+        int o = Integer.parseInt(off);
+        int subtotal = a * p;
+        int offPrice = subtotal * o /100;
+        return (subtotal - offPrice);
     }
     //Este metodo permite calcular el monto que costaron los productos.
     public static Integer totalBuyProduct(ArrayList<ProductClass> productList){
         int totalBuy = 0;
         int sale = 0;
         for(ProductClass pt:productList){
-            totalBuy = totalBuy + subtotalProduct(String.valueOf(pt.getAmount()), pt.getPurchasePrice());
-            sale = sale + subtotalProduct(String.valueOf(pt.getAmount()), pt.getSalePrice());
+            totalBuy = totalBuy + subtotalProduct(String.valueOf(pt.getAmount()), pt.getPurchasePrice(), "0");
+            sale = sale + subtotalProduct(String.valueOf(pt.getAmount()), pt.getSalePrice(), "0");
             totalSale = String.valueOf(sale);
         }
         return totalBuy;
@@ -55,9 +58,9 @@ public class ConstantsPurchases {
         int totalBuy = 0;
         int sale = 0;
         for(ServiceClass pt:serviceList){
-            totalBuy = totalBuy + subtotalProduct(String.valueOf(pt.getHour()), pt.getCost());
+            totalBuy = totalBuy + subtotalProduct(String.valueOf(pt.getHour()), pt.getCost(), "0");
             //guarda el precio de venta
-            sale = sale + subtotalProduct(String.valueOf(pt.getHour()), pt.getProfit());
+            sale = sale + subtotalProduct(String.valueOf(pt.getHour()), pt.getProfit(), "0");
             totalSale = String.valueOf(sale);
         }
         return totalBuy;
@@ -143,22 +146,30 @@ public class ConstantsPurchases {
         SearchHQL.searchHQL();
     }
     public static void listWareInvoiceSearch(InvoiceClass idInvoice){
-        Constant.entity ="WareinvoiceClass";
-        Constant.tfCode = String.valueOf(idInvoice.getIdInvoice());
-        SearchHQL.searchHQL();
+        try {
+            Constant.entity = "WareinvoiceClass";
+            Constant.tfCode = String.valueOf(idInvoice.getIdInvoice());
+            SearchHQL.searchHQL();
 
-        Constant.entity ="ProvidersClass";
-        Constant.tfCode = idInvoice.getIdProviders();
-        FoundHQL.workerFound();
+            Constant.entity = "ProvidersClass";
+            Constant.tfCode = idInvoice.getIdProviders();
+            FoundHQL.workerFound();
 
-        Constant.entity ="CompanyClass";
-        FoundHQL.workerFound();
+            Constant.entity = "CompanyClass";
+            FoundHQL.workerFound();
+        }catch (Exception i){
+            System.out.println(i+" Ningun invoice seleccionado");
+        }
     }
 
     public static void listMoveSearch(InvoiceClass idInvoice){
-        Constant.entity ="MoveinvoiceClass";
-        Constant.tfCode = String.valueOf(idInvoice.getIdInvoice());
-        SearchHQL.searchHQL();
+        try {
+            Constant.entity = "MoveinvoiceClass";
+            Constant.tfCode = String.valueOf(idInvoice.getIdInvoice());
+            SearchHQL.searchHQL();
+        }catch (Exception i){
+            System.out.println(i+" Ningun invoice seleccionado");
+        }
     }
 
     public static TextFormatter<Integer> createNumericTextFormatter() {

@@ -11,9 +11,7 @@
         <Button id="found" fx:id="found" layoutX="814.0" layoutY="694.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
             <graphic>
                 <ImageView fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/find.png" />
-                    </image>
+                    <Image url="@../images/find.png" />
                 </ImageView>
             </graphic>
         </Button>
@@ -165,7 +163,7 @@
                 <Font name="Tahoma Bold" size="19.0" />
             </font>
         </Label>
-        <TextField id="tfOff" fx:id="tfOff" layoutX="628.0" layoutY="190.0" prefHeight="40.0" prefWidth="45.0" />
+        <TextField id="tfOff" fx:id="tfOff" layoutX="628.0" layoutY="190.0" prefHeight="40.0" prefWidth="45.0" promptText="0-100" />
         <Label id="labelOff" fx:id="labelOff" alignment="CENTER" contentDisplay="CENTER" layoutX="470.0" layoutY="190.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Descuento">
             <font>
                 <Font name="Tahoma Bold" size="19.0" />
@@ -261,13 +259,13 @@
                 <Button id="buttonQuote" fx:id="buttonQuote" layoutX="9.0" layoutY="14.0" mnemonicParsing="false" onAction="#quote" prefHeight="40.0" prefWidth="142.0" styleClass="buttonBlue" text="PAGO" />
             </children>
         </Pane>
-      <TextField id="tfPrice" fx:id="tfPrice" layoutX="240.0" layoutY="190.0" onKeyTyped="#priceNew" prefHeight="40.0" prefWidth="107.0" />
+      <TextField id="tfPrice" fx:id="tfPrice" layoutX="240.0" layoutY="190.0" onKeyTyped="#priceNew" prefHeight="40.0" prefWidth="107.0" promptText="\$" />
       <Label id="labelPriceSale" fx:id="labelPriceSale" alignment="CENTER" contentDisplay="CENTER" layoutX="295.0" layoutY="242.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Precio Venta">
          <font>
             <Font name="Tahoma Bold" size="19.0" />
          </font>
       </Label>
-      <TextField id="tfPriceSale" fx:id="tfPriceSale" layoutX="453.0" layoutY="243.0" prefHeight="40.0" prefWidth="122.0" />
+      <TextField id="tfPriceSale" fx:id="tfPriceSale" layoutX="453.0" layoutY="243.0" prefHeight="40.0" prefWidth="122.0" promptText="\$" />
       <Label id="labelAmount" fx:id="labelAmount" alignment="CENTER" contentDisplay="CENTER" layoutX="77.0" layoutY="243.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Cantidad">
          <font>
             <Font name="Tahoma Bold" size="19.0" />
@@ -279,7 +277,7 @@
             <Font name="Tahoma Bold" size="19.0" />
          </font>
       </Label>
-      <TextField id="tfProfit" fx:id="tfProfit" layoutX="740.0" layoutY="242.0" onKeyTyped="#priceSale" prefHeight="40.0" prefWidth="53.0" />
+      <TextField id="tfProfit" fx:id="tfProfit" layoutX="740.0" layoutY="242.0" onKeyTyped="#priceSale" prefHeight="40.0" prefWidth="53.0" promptText="0-100" />
       <ComboBox id="comboBoxOne" fx:id="comboBoxOne" layoutX="213.0" layoutY="294.0" onAction="#categorySelected" prefHeight="40.0" prefWidth="103.0" promptText="Categoria 1" />
       <ComboBox id="comboBoxTwo" fx:id="comboBoxTwo" layoutX="331.0" layoutY="294.0" onAction="#categorySelected" prefHeight="40.0" prefWidth="103.0" promptText="Categoria 2" />
       <ComboBox id="comboBoxThree" fx:id="comboBoxThree" layoutX="443.0" layoutY="294.0" prefHeight="40.0" prefWidth="103.0" promptText="Categoria 3" />

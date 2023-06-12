@@ -136,9 +136,13 @@ public class PurchasesController {
     @FXML
     public void buttonsOptions(ActionEvent event) {
         Button button = (Button) event.getSource();
+        option(button.getId());
+    }
+
+    public void option(String idButton){
         clear();
         final boolean a = true;
-        switch (button.getId()){
+        switch (idButton){
             case "buttonProduct0":
                 buttonProduct0.setStyle("-fx-background-color: #F5F5F5; ");
                 ConstantsPurchases.entity = "Purchases";
@@ -165,6 +169,7 @@ public class PurchasesController {
                 buttonProduct.setVisible(a);
                 buttonRegister.setVisible(a);
                 buttonSuppress.setVisible(a);
+                buttonCheckIn.setVisible(a);
 
                 search.setVisible(a);
                 save.setVisible(a);
@@ -233,6 +238,7 @@ public class PurchasesController {
                 tableService.setVisible(a);
 
                 panelCheckIn.setVisible(a);
+                buttonCheckIn.setVisible(a);
                 panelPayment.setVisible(a);
                 buttonIVA.setVisible(a);
                 buttonBold.setVisible(a);
@@ -274,11 +280,10 @@ public class PurchasesController {
                 labelBold.setVisible(!a);
                 labelBold2.setVisible(!a);
                 buttonQuote.setVisible(a);
+                buttonCheckIn.setVisible(!a);
 
                 panelTotal.setVisible(a);
                 labelNameProvider.setVisible(a);
-
-
                 tableLoad();
                 break;
             default:
@@ -378,8 +383,9 @@ public class PurchasesController {
         Constant.tfCode = tfProvider.getText();
         if(FoundHQL.workerFound()){
             labelNameProvider.setText(Constant.provider.getName());
-            checkSale();
+            //checkSale();
         }
+
         if(Objects.equals(ConstantsPurchases.entity, "Credit")){
             ObservableList<InvoiceClass> listOne = FXCollections.observableArrayList(ConstantsPurchases.invoiceCredit);
             if(!tfProvider.getText().isBlank()) {
@@ -415,10 +421,11 @@ public class PurchasesController {
                             listProduct.add(price);
                         }
                     }
+                    comboBoxPrice.setValue(listProduct.get(0));
                     comboBoxPrice.getItems().addAll(listProduct);
                     tfOff.setText("0");
                     tfAmount.setText("1");
-                    tfProfit.setText("30");
+                    tfProfit.setText(ConstantsWare.product.getProfit());
                 }
                 break;
             case "Service":
@@ -516,7 +523,6 @@ public class PurchasesController {
     public void priceNew(KeyEvent keyEvent) {
         //Cuando se agrega un valor al tfPrice da la opcion para agregar a cualquier bodega
         comboBoxPrice.setValue("0");
-        //comboBoxPrice.setValue("");
 
         ArrayList<String> listProduct = new ArrayList<>();
         Constant.entity = "WarehouseClass";
@@ -526,8 +532,16 @@ public class PurchasesController {
             listProduct.add(w.getIdWarehouse());
         }
         comboBoxWare.getItems().clear();
+        comboBoxWare.setValue(listProduct.get(0));
         comboBoxWare.getItems().addAll(listProduct);
         checkSale();
+
+        if(!tfPrice.getText().equals("0") && !tfPrice.getText().equals("")) {
+            int newPriceBuy = Integer.parseInt(tfPrice.getText());
+            int priceSale = Integer.parseInt(tfPriceSale.getText());
+            int profit = ((priceSale - newPriceBuy) / newPriceBuy) * 100;
+            tfProfit.setText(String.valueOf(profit));
+        }
     }
     public void priceSale(){
         int price;
@@ -536,10 +550,11 @@ public class PurchasesController {
         }else{
             price = Integer.valueOf(comboBoxPrice.getValue());
         }
-
-        int profit = Integer.valueOf(tfProfit.getText());
-        int sale = price + (price * profit / 100);
-        tfPriceSale.setText(String.valueOf(sale));
+        if(!Objects.equals(tfProfit.getText(), "")) {
+            int profit = Integer.valueOf(tfProfit.getText());
+            int sale = price + (price * profit / 100);
+            tfPriceSale.setText(String.valueOf(sale));
+        }
     }
     public void checkSale() {
         if(checkSale.isSelected()){
@@ -568,6 +583,7 @@ public class PurchasesController {
             switch (ConstantsPurchases.entity){
                 case "Purchases":
                     if(checkProduct.isSelected()){
+
                         ProductClass product = new ProductClass();
                         product.setIdProduct(tfProduct.getText());
                         product.setName(tfProductName.getText());
@@ -576,12 +592,15 @@ public class PurchasesController {
                         product.setSalePrice(tfPriceSale.getText());
                         product.setProfit(tfProfit.getText());
                         product.setIdOne(ConstantsWare.one.getIdOne());
+
                         if(ConstantsWare.two != null){
                             product.setIdTwo(ConstantsWare.two.getIdTwo());
                         }
+
                         if(ConstantsWare.three != null){
                             product.setIdThree(ConstantsWare.three.getIdThree());
                         }
+
                         product.setIdWage(comboBoxWare.getValue());
                         ConstantsPurchases.productTableList.add(product);
 
@@ -591,7 +610,11 @@ public class PurchasesController {
                         ConstantsWare.product.setSalePrice(tfPriceSale.getText());
                         ConstantsWare.product.setProfit(tfProfit.getText());
                         ConstantsWare.product.setIdWage(comboBoxWare.getValue());
-                        System.out.println(ConstantsWare.product);
+                        if(tfOff.getText().equals("")){
+                            tfOff.setText("0");
+                        }
+                        ConstantsWare.product.setOffSale(Integer.valueOf(tfOff.getText())); //porcentaje
+
                         ConstantsPurchases.productTableList.add(ConstantsWare.product);
                     }
                     break;
@@ -721,7 +744,7 @@ public class PurchasesController {
         bWare.setDisable(!Constant.isAdmin);
 
         buttonProduct0.setStyle("-fx-background-color: #F5F5F5; ");
-
+        option("buttonProduct0");
     }
     // Crear un TextFormatter que solo permita números
     public Boolean verify(){
@@ -808,10 +831,8 @@ public class PurchasesController {
                 //Obtiene el total sin Taxes
                 for(ProductClass p: tableMain.getItems()){
 
-                    int subtotal = ConstantsPurchases.subtotalProduct(String.valueOf(p.getAmount()), p.getPurchasePrice());
-
+                    int subtotal = ConstantsPurchases.subtotalProduct(String.valueOf(p.getAmount()), p.getPurchasePrice(), String.valueOf(p.getOffSale()));
                     int balance = Integer.valueOf(labelTotal2.getText());
-
                     int total = subtotal + balance;
                     labelTotal2.setText(String.valueOf(total));
                 }
@@ -824,7 +845,7 @@ public class PurchasesController {
                 labelTotal2.setText("0");
                 for(ServiceClass p: tableService.getItems()){
 
-                    int subtotal = ConstantsPurchases.subtotalProduct(String.valueOf(p.getHour()), p.getCost());
+                    int subtotal = ConstantsPurchases.subtotalProduct(String.valueOf(p.getHour()), p.getCost(), "0");
 
                     int balance = Integer.valueOf(labelTotal2.getText());
 
@@ -1070,6 +1091,11 @@ public class PurchasesController {
             if(SaveHQL.saveInvoice()){
 
                 WareController.alertSend("Datos guardados con exito");
+                if(ConstantsPurchases.entity.equals("Purchases")){
+                    option("buttonProduct0");
+                } else if (ConstantsPurchases.entity.equals("Service")) {
+                    option("buttonService");
+                }
             }else {
                 WareController.alertSend("Error al guardar los datos");
             }
@@ -1077,33 +1103,37 @@ public class PurchasesController {
         }
     }
     public void invoiceView() {
-        //carga los productos de la factura
-        InvoiceClass invoiceSelected = tableInvoice.getSelectionModel().getSelectedItem();
-        ConstantsAccounting.invoice = invoiceSelected;
-        ConstantsPurchases.listWareInvoiceSearch(invoiceSelected);
+        try {
+            //carga los productos de la factura
+            InvoiceClass invoiceSelected = tableInvoice.getSelectionModel().getSelectedItem();
+            ConstantsAccounting.invoice = invoiceSelected;
+            ConstantsPurchases.listWareInvoiceSearch(invoiceSelected);
 
-        tableWareInv.getItems().clear();
-        ObservableList<WareinvoiceClass> wiTable = FXCollections.observableArrayList(ConstantsPurchases.wareInvoiceList);
-        tableWareInv.setItems(wiTable);
+            tableWareInv.getItems().clear();
+            ObservableList<WareinvoiceClass> wiTable = FXCollections.observableArrayList(ConstantsPurchases.wareInvoiceList);
+            tableWareInv.setItems(wiTable);
 
-        //Carga la tabla de deudas si tiene
-        ConstantsPurchases.listMoveSearch(invoiceSelected);
-        if(!ConstantsPurchases.moveInvoiceList.isEmpty()){
-            tableMoveInv.getItems().clear();
-            ObservableList<MoveinvoiceClass> miTable = FXCollections.observableArrayList(ConstantsPurchases.moveInvoiceList);
-            tableMoveInv.setItems(miTable);
-        }else {
-            tableMoveInv.getItems().clear();
-            labelTotal2.setText("0");
-            labelTotal3.setText("0");
-            tfTaxes.setText("0");
-        }
+            //Carga la tabla de deudas si tiene
+            ConstantsPurchases.listMoveSearch(invoiceSelected);
+            if (!ConstantsPurchases.moveInvoiceList.isEmpty()) {
+                tableMoveInv.getItems().clear();
+                ObservableList<MoveinvoiceClass> miTable = FXCollections.observableArrayList(ConstantsPurchases.moveInvoiceList);
+                tableMoveInv.setItems(miTable);
+            } else {
+                tableMoveInv.getItems().clear();
+                labelTotal2.setText("0");
+                labelTotal3.setText("0");
+                tfTaxes.setText("0");
+            }
 
-        //Carga la deuda pendiente de pagar
-        if(0 != invoiceSelected.getIdBill()){
-            labelTotal2.setText(String.valueOf(invoiceSelected.getIdBill()));
-            labelTotal3.setText(labelTotal2.getText());
-            tfTaxes.setText("0");
+            //Carga la deuda pendiente de pagar
+            if (0 != invoiceSelected.getIdBill()) {
+                labelTotal2.setText(String.valueOf(invoiceSelected.getIdBill()));
+                labelTotal3.setText(labelTotal2.getText());
+                tfTaxes.setText("0");
+            }
+        }catch (Exception i){
+            System.out.println(i+" Ningun invoice seleccionado");
         }
     }
     public void sobreCost(KeyEvent keyEvent) {
