@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="1-Eliminar todos los datos OK&#10;2-Subir datos de excel OK">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Se esta revizando el funcionamiento del registro de una venta.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/AccountingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/AccountingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/PurchasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/PurchasesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SalesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SalesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/WareController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/WareController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsPurchases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsPurchases.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/purchases-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/purchases-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/sales-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/sales-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/repository/ReportGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/repository/ReportGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsSales.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsSales.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SearchHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SearchHQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/InvoiceClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/InvoiceClass.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,14 +221,8 @@
       <workItem from="1686420584527" duration="4052000" />
       <workItem from="1686441572292" duration="7751000" />
       <workItem from="1686537008325" duration="2011000" />
-      <workItem from="1686584199460" duration="15426000" />
-    </task>
-    <task id="LOCAL-00017" summary="**SE alistaron los combobox&#10;**Se dio diseñoa la pestaña transmutar&#10;-falta crear y configurar los botones para agregar y eliminar de la tabla view&#10;-----En la tabla view debe de quedar el id de la calse ProducpriceClass para poder luego realizarle el update.">
-      <created>1675135612997</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1675135612997</updated>
+      <workItem from="1686584199460" duration="15489000" />
+      <workItem from="1686613023822" duration="9134000" />
     </task>
     <task id="LOCAL-00018" summary="** Se crean y configurar los botones para agregar y eliminar de la tabla view&#10;**Table view configurada&#10;+Metodo salvat y de muchos a uno configurada*&#10;--Falta configorar el metodo de uno a muchos&#10;--Falta configurar como se van activando los botones para evitar errores">
       <created>1675227171386</created>
@@ -567,14 +560,20 @@
       <option name="project" value="LOCAL" />
       <updated>1686450584375</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Se esta revizando el funcionamiento del registro de una venta.">
+      <created>1686607365060</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1686607365061</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="**Las tablas de la pestaña credito ya funcionan&#10;&#10;--Falta poder guardar movimientos &#10;&#10;--el subtotal del ultimo movimiento debe ser igual a idBill de la factura." />
     <MESSAGE value="**Se termino toda la funcionalidad de compras &#10;&#10;--Falta mejorar el diseño" />
     <MESSAGE value="**Se realizo el backend de venta de productos&#10;&#10;--revisar backend&#10;--revisar la facturación de servicios en compras--" />
     <MESSAGE value="*- El backend de venta de productos se esta revisando si guarda bien los datos para la contabilidad estamos en ConstasSales.java linea 63." />
@@ -599,7 +598,8 @@
     <MESSAGE value="Las importaciones de datos borran las tablas cuidado** &#10;&#10;La importación de productos crea las bodegas y los precios de compra&#10;&#10;Formatos de excel listos&#10;&#10;se modificaron los botones de registrar, cotizar y facturar en SalesController&#10;&#10;Falta probar los formatos de excel&#10;&#10;Falta revisar el funcionamiento - entrando en etapa alpha" />
     <MESSAGE value="Se modifico los colores de los botones que estan activos.&#10;&#10;Falta probar los formatos de excel&#10;&#10;Falta revisar el funcionamiento - entrando en etapa alpha" />
     <MESSAGE value="1-Eliminar todos los datos OK&#10;2-Subir datos de excel OK" />
-    <option name="LAST_COMMIT_MESSAGE" value="1-Eliminar todos los datos OK&#10;2-Subir datos de excel OK" />
+    <MESSAGE value="Se esta revizando el funcionamiento del registro de una venta." />
+    <option name="LAST_COMMIT_MESSAGE" value="Se esta revizando el funcionamiento del registro de una venta." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -645,25 +645,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/FinanceController.java</url>
           <line>299</line>
           <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SalesController.java</url>
-          <line>655</line>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SalesController.java</url>
-          <line>754</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SalesController.java</url>
-          <line>576</line>
-          <properties class="com.forpus.forpus_inventory.controller.SalesController" method="changeOff">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

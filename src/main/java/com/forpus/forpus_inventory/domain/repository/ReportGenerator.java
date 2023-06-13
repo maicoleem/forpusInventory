@@ -2,6 +2,7 @@ package com.forpus.forpus_inventory.domain.repository;
 import com.forpus.forpus_inventory.domain.services.Constant;
 import com.forpus.forpus_inventory.domain.services.ConstantsAccounting;
 import com.forpus.forpus_inventory.domain.services.ConstantsPurchases;
+import com.forpus.forpus_inventory.persistence.Session.SessionDB;
 import com.forpus.forpus_inventory.persistence.crud.FoundHQL;
 import com.forpus.forpus_inventory.persistence.entity.CompanyClass;
 import com.forpus.forpus_inventory.persistence.entity.CustomerClass;
@@ -10,6 +11,7 @@ import com.forpus.forpus_inventory.persistence.entity.WareinvoiceClass;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanArrayDataSource;
 import net.sf.jasperreports.swing.JRViewer;
+import org.hibernate.event.spi.SaveOrUpdateEvent;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,6 +36,17 @@ public class ReportGenerator {
             WareinvoiceClass wi = invoiceData.get(0);
             invoiceData.add(0, wi);
 
+            for(WareinvoiceClass wInvoice: invoiceData){
+                int subtotal = wInvoice.getAmount() * Integer.parseInt(wInvoice.getPriceSale());
+                wInvoice.setPriceBuy(subtotal);
+            }
+
+            //calcula el subtotal
+            int total = Integer.parseInt(invoice.getTotal());
+            int taxes = Integer.parseInt(invoice.getTaxes());
+            int subtotal = total - taxes;
+
+
             // Convertir la lista de datos en un origen de datos JRBeanCollectionDataSource
             JRBeanArrayDataSource sourceData = new JRBeanArrayDataSource(invoiceData.toArray());
 
@@ -50,9 +63,9 @@ public class ReportGenerator {
             parameters.put("NIT_CUSTOMER", invoice.getIdCustomer());
             parameters.put("PHONE_CUSTOMER", customer.getPhoneNumber());
             parameters.put("OBSERVATIONS", invoice.getObservations());
-            parameters.put("SUBTOTAL", "FFFFFFFF");
+            parameters.put("SUBTOTAL", String.valueOf(subtotal));
             parameters.put("TOTAL", invoice.getTotal());
-            parameters.put("IVA", "FFFFF");
+            parameters.put("IVA", invoice.getTaxes());
 
             // Compilar el informe
             JasperReport jasperReport = JasperCompileManager.compileReport(reportPath);
@@ -74,6 +87,8 @@ public class ReportGenerator {
             dialog.pack();
             dialog.setLocationRelativeTo(null);
             dialog.setVisible(true);
+
+            SessionDB.sessionClose();
 
             // Exportar el informe a PDF u otro formato
            //JasperExportManager.exportReportToPdfFile(jasperPrint, "C:\\Users\\Teemo\\OneDrive\\destino.pdf");
@@ -121,6 +136,12 @@ public class ReportGenerator {
         try {
             WareinvoiceClass wI = wareInvoice.get(0);
             wareInvoice.add(0, wI);
+
+            for(WareinvoiceClass wInvoice: wareInvoice){
+                int totalForItem = wInvoice.getAmount() * Integer.parseInt(wInvoice.getPriceSale());
+                wInvoice.setPriceBuy(totalForItem);
+            }
+
             // Convertir la lista de datos en un origen de datos JRBeanCollectionDataSource
             JRBeanArrayDataSource sourceData = new JRBeanArrayDataSource(wareInvoice.toArray());
 

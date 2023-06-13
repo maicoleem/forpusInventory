@@ -272,8 +272,6 @@ public class SaveHQL {
                         session.saveOrUpdate(sp);
                     }
                     session.getTransaction().commit();
-                    System.out.println("Servicio Producto Guardado");
-
                     break;
                 case "Transmute":
                     session.beginTransaction();

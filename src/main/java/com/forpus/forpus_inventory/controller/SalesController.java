@@ -201,10 +201,12 @@ public class SalesController {
         for(TaxesClass tx: ConstantsAccounting.taxesList){
             if(tx.getIdTaxes().equals("IVA")){
                 labelIVA.setText(tx.getTaxes());
+                ConstantsSales.iva = tx.getTaxes();
 
             }
             if(tx.getIdTaxes().equals("BOLD")){
                 labelBold.setText(tx.getTaxes());
+                ConstantsSales.bold = tx.getTaxes();
             }
         }
     }
@@ -842,13 +844,6 @@ public class SalesController {
             int total = iva + subtotal;
             labelTotal2.setText(String.valueOf(total));
         }
-
-        if(ConstantsPurchases.boldP){
-            int bold = Integer.valueOf(labelBold2.getText());
-            int subtotal = Integer.valueOf(labelSubTota2.getText());
-            int total = bold + subtotal;
-            labelTotal2.setText(String.valueOf(total));
-        }
     }
     public void pay(){
 
@@ -897,9 +892,21 @@ public class SalesController {
         switch (button.getId()){
             case "buttonIVA":
                 ConstantsPurchases.iva = !ConstantsPurchases.iva;
+                if(ConstantsPurchases.iva){
+                    labelIVA.setText(ConstantsSales.iva);
+                }else {
+                    labelIVA.setText("0");
+                    labelIVA2.setText("0");
+                }
                 break;
             case "buttonBold":
                 ConstantsPurchases.boldP = !ConstantsPurchases.boldP;
+                if(ConstantsPurchases.boldP){
+                    labelBold.setText(ConstantsSales.bold);
+                }else {
+                    labelBold.setText("0");
+                    labelBold2.setText("0");
+                }
                 break;
             default:
                 break;
@@ -973,7 +980,8 @@ public class SalesController {
             ConstantsAccounting.invoice.setIdCompany(Constant.company.getIdCompanyNIT());
             ConstantsAccounting.invoice.setIdCustomer(Constant.customer.getIdCustomer());
             //calculo de impuestos pagados
-            ConstantsAccounting.invoice.setTaxes(ConstantsSales.taxes(labelIVA2.getText(), labelBold2.getText()));
+            ConstantsAccounting.invoice.setTaxes(labelIVA2.getText());
+            ConstantsAccounting.invoice.setBold(labelBold2.getText());
             //calculo de los precios de compra de todos los productos por sus cantidades
             if(ConstantsSales.salesOption.equals("Product")) {
                 ConstantsAccounting.invoice.setTotalBuy(String.valueOf(ConstantsPurchases.totalBuyProduct(ConstantsPurchases.productTableList)));
@@ -981,12 +989,18 @@ public class SalesController {
             if(ConstantsSales.salesOption.equals("Service")) {
                 ConstantsAccounting.invoice.setTotalBuy(String.valueOf(ConstantsPurchases.totalCostService(ConstantsPurchases.serviceTableList)));
             }
-
             //en caso de deudas hace
-            ConstantsAccounting.invoice.setUtilities( ConstantsSales.utilities(ConstantsPurchases.totalSale,
-            ConstantsAccounting.invoice.getTotalBuy(), ConstantsAccounting.invoice.getTaxes(),
-            ConstantsAccounting.invoice.getIndebtedness(), ConstantsAccounting.invoice.getTotal() ));
-
+            ConstantsAccounting.invoice.setUtilities(
+                    ConstantsSales.utilities(
+                            ConstantsPurchases.totalSale,
+                            ConstantsAccounting.invoice.getTotalBuy(),
+                            ConstantsAccounting.invoice.getTaxes(),
+                            ConstantsAccounting.invoice.getIndebtedness(),
+                            ConstantsAccounting.invoice.getTotal(),
+                            ConstantsAccounting.invoice.getBold()
+                    )
+            );
+            //lo que falta por pagar en utilidades
             ConstantsAccounting.invoice.setRUtilities(ConstantsSales.rUtilities);
 
             //idBIll se usa para guardar la deuda actual
@@ -1053,6 +1067,7 @@ public class SalesController {
         Constant.entity = "InvoiceClass";
         Constant.tfCode = tfFactura.getText();
         FoundHQL.workerFound();
+
         ReportGenerator.generateReport();
         Constant.entity = entity;
 

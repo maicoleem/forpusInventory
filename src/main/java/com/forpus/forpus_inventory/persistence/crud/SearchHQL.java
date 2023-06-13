@@ -141,7 +141,12 @@ public class SearchHQL {
 
                     break;
                 case "InvoiceClass":
-                    ConstantsPurchases.invoiceList = null;
+                    try {
+                        ConstantsPurchases.invoiceList.clear();
+                    }catch (Exception i){
+                        System.out.println(i +" invoiceList vacio");
+                    }
+
                     String hql16 = "FROM "+ Constant.entity;
                     Query query16 = session.createQuery(hql16);
                     List<InvoiceClass> results16 = query16.list();
