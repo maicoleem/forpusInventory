@@ -359,7 +359,7 @@ public class SaveHQL {
                 default:
                     break;
             }
-            System.out.println(SessionDB.sessionHibernate);
+            SessionDB.sessionClose();
             return true;
         }catch (Exception i){
             System.out.println("Error en SaveHQL");
@@ -429,6 +429,7 @@ public class SaveHQL {
                     break;
             }
             session.getTransaction().commit();
+            SessionDB.sessionClose();
             return true;
         }catch (Exception e){
             SessionDB.sessionClose();
@@ -442,11 +443,9 @@ public class SaveHQL {
      * */
     public static boolean saveInvoice(){
         try{
-
             SessionDB.session();
             Session session = SessionDB.session().getSession();
             session.beginTransaction();
-            System.out.println("actualiza invoice");
             //primero actualiza la invoice
             session.update(ConstantsAccounting.invoice);
             session.getTransaction().commit();
@@ -454,7 +453,6 @@ public class SaveHQL {
 
             session.beginTransaction();
             for(WareinvoiceClass wI: ConstantsPurchases.wareInvoiceList){
-                System.out.println("guardando porductos en WareInvoice");
                 session.save(wI);
             }
             session.getTransaction().commit();
@@ -462,6 +460,8 @@ public class SaveHQL {
             session.beginTransaction();
             session.update(Constant.company);
             session.getTransaction().commit();
+
+            session.beginTransaction();
             switch (ConstantsPurchases.entityForInvoice){
                 case "ProvidersClass":
                     session.update(Constant.provider);
@@ -479,8 +479,8 @@ public class SaveHQL {
                     System.out.println("error al actuañizar los datos");
                     break;
             }
-            //Falta actualizar/salvar los productos y los servicios
-            System.out.println(ConstantsPurchases.entity);
+            session.getTransaction().commit();
+
             switch (ConstantsPurchases.entity){
                 case "Purchases":
                     //actualiza el inventario
@@ -546,7 +546,7 @@ public class SaveHQL {
                 default:
                     break;
             }
-
+            SessionDB.sessionClose();
             return true;
         }catch (Exception i){
             i.printStackTrace();
@@ -570,6 +570,7 @@ public class SaveHQL {
          session.save(mi);
          session.getTransaction().commit();
      }
+     SessionDB.sessionClose();
      }catch (Exception i){
          i.printStackTrace();
          System.out.println("Error en MoveInvoiceNew- SAveHQL");

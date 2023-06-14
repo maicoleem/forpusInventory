@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Se esta revizando el funcionamiento del registro de una venta.">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="+ Se correge el bold que no vaya a taxes(agregar bold a invoice)&#10;+ ahora se puede dar la opción de cero de iva y bold&#10;-Revizar las ventas no cuadran los movimientos de inventario&#10;-Revizar el pago de deudas para la gestion del bold">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SalesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SalesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/repository/ReportGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/repository/ReportGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsSales.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsSales.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SearchHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SearchHQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/InvoiceClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/InvoiceClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SingUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SingUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/ProductClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/ProductClass.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,14 +222,8 @@
       <workItem from="1686441572292" duration="7751000" />
       <workItem from="1686537008325" duration="2011000" />
       <workItem from="1686584199460" duration="15489000" />
-      <workItem from="1686613023822" duration="9134000" />
-    </task>
-    <task id="LOCAL-00018" summary="** Se crean y configurar los botones para agregar y eliminar de la tabla view&#10;**Table view configurada&#10;+Metodo salvat y de muchos a uno configurada*&#10;--Falta configorar el metodo de uno a muchos&#10;--Falta configurar como se van activando los botones para evitar errores">
-      <created>1675227171386</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1675227171386</updated>
+      <workItem from="1686613023822" duration="9586000" />
+      <workItem from="1686697511034" duration="7302000" />
     </task>
     <task id="LOCAL-00019" summary="**Se configura el metodo MAU y UAM&#10;--Falta configurar como se van activando los botones para evitar errores">
       <created>1675307875979</created>
@@ -567,14 +561,20 @@
       <option name="project" value="LOCAL" />
       <updated>1686607365061</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="+ Se correge el bold que no vaya a taxes(agregar bold a invoice)&#10;+ ahora se puede dar la opción de cero de iva y bold&#10;-Revizar las ventas no cuadran los movimientos de inventario&#10;-Revizar el pago de deudas para la gestion del bold">
+      <created>1686624306415</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1686624306415</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="**Se termino toda la funcionalidad de compras &#10;&#10;--Falta mejorar el diseño" />
     <MESSAGE value="**Se realizo el backend de venta de productos&#10;&#10;--revisar backend&#10;--revisar la facturación de servicios en compras--" />
     <MESSAGE value="*- El backend de venta de productos se esta revisando si guarda bien los datos para la contabilidad estamos en ConstasSales.java linea 63." />
     <MESSAGE value="--falta cambiar los textos de los labels y textfield cuando se realizan cambios de opciones y/o operaciones como facturar&#10;&#10;**los servicios de PurchasesController: cargan el costo como precio de compra, se puede colocar la bodega y se modifico la vista general&#10;**la opcion de creditos de compras y venatas: se adiciono el filtrado de la tableInvoice.&#10;**la compra y venta de productos se audito que se gestionara el stock y los calculos de contabilidad" />
@@ -599,7 +599,8 @@
     <MESSAGE value="Se modifico los colores de los botones que estan activos.&#10;&#10;Falta probar los formatos de excel&#10;&#10;Falta revisar el funcionamiento - entrando en etapa alpha" />
     <MESSAGE value="1-Eliminar todos los datos OK&#10;2-Subir datos de excel OK" />
     <MESSAGE value="Se esta revizando el funcionamiento del registro de una venta." />
-    <option name="LAST_COMMIT_MESSAGE" value="Se esta revizando el funcionamiento del registro de una venta." />
+    <MESSAGE value="+ Se correge el bold que no vaya a taxes(agregar bold a invoice)&#10;+ ahora se puede dar la opción de cero de iva y bold&#10;-Revizar las ventas no cuadran los movimientos de inventario&#10;-Revizar el pago de deudas para la gestion del bold" />
+    <option name="LAST_COMMIT_MESSAGE" value="+ Se correge el bold que no vaya a taxes(agregar bold a invoice)&#10;+ ahora se puede dar la opción de cero de iva y bold&#10;-Revizar las ventas no cuadran los movimientos de inventario&#10;-Revizar el pago de deudas para la gestion del bold" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

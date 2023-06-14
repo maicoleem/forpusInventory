@@ -24,8 +24,13 @@ public class SingUp {
      * */
     public static boolean companySingUP(String name, String password){
         try{
+            //check hibernate connection and database
+            if(SessionDB.sessionHibernate.isOpen()){
+                SessionDB.sessionClose();
+            }
             SessionDB.session();
             Session session = SessionDB.sessionHibernate;
+
             Query query = session.createQuery("from CompanyClass C where C.name in(?1)");
             query.setParameter(1, name);
             Constant.company = (CompanyClass) query.uniqueResult();
@@ -35,6 +40,7 @@ public class SingUp {
                 Constant.isAdmin = true;
                 Constant.admin = "Usuario: "+ Constant.company.getName() + " Tipo: Admin";
             }
+            SessionDB.sessionClose();
             return password.equals(Constant.company.getPassword());
         }catch (Exception e){
             try{
@@ -54,6 +60,7 @@ public class SingUp {
                     }
 
                 }
+                SessionDB.sessionClose();
                 return password.equals(Constant.workerLogin.getPassword());
             }catch (Exception i){
                 System.out.println("Error ejecutando el query");

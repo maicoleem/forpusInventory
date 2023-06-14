@@ -68,7 +68,7 @@ public class ConstantsSales {
         //System.out.println(rBuy + "lo que falta para pagar la inversión");
 
         //System.out.println(rUtilities + "la que falta para completar las utilidades");
-
+        //a las utilidades se le resta el bold
         return String.valueOf((sale - buy - b));
     }
     public static void saleCompany(String bank, String cash, String receivable, String uReceivable, String utilities){

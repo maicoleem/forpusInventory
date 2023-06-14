@@ -43,6 +43,9 @@ public class ProductClass {
     @Basic
     @Column(name = "off_sale", nullable = true)
     private Integer offSale;
+    @Basic
+    @Column(name = "stock", nullable = true, length = 6)
+    private Integer stock;
     @OneToMany(mappedBy = "productByIdProduct")
     private Collection<ServiceProductClass> serviceProductsByIdProduct;
     @OneToMany(mappedBy = "productByIdProduct", cascade = CascadeType.PERSIST)
@@ -135,12 +138,12 @@ public class ProductClass {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ProductClass that = (ProductClass) o;
-        return Objects.equals(idProduct, that.idProduct) && Objects.equals(name, that.name) && Objects.equals(purchasePrice, that.purchasePrice) && Objects.equals(amount, that.amount) && Objects.equals(salePrice, that.salePrice) && Objects.equals(profit, that.profit) && Objects.equals(idOne, that.idOne) && Objects.equals(idTwo, that.idTwo) && Objects.equals(idThree, that.idThree) && Objects.equals(idWage, that.idWage) && Objects.equals(idService, that.idService) && Objects.equals(offSale, that.offSale);
+        return Objects.equals(idProduct, that.idProduct) && Objects.equals(name, that.name) && Objects.equals(purchasePrice, that.purchasePrice) && Objects.equals(amount, that.amount) && Objects.equals(salePrice, that.salePrice) && Objects.equals(profit, that.profit) && Objects.equals(idOne, that.idOne) && Objects.equals(idTwo, that.idTwo) && Objects.equals(idThree, that.idThree) && Objects.equals(idWage, that.idWage) && Objects.equals(idService, that.idService) && Objects.equals(offSale, that.offSale) && Objects.equals(stock, that.stock);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idProduct, name, purchasePrice, amount, salePrice, profit, idOne, idTwo, idThree, idWage, idService, offSale);
+        return Objects.hash(idProduct, name, purchasePrice, amount, salePrice, profit, idOne, idTwo, idThree, idWage, idService, offSale, stock);
     }
 
     public Collection<ServiceProductClass> getServiceProductsByIdProduct() {
@@ -165,5 +168,13 @@ public class ProductClass {
 
     public void setOffSale(Integer offSale) {
         this.offSale = offSale;
+    }
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
     }
 }

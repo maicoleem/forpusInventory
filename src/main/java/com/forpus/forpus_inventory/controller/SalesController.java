@@ -3,6 +3,7 @@ package com.forpus.forpus_inventory.controller;
 import com.forpus.forpus_inventory.HelloApplication;
 import com.forpus.forpus_inventory.domain.repository.ReportGenerator;
 import com.forpus.forpus_inventory.domain.services.*;
+import com.forpus.forpus_inventory.persistence.Session.SessionDB;
 import com.forpus.forpus_inventory.persistence.crud.FoundHQL;
 import com.forpus.forpus_inventory.persistence.crud.SaveHQL;
 import com.forpus.forpus_inventory.persistence.crud.SearchHQL;
@@ -21,6 +22,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.hibernate.Session;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -656,6 +659,7 @@ public class SalesController {
                         ConstantsWare.product.setProfit(labelUtilities.getText());
                         ConstantsWare.product.setIdWage(comboBoxWare.getValue());
                         ConstantsWare.product.setOffSale(Integer.parseInt(tfOff.getText()));
+                        ConstantsWare.product.setStock(Integer.parseInt(comboBoxAmount.getValue()));
                         ConstantsPurchases.productTableList.add(ConstantsWare.product);
 
                     break;
@@ -1085,13 +1089,17 @@ public class SalesController {
         //generar la cotización con jasper Report
         ReportGenerator.generadorCotizar(company,customer,ConstantsPurchases.wareInvoiceList,subtotal, iva);
     }
-    public static void generadorWareAndPrice(String button){
+    public void generadorWareAndPrice(String button){
         switch (ConstantsSales.salesOption){
             case "Product":
                 //cada producto debe de crear un wareinvoice
                 if(!ConstantsPurchases.wareInvoiceList.isEmpty()){
                     ConstantsPurchases.wareInvoiceList.clear();
                 }
+                if(!ConstantsPurchases.pPriceUpdateList.isEmpty()){
+                    ConstantsPurchases.pPriceUpdateList.clear();
+                }
+
                 for(ProductClass p: ConstantsPurchases.productTableList){
                     WareinvoiceClass wi = new WareinvoiceClass();
                     if(button.equals("buttonCheckIn")){
@@ -1109,9 +1117,6 @@ public class SalesController {
 
                     //actualiza los productos en product price
                     try{
-                        if(!ConstantsPurchases.pPriceUpdateList.isEmpty()){
-                            ConstantsPurchases.pPriceUpdateList.clear();
-                        }
                         for(WareProductClass wp: p.getWareProductsByIdProduct()){
                             //Si la bodega corresponde a una registrada
                             if(Objects.equals(wp.getIdWare(), p.getIdWage())){
@@ -1120,7 +1125,7 @@ public class SalesController {
                                     if(pp.getPrice() == Integer.parseInt(p.getPurchasePrice())){
                                         //agrega el objeto productprice a la lista para actualizar
                                         //actualiza la cantidad en inventario
-                                        pp.setAmount( - p.getAmount() + pp.getAmount());
+                                        pp.setAmount( - p.getAmount() + p.getStock());
                                         //guarda la cantidad actualizada
                                         ConstantsPurchases.pPriceUpdateList.add(pp);
                                     }

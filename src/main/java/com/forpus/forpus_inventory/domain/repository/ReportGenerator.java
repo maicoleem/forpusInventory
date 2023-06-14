@@ -182,6 +182,8 @@ public class ReportGenerator {
             dialog.setLocationRelativeTo(null);
             dialog.setVisible(true);
 
+            SessionDB.sessionClose();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
