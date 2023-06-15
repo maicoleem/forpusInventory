@@ -34,8 +34,10 @@ public class SaveHQL {
 
         try{
             //check hibernate connection and database
-            if(SessionDB.sessionHibernate.isOpen()){
+            try{if(SessionDB.sessionHibernate.isOpen()){
                 SessionDB.sessionClose();
+            }}catch (Exception i){
+                System.out.println(i +" INSERWORKER");
             }
             SessionDB.session();
             Session session = SessionDB.session().getSession();

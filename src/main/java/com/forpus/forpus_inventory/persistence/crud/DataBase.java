@@ -149,11 +149,10 @@ public class DataBase {
         }*/
         return true;
     }
-    public static void importTable(String path, String entity) {
+    public static boolean importTable(String path, String entity) {
 
         //borra los datos de la tabla a la que se le van a importar los datos
         deleteAllData(entity);
-
         Class<?> entityClass;
         switch (entity) {
             case "CustomerClass":
@@ -175,7 +174,6 @@ public class DataBase {
                 entityClass = PartnersClass.class;
                 break;
         }
-
         //check hibernate connection and database
         try{
             if(SessionDB.sessionHibernate != null){
@@ -268,8 +266,11 @@ public class DataBase {
             if(entity.equals("ProductClass")){
                 warePrice();
             }
+            return true;
         } catch (IOException | IllegalAccessException | InstantiationException | NoSuchFieldException e) {
             e.printStackTrace();
+
+            return false;
         }
     }
     private static void warePrice(){
@@ -326,7 +327,7 @@ public class DataBase {
 
     }
 
-    public static void deleteAllData(String entity) {
+    public static boolean deleteAllData(String entity) {
         try {
             // Obtén una instancia de sesión de Hibernate
             //check hibernate connection and database
@@ -390,8 +391,11 @@ public class DataBase {
             }
             // Confirma la transacción
             session.getTransaction().commit();
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
+
         }
     }
 

@@ -137,6 +137,11 @@ public class SalesController {
 
     public void initialize() {
 
+        labelIVA.setText("0");
+        labelIVA2.setText("0");
+        labelBold.setText("0");
+        labelBold2.setText("0");
+
         tfAmount.setTextFormatter(createNumericTextFormatter());
         tfPriceSale.setTextFormatter(createNumericTextFormatter());
         tfOff.setTextFormatter(createNumericTextFormatter());
@@ -275,24 +280,27 @@ public class SalesController {
         buttonProduct0.setStyle("-fx-background-color: #1BA1E2; ");
         buttonService.setStyle("-fx-background-color: #1BA1E2; ");
         buttonCredit.setStyle("-fx-background-color: #1BA1E2; ");
-
-        if(!ConstantsPurchases.productTableList.isEmpty()){
-            ConstantsPurchases.productTableList.clear();
-        }
-        if(!ConstantsPurchases.serviceTableList.isEmpty()){
-            ConstantsPurchases.serviceTableList.clear();
-        }
-        if(!ConstantsPurchases.wareInvoiceList.isEmpty()){
-            ConstantsPurchases.wareInvoiceList.clear();
-        }
-        if(!ConstantsPurchases.invoiceList.isEmpty()){
-            ConstantsPurchases.invoiceList.clear();
-        }
-        if(!tableService.getItems().isEmpty()){
-            tableService.getItems().clear();
-        }
-        if(!tableMain.getItems().isEmpty()){
-            tableMain.getItems().clear();
+        try {
+            if (!ConstantsPurchases.productTableList.isEmpty()) {
+                ConstantsPurchases.productTableList.clear();
+            }
+            if (!ConstantsPurchases.serviceTableList.isEmpty()) {
+                ConstantsPurchases.serviceTableList.clear();
+            }
+            if (!ConstantsPurchases.wareInvoiceList.isEmpty()) {
+                ConstantsPurchases.wareInvoiceList.clear();
+            }
+            if (!ConstantsPurchases.invoiceList.isEmpty()) {
+                ConstantsPurchases.invoiceList.clear();
+            }
+            if (!tableService.getItems().isEmpty()) {
+                tableService.getItems().clear();
+            }
+            if (!tableMain.getItems().isEmpty()) {
+                tableMain.getItems().clear();
+            }
+        }catch (Exception i){
+            System.out.println(i + "ERROR EN CLEAN() SALECONTROLLER");
         }
     }
     @FXML
@@ -673,6 +681,10 @@ public class SalesController {
             }
 
             tableLoad();
+            labelIVA.setText("0");
+            labelIVA2.setText("0");
+            labelBold.setText("0");
+            labelBold2.setText("0");
         }
     }
     public Boolean verify(){
@@ -851,9 +863,15 @@ public class SalesController {
     }
     public void pay(){
 
-        int total = Integer.valueOf(labelTotal2.getText());
-        int cash = Integer.valueOf(tfCash.getText());
-        int bank = Integer.parseInt(tfBank.getText());
+        int total = Integer.parseInt(labelTotal2.getText());
+        int cash = Integer.parseInt(tfCash.getText());
+        int bank;
+        try {
+            bank = Integer.parseInt(tfBank.getText());
+        }catch (NumberFormatException i){
+            bank = 0;
+        }
+        double bold = Double.parseDouble(labelBold.getText());
         int pay = cash + bank;
         int debt = total - pay;
         if(debt < 0){
@@ -863,6 +881,12 @@ public class SalesController {
             labelDebt.setText(String.valueOf(debt));
             labelPay.setText(String.valueOf(pay));
             ConstantsPurchases.checkin = false;
+        }
+
+        int boldCost;
+        if(bank!= 0 && bold != 0){
+            boldCost = (int) ((bold/100) * bank);
+            labelBold2.setText(String.valueOf(boldCost));
         }
     }
     public void suppress(ActionEvent event) {
@@ -954,8 +978,14 @@ public class SalesController {
          * */
         Button button = (Button) event.getSource();
 
+        int bold = Integer.parseInt(labelBold2.getText());
+        int bank = Integer.parseInt(tfBank.getText());
+        int bankWithOutBold = bank - bold;
+
         InvoiceClass invoice = new InvoiceClass();
-        invoice.setBank(tfBank.getText());
+
+        invoice.setBold(labelBold2.getText());
+        invoice.setBank(String.valueOf(bankWithOutBold));
         invoice.setCash(tfCash.getText());
         invoice.setIndebtedness(labelDebt.getText());
         invoice.setTotal(labelTotal2.getText());
@@ -985,7 +1015,6 @@ public class SalesController {
             ConstantsAccounting.invoice.setIdCustomer(Constant.customer.getIdCustomer());
             //calculo de impuestos pagados
             ConstantsAccounting.invoice.setTaxes(labelIVA2.getText());
-            ConstantsAccounting.invoice.setBold(labelBold2.getText());
             //calculo de los precios de compra de todos los productos por sus cantidades
             if(ConstantsSales.salesOption.equals("Product")) {
                 ConstantsAccounting.invoice.setTotalBuy(String.valueOf(ConstantsPurchases.totalBuyProduct(ConstantsPurchases.productTableList)));
@@ -1021,6 +1050,8 @@ public class SalesController {
             //--Falta codigo para salvar los datos--
             if(SaveHQL.saveInvoice()){
                 WareController.alertSend("Datos guardados con exito");
+                ConstantsPurchases.productTableList.clear();
+                ConstantsPurchases.serviceTableList.clear();
             }else {
                 WareController.alertSend("Error al guardar los datos");
             }

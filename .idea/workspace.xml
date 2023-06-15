@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="+ Se correge el bold que no vaya a taxes(agregar bold a invoice)&#10;+ ahora se puede dar la opción de cero de iva y bold&#10;-Revizar las ventas no cuadran los movimientos de inventario&#10;-Revizar el pago de deudas para la gestion del bold">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="+se corrigio el problema de venta de inventario, ahora al vender se registra correctamente el cambio de cantidad de los productos en el inventario&#10;-Revizar el pago de deudas para la gestion del bold">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/FinanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/FinanceController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SalesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SalesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/repository/ReportGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/repository/ReportGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsSales.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsSales.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/DataBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SingUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SingUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/ProductClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/ProductClass.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,14 +221,8 @@
       <workItem from="1686537008325" duration="2011000" />
       <workItem from="1686584199460" duration="15489000" />
       <workItem from="1686613023822" duration="9586000" />
-      <workItem from="1686697511034" duration="7302000" />
-    </task>
-    <task id="LOCAL-00019" summary="**Se configura el metodo MAU y UAM&#10;--Falta configurar como se van activando los botones para evitar errores">
-      <created>1675307875979</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1675307875979</updated>
+      <workItem from="1686697511034" duration="9507000" />
+      <workItem from="1686783837779" duration="6059000" />
     </task>
     <task id="LOCAL-00020" summary="--Falta configurar como se van activando los botones para evitar errores en transmutar&#10;&#10;**Se agregaron las tablas para poder hacer los movimientos de dinero y compraventa de productos">
       <created>1675824304844</created>
@@ -568,14 +560,20 @@
       <option name="project" value="LOCAL" />
       <updated>1686624306415</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="+se corrigio el problema de venta de inventario, ahora al vender se registra correctamente el cambio de cantidad de los productos en el inventario&#10;-Revizar el pago de deudas para la gestion del bold">
+      <created>1686705043026</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1686705043027</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="**Se realizo el backend de venta de productos&#10;&#10;--revisar backend&#10;--revisar la facturación de servicios en compras--" />
     <MESSAGE value="*- El backend de venta de productos se esta revisando si guarda bien los datos para la contabilidad estamos en ConstasSales.java linea 63." />
     <MESSAGE value="--falta cambiar los textos de los labels y textfield cuando se realizan cambios de opciones y/o operaciones como facturar&#10;&#10;**los servicios de PurchasesController: cargan el costo como precio de compra, se puede colocar la bodega y se modifico la vista general&#10;**la opcion de creditos de compras y venatas: se adiciono el filtrado de la tableInvoice.&#10;**la compra y venta de productos se audito que se gestionara el stock y los calculos de contabilidad" />
     <MESSAGE value="**las tablas cargan correctamente los objetos de tipo invoice y tipo wareInvoice.&#10;se corrigio como buscaba los wareInvoice y como la hacer click en la tableMain se modifica la tabla2" />
@@ -600,7 +598,8 @@
     <MESSAGE value="1-Eliminar todos los datos OK&#10;2-Subir datos de excel OK" />
     <MESSAGE value="Se esta revizando el funcionamiento del registro de una venta." />
     <MESSAGE value="+ Se correge el bold que no vaya a taxes(agregar bold a invoice)&#10;+ ahora se puede dar la opción de cero de iva y bold&#10;-Revizar las ventas no cuadran los movimientos de inventario&#10;-Revizar el pago de deudas para la gestion del bold" />
-    <option name="LAST_COMMIT_MESSAGE" value="+ Se correge el bold que no vaya a taxes(agregar bold a invoice)&#10;+ ahora se puede dar la opción de cero de iva y bold&#10;-Revizar las ventas no cuadran los movimientos de inventario&#10;-Revizar el pago de deudas para la gestion del bold" />
+    <MESSAGE value="+se corrigio el problema de venta de inventario, ahora al vender se registra correctamente el cambio de cantidad de los productos en el inventario&#10;-Revizar el pago de deudas para la gestion del bold" />
+    <option name="LAST_COMMIT_MESSAGE" value="+se corrigio el problema de venta de inventario, ahora al vender se registra correctamente el cambio de cantidad de los productos en el inventario&#10;-Revizar el pago de deudas para la gestion del bold" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

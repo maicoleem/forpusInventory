@@ -444,15 +444,22 @@ public class FinanceController {
     public void restore(ActionEvent event) {
         String entity1 = cbBoxCuentas.getValue();
         String entity2 =cbClass(entity1);
-        DataBase.importTable(escaparCaracteres(labelRuta2.getText()),entity2);
+        if(DataBase.importTable(escaparCaracteres(labelRuta2.getText()),entity2)){
+            WareController.alertSend("DATOS IMPORTADOS CON EXITO");
+        }else {
+            WareController.alertSend("ERROR AL IMPORTAR LOS DATOS");
+        }
     }
 
     public void corte(ActionEvent event) {
     }
     //DESCARGA EL SQL DE LA BASE DE DATOS
     public void backup(ActionEvent event) {
-        DataBase.backUp(escaparCaracteres(labelRuta.getText()));
-
+        if(DataBase.backUp(escaparCaracteres(labelRuta.getText()))){
+            WareController.alertSend("SE HA CREADO UN ARCHIVO SQL");
+        }else {
+            WareController.alertSend("ERROR AL CREAR EL BACKUP");
+        }
     }
     public static String escaparCaracteres(String cadena) {
         return cadena.replace("\\", "\\\\");
@@ -509,37 +516,38 @@ public class FinanceController {
         buttonRestore.setDisable(!labelRuta2.getText().contains("xlsx"));
 
     }
-
-
     public void deletedDB(ActionEvent event) {
-        DataBase.deleteAllData("todos");
-        String entity = Constant.entity;
-        Constant.entity = "CompanyClass";
-        if(FoundHQL.workerFound()) {
+        if(DataBase.deleteAllData("todos")){
+            String entity = Constant.entity;
+            Constant.entity = "CompanyClass";
+            if(FoundHQL.workerFound()) {
 
-            Constant.tfName = Constant.company.getName();
-            Constant.tfPhone = Constant.company.getPhoneNumber();
-            Constant.tfAddress = Constant.company.getAddres();
-            Constant.tfJob = Constant.company.getWeb();
-            Constant.tfSalary = Constant.company.getSocial();
-            Constant.company.setPayable("0");
-            Constant.company.setUtilities("0");
-            Constant.company.setCash("0");
-            Constant.company.setBank("0");
-            Constant.company.setReceivable("0");
-            Constant.company.setReceivable("0");
-            Constant.company.setTotal("0");
+                Constant.tfName = Constant.company.getName();
+                Constant.tfPhone = Constant.company.getPhoneNumber();
+                Constant.tfAddress = Constant.company.getAddres();
+                Constant.tfJob = Constant.company.getWeb();
+                Constant.tfSalary = Constant.company.getSocial();
+                Constant.company.setPayable("0");
+                Constant.company.setUtilities("0");
+                Constant.company.setCash("0");
+                Constant.company.setBank("0");
+                Constant.company.setReceivable("0");
+                Constant.company.setUReceivable("0");
+                Constant.company.setTotal("0");
 
-            SaveHQL.insertWorker("update");
+                SaveHQL.insertWorker("update");
 
+            }
+
+            Constant.entity = "WarehouseClass";
+            Constant.tfCode = "BD01";
+            Constant.tfName = "BODEGA 01";
+            SaveHQL.insertWorker("save");
+
+            Constant.entity = entity;
+            WareController.alertSend("DATOS BORRADOS CON EXITO");
+        }else {
+            WareController.alertSend("ERROR AL ELIMINAR LOS DATOS");
         }
-
-        Constant.entity = "WarehouseClass";
-        Constant.tfCode = "BD01";
-        Constant.tfName = "BODEGA 01";
-        SaveHQL.insertWorker("save");
-
-        Constant.entity = entity;
-
     }
 }
