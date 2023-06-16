@@ -631,9 +631,9 @@ public class WareController {
                     //consumo
                     tableShow.setC4(tfThreeCategory1.getText());
                     //costo
-                    Integer pC = Integer.valueOf(tableShow.getC2());
-                    Integer cM = Integer.valueOf(tableShow.getC3());
-                    Integer cT = Integer.valueOf(tableShow.getC4());
+                    Integer pC = Integer.parseInt(tableShow.getC2());
+                    Integer cM = Integer.parseInt(tableShow.getC3());
+                    Integer cT = Integer.parseInt(tableShow.getC4());
                     int cost = ((pC * cM) / cT);
                     tableShow.setC5(String.valueOf(cost));
 
@@ -645,44 +645,48 @@ public class WareController {
                     tableLoad();
                     Constant.entity = "ServiceClass";
                 } else if (Objects.equals(Constant.entity, "Transmute")) {
-                    int amount = Integer.valueOf(tfWare.getText());
-                    int amountI = ConstantsWare.productPrice.getAmount();
-                    int amountF = amountI - amount;
+                    try {
+                        int amount = Integer.parseInt(tfWare.getText());
+                        int amountI = ConstantsWare.productPrice.getAmount();
+                        int amountF = amountI - amount;
 
-                    if(amountI > amount){
-                        TableShow tableT = new TableShow();
-                        //Id de productPrice
-                        tableT.setC1(String.valueOf(ConstantsWare.productPrice.getIdPrice()));
-                        //Name Product
-                        tableT.setC2(ConstantsWare.product.getName());
-                        //ware
-                        tableT.setC3(comboBoxTwo.getValue());
-                        //ID WareProduct
-                        tableT.setC4(String.valueOf(ConstantsWare.wareProduct.getIdWareProduct()));
-                        //Price
-                        tableT.setC5(String.valueOf(ConstantsWare.productPrice.getPrice()));
-                        //Amount (total)
-                        tableT.setC6(String.valueOf(ConstantsWare.productPrice.getAmount()));
-                        //Amount que se va a usar
-                        tableT.setC7(tfWare.getText());
-                        //Amount que se Final
-                        tableT.setC8(String.valueOf(amountF));
-                        //Cost
-                        int price1 = ConstantsWare.productPrice.getPrice();
-                        int cost = price1 * amount;
-                        tableT.setC9(String.valueOf(cost));
+                        if (amountI > amount) {
+                            TableShow tableT = new TableShow();
+                            //Id de productPrice
+                            tableT.setC1(String.valueOf(ConstantsWare.productPrice.getIdPrice()));
+                            //Name Product
+                            tableT.setC2(ConstantsWare.product.getName());
+                            //ware
+                            tableT.setC3(comboBoxTwo.getValue());
+                            //ID WareProduct
+                            tableT.setC4(String.valueOf(ConstantsWare.wareProduct.getIdWareProduct()));
+                            //Price
+                            tableT.setC5(String.valueOf(ConstantsWare.productPrice.getPrice()));
+                            //Amount (total)
+                            tableT.setC6(String.valueOf(ConstantsWare.productPrice.getAmount()));
+                            //Amount que se va a usar
+                            tableT.setC7(tfWare.getText());
+                            //Amount que se Final
+                            tableT.setC8(String.valueOf(amountF));
+                            //Cost
+                            int price1 = ConstantsWare.productPrice.getPrice();
+                            int cost = price1 * amount;
+                            tableT.setC9(String.valueOf(cost));
 
-                        Constant.listTableShow.add(tableT);
-                        System.out.println(tableT);
-                        System.out.println(Constant.listTableShow);
-                        Constant.entity = "TransmuteTableShow";
-                        tableLoad();
-                        Constant.entity = "Transmute";
-                    }else{
-                        alertSend("La cantidad supera el stock");
+                            Constant.listTableShow.add(tableT);
+                            System.out.println(tableT);
+                            System.out.println(Constant.listTableShow);
+                            Constant.entity = "TransmuteTableShow";
+                            tableLoad();
+                            Constant.entity = "Transmute";
+                        } else {
+                            alertSend("La cantidad supera el stock");
+                        }
+                    }catch (Exception i){
+                        WareController.alertSend("POR FAVOR PRIMERO LLENE LISTA Y ESCOGER PRODUCTO");
                     }
 
-                }
+                    }
                 break;
             default:
                 break;
@@ -1319,7 +1323,7 @@ public class WareController {
         comboBoxThree.getItems().clear();
         comboBoxWage.getItems().clear();
 
-        if (Constant.entity == "ServiceClass") {
+        if (Objects.equals(Constant.entity, "ServiceClass")) {
 
             Constant.entity = "ProductClass";
             SearchHQL.searchHQL();
@@ -1388,16 +1392,16 @@ public class WareController {
         }
     }
     public void comboBoxClick(ActionEvent event) {
-        ComboBox<String> cBoxChange = (ComboBox<String>) event.getSource();
+        ComboBox cBoxChange = (ComboBox) event.getSource();
         ArrayList<String> listProduct = new ArrayList<>();
 
-        if (Constant.entity == "ProductClass") {
+        if (Objects.equals(Constant.entity, "ProductClass")) {
             switch (cBoxChange.getId()) {
                 case "comboBoxOne":
                     //limpia el comboBOx
                     comboBoxTwo.getItems().clear();
                     //carga el combobox 2
-                    comboBoxTwo.getItems().addAll(categoryTwo(listProduct, cBoxChange.getValue()));
+                    comboBoxTwo.getItems().addAll(categoryTwo(listProduct, (String) cBoxChange.getValue()));
                     //devuelve las constantes a los valores iniciales
                     Constant.entity = "ProductClass";
                     Constant.tfCode = tfCode.getText();
@@ -1406,14 +1410,14 @@ public class WareController {
                 case "comboBoxTwo":
 
                     comboBoxThree.getItems().clear();
-                    comboBoxThree.getItems().addAll(categoryThree(listProduct, cBoxChange.getValue()));
+                    comboBoxThree.getItems().addAll(categoryThree(listProduct, (String) cBoxChange.getValue()));
 
                     Constant.entity = "ProductClass";
                     Constant.tfCode = tfCode.getText();
                     break;
                 case "comboBoxThree":
                     Constant.entity = "CategorythreeClass";
-                    Constant.tfName = cBoxChange.getValue();
+                    Constant.tfName = (String) cBoxChange.getValue();
                     FoundHQL.workerFound();
 
                     Constant.entity = "ProductClass";
@@ -1421,7 +1425,7 @@ public class WareController {
                     break;
                 case "comboBoxWage":
                     Constant.entity = "WarehouseClass";
-                    Constant.tfName = cBoxChange.getValue();
+                    Constant.tfName = (String) cBoxChange.getValue();
                     FoundHQL.workerFound();
 
                     Constant.entity = "ProductClass";
@@ -1451,7 +1455,7 @@ public class WareController {
 
                     //Obtiene el id del item seleccionado en el combobox 1
                     Constant.entity = "ProductClass";
-                    Constant.tfCode = cBoxChange.getValue();
+                    Constant.tfCode = (String) cBoxChange.getValue();
                     FoundHQL.wareFound();
 
                     //realiza esto si la lista de precios no es nulo
@@ -1492,7 +1496,7 @@ public class WareController {
                     SearchHQL.searchHQL();
 
                     //get of id del item seleccionado en el combobox 2
-                    Constant.tfAddress = cBoxChange.getValue();
+                    Constant.tfAddress = (String) cBoxChange.getValue();
 
                     for (WareProductClass w : ConstantsWare.product.getWareProductsByIdProduct()) {
                         if (Objects.equals(w.getIdWare(), Constant.tfAddress)){
@@ -1557,7 +1561,7 @@ public class WareController {
 
                         //Obtiene el id del item seleccionado en el combobox 1
                         Constant.entity = "ProductClass";
-                        Constant.tfCode = cBoxChange.getValue();
+                        Constant.tfCode = (String) cBoxChange.getValue();
                         FoundHQL.wareFound();
 
                         System.out.println(ConstantsWare.product);
@@ -1587,7 +1591,7 @@ public class WareController {
                         break;
                     case "comboBoxWage":
                         Constant.entity = "WarehouseClass";
-                        Constant.tfName = cBoxChange.getValue();
+                        Constant.tfName = (String) cBoxChange.getValue();
                         FoundHQL.workerFound();
 
                         Constant.entity = "ServiceClass";
@@ -1667,47 +1671,52 @@ public class WareController {
         }
     public void buttonMany(ActionEvent event) {
         Button button = (Button) event.getSource();
+        try {
+            //Cantidad inicial del producto
+            final int inicial = Integer.parseInt(labelProfitSale.getText());
 
-        final int inicial = Integer.valueOf(labelProfitSale.getText());
-        final int cambio = Integer.valueOf(tfConsumed.getText());
-        int f;
-        int h;
-        int g = 1;
+            final int cambio = Integer.parseInt(tfConsumed.getText());
+            //cantidad final
+            int f;
+            int h;
+            int g = 1;
 
 
-        if(Objects.equals(buttonUAM.getId(), button.getId())){
-            f = inicial - cambio;
-            g = 1;
+            if (Objects.equals(buttonUAM.getId(), button.getId())) {
+                f = inicial - cambio;
+            } else {
+                f = cambio + inicial;
+                g = -1;
+            }
 
-        }else{
-            f = cambio + inicial;
-            g = -1;
+            for (TableShow t : Constant.listTableShow) {
+                //C6 inicial
+                int init = Integer.parseInt(t.getC6());
+                //C7 cambio
+                int chang = Integer.parseInt(t.getC7());
+                //C8 final
+                int fi = init + (g * chang);
+                t.setC8(String.valueOf(fi));
+            }
+            h = 0;
+            for (TableShow t : Constant.listTableShow) {
+                int cost = Integer.parseInt(t.getC9());
+                h = h + cost;
+            }
+            labelCostTrans.setText(String.valueOf(h));
+
+            Constant.entity = "TransmuteTableShow";
+            tableLoad();
+
+            labelCost.setText(String.valueOf(f));
+            ConstantsWare.productPriceTransmute.setAmount(f);
+            save.setDisable(false);
+            Constant.entity = "Transmute";
+            tfCode.setText("Transmute");
+        }catch (Exception i){
+            System.out.println(i + "ERROR EN BOTON UNO A MUCHOS O MUCHOS A UNO");
+            WareController.alertSend("POR FAVOR SELECCIONAR PRODUCTOS");
         }
-
-        for(TableShow  t: Constant.listTableShow){
-            //C6 inicial
-            int init = Integer.valueOf(t.getC6());
-            //C7 cambio
-            int chang = Integer.valueOf(t.getC7());
-            //C8 final
-            int fi = init + (g * chang);
-            t.setC8(String.valueOf(fi));
-        }
-        h = 0;
-        for(TableShow  t: Constant.listTableShow){
-            int cost = Integer.valueOf(t.getC9());
-            h = h + cost;
-        }
-        labelCostTrans.setText(String.valueOf(h));
-
-        Constant.entity = "TransmuteTableShow";
-        tableLoad();
-
-        labelCost.setText(String.valueOf(f));
-        ConstantsWare.productPriceTransmute.setAmount(f);
-        save.setDisable(false);
-        Constant.entity = "Transmute";
-        tfCode.setText("Transmute");
     }
     public static ArrayList<String> categoryOne(ArrayList<String> listProduct){
         Constant.entity = "CategoryoneClass";

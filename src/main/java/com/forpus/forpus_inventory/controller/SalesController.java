@@ -1055,9 +1055,7 @@ public class SalesController {
             }else {
                 WareController.alertSend("Error al guardar los datos");
             }
-
         }
-
     }
     public void invoiceView() {
         //carga los productos de la factura
