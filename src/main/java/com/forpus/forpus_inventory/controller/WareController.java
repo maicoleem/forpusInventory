@@ -322,9 +322,9 @@ public class WareController {
                             //consumo
                             tableShow.setC4(sp.getConsume());
                             //costo
-                            Integer pC = Integer.valueOf(tableShow.getC2());
-                            Integer cM = Integer.valueOf(tableShow.getC3());
-                            Integer cT = Integer.valueOf(tableShow.getC4());
+                            int pC = Integer.parseInt(tableShow.getC2());
+                            int cM = Integer.parseInt(tableShow.getC3());
+                            int cT = Integer.parseInt(tableShow.getC4());
 
                             int cost = ((pC * cM) / cT);
 
@@ -501,10 +501,10 @@ public class WareController {
                 if (!Constant.listTableShow.isEmpty()) {
                     for (TableShow t : Constant.listTableShow) {
                         ProductpriceClass pP = new ProductpriceClass();
-                        pP.setIdPrice(Integer.valueOf(t.getC1()));
-                        pP.setIdProductWare(Integer.valueOf(t.getC4()));
-                        pP.setAmount(Integer.valueOf(t.getC8()));
-                        pP.setPrice(Integer.valueOf(t.getC5()));
+                        pP.setIdPrice(Integer.parseInt(t.getC1()));
+                        pP.setIdProductWare(Integer.parseInt(t.getC4()));
+                        pP.setAmount(Integer.parseInt(t.getC8()));
+                        pP.setPrice(Integer.parseInt(t.getC5()));
                         Constant.entity = "ProductpriceClassID";
                         Constant.tfCode = t.getC1();
                         FoundHQL.wareFound();
@@ -631,9 +631,9 @@ public class WareController {
                     //consumo
                     tableShow.setC4(tfThreeCategory1.getText());
                     //costo
-                    Integer pC = Integer.parseInt(tableShow.getC2());
-                    Integer cM = Integer.parseInt(tableShow.getC3());
-                    Integer cT = Integer.parseInt(tableShow.getC4());
+                    int pC = Integer.parseInt(tableShow.getC2());
+                    int cM = Integer.parseInt(tableShow.getC3());
+                    int cT = Integer.parseInt(tableShow.getC4());
                     int cost = ((pC * cM) / cT);
                     tableShow.setC5(String.valueOf(cost));
 
@@ -1737,7 +1737,7 @@ public class WareController {
         SearchHQL.searchHQL();
         //limpia la lista de entrada
         listProduct.clear();
-        //Obtiene el id del item seleccionado en el combobox 1
+        //Obtiene el ID del item seleccionado en el combobox 1
         Constant.entity = "CategoryoneClass";
         Constant.tfCode = valueOne;
         FoundHQL.workerFound();

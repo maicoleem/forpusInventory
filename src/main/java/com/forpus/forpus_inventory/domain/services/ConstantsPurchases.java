@@ -3,15 +3,10 @@ package com.forpus.forpus_inventory.domain.services;
 import com.forpus.forpus_inventory.persistence.crud.FoundHQL;
 import com.forpus.forpus_inventory.persistence.crud.SearchHQL;
 import com.forpus.forpus_inventory.persistence.entity.*;
-import javafx.scene.control.FocusModel;
 import javafx.scene.control.TextFormatter;
 import javafx.util.converter.IntegerStringConverter;
-
-import javax.persistence.criteria.CriteriaBuilder;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 public class ConstantsPurchases {
 

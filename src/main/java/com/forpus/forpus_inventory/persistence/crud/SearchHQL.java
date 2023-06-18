@@ -8,7 +8,6 @@ import com.forpus.forpus_inventory.persistence.Session.SessionDB;
 import com.forpus.forpus_inventory.persistence.entity.*;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
-
 import javax.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.List;

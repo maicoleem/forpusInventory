@@ -1,17 +1,12 @@
 package com.forpus.forpus_inventory.persistence.crud;
 
-import com.forpus.forpus_inventory.controller.WareController;
 import com.forpus.forpus_inventory.domain.services.Constant;
 import com.forpus.forpus_inventory.domain.services.ConstantsAccounting;
 import com.forpus.forpus_inventory.domain.services.ConstantsPurchases;
 import com.forpus.forpus_inventory.domain.services.ConstantsWare;
 import com.forpus.forpus_inventory.persistence.Session.SessionDB;
 import com.forpus.forpus_inventory.persistence.entity.*;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.event.spi.SaveOrUpdateEvent;
-
-import java.security.Provider;
+import org.hibernate.Session;;
 import java.util.Objects;
 
 public class SaveHQL {

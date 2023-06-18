@@ -11,8 +11,6 @@ import com.forpus.forpus_inventory.persistence.entity.WareinvoiceClass;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanArrayDataSource;
 import net.sf.jasperreports.swing.JRViewer;
-import org.hibernate.event.spi.SaveOrUpdateEvent;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;

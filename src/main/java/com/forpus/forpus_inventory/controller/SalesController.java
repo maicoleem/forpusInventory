@@ -3,7 +3,6 @@ package com.forpus.forpus_inventory.controller;
 import com.forpus.forpus_inventory.HelloApplication;
 import com.forpus.forpus_inventory.domain.repository.ReportGenerator;
 import com.forpus.forpus_inventory.domain.services.*;
-import com.forpus.forpus_inventory.persistence.Session.SessionDB;
 import com.forpus.forpus_inventory.persistence.crud.FoundHQL;
 import com.forpus.forpus_inventory.persistence.crud.SaveHQL;
 import com.forpus.forpus_inventory.persistence.crud.SearchHQL;
@@ -22,8 +21,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.hibernate.Session;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;

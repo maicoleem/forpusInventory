@@ -5,9 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      opacity="0.93" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #F5F5F5;" xmlns="http://javafx.com/javafx/17.0.2-ea"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.forpus.forpus_inventory.controller.HelloController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.93" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #F5F5F5;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.forpus.forpus_inventory.controller.HelloController">
    <children>
       <ImageView fitHeight="112.0" fitWidth="127.0" layoutX="79.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="216.0" layoutY="146.0" text="Freya Styles">
@@ -53,6 +51,9 @@
          </image>
       </ImageView>
       </Pane>
+      <Button id="buttonConnection" fx:id="buttonConnection" layoutX="115.0" layoutY="315.0" mnemonicParsing="false" onAction="#connection" prefHeight="38.0" prefWidth="183.0" text="CHECK" visible="false" />
+      <Button id="buttonLogo" fx:id="buttonLogo" layoutX="96.0" layoutY="153.0" mnemonicParsing="false" onAction="#logo" styleClass="buttonBlue" text="FORPUS" />
+      <Button id="buttonLoad" fx:id="buttonLoad" layoutX="309.0" layoutY="318.0" mnemonicParsing="false" onAction="#load" prefHeight="32.0" prefWidth="68.0" text="SQL" visible="false" />
 
    </children>
 </Pane>

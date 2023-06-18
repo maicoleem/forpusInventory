@@ -6,7 +6,6 @@ import com.forpus.forpus_inventory.persistence.entity.CompanyClass;
 import com.forpus.forpus_inventory.persistence.entity.WorkersClass;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.metamodel.model.domain.CollectionDomainType;
 
 /**
  * <h1>SingUP</h1>

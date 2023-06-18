@@ -2,7 +2,6 @@ package com.forpus.forpus_inventory.domain.services;
 
 import com.forpus.forpus_inventory.persistence.entity.*;
 import javafx.scene.control.Button;
-
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -61,9 +60,8 @@ public class Constant {
 
     public static Boolean isEntityForeanKey(String entity){
 
-        for(int i = 0; i < entityForean.length; i = i+1){
-
-            if (Objects.equals(entityForean[i], entity)){
+        for (String s : entityForean) {
+            if (Objects.equals(s, entity)) {
                 return true;
             }
         }

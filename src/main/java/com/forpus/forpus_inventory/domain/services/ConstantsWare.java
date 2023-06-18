@@ -2,7 +2,6 @@ package com.forpus.forpus_inventory.domain.services;
 
 import com.forpus.forpus_inventory.persistence.entity.*;
 import javafx.scene.control.Button;
-
 import java.util.ArrayList;
 
 public class ConstantsWare {

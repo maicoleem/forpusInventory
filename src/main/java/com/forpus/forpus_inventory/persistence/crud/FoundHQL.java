@@ -7,8 +7,6 @@ import com.forpus.forpus_inventory.persistence.Session.SessionDB;
 import com.forpus.forpus_inventory.persistence.entity.*;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.event.spi.SaveOrUpdateEvent;
-
 import java.util.Objects;
 
 public class FoundHQL {

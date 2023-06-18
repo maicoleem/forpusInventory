@@ -1,10 +1,13 @@
 package com.forpus.forpus_inventory.persistence.crud;
+import com.forpus.forpus_inventory.controller.FinanceController;
 import com.forpus.forpus_inventory.controller.WareController;
 import com.forpus.forpus_inventory.domain.services.Constant;
 import com.forpus.forpus_inventory.domain.services.ConstantsPurchases;
 import com.forpus.forpus_inventory.domain.services.ConstantsWare;
 import com.forpus.forpus_inventory.persistence.Session.SessionDB;
 import com.forpus.forpus_inventory.persistence.entity.*;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.hibernate.Metamodel;
@@ -12,25 +15,21 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 import javax.persistence.metamodel.Attribute;
 import javax.persistence.metamodel.EntityType;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.lang.reflect.Field;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.*;
 
 
 public class DataBase {
 
-    public static boolean backUp(String path){
+    public static boolean backUp(String path) {
 
-        Properties properties = new Properties();
-        try {
-            InputStream inputStream = DataBase.class.getClassLoader().getResourceAsStream("properties.properties");
-            properties.load(inputStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Properties properties = properties();
+
         String pDB = properties.getProperty("clave");
         String executeCmd = "mysqldump -u root -p"+ pDB +" inventoryaccounting -r " + path + "\\backup.sql";
         try {
@@ -396,6 +395,68 @@ public class DataBase {
             e.printStackTrace();
             return false;
 
+        }
+    }
+
+    public static boolean install() {
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter("SQL Files", "*.sql")
+        );
+
+        File selectedFile = fileChooser.showOpenDialog(new Stage());
+
+        String path = FinanceController.escaparCaracteres(selectedFile.getPath());
+
+        createDatabase();
+
+        Properties properties = properties();
+
+        String executeCmd = "mysql -u " + properties.getProperty("user") + " -p" + properties.getProperty("clave") + " " + properties.getProperty("name");
+        try {
+
+            Process runtimeProcess = Runtime.getRuntime().exec(executeCmd);
+            OutputStream os = runtimeProcess.getOutputStream();
+            FileInputStream fis = new FileInputStream(path);
+             byte[] buffer = new byte[1000];
+             int leido = fis.read(buffer);
+             while (leido>0){
+                 os.write(buffer, 0, leido);
+                 leido = fis.read(buffer);
+             }
+             os.flush();
+             os.close();
+             fis.close();
+        return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public static Properties properties(){
+        Properties properties = new Properties();
+        try {
+            InputStream inputStream = DataBase.class.getClassLoader().getResourceAsStream("properties.properties");
+            properties.load(inputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return properties;
+    }
+
+    public static void createDatabase() {
+        Properties properties = properties();
+        String username = properties.getProperty("user");
+        String password = properties.getProperty("clave");
+        String databaseName = properties.getProperty("name");
+
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/", username, password);
+             Statement statement = connection.createStatement()) {
+            // Crea la base de datos
+            statement.executeUpdate("CREATE DATABASE IF NOT EXISTS " + databaseName);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
