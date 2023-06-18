@@ -399,21 +399,22 @@ public class DataBase {
     }
 
     public static boolean install() {
+        try {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.getExtensionFilters().add(
+                    new FileChooser.ExtensionFilter("SQL Files", "*.sql")
+            );
 
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(
-                new FileChooser.ExtensionFilter("SQL Files", "*.sql")
-        );
+            File selectedFile = fileChooser.showOpenDialog(new Stage());
 
-        File selectedFile = fileChooser.showOpenDialog(new Stage());
+            String path = FinanceController.escaparCaracteres(selectedFile.getPath());
 
-        String path = FinanceController.escaparCaracteres(selectedFile.getPath());
+            createDatabase();
 
-        createDatabase();
+            Properties properties = properties();
 
-        Properties properties = properties();
+            String executeCmd = "mysql -u " + properties.getProperty("user") + " -p" + properties.getProperty("clave") + " " + properties.getProperty("name");
 
-        String executeCmd = "mysql -u " + properties.getProperty("user") + " -p" + properties.getProperty("clave") + " " + properties.getProperty("name");
         try {
 
             Process runtimeProcess = Runtime.getRuntime().exec(executeCmd);
@@ -431,6 +432,9 @@ public class DataBase {
         return true;
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
+        }
+        }catch (Exception i){
             return false;
         }
     }

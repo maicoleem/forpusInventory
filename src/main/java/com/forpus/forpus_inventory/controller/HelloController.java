@@ -14,6 +14,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import org.hibernate.Session;
 import java.io.IOException;
@@ -25,12 +27,11 @@ public class HelloController {
     public Button buttonConnection;
     public Button buttonLogo;
     public Button buttonLoad;
+    public Button sing;
     @FXML
     private Label lblSingUp;
-
     @FXML
     private TextField userName;
-
     @FXML
     private PasswordField password;
     /**
@@ -39,6 +40,7 @@ public class HelloController {
      * */
     @FXML
     protected void onButtonClick(ActionEvent event) throws IOException {
+        System.out.println(event);
 
         if(SingUp.companySingUP(userName.getText(), password.getText())){
             lblSingUp.setText("Success");
@@ -77,11 +79,19 @@ public class HelloController {
     }
     @FXML
     public void load() {
+        try{
         if(DataBase.install()){
             WareController.alertSend("BASE DE DATOS CREADA CORRECTAMENTE");
         }else {
             WareController.alertSend("ERROR AL CARGAR LA BASE DE DATOS");
         }
+        }catch (Exception i){
+            WareController.alertSend(i.toString());
+        }
     }
-
+    public void enterPressed(KeyEvent event) {
+     if(event.getCode() == KeyCode.ENTER){
+         sing.fire();
+     }
+    }
 }

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.93" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #F5F5F5;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.forpus.forpus_inventory.controller.HelloController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.93" prefHeight="768.0" prefWidth="1024.0" stylesheets="@../styles/style-default.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.forpus.forpus_inventory.controller.HelloController">
    <children>
       <ImageView fitHeight="112.0" fitWidth="127.0" layoutX="79.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="216.0" layoutY="146.0" text="Freya Styles">
@@ -16,7 +16,7 @@
          <font>
             <Font name="Tahoma Bold" size="38.0" />
          </font></Label>
-      <Label fx:id="lblSingUp" layoutX="106.0" layoutY="340.0" text="" textFill="RED">
+      <Label fx:id="lblSingUp" layoutX="106.0" layoutY="340.0" textFill="RED">
          <font>
             <Font name="Tahoma" size="20.0" />
          </font>
@@ -25,7 +25,7 @@
          <font>
             <Font name="Tahoma Bold" size="16.0" />
          </font></Label>
-      <TextField fx:id="userName" layoutX="106.0" layoutY="404.0" prefHeight="50.0" prefWidth="300.0" promptText="USER NAME">
+      <TextField fx:id="userName" layoutX="106.0" layoutY="404.0" onKeyReleased="#enterPressed" prefHeight="50.0" prefWidth="300.0" promptText="USER NAME">
          <font>
             <Font name="Tahoma Bold" size="20.0" />
          </font></TextField>
@@ -33,11 +33,11 @@
          <font>
             <Font name="Tahoma Bold" size="16.0" />
          </font></Label>
-      <PasswordField fx:id="password" layoutX="106.0" layoutY="500.0" prefHeight="50.0" prefWidth="300.0" promptText="PASSWORD" style="-fx-background-color: #F0F0F0;">
+      <PasswordField fx:id="password" layoutX="106.0" layoutY="500.0" onKeyReleased="#enterPressed" prefHeight="50.0" prefWidth="300.0" promptText="PASSWORD" style="-fx-background-color: #F0F0F0;">
          <font>
             <Font name="Tahoma Bold" size="20.0" />
          </font></PasswordField>
-      <Button layoutX="156.0" layoutY="600.0" mnemonicParsing="false" onAction="#onButtonClick" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #1BA1E2;" text="Sing Up" textFill="#F5F5F5">
+      <Button fx:id="sing" layoutX="156.0" layoutY="600.0" mnemonicParsing="false" onAction="#onButtonClick" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #1BA1E2;" text="Sing Up" textFill="#F5F5F5">
          <font>
             <Font name="Tahoma Bold" size="20.0" />
          </font></Button>
@@ -51,9 +51,17 @@
          </image>
       </ImageView>
       </Pane>
-      <Button id="buttonConnection" fx:id="buttonConnection" layoutX="115.0" layoutY="315.0" mnemonicParsing="false" onAction="#connection" prefHeight="38.0" prefWidth="183.0" text="CHECK" visible="false" />
-      <Button id="buttonLogo" fx:id="buttonLogo" layoutX="96.0" layoutY="153.0" mnemonicParsing="false" onAction="#logo" styleClass="buttonBlue" text="FORPUS" />
-      <Button id="buttonLoad" fx:id="buttonLoad" layoutX="309.0" layoutY="318.0" mnemonicParsing="false" onAction="#load" prefHeight="32.0" prefWidth="68.0" text="SQL" visible="false" />
+      <Button id="buttonConnection" fx:id="buttonConnection" layoutX="115.0" layoutY="315.0" mnemonicParsing="false" onAction="#connection" prefHeight="38.0" prefWidth="183.0" styleClass="buttonConnection" text="CONEXIÓN" visible="false" />
+      <Button id="buttonLogo" fx:id="buttonLogo" layoutX="96.0" layoutY="83.0" maxHeight="118.0" maxWidth="118.0" minHeight="118.0" minWidth="118.0" mnemonicParsing="false" onAction="#logo" prefHeight="118.0" prefWidth="118.0" styleClass="buttonForpus">
+         <graphic>
+            <ImageView fitHeight="124.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/freya.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button id="buttonLoad" fx:id="buttonLoad" layoutX="309.0" layoutY="318.0" mnemonicParsing="false" onAction="#load" prefHeight="32.0" prefWidth="68.0" styleClass="buttonSQL" text="SQL" visible="false" />
 
    </children>
 </Pane>

@@ -43,7 +43,23 @@
     -fx-background-radius: 40;
     -fx-background-color: #1BA1E2;
 }
+.buttonForpus{
+    -fx-border-radius: 2000;
+    -fx-background-radius: 2000;
+    -fx-background-color: #1BA1E2;
+}
 
+
+.buttonConnection{
+    -fx-border-radius: 15;
+    -fx-background-radius: 40;
+    -fx-background-color: #C2C2BD;
+}
+.buttonSQL{
+    -fx-border-radius: 15;
+    -fx-background-radius: 40;
+    -fx-background-color: #C2C2BD;
+}
 
 Button:hover {
     -fx-font-size: 20px;
