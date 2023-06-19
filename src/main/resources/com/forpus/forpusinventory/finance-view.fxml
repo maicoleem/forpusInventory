@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.93" prefHeight="768.0" prefWidth="1024.0" styleClass="panelWhite" stylesheets="@../styles/style-default.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.forpus.forpusinventory.controller.FinanceController">
+
+    <children>
+        <Pane id="panelBlue" prefHeight="768.0" prefWidth="70.0">
+            <children>
+                <Button id="bWare" fx:id="buttonWarePB" layoutX="5.0" layoutY="94.7" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSlide" prefHeight="60.0" prefWidth="60.0" styleClass="buttonSide" text="Button">
+                    <graphic>
+                        <ImageView fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/inventory.png" />
+                            </image></ImageView>
+                    </graphic></Button>
+                <Button id="bDash" fx:id="buttonDashPB" layoutX="5.0" layoutY="189.5" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSlide" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #F5F5F5;" styleClass="buttonSide" text="Button">
+                    <graphic>
+                        <ImageView fitHeight="111.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/dashboard.png" />
+                            </image></ImageView>
+                    </graphic></Button>
+                <Button id="bAccounting" fx:id="buttonAccountingPB" layoutX="5.0" layoutY="284.2" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSlide" prefHeight="60.0" prefWidth="60.0" styleClass="buttonSide" text="Button">
+                    <graphic>
+                        <ImageView fitHeight="111.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/taxes.png" />
+                            </image>
+                        </ImageView>
+                    </graphic></Button>
+                <Button id="bBuy" fx:id="buttonBuyPB" layoutX="5.0" layoutY="379.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSlide" prefHeight="60.0" prefWidth="60.0" styleClass="buttonSide" text="Button">
+                    <graphic>
+                        <ImageView fitHeight="48.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/buy.png" />
+                            </image>
+                        </ImageView>
+                    </graphic></Button>
+                <Button id="bSale" fx:id="buttonSalePB" layoutX="5.0" layoutY="473.7" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSlide" prefHeight="60.0" prefWidth="60.0" styleClass="buttonSide" text="Button">
+                    <graphic>
+                        <ImageView fitHeight="48.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/shop.png" />
+                            </image>
+                        </ImageView>
+                    </graphic></Button>
+                <Button id="bSettings" fx:id="buttonSettingsPB" layoutX="5.0" layoutY="568.5" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSlide" prefHeight="60.0" prefWidth="60.0" styleClass="buttonSide" text="Button">
+                    <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/setting.png" />
+                            </image>
+                        </ImageView>
+                    </graphic></Button>
+            </children>
+        </Pane>
+        <Pane layoutX="70.0" prefHeight="70.0" prefWidth="954.0" styleClass="paneGrey">
+            <children>
+                <Button id="buttonFinances" fx:id="buttonFinances" layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Finanzas">
+                    <font>
+                        <Font name="Tahoma Bold" size="20.0" />
+                    </font>
+                </Button>
+                <Button id="buttonGraphics" fx:id="buttonGraphics" layoutX="160.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Graficos">
+                    <font>
+                        <Font name="Tahoma Bold" size="20.0" />
+                    </font>
+                </Button>
+                <Button id="buttonDB" fx:id="buttonDB" layoutX="315.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Datos">
+                    <font>
+                        <Font name="Tahoma Bold" size="20.0" />
+                    </font>
+                </Button>
+            </children></Pane>
+      <Pane id="panelFinance" fx:id="panelFinance" layoutX="70.0" layoutY="70.0" prefHeight="113.0" prefWidth="751.0">
+         <children>
+              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="14.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Disponible">
+                  <font>
+                      <Font name="Tahoma Bold" size="19.0" />
+                  </font>
+              </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="61.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Banco">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="381.0" layoutY="61.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Caja">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label id="bankCompany" fx:id="bankCompany" alignment="CENTER" contentDisplay="CENTER" layoutX="170.0" layoutY="61.0" prefHeight="40.0" prefWidth="196.0" styleClass="labelGrey" text="Disponible">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label id="cashCompany" fx:id="cashCompany" alignment="CENTER" contentDisplay="CENTER" layoutX="541.0" layoutY="61.0" prefHeight="40.0" prefWidth="196.0" styleClass="labelGrey" text="Disponible">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label id="totalCompany" fx:id="totalCompany" alignment="CENTER" contentDisplay="CENTER" layoutX="170.0" layoutY="14.0" prefHeight="40.0" prefWidth="196.0" styleClass="labelGrey" text="Disponible">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <DatePicker layoutX="380.0" layoutY="23.0" prefHeight="25.0" prefWidth="112.0" />
+            <DatePicker layoutX="509.0" layoutY="22.0" prefHeight="25.0" prefWidth="112.0" />
+      
+              <Button id="buttomSearch" fx:id="buttonProduct" layoutX="639.0" layoutY="16.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="84.0" styleClass="buttonBlue" text="BUSCAR">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children></Pane>
+        <Pane id="panelProducts" fx:id="panelProducts" layoutX="100.0" layoutY="214.0" prefHeight="231.0" prefWidth="377.0">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="11.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Activos">
+                    <font>
+                        <Font name="Tahoma Bold" size="19.0" />
+                    </font>
+                </Label>
+                <Label id="productTotal" fx:id="productTotal" alignment="CENTER" contentDisplay="CENTER" layoutX="178.0" layoutY="14.0" prefHeight="40.0" prefWidth="196.0" styleClass="labelGrey" text="Disponible">
+                    <font>
+                        <Font name="Tahoma Bold" size="19.0" />
+                    </font>
+                </Label>
+            <TableView id="tableProducts" fx:id="tableProducts" layoutX="5.0" layoutY="75.0" prefHeight="123.0" prefWidth="368.0">
+              <columns>
+                <TableColumn id="p1" fx:id="p1" prefWidth="128.0" text="PRODUCTO" />
+                <TableColumn id="p2" fx:id="p2" text="CANTIDAD" />
+                  <TableColumn id="p3" fx:id="p3" text="PRECIO" />
+                  <TableColumn id="p4" fx:id="p4" text="SUBTOTAL" />
+              </columns>
+            </TableView>
+            </children></Pane>
+      <Pane id="panelPassives" fx:id="panelPassives" layoutX="567.0" layoutY="217.0" prefHeight="231.0" prefWidth="377.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="11.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Pasivos">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label id="passivesTotal" fx:id="passivesTotal" alignment="CENTER" contentDisplay="CENTER" layoutX="178.0" layoutY="14.0" prefHeight="40.0" prefWidth="196.0" styleClass="labelGrey" text="Disponible">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <TableView id="tablePassives" fx:id="tablePassives" layoutX="5.0" layoutY="75.0" prefHeight="123.0" prefWidth="368.0">
+               <columns>
+                  <TableColumn id="ps1" fx:id="ps1" prefWidth="135.0" text="ACREEDOR" />
+                  <TableColumn id="ps2" fx:id="ps2" prefWidth="126.0" text="FECHA" />
+                  <TableColumn id="ps3" fx:id="ps3" prefWidth="106.0" text="SUBTOTAL" />
+               </columns>
+            </TableView>
+         </children>
+      </Pane>
+      <Pane id="panelReceivable" fx:id="panelReceivable" layoutX="102.0" layoutY="458.0" prefHeight="231.0" prefWidth="377.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="11.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Por Cobrar">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label id="totalReceivable" fx:id="totalReceivable" alignment="CENTER" contentDisplay="CENTER" layoutX="178.0" layoutY="14.0" prefHeight="40.0" prefWidth="196.0" styleClass="labelGrey" text="Disponible">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <TableView id="tableReceivable" fx:id="tableReceivable" layoutX="5.0" layoutY="75.0" prefHeight="123.0" prefWidth="368.0">
+               <columns>
+                  <TableColumn id="r1" fx:id="r1" prefWidth="162.0" text="CLIENTE" />
+                  <TableColumn id="r2" fx:id="r2" minWidth="9.0" prefWidth="93.0" text="FECHA" />
+                  <TableColumn id="r3" fx:id="r3" minWidth="0.0" prefWidth="112.0" text="SUBTOTAL" />
+               </columns>
+            </TableView>
+         </children>
+      </Pane>
+      <Pane id="panelPartners" fx:id="panelPartners" layoutX="570.0" layoutY="459.0" prefHeight="231.0" prefWidth="377.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="11.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Aportes">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label id="partnersTotal" fx:id="partnersTotal" alignment="CENTER" contentDisplay="CENTER" layoutX="178.0" layoutY="14.0" prefHeight="40.0" prefWidth="196.0" styleClass="labelGrey" text="Disponible">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <TableView id="tablePartners" fx:id="tablePartners" layoutX="5.0" layoutY="75.0" prefHeight="123.0" prefWidth="368.0">
+               <columns>
+                  <TableColumn id="a1" fx:id="a1" prefWidth="126.0" text="SOCIO" />
+                  <TableColumn id="a2" fx:id="a2" text="EFECTIVO" />
+                  <TableColumn id="a3" fx:id="a3" text="BANCO" />
+                  <TableColumn id="a4" fx:id="a4" text="TOTAL" />
+               </columns>
+            </TableView>
+         </children>
+      </Pane>
+      <LineChart id="chartPurchases" fx:id="chartPurchases" animated="false" layoutX="532.0" layoutY="75.0" prefHeight="348.0" prefWidth="482.0" visible="false">
+         <xAxis>
+            <CategoryAxis animated="false" side="BOTTOM" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis animated="false" side="LEFT" />
+         </yAxis>
+      </LineChart>
+      <BarChart id="chartProducts" fx:id="chartProducts" animated="false" layoutX="70.0" layoutY="437.0" prefHeight="316.0" prefWidth="482.0" visible="false">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <BarChart id="chartCustomers" fx:id="chartCustomers" animated="false" layoutX="529.0" layoutY="435.0" prefHeight="316.0" prefWidth="482.0" visible="false">
+         <xAxis>
+            <CategoryAxis side="BOTTOM" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis side="LEFT" />
+         </yAxis>
+      </BarChart>
+      <LineChart id="chartSales" fx:id="chartSales" layoutX="69.0" layoutY="73.0" prefHeight="358.0" prefWidth="471.0" visible="false">
+        <xAxis>
+          <CategoryAxis animated="false" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis animated="false" side="LEFT" />
+        </yAxis>
+      </LineChart>
+      <Pane id="panelDB" fx:id="panelDB" layoutX="81.0" layoutY="83.0" prefHeight="634.0" prefWidth="890.0" visible="false">
+         <children>
+            <Button id="buttonExport" fx:id="buttonExport" layoutX="8.0" layoutY="14.0" mnemonicParsing="false" onAction="#export" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="RUTA">
+               <font>
+                  <Font name="Tahoma Bold" size="20.0" />
+               </font>
+            </Button>
+            <Label id="labelRuta" fx:id="labelRuta" alignment="CENTER" contentDisplay="CENTER" layoutX="178.0" layoutY="21.0" prefHeight="48.0" prefWidth="471.0" styleClass="labelGrey" text="ruta">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Button id="buttonBackUp" fx:id="buttonBackUp" disable="true" layoutX="661.0" layoutY="14.0" mnemonicParsing="false" onAction="#backup" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="BACKUP">
+               <font>
+                  <Font name="Tahoma Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button id="buttonRestore" fx:id="buttonRestore" disable="true" layoutX="684.0" layoutY="157.0" mnemonicParsing="false" onAction="#restore" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="RECUPERAR">
+               <font>
+                  <Font name="Tahoma Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button id="buttonCorte" fx:id="buttonCorte" layoutX="684.0" layoutY="231.0" mnemonicParsing="false" onAction="#corte" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="CORTE" visible="false">
+               <font>
+                  <Font name="Tahoma Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button id="buttonRuta2" fx:id="buttonRuta2" layoutX="12.0" layoutY="157.0" mnemonicParsing="false" onAction="#importExcel" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="RUTA">
+               <font>
+                  <Font name="Tahoma Bold" size="20.0" />
+               </font>
+            </Button>
+            <Label id="labelRuta2" fx:id="labelRuta2" alignment="CENTER" contentDisplay="CENTER" layoutX="190.0" layoutY="163.0" prefHeight="48.0" prefWidth="471.0" styleClass="labelGrey" text="ruta cargar">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Button id="buttonRuta3" fx:id="buttonRuta3" layoutX="12.0" layoutY="231.0" mnemonicParsing="false" onAction="#export" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="RUTA" visible="false">
+               <font>
+                  <Font name="Tahoma Bold" size="20.0" />
+               </font>
+            </Button>
+            <Label id="labelRuta3" fx:id="labelRuta3" alignment="CENTER" contentDisplay="CENTER" layoutX="190.0" layoutY="231.0" prefHeight="48.0" prefWidth="471.0" styleClass="labelGrey" text="ruta" visible="false">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <ComboBox id="cbBoxCuentas" fx:id="cbBoxCuentas" layoutX="15.0" layoutY="98.0" onAction="#cbCuentas" prefHeight="40.0" prefWidth="143.0" promptText="Clientes" />
+            <Button id="buttonDownload" fx:id="buttonDownload" disable="true" layoutX="178.0" layoutY="98.0" mnemonicParsing="false" onAction="#tablas" prefHeight="40.0" prefWidth="156.0" styleClass="buttonBlue" text="DESCARGAR">
+               <font>
+                  <Font name="Tahoma Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button id="buttonDeleted" fx:id="buttonDeleted" layoutX="35.0" layoutY="386.0" mnemonicParsing="false" onAction="#deletedDB" prefHeight="40.0" prefWidth="156.0" styleClass="buttonBlue" text="BORRAR">
+               <font>
+                  <Font name="Tahoma Bold" size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+
+    </children>
+</Pane>

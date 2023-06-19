@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.forpus</groupId>
-    <artifactId>forpus_inventory</artifactId>
+    <artifactId>forpusinventory</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>forpus_inventory</name>
 
@@ -46,6 +46,11 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-web</artifactId>
+            <version>19.0.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-media</artifactId>
             <version>19.0.2.1</version>
         </dependency>
         <dependency>
@@ -155,7 +160,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.forpus.forpus_inventory/com.forpus.forpus_inventory.HelloApplication
+                            <mainClass>com.forpus.forpus_inventory/com.forpus.forpusinventory.Launcher
                             </mainClass>
                             <resources>
                                 <resource>
@@ -171,6 +176,14 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.zenjava</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>8.8.3</version>
+                <configuration>
+                    <mainClass>com.forpus.forpusinventory.Launcher</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>

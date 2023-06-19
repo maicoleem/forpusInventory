@@ -1,15 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="forpusJarLiberica" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Se crea el boton para restablecer la base de datos">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Se modifico el JDK ahora es de https://bell-sw.com/pages/downloads/ que permite crear el file.jar con javaFX {structure project -&gt; artifact -&gt; jar -&gt; from modules with dependency}.">
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/forpusJar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/forpusMaven.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/Launcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/DataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/hello-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/styles/style-default.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/styles/style-default.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/AccountingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/AccountingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/FinanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/FinanceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/PurchasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/PurchasesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SalesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SalesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/SettingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SettingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/WareController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/WareController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/repository/ReportGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/repository/ReportGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/Constant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsAccounting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/ConstantsAccounting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsFinance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/ConstantsFinance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsPurchases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/ConstantsPurchases.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsSales.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/ConstantsSales.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/ConstantsSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/ConstantsWare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/ConstantsWare.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/domain/services/TableShow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/TableShow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/Session/SessionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/Session/SessionDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/DataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/DeleteHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/DeleteHQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/FoundHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/FoundHQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SaveHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SaveHQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SearchHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SearchHQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/crud/SingUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SingUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/CategoryoneClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/entity/CategoryoneClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/CategorythreeClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/entity/CategorythreeClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/CategorytwoClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/entity/CategorytwoClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/CompanyClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/entity/CompanyClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/CustomerClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/entity/CustomerClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/InvoiceClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/entity/InvoiceClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/MoveinvoiceClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/entity/MoveinvoiceClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/PartnersClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/entity/PartnersClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/ProductClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/entity/ProductClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/ProductpriceClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/entity/ProductpriceClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/ProvidersClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/entity/ProvidersClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/ServiceClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/entity/ServiceClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/ServiceProductClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/entity/ServiceProductClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/TaxesClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/entity/TaxesClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/WareProductClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/entity/WareProductClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/WarehouseClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/entity/WarehouseClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/WareinvoiceClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/entity/WareinvoiceClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/persistence/entity/WorkersClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/entity/WorkersClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/accounting-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpusinventory/accounting-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/finance-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpusinventory/finance-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpusinventory/hello-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/purchases-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpusinventory/purchases-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/sales-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpusinventory/sales-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/search-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpusinventory/search-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/settings-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpusinventory/settings-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpus_inventory/ware-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpusinventory/ware-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,39 +111,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "true",
-    "JPA.DatabaseSchemaImportDialog": "e8a54545-f878-467d-b1bf-a1d41c63fbb2",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "extract.method.default.visibility": "private",
-    "import_schema_mapping": "<schema-mapping>\n  <databases>\n    <list>\n      <schema-mapping-item>\n        <source-data-source-id>d160867a-a828-41a2-9bb2-b2de3721b983</source-data-source-id>\n        <source-path>schema/&quot;inventoryaccounting&quot;</source-path>\n        <target-data-source-id>d160867a-a828-41a2-9bb2-b2de3721b983</target-data-source-id>\n        <target-path>schema/&quot;inventoryaccounting&quot;</target-path>\n      </schema-mapping-item>\n    </list>\n  </databases>\n</schema-mapping>",
-    "last_directory_selection": "C:/Users/Teemo/OneDrive/java/proyecto1/forpus_inventory/src/main/java/com/forpus/forpus_inventory",
-    "last_opened_file_path": "C:/Users/Teemo/OneDrive/java/proyecto1/forpus_inventory/src/main/resources/com/forpus/images",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "com.github.copilot.settings.ApplicationConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;JPA.DatabaseSchemaImportDialog&quot;: &quot;e8a54545-f878-467d-b1bf-a1d41c63fbb2&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;import_schema_mapping&quot;: &quot;&lt;schema-mapping&gt;\n  &lt;databases&gt;\n    &lt;list&gt;\n      &lt;schema-mapping-item&gt;\n        &lt;source-data-source-id&gt;d160867a-a828-41a2-9bb2-b2de3721b983&lt;/source-data-source-id&gt;\n        &lt;source-path&gt;schema/&amp;quot;inventoryaccounting&amp;quot;&lt;/source-path&gt;\n        &lt;target-data-source-id&gt;d160867a-a828-41a2-9bb2-b2de3721b983&lt;/target-data-source-id&gt;\n        &lt;target-path&gt;schema/&amp;quot;inventoryaccounting&amp;quot;&lt;/target-path&gt;\n      &lt;/schema-mapping-item&gt;\n    &lt;/list&gt;\n  &lt;/databases&gt;\n&lt;/schema-mapping&gt;&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;11&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/Teemo/OneDrive/java/proyecto1/forpus_inventory/src/main/java/com/forpus/forpus_inventory&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Program Files/Java/javafx-sdk-19.0.2.1/bin/vcruntime140_1.dll&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15022762&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.39857015&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.tools&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Teemo\OneDrive\java\proyecto1\forpus_inventory\src\main\resources\com\forpus\images" />
@@ -92,6 +152,9 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Teemo\OneDrive\java\proyecto1\forpus_inventory\src\main\resources\com\forpus\jasper_report" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.forpus.forpus_inventory" />
     </key>
     <key name="ImportMappingsDialog.RecentPackages">
       <recent name="com.forpus.forpus_inventory" />
@@ -101,13 +164,16 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.forpus.forpus_inventory.HelloApplication" />
-      <module name="forpus_inventory" />
+  <component name="RunManager" selected="Application.Launcher">
+    <configuration name="Launcher" type="Application" factoryName="Application" nameIsGenerated="true">
+      <classpathModifications>
+        <entry path="C:\Users\Teemo\OneDrive\java\proyecto1\forpus_inventory" />
+      </classpathModifications>
+      <option name="MAIN_CLASS_NAME" value="com.forpus.forpusinventory.Launcher" />
+      <module name="forpusinventory" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.forpus.forpus_inventory.persistence.entity.*" />
+          <option name="PATTERN" value="com.forpus.forpusinventory.persistence.entity.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -115,9 +181,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="forpus" type="JarApplication">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/forpusinventory_jar/forpusinventory.jar" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\Teemo\OneDrive\java\proyecto1\forpus_inventory" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="BuildArtifacts" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="forpusjar.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/forpusjar/forpusjar.jar" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.Launcher" />
+      <item itemvalue="JAR Application.forpus" />
+      <item itemvalue="JAR Application.forpusjar.jar" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.HelloApplication" />
+        <item itemvalue="JAR Application.forpusjar.jar" />
       </list>
     </recent_temporary>
   </component>
@@ -226,14 +309,21 @@
       <workItem from="1686783837779" duration="6234000" />
       <workItem from="1686870574905" duration="5982000" />
       <workItem from="1687037740132" duration="17471000" />
-      <workItem from="1687118830842" duration="5553000" />
-    </task>
-    <task id="LOCAL-00023" summary="--Falta configurar como se van activando los botones para evitar errores en transmutar&#10;&#10;**Se esta modificando la pestaña de inventario, la idea es que con los comobobox se puedan mostrar en la tabla los productos con sus precios y cantidades&#10;**La tabla agrega productos con el comboboxware&#10;--falta combobox product&#10;--falta un indicador de color de cual combobox esta activado">
-      <created>1676350952174</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1676350952174</updated>
+      <workItem from="1687118830842" duration="7177000" />
+      <workItem from="1687127146277" duration="206000" />
+      <workItem from="1687128069480" duration="6645000" />
+      <workItem from="1687134768281" duration="3021000" />
+      <workItem from="1687138422400" duration="3865000" />
+      <workItem from="1687142615140" duration="102000" />
+      <workItem from="1687142745521" duration="3475000" />
+      <workItem from="1687146608906" duration="5797000" />
+      <workItem from="1687182703979" duration="7520000" />
+      <workItem from="1687193123481" duration="2554000" />
+      <workItem from="1687195906089" duration="1010000" />
+      <workItem from="1687200908068" duration="295000" />
+      <workItem from="1687201451086" duration="1743000" />
+      <workItem from="1687205118700" duration="1296000" />
+      <workItem from="1687214902415" duration="1416000" />
     </task>
     <task id="LOCAL-00024" summary="Se realizo el diseño de cuentas, la idea es que los combobox escojan el typo y con el codigo o con el segundo combobox se pueda escoger el codigo del usuario al cual darle buscar salen sus datos y las facturas incluyendo lo que ha comprado tablamain facturas -- tabla2 productos.">
       <created>1677035848625</created>
@@ -571,7 +661,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687058487559</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="Se agrego logo de la empresa en la pantalla de inicio&#10;+Cuando se presiona enter se inicia sesión&#10;+se incluye try-catch para cuando no se selecciona un sql">
+      <created>1687124541145</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1687124541145</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -589,8 +686,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="*now you can log in with a worker&#10;*The documentation of the code and revision of cada part continue" />
-    <MESSAGE value="agregada variable booleana que permite guardar si es admin la cuenta" />
     <MESSAGE value="Se inicia con la creación dle dash, para ver los estados financieros del aplicativo." />
     <MESSAGE value="El modulo de settings quedo diferenciado para admin y user, se corrigieron errores de diseño y al crear como al borrar usuarios." />
     <MESSAGE value="Diseño: the view buttons (left side) now change of color to white when someone is selected" />
@@ -614,7 +709,9 @@
     <MESSAGE value="EL PRODUCTO QUEDO TERMINADO EN CUANTO A FUNCIONAMIENTO, SE ESPERA REVISIÓN Y CORRECÓN DE FALLOS." />
     <MESSAGE value="SE CONFIGURA EL MANEJO DE ERRORES EN LA TRANSMUTACION DE PRODUCTOS" />
     <MESSAGE value="Se crea el boton para restablecer la base de datos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se crea el boton para restablecer la base de datos" />
+    <MESSAGE value="Se agrego logo de la empresa en la pantalla de inicio&#10;+Cuando se presiona enter se inicia sesión&#10;+se incluye try-catch para cuando no se selecciona un sql" />
+    <MESSAGE value="Se modifico el JDK ahora es de https://bell-sw.com/pages/downloads/ que permite crear el file.jar con javaFX {structure project -&gt; artifact -&gt; jar -&gt; from modules with dependency}." />
+    <option name="LAST_COMMIT_MESSAGE" value="Se modifico el JDK ahora es de https://bell-sw.com/pages/downloads/ que permite crear el file.jar con javaFX {structure project -&gt; artifact -&gt; jar -&gt; from modules with dependency}." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -652,11 +749,21 @@
           <option name="timeStamp" value="22" />
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpus_inventory/controller/AccountingController.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/AccountingController.java</url>
           <line>998</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/forpus_inventory$Main.ic" NAME="Main Coverage Results" MODIFIED="1687132075366" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.forpus.forpusinventory.persistence.entity.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/HelloApplication_java$forpus.ic" NAME="forpus Coverage Results" MODIFIED="1687148852216" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

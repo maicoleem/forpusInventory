@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane id="panelWhite" fx:id="paneWhite" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.93" prefHeight="436.0" prefWidth="703.0" stylesheets="@../styles/style-default.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.forpus.forpusinventory.controller.SearchController">
+
+   <children>
+      <TableView id="tableView" fx:id="tableView" layoutX="3.0" layoutY="159.0" onMouseClicked="#tableSelect" prefHeight="270.0" prefWidth="695.0">
+        <columns>
+            <TableColumn id="C1" fx:id="c1" maxWidth="500.0" minWidth="50.0" prefWidth="100.0" text="C1" />
+            <TableColumn id="C2" fx:id="c2" prefWidth="100.0" text="C2" />
+            <TableColumn id="C3" fx:id="c3" prefWidth="100.0" text="C3" />
+            <TableColumn id="C4" fx:id="c4" prefWidth="100.0" text="C4" />
+            <TableColumn id="C5" fx:id="c5" prefWidth="100.0" text="C5" />
+            <TableColumn id="C6" fx:id="c6" prefWidth="100.0" text="C6" />
+            <TableColumn id="C7" fx:id="c7" prefWidth="100.0" text="C7" />
+
+        </columns>
+      </TableView>
+      <Button id="buttonCopyCode" fx:id="buttonCopyCode" layoutX="231.0" layoutY="14.0" mnemonicParsing="false" onAction="#cpString" prefHeight="30.0" prefWidth="70.0" styleClass="buttonBlue" text="Copy" />
+      <Button id="buttonCopyName" fx:id="buttonCopyName" layoutX="441.0" layoutY="14.0" mnemonicParsing="false" onAction="#cpString" prefHeight="30.0" prefWidth="70.0" styleClass="buttonBlue" text="Copy" />
+      <ComboBox id="comboBoxSearch" fx:id="comboBoxSearch" layoutX="17.0" layoutY="14.0" onAction="#comboBoxClick" prefHeight="36.0" prefWidth="91.0" promptText="Cliente" visibleRowCount="5" />
+      <Label id="labelCodeSearch" fx:id="labelCodeSearch" alignment="CENTER" contentDisplay="CENTER" layoutX="125.0" layoutY="14.0" prefHeight="30.0" prefWidth="91.0" styleClass="labelGrey" text="Codigo" textAlignment="CENTER">
+         <font>
+            <Font name="Tahoma Bold" size="12.0" />
+         </font></Label>
+      <Label id="labelNameSearch" fx:id="labelNameSearch" alignment="CENTER" contentDisplay="CENTER" layoutX="331.0" layoutY="14.0" prefHeight="30.0" prefWidth="91.0" styleClass="labelGrey" text="Nombre" textAlignment="CENTER">
+         <font>
+            <Font name="Tahoma Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label id="labelCodeSearch2" fx:id="labelCodeSearch2" alignment="CENTER" contentDisplay="CENTER" layoutX="122.0" layoutY="48.0" prefHeight="30.0" prefWidth="182.0" styleClass="labelGrey" text="Codigo" textAlignment="CENTER">
+         <font>
+            <Font name="Tahoma Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label id="labelNameSearch" fx:id="labelNameSearch2" alignment="CENTER" contentDisplay="CENTER" layoutX="331.0" layoutY="48.0" prefHeight="30.0" prefWidth="182.0" styleClass="labelGrey" text="Nombre" textAlignment="CENTER">
+         <font>
+            <Font name="Tahoma Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField id="tfFiltrate1" fx:id="tfFiltrate1" layoutX="3.0" layoutY="130.0" onAction="#filterTable" onKeyTyped="#filterTable" prefHeight="25.0" prefWidth="100.0" promptText="Filtro">
+         <font>
+            <Font name="Tahoma" size="12.0" />
+         </font>
+      </TextField>
+      <TextField id="tfFiltrate2" fx:id="tfFiltrate2" layoutX="102.0" layoutY="130.0" onKeyTyped="#filterTable" prefHeight="25.0" prefWidth="100.0" promptText="Filtro">
+         <font>
+            <Font name="Tahoma" size="12.0" />
+         </font>
+      </TextField>
+      <TextField id="tfFiltrate3" fx:id="tfFiltrate3" layoutX="201.0" layoutY="130.0" onKeyTyped="#filterTable" prefHeight="25.0" prefWidth="100.0" promptText="Filtro">
+         <font>
+            <Font name="Tahoma" size="12.0" />
+         </font>
+      </TextField>
+      <TextField id="tfFiltrate4" fx:id="tfFiltrate4" layoutX="301.0" layoutY="130.0" onKeyTyped="#filterTable" prefHeight="25.0" prefWidth="100.0" promptText="Filtro">
+         <font>
+            <Font name="Tahoma" size="12.0" />
+         </font>
+      </TextField>
+      <TextField id="tfFiltrate5" fx:id="tfFiltrate5" layoutX="401.0" layoutY="131.0" onKeyTyped="#filterTable" prefHeight="25.0" prefWidth="100.0" promptText="Filtro">
+         <font>
+            <Font name="Tahoma" size="12.0" />
+         </font>
+      </TextField>
+      <TextField id="tfFiltrate6" fx:id="tfFiltrate6" layoutX="500.0" layoutY="130.0" onKeyTyped="#filterTable" prefHeight="25.0" prefWidth="100.0" promptText="Filtro">
+         <font>
+            <Font name="Tahoma" size="12.0" />
+         </font>
+      </TextField>
+      <TextField id="tfFiltrate7" fx:id="tfFiltrate7" layoutX="599.0" layoutY="130.0" onKeyTyped="#filterTable" prefHeight="25.0" prefWidth="100.0" promptText="Filtro">
+         <font>
+            <Font name="Tahoma" size="12.0" />
+         </font>
+      </TextField>
+   </children>
+</Pane>

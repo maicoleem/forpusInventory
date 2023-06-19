@@ -1,7 +1,9 @@
-module com.forpus.forpus_inventory {
-    requires javafx.controls;
+module com.forpus.forpusinventory {
     requires javafx.fxml;
     requires javafx.web;
+    requires javafx.graphics;
+    requires javafx.controls;
+    requires javafx.media;
 
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
@@ -16,21 +18,17 @@ module com.forpus.forpus_inventory {
     requires org.apache.poi.poi;
     requires org.apache.poi.ooxml;
     requires jasperreports;
-    //requires eu.hansolo.tilesfx;
 
-    opens com.forpus.forpus_inventory to javafx.fxml;
-    opens com.forpus.forpus_inventory.controller to javafx.fxml;
+    opens com.forpus.forpusinventory to javafx.fxml;
+    opens com.forpus.forpusinventory.controller to javafx.fxml;
     opens com.forpus.styles to javafx.fxml;
     opens com.forpus.jasper_report to javafx.fxml;
-    opens com.forpus.forpus_inventory.persistence.entity;
-    opens com.forpus.forpus_inventory.domain.services;
+    opens com.forpus.forpusinventory.persistence.entity;
+    opens com.forpus.forpusinventory.domain.services;
 
-    exports com.forpus.forpus_inventory;
-    exports com.forpus.forpus_inventory.controller;
-    exports com.forpus.forpus_inventory.persistence.entity;
-    exports com.forpus.forpus_inventory.domain.repository;
-
-
-
+    exports com.forpus.forpusinventory.controller;
+    exports com.forpus.forpusinventory.persistence.entity;
+    exports com.forpus.forpusinventory.domain.repository;
+    exports com.forpus.forpusinventory to javafx.graphics;
 
 }
