@@ -473,7 +473,7 @@ public class SaveHQL {
                     session.update(Constant.partners);
                     break;
                 default:
-                    System.out.println("error al actuañizar los datos");
+                    System.out.println("error al actualizar los datos");
                     break;
             }
             session.getTransaction().commit();

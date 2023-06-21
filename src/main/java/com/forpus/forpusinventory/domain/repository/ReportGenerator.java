@@ -1,4 +1,5 @@
 package com.forpus.forpusinventory.domain.repository;
+import com.forpus.forpusinventory.controller.WareController;
 import com.forpus.forpusinventory.domain.services.Constant;
 import com.forpus.forpusinventory.domain.services.ConstantsAccounting;
 import com.forpus.forpusinventory.domain.services.ConstantsPurchases;
@@ -21,13 +22,15 @@ import java.util.Map;
 public class ReportGenerator {
 
     public static void generateReport() {
-        InvoiceClass invoice = ConstantsAccounting.invoice;
-        CustomerClass customer = customerInvoice(invoice.getIdCustomer());
-        CompanyClass company = companyFound();
-        // Ruta al archivo del informe de JasperReports (.jASPERT)
-        String reportPath = "C:\\Users\\Teemo\\OneDrive\\java\\proyecto1\\forpus_inventory\\src\\main\\resources\\com\\forpus\\jasper_report\\Factura.jrxml";
-
         try {
+            InvoiceClass invoice = ConstantsAccounting.invoice;
+            CustomerClass customer = customerInvoice(invoice.getIdCustomer());
+            CompanyClass company = companyFound();
+            // Ruta al archivo del informe de JasperReports (.jASPERT)
+            String reportPath = "src/main/resources/com/forpus/jasper_report/Factura.jrxml";
+            //String reportPath = "C:\\Users\\Teemo\\OneDrive\\java\\proyecto1\\forpus_inventory\\src\\main\\resources\\com\\forpus\\jasper_report\\Factura.jrxml";
+
+
             // Obtener los datos para la tabla (en este caso, una lista de objetos WareInvoice)
             List<WareinvoiceClass> invoiceData = obtenerDatosDeFactura();
 
@@ -92,6 +95,7 @@ public class ReportGenerator {
            //JasperExportManager.exportReportToPdfFile(jasperPrint, "C:\\Users\\Teemo\\OneDrive\\destino.pdf");
         } catch (Exception e) {
             e.printStackTrace();
+            WareController.alertSend(e.toString());
         }
     }
 
@@ -129,7 +133,7 @@ public class ReportGenerator {
 
     public static void generadorCotizar(CompanyClass company, CustomerClass customer, ArrayList<WareinvoiceClass> wareInvoice, int subtotal, int iva){
         // Ruta al archivo del informe de JasperReports (.jASPERT)
-        String reportPath = "C:\\Users\\Teemo\\OneDrive\\java\\proyecto1\\forpus_inventory\\src\\main\\resources\\com\\forpus\\jasper_report\\Cotizar.jrxml";
+        String reportPath = "src/main/resources/com/forpus/jasper_report/Cotizar.jrxml";
 
         try {
             WareinvoiceClass wI = wareInvoice.get(0);

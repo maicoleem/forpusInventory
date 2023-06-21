@@ -445,6 +445,7 @@ public class FinanceController {
         String entity2 =cbClass(entity1);
         if(DataBase.importTable(escaparCaracteres(labelRuta2.getText()),entity2)){
             WareController.alertSend("DATOS IMPORTADOS CON EXITO");
+            SessionDB.sessionClose();
         }else {
             WareController.alertSend("ERROR AL IMPORTAR LOS DATOS");
         }

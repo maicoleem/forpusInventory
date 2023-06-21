@@ -243,37 +243,37 @@ public class SearchController {
         String code = "Codigo";
 
         switch (tShow.getClass().toString()){
-            case "class com.forpus.forpus_inventory.persistence.entity.CustomerClass" :
+            case "class com.forpus.forpusinventory.persistence.entity.CustomerClass" :
                 CustomerClass customer = (CustomerClass) tShow;
                 name = customer.getName();
                 code = customer.getIdCustomer();
                 break;
-            case "class com.forpus.forpus_inventory.persistence.entity.CompanyClass":
+            case "class com.forpus.forpusinventory.persistence.entity.CompanyClass":
                 CompanyClass company = (CompanyClass) tShow;
                 name = company.getName();
                 code = company.getIdCompanyNIT();
                 break;
-            case "class com.forpus.forpus_inventory.persistence.entity.PartnersClass":
+            case "class com.forpus.forpusinventory.persistence.entity.PartnersClass":
                 PartnersClass partner = (PartnersClass) tShow;
                 name = partner.getName();
                 code = partner.getIdentificationCard();
                 break;
-            case "class com.forpus.forpus_inventory.persistence.entity.ProvidersClass":
+            case "class com.forpus.forpusinventory.persistence.entity.ProvidersClass":
                 ProvidersClass provider = (ProvidersClass) tShow;
                 name = provider.getName();
                 code = provider.getNit();
                 break;
-            case "class com.forpus.forpus_inventory.persistence.entity.WorkersClass":
+            case "class com.forpus.forpusinventory.persistence.entity.WorkersClass":
                 WorkersClass worker = (WorkersClass) tShow;
                 name = worker.getName();
                 code = worker.getIdentificationCard();
                 break;
-            case "class com.forpus.forpus_inventory.persistence.entity.ProductClass":
+            case "class com.forpus.forpusinventory.persistence.entity.ProductClass":
                 ProductClass product = (ProductClass) tShow;
                 name = product.getName();
                 code = product.getIdProduct();
                 break;
-            case "class com.forpus.forpus_inventory.persistence.entity.ServiceClass":
+            case "class com.forpus.forpusinventory.persistence.entity.ServiceClass":
                 ServiceClass service = (ServiceClass) tShow;
                 name = service.getName();
                 code = service.getIdService();

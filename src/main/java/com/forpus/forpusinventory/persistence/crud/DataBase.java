@@ -203,7 +203,7 @@ public class DataBase {
                 columnNames[i] = cell.getStringCellValue();
             }
 
-            for (int i = 1; i < sheet.getLastRowNum(); i++) {
+            for (int i = 1; i < sheet.getLastRowNum() + 1; i++) {
                 Row dataRow = sheet.getRow(i);
                 Object entityObject = entityClass.newInstance();
                 String idValue = null;
@@ -220,12 +220,21 @@ public class DataBase {
                         field.set(entityObject, null);
                     } else {
                         // Si la celda no está vacía, establecer el valor del campo según el tipo de dato
+                        try {
                         if (field.getType() == String.class) {
                             field.set(entityObject, cell.getStringCellValue());
                         } else if (field.getType() == Integer.class) {
-                            field.set(entityObject, (int) cell.getNumericCellValue());
+                            try {
+                                field.set(entityObject, (int) cell.getNumericCellValue());
+                            }catch (Exception numberFormat){
+                                field.set(entityObject, Integer.parseInt( cell.getStringCellValue()));
+                            }
+
                         } else if (field.getType() == Double.class) {
                             field.set(entityObject, cell.getNumericCellValue());
+                        }
+                        }catch (Exception f){
+                            WareController.alertSend("ERROR EN EL TIPO DE DATOS EN EL ARCHIVO " + f);
                         }
                     }
                 }
@@ -458,7 +467,6 @@ public class DataBase {
             // Crea la base de datos
             statement.executeUpdate("CREATE DATABASE IF NOT EXISTS " + databaseName);
         } catch (SQLException e) {
-            e.printStackTrace();
             WareController.alertSend(e.toString());
         }
     }
