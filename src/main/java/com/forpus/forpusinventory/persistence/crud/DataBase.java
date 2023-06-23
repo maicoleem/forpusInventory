@@ -45,13 +45,14 @@ public class DataBase {
             }
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
+            WareController.alertSend("ERROR EN DESCARGAR EL BACKUP");
             return false;
         }
     }
     public static boolean downloadTable(String path, String entity) {
-        SessionDB.session();
-        Metamodel metamodel = SessionDB.metamodel();
-        Session session = SessionDB.sessionHibernate;
+            SessionDB.session();
+            Metamodel metamodel = SessionDB.metamodel();
+            Session session = SessionDB.sessionHibernate;
 
         // Crear el libro de Excel y las hojas
         Workbook workbook = new XSSFWorkbook();
@@ -110,6 +111,7 @@ public class DataBase {
             cell.setCellValue(columnNames[i]);
         }
 
+        int error = 1;
         for (Object row : resultList) {
             Row dataRow = sheet.createRow(rowNum++);
             for (int i = 0; i < columnNames.length; i++) {
@@ -127,7 +129,11 @@ public class DataBase {
                         cell.setCellValue((Double) value);
                     }
                 } catch (NoSuchFieldException | IllegalAccessException e) {
-                    e.printStackTrace();
+                    if(error == 1) {
+                        WareController.alertSend("ERROR EN EL TIPO DE DATO");
+                        e.printStackTrace();
+                    }
+                    error = error +1;
                 }
             }
         }
@@ -143,9 +149,8 @@ public class DataBase {
 
         } catch (IOException e) {
             e.printStackTrace();
-        }/* finally {
-            session.close();
-        }*/
+            WareController.alertSend("ERROR AL GUARDAR EL LIBRO");
+        }
         return true;
     }
     public static boolean importTable(String path, String entity) {
@@ -180,12 +185,15 @@ public class DataBase {
             }
         }catch (Exception i){
             i.printStackTrace();
+            WareController.alertSend("ERROR AL CONECTAR CON LA BASE DE DATOS");
         }
         SessionDB.session();
         Session session = SessionDB.sessionHibernate;
         Cell idCell;
 
         try (FileInputStream inputStream = new FileInputStream(path)) {
+
+            int erroImport = 1;
 
             if(!session.beginTransaction().isActive()){
                 session.beginTransaction();
@@ -234,7 +242,11 @@ public class DataBase {
                             field.set(entityObject, cell.getNumericCellValue());
                         }
                         }catch (Exception f){
-                            WareController.alertSend("ERROR EN EL TIPO DE DATOS EN EL ARCHIVO " + f);
+                            if(erroImport == 1){
+                                WareController.alertSend("ERROR EN EL TIPO DE DATOS EN EL ARCHIVO " + f);
+                                f.printStackTrace();
+                                erroImport = erroImport + 1;
+                            }
                         }
                     }
                 }
@@ -277,6 +289,7 @@ public class DataBase {
             return true;
         } catch (IOException | IllegalAccessException | InstantiationException | NoSuchFieldException e) {
             WareController.alertSend( e.toString() + " PRODUCTOS NO AGREGADOS");
+            e.printStackTrace();
             return false;
         }
     }
@@ -333,7 +346,6 @@ public class DataBase {
         Constant.entity = entity;
 
     }
-
     public static boolean deleteAllData(String entity) {
         try {
             // Obtén una instancia de sesión de Hibernate
@@ -343,6 +355,7 @@ public class DataBase {
                     SessionDB.sessionClose();
                 }
             }catch (Exception i){
+                WareController.alertSend("ERROR AL CONECTAR CON LA BASE DE DATOS");
                 i.printStackTrace();
             }
             SessionDB.session();
@@ -400,12 +413,12 @@ public class DataBase {
             session.getTransaction().commit();
             return true;
         } catch (Exception e) {
+            WareController.alertSend("ERROR AL BORRAR LOS DATOS");
             e.printStackTrace();
             return false;
 
         }
     }
-
     public static boolean install() {
         try {
             FileChooser fileChooser = new FileChooser();
@@ -443,6 +456,8 @@ public class DataBase {
             return false;
         }
         }catch (Exception i){
+            WareController.alertSend("ERROR AL INSTALAR BASE DE DATOS");
+            i.printStackTrace();
             return false;
         }
     }

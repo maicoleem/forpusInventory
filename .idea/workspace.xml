@@ -9,15 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Se modifico el JDK ahora es de https://bell-sw.com/pages/downloads/ que permite crear el file.jar con javaFX {structure project -&gt; artifact -&gt; jar -&gt; from modules with dependency}.">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="se modifico el path de lso reportes String reportPath = &quot;src/main/resources/com/forpus/jasper_report/Cotizar.jrxml&quot;;&#10;&#10;se continua con el manejo de errores">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/FinanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/FinanceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SalesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SalesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SearchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/repository/ReportGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/repository/ReportGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/DataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SaveHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SaveHQL.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,14 +267,8 @@
       <workItem from="1687201451086" duration="1743000" />
       <workItem from="1687205118700" duration="1296000" />
       <workItem from="1687214902415" duration="1519000" />
-      <workItem from="1687302540189" duration="6052000" />
-    </task>
-    <task id="LOCAL-00025" summary="Se esta editando el boton buscar&#10;+Carga los datos en los label&#10;-falta cargar los datos en las tablas">
-      <created>1677124306215</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1677124306215</updated>
+      <workItem from="1687302540189" duration="6138000" />
+      <workItem from="1687479722555" duration="642000" />
     </task>
     <task id="LOCAL-00026" summary="+Se termino la parte de cuentas&#10;*Se inicia con los aportes, estamos en la creación del incoice para poder guardar los datos en la DB.&#10;-linea 171 AccountingController.java">
       <created>1677382216611</created>
@@ -618,7 +606,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687216413553</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="se modifico el path de lso reportes String reportPath = &quot;src/main/resources/com/forpus/jasper_report/Cotizar.jrxml&quot;;&#10;&#10;se continua con el manejo de errores">
+      <created>1687310560752</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1687310560752</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -636,7 +631,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Se inicia con la creación dle dash, para ver los estados financieros del aplicativo." />
     <MESSAGE value="El modulo de settings quedo diferenciado para admin y user, se corrigieron errores de diseño y al crear como al borrar usuarios." />
     <MESSAGE value="Diseño: the view buttons (left side) now change of color to white when someone is selected" />
     <MESSAGE value="En finanzas &#10;+aportes sociales: ok&#10;+Cuentas de la compañia: ok&#10;+Productos: ok&#10;Cuentas por pagar esta en proceso ya se verifico que se registren correctamente los pagos.&#10;falta adicionarlos a la tabla&#10;Falta cuentas por cobrar" />
@@ -661,7 +655,8 @@
     <MESSAGE value="Se crea el boton para restablecer la base de datos" />
     <MESSAGE value="Se agrego logo de la empresa en la pantalla de inicio&#10;+Cuando se presiona enter se inicia sesión&#10;+se incluye try-catch para cuando no se selecciona un sql" />
     <MESSAGE value="Se modifico el JDK ahora es de https://bell-sw.com/pages/downloads/ que permite crear el file.jar con javaFX {structure project -&gt; artifact -&gt; jar -&gt; from modules with dependency}." />
-    <option name="LAST_COMMIT_MESSAGE" value="Se modifico el JDK ahora es de https://bell-sw.com/pages/downloads/ que permite crear el file.jar con javaFX {structure project -&gt; artifact -&gt; jar -&gt; from modules with dependency}." />
+    <MESSAGE value="se modifico el path de lso reportes String reportPath = &quot;src/main/resources/com/forpus/jasper_report/Cotizar.jrxml&quot;;&#10;&#10;se continua con el manejo de errores" />
+    <option name="LAST_COMMIT_MESSAGE" value="se modifico el path de lso reportes String reportPath = &quot;src/main/resources/com/forpus/jasper_report/Cotizar.jrxml&quot;;&#10;&#10;se continua con el manejo de errores" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
