@@ -1,5 +1,6 @@
 package com.forpus.forpusinventory.persistence.crud;
 
+import com.forpus.forpusinventory.controller.WareController;
 import com.forpus.forpusinventory.domain.services.Constant;
 import com.forpus.forpusinventory.domain.services.ConstantsAccounting;
 import com.forpus.forpusinventory.domain.services.ConstantsWare;
@@ -148,13 +149,11 @@ public class FoundHQL {
             }
             return true;
         }catch (Exception i){
-            System.out.println("workerFound");
-            System.out.println(Constant.entity);
-            System.out.println(i);
+            i.printStackTrace();
+            WareController.alertSend("ERROR AL BUSCAR DATO");
             return false;
         }
     }
-
     public static boolean wareFound() {
         try {
             //check hibernate connection and database
@@ -253,8 +252,8 @@ public class FoundHQL {
             }
             return true;
         } catch (Exception i){
-            System.out.println("error en foundHQL.wareFound");
-            System.out.println(i);
+            WareController.alertSend("ERROR AL BUSCAR DATO");
+            i.printStackTrace();
             return false;
         }
     }

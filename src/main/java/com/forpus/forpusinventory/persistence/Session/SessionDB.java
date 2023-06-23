@@ -20,10 +20,7 @@ public class SessionDB {
              }
        }catch (Exception e){
            WareController.alertSend(e.toString());
-           System.out.println("Session cerado");
-           System.out.println(e);
        }
-        System.out.println("Session abierta");
        return sessionHibernate;
     }
 
@@ -32,9 +29,9 @@ public class SessionDB {
             sessionHibernate.close();
             return (sessionHibernate = null);
         }catch (Exception e){
-            System.out.println("Error Al Cerrar Session"+ e);
+            WareController.alertSend("Error Al Cerrar Session"+ e);
+            e.printStackTrace();
         }
-        System.out.println("Session cerrada");
         return (sessionHibernate = null);
     }
 
@@ -43,6 +40,7 @@ public class SessionDB {
             EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("persistence");
             return entityManagerFactory.createEntityManager();
         }catch (Exception i){
+            i.printStackTrace();
             WareController.alertSend(i.toString());
             return null;
         }
@@ -53,6 +51,7 @@ public class SessionDB {
             EntityManager eM = entityFactory();
             return (Metamodel) Objects.requireNonNull(eM).getMetamodel();
         }catch (Exception i){
+            i.printStackTrace();
             WareController.alertSend(i.toString());
             return null;
         }

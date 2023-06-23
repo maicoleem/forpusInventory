@@ -1,5 +1,6 @@
 package com.forpus.forpusinventory.persistence.crud;
 
+import com.forpus.forpusinventory.controller.WareController;
 import com.forpus.forpusinventory.domain.services.Constant;
 import com.forpus.forpusinventory.domain.services.ConstantsWare;
 import com.forpus.forpusinventory.persistence.Session.SessionDB;
@@ -11,8 +12,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class DeleteHQL {
-
-
     public static boolean workerDelete(){
         try{
             //check hibernate connection and database
@@ -70,12 +69,11 @@ public class DeleteHQL {
             return true;
         }catch (Exception i){
             SessionDB.sessionClose();
-            System.out.println(i);
+            WareController.alertSend("ERROR AL BORRAR DATO");
             i.printStackTrace();
             return false;
         }
     }
-
     public static void deleteForean(){
         try{
             EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("persistence");
@@ -131,7 +129,8 @@ public class DeleteHQL {
             System.out.println("borrado");
 
         }catch (Exception e){
-            System.out.println(e);
+            WareController.alertSend("ERROR AL BORRAR DATO");
+            e.printStackTrace();
         }
     }
 

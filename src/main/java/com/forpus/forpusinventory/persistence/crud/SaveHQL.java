@@ -1,5 +1,6 @@
 package com.forpus.forpusinventory.persistence.crud;
 
+import com.forpus.forpusinventory.controller.WareController;
 import com.forpus.forpusinventory.domain.services.Constant;
 import com.forpus.forpusinventory.domain.services.ConstantsAccounting;
 import com.forpus.forpusinventory.domain.services.ConstantsPurchases;
@@ -359,8 +360,7 @@ public class SaveHQL {
             SessionDB.sessionClose();
             return true;
         }catch (Exception i){
-            System.out.println("Error en SaveHQL");
-            System.out.println(i);
+            WareController.alertSend("ERROR AL SALVAR DATOS");
             i.printStackTrace();
             return false;
         }
@@ -431,7 +431,7 @@ public class SaveHQL {
         }catch (Exception e){
             SessionDB.sessionClose();
             e.printStackTrace();
-            System.out.println(e);
+            WareController.alertSend("ERROR AL SALVAR DATOS");
             return false;
         }
     }
@@ -473,7 +473,7 @@ public class SaveHQL {
                     session.update(Constant.partners);
                     break;
                 default:
-                    System.out.println("error al actualizar los datos");
+                    WareController.alertSend("ERROR AL SALVAR DATOS");
                     break;
             }
             session.getTransaction().commit();
@@ -546,6 +546,7 @@ public class SaveHQL {
             SessionDB.sessionClose();
             return true;
         }catch (Exception i){
+            WareController.alertSend("ERROR AL SALVAR DATOS");
             i.printStackTrace();
             return false;
         }
@@ -570,8 +571,7 @@ public class SaveHQL {
      SessionDB.sessionClose();
      }catch (Exception i){
          i.printStackTrace();
-         System.out.println("Error en MoveInvoiceNew- SAveHQL");
-         System.out.println(i);
+         WareController.alertSend("ERROR AL SALVAR DATOS");
      }
  }
 }

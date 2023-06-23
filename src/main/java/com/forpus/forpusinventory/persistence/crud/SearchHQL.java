@@ -1,5 +1,6 @@
 package com.forpus.forpusinventory.persistence.crud;
 
+import com.forpus.forpusinventory.controller.WareController;
 import com.forpus.forpusinventory.domain.services.Constant;
 import com.forpus.forpusinventory.domain.services.ConstantsAccounting;
 import com.forpus.forpusinventory.domain.services.ConstantsPurchases;
@@ -165,13 +166,11 @@ public class SearchHQL {
             }
             return true;
         }catch (Exception i){
-            //SessionDB.sessionClose();
-            System.out.println(i);
+            WareController.alertSend("ERROR AL BUSCAR DATOS");
             i.printStackTrace();
             return false;
         }
     }
-
     public static boolean invoiceIdBill(String typeEntity){
 
         try{
@@ -201,10 +200,10 @@ public class SearchHQL {
             return true;
         }catch (Exception i){
             i.printStackTrace();
+            WareController.alertSend("ERROR AL BUSCAR DEUDAS O CREDITOS");
             return false;
         }
     }
-
     public static boolean invoiceEntity(String typeEntity){
 
         try{
@@ -234,6 +233,7 @@ public class SearchHQL {
             return true;
         }catch (Exception i){
             i.printStackTrace();
+            WareController.alertSend("ERROR AL BUSCAR DATOS");
             return false;
         }
     }
@@ -265,10 +265,10 @@ public class SearchHQL {
             List<WareinvoiceClass> resultados = session.createQuery(query).getResultList();
             ConstantsPurchases.wareInvoiceList = (ArrayList<WareinvoiceClass>) resultados;
         }catch (Exception i){
+            WareController.alertSend("ERROR AL BUSCAR DATOS");
             i.printStackTrace();
         }
     }
-
     public static void customersFinance(){
         try{
             SessionDB.session();
@@ -290,6 +290,7 @@ public class SearchHQL {
             List<CustomerClass> resultados = session.createQuery(query).getResultList();
             Constant.customersList = resultados.toArray(new CustomerClass[0]);
         }catch (Exception i){
+            WareController.alertSend("ERROR AL BUSCAR DATOS");
             i.printStackTrace();
         }
     }
