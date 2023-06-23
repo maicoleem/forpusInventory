@@ -90,20 +90,24 @@ public class SettingController implements Initializable {
     }
     @FXML
     protected void buttonCRUD(ActionEvent event){
+        try {
+            Button buttonCRUD = (Button) event.getSource();
 
-        Button buttonCRUD = (Button) event.getSource();
-
-        if(Constant.blueToWhite == null){
-            Constant.blueToWhite = buttonCRUD;
-            buttonCRUD.setStyle("-fx-background-color: #F5F5F5; ");
-        } else if (Constant.blueToWhite == buttonCRUD) {
-            buttonCRUD.setStyle("-fx-background-color: #F5F5F5; ");
-        }else{
-            Constant.blueToWhite.setStyle("-fx-background-color: #1BA1E2; ");
-            buttonCRUD.setStyle("-fx-background-color: #F5F5F5; ");
-            Constant.blueToWhite = buttonCRUD;
+            if (Constant.blueToWhite == null) {
+                Constant.blueToWhite = buttonCRUD;
+                buttonCRUD.setStyle("-fx-background-color: #F5F5F5; ");
+            } else if (Constant.blueToWhite == buttonCRUD) {
+                buttonCRUD.setStyle("-fx-background-color: #F5F5F5; ");
+            } else {
+                Constant.blueToWhite.setStyle("-fx-background-color: #1BA1E2; ");
+                buttonCRUD.setStyle("-fx-background-color: #F5F5F5; ");
+                Constant.blueToWhite = buttonCRUD;
+            }
+            crudEjecuted(buttonCRUD.getId());
+        }catch (Exception i){
+            i.printStackTrace();
+            WareController.alertSend("ERROR EN SOLICITUD");
         }
-        crudEjecuted(buttonCRUD.getId());
     }
     @FXML
     protected void buttonSlide(ActionEvent event) throws IOException {
@@ -111,6 +115,7 @@ public class SettingController implements Initializable {
 
     }
     public void changeLabelsText(String idButton){
+        try{
         Constant.buttonOptionsID = idButton;
         changeOptions();
         switch (idButton){
@@ -341,8 +346,13 @@ public class SettingController implements Initializable {
                 System.out.println("ERROR");
                 break;
         }
+        }catch (Exception i){
+            i.printStackTrace();
+            WareController.alertSend("ERROR EN CARGAR DATOS");
+        }
     }
     public void crudEjecuted(String idButton){
+        try{
         switch (idButton){
             case "save":
                 Constant.tfCode = textFieldIdentificationCard.getText();
@@ -428,11 +438,14 @@ public class SettingController implements Initializable {
             default:
                 break;
         }
+        }catch (Exception i){
+            i.printStackTrace();
+            WareController.alertSend("ERROR CRUD");
+        }
     }
     public void changeOptions(){
-
+        try{
         textFieldIdentificationCard.setDisable(false);
-
         remove.setVisible(Constant.isAdmin);
         remove.setDisable(true);
         remove.setStyle("-fx-background-color: #1BA1E2; ");
@@ -441,17 +454,18 @@ public class SettingController implements Initializable {
         found.setStyle("-fx-background-color: #1BA1E2; ");
         cancel.setStyle("-fx-background-color: #1BA1E2; ");
         search.setStyle("-fx-background-color: #1BA1E2; ");
-        //textFields
         buttonSingOut.setVisible(false);
-
         textFieldIdentificationCard.setText("");
-
         textFieldName.setText("");
         textFieldPhone.setText("");
         textFieldAddress.setText("");
         textFieldJob.setText("");
         textFieldSalary.setText("");
         textFieldPassword.setText("");
+        }catch (Exception i){
+            i.printStackTrace();
+            WareController.alertSend("ERROR AL LIMPIAR FORMATO");
+        }
     }
     public void alertSend(String massage){
         Alert alertMassage = new Alert(Alert.AlertType.INFORMATION);
