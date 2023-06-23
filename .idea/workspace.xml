@@ -9,12 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="MANEJO DE ERRORES DE DataBase.java LISTO.">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/Session/SessionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/Session/SessionDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/DeleteHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/DeleteHQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/FoundHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/FoundHQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SaveHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SaveHQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SearchHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SearchHQL.java" afterDir="false" />
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="SE COMPLETO EL MANEJO DE ERRORES DE LAS CLASES QUE INTERVIENEN CON LA BASE DE DATOS">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SettingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SettingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/repository/ReportGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/repository/ReportGenerator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -271,14 +270,7 @@
       <workItem from="1687205118700" duration="1296000" />
       <workItem from="1687214902415" duration="1519000" />
       <workItem from="1687302540189" duration="6138000" />
-      <workItem from="1687479722555" duration="1448000" />
-    </task>
-    <task id="LOCAL-00027" summary="Se reaizo modificación de las tablas y el mapeo para separar las claves foraneas y poder dejarlas nulas">
-      <created>1677873529033</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1677873529033</updated>
+      <workItem from="1687479722555" duration="4514000" />
     </task>
     <task id="LOCAL-00028" summary="se relizo la primer prueba de guardado de la factura con exicto.&#10;&#10;-Falta cambiar Constant.entity por ConstantsAcouunting.entity para evitar problemas en el SQL de hibernate&#10;-Falta corregir la contabilidad de las cuentas por ejemplo si un socio puede sacar dinero o adquirir deuda">
       <created>1677893051177</created>
@@ -616,7 +608,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687480711210</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="SE COMPLETO EL MANEJO DE ERRORES DE LAS CLASES QUE INTERVIENEN CON LA BASE DE DATOS">
+      <created>1687481343161</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1687481343162</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -634,7 +633,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Diseño: the view buttons (left side) now change of color to white when someone is selected" />
     <MESSAGE value="En finanzas &#10;+aportes sociales: ok&#10;+Cuentas de la compañia: ok&#10;+Productos: ok&#10;Cuentas por pagar esta en proceso ya se verifico que se registren correctamente los pagos.&#10;falta adicionarlos a la tabla&#10;Falta cuentas por cobrar" />
     <MESSAGE value="Ahora se puede ver los pasivos de la compañia en finaceView.&#10;&#10;Falta cuentas por cobrar" />
     <MESSAGE value="Se termino la pestaña finanzas." />
@@ -659,7 +657,8 @@
     <MESSAGE value="Se modifico el JDK ahora es de https://bell-sw.com/pages/downloads/ que permite crear el file.jar con javaFX {structure project -&gt; artifact -&gt; jar -&gt; from modules with dependency}." />
     <MESSAGE value="se modifico el path de lso reportes String reportPath = &quot;src/main/resources/com/forpus/jasper_report/Cotizar.jrxml&quot;;&#10;&#10;se continua con el manejo de errores" />
     <MESSAGE value="MANEJO DE ERRORES DE DataBase.java LISTO." />
-    <option name="LAST_COMMIT_MESSAGE" value="MANEJO DE ERRORES DE DataBase.java LISTO." />
+    <MESSAGE value="SE COMPLETO EL MANEJO DE ERRORES DE LAS CLASES QUE INTERVIENEN CON LA BASE DE DATOS" />
+    <option name="LAST_COMMIT_MESSAGE" value="SE COMPLETO EL MANEJO DE ERRORES DE LAS CLASES QUE INTERVIENEN CON LA BASE DE DATOS" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

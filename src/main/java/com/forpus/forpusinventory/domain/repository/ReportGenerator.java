@@ -95,7 +95,7 @@ public class ReportGenerator {
            //JasperExportManager.exportReportToPdfFile(jasperPrint, "C:\\Users\\Teemo\\OneDrive\\destino.pdf");
         } catch (Exception e) {
             e.printStackTrace();
-            WareController.alertSend(e.toString());
+            WareController.alertSend("ERROR EL CARGAR EL REPORTE");
         }
     }
 
@@ -104,30 +104,38 @@ public class ReportGenerator {
     }
 
     public static CompanyClass companyFound (){
-        String entity = Constant.entity;
-        Constant.entity = "CompanyClass";
-        FoundHQL.workerFound();
-        Constant.entity = entity;
+       try {
+           String entity = Constant.entity;
+           Constant.entity = "CompanyClass";
+           FoundHQL.workerFound();
+           Constant.entity = entity;
 
+       }catch (Exception i){
+           WareController.alertSend("ERROR AL CARGAR LA COMPAÑIA");
+       }
         return Constant.company;
     }
 
     public static CustomerClass customerInvoice(String idCustomer){
-        String entity = Constant.entity;
-        String code = Constant.tfCode;
-        Constant.entity = "CustomerClass";
-        Constant.tfCode = idCustomer;
-        if(!FoundHQL.workerFound()){
-            CustomerClass customer = new CustomerClass();
-            customer.setName("GENERICO");
-            customer.setPhoneNumber("---------");
-            customer.setIdCustomer(idCustomer);
+        try {
+            String entity = Constant.entity;
+            String code = Constant.tfCode;
+            Constant.entity = "CustomerClass";
+            Constant.tfCode = idCustomer;
+            if (!FoundHQL.workerFound()) {
+                CustomerClass customer = new CustomerClass();
+                customer.setName("GENERICO");
+                customer.setPhoneNumber("---------");
+                customer.setIdCustomer(idCustomer);
+                Constant.tfCode = code;
+                Constant.entity = entity;
+                return customer;
+            }
             Constant.tfCode = code;
             Constant.entity = entity;
-            return customer;
+        }catch (Exception i){
+            WareController.alertSend("ERROR AL CARGAR CLIENTE");
         }
-        Constant.tfCode = code;
-        Constant.entity = entity;
         return Constant.customer;
     }
 
@@ -187,6 +195,7 @@ public class ReportGenerator {
             SessionDB.sessionClose();
 
         } catch (Exception e) {
+            WareController.alertSend("ERROR EL CARGAR EL REPORTE");
             e.printStackTrace();
         }
 
