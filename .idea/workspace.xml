@@ -9,11 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="SE COMPLETO EL MANEJO DE ERRORES DE LAS CLASES QUE INTERVIENEN CON LA BASE DE DATOS">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="MANEJO DE ERRORES:&#10;SettingController OK&#10;SearchController OK&#10;WareController -&#10;AccountingController -&#10;FinanceController -&#10;HelloController -&#10;PurchasesControles -&#10;SalesController -&#10;&#10;BUILD ARTIFACT: &#10;crear .jar&#10;crear icono&#10;crear exe">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/PurchasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/PurchasesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SalesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SalesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SettingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SettingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/repository/ReportGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/repository/ReportGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/WareController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/WareController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/Session/SessionDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/Session/SessionDB.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -270,21 +272,9 @@
       <workItem from="1687205118700" duration="1296000" />
       <workItem from="1687214902415" duration="1519000" />
       <workItem from="1687302540189" duration="6138000" />
-      <workItem from="1687479722555" duration="4514000" />
-    </task>
-    <task id="LOCAL-00028" summary="se relizo la primer prueba de guardado de la factura con exicto.&#10;&#10;-Falta cambiar Constant.entity por ConstantsAcouunting.entity para evitar problemas en el SQL de hibernate&#10;-Falta corregir la contabilidad de las cuentas por ejemplo si un socio puede sacar dinero o adquirir deuda">
-      <created>1677893051177</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1677893051177</updated>
-    </task>
-    <task id="LOCAL-00029" summary="+Se cambio las entity a ConstantsAccounting.entity&#10;+Los socios no pueden sacar dinero solo aportar; siempre hacen ingresos los socios y los clientes, ciempre hacen egresos los trabajadores y los proveedores&#10;-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}">
-      <created>1678242382393</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1678242382393</updated>
+      <workItem from="1687479722555" duration="6506000" />
+      <workItem from="1687566802607" duration="2827000" />
+      <workItem from="1687616987329" duration="2704000" />
     </task>
     <task id="LOCAL-00030" summary="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;&#10;++Se agrego el diseño para realizar una venta">
       <created>1678410140226</created>
@@ -615,7 +605,21 @@
       <option name="project" value="LOCAL" />
       <updated>1687481343162</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="MANEJO DE ERRORES:&#10;SettingController OK&#10;SearchController OK&#10;WareController -&#10;AccountingController -&#10;FinanceController -&#10;HelloController -&#10;PurchasesControles -&#10;SalesController -&#10;&#10;BUILD ARTIFACT: &#10;crear .jar&#10;crear icono&#10;crear exe">
+      <created>1687484418887</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1687484418887</updated>
+    </task>
+    <task id="LOCAL-00078" summary="MANEJO DE ERRORES:&#10;SettingController OK&#10;SearchController OK&#10;WareController -&#10;AccountingController -&#10;FinanceController -&#10;HelloController -&#10;PurchasesControles -&#10;SalesController -&#10;&#10;BUILD ARTIFACT: &#10;crear .jar&#10;crear icono&#10;crear exe">
+      <created>1687484430322</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1687484430322</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -633,7 +637,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="En finanzas &#10;+aportes sociales: ok&#10;+Cuentas de la compañia: ok&#10;+Productos: ok&#10;Cuentas por pagar esta en proceso ya se verifico que se registren correctamente los pagos.&#10;falta adicionarlos a la tabla&#10;Falta cuentas por cobrar" />
     <MESSAGE value="Ahora se puede ver los pasivos de la compañia en finaceView.&#10;&#10;Falta cuentas por cobrar" />
     <MESSAGE value="Se termino la pestaña finanzas." />
     <MESSAGE value="Se estan configurando la fecha para poder construir los graficos" />
@@ -658,7 +661,8 @@
     <MESSAGE value="se modifico el path de lso reportes String reportPath = &quot;src/main/resources/com/forpus/jasper_report/Cotizar.jrxml&quot;;&#10;&#10;se continua con el manejo de errores" />
     <MESSAGE value="MANEJO DE ERRORES DE DataBase.java LISTO." />
     <MESSAGE value="SE COMPLETO EL MANEJO DE ERRORES DE LAS CLASES QUE INTERVIENEN CON LA BASE DE DATOS" />
-    <option name="LAST_COMMIT_MESSAGE" value="SE COMPLETO EL MANEJO DE ERRORES DE LAS CLASES QUE INTERVIENEN CON LA BASE DE DATOS" />
+    <MESSAGE value="MANEJO DE ERRORES:&#10;SettingController OK&#10;SearchController OK&#10;WareController -&#10;AccountingController -&#10;FinanceController -&#10;HelloController -&#10;PurchasesControles -&#10;SalesController -&#10;&#10;BUILD ARTIFACT: &#10;crear .jar&#10;crear icono&#10;crear exe" />
+    <option name="LAST_COMMIT_MESSAGE" value="MANEJO DE ERRORES:&#10;SettingController OK&#10;SearchController OK&#10;WareController -&#10;AccountingController -&#10;FinanceController -&#10;HelloController -&#10;PurchasesControles -&#10;SalesController -&#10;&#10;BUILD ARTIFACT: &#10;crear .jar&#10;crear icono&#10;crear exe" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

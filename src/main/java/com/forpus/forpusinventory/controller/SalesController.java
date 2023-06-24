@@ -201,22 +201,26 @@ public class SalesController {
     }
     //Carga las taxaqs de impuestos
     public void taxesIVABOLD(){
-        Constant.entity = "TaxesClass";
-        FoundHQL.workerFound();
-        for(TaxesClass tx: ConstantsAccounting.taxesList){
-            if(tx.getIdTaxes().equals("IVA")){
-                labelIVA.setText(tx.getTaxes());
-                ConstantsSales.iva = tx.getTaxes();
+        try {
+            Constant.entity = "TaxesClass";
+            FoundHQL.workerFound();
+            for (TaxesClass tx : ConstantsAccounting.taxesList) {
+                if (tx.getIdTaxes().equals("IVA")) {
+                    labelIVA.setText(tx.getTaxes());
+                    ConstantsSales.iva = tx.getTaxes();
 
+                }
+                if (tx.getIdTaxes().equals("BOLD")) {
+                    labelBold.setText(tx.getTaxes());
+                    ConstantsSales.bold = tx.getTaxes();
+                }
             }
-            if(tx.getIdTaxes().equals("BOLD")){
-                labelBold.setText(tx.getTaxes());
-                ConstantsSales.bold = tx.getTaxes();
-            }
+        }catch (Exception i){
+            i.printStackTrace();
         }
     }
     public void clean(){
-
+        try{
         final boolean a = false;
 
         labelProduct.setVisible(a);
@@ -299,6 +303,9 @@ public class SalesController {
         }catch (Exception i){
             System.out.println(i + "ERROR EN CLEAN() SALECONTROLLER");
         }
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     @FXML
     protected void buttonSlide(ActionEvent event) throws IOException {
@@ -340,6 +347,7 @@ public class SalesController {
     }
     @FXML
     public void buttonsOptions(ActionEvent event){
+        try{
         Button button = (Button) event.getSource();
         clean();
         final boolean a = true;
@@ -475,15 +483,17 @@ public class SalesController {
             default:
                 break;
         }
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     public void clientFound(ActionEvent event) {
+        try {
         Constant.entity = "CustomerClass";
         Constant.tfCode = tfCliente.getText();
-
         if(FoundHQL.workerFound()) {
             labelNameCliente.setText(Constant.customer.getName());
         }
-
         if(Objects.equals(ConstantsSales.salesOption, "Credit")){
             ObservableList<InvoiceClass> listOne = FXCollections.observableArrayList(ConstantsPurchases.invoiceCredit);
             if(!tfCliente.getText().isBlank()){
@@ -493,6 +503,9 @@ public class SalesController {
                 tableInvoice.setItems(listOne);
                 labelNameCliente.setText("Nombre Cliente");
             }
+        }
+        }catch (Exception i){
+            i.printStackTrace();
         }
     }
     public void productFound(ActionEvent event) {
@@ -556,10 +569,12 @@ public class SalesController {
                     break;
             }
         }catch (Exception i){
-            WareController.alertSend(i.toString());
+            i.printStackTrace();
+            WareController.alertSend("ERROR AL ENCONTRAR PRODUCTO");
         }
     }
     public void changeAmount(ActionEvent event) {
+        try{
         if(ConstantsSales.salesOption.equals("Product")){
             int max = Integer.parseInt(comboBoxAmount.getValue());
             int amount = Integer.parseInt(tfAmount.getText());
@@ -568,9 +583,11 @@ public class SalesController {
                 buttonCheckIn.setDisable(true);
             }
         }
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     public void changeSale() {
-
         if(ConstantsSales.salesOption.equals("Product")) {
             int sale = Integer.parseInt(tfPriceSale.getText());
             int saleOld = Integer.parseInt(ConstantsWare.product.getSalePrice());
@@ -589,6 +606,7 @@ public class SalesController {
         }
     }
     public void changeOff() {
+        try{
         if(ConstantsSales.salesOption.equals("Product")){
             int off = Integer.parseInt(tfOff.getText());
             int saleOld = Integer.parseInt(ConstantsWare.product.getSalePrice());
@@ -604,6 +622,9 @@ public class SalesController {
             int sale = saleOld -off; //(saleOld * off / 100);
             tfPriceSale.setText(String.valueOf(sale));
             labelUtilities.setText(String.valueOf(ConstantsSales.utilitiesPer(sale, price)));
+        }
+        }catch (Exception i){
+            i.printStackTrace();
         }
     }
     public void pxndx(ActionEvent event) {
@@ -658,6 +679,7 @@ public class SalesController {
         }
     }
     public void register(ActionEvent event) {
+        try{
         if(verify()){
 
             switch (ConstantsSales.salesOption){
@@ -686,6 +708,10 @@ public class SalesController {
             labelIVA2.setText("0");
             labelBold.setText("0");
             labelBold2.setText("0");
+        }
+        }catch (Exception i){
+            WareController.alertSend("ERROR AL REGISTRAR");
+            i.printStackTrace();
         }
     }
     public Boolean verify(){
@@ -755,92 +781,92 @@ public class SalesController {
         }catch (Exception i){
             i.printStackTrace();
             WareController.alertSend(String.valueOf(i));
-            System.out.println("verify es un metodo");
-            System.out.println(falseFor);
             return false;
         }
-
     }
     public void tableLoad(){
-
-        switch (ConstantsSales.salesOption){
-            case "Product":
-                tableMain.getItems().clear();
-                ObservableList<ProductClass> datesTTT = FXCollections.observableArrayList(ConstantsPurchases.productTableList);
-                tableMain.setItems(datesTTT);
-                labelSubTota2.setText("0");
-                //Obtiene el total sin Taxes
-                for(ProductClass p: tableMain.getItems()){
-                    int subtotal = ConstantsPurchases.subtotalProduct(String.valueOf(p.getAmount()), p.getSalePrice(), "0");
-                    int balance = Integer.valueOf(labelSubTota2.getText());
-                    int total = subtotal + balance;
-                    labelSubTota2.setText(String.valueOf(total));
-                }
-                break;
-            case "Service":
-                tableService.getItems().clear();
-                ObservableList<ServiceClass> datServices = FXCollections.observableArrayList(ConstantsPurchases.serviceTableList);
-                tableService.setItems(datServices);
-                labelSubTota2.setText("0");
-
-                for(ServiceClass p: tableService.getItems()){
-                    int subtotal = ConstantsPurchases.subtotalProduct(String.valueOf(p.getHour()), p.getProfit(), "0");
-                    int balance = Integer.valueOf(labelSubTota2.getText());
-                    int total = subtotal + balance;
-
-                    labelSubTota2.setText(String.valueOf(total));
-                }
-                break;
-            case "Credit":
-                ConstantsPurchases.listInvoiceSearch();
-                tableInvoice.getItems().clear();
-                try{
-
-                    ArrayList<InvoiceClass> invoiceFiltrate = new ArrayList<>();
-
-                    for(InvoiceClass iv: ConstantsPurchases.invoiceList){
-                        if(iv.getIdCustomer() != null){
-                            invoiceFiltrate.add(iv);
-                            ConstantsPurchases.invoiceCredit.add(iv);
-                        }
+        try {
+            switch (ConstantsSales.salesOption) {
+                case "Product":
+                    tableMain.getItems().clear();
+                    ObservableList<ProductClass> datesTTT = FXCollections.observableArrayList(ConstantsPurchases.productTableList);
+                    tableMain.setItems(datesTTT);
+                    labelSubTota2.setText("0");
+                    //Obtiene el total sin Taxes
+                    for (ProductClass p : tableMain.getItems()) {
+                        int subtotal = ConstantsPurchases.subtotalProduct(String.valueOf(p.getAmount()), p.getSalePrice(), "0");
+                        int balance = Integer.valueOf(labelSubTota2.getText());
+                        int total = subtotal + balance;
+                        labelSubTota2.setText(String.valueOf(total));
                     }
-                    ObservableList<InvoiceClass> invoiceTable =
-                            FXCollections.observableArrayList(invoiceFiltrate);
-                    ConstantsPurchases.invoiceList = invoiceFiltrate;
-                    tableInvoice.setItems(invoiceTable);
-                }catch (Exception i){
-                    System.out.println(i);
-                    WareController.alertSend("Sin Facturas de clientes");
-                }
-                break;
-            default:
-                break;
-        }
+                    break;
+                case "Service":
+                    tableService.getItems().clear();
+                    ObservableList<ServiceClass> datServices = FXCollections.observableArrayList(ConstantsPurchases.serviceTableList);
+                    tableService.setItems(datServices);
+                    labelSubTota2.setText("0");
 
-        if(!ConstantsSales.salesOption.equals("Credit")){
+                    for (ServiceClass p : tableService.getItems()) {
+                        int subtotal = ConstantsPurchases.subtotalProduct(String.valueOf(p.getHour()), p.getProfit(), "0");
+                        int balance = Integer.valueOf(labelSubTota2.getText());
+                        int total = subtotal + balance;
 
-            labelTotal2.setText(labelSubTota2.getText());
+                        labelSubTota2.setText(String.valueOf(total));
+                    }
+                    break;
+                case "Credit":
+                    ConstantsPurchases.listInvoiceSearch();
+                    tableInvoice.getItems().clear();
+                    try {
 
-            costTaxes();
+                        ArrayList<InvoiceClass> invoiceFiltrate = new ArrayList<>();
 
-            ConstantsWare.product = null;
-            tfProduct.setText("");
-            tfProductName.setText("");
-            labelNameProduct.setText("");
+                        for (InvoiceClass iv : ConstantsPurchases.invoiceList) {
+                            if (iv.getIdCustomer() != null) {
+                                invoiceFiltrate.add(iv);
+                                ConstantsPurchases.invoiceCredit.add(iv);
+                            }
+                        }
+                        ObservableList<InvoiceClass> invoiceTable =
+                                FXCollections.observableArrayList(invoiceFiltrate);
+                        ConstantsPurchases.invoiceList = invoiceFiltrate;
+                        tableInvoice.setItems(invoiceTable);
+                    } catch (Exception i) {
+                        System.out.println(i);
+                        WareController.alertSend("Sin Facturas de clientes");
+                    }
+                    break;
+                default:
+                    break;
+            }
 
-            comboBoxPrice.getItems().clear();
-            comboBoxWare.getItems().clear();
-            comboBoxAmount.getItems().clear();
+            if (!ConstantsSales.salesOption.equals("Credit")) {
 
-            tfOff.setText("0");
-            tfAmount.setText("0");
-            tfPriceSale.setText("0");
+                labelTotal2.setText(labelSubTota2.getText());
 
-            pay();
+                costTaxes();
+
+                ConstantsWare.product = null;
+                tfProduct.setText("");
+                tfProductName.setText("");
+                labelNameProduct.setText("");
+
+                comboBoxPrice.getItems().clear();
+                comboBoxWare.getItems().clear();
+                comboBoxAmount.getItems().clear();
+
+                tfOff.setText("0");
+                tfAmount.setText("0");
+                tfPriceSale.setText("0");
+
+                pay();
+            }
+        }catch (Exception i){
+            i.printStackTrace();
         }
     }
     public void costTaxes(){
-
+        try{
         if(!labelIVA.getText().equals("IVA")){
             double ivaTaxes = Double.valueOf(labelIVA.getText());
             int subtotal = Integer.valueOf(labelTotal2.getText());
@@ -860,6 +886,9 @@ public class SalesController {
             int subtotal = Integer.valueOf(labelSubTota2.getText());
             int total = iva + subtotal;
             labelTotal2.setText(String.valueOf(total));
+        }
+        }catch (Exception i){
+            i.printStackTrace();
         }
     }
     public void pay(){
@@ -917,6 +946,7 @@ public class SalesController {
         }
     }
     public void taxes(ActionEvent event) {
+        try{
         Button button = (Button) event.getSource();
         switch (button.getId()){
             case "buttonIVA":
@@ -941,13 +971,16 @@ public class SalesController {
                 break;
         }
         tableLoad();
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     public void payment(KeyEvent keyEvent) {
         pay();
         buttonCheckIn.setDisable(ConstantsPurchases.checkin);
     }
     public void quote(ActionEvent event) {
-
+        try{
         Button button = (Button) event.getSource();
         if(button.getText().equals("REGISTRAR PAGO")) {
 
@@ -969,6 +1002,9 @@ public class SalesController {
             tableLoad();
         }else {
             cotizar(button.getText());
+        }
+        }catch (Exception i){
+            i.printStackTrace();
         }
     }
     public void checkinInvoice(ActionEvent event) {
@@ -1065,6 +1101,7 @@ public class SalesController {
         }
     }
     public void invoiceView() {
+        try{
         //carga los productos de la factura
         InvoiceClass invoiceSelected = tableInvoice.getSelectionModel().getSelectedItem();
         ConstantsAccounting.invoice = invoiceSelected;
@@ -1089,10 +1126,17 @@ public class SalesController {
         }
 
         //Carga la deuda pendiente de pagar
-        if(0 != invoiceSelected.getIdBill()){
-            labelSubTota2.setText(String.valueOf(invoiceSelected.getIdBill()));
-            labelTotal2.setText(labelTotal2.getText());
-            tfTaxes.setText("0");
+        try {
+            if(0 != invoiceSelected.getIdBill()){
+                labelSubTota2.setText(String.valueOf(invoiceSelected.getIdBill()));
+                labelTotal2.setText(labelTotal2.getText());
+                tfTaxes.setText("0");
+            }
+        }catch (Exception i){
+            System.out.println("DEUDA ES NULLA");
+        }
+        }catch (Exception i){
+            i.printStackTrace();
         }
     }
     public void sobreCost(KeyEvent keyEvent) {
@@ -1113,6 +1157,7 @@ public class SalesController {
 
     }
     public void cotizar(String button){
+        try{
         if(!ConstantsPurchases.productTableList.isEmpty() ||
                 !ConstantsPurchases.serviceTableList.isEmpty()) {
         //buscar y guardar la compañia
@@ -1129,8 +1174,13 @@ public class SalesController {
         }else {
             WareController.alertSend("SIN DATOS REGISTRADOS");
         }
+        }catch (Exception i){
+            WareController.alertSend("ERROR AL GENERAR LA COTIZACIÓN");
+            i.printStackTrace();
+        }
     }
     public void generadorWareAndPrice(String button){
+        try{
         switch (ConstantsSales.salesOption){
             case "Product":
                 //cada producto debe de crear un wareinvoice
@@ -1209,7 +1259,10 @@ public class SalesController {
                 System.out.println("Error en  SalesController.entity");
                 break;
         }
-
+        }catch (Exception i){
+            WareController.alertSend("ERROR AL GENERAR LOS PRODUCTOS EN EL MOVIMIENTO");
+            i.printStackTrace();
+        }
     }
 
     public void offPercentage() {

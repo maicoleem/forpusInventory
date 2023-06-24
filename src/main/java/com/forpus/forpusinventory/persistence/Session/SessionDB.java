@@ -26,7 +26,9 @@ public class SessionDB {
 
     public static Session sessionClose(){
         try{
-            sessionHibernate.close();
+            if(sessionHibernate != null) {
+                sessionHibernate.close();
+            }
             return (sessionHibernate = null);
         }catch (Exception e){
             WareController.alertSend("Error Al Cerrar Session"+ e);

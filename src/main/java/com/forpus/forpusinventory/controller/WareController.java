@@ -166,23 +166,25 @@ public class WareController {
     }
     @FXML //botones del CRUD
     public void buttonCRUD(ActionEvent event) {
-
-        Button buttonCRUD = (Button) event.getSource();
-
-        if (Constant.blueToWhite == null) {
-            Constant.blueToWhite = buttonCRUD;
-            buttonCRUD.setStyle("-fx-background-color: #F5F5F5; ");
-        } else if (Constant.blueToWhite == buttonCRUD) {
-            buttonCRUD.setStyle("-fx-background-color: #F5F5F5; ");
-        } else {
-            Constant.blueToWhite.setStyle("-fx-background-color: #1BA1E2; ");
-            buttonCRUD.setStyle("-fx-background-color: #F5F5F5; ");
-            Constant.blueToWhite = buttonCRUD;
+        try {
+            Button buttonCRUD = (Button) event.getSource();
+            if (Constant.blueToWhite == null) {
+                Constant.blueToWhite = buttonCRUD;
+                buttonCRUD.setStyle("-fx-background-color: #F5F5F5; ");
+            } else if (Constant.blueToWhite == buttonCRUD) {
+                buttonCRUD.setStyle("-fx-background-color: #F5F5F5; ");
+            } else {
+                Constant.blueToWhite.setStyle("-fx-background-color: #1BA1E2; ");
+                buttonCRUD.setStyle("-fx-background-color: #F5F5F5; ");
+                Constant.blueToWhite = buttonCRUD;
+            }
+            crudEjecuted(buttonCRUD.getId());
+        }catch (Exception i){
+            i.printStackTrace();
         }
-        crudEjecuted(buttonCRUD.getId());
     }
     public void crudEjecuted(String idButton) {
-
+        try{
         switch (idButton) {
             case "save":
                 Constant.tfCode = tfCode.getText();
@@ -268,10 +270,13 @@ public class WareController {
             default:
                 break;
         }
-
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     //fucnion para que el crud haga diferentes cosas dependiendo de la entity
     public void differentiateBetweenEntities(Boolean found) {
+        try{
         switch (Constant.entity) {
             case "CategoryoneClass":
                 bOne.setDisable(false);
@@ -389,9 +394,13 @@ public class WareController {
             default:
                 break;
         }
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     //funcion para salvar datos
     public void saveDates() {
+        try{
         switch (Constant.entity) {
             case "ProductClass":
 
@@ -518,12 +527,14 @@ public class WareController {
             default:
                 break;
         }
-
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     //botones check para categorias pricnipalmente
     public void buttonCheck(ActionEvent event) {
+        try{
         Button buttonCheck = (Button) event.getSource();
-
         switch (buttonCheck.getId()) {
             case "bOne":
                 Constant.entity = "CategoryoneClass";
@@ -691,13 +702,14 @@ public class WareController {
             default:
                 break;
         }
-
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     @FXML //boton remover para las categorias
     public void buttonRemoveCate(ActionEvent event) {
-
+        try{
         Button buttonRemove = (Button) event.getSource();
-
         switch (buttonRemove.getId()) {
             case "bTwoRemove":
                 Constant.entity = "CategorytwoClass";
@@ -713,6 +725,9 @@ public class WareController {
             default:
                 break;
         }
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     @FXML //botones del lado derecho
     private void buttonSlide(ActionEvent event) throws IOException {
@@ -720,8 +735,8 @@ public class WareController {
     }
     @FXML//botones derechos
     static void slide(ActionEvent event) throws IOException {
+        try{
         Button buttonSlide = (Button) event.getSource();
-
         if (Constant.greyToBlueSlide == null) {
             Constant.greyToBlueSlide = buttonSlide;
             buttonSlide.setStyle("-fx-background-color: #F5F5F5; ");
@@ -733,9 +748,13 @@ public class WareController {
             Constant.greyToBlueSlide = buttonSlide;
         }
         slideChange(buttonSlide.getId(), event);
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     @FXML //botones de lado derecho
     static void slideChange(String blue, ActionEvent event) throws IOException {
+        try {
         switch (blue) {
             case "bWare":
                 FXMLLoader fxmlLoaderWare = new FXMLLoader(HelloApplication.class.getResource("ware-view.fxml"));
@@ -797,12 +816,14 @@ public class WareController {
             default:
                 break;
         }
-
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     @FXML //botones de arriba
     public void buttonsOptions(ActionEvent event) {
+        try{
         Button buttonOption = (Button) event.getSource();
-
         if (ConstantsWare.blueToWhite == null) {
             ConstantsWare.blueToWhite = buttonOption;
             buttonOption.setStyle("-fx-background-color: #F5F5F5; ");
@@ -813,12 +834,15 @@ public class WareController {
             buttonOption.setStyle("-fx-background-color: #F5F5F5; ");
             ConstantsWare.blueToWhite = buttonOption;
         }
-
         ConstantsWare.idOption = buttonOption.getId();
         options(ConstantsWare.idOption);
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     //botones de arriba, para dar formato al view
     protected void options(String option) {
+        try{
         clean();
         switch (option) {
             case "buttonCategory":
@@ -1001,9 +1025,13 @@ public class WareController {
                 break;
         }
         tableLoad();
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     //botones de arriba para dar formato al view
     protected void clean() {
+        try{
         if (!Constant.listTableShow.isEmpty()) {
             Constant.listTableShow.clear();
         }
@@ -1101,6 +1129,9 @@ public class WareController {
         buttonService.setStyle("-fx-background-color: #1BA1E2; ");
         buttonProducts.setStyle("-fx-background-color: #1BA1E2;");
         buttonTransmute.setStyle("-fx-background-color: #1BA1E2;");
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     //carga datos a la tabla
     public void tableLoad() {
@@ -1310,19 +1341,19 @@ public class WareController {
                     break;
             }
         } catch (Exception i) {
-            System.out.println("Error en Table load --Warecontroller");
-            System.out.println(i);
+            i.printStackTrace();
+            WareController.alertSend("ERROR AL CARGAR LOS DATOS");
         }
 
     }
     //carga datos a lso combobox
     public void comboBoxLoad() {
+        try{
         ArrayList<String> listProduct = new ArrayList<>();
         comboBoxOne.getItems().clear();
         comboBoxTwo.getItems().clear();
         comboBoxThree.getItems().clear();
         comboBoxWage.getItems().clear();
-
         if (Objects.equals(Constant.entity, "ServiceClass")) {
 
             Constant.entity = "ProductClass";
@@ -1390,8 +1421,12 @@ public class WareController {
             Constant.entity = "Transmute";
 
         }
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     public void comboBoxClick(ActionEvent event) {
+        try{
         ComboBox cBoxChange = (ComboBox) event.getSource();
         ArrayList<String> listProduct = new ArrayList<>();
 
@@ -1601,6 +1636,9 @@ public class WareController {
                         break;
                 }
             }
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     //Obtiene id del valor los combobox
     public void idValorComboBox (String valueComboBox, String entity){
@@ -1640,6 +1678,7 @@ public class WareController {
 
     }
     public void removeTable (ActionEvent event){
+        try{
 
             int a = tableWare.getSelectionModel().getSelectedIndex();
             String nameProduct = (String) c1.getCellData(a);
@@ -1668,7 +1707,10 @@ public class WareController {
                     Constant.tfCode = tfCode.getText();
                 }
             }
+        }catch (Exception i){
+            i.printStackTrace();
         }
+    }
     public void buttonMany(ActionEvent event) {
         Button button = (Button) event.getSource();
         try {
@@ -1714,7 +1756,7 @@ public class WareController {
             Constant.entity = "Transmute";
             tfCode.setText("Transmute");
         }catch (Exception i){
-            System.out.println(i + "ERROR EN BOTON UNO A MUCHOS O MUCHOS A UNO");
+            i.printStackTrace();
             WareController.alertSend("POR FAVOR SELECCIONAR PRODUCTOS");
         }
     }

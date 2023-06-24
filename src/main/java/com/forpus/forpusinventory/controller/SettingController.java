@@ -487,9 +487,14 @@ public class SettingController implements Initializable {
     }
     //found the company
     public static CompanyClass company(String entityClassNotChange){
-        Constant.entity = "CompanyClass";
-        SearchHQL.searchHQL();
-        Constant.company = Constant.companiesList[0];
+        try {
+            Constant.entity = "CompanyClass";
+            SearchHQL.searchHQL();
+            Constant.company = Constant.companiesList[0];
+        }catch (Exception i) {
+            i.printStackTrace();
+            WareController.alertSend("ERROR AL CARGAR DATOS DE LA EMPRESA");
+        }
         return Constant.company;
     }
 

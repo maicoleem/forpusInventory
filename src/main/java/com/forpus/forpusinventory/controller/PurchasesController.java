@@ -140,157 +140,162 @@ public class PurchasesController {
     }
 
     public void option(String idButton){
-        clear();
-        final boolean a = true;
-        switch (idButton){
-            case "buttonProduct0":
-                buttonProduct0.setStyle("-fx-background-color: #F5F5F5; ");
-                ConstantsPurchases.entity = "Purchases";
-                ConstantsPurchases.entityForInvoice = "ProvidersClass";
-                labelProvider.setVisible(a);
-                labelNameProvider.setVisible(a);
-                labelProduct.setVisible(a);
-                labelNameProduct.setVisible(a);
-                labelPrice.setVisible(a);
-                labelOff.setVisible(a);
-                labelAmount.setVisible(a);
-                labelProfit.setVisible(a);
-                labelPriceSale.setVisible(a);
+        try {
+            clear();
+            final boolean a = true;
+            switch (idButton) {
+                case "buttonProduct0":
+                    buttonProduct0.setStyle("-fx-background-color: #F5F5F5; ");
+                    ConstantsPurchases.entity = "Purchases";
+                    ConstantsPurchases.entityForInvoice = "ProvidersClass";
+                    labelProvider.setVisible(a);
+                    labelNameProvider.setVisible(a);
+                    labelProduct.setVisible(a);
+                    labelNameProduct.setVisible(a);
+                    labelPrice.setVisible(a);
+                    labelOff.setVisible(a);
+                    labelAmount.setVisible(a);
+                    labelProfit.setVisible(a);
+                    labelPriceSale.setVisible(a);
 
-                tfProvider.setVisible(a);
-                tfProduct.setVisible(a);
-                tfPrice.setVisible(a);
-                tfOff.setVisible(a);
-                tfAmount.setVisible(a);
-                tfProfit.setVisible(a);
-                tfPriceSale.setVisible(a);
+                    tfProvider.setVisible(a);
+                    tfProduct.setVisible(a);
+                    tfPrice.setVisible(a);
+                    tfOff.setVisible(a);
+                    tfAmount.setVisible(a);
+                    tfProfit.setVisible(a);
+                    tfPriceSale.setVisible(a);
 
-                buttonProvider.setVisible(a);
-                buttonProduct.setVisible(a);
-                buttonRegister.setVisible(a);
-                buttonSuppress.setVisible(a);
-                buttonCheckIn.setVisible(a);
+                    buttonProvider.setVisible(a);
+                    buttonProduct.setVisible(a);
+                    buttonRegister.setVisible(a);
+                    buttonSuppress.setVisible(a);
+                    buttonCheckIn.setVisible(a);
 
-                search.setVisible(a);
-                save.setVisible(a);
-                found.setVisible(a);
-                cancel.setVisible(a);
-                remove.setVisible(a);
+                    search.setVisible(a);
+                    save.setVisible(a);
+                    found.setVisible(a);
+                    cancel.setVisible(a);
+                    remove.setVisible(a);
 
-                comboBoxOne.setVisible(a);
-                comboBoxTwo.setVisible(a);
-                comboBoxThree.setVisible(a);
-                comboBoxWare.setVisible(a);
-                comboBoxPrice.setVisible(a);
+                    comboBoxOne.setVisible(a);
+                    comboBoxTwo.setVisible(a);
+                    comboBoxThree.setVisible(a);
+                    comboBoxWare.setVisible(a);
+                    comboBoxPrice.setVisible(a);
 
-                tableMain.setVisible(a);
+                    tableMain.setVisible(a);
 
-                panelCheckIn.setVisible(a);
-                panelPayment.setVisible(a);
-                buttonIVA.setVisible(a);
-                buttonBold.setVisible(a);
-                labelIVA.setText("IVA");
-                labelIVA2.setVisible(a);
-                labelBold.setVisible(a);
-                labelBold2.setVisible(a);
+                    panelCheckIn.setVisible(a);
+                    panelPayment.setVisible(a);
+                    buttonIVA.setVisible(a);
+                    buttonBold.setVisible(a);
+                    labelIVA.setText("IVA");
+                    labelIVA2.setVisible(a);
+                    labelBold.setVisible(a);
+                    labelBold2.setVisible(a);
 
-                panelTotal.setVisible(a);
+                    panelTotal.setVisible(a);
 
-                checkProduct.setVisible(a);
-                checkSale.setVisible(a);
+                    checkProduct.setVisible(a);
+                    checkSale.setVisible(a);
 
-                labelProduct.setText("Producto");
-                labelNameProduct.setText("Nombre Producto");
-                taxesIVABOLD();
+                    labelProduct.setText("Producto");
+                    labelNameProduct.setText("Nombre Producto");
+                    taxesIVABOLD();
 
-                break;
-            case "buttonService":
-                buttonService.setStyle("-fx-background-color: #F5F5F5; ");
-                ConstantsPurchases.entity = "Service";
-                ConstantsPurchases.entityForInvoice = "ProvidersClass";
-                labelProvider.setVisible(a);
-                labelNameProvider.setVisible(a);
-                labelProduct.setVisible(a);
-                labelNameProduct.setVisible(a);
-                labelPrice.setVisible(a);
-                labelOff.setVisible(a);
-                labelAmount.setVisible(a);
+                    break;
+                case "buttonService":
+                    buttonService.setStyle("-fx-background-color: #F5F5F5; ");
+                    ConstantsPurchases.entity = "Service";
+                    ConstantsPurchases.entityForInvoice = "ProvidersClass";
+                    labelProvider.setVisible(a);
+                    labelNameProvider.setVisible(a);
+                    labelProduct.setVisible(a);
+                    labelNameProduct.setVisible(a);
+                    labelPrice.setVisible(a);
+                    labelOff.setVisible(a);
+                    labelAmount.setVisible(a);
 
-                tfProvider.setVisible(a);
-                tfProduct.setVisible(a);
-                tfPrice.setVisible(a);
-                tfOff.setVisible(a);
-                tfAmount.setVisible(a);
+                    tfProvider.setVisible(a);
+                    tfProduct.setVisible(a);
+                    tfPrice.setVisible(a);
+                    tfOff.setVisible(a);
+                    tfAmount.setVisible(a);
 
-                buttonProvider.setVisible(a);
-                buttonProduct.setVisible(a);
-                buttonRegister.setVisible(a);
-                buttonSuppress.setVisible(a);
+                    buttonProvider.setVisible(a);
+                    buttonProduct.setVisible(a);
+                    buttonRegister.setVisible(a);
+                    buttonSuppress.setVisible(a);
 
-                search.setVisible(a);
-                save.setVisible(a);
-                found.setVisible(a);
-                cancel.setVisible(a);
-                remove.setVisible(a);
+                    search.setVisible(a);
+                    save.setVisible(a);
+                    found.setVisible(a);
+                    cancel.setVisible(a);
+                    remove.setVisible(a);
 
-                comboBoxWare.setVisible(a);
+                    comboBoxWare.setVisible(a);
 
-                tableService.setVisible(a);
+                    tableService.setVisible(a);
 
-                panelCheckIn.setVisible(a);
-                buttonCheckIn.setVisible(a);
-                panelPayment.setVisible(a);
-                buttonIVA.setVisible(a);
-                buttonBold.setVisible(a);
-                labelIVA.setText("IVA");
-                labelIVA2.setVisible(a);
-                labelBold.setVisible(a);
-                labelBold2.setVisible(a);
+                    panelCheckIn.setVisible(a);
+                    buttonCheckIn.setVisible(a);
+                    panelPayment.setVisible(a);
+                    buttonIVA.setVisible(a);
+                    buttonBold.setVisible(a);
+                    labelIVA.setText("IVA");
+                    labelIVA2.setVisible(a);
+                    labelBold.setVisible(a);
+                    labelBold2.setVisible(a);
 
-                panelTotal.setVisible(a);
+                    panelTotal.setVisible(a);
 
-                checkProduct.setVisible(a);
+                    checkProduct.setVisible(a);
 
-                labelProduct.setText("Servicio");
-                labelNameProduct.setText("Nombre Servicio");
-                taxesIVABOLD();
-                break;
-            case "buttonCredit":
-                buttonCredit.setStyle("-fx-background-color: #F5F5F5; ");
-                ConstantsPurchases.entity = "Credit";
-                ConstantsPurchases.entityForInvoice = "ProvidersClass";
-                labelProvider.setVisible(a);
-                tfProvider.setVisible(a);
+                    labelProduct.setText("Servicio");
+                    labelNameProduct.setText("Nombre Servicio");
+                    taxesIVABOLD();
+                    break;
+                case "buttonCredit":
+                    buttonCredit.setStyle("-fx-background-color: #F5F5F5; ");
+                    ConstantsPurchases.entity = "Credit";
+                    ConstantsPurchases.entityForInvoice = "ProvidersClass";
+                    labelProvider.setVisible(a);
+                    tfProvider.setVisible(a);
 
-                tableInvoice.setVisible(a);
-                tableMoveInv.setVisible(a);
-                tableWareInv.setVisible(a);
+                    tableInvoice.setVisible(a);
+                    tableMoveInv.setVisible(a);
+                    tableWareInv.setVisible(a);
 
-                tfTaxes.setVisible(a);
+                    tfTaxes.setVisible(a);
 
-                buttonProvider.setVisible(a);
-                search.setVisible(a);
+                    buttonProvider.setVisible(a);
+                    search.setVisible(a);
 
-                panelCheckIn.setVisible(a);
-                panelPayment.setVisible(a);
-                buttonIVA.setVisible(!a);
-                buttonBold.setVisible(!a);
-                labelIVA.setText("Mora");
-                labelIVA2.setVisible(!a);
-                labelBold.setVisible(!a);
-                labelBold2.setVisible(!a);
-                buttonQuote.setVisible(a);
-                buttonCheckIn.setVisible(!a);
+                    panelCheckIn.setVisible(a);
+                    panelPayment.setVisible(a);
+                    buttonIVA.setVisible(!a);
+                    buttonBold.setVisible(!a);
+                    labelIVA.setText("Mora");
+                    labelIVA2.setVisible(!a);
+                    labelBold.setVisible(!a);
+                    labelBold2.setVisible(!a);
+                    buttonQuote.setVisible(a);
+                    buttonCheckIn.setVisible(!a);
 
-                panelTotal.setVisible(a);
-                labelNameProvider.setVisible(a);
-                tableLoad();
-                break;
-            default:
-                break;
+                    panelTotal.setVisible(a);
+                    labelNameProvider.setVisible(a);
+                    tableLoad();
+                    break;
+                default:
+                    break;
+            }
+        }catch (Exception i){
+            i.printStackTrace();
         }
     }
     public void clear(){
+        try{
         final boolean a = false;
 
         labelProvider.setVisible(a);
@@ -377,8 +382,12 @@ public class PurchasesController {
         buttonProduct0.setStyle("-fx-background-color: #1BA1E2; ");
         buttonService.setStyle("-fx-background-color: #1BA1E2; ");
         buttonCredit.setStyle("-fx-background-color: #1BA1E2; ");
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     public void providerFound(ActionEvent event) {
+        try{
         Constant.entity = "ProvidersClass";
         Constant.tfCode = tfProvider.getText();
         if(FoundHQL.workerFound()){
@@ -396,8 +405,13 @@ public class PurchasesController {
                 labelNameProvider.setText("Nombre Proveedor");
             }
         }
+        }catch (Exception i){
+            WareController.alertSend("ERROR AL CARGAR EL PROVEEDOR");
+            i.printStackTrace();
+        }
     }
     public void productFound(ActionEvent event) {
+        try{
         switch (ConstantsPurchases.entity){
             case "Purchases":
                 Constant.entity = "ProductClass";
@@ -452,8 +466,13 @@ public class PurchasesController {
             default:
                 break;
         }
+        }catch (Exception i){
+            i.printStackTrace();
+            WareController.alertSend("ERROR AL CARGAR EL PRODUCTO");
+        }
     }
     public void checkProductIsTrue(){
+        try{
         if(FoundHQL.workerFound()){
             tfProductName.setDisable(true);
             String message = "El codigo ya existe";
@@ -473,8 +492,12 @@ public class PurchasesController {
             comboBoxWare.getItems().addAll(wares);
             comboBoxWare.setValue(ConstantsWare.service.getIdWare());
         }
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     public void checkProduct(ActionEvent event) {
+        try{
         ArrayList<String> listProduct = new ArrayList<>();
         tfProduct.setText("");
         labelNameProduct.setText("");
@@ -489,38 +512,45 @@ public class PurchasesController {
             labelNameProduct.setVisible(true);
             comboBoxOne.getItems().clear();
         }
-
-
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     public void cbPrice(ActionEvent event) {
-        ArrayList<String> listProduct = new ArrayList<>();
-        if(checkProduct.isSelected()){
-            //carga todas las comboBox
-            Constant.entity = "WarehouseClass";
-            comboBoxWare.getItems().clear();
-            for(WarehouseClass w: ConstantsWare.wareList){
-                listProduct.add(w.getIdWarehouse());
-            }
-            comboBoxWare.getItems().addAll(listProduct);
-            listProduct.clear();
-        }else{
-        for(WareProductClass w: ConstantsWare.product.getWareProductsByIdProduct()){
-            String house = w.getIdWare();
-            for(ProductpriceClass p: w.getProductpricesByIdWareProduct()){
-                String price = String.valueOf(p.getPrice());
-                if(price.equals(comboBoxPrice.getValue())){
-                    listProduct.add(house);
+        try {
+            ArrayList<String> listProduct = new ArrayList<>();
+            if (checkProduct.isSelected()) {
+                //carga todas las comboBox
+                Constant.entity = "WarehouseClass";
+                comboBoxWare.getItems().clear();
+                for (WarehouseClass w : ConstantsWare.wareList) {
+                    listProduct.add(w.getIdWarehouse());
                 }
+                comboBoxWare.getItems().addAll(listProduct);
+                listProduct.clear();
+            } else {
+                for (WareProductClass w : ConstantsWare.product.getWareProductsByIdProduct()) {
+                    String house = w.getIdWare();
+                    for (ProductpriceClass p : w.getProductpricesByIdWareProduct()) {
+                        String price = String.valueOf(p.getPrice());
+                        if (price.equals(comboBoxPrice.getValue())) {
+                            listProduct.add(house);
+                        }
+                    }
+                }
+                tfPrice.setText(comboBoxPrice.getValue());
+                comboBoxWare.getItems().clear();
+                comboBoxWare.getItems().addAll(listProduct);
+                checkSale();
+                listProduct.clear();
             }
-        }
-        tfPrice.setText(comboBoxPrice.getValue());
-        comboBoxWare.getItems().clear();
-        comboBoxWare.getItems().addAll(listProduct);
-        checkSale();
-        listProduct.clear();
+        }catch (Exception i){
+            i.printStackTrace();
+            WareController.alertSend("ERROR AL CARGAR LOS PRECIOS");
         }
     }
     public void priceNew(KeyEvent keyEvent) {
+        try{
         //Cuando se agrega un valor al tfPrice da la opcion para agregar a cualquier bodega
         comboBoxPrice.setValue("0");
 
@@ -542,8 +572,12 @@ public class PurchasesController {
             int profit = ((priceSale - newPriceBuy) / newPriceBuy) * 100;
             tfProfit.setText(String.valueOf(profit));
         }
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     public void priceSale(){
+        try{
         int price;
         if(!tfPrice.getText().equals("") && !tfPrice.getText().equals("0")){
             price = Integer.valueOf(tfPrice.getText());
@@ -555,8 +589,12 @@ public class PurchasesController {
             int sale = price + (price * profit / 100);
             tfPriceSale.setText(String.valueOf(sale));
         }
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     public void checkSale() {
+        try{
         if(checkSale.isSelected()){
             //precio nuevo
             tfPriceSale.setDisable(false);
@@ -576,8 +614,12 @@ public class PurchasesController {
                     break;
             }
         }
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     public void register(ActionEvent event) {
+        try{
         if(verify()){
 
             switch (ConstantsPurchases.entity){
@@ -642,10 +684,14 @@ public class PurchasesController {
             }
             tableLoad();
         }
+        }catch (Exception i){
+            WareController.alertSend("ERROR AL REGISTRAR");
+            i.printStackTrace();
+        }
     }
     public void categorySelected(ActionEvent event) {
+        try{
         ComboBox<String> comboBox = (ComboBox<String>) event.getSource();
-
         switch (comboBox.getId()){
             case "comboBoxOne":
                 //guarda el codigo de la categoria 1
@@ -677,6 +723,9 @@ public class PurchasesController {
                 break;
             default:
                 break;
+        }
+        }catch (Exception i){
+            i.printStackTrace();
         }
     }
     @FXML
@@ -815,13 +864,12 @@ public class PurchasesController {
         }catch (Exception i){
             i.printStackTrace();
             WareController.alertSend(String.valueOf(i));
-            System.out.println(falseFor);
             return false;
         }
 
     }
     public void tableLoad(){
-
+        try{
         switch (ConstantsPurchases.entity){
             case "Purchases":
                 tableMain.getItems().clear();
@@ -877,7 +925,6 @@ public class PurchasesController {
             default:
                 break;
         }
-
         if(!ConstantsPurchases.entity.equals("Credit")){
             labelTotal3.setText(labelTotal2.getText());
             costTaxes();
@@ -896,13 +943,14 @@ public class PurchasesController {
             ConstantsWare.three = null;
             pay();
         }
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     public void suppress(ActionEvent event) {
-
+        try{
         int a = tableMain.getSelectionModel().getSelectedIndex();
-
         String nameProduct = (String) c2.getCellData(a);
-
         if (nameProduct != null) {
             //elimina de la tabla
             tableMain.getItems().remove(a);
@@ -911,8 +959,12 @@ public class PurchasesController {
             //carga la tabla para obtener el total
             tableLoad();
         }
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     public void taxes(ActionEvent event) {
+        try{
         Button button = (Button) event.getSource();
         switch (button.getId()){
             case "buttonIVA":
@@ -925,8 +977,12 @@ public class PurchasesController {
                 break;
         }
         tableLoad();
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     public void costTaxes(){
+        try{
         if(!labelIVA.getText().equals("IVA")){
             double ivaTaxes = Double.valueOf(labelIVA.getText());
             int subtotal = Integer.valueOf(labelTotal2.getText());
@@ -951,8 +1007,12 @@ public class PurchasesController {
             int total = bold + subtotal;
             labelTotal3.setText(String.valueOf(total));
         }
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     public void taxesIVABOLD(){
+        try{
         Constant.entity = "TaxesClass";
         FoundHQL.workerFound();
         for(TaxesClass tx: ConstantsAccounting.taxesList){
@@ -964,8 +1024,12 @@ public class PurchasesController {
                 labelBold.setText(tx.getTaxes());
             }
         }
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     public void pay(){
+        try{
         int total = Integer.valueOf(labelTotal3.getText());
         int cash = Integer.valueOf(tfCash.getText());
         int bank = Integer.parseInt(tfBank.getText());
@@ -979,13 +1043,16 @@ public class PurchasesController {
             labelPay.setText(String.valueOf(pay));
             ConstantsPurchases.checkin = false;
         }
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     public void payment(KeyEvent keyEvent) {
         pay();
         buttonCheckIn.setDisable(ConstantsPurchases.checkin);
-
     }
     public void checkinInvoice(ActionEvent event) {
+        try{
         /*Crea un invoice solo con los datos necesarios para
         *obtener la id, es obligatorio ingresar
         *bak, cash, date y total
@@ -1101,6 +1168,9 @@ public class PurchasesController {
             }
 
         }
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     public void invoiceView() {
         try {
@@ -1143,7 +1213,7 @@ public class PurchasesController {
         labelTotal3.setText(String.valueOf(total));
     }
     public void quote(ActionEvent event) {
-
+        try{
         MoveinvoiceClass mi = new MoveinvoiceClass();
 
         mi.setDate(ConstantsPurchases.dateActually());
@@ -1160,6 +1230,9 @@ public class PurchasesController {
         SaveHQL.insertWorker("save");
 
         tableLoad();
+        }catch (Exception i){
+            i.printStackTrace();
+        }
 
     }
 }
