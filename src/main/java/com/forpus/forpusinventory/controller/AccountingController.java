@@ -79,7 +79,7 @@ public class AccountingController {
     }
     @FXML //botones del CRUD
     public void buttonCRUD(ActionEvent event) {
-
+        try{
         Button buttonCRUD = (Button) event.getSource();
 
         if (Constant.blueToWhite == null) {
@@ -93,8 +93,12 @@ public class AccountingController {
             Constant.blueToWhite = buttonCRUD;
         }
         crudEjecuted(buttonCRUD.getId());
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     public void crudEjecuted(String idButton) {
+        try{
         switch (idButton) {
             case "save":
                 saveDates();
@@ -125,9 +129,12 @@ public class AccountingController {
             default:
                 break;
         }
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     private void saveDates() {
-
+        try{
         switch (ConstantsAccounting.entity){
             case "TaxesClass":
                 for(TaxesClass tx: ConstantsAccounting.taxesList){
@@ -147,8 +154,13 @@ public class AccountingController {
             default:
                 break;
         }
+        }catch (Exception i){
+            i.printStackTrace();
+            WareController.alertSend("ERROR AL IMPORTAR LOS DATOS");
+        }
     }
     private void differentiateBetweenEntities(boolean workerFound) {
+        try{
         switch (ConstantsAccounting.entity){
             case "TaxesClass":
                 for(TaxesClass tx: ConstantsAccounting.taxesList){
@@ -204,8 +216,13 @@ public class AccountingController {
             default:
                 break;
         }
+        }catch (Exception i){
+            i.printStackTrace();
+            WareController.alertSend("ERROR AL IMPORTAR LOS DATOS");
+        }
     }
     public void companyAccounting(String entity, int bank, int cash, int total, int receivable, int uReceivable, int payable, int utilities){
+        try{
         Constant.entity = "CompanyClass";
         Constant.tfCode = "1";
         FoundHQL.workerFound();
@@ -234,10 +251,13 @@ public class AccountingController {
         Constant.company.setUReceivable(String.valueOf(newUReceivable));
         Constant.company.setPayable(String.valueOf(newPayable));
         Constant.company.setUtilities(String.valueOf(newUtilities));
-
+        }catch (Exception i){
+            i.printStackTrace();
+            WareController.alertSend("ERROR AL GESTIONAR LOS MOVIMIENTOS DE LA EMPRESA");
+        }
     }
     public void partnerAccounting(String entity, int bank, int cash, int receivable, int payable){
-
+        try{
         int actuallyBank = Integer.valueOf(Constant.partners.getBank());
         int actuallyCash = Integer.valueOf(Constant.partners.getCash());
         int actuallyReceivable = Integer.valueOf(Constant.partners.getReceivable());
@@ -252,6 +272,10 @@ public class AccountingController {
         Constant.partners.setCash(String.valueOf(newCash));
         Constant.partners.setReceivable(String.valueOf(newReceivable));
         Constant.partners.setPayable(String.valueOf(newPayable));
+        }catch (Exception i){
+            i.printStackTrace();
+            WareController.alertSend("ERROR AL GESTIONAR LOS MOVIMIENTOS DE LOS SOCIOS");
+        }
 
     }
     @FXML
@@ -261,6 +285,7 @@ public class AccountingController {
     }
 
     public void options(String idButton){
+        try{
         clean();
         switch (idButton){
             case "buttonTaxes":
@@ -383,8 +408,12 @@ public class AccountingController {
             default:
                 break;
         }
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     public void comboBoxLoad(){
+        try{
         try {
             if (comboBoxWare.getItems() != null) {
                 comboBoxWare.getItems().clear();
@@ -454,12 +483,14 @@ public class AccountingController {
             default:
                 break;
         }
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     public void comboBoxClick(ActionEvent event) {
+        try{
         ComboBox comboBox = (ComboBox) event.getSource();
-
         String idComboBox = comboBox.getId();
-
         switch (ConstantsAccounting.entity){
             case "WarehouseClass":
                 tableLoad(ConstantsAccounting.entity, idComboBox);
@@ -691,6 +722,9 @@ public class AccountingController {
             default:
                 break;
         }
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     public void tableLoad(String entity, String idComboBox){
         try{
@@ -805,12 +839,12 @@ public class AccountingController {
                     break;
             }
         }catch (Exception i){
-            System.out.println(i + " Error al cargar la tabla (tableLoad)");
+            i.printStackTrace();
+            WareController.alertSend("ERROR AL CARGAR LA TABLA: " + i);
         }
-
     }
     public void numeric(KeyEvent keyEvent) {
-
+        try{
         switch (ConstantsAccounting.entity){
             case "TaxesClass":
                 TextField tf = (TextField) keyEvent.getSource();
@@ -855,8 +889,12 @@ public class AccountingController {
             default:
                 break;
         }
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     public void clean(){
+        try{
         labelBold.setVisible(false);
         labelIVA.setVisible(false);
         labelCode.setVisible(false);
@@ -901,9 +939,13 @@ public class AccountingController {
         buttonAccounting.setStyle("-fx-background-color: #1BA1E2;");
         buttonReceivable.setStyle("-fx-background-color: #1BA1E2;");
         buttonInput.setStyle("-fx-background-color: #1BA1E2;");
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     @FXML
     public void search(ActionEvent event) {
+        try{
         Constant.tfCode = tfCode.getText();
         FoundHQL.workerFound();
         System.out.println(Constant.entity);
@@ -948,9 +990,13 @@ public class AccountingController {
             default:
                 break;
         }
-
+        }catch (Exception i){
+            i.printStackTrace();
+            WareController.alertSend("ERROR AL BUSCAR LOS DATOS");
+        }
     }
     public void tableSelection() {
+        try{
         switch (ConstantsAccounting.entity){
             case "WarehouseClass":
                 System.out.println("nada");
@@ -981,11 +1027,14 @@ public class AccountingController {
             default:
                 break;
         }
+        }catch (Exception i){
+            i.printStackTrace();
+            WareController.alertSend("ERROR AL SELECCIONAR DATOS");
+        }
     }
     public void forInvoice(){
-
+        try{
         Constant.listTableShow2.clear();
-
         for(WareinvoiceClass wiv: ConstantsPurchases.wareInvoiceList){
             TableShow tableShow2 = new TableShow();
             tableShow2.setC1(wiv.getProductName());
@@ -995,13 +1044,15 @@ public class AccountingController {
             tableShow2.setC5(String.valueOf(wiv.getIdInvoice()));
             Constant.listTableShow2.add(tableShow2);
         }
-
         tableLoad(ConstantsAccounting.entity, "tableTwo");
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     public void tableNull(){
+        try{
         Constant.listTableShow.clear();
         Constant.listTableShow2.clear();
-
         if(ConstantsAccounting.entity.equals("Debt") && ConstantsAccounting.invoiceList.length != 0){
             for(InvoiceClass iv: ConstantsAccounting.invoiceList){
                 if(iv.getIdBill() != 0){
@@ -1012,7 +1063,6 @@ public class AccountingController {
             ConstantsAccounting.invoiceList = ConstantsPurchases.invoiceCredit.toArray(new InvoiceClass[0]);
             ConstantsPurchases.invoiceCredit.clear();
         }
-
         if(ConstantsAccounting.invoiceList.length != 0) {
             for (InvoiceClass iv : ConstantsAccounting.invoiceList) {
                 TableShow tableShow = new TableShow();
@@ -1027,7 +1077,8 @@ public class AccountingController {
                     forInvoice();
                 }
             }
-        }else{
+        }
+        else{
             TableShow tableShow = new TableShow();
             tableShow.setC1("null");
             tableShow.setC2("null");
@@ -1039,10 +1090,14 @@ public class AccountingController {
             tableLoad(ConstantsAccounting.entity, "tableTwo");
         }
         tableLoad(ConstantsAccounting.entity, "tableMain");
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     public void changeMoney(ActionEvent event) {
     }
     public void checkBox(ActionEvent event) {
+        try{
         CheckBox ch = (CheckBox) event.getSource();
         String idCh = ch.getId();
 
@@ -1054,14 +1109,21 @@ public class AccountingController {
             checkBoxDebt.setSelected(false);
         }
         comboBoxLoad();
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     @FXML
     public void cancel(ActionEvent event) {
+        try{
         labelNameShow.setText(" NOMBRE: ");
         labelPhone.setText(" TELEFONO: " );
         labelAddress.setText(" DIRECCIÓN: ");
         tfCode.setText("");
         tableTwo.getItems().clear();
         tableMain.getItems().clear();
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
 }

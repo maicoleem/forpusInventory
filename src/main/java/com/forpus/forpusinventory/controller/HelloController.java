@@ -42,9 +42,7 @@ public class HelloController {
      * @throws java.io.IOException error */
     @FXML
     protected void onButtonClick(ActionEvent event) throws IOException {
-        
-        System.out.println(event);
-
+        try{
         if(SingUp.companySingUP(userName.getText(), password.getText())){
             lblSingUp.setText("Success");
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("settings-view.fxml"));
@@ -56,6 +54,10 @@ public class HelloController {
 
         }else{
             lblSingUp.setText("Error in password or user name");
+        }
+        }catch (Exception i){
+            i.printStackTrace();
+            WareController.alertSend("ERROR: " + i);
         }
 
     }

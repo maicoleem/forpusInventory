@@ -245,14 +245,19 @@ public class FinanceController {
     }
     //METODO PARA CARGAR LAS VENTAS EN EL GRAFICO
     public void graphicsSales() throws ParseException {
+        try{
         SearchHQL.invoiceEntity("CustomerClass");
         chartSales.getData().clear();
         XYChart.Series<String, Number> series = graphics();
         series.setName("VENTAS");
         chartSales.setTitle("VENTAS");
         chartSales.getData().add(series);
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     public void graphicsPurchases() throws ParseException {
+        try{
         SearchHQL.invoiceEntity("ProvidersClass");
         chartPurchases.getData().clear();
         chartPurchases.setTitle("COMPRAS");
@@ -260,8 +265,12 @@ public class FinanceController {
         XYChart.Series<String, Number> series = graphics();
         series.setName("COMPRAS");
         chartPurchases.getData().add(series);
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     public void graphicsProducts(){
+        try{
         SearchHQL.wareInvoice();
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.setName("PRODUCTOS");
@@ -276,8 +285,12 @@ public class FinanceController {
         chartProducts.getData().clear();
         chartProducts.setTitle("PRODUCTOS");
         chartProducts.getData().add(series);
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     public void graphicsCustomers(){
+        try{
         SearchHQL.customersFinance();
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.setName("CLIENTES");
@@ -292,6 +305,9 @@ public class FinanceController {
         chartCustomers.getData().clear();
         chartCustomers.setTitle("CLIENTES");
         chartCustomers.getData().add(series);
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
 
     public XYChart.Series<String, Number> graphics() throws ParseException {
@@ -397,8 +413,8 @@ public class FinanceController {
                 break;
         }
     }
-
     public void clear(){
+        try{
         SessionDB.sessionClose();
         final boolean a = false;
         panelPartners.setVisible(a);
@@ -415,10 +431,12 @@ public class FinanceController {
         buttonFinances.setStyle("-fx-background-color: #1BA1E2;");
         buttonGraphics.setStyle("-fx-background-color: #1BA1E2;");
         buttonDB.setStyle("-fx-background-color: #1BA1E2;");
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
-
     public void export(ActionEvent event) {
-
+        try{
         Button button = (Button) event.getSource();
 
         DirectoryChooser directoryChooser = new DirectoryChooser();
@@ -438,9 +456,13 @@ public class FinanceController {
 
         buttonBackUp.setDisable(!labelRuta.getText().contains("\\"));
         buttonDownload.setDisable(!labelRuta.getText().contains("\\"));
+        }catch (Exception i){
+            WareController.alertSend("ERROR AL EXPORTAR DATOS");
+            i.printStackTrace();
+        }
     }
-
     public void restore(ActionEvent event) {
+        try{
         String entity1 = cbBoxCuentas.getValue();
         String entity2 =cbClass(entity1);
         if(DataBase.importTable(escaparCaracteres(labelRuta2.getText()),entity2)){
@@ -449,8 +471,11 @@ public class FinanceController {
         }else {
             WareController.alertSend("ERROR AL IMPORTAR LOS DATOS");
         }
+        }catch (Exception i){
+            i.printStackTrace();
+            WareController.alertSend("ERROR AL IMPORTAR LOS DATOS");
+        }
     }
-
     public void corte(ActionEvent event) {
     }
     //DESCARGA EL SQL DE LA BASE DE DATOS
@@ -501,7 +526,7 @@ public class FinanceController {
     public void cbCuentas(ActionEvent event) {
     }
     public void importExcel(ActionEvent event) {
-
+        try{
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Seleccione el archivo de Excel");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Archivos de Excel", "*.xlsx"));
@@ -514,7 +539,9 @@ public class FinanceController {
         }
 
         buttonRestore.setDisable(!labelRuta2.getText().contains("xlsx"));
-
+        }catch (Exception i){
+            i.printStackTrace();
+        }
     }
     public void deletedDB(ActionEvent event) {
         if(DataBase.deleteAllData("todos")){
