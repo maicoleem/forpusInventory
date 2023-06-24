@@ -24,9 +24,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.*;
 
 public class FinanceController {
 
@@ -245,26 +243,31 @@ public class FinanceController {
     }
     //METODO PARA CARGAR LAS VENTAS EN EL GRAFICO
     public void graphicsSales() throws ParseException {
-        try{
-        SearchHQL.invoiceEntity("CustomerClass");
-        chartSales.getData().clear();
-        XYChart.Series<String, Number> series = graphics();
-        series.setName("VENTAS");
-        chartSales.setTitle("VENTAS");
-        chartSales.getData().add(series);
-        }catch (Exception i){
+        try {
+            SearchHQL.invoiceEntity("CustomerClass");
+            chartSales.getData().clear();
+
+            List<XYChart.Series<String, Number>> seriesList = graphics();
+            for (XYChart.Series<String, Number> series : seriesList) {
+                chartSales.getData().add(series);
+            }
+
+            chartSales.setTitle("VENTAS");
+        } catch (Exception i) {
             i.printStackTrace();
         }
     }
+
     public void graphicsPurchases() throws ParseException {
         try{
         SearchHQL.invoiceEntity("ProvidersClass");
         chartPurchases.getData().clear();
-        chartPurchases.setTitle("COMPRAS");
 
-        XYChart.Series<String, Number> series = graphics();
-        series.setName("COMPRAS");
-        chartPurchases.getData().add(series);
+        List<XYChart.Series<String, Number>> seriesList = graphics();
+        for (XYChart.Series<String, Number> series : seriesList) {
+            chartPurchases.getData().add(series);
+        }
+        chartPurchases.setTitle("COMPRAS");
         }catch (Exception i){
             i.printStackTrace();
         }
@@ -309,73 +312,59 @@ public class FinanceController {
             i.printStackTrace();
         }
     }
+    public List<XYChart.Series<String, Number>> graphics() throws ParseException {
+        Map<Integer, Map<Integer, Integer>> yearMonthTotals = new HashMap<>();
 
-    public XYChart.Series<String, Number> graphics() throws ParseException {
-
-        int m1 = 0, m2 = 0, m3 = 0, m4 = 0, m5 = 0, m6 = 0
-                , m7 = 0, m8 = 0, m9 = 0, m10 = 0, m11 = 0, m12 = 0;
-        Calendar calendar = Calendar.getInstance();
         SimpleDateFormat format = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy");
-        for(InvoiceClass iv:ConstantsPurchases.invoiceList){
+        for (InvoiceClass iv : ConstantsPurchases.invoiceList) {
             Date date = format.parse(iv.getDate());
+            Calendar calendar = Calendar.getInstance();
             calendar.setTime(date);
-            switch (calendar.get(Calendar.MONTH) + 1){
-                case 1:
-                    m1 = m1 - iv.getIdBill() + Integer.parseInt(iv.getTotal());
-                    break;
-                case 2:
-                    m2 = m2 - iv.getIdBill() + Integer.parseInt(iv.getTotal());
-                    break;
-                case 3:
-                    m3 = m3 - iv.getIdBill() + Integer.parseInt(iv.getTotal());
-                    break;
-                case 4:
-                    m4 = m4 - iv.getIdBill() + Integer.parseInt(iv.getTotal());
-                    break;
-                case 5:
-                    m5 = m5 - iv.getIdBill() + Integer.parseInt(iv.getTotal());
-                    break;
-                case 6:
-                    m6 = m6 - iv.getIdBill() + Integer.parseInt(iv.getTotal());
-                    break;
-                case 7:
-                    m7 = m7 - iv.getIdBill() + Integer.parseInt(iv.getTotal());
-                    break;
-                case 8:
-                    m8 = m8 - iv.getIdBill() + Integer.parseInt(iv.getTotal());
-                    break;
-                case 9:
-                    m9 = m9 - iv.getIdBill() + Integer.parseInt(iv.getTotal());
-                    break;
-                case 10:
-                    m10 = m10 - iv.getIdBill() + Integer.parseInt(iv.getTotal());
-                    break;
-                case 11:
-                    m11 = m11 - iv.getIdBill() + Integer.parseInt(iv.getTotal());
-                    break;
-                case 12:
-                    m12 = m12 - iv.getIdBill() + Integer.parseInt(iv.getTotal());
-                    break;
 
-            }
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH) + 1;
+            int total = Integer.parseInt(iv.getTotal()) - iv.getIdBill();
+
+            // Verificar si ya existe un mapa de totales para el año actual
+            Map<Integer, Integer> monthTotals = yearMonthTotals.computeIfAbsent(year, k -> new HashMap<>());
+
+            // Obtener el total actual del mes y sumar el nuevo total
+            int currentTotal = monthTotals.getOrDefault(month, 0);
+            monthTotals.put(month, currentTotal + total);
         }
-        XYChart.Series<String, Number> series = new XYChart.Series<>();
-        series.setName("MONTH");
-        series.getData().add(new XYChart.Data<>("ENE", m1));
-        series.getData().add(new XYChart.Data<>("FEB", m2));
-        series.getData().add(new XYChart.Data<>("MAR", m3));
-        series.getData().add(new XYChart.Data<>("ABR", m4));
-        series.getData().add(new XYChart.Data<>("MAY", m5));
-        series.getData().add(new XYChart.Data<>("JUN", m6));
-        series.getData().add(new XYChart.Data<>("JUL", m7));
-        series.getData().add(new XYChart.Data<>("AGO", m8));
-        series.getData().add(new XYChart.Data<>("SEP", m9));
-        series.getData().add(new XYChart.Data<>("OCT", m10));
-        series.getData().add(new XYChart.Data<>("NOV", m11));
-        series.getData().add(new XYChart.Data<>("DIC", m12));
 
-        return series;
+        List<XYChart.Series<String, Number>> seriesList = new ArrayList<>();
+
+        for (int year : yearMonthTotals.keySet()) {
+            XYChart.Series<String, Number> series = new XYChart.Series<>();
+            series.setName(String.valueOf(year));
+
+            Map<Integer, Integer> monthTotals = yearMonthTotals.get(year);
+            series.getData().add(new XYChart.Data<>("ENE", getMonthTotal(monthTotals, 1)));
+            series.getData().add(new XYChart.Data<>("FEB", getMonthTotal(monthTotals, 2)));
+            series.getData().add(new XYChart.Data<>("MAR", getMonthTotal(monthTotals, 3)));
+            series.getData().add(new XYChart.Data<>("ABR", getMonthTotal(monthTotals, 4)));
+            series.getData().add(new XYChart.Data<>("MAY", getMonthTotal(monthTotals, 5)));
+            series.getData().add(new XYChart.Data<>("JUN", getMonthTotal(monthTotals, 6)));
+            series.getData().add(new XYChart.Data<>("JUL", getMonthTotal(monthTotals, 7)));
+            series.getData().add(new XYChart.Data<>("AGO", getMonthTotal(monthTotals, 8)));
+            series.getData().add(new XYChart.Data<>("SEP", getMonthTotal(monthTotals, 9)));
+            series.getData().add(new XYChart.Data<>("OCT", getMonthTotal(monthTotals, 10)));
+            series.getData().add(new XYChart.Data<>("NOV", getMonthTotal(monthTotals, 11)));
+            series.getData().add(new XYChart.Data<>("DIC", getMonthTotal(monthTotals, 12)));
+
+            seriesList.add(series);
+        }
+
+        return seriesList;
     }
+
+    private int getMonthTotal(Map<Integer, Integer> monthTotals, int month) {
+        Integer monthTotal = monthTotals.get(month);
+        return (monthTotal != null) ? monthTotal : 0;
+    }
+
+
     public void buttonCRUD(ActionEvent event) {
     }
     public void buttonsOptions(ActionEvent event) {
@@ -477,6 +466,7 @@ public class FinanceController {
         }
     }
     public void corte(ActionEvent event) {
+
     }
     //DESCARGA EL SQL DE LA BASE DE DATOS
     public void backup(ActionEvent event) {

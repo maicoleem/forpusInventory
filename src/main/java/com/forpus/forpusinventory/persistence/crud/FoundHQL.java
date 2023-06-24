@@ -149,8 +149,10 @@ public class FoundHQL {
             }
             return true;
         }catch (Exception i){
-            i.printStackTrace();
-            WareController.alertSend("ERROR AL BUSCAR DATO");
+            if(!Constant.entity.equals("InvoiceClass")) {
+                WareController.alertSend("ERROR AL BUSCAR DATO");
+                i.printStackTrace();
+            }
             return false;
         }
     }

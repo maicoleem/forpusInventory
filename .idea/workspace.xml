@@ -9,11 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="MANEJO DE ERRORES:&#10;SettingController OK&#10;SearchController OK&#10;WareController OK&#10;AccountingController -&#10;FinanceController -&#10;HelloController -&#10;PurchasesControles OK&#10;SalesController OK&#10;&#10;BUILD ARTIFACT: &#10;crear .jar&#10;crear icono&#10;crear exe">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="MANEJO DE ERRORES:&#10;SettingController OK&#10;SearchController OK&#10;WareController OK&#10;AccountingController OK&#10;FinanceController OK&#10;HelloController OK&#10;PurchasesControles OK&#10;SalesController OK&#10;&#10;BUILD ARTIFACT: &#10;crear .jar&#10;crear icono&#10;crear exe">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/AccountingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/AccountingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/FinanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/FinanceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/FoundHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/FoundHQL.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -272,14 +271,7 @@
       <workItem from="1687302540189" duration="6138000" />
       <workItem from="1687479722555" duration="6506000" />
       <workItem from="1687566802607" duration="2827000" />
-      <workItem from="1687616987329" duration="3735000" />
-    </task>
-    <task id="LOCAL-00031" summary="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;  &#10;**Se esta diseñando y mejorando el view de search-view.fxml">
-      <created>1678420221445</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1678420221445</updated>
+      <workItem from="1687616987329" duration="8353000" />
     </task>
     <task id="LOCAL-00032" summary="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;  &#10;**Se esta diseñando y mejorando el view de search-view.fxml&#10;**Se carga el comboBox apenas inicia la ventana y se elimino el error que daba al cambiar de datos en la tabla">
       <created>1678504003711</created>
@@ -617,7 +609,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687620741118</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="MANEJO DE ERRORES:&#10;SettingController OK&#10;SearchController OK&#10;WareController OK&#10;AccountingController OK&#10;FinanceController OK&#10;HelloController OK&#10;PurchasesControles OK&#10;SalesController OK&#10;&#10;BUILD ARTIFACT: &#10;crear .jar&#10;crear icono&#10;crear exe">
+      <created>1687621952643</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1687621952643</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -635,7 +634,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Se termino la pestaña finanzas." />
     <MESSAGE value="Se estan configurando la fecha para poder construir los graficos" />
     <MESSAGE value="Se contruyeron los graficos de ventas, compras y productos, queda pendiente el de usuarios." />
     <MESSAGE value="Se terminaron las graficas." />
@@ -660,7 +658,8 @@
     <MESSAGE value="SE COMPLETO EL MANEJO DE ERRORES DE LAS CLASES QUE INTERVIENEN CON LA BASE DE DATOS" />
     <MESSAGE value="MANEJO DE ERRORES:&#10;SettingController OK&#10;SearchController OK&#10;WareController -&#10;AccountingController -&#10;FinanceController -&#10;HelloController -&#10;PurchasesControles -&#10;SalesController -&#10;&#10;BUILD ARTIFACT: &#10;crear .jar&#10;crear icono&#10;crear exe" />
     <MESSAGE value="MANEJO DE ERRORES:&#10;SettingController OK&#10;SearchController OK&#10;WareController OK&#10;AccountingController -&#10;FinanceController -&#10;HelloController -&#10;PurchasesControles OK&#10;SalesController OK&#10;&#10;BUILD ARTIFACT: &#10;crear .jar&#10;crear icono&#10;crear exe" />
-    <option name="LAST_COMMIT_MESSAGE" value="MANEJO DE ERRORES:&#10;SettingController OK&#10;SearchController OK&#10;WareController OK&#10;AccountingController -&#10;FinanceController -&#10;HelloController -&#10;PurchasesControles OK&#10;SalesController OK&#10;&#10;BUILD ARTIFACT: &#10;crear .jar&#10;crear icono&#10;crear exe" />
+    <MESSAGE value="MANEJO DE ERRORES:&#10;SettingController OK&#10;SearchController OK&#10;WareController OK&#10;AccountingController OK&#10;FinanceController OK&#10;HelloController OK&#10;PurchasesControles OK&#10;SalesController OK&#10;&#10;BUILD ARTIFACT: &#10;crear .jar&#10;crear icono&#10;crear exe" />
+    <option name="LAST_COMMIT_MESSAGE" value="MANEJO DE ERRORES:&#10;SettingController OK&#10;SearchController OK&#10;WareController OK&#10;AccountingController OK&#10;FinanceController OK&#10;HelloController OK&#10;PurchasesControles OK&#10;SalesController OK&#10;&#10;BUILD ARTIFACT: &#10;crear .jar&#10;crear icono&#10;crear exe" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
