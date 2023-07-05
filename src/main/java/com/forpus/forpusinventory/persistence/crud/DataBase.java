@@ -29,9 +29,10 @@ public class DataBase {
     public static boolean backUp(String path) {
 
         Properties properties = properties();
-
         String pDB = properties.getProperty("clave");
-        String executeCmd = "mysqldump -u root -p"+ pDB +" inventoryaccounting -r " + path + "\\backup.sql";
+        String date = ConstantsPurchases.dateDDMMAA();
+        String file = "\\"+date+ "backup.sql";
+        String executeCmd = "mysqldump -u root -p"+ pDB +" inventoryaccounting -r " + path + file;
         try {
             Process runtimeProcess = Runtime.getRuntime().exec(executeCmd);
             int processComplete = runtimeProcess.waitFor();
@@ -230,7 +231,11 @@ public class DataBase {
                         // Si la celda no está vacía, establecer el valor del campo según el tipo de dato
                         try {
                         if (field.getType() == String.class) {
-                            field.set(entityObject, cell.getStringCellValue());
+                            try {
+                                field.set(entityObject, cell.getStringCellValue());
+                            }catch (Exception e){
+                                field.set(entityObject, String.valueOf(cell.getNumericCellValue()));
+                            }
                         } else if (field.getType() == Integer.class) {
                             try {
                                 field.set(entityObject, (int) cell.getNumericCellValue());
@@ -252,7 +257,11 @@ public class DataBase {
                 }
 
                 idCell = sheet.getRow(i).getCell(0);
-                idValue = idCell.getStringCellValue();
+                try {
+                    idValue = idCell.getStringCellValue();
+                }catch (Exception e){
+                    idValue = String.valueOf(idCell.getNumericCellValue());
+                }
 
                 switch (entity) {
                     case "CustomerClass":
@@ -452,11 +461,12 @@ public class DataBase {
              fis.close();
         return true;
         } catch (IOException e) {
-            WareController.alertSend(e.toString());
+            e.printStackTrace();
+            WareController.alertSend(String.valueOf(e));
             return false;
         }
         }catch (Exception i){
-            WareController.alertSend("ERROR AL INSTALAR BASE DE DATOS");
+            WareController.alertSend("ERROR AL INSTALAR BASE DE DATOS" + i);
             i.printStackTrace();
             return false;
         }
@@ -483,6 +493,7 @@ public class DataBase {
             statement.executeUpdate("CREATE DATABASE IF NOT EXISTS " + databaseName);
         } catch (SQLException e) {
             WareController.alertSend(e.toString());
+            WareController.alertSend("Error createDAtaBase: "+ e);
         }
     }
 }

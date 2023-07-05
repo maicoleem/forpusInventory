@@ -14,7 +14,7 @@ public class ServiceProductClass {
     @Column(name = "id_service", insertable = false, updatable = false, nullable = false, length = 6)
     private String idService;
     @Basic
-    @Column(name = "id_product",insertable = false, updatable = false, nullable = false, length = 6)
+    @Column(name = "id_product",insertable = false, updatable = false, nullable = false, length = 20)
     private String idProduct;
 
     @Basic

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.93" prefHeight="768.0" prefWidth="1024.0" styleClass="panelWhite" stylesheets="@../styles/style-default.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.forpus.forpusinventory.controller.PurchasesController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.93" prefHeight="700.0" prefWidth="1300.0" styleClass="panelWhite" stylesheets="@../styles/style-default.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.forpus.forpusinventory.controller.PurchasesController">
 
     <children>
         <Button id="found" fx:id="found" layoutX="814.0" layoutY="694.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
@@ -265,14 +265,14 @@
             <Font name="Tahoma Bold" size="19.0" />
          </font>
       </Label>
-      <TextField id="tfPriceSale" fx:id="tfPriceSale" layoutX="453.0" layoutY="243.0" prefHeight="40.0" prefWidth="122.0" promptText="\$" />
+      <TextField id="tfPriceSale" fx:id="tfPriceSale" layoutX="453.0" layoutY="243.0" onKeyTyped="#profitSale" prefHeight="40.0" prefWidth="122.0" promptText="\$" />
       <Label id="labelAmount" fx:id="labelAmount" alignment="CENTER" contentDisplay="CENTER" layoutX="77.0" layoutY="243.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Cantidad">
          <font>
             <Font name="Tahoma Bold" size="19.0" />
          </font>
       </Label>
       <TextField id="tfAmount" fx:id="tfAmount" layoutX="240.0" layoutY="243.0" prefHeight="40.0" prefWidth="45.0" />
-      <Label id="labelProfit" fx:id="labelProfit" alignment="CENTER" contentDisplay="CENTER" layoutX="582.0" layoutY="242.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Profit">
+      <Label id="labelProfit" fx:id="labelProfit" alignment="CENTER" contentDisplay="CENTER" layoutX="582.0" layoutY="242.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Profit %">
          <font>
             <Font name="Tahoma Bold" size="19.0" />
          </font>

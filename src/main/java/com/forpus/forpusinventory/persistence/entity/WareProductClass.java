@@ -12,7 +12,7 @@ public class WareProductClass {
     @Column(name = "id_ware_product", nullable=false)
     private int idWareProduct;
     @Basic
-    @Column(name = "id_product", insertable = false, updatable = false, nullable = false, length = 6)
+    @Column(name = "id_product", insertable = false, updatable = false, nullable = false, length = 20)
     private String idProduct;
     @Basic
     @Column(name = "id_ware", insertable = false, updatable = false, nullable = false, length = 6)

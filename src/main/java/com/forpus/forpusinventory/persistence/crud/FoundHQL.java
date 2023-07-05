@@ -150,7 +150,6 @@ public class FoundHQL {
             return true;
         }catch (Exception i){
             if(!Constant.entity.equals("InvoiceClass")) {
-                WareController.alertSend("ERROR AL BUSCAR DATO");
                 i.printStackTrace();
             }
             return false;
@@ -254,7 +253,6 @@ public class FoundHQL {
             }
             return true;
         } catch (Exception i){
-            WareController.alertSend("ERROR AL BUSCAR DATO");
             i.printStackTrace();
             return false;
         }

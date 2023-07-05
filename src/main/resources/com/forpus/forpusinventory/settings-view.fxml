@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane fx:id="paneWhite" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.93" prefHeight="768.0" prefWidth="1024.0" styleClass="panelWhite" stylesheets="@../styles/style-default.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.forpus.forpusinventory.controller.SettingController">
+<Pane fx:id="paneWhite" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.93" prefHeight="700.0" prefWidth="1300.0" styleClass="panelWhite" stylesheets="@../styles/style-default.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.forpus.forpusinventory.controller.SettingController">
 
     <children>
         <Button id="buttonCompany" fx:id="buttonCompany" layoutX="106.0" layoutY="55.0" mnemonicParsing="false" onAction="#buttonOptions" prefHeight="60.0" prefWidth="300.0" styleClass="buttonOptions" text="Empresa">
@@ -28,13 +28,13 @@
          <font>
             <Font name="Tahoma Bold" size="20.0" />
          </font></Button>
-        <Button id="buttonAccount" fx:id="buttonAccount" layoutX="106.0" layoutY="670.0" mnemonicParsing="false" onAction="#buttonOptions" prefHeight="60.0" prefWidth="300.0" styleClass="buttonOptions" text="Cuenta">
+        <Button id="buttonAccount" fx:id="buttonAccount" layoutX="106.0" layoutY="623.0" mnemonicParsing="false" onAction="#buttonOptions" prefHeight="60.0" prefWidth="300.0" styleClass="buttonOptions" text="Cuenta">
          <font>
             <Font name="Tahoma Bold" size="20.0" />
          </font></Button>
-        <Pane id="panelGrey" layoutX="512.0" prefHeight="768.0" prefWidth="512.0" styleClass="paneGrey">
+        <Pane id="panelGrey" layoutX="607.0" prefHeight="700.0" prefWidth="693.0" styleClass="paneGrey">
             <children>
-            <Button id="found" fx:id="found" layoutX="278.0" layoutY="694.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
+            <Button id="found" fx:id="found" layoutX="278.0" layoutY="630.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
                <graphic>
                   <ImageView fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -71,35 +71,35 @@
                <font>
                   <Font name="Tahoma Bold" size="20.0" />
                </font></Label>
-                <TextField id="textFieldWhite" fx:id="textFieldIdentificationCard" layoutX="208.0" layoutY="55.0" prefHeight="60.0" prefWidth="300.0">
+                <TextField id="textFieldWhite" fx:id="textFieldIdentificationCard" layoutX="208.0" layoutY="55.0" prefHeight="60.0" prefWidth="461.0">
                <font>
                   <Font name="Tahoma Bold" size="20.0" />
                </font></TextField>
-                <TextField id="textFieldWhite" fx:id="textFieldName" layoutX="208.0" layoutY="140.0" prefHeight="60.0" prefWidth="300.0">
+                <TextField id="textFieldWhite" fx:id="textFieldName" layoutX="208.0" layoutY="140.0" prefHeight="60.0" prefWidth="461.0">
                <font>
                   <Font name="Tahoma Bold" size="20.0" />
                </font></TextField>
-                <TextField id="textFieldWhite" fx:id="textFieldPhone" layoutX="208.0" layoutY="222.0" prefHeight="60.0" prefWidth="300.0">
+                <TextField id="textFieldWhite" fx:id="textFieldPhone" layoutX="208.0" layoutY="222.0" prefHeight="60.0" prefWidth="461.0">
                <font>
                   <Font name="Tahoma Bold" size="20.0" />
                </font></TextField>
-                <TextField id="textFieldWhite" fx:id="textFieldAddress" layoutX="208.0" layoutY="303.0" prefHeight="60.0" prefWidth="300.0">
+                <TextField id="textFieldWhite" fx:id="textFieldAddress" layoutX="208.0" layoutY="303.0" prefHeight="60.0" prefWidth="455.0">
                <font>
                   <Font name="Tahoma Bold" size="20.0" />
                </font></TextField>
-                <TextField id="textFieldWhite" fx:id="textFieldJob" layoutX="208.0" layoutY="384.0" prefHeight="60.0" prefWidth="300.0">
+                <TextField id="textFieldWhite" fx:id="textFieldJob" layoutX="208.0" layoutY="384.0" prefHeight="60.0" prefWidth="455.0">
                <font>
                   <Font name="Tahoma Bold" size="20.0" />
                </font></TextField>
-                <TextField id="textFieldWhite" fx:id="textFieldSalary" layoutX="208.0" layoutY="460.0" prefHeight="60.0" prefWidth="300.0">
+                <TextField id="textFieldWhite" fx:id="textFieldSalary" layoutX="208.0" layoutY="460.0" prefHeight="60.0" prefWidth="455.0">
                <font>
                   <Font name="Tahoma Bold" size="20.0" />
                </font></TextField>
-                <TextField id="textFieldWhite" fx:id="textFieldPassword" layoutX="208.0" layoutY="540.0" prefHeight="60.0" prefWidth="300.0">
+                <TextField id="textFieldWhite" fx:id="textFieldPassword" layoutX="208.0" layoutY="540.0" prefHeight="60.0" prefWidth="455.0">
                <font>
                   <Font name="Tahoma Bold" size="20.0" />
                </font></TextField>
-            <Button id="cancel" fx:id="cancel" layoutX="358.0" layoutY="694.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
+            <Button id="cancel" fx:id="cancel" layoutX="358.0" layoutY="629.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
                <graphic>
                   <ImageView fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -108,7 +108,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button id="save" fx:id="save" disable="true" layoutX="198.0" layoutY="694.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
+            <Button id="save" fx:id="save" disable="true" layoutX="198.0" layoutY="632.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
                <graphic>
                   <ImageView fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -117,7 +117,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button id="search" fx:id="search" layoutX="118.0" layoutY="694.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
+            <Button id="search" fx:id="search" layoutX="118.0" layoutY="629.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
                <graphic>
                   <ImageView id="search" fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -126,7 +126,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button id="remove" fx:id="remove" disable="true" layoutX="438.0" layoutY="694.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
+            <Button id="remove" fx:id="remove" disable="true" layoutX="438.0" layoutY="629.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
                <graphic>
                   <ImageView fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>

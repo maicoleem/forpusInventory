@@ -5,8 +5,11 @@ import com.forpus.forpusinventory.persistence.crud.SearchHQL;
 import com.forpus.forpusinventory.persistence.entity.*;
 import javafx.scene.control.TextFormatter;
 import javafx.util.converter.IntegerStringConverter;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class ConstantsPurchases {
 
@@ -98,6 +101,15 @@ public class ConstantsPurchases {
         //formatter.format(dateActually);
         return String.valueOf(calendar.getTime());
     }
+
+    public static String dateDDMMAA(){
+        // Obteniendo la fecha actual del sistema.
+        Calendar calendar = Calendar.getInstance();
+        Date dateActually = new Date(Calendar.getInstance().getTimeInMillis());
+        SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyy");
+        formatter.format(dateActually);
+        return (formatter.format(dateActually));
+    }
     public static void purchaseCompany(String bank, String cash, String payable){
 
         int bankChange = Integer.parseInt(bank);
@@ -171,7 +183,7 @@ public class ConstantsPurchases {
         return new TextFormatter<>(new IntegerStringConverter(), 0,
                 change -> {
                     String newText = change.getControlNewText();
-                    if (newText.matches("\\d*")) {
+                    if (newText.matches("-?\\d*")) {
                         return change;
                     }
                     return null;

@@ -79,7 +79,6 @@ public class HelloController {
             }
         }catch (Exception i){
             buttonConnection.setStyle("-fx-background-color: #AB0D00 ;");
-            WareController.alertSend(i.toString());
         }
     }
     @FXML

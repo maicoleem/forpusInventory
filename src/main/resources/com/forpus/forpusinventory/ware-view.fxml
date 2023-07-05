@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane id="panelWhite" fx:id="paneWhite" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.93" prefHeight="768.0" prefWidth="1024.0" styleClass="panelWhite" stylesheets="@../styles/style-default.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.forpus.forpusinventory.controller.WareController">
+<Pane id="panelWhite" fx:id="paneWhite" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.93" prefHeight="700.0" prefWidth="1300.0" styleClass="panelWhite" stylesheets="@../styles/style-default.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.forpus.forpusinventory.controller.WareController">
 
     <children>
       <TableView id="tableWare" fx:id="tableWare" layoutX="80.0" layoutY="470.0" prefHeight="200.0" prefWidth="720.0">

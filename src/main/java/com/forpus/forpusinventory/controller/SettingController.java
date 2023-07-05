@@ -382,15 +382,7 @@ public class SettingController implements Initializable {
                 changeOptions();
                 break;
             case "search":
-                if(SearchHQL.searchHQL()){
                     SalesController.searchCrud();
-
-                }else{
-                    Alert alertSearch = new Alert(Alert.AlertType.INFORMATION);
-                    alertSearch.setTitle("Freya Style--//--Forpus Company");
-                    alertSearch.setContentText("Error al cargar los datos");
-                    alertSearch.show();
-                }
                 break;
             case "remove":
 

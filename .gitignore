@@ -49,3 +49,4 @@ build/
 /.idea/dataSources/d160867a-a828-41a2-9bb2-b2de3721b983/storage_v2/_src_/schema/information_schema.FNRwLQ.meta
 /.idea/dataSources/d160867a-a828-41a2-9bb2-b2de3721b983/storage_v2/_src_/schema/mysql.osA4Bg.meta
 /.idea/dataSources/d160867a-a828-41a2-9bb2-b2de3721b983/storage_v2/_src_/schema/performance_schema.kIw0nw.meta
+/out/

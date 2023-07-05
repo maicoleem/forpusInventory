@@ -14,10 +14,10 @@ public class WareinvoiceClass {
     @Column(name = "idInvoice", nullable = false)
     private int idInvoice;
     @Basic
-    @Column(name = "idProduct", nullable = false, length = 6)
+    @Column(name = "idProduct", nullable = false, length = 20)
     private String idProduct;
     @Basic
-    @Column(name = "productName", nullable = false, length = 20)
+    @Column(name = "productName", nullable = false, length = 60)
     private String productName;
     @Basic
     @Column(name = "priceSale", nullable = false, length = 20)

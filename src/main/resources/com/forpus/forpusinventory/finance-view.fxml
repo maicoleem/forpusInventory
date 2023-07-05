@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.93" prefHeight="768.0" prefWidth="1024.0" styleClass="panelWhite" stylesheets="@../styles/style-default.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.forpus.forpusinventory.controller.FinanceController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.93" prefHeight="700.0" prefWidth="1300.0" styleClass="panelWhite" stylesheets="@../styles/style-default.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.forpus.forpusinventory.controller.FinanceController">
 
     <children>
         <Pane id="panelBlue" prefHeight="768.0" prefWidth="70.0">
@@ -59,25 +59,25 @@
                     </graphic></Button>
             </children>
         </Pane>
-        <Pane layoutX="70.0" prefHeight="70.0" prefWidth="954.0" styleClass="paneGrey">
+        <Pane layoutX="70.0" prefHeight="70.0" prefWidth="1230.0" styleClass="paneGrey">
             <children>
                 <Button id="buttonFinances" fx:id="buttonFinances" layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Finanzas">
                     <font>
                         <Font name="Tahoma Bold" size="20.0" />
                     </font>
                 </Button>
-                <Button id="buttonGraphics" fx:id="buttonGraphics" layoutX="160.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Graficos">
+                <Button id="buttonGraphics" fx:id="buttonGraphics" layoutX="212.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Graficos">
                     <font>
                         <Font name="Tahoma Bold" size="20.0" />
                     </font>
                 </Button>
-                <Button id="buttonDB" fx:id="buttonDB" layoutX="315.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Datos">
+                <Button id="buttonDB" fx:id="buttonDB" layoutX="406.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Datos">
                     <font>
                         <Font name="Tahoma Bold" size="20.0" />
                     </font>
                 </Button>
             </children></Pane>
-      <Pane id="panelFinance" fx:id="panelFinance" layoutX="70.0" layoutY="70.0" prefHeight="113.0" prefWidth="751.0">
+      <Pane id="panelFinance" fx:id="panelFinance" layoutX="70.0" layoutY="70.0" prefHeight="113.0" prefWidth="1230.0">
          <children>
               <Label alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="14.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Disponible">
                   <font>
@@ -89,121 +89,121 @@
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="381.0" layoutY="61.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Caja">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="556.0" layoutY="61.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Caja">
                <font>
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
-            <Label id="bankCompany" fx:id="bankCompany" alignment="CENTER" contentDisplay="CENTER" layoutX="170.0" layoutY="61.0" prefHeight="40.0" prefWidth="196.0" styleClass="labelGrey" text="Disponible">
+            <Label id="bankCompany" fx:id="bankCompany" alignment="CENTER" contentDisplay="CENTER" layoutX="170.0" layoutY="61.0" prefHeight="40.0" prefWidth="318.0" styleClass="labelGrey" text="Disponible">
                <font>
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
-            <Label id="cashCompany" fx:id="cashCompany" alignment="CENTER" contentDisplay="CENTER" layoutX="541.0" layoutY="61.0" prefHeight="40.0" prefWidth="196.0" styleClass="labelGrey" text="Disponible">
+            <Label id="cashCompany" fx:id="cashCompany" alignment="CENTER" contentDisplay="CENTER" layoutX="715.0" layoutY="61.0" prefHeight="40.0" prefWidth="318.0" styleClass="labelGrey" text="Disponible">
                <font>
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
-            <Label id="totalCompany" fx:id="totalCompany" alignment="CENTER" contentDisplay="CENTER" layoutX="170.0" layoutY="14.0" prefHeight="40.0" prefWidth="196.0" styleClass="labelGrey" text="Disponible">
+            <Label id="totalCompany" fx:id="totalCompany" alignment="CENTER" contentDisplay="CENTER" layoutX="170.0" layoutY="14.0" prefHeight="40.0" prefWidth="455.0" styleClass="labelGrey" text="Disponible">
                <font>
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
-            <DatePicker layoutX="380.0" layoutY="23.0" prefHeight="25.0" prefWidth="112.0" />
-            <DatePicker layoutX="509.0" layoutY="22.0" prefHeight="25.0" prefWidth="112.0" />
+            <DatePicker layoutX="877.0" layoutY="22.0" prefHeight="25.0" prefWidth="112.0" />
+            <DatePicker layoutX="1006.0" layoutY="22.0" prefHeight="25.0" prefWidth="112.0" />
       
-              <Button id="buttomSearch" fx:id="buttonProduct" layoutX="639.0" layoutY="16.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="84.0" styleClass="buttonBlue" text="BUSCAR">
+              <Button id="buttomSearch" fx:id="buttonProduct" layoutX="1132.0" layoutY="14.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="84.0" styleClass="buttonBlue" text="BUSCAR">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
          </children></Pane>
-        <Pane id="panelProducts" fx:id="panelProducts" layoutX="100.0" layoutY="214.0" prefHeight="231.0" prefWidth="377.0">
+        <Pane id="panelProducts" fx:id="panelProducts" layoutX="100.0" layoutY="193.0" prefHeight="252.0" prefWidth="534.0">
             <children>
                 <Label alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="11.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Activos">
                     <font>
                         <Font name="Tahoma Bold" size="19.0" />
                     </font>
                 </Label>
-                <Label id="productTotal" fx:id="productTotal" alignment="CENTER" contentDisplay="CENTER" layoutX="178.0" layoutY="14.0" prefHeight="40.0" prefWidth="196.0" styleClass="labelGrey" text="Disponible">
+                <Label id="productTotal" fx:id="productTotal" alignment="CENTER" contentDisplay="CENTER" layoutX="178.0" layoutY="14.0" prefHeight="40.0" prefWidth="343.0" styleClass="labelGrey" text="Disponible">
                     <font>
                         <Font name="Tahoma Bold" size="19.0" />
                     </font>
                 </Label>
-            <TableView id="tableProducts" fx:id="tableProducts" layoutX="5.0" layoutY="75.0" prefHeight="123.0" prefWidth="368.0">
+            <TableView id="tableProducts" fx:id="tableProducts" layoutX="7.0" layoutY="73.0" prefHeight="175.0" prefWidth="522.0">
               <columns>
-                <TableColumn id="p1" fx:id="p1" prefWidth="128.0" text="PRODUCTO" />
-                <TableColumn id="p2" fx:id="p2" text="CANTIDAD" />
-                  <TableColumn id="p3" fx:id="p3" text="PRECIO" />
-                  <TableColumn id="p4" fx:id="p4" text="SUBTOTAL" />
+                <TableColumn id="p1" fx:id="p1" prefWidth="252.0" text="PRODUCTO" />
+                <TableColumn id="p2" fx:id="p2" minWidth="0.0" prefWidth="75.0" text="CANTIDAD" />
+                  <TableColumn id="p3" fx:id="p3" prefWidth="90.0" text="PRECIO" />
+                  <TableColumn id="p4" fx:id="p4" prefWidth="100.0" text="SUBTOTAL" />
               </columns>
             </TableView>
             </children></Pane>
-      <Pane id="panelPassives" fx:id="panelPassives" layoutX="567.0" layoutY="217.0" prefHeight="231.0" prefWidth="377.0">
+      <Pane id="panelPassives" fx:id="panelPassives" layoutX="695.0" layoutY="193.0" prefHeight="252.0" prefWidth="552.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="11.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Pasivos">
                <font>
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
-            <Label id="passivesTotal" fx:id="passivesTotal" alignment="CENTER" contentDisplay="CENTER" layoutX="178.0" layoutY="14.0" prefHeight="40.0" prefWidth="196.0" styleClass="labelGrey" text="Disponible">
+            <Label id="passivesTotal" fx:id="passivesTotal" alignment="CENTER" contentDisplay="CENTER" layoutX="178.0" layoutY="14.0" prefHeight="40.0" prefWidth="360.0" styleClass="labelGrey" text="Disponible">
                <font>
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
-            <TableView id="tablePassives" fx:id="tablePassives" layoutX="5.0" layoutY="75.0" prefHeight="123.0" prefWidth="368.0">
+            <TableView id="tablePassives" fx:id="tablePassives" layoutX="5.0" layoutY="75.0" prefHeight="168.0" prefWidth="543.0">
                <columns>
-                  <TableColumn id="ps1" fx:id="ps1" prefWidth="135.0" text="ACREEDOR" />
-                  <TableColumn id="ps2" fx:id="ps2" prefWidth="126.0" text="FECHA" />
-                  <TableColumn id="ps3" fx:id="ps3" prefWidth="106.0" text="SUBTOTAL" />
+                  <TableColumn id="ps1" fx:id="ps1" prefWidth="256.0" text="ACREEDOR" />
+                  <TableColumn id="ps2" fx:id="ps2" prefWidth="137.0" text="FECHA" />
+                  <TableColumn id="ps3" fx:id="ps3" prefWidth="149.0" text="SUBTOTAL" />
                </columns>
             </TableView>
          </children>
       </Pane>
-      <Pane id="panelReceivable" fx:id="panelReceivable" layoutX="102.0" layoutY="458.0" prefHeight="231.0" prefWidth="377.0">
+      <Pane id="panelReceivable" fx:id="panelReceivable" layoutX="102.0" layoutY="458.0" prefHeight="231.0" prefWidth="522.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="11.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Por Cobrar">
                <font>
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
-            <Label id="totalReceivable" fx:id="totalReceivable" alignment="CENTER" contentDisplay="CENTER" layoutX="178.0" layoutY="14.0" prefHeight="40.0" prefWidth="196.0" styleClass="labelGrey" text="Disponible">
+            <Label id="totalReceivable" fx:id="totalReceivable" alignment="CENTER" contentDisplay="CENTER" layoutX="178.0" layoutY="14.0" prefHeight="40.0" prefWidth="336.0" styleClass="labelGrey" text="Disponible">
                <font>
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
-            <TableView id="tableReceivable" fx:id="tableReceivable" layoutX="5.0" layoutY="75.0" prefHeight="123.0" prefWidth="368.0">
+            <TableView id="tableReceivable" fx:id="tableReceivable" layoutX="5.0" layoutY="75.0" prefHeight="154.0" prefWidth="511.0">
                <columns>
-                  <TableColumn id="r1" fx:id="r1" prefWidth="162.0" text="CLIENTE" />
-                  <TableColumn id="r2" fx:id="r2" minWidth="9.0" prefWidth="93.0" text="FECHA" />
-                  <TableColumn id="r3" fx:id="r3" minWidth="0.0" prefWidth="112.0" text="SUBTOTAL" />
+                  <TableColumn id="r1" fx:id="r1" prefWidth="245.0" text="CLIENTE" />
+                  <TableColumn id="r2" fx:id="r2" minWidth="9.0" prefWidth="125.0" text="FECHA" />
+                  <TableColumn id="r3" fx:id="r3" minWidth="0.0" prefWidth="140.0" text="SUBTOTAL" />
                </columns>
             </TableView>
          </children>
       </Pane>
-      <Pane id="panelPartners" fx:id="panelPartners" layoutX="570.0" layoutY="459.0" prefHeight="231.0" prefWidth="377.0">
+      <Pane id="panelPartners" fx:id="panelPartners" layoutX="693.0" layoutY="457.0" prefHeight="231.0" prefWidth="543.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="11.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Aportes">
                <font>
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
-            <Label id="partnersTotal" fx:id="partnersTotal" alignment="CENTER" contentDisplay="CENTER" layoutX="178.0" layoutY="14.0" prefHeight="40.0" prefWidth="196.0" styleClass="labelGrey" text="Disponible">
+            <Label id="partnersTotal" fx:id="partnersTotal" alignment="CENTER" contentDisplay="CENTER" layoutX="178.0" layoutY="14.0" prefHeight="40.0" prefWidth="353.0" styleClass="labelGrey" text="Disponible">
                <font>
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
-            <TableView id="tablePartners" fx:id="tablePartners" layoutX="5.0" layoutY="75.0" prefHeight="123.0" prefWidth="368.0">
+            <TableView id="tablePartners" fx:id="tablePartners" layoutX="5.0" layoutY="75.0" prefHeight="154.0" prefWidth="534.0">
                <columns>
-                  <TableColumn id="a1" fx:id="a1" prefWidth="126.0" text="SOCIO" />
-                  <TableColumn id="a2" fx:id="a2" text="EFECTIVO" />
-                  <TableColumn id="a3" fx:id="a3" text="BANCO" />
-                  <TableColumn id="a4" fx:id="a4" text="TOTAL" />
+                  <TableColumn id="a1" fx:id="a1" prefWidth="215.0" text="SOCIO" />
+                  <TableColumn id="a2" fx:id="a2" prefWidth="109.0" text="EFECTIVO" />
+                  <TableColumn id="a3" fx:id="a3" prefWidth="89.0" text="BANCO" />
+                  <TableColumn id="a4" fx:id="a4" prefWidth="120.0" text="TOTAL" />
                </columns>
             </TableView>
          </children>
       </Pane>
-      <LineChart id="chartPurchases" fx:id="chartPurchases" animated="false" layoutX="532.0" layoutY="75.0" prefHeight="348.0" prefWidth="482.0" visible="false">
+      <LineChart id="chartPurchases" fx:id="chartPurchases" animated="false" layoutX="683.0" layoutY="75.0" prefHeight="300.0" prefWidth="600.0" visible="false">
          <xAxis>
             <CategoryAxis animated="false" side="BOTTOM" />
          </xAxis>
@@ -211,7 +211,7 @@
             <NumberAxis animated="false" side="LEFT" />
          </yAxis>
       </LineChart>
-      <BarChart id="chartProducts" fx:id="chartProducts" animated="false" layoutX="70.0" layoutY="437.0" prefHeight="316.0" prefWidth="482.0" visible="false">
+      <BarChart id="chartProducts" fx:id="chartProducts" animated="false" layoutX="70.0" layoutY="382.0" prefHeight="300.0" prefWidth="600.0" visible="false">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -219,7 +219,7 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </BarChart>
-      <BarChart id="chartCustomers" fx:id="chartCustomers" animated="false" layoutX="529.0" layoutY="435.0" prefHeight="316.0" prefWidth="482.0" visible="false">
+      <BarChart id="chartCustomers" fx:id="chartCustomers" animated="false" layoutX="689.0" layoutY="380.0" prefHeight="300.0" prefWidth="600.0" visible="false">
          <xAxis>
             <CategoryAxis side="BOTTOM" />
          </xAxis>
@@ -227,7 +227,7 @@
             <NumberAxis side="LEFT" />
          </yAxis>
       </BarChart>
-      <LineChart id="chartSales" fx:id="chartSales" layoutX="69.0" layoutY="73.0" prefHeight="358.0" prefWidth="471.0" visible="false">
+      <LineChart id="chartSales" fx:id="chartSales" layoutX="69.0" layoutY="73.0" prefHeight="300.0" prefWidth="600.0" visible="false">
         <xAxis>
           <CategoryAxis animated="false" side="BOTTOM" />
         </xAxis>

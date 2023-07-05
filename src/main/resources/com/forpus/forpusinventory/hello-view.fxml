@@ -5,14 +5,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.93" prefHeight="768.0" prefWidth="1024.0" stylesheets="@../styles/style-default.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.forpus.forpusinventory.controller.HelloController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.93" prefHeight="700.0" prefWidth="1300.0" stylesheets="@../styles/style-default.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.forpus.forpusinventory.controller.HelloController">
    <children>
-      <ImageView fitHeight="112.0" fitWidth="127.0" layoutX="79.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="216.0" layoutY="146.0" text="Freya Styles">
+      <ImageView fitHeight="112.0" fitWidth="127.0" layoutX="89.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="226.0" layoutY="138.0" text="FORPUS">
          <font>
             <Font name="Tahoma Bold" size="30.0" />
          </font></Label>
-      <Label layoutX="96.0" layoutY="210.0" maxHeight="60.0" maxWidth="320.0" minHeight="60.0" minWidth="320.0" prefHeight="60.0" prefWidth="320.0" text="WELCOME BACK">
+      <Label layoutX="96.0" layoutY="228.0" maxHeight="60.0" maxWidth="320.0" minHeight="60.0" minWidth="320.0" prefHeight="60.0" prefWidth="320.0" text="WELCOME BACK">
          <font>
             <Font name="Tahoma Bold" size="38.0" />
          </font></Label>
@@ -41,22 +41,22 @@
          <font>
             <Font name="Tahoma Bold" size="20.0" />
          </font></Button>
-      <Pane id="panel" layoutX="512.0" prefHeight="768.0" prefWidth="512.0" style="-fx-background-color: #C2C2C2;">
-         <ImageView fitHeight="112.0" fitWidth="116.0" layoutX="386.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+      <Pane id="panel" layoutX="632.0" prefHeight="700.0" prefWidth="666.0" style="-fx-background-color: #C2C2C2;">
+         <ImageView fitHeight="112.0" fitWidth="116.0" layoutX="509.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@../images/forpus.png" />
-            </image></ImageView> <ImageView id="imageDesk" fx:id="image" fitHeight="628.0" fitWidth="589.0" layoutX="-64.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+            </image></ImageView> <ImageView id="imageDesk" fx:id="image" fitHeight="628.0" fitWidth="589.0" layoutX="39.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/deskAzul.png" />
          </image>
       </ImageView>
       </Pane>
       <Button id="buttonConnection" fx:id="buttonConnection" layoutX="115.0" layoutY="315.0" mnemonicParsing="false" onAction="#connection" prefHeight="38.0" prefWidth="183.0" styleClass="buttonConnection" text="CONEXIÓN" visible="false" />
-      <Button id="buttonLogo" fx:id="buttonLogo" layoutX="96.0" layoutY="83.0" maxHeight="118.0" maxWidth="118.0" minHeight="118.0" minWidth="118.0" mnemonicParsing="false" onAction="#logo" prefHeight="118.0" prefWidth="118.0" styleClass="buttonForpus">
+      <Button id="buttonLogo" fx:id="buttonLogo" layoutX="87.0" layoutY="88.0" maxHeight="125.0" maxWidth="127.0" minHeight="118.0" minWidth="118.0" mnemonicParsing="false" onAction="#logo" prefHeight="125.0" prefWidth="127.0" styleClass="buttonForpus">
          <graphic>
             <ImageView fitHeight="124.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/freya.png" />
+                  <Image url="@../images/forpus.png" />
                </image>
             </ImageView>
          </graphic>

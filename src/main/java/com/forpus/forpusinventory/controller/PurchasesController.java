@@ -1,6 +1,7 @@
 package com.forpus.forpusinventory.controller;
 
 import com.forpus.forpusinventory.domain.services.*;
+import com.forpus.forpusinventory.persistence.Session.SessionDB;
 import com.forpus.forpusinventory.persistence.crud.FoundHQL;
 import com.forpus.forpusinventory.persistence.crud.SaveHQL;
 import com.forpus.forpusinventory.persistence.crud.SearchHQL;
@@ -9,6 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -466,6 +468,7 @@ public class PurchasesController {
             default:
                 break;
         }
+            SessionDB.sessionClose();
         }catch (Exception i){
             i.printStackTrace();
             WareController.alertSend("ERROR AL CARGAR EL PRODUCTO");
@@ -576,16 +579,34 @@ public class PurchasesController {
             i.printStackTrace();
         }
     }
+    public void profitSale(){
+        try{
+            int price;
+            if(!tfPrice.getText().equals("") && !tfPrice.getText().equals("0")){
+                price = Integer.parseInt(tfPrice.getText());
+            }else{
+                price = Integer.parseInt(comboBoxPrice.getValue());
+            }
+            if(!Objects.equals(tfPriceSale.getText(), "")) {
+                int sale = Integer.parseInt(tfPriceSale.getText());
+                int profit = (((sale - price)*100)/price);
+                tfProfit.setText(String.valueOf(profit));
+            }
+        }catch (Exception i){
+            i.printStackTrace();
+        }
+    }
+
     public void priceSale(){
         try{
         int price;
         if(!tfPrice.getText().equals("") && !tfPrice.getText().equals("0")){
-            price = Integer.valueOf(tfPrice.getText());
+            price = Integer.parseInt(tfPrice.getText());
         }else{
-            price = Integer.valueOf(comboBoxPrice.getValue());
+            price = Integer.parseInt(comboBoxPrice.getValue());
         }
         if(!Objects.equals(tfProfit.getText(), "")) {
-            int profit = Integer.valueOf(tfProfit.getText());
+            int profit = Integer.parseInt(tfProfit.getText());
             int sale = price + (price * profit / 100);
             tfPriceSale.setText(String.valueOf(sale));
         }

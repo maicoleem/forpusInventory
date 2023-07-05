@@ -8,10 +8,10 @@ import java.util.Objects;
 @Table(name = "product", schema = "inventoryaccounting")
 public class ProductClass {
     @Id
-    @Column(name = "id_product", nullable = false, length = 6)
+    @Column(name = "id_product", nullable = false, length = 20)
     private String idProduct;
     @Basic
-    @Column(name = "name", nullable = false, length = 20)
+    @Column(name = "name", nullable = false, length = 60)
     private String name;
     @Basic
     @Column(name = "purchase_price", nullable = false, length = 20)
