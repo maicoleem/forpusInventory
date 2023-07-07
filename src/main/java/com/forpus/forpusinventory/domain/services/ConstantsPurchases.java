@@ -106,7 +106,7 @@ public class ConstantsPurchases {
         // Obteniendo la fecha actual del sistema.
         Calendar calendar = Calendar.getInstance();
         Date dateActually = new Date(Calendar.getInstance().getTimeInMillis());
-        SimpleDateFormat formatter = new SimpleDateFormat("ddMMyyyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
         formatter.format(dateActually);
         return (formatter.format(dateActually));
     }

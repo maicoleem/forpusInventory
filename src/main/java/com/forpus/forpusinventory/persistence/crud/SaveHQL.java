@@ -360,7 +360,6 @@ public class SaveHQL {
             SessionDB.sessionClose();
             return true;
         }catch (Exception i){
-            WareController.alertSend("ERROR AL SALVAR DATOS");
             i.printStackTrace();
             return false;
         }

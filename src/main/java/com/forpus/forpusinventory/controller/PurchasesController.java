@@ -16,6 +16,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import org.hibernate.event.spi.SaveOrUpdateEvent;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -518,6 +520,7 @@ public class PurchasesController {
         }catch (Exception i){
             i.printStackTrace();
         }
+
     }
     public void cbPrice(ActionEvent event) {
         try {
@@ -596,7 +599,6 @@ public class PurchasesController {
             i.printStackTrace();
         }
     }
-
     public void priceSale(){
         try{
         int price;
@@ -654,7 +656,10 @@ public class PurchasesController {
                         product.setAmount(Integer.valueOf(tfAmount.getText()));
                         product.setSalePrice(tfPriceSale.getText());
                         product.setProfit(tfProfit.getText());
-                        product.setIdOne(ConstantsWare.one.getIdOne());
+
+                        if(ConstantsWare.one != null) {
+                            product.setIdOne(ConstantsWare.one.getIdOne());
+                        }
 
                         if(ConstantsWare.two != null){
                             product.setIdTwo(ConstantsWare.two.getIdTwo());
@@ -663,6 +668,12 @@ public class PurchasesController {
                         if(ConstantsWare.three != null){
                             product.setIdThree(ConstantsWare.three.getIdThree());
                         }
+
+                        if(tfOff.getText().equals("") || tfOff.getText() == null){
+                            tfOff.setText("0");
+                        }
+
+                        product.setOffSale(Integer.parseInt(tfOff.getText())); //porcentaje
 
                         product.setIdWage(comboBoxWare.getValue());
                         ConstantsPurchases.productTableList.add(product);
@@ -899,13 +910,12 @@ public class PurchasesController {
                 labelTotal2.setText("0");
                 //Obtiene el total sin Taxes
                 for(ProductClass p: tableMain.getItems()){
-
                     int subtotal = ConstantsPurchases.subtotalProduct(String.valueOf(p.getAmount()), p.getPurchasePrice(), String.valueOf(p.getOffSale()));
-                    int balance = Integer.valueOf(labelTotal2.getText());
+                    int balance = Integer.parseInt(labelTotal2.getText());
                     int total = subtotal + balance;
                     labelTotal2.setText(String.valueOf(total));
                 }
-
+                clearPurchases();
                 break;
             case "Service":
                 tableService.getItems().clear();
@@ -968,6 +978,21 @@ public class PurchasesController {
             i.printStackTrace();
         }
     }
+
+    private void clearPurchases() {
+        tfProduct.clear();
+        tfProductName.setVisible(false);
+        tfProductName.clear();
+        labelNameProduct.setVisible(true);
+        checkProduct.setSelected(false);
+        tfProfit.setText("0");
+        tfPrice.setText("1");
+        tfAmount.setText("1");
+        tfPriceSale.setText("1");
+        tfOff.setText("0");
+        comboBoxPrice.getItems().clear();
+    }
+
     public void suppress(ActionEvent event) {
         try{
         int a = tableMain.getSelectionModel().getSelectedIndex();

@@ -192,14 +192,14 @@ public class AccountingController {
                     //invoice.setPartnersByIdPartners(Constant.partners);
 
                     //Cambia el saldo de la compañia y partner
-                    int bank = Integer.valueOf(invoice.getBank());
-                    int cash = Integer.valueOf(invoice.getCash());
-                    int receivable = Integer.valueOf(invoice.getIndebtedness());
+                    int bank = Integer.parseInt(invoice.getBank());
+                    int cash = Integer.parseInt(invoice.getCash());
+                    int receivable = Integer.parseInt(invoice.getIndebtedness());
                     int total = bank + cash;
                     invoice.setTotal(String.valueOf(total));
                     final int payable = 0;
-                    int rUtilities = Integer.valueOf(invoice.getRUtilities());
-                    int utilities = Integer.valueOf(invoice.getUtilities());
+                    int rUtilities = Integer.parseInt(invoice.getRUtilities());
+                    int utilities = Integer.parseInt(invoice.getUtilities());
 
                     ConstantsAccounting.invoice = invoice;
 
@@ -228,13 +228,13 @@ public class AccountingController {
         FoundHQL.workerFound();
         Constant.entity = entity;
 
-        int actuallyBank = Integer.valueOf(Constant.company.getBank());
-        int actuallyCash = Integer.valueOf(Constant.company.getCash());
-        int actuallyTotal = Integer.valueOf(Constant.company.getTotal());
-        int actuallyReceivable = Integer.valueOf(Constant.company.getReceivable());
-        int actuallyUReceivable = Integer.valueOf(Constant.company.getUReceivable());
-        int actuallyPayable = Integer.valueOf(Constant.company.getPayable());
-        int actuallyUtilities = Integer.valueOf(Constant.company.getUtilities());
+        int actuallyBank = Integer.parseInt(Constant.company.getBank());
+        int actuallyCash = Integer.parseInt(Constant.company.getCash());
+        int actuallyTotal = Integer.parseInt(Constant.company.getTotal());
+        int actuallyReceivable = Integer.parseInt(Constant.company.getReceivable());
+        int actuallyUReceivable = Integer.parseInt(Constant.company.getUReceivable());
+        int actuallyPayable = Integer.parseInt(Constant.company.getPayable());
+        int actuallyUtilities = Integer.parseInt(Constant.company.getUtilities());
 
         int newBank = bank + actuallyBank;
         int newCash = cash + actuallyCash;
@@ -258,10 +258,10 @@ public class AccountingController {
     }
     public void partnerAccounting(String entity, int bank, int cash, int receivable, int payable){
         try{
-        int actuallyBank = Integer.valueOf(Constant.partners.getBank());
-        int actuallyCash = Integer.valueOf(Constant.partners.getCash());
-        int actuallyReceivable = Integer.valueOf(Constant.partners.getReceivable());
-        int actuallyPayable = Integer.valueOf(Constant.partners.getPayable());
+        int actuallyBank = Integer.parseInt(Constant.partners.getBank());
+        int actuallyCash = Integer.parseInt(Constant.partners.getCash());
+        int actuallyReceivable = Integer.parseInt(Constant.partners.getReceivable());
+        int actuallyPayable = Integer.parseInt(Constant.partners.getPayable());
 
         int newBank = bank + actuallyBank;
         int newCash = cash + actuallyCash;

@@ -8,51 +8,6 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.93" prefHeight="700.0" prefWidth="1300.0" styleClass="panelWhite" stylesheets="@../styles/style-default.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.forpus.forpusinventory.controller.AccountingController">
 
     <children>
-        <Button id="found" fx:id="found" layoutX="814.0" layoutY="694.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
-            <graphic>
-                <ImageView fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/find.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-        </Button>
-        <Button id="cancel" fx:id="cancel" layoutX="884.0" layoutY="694.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
-            <graphic>
-                <ImageView fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/cancel.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-        </Button>
-        <Button id="save" fx:id="save" disable="true" layoutX="744.0" layoutY="694.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
-            <graphic>
-                <ImageView fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/save.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-        </Button>
-        <Button id="search" fx:id="search" layoutX="674.0" layoutY="694.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
-            <graphic>
-                <ImageView id="search" fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/search.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-        </Button>
-        <Button id="remove" fx:id="remove" disable="true" layoutX="954.0" layoutY="694.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
-            <graphic>
-                <ImageView fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/remove.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-        </Button>
         <Pane id="panelBlue" prefHeight="768.0" prefWidth="70.0">
             <children>
                 <Button id="bWare" fx:id="buttonWarePB" layoutX="5.0" layoutY="94.7" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSlide" prefHeight="60.0" prefWidth="60.0" styleClass="buttonSide" text="Button">
@@ -103,29 +58,29 @@
                     </graphic></Button>
             </children>
         </Pane>
-        <Pane layoutX="70.0" prefHeight="70.0" prefWidth="954.0" styleClass="paneGrey">
+        <Pane layoutX="70.0" prefHeight="70.0" prefWidth="1231.0" styleClass="paneGrey">
             <children>
                 <Button id="buttonTaxes" fx:id="buttonTaxes" layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Impuestos">
                     <font>
                         <Font name="Tahoma Bold" size="20.0" />
                     </font>
                 </Button>
-                <Button id="buttonStock" fx:id="buttonStock" layoutX="160.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Inventario">
+                <Button id="buttonStock" fx:id="buttonStock" layoutX="240.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Inventario">
                     <font>
                         <Font name="Tahoma Bold" size="20.0" />
                     </font>
                 </Button>
-                <Button id="buttonAccounting" fx:id="buttonAccounting" layoutX="315.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Cuentas">
+                <Button id="buttonAccounting" fx:id="buttonAccounting" layoutX="458.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Cuentas">
                     <font>
                         <Font name="Tahoma Bold" size="20.0" />
                     </font>
                 </Button>
-                <Button id="buttonInput" fx:id="buttonInput" layoutX="470.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Aportes">
+                <Button id="buttonInput" fx:id="buttonInput" layoutX="673.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Aportes">
                     <font>
                         <Font name="Tahoma Bold" size="20.0" />
                     </font>
                 </Button>
-                <Button id="buttonReceivable" fx:id="buttonReceivable" layoutX="625.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Pendientes">
+                <Button id="buttonReceivable" fx:id="buttonReceivable" layoutX="904.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Pendientes">
                     <font>
                         <Font name="Tahoma Bold" size="20.0" />
                     </font>
@@ -216,6 +171,55 @@
       </TextField>
       <CheckBox id="checkBoxDebt" fx:id="checkBoxDebt" layoutX="819.0" layoutY="114.0" mnemonicParsing="false" onAction="#checkBox" text="CheckBox" visible="false" />
       <CheckBox id="checkBoxPay" fx:id="checkBoxPay" layoutX="819.0" layoutY="146.0" mnemonicParsing="false" onAction="#checkBox" text="CheckBox" visible="false" />
+      <Pane layoutX="781.0" layoutY="624.0" prefHeight="70.0" prefWidth="519.0">
+         <children>
+              <Button id="remove" fx:id="remove" disable="true" layoutX="445.0" layoutY="5.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
+                  <graphic>
+                      <ImageView fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../images/remove.png" />
+                          </image>
+                      </ImageView>
+                  </graphic>
+              </Button>
+              <Button id="cancel" fx:id="cancel" layoutX="364.0" layoutY="7.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
+                  <graphic>
+                      <ImageView fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../images/cancel.png" />
+                          </image>
+                      </ImageView>
+                  </graphic>
+              </Button>
+              <Button id="found" fx:id="found" layoutX="279.0" layoutY="6.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
+                  <graphic>
+                      <ImageView fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../images/find.png" />
+                          </image>
+                      </ImageView>
+                  </graphic>
+              </Button>
+              <Button id="save" fx:id="save" disable="true" layoutX="195.0" layoutY="6.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
+                  <graphic>
+                      <ImageView fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../images/save.png" />
+                          </image>
+                      </ImageView>
+                  </graphic>
+              </Button>
+              <Button id="search" fx:id="search" layoutX="100.0" layoutY="6.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
+                  <graphic>
+                      <ImageView id="search" fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../images/search.png" />
+                          </image>
+                      </ImageView>
+                  </graphic>
+              </Button>
+         </children>
+      </Pane>
     </children>
 
 </Pane>

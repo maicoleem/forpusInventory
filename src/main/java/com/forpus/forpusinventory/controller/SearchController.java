@@ -323,8 +323,7 @@ public class SearchController {
             labelCodeSearch2.setText(code);
             labelNameSearch2.setText(name);
         }catch (Exception i){
-            i.printStackTrace();
-            WareController.alertSend("ERROR AL SELECCIONAR DATOS");
+            System.out.println("Date not selected");
         }
     }
     public void tableNull(){
