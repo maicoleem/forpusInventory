@@ -1,5 +1,8 @@
 package com.forpus.forpusinventory.domain.services;
 import com.forpus.forpusinventory.persistence.entity.WareProductClass;
+
+import javax.swing.text.Utilities;
+
 public class ConstantsSales {
 
     public static String salesOption = null;
@@ -59,16 +62,6 @@ public class ConstantsSales {
             rBuy = "0";
             rUtilities = "0";
         }
-        //System.out.println(totalSale + "sale-buy" + totalBuy + "-taxes" + taxes + "-debt" + debt + "-total" + total);
-
-        //System.out.println(pay + "pagado");
-
-        //System.out.println(utilities + "utilidades");
-
-        //System.out.println(rBuy + "lo que falta para pagar la inversión");
-
-        //System.out.println(rUtilities + "la que falta para completar las utilidades");
-        //a las utilidades se le resta el bold
         return String.valueOf((sale - buy - b));
     }
     public static void saleCompany(String bank, String cash, String receivable, String uReceivable, String utilities){
@@ -86,14 +79,13 @@ public class ConstantsSales {
         int receivableOld = Integer.parseInt(Constant.company.getReceivable());
         int uRChangeOld = Integer.parseInt(Constant.company.getUReceivable());
         int utilitiesOld = Integer.parseInt(Constant.company.getUtilities());
-        int totalOld = Integer.parseInt(Constant.company.getTotal());
 
         int bankNew = bankOld + bankChange;
         int cashNew = cashOld + cashChange;
         int receivableNew = receivableOld + receivableChange;
         int uRNew = uRChangeOld + uRChange;
         int utilitiesNew = utilitiesOld +  utilitiesChange;
-        int totalNew = totalOld + bankNew + cashNew;
+        int totalNew = bankNew + cashNew;
 
         Constant.company.setBank(String.valueOf(bankNew));
         Constant.company.setCash(String.valueOf(cashNew));
@@ -119,6 +111,55 @@ public class ConstantsSales {
         Constant.customer.setBank(String.valueOf(bankNew));
         Constant.customer.setCash(String.valueOf(cashNew));
         Constant.customer.setPayable(String.valueOf(payableNew));
+    }
+
+    public static void saleMoveInvoiceCompany(String bank, String cash){
+        int bankChange = Integer.parseInt(bank);
+        int cashChange = Integer.parseInt(cash);
+        int bankOld = Integer.parseInt(Constant.company.getBank());
+        int cashOld = Integer.parseInt(Constant.company.getCash());
+        //is all lo que deben a la compañia
+        int receivableOld = Integer.parseInt(Constant.company.getReceivable());
+        //uReceivable son las utilidades pendientes de cobrar
+        int uRecevivableOld = Integer.parseInt(Constant.company.getUReceivable());
+        //utilidades netas
+        int utilitiesOld = Integer.parseInt(Constant.company.getUtilities());
+        int utilitiesChange = 0;
+
+        int bankNew = bankOld + bankChange;
+        int cashNew = cashOld + cashChange;
+        int totalNew = bankNew + cashNew;
+
+        int totalPay = cashChange + bankChange;
+        int debt = receivableOld - totalPay;
+
+        if(receivableOld > uRecevivableOld){
+            if(debt <= uRecevivableOld){
+                Constant.company.setReceivable(String.valueOf(debt));
+                Constant.company.setUReceivable(String.valueOf(debt));
+                utilitiesChange = uRecevivableOld - debt;
+                Constant.company.setUtilities(String.valueOf(utilitiesOld + utilitiesChange));
+            }else {
+                Constant.company.setReceivable(String.valueOf(debt));
+                Constant.company.setUReceivable(String.valueOf(uRecevivableOld));
+                Constant.company.setUtilities(String.valueOf(utilitiesOld));
+            }
+        }else {
+            Constant.company.setReceivable(String.valueOf(debt));
+            Constant.company.setUReceivable(String.valueOf(debt));
+            utilitiesChange = uRecevivableOld - debt;
+            Constant.company.setUtilities(String.valueOf(utilitiesOld + utilitiesChange));
+        }
+
+        Constant.company.setBank(String.valueOf(bankNew));
+        Constant.company.setCash(String.valueOf(cashNew));
+        Constant.company.setTotal(String.valueOf(totalNew));
+
+    }
+    public static String resta (String valorA, String valorB){
+        int a = Integer.parseInt(valorA);
+        int b = Integer.parseInt(valorB);
+        return String.valueOf(a-b);
     }
 
 

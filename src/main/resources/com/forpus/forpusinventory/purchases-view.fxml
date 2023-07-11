@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -8,14 +9,14 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.93" prefHeight="700.0" prefWidth="1300.0" styleClass="panelWhite" stylesheets="@../styles/style-default.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.forpus.forpusinventory.controller.PurchasesController">
 
     <children>
-        <Button id="found" fx:id="found" layoutX="814.0" layoutY="694.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
+        <Button id="found" fx:id="found" layoutX="1093.0" layoutY="633.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
             <graphic>
                 <ImageView fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                     <Image url="@../images/find.png" />
                 </ImageView>
             </graphic>
         </Button>
-        <Button id="cancel" fx:id="cancel" layoutX="884.0" layoutY="694.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
+        <Button id="cancel" fx:id="cancel" layoutX="1162.0" layoutY="635.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
             <graphic>
                 <ImageView fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -24,7 +25,7 @@
                 </ImageView>
             </graphic>
         </Button>
-        <Button id="save" fx:id="save" disable="true" layoutX="744.0" layoutY="694.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
+        <Button id="save" fx:id="save" disable="true" layoutX="1023.0" layoutY="632.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
             <graphic>
                 <ImageView fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -42,7 +43,7 @@
                 </ImageView>
             </graphic>
         </Button>
-        <Button id="remove" fx:id="remove" disable="true" layoutX="954.0" layoutY="694.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
+        <Button id="remove" fx:id="remove" disable="true" layoutX="1232.0" layoutY="634.0" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonCRUD" prefHeight="60.0" prefWidth="60.0" styleClass="buttonBlue" text="Button">
             <graphic>
                 <ImageView fitHeight="105.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -51,7 +52,7 @@
                 </ImageView>
             </graphic>
         </Button>
-        <Pane id="panelBlue" prefHeight="768.0" prefWidth="70.0">
+        <Pane id="panelBlue" prefHeight="700.0" prefWidth="70.0">
             <children>
                 <Button id="bWare" fx:id="bWare" layoutX="5.0" layoutY="94.7" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSlide" prefHeight="60.0" prefWidth="60.0" styleClass="buttonSide" text="Button">
                     <graphic>
@@ -101,19 +102,19 @@
                     </graphic></Button>
             </children>
         </Pane>
-        <Pane layoutX="70.0" prefHeight="70.0" prefWidth="954.0" styleClass="paneGrey">
+        <Pane layoutX="70.0" prefHeight="70.0" prefWidth="1231.0" styleClass="paneGrey">
             <children>
                 <Button id="buttonProduct0" fx:id="buttonProduct0" layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="PRODUCTO">
                     <font>
                         <Font name="Tahoma Bold" size="20.0" />
                     </font>
                 </Button>
-                <Button id="buttonService" fx:id="buttonService" layoutX="160.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="SERVICIOS">
+                <Button id="buttonService" fx:id="buttonService" layoutX="178.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="SERVICIOS">
                     <font>
                         <Font name="Tahoma Bold" size="20.0" />
                     </font>
                 </Button>
-                <Button id="buttonCredit" fx:id="buttonCredit" layoutX="315.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="CREDITOS">
+                <Button id="buttonCredit" fx:id="buttonCredit" layoutX="353.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="CREDITOS">
                     <font>
                         <Font name="Tahoma Bold" size="20.0" />
                     </font>
@@ -124,10 +125,10 @@
                 <Font name="Tahoma Bold" size="19.0" />
             </font></Label>
 
-        <TableView id="tableMain" fx:id="tableMain" layoutX="88.0" layoutY="346.0" prefHeight="204.0" prefWidth="750.0">
+        <TableView id="tableMain" fx:id="tableMain" layoutX="85.0" layoutY="355.0" prefHeight="236.0" prefWidth="830.0">
             <columns>
                 <TableColumn id="c1" fx:id="c1" prefWidth="75.0" text="CODIGO" />
-                <TableColumn id="c2" fx:id="c2" prefWidth="75.0" text="PRODUCTO" />
+                <TableColumn id="c2" fx:id="c2" prefWidth="153.0" text="PRODUCTO" />
                 <TableColumn id="c3" fx:id="c3" prefWidth="75.0" text="P. COMPRA" />
                 <TableColumn id="c4" fx:id="c4" prefWidth="75.0" text="CANTIDAD" />
                 <TableColumn id="c5" fx:id="c5" prefWidth="75.0" text="PROFIT" />
@@ -144,80 +145,80 @@
             </font>
         </Label>
         <TextField id="tfProvider" fx:id="tfProvider" layoutX="240.0" layoutY="86.0" prefHeight="40.0" prefWidth="142.0" />
-        <ComboBox id="comboBoxPrice" fx:id="comboBoxPrice" layoutX="358.0" layoutY="190.0" onAction="#cbPrice" prefHeight="40.0" prefWidth="103.0" promptText="Precio" />
+        <ComboBox id="comboBoxPrice" fx:id="comboBoxPrice" layoutX="559.0" layoutY="217.0" onAction="#cbPrice" prefHeight="40.0" prefWidth="91.0" promptText="Precio" />
         <Button id="buttonProvider" fx:id="buttonProvider" layoutX="391.0" layoutY="86.0" mnemonicParsing="false" onAction="#providerFound" prefHeight="40.0" prefWidth="45.0" styleClass="buttonBlue" text="OK" />
-        <Label id="labelProduct" fx:id="labelProduct" alignment="CENTER" contentDisplay="CENTER" layoutX="78.0" layoutY="138.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Producto">
+        <Label id="labelProduct" fx:id="labelProduct" alignment="CENTER" contentDisplay="CENTER" layoutX="78.0" layoutY="166.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Producto">
             <font>
                 <Font name="Tahoma Bold" size="19.0" />
             </font>
         </Label>
-        <TextField id="tfProduct" fx:id="tfProduct" layoutX="240.0" layoutY="138.0" prefHeight="40.0" prefWidth="142.0" />
-        <Label id="labelNameProduct" fx:id="labelNameProduct" alignment="CENTER" contentDisplay="CENTER" layoutX="437.0" layoutY="138.0" prefHeight="40.0" prefWidth="305.0" styleClass="labelGrey" text="Nombre Producto">
+        <TextField id="tfProduct" fx:id="tfProduct" layoutX="240.0" layoutY="166.0" prefHeight="40.0" prefWidth="142.0" />
+        <Label id="labelNameProduct" fx:id="labelNameProduct" alignment="CENTER" contentDisplay="CENTER" layoutX="437.0" layoutY="168.0" prefHeight="40.0" prefWidth="305.0" styleClass="labelGrey" text="Nombre Producto">
             <font>
                 <Font name="Tahoma Bold" size="19.0" />
             </font>
         </Label>
-        <Button id="buttonProduct" fx:id="buttonProduct" layoutX="389.0" layoutY="138.0" mnemonicParsing="false" onAction="#productFound" prefHeight="40.0" prefWidth="45.0" styleClass="buttonBlue" text="OK" />
-        <Label id="labelPrice" fx:id="labelPrice" alignment="CENTER" contentDisplay="CENTER" layoutX="78.0" layoutY="190.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Precio">
+        <Button id="buttonProduct" fx:id="buttonProduct" layoutX="389.0" layoutY="167.0" mnemonicParsing="false" onAction="#productFound" prefHeight="40.0" prefWidth="45.0" styleClass="buttonBlue" text="OK" />
+        <Label id="labelPrice" fx:id="labelPrice" alignment="CENTER" contentDisplay="CENTER" layoutX="296.0" layoutY="217.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Precio">
             <font>
                 <Font name="Tahoma Bold" size="19.0" />
             </font>
         </Label>
-        <TextField id="tfOff" fx:id="tfOff" layoutX="628.0" layoutY="190.0" prefHeight="40.0" prefWidth="45.0" promptText="0-100" />
-        <Label id="labelOff" fx:id="labelOff" alignment="CENTER" contentDisplay="CENTER" layoutX="470.0" layoutY="190.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Descuento">
+        <TextField id="tfOff" fx:id="tfOff" layoutX="823.0" layoutY="217.0" prefHeight="40.0" prefWidth="45.0" promptText="0-100" />
+        <Label id="labelOff" fx:id="labelOff" alignment="CENTER" contentDisplay="CENTER" layoutX="661.0" layoutY="217.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Descuento">
             <font>
                 <Font name="Tahoma Bold" size="19.0" />
             </font>
         </Label>
-        <Button id="buttonRegister" fx:id="buttonRegister" layoutX="553.0" layoutY="295.0" mnemonicParsing="false" onAction="#register" prefHeight="40.0" prefWidth="97.0" styleClass="buttonBlue" text="REGISTRAR" />
-        <Pane id="panelTotal" fx:id="panelTotal" layoutX="86.0" layoutY="561.0" prefHeight="204.0" prefWidth="349.0">
+        <Button id="buttonRegister" fx:id="buttonRegister" layoutX="676.0" layoutY="307.0" mnemonicParsing="false" onAction="#register" prefHeight="40.0" prefWidth="97.0" styleClass="buttonBlue" text="REGISTRAR" />
+        <Pane id="panelTotal" fx:id="panelTotal" layoutX="91.0" layoutY="599.0" prefHeight="100.0" prefWidth="830.0">
             <children>
-                <Label id="labelBold" fx:id="labelBold" alignment="CENTER" contentDisplay="CENTER" layoutX="69.0" layoutY="147.0" prefHeight="40.0" prefWidth="81.0" styleClass="labelGrey" text="BOLD">
+                <Label id="labelBold" fx:id="labelBold" alignment="CENTER" contentDisplay="CENTER" layoutX="73.0" layoutY="48.0" prefHeight="40.0" prefWidth="81.0" styleClass="labelGrey" text="BOLD">
                     <font>
                         <Font name="Tahoma Bold" size="19.0" />
                     </font>
                 </Label>
-                <Button id="buttonBold" fx:id="buttonBold" layoutX="10.0" layoutY="147.0" mnemonicParsing="false" onAction="#taxes" prefHeight="40.0" prefWidth="45.0" styleClass="buttonBlue" text="Bold" />
-                <Label id="labelIVA" fx:id="labelIVA" alignment="CENTER" contentDisplay="CENTER" layoutX="69.0" layoutY="104.0" prefHeight="40.0" prefWidth="81.0" styleClass="labelGrey" text="IVA">
+                <Button id="buttonBold" fx:id="buttonBold" layoutX="14.0" layoutY="48.0" mnemonicParsing="false" onAction="#taxes" prefHeight="40.0" prefWidth="45.0" styleClass="buttonBlue" text="Bold" />
+                <Label id="labelIVA" fx:id="labelIVA" alignment="CENTER" contentDisplay="CENTER" layoutX="73.0" layoutY="5.0" prefHeight="40.0" prefWidth="81.0" styleClass="labelGrey" text="IVA">
                     <font>
                         <Font name="Tahoma Bold" size="19.0" />
                     </font>
                 </Label>
-                <Label id="labelTota2" fx:id="labelTotal2" alignment="CENTER" contentDisplay="CENTER" layoutX="112.0" layoutY="52.0" prefHeight="40.0" prefWidth="224.0" styleClass="labelGrey" text="SubTotal">
+                <Label id="labelTota2" fx:id="labelTotal2" alignment="CENTER" contentDisplay="CENTER" layoutX="515.0" layoutY="49.0" prefHeight="40.0" prefWidth="224.0" styleClass="labelGrey" text="SubTotal">
                     <font>
                         <Font name="Tahoma Bold" size="19.0" />
                     </font>
                 </Label>
-                <Label id="labelTotal" fx:id="labelTotal" alignment="CENTER" contentDisplay="CENTER" layoutY="5.0" prefHeight="40.0" prefWidth="91.0" styleClass="labelGrey" text="Total">
+                <Label id="labelTotal" fx:id="labelTotal" alignment="CENTER" contentDisplay="CENTER" layoutX="403.0" layoutY="2.0" prefHeight="40.0" prefWidth="91.0" styleClass="labelGrey" text="Total">
                     <font>
                         <Font name="Tahoma Bold" size="19.0" />
                     </font>
                 </Label>
-                <Button id="buttonIVA" fx:id="buttonIVA" layoutX="10.0" layoutY="103.0" mnemonicParsing="false" onAction="#taxes" prefHeight="40.0" prefWidth="45.0" styleClass="buttonBlue" text="IVA" />
-            <Label id="labelTota3" fx:id="labelTotal3" alignment="CENTER" contentDisplay="CENTER" layoutX="105.0" layoutY="5.0" prefHeight="40.0" prefWidth="234.0" styleClass="labelGrey" text="Total">
+                <Button id="buttonIVA" fx:id="buttonIVA" layoutX="14.0" layoutY="4.0" mnemonicParsing="false" onAction="#taxes" prefHeight="40.0" prefWidth="45.0" styleClass="buttonBlue" text="IVA" />
+            <Label id="labelTota3" fx:id="labelTotal3" alignment="CENTER" contentDisplay="CENTER" layoutX="508.0" layoutY="2.0" prefHeight="40.0" prefWidth="234.0" styleClass="labelGrey" text="Total">
                <font>
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
-            <Label id="labelIVA2" fx:id="labelIVA2" alignment="CENTER" contentDisplay="CENTER" layoutX="165.0" layoutY="103.0" prefHeight="40.0" prefWidth="171.0" styleClass="labelGrey" text="IVA">
+            <Label id="labelIVA2" fx:id="labelIVA2" alignment="CENTER" contentDisplay="CENTER" layoutX="169.0" layoutY="4.0" prefHeight="40.0" prefWidth="171.0" styleClass="labelGrey" text="IVA">
                <font>
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
-            <Label id="labelBold2" fx:id="labelBold2" alignment="CENTER" contentDisplay="CENTER" layoutX="165.0" layoutY="147.0" prefHeight="40.0" prefWidth="171.0" styleClass="labelGrey" text="BOLD">
+            <Label id="labelBold2" fx:id="labelBold2" alignment="CENTER" contentDisplay="CENTER" layoutX="169.0" layoutY="48.0" prefHeight="40.0" prefWidth="171.0" styleClass="labelGrey" text="BOLD">
                <font>
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
-            <Label id="labelTotal" fx:id="labelTotal1" alignment="CENTER" contentDisplay="CENTER" layoutY="53.0" prefHeight="40.0" prefWidth="91.0" styleClass="labelGrey" text="Subtotal">
+            <Label id="labelTotal" fx:id="labelTotal1" alignment="CENTER" contentDisplay="CENTER" layoutX="403.0" layoutY="50.0" prefHeight="40.0" prefWidth="91.0" styleClass="labelGrey" text="Subtotal">
                <font>
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
-            <TextField id="tfTaxes" fx:id="tfTaxes" layoutX="172.0" layoutY="103.0" onKeyTyped="#sobreCost" prefHeight="40.0" prefWidth="159.0" text="0" visible="false" />
+            <TextField id="tfTaxes" fx:id="tfTaxes" layoutX="172.0" layoutY="5.0" onKeyTyped="#sobreCost" prefHeight="40.0" prefWidth="159.0" text="0" visible="false" />
             </children>
         </Pane>
-        <Pane id="panelPayment" fx:id="panelPayment" layoutX="445.0" layoutY="558.0" prefHeight="204.0" prefWidth="290.0">
+        <Pane id="panelPayment" fx:id="panelPayment" layoutX="937.0" layoutY="378.0" prefHeight="204.0" prefWidth="328.0">
             <children>
                 <Label id="labelCash" fx:id="labelCash" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="103.0" prefHeight="40.0" prefWidth="91.0" styleClass="labelGrey" text="Efectivo">
                     <font>
@@ -229,22 +230,34 @@
                         <Font name="Tahoma Bold" size="19.0" />
                     </font>
                 </Label>
-                <TextField id="tfCash" fx:id="tfCash" layoutX="107.0" layoutY="103.0" onKeyTyped="#payment" prefHeight="40.0" prefWidth="159.0" text="0" />
-                <TextField id="tfBank" fx:id="tfBank" layoutX="107.0" layoutY="147.0" onKeyTyped="#payment" prefHeight="40.0" prefWidth="159.0" text="0" />
+                <TextField id="tfCash" fx:id="tfCash" alignment="CENTER_RIGHT" layoutX="107.0" layoutY="103.0" onKeyTyped="#payment" prefHeight="40.0" prefWidth="207.0" text="0">
+               <font>
+                  <Font size="16.0" />
+               </font></TextField>
+                <TextField id="tfBank" fx:id="tfBank" alignment="CENTER_RIGHT" layoutX="107.0" layoutY="147.0" onKeyTyped="#payment" prefHeight="40.0" prefWidth="207.0" text="0">
+               <font>
+                  <Font size="16.0" />
+               </font></TextField>
                 <Label id="labelSubTotal" fx:id="labelSubTotal" alignment="CENTER" contentDisplay="CENTER" layoutX="2.0" layoutY="56.0" prefHeight="40.0" prefWidth="91.0" styleClass="labelGrey" text="Deuda">
                     <font>
                         <Font name="Tahoma Bold" size="19.0" />
                     </font>
                 </Label>
-                <Label id="labelPay" fx:id="labelDebt" alignment="CENTER" contentDisplay="CENTER" layoutX="107.0" layoutY="56.0" prefHeight="40.0" prefWidth="159.0" styleClass="labelGrey" text="Deuda">
+                <Label id="labelPay" fx:id="labelDebt" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="107.0" layoutY="56.0" prefHeight="40.0" prefWidth="215.0" styleClass="labelGrey" text="Deuda">
                     <font>
-                        <Font name="Tahoma Bold" size="19.0" />
+                        <Font name="Tahoma Bold" size="20.0" />
                     </font>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
                 </Label>
-            <Label id="labelPay" fx:id="labelPay" alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="7.0" prefHeight="40.0" prefWidth="159.0" styleClass="labelGrey" text="Pago">
+            <Label id="labelPay" fx:id="labelPay" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="101.0" layoutY="7.0" prefHeight="40.0" prefWidth="215.0" styleClass="labelGrey" text="Pago">
                <font>
-                  <Font name="Tahoma Bold" size="19.0" />
+                  <Font name="Tahoma Bold" size="20.0" />
                </font>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
             </Label>
             <Label id="labelSubTotal" fx:id="labelSubTotal1" alignment="CENTER" contentDisplay="CENTER" layoutX="2.0" layoutY="7.0" prefHeight="40.0" prefWidth="91.0" styleClass="labelGrey" text="Pago">
                <font>
@@ -253,46 +266,49 @@
             </Label>
             </children>
         </Pane>
-        <Pane id="panelCheckIn" fx:id="panelCheckIn" layoutX="805.0" layoutY="569.0" prefHeight="117.0" prefWidth="159.0">
+        <Pane id="panelCheckIn" fx:id="panelCheckIn" layoutX="934.0" layoutY="571.0" prefHeight="70.0" prefWidth="320.0">
             <children>
-                <Button id="buttonCheckIn" fx:id="buttonCheckIn" layoutX="9.0" layoutY="70.0" mnemonicParsing="false" onAction="#checkinInvoice" prefHeight="40.0" prefWidth="142.0" styleClass="buttonBlue" text="REGISTRAR" />
+                <Button id="buttonCheckIn" fx:id="buttonCheckIn" layoutX="164.0" layoutY="14.0" mnemonicParsing="false" onAction="#checkinInvoice" prefHeight="40.0" prefWidth="142.0" styleClass="buttonBlue" text="REGISTRAR" />
                 <Button id="buttonQuote" fx:id="buttonQuote" layoutX="9.0" layoutY="14.0" mnemonicParsing="false" onAction="#quote" prefHeight="40.0" prefWidth="142.0" styleClass="buttonBlue" text="PAGO" />
             </children>
         </Pane>
-      <TextField id="tfPrice" fx:id="tfPrice" layoutX="240.0" layoutY="190.0" onKeyTyped="#priceNew" prefHeight="40.0" prefWidth="107.0" promptText="\$" />
-      <Label id="labelPriceSale" fx:id="labelPriceSale" alignment="CENTER" contentDisplay="CENTER" layoutX="295.0" layoutY="242.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Precio Venta">
+      <TextField id="tfPrice" fx:id="tfPrice" layoutX="451.0" layoutY="217.0" onKeyTyped="#priceNew" prefHeight="40.0" prefWidth="97.0" promptText="\$" />
+      <Label id="labelPriceSale" fx:id="labelPriceSale" alignment="CENTER" contentDisplay="CENTER" layoutX="78.0" layoutY="266.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Precio Venta">
          <font>
             <Font name="Tahoma Bold" size="19.0" />
          </font>
       </Label>
-      <TextField id="tfPriceSale" fx:id="tfPriceSale" layoutX="453.0" layoutY="243.0" onKeyTyped="#profitSale" prefHeight="40.0" prefWidth="122.0" promptText="\$" />
-      <Label id="labelAmount" fx:id="labelAmount" alignment="CENTER" contentDisplay="CENTER" layoutX="77.0" layoutY="243.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Cantidad">
+      <TextField id="tfPriceSale" fx:id="tfPriceSale" layoutX="239.0" layoutY="266.0" onKeyTyped="#profitSale" prefHeight="40.0" prefWidth="122.0" promptText="\$" />
+      <Label id="labelAmount" fx:id="labelAmount" alignment="CENTER" contentDisplay="CENTER" layoutX="77.0" layoutY="217.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Cantidad">
          <font>
             <Font name="Tahoma Bold" size="19.0" />
          </font>
       </Label>
-      <TextField id="tfAmount" fx:id="tfAmount" layoutX="240.0" layoutY="243.0" prefHeight="40.0" prefWidth="45.0" />
-      <Label id="labelProfit" fx:id="labelProfit" alignment="CENTER" contentDisplay="CENTER" layoutX="582.0" layoutY="242.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Profit %">
+      <TextField id="tfAmount" fx:id="tfAmount" layoutX="240.0" layoutY="217.0" prefHeight="40.0" prefWidth="45.0" />
+      <Label id="labelProfit" fx:id="labelProfit" alignment="CENTER" contentDisplay="CENTER" layoutX="371.0" layoutY="266.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Profit %">
          <font>
             <Font name="Tahoma Bold" size="19.0" />
          </font>
       </Label>
-      <TextField id="tfProfit" fx:id="tfProfit" layoutX="740.0" layoutY="242.0" onKeyTyped="#priceSale" prefHeight="40.0" prefWidth="53.0" promptText="0-100" />
-      <ComboBox id="comboBoxOne" fx:id="comboBoxOne" layoutX="213.0" layoutY="294.0" onAction="#categorySelected" prefHeight="40.0" prefWidth="103.0" promptText="Categoria 1" />
-      <ComboBox id="comboBoxTwo" fx:id="comboBoxTwo" layoutX="331.0" layoutY="294.0" onAction="#categorySelected" prefHeight="40.0" prefWidth="103.0" promptText="Categoria 2" />
-      <ComboBox id="comboBoxThree" fx:id="comboBoxThree" layoutX="443.0" layoutY="294.0" prefHeight="40.0" prefWidth="103.0" promptText="Categoria 3" />
-      <ComboBox id="comboBoxWare" fx:id="comboBoxWare" layoutX="102.0" layoutY="294.0" prefHeight="40.0" prefWidth="103.0" promptText="Bodega" />
-      <CheckBox id="checkProduct" fx:id="checkProduct" layoutX="751.0" layoutY="142.0" mnemonicParsing="false" onAction="#checkProduct" prefHeight="27.0" prefWidth="136.0" text="Producto Nuevo" />
-      <CheckBox id="checkSale" fx:id="checkSale" layoutX="803.0" layoutY="248.0" mnemonicParsing="false" onAction="#checkSale" prefHeight="27.0" prefWidth="136.0" text="Precio Nuevo" />
-      <TextField id="tfProductName" fx:id="tfProductName" disable="true" layoutX="454.0" layoutY="138.0" prefHeight="40.0" prefWidth="275.0" promptText="Nombre Producto" visible="false" />
-      <Button id="buttonSuppress" fx:id="buttonSuppress" layoutX="658.0" layoutY="295.0" mnemonicParsing="false" onAction="#suppress" prefHeight="40.0" prefWidth="97.0" styleClass="buttonBlue" text="SUPRIMIR" />
-      <TableView id="tableService" fx:id="tableService" layoutX="89.0" layoutY="353.0" prefHeight="204.0" prefWidth="750.0" visible="false">
+      <TextField id="tfProfit" fx:id="tfProfit" layoutX="537.0" layoutY="266.0" onKeyTyped="#priceSale" prefHeight="40.0" prefWidth="53.0" promptText="0-100" />
+      <ComboBox id="comboBoxOne" fx:id="comboBoxOne" layoutX="234.0" layoutY="312.0" onAction="#categorySelected" prefHeight="40.0" prefWidth="103.0" promptText="Categoria 1" />
+      <ComboBox id="comboBoxTwo" fx:id="comboBoxTwo" layoutX="347.0" layoutY="312.0" onAction="#categorySelected" prefHeight="40.0" prefWidth="103.0" promptText="Categoria 2" />
+      <ComboBox id="comboBoxThree" fx:id="comboBoxThree" layoutX="470.0" layoutY="312.0" prefHeight="40.0" prefWidth="103.0" promptText="Categoria 3" />
+      <ComboBox id="comboBoxWare" fx:id="comboBoxWare" layoutX="89.0" layoutY="312.0" prefHeight="40.0" prefWidth="103.0" promptText="Bodega" />
+      <CheckBox id="checkProduct" fx:id="checkProduct" layoutX="89.0" layoutY="132.0" mnemonicParsing="false" onAction="#checkProduct" prefHeight="27.0" prefWidth="136.0" text="Producto Nuevo" />
+      <CheckBox id="checkSale" fx:id="checkSale" layoutX="608.0" layoutY="273.0" mnemonicParsing="false" onAction="#checkSale" prefHeight="27.0" prefWidth="136.0" text="Precio Nuevo" />
+      <TextField id="tfProductName" fx:id="tfProductName" disable="true" layoutX="454.0" layoutY="169.0" prefHeight="40.0" prefWidth="275.0" promptText="Nombre Producto" visible="false">
+         <opaqueInsets>
+            <Insets top="-7.0" />
+         </opaqueInsets></TextField>
+      <Button id="buttonSuppress" fx:id="buttonSuppress" layoutX="809.0" layoutY="308.0" mnemonicParsing="false" onAction="#suppress" prefHeight="40.0" prefWidth="97.0" styleClass="buttonBlue" text="SUPRIMIR" />
+      <TableView id="tableService" fx:id="tableService" layoutX="84.0" layoutY="356.0" prefHeight="236.0" prefWidth="830.0">
          <columns>
-            <TableColumn id="c1" fx:id="c21" prefWidth="75.0" text="CODIGO" />
-            <TableColumn id="c2" fx:id="c22" prefWidth="75.0" text="SERVICIO" />
-            <TableColumn id="c3" fx:id="c23" prefWidth="75.0" text="CANTIDAD" />
-            <TableColumn id="c4" fx:id="c24" prefWidth="75.0" text="COSTO" />
-            <TableColumn id="c10" fx:id="c25" prefWidth="75.0" text="BODEGA" />
+            <TableColumn id="c1" fx:id="c21" prefWidth="150.0" text="CODIGO" />
+            <TableColumn id="c2" fx:id="c22" prefWidth="300.0" text="SERVICIO" />
+            <TableColumn id="c3" fx:id="c23" prefWidth="100.0" text="CANTIDAD" />
+            <TableColumn id="c4" fx:id="c24" prefWidth="180.0" text="COSTO" />
+            <TableColumn id="c10" fx:id="c25" prefWidth="100.0" text="BODEGA" />
          </columns>
       </TableView>
       <TableView id="tableInvoice" fx:id="tableInvoice" layoutX="87.0" layoutY="143.0" onKeyPressed="#invoiceView" onMouseClicked="#invoiceView" prefHeight="200.0" prefWidth="455.0" visible="false">

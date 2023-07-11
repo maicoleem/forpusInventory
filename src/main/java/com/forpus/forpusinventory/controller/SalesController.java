@@ -997,9 +997,19 @@ public class SalesController {
             ConstantsPurchases.moveInv = mi;
 
             Constant.entity = "MoveinvoiceClass";
-            SaveHQL.insertWorker("save");
+            ConstantsPurchases.entityForInvoice = "CustomerClass";
+            if(SaveHQL.insertWorker("save")){
+                WareController.alertSend("REGISTRO GUARDADO");
+                tfTaxes.setText("0");
+                tfCash.setText("0");
+                tfBank.setText("0");
+                labelSubTota2.setText("0");
+                labelTotal2.setText("0");
+                labelPay.setText("0");
+                labelDebt.setText("0");
+                tableLoad();
 
-            tableLoad();
+            }
         }else {
             cotizar(button.getText());
         }
@@ -1079,10 +1089,17 @@ public class SalesController {
                 //idBIll se usa para guardar la deuda actual
                 ConstantsAccounting.invoice.setIdBill(Integer.parseInt(ConstantsAccounting.invoice.getIndebtedness()));
 
-                //Actualiza la cuenta de la compañia y el proveedor
-                ConstantsSales.saleCompany(ConstantsAccounting.invoice.getBank(),
-                        ConstantsAccounting.invoice.getCash(), ConstantsAccounting.invoice.getIndebtedness(),
-                        ConstantsAccounting.invoice.getRUtilities(), ConstantsAccounting.invoice.getUtilities());
+                //Actualiza la cuenta de la compañia y el cliente
+                ConstantsSales.saleCompany(
+                        ConstantsAccounting.invoice.getBank(),
+                        ConstantsAccounting.invoice.getCash(),
+                        ConstantsAccounting.invoice.getIndebtedness(),
+                        ConstantsAccounting.invoice.getRUtilities(),
+                        ConstantsSales.resta(
+                                ConstantsAccounting.invoice.getUtilities(), ConstantsAccounting.invoice.getRUtilities()
+                        )
+                );
+
                 ConstantsSales.saleCustomer(ConstantsAccounting.invoice.getBank(), ConstantsAccounting.invoice.getCash(),
                         ConstantsAccounting.invoice.getIndebtedness());
 
@@ -1105,13 +1122,14 @@ public class SalesController {
         //carga los productos de la factura
         InvoiceClass invoiceSelected = tableInvoice.getSelectionModel().getSelectedItem();
         ConstantsAccounting.invoice = invoiceSelected;
-        ConstantsPurchases.listWareInvoiceSearch(invoiceSelected);
+        ConstantsPurchases.listWareInvoiceSearch(invoiceSelected, "customer");
 
         tableWareInv.getItems().clear();
         ObservableList<WareinvoiceClass> wiTable = FXCollections.observableArrayList(ConstantsPurchases.wareInvoiceList);
         tableWareInv.setItems(wiTable);
 
         //Carga la tabla de deudas si tiene
+            //debe de ser providerClass para poder encontrar los datos
         ConstantsPurchases.entityForInvoice = "ProvidersClass";
         ConstantsPurchases.listMoveSearch(invoiceSelected);
         if(!ConstantsPurchases.moveInvoiceList.isEmpty()){
@@ -1264,7 +1282,6 @@ public class SalesController {
             i.printStackTrace();
         }
     }
-
     public void offPercentage() {
         try {
             int offPer = Integer.parseInt(tfOffPer.getText());

@@ -254,8 +254,6 @@ public class PurchasesController {
 
                     panelTotal.setVisible(a);
 
-                    checkProduct.setVisible(a);
-
                     labelProduct.setText("Servicio");
                     labelNameProduct.setText("Nombre Servicio");
                     taxesIVABOLD();
@@ -339,6 +337,8 @@ public class PurchasesController {
         comboBoxWare.setVisible(a);
         comboBoxPrice.setVisible(a);
 
+
+
         tableMain.setVisible(a);
         tableService.setVisible(a);
         tableInvoice.setVisible(a);
@@ -348,6 +348,7 @@ public class PurchasesController {
         panelCheckIn.setVisible(a);
         panelPayment.setVisible(a);
         panelTotal.setVisible(a);
+
         checkSale.setVisible(a);
         checkProduct.setVisible(a);
 
@@ -1223,7 +1224,7 @@ public class PurchasesController {
             //carga los productos de la factura
             InvoiceClass invoiceSelected = tableInvoice.getSelectionModel().getSelectedItem();
             ConstantsAccounting.invoice = invoiceSelected;
-            ConstantsPurchases.listWareInvoiceSearch(invoiceSelected);
+            ConstantsPurchases.listWareInvoiceSearch(invoiceSelected, "provider");
 
             tableWareInv.getItems().clear();
             ObservableList<WareinvoiceClass> wiTable = FXCollections.observableArrayList(ConstantsPurchases.wareInvoiceList);

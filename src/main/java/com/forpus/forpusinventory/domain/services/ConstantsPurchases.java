@@ -152,14 +152,19 @@ public class ConstantsPurchases {
         Constant.entity ="InvoiceClass";
         SearchHQL.searchHQL();
     }
-    public static void listWareInvoiceSearch(InvoiceClass idInvoice){
+    public static void listWareInvoiceSearch(InvoiceClass idInvoice, String customerOrProvider){
         try {
             Constant.entity = "WareinvoiceClass";
             Constant.tfCode = String.valueOf(idInvoice.getIdInvoice());
             SearchHQL.searchHQL();
 
-            Constant.entity = "ProvidersClass";
-            Constant.tfCode = idInvoice.getIdProviders();
+            if(customerOrProvider.equals("provider")){
+                Constant.entity = "ProvidersClass";
+                Constant.tfCode = idInvoice.getIdProviders();
+            }else{
+                Constant.entity = "CustomerClass";
+                Constant.tfCode = idInvoice.getIdCustomer();
+            }
             FoundHQL.workerFound();
 
             Constant.entity = "CompanyClass";

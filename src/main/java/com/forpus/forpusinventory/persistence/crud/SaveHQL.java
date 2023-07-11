@@ -1,10 +1,7 @@
 package com.forpus.forpusinventory.persistence.crud;
 
 import com.forpus.forpusinventory.controller.WareController;
-import com.forpus.forpusinventory.domain.services.Constant;
-import com.forpus.forpusinventory.domain.services.ConstantsAccounting;
-import com.forpus.forpusinventory.domain.services.ConstantsPurchases;
-import com.forpus.forpusinventory.domain.services.ConstantsWare;
+import com.forpus.forpusinventory.domain.services.*;
 import com.forpus.forpusinventory.persistence.Session.SessionDB;
 import com.forpus.forpusinventory.persistence.entity.*;
 import org.hibernate.Session;;
@@ -329,13 +326,15 @@ public class SaveHQL {
                     session.update(ConstantsAccounting.invoice);
                     session.getTransaction().commit();
 
+
+
                     switch (ConstantsPurchases.entityForInvoice){
                         case "ProvidersClass":
                             ConstantsPurchases.purchaseCompany(String.valueOf(ConstantsPurchases.moveInv.getPayBank()),
                                     String.valueOf(ConstantsPurchases.moveInv.getPayCash()),
                                     String.valueOf((-1 *(
                                             ConstantsPurchases.moveInv.getPayCash() +
-                                            ConstantsPurchases.moveInv.getPayBank()))));
+                                                    ConstantsPurchases.moveInv.getPayBank()))));
                             session.beginTransaction();
                             session.update(Constant.company);
                             session.getTransaction().commit();
@@ -347,6 +346,23 @@ public class SaveHQL {
                                             ConstantsPurchases.moveInv.getPayBank()))));
                             session.beginTransaction();
                             session.update(Constant.provider);
+                            session.getTransaction().commit();
+                            break;
+                        case "CustomerClass":
+
+
+
+
+                            session.beginTransaction();
+                            session.update(Constant.company);
+                            session.getTransaction().commit();
+
+                            ConstantsSales.saleCustomer(String.valueOf(ConstantsPurchases.moveInv.getPayBank()),
+                                    String.valueOf(ConstantsPurchases.moveInv.getPayCash()),
+                                    String.valueOf((-1 * (ConstantsPurchases.moveInv.getPayCash() +
+                                                    ConstantsPurchases.moveInv.getPayBank()))));
+                            session.beginTransaction();
+                            session.update(Constant.customer);
                             session.getTransaction().commit();
                             break;
                         default:
