@@ -9,17 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="se corigen errores al agregar aportes y realizar compra de productos nuevos.">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Corrigiendo errores en ventas y movimientos de ventas, los saldos no cuadran">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/PurchasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/PurchasesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SalesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SalesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/Constant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/ConstantsFinance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/ConstantsFinance.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/ConstantsPurchases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/ConstantsPurchases.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/ConstantsSales.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/ConstantsSales.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SaveHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SaveHQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SearchHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SearchHQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/FoundHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/FoundHQL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpusinventory/purchases-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpusinventory/purchases-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpusinventory/sales-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpusinventory/sales-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpusinventory/ware-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpusinventory/ware-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -289,14 +287,8 @@
       <workItem from="1688523625686" duration="3546000" />
       <workItem from="1688599774687" duration="804000" />
       <workItem from="1688695281428" duration="5924000" />
-      <workItem from="1689039402259" duration="9791000" />
-    </task>
-    <task id="LOCAL-00035" summary="-Se debe de seguir planteando la contabilidad&#10;+Se termino con la pestaña pendientes {falta que se pueda hacer un pago}&#10;&#10;**Se modifico la view de purchases-view.fxml, se parametrizo la busquedad de proveedor y producto, falta poder agregar un producto nuevo y agregar a la tabla de compras (de ahi en adelante)">
-      <created>1678677620619</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1678677620619</updated>
+      <workItem from="1689039402259" duration="9853000" />
+      <workItem from="1689121358962" duration="7681000" />
     </task>
     <task id="LOCAL-00036" summary="-Se debe de seguir planteando la contabilidad&#10;+Se crearon los metodos y variables para poder generar la factura, falta completar más metodos por si se necesitan.&#10;&#10;-Falta poder generar una cotización y la factura">
       <created>1679975202334</created>
@@ -634,7 +626,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688701971941</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="Corrigiendo errores en ventas y movimientos de ventas, los saldos no cuadran">
+      <created>1689049254716</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1689049254716</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -652,7 +651,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Se pueden descargar las tablas de la base de datos" />
     <MESSAGE value="Esta en proceso la importación de datos a las tablas" />
     <MESSAGE value="Se modifico las entidades de WareinvoiceClass y ProductClass, para acoplarlas a el jasper Report, que esta en elaboración" />
     <MESSAGE value="Se modifico las entidades de WareinvoiceClass y ProductClass, para acoplarlas a el jasper Report, que esta en elaboración. Para evitar modificaciones en la DB es mejor cerrar sesion antes de guardar algun cambio" />
@@ -677,7 +675,8 @@
     <MESSAGE value="SE MODIFICO LAS GRAFICAS DE VENTAS Y COMPRAS PARA SEPARAR POR AÑOS&#10;&#10;BUILD ARTIFACT: &#10;crear .jar&#10;crear icono&#10;crear exe" />
     <MESSAGE value="SE MODIFICA LAS VIEW PARA IRLAS ACOMODANDO A LA NUEVA RESOLUCIÓN, SE CORRIGEN ERRORES" />
     <MESSAGE value="se corigen errores al agregar aportes y realizar compra de productos nuevos." />
-    <option name="LAST_COMMIT_MESSAGE" value="se corigen errores al agregar aportes y realizar compra de productos nuevos." />
+    <MESSAGE value="Corrigiendo errores en ventas y movimientos de ventas, los saldos no cuadran" />
+    <option name="LAST_COMMIT_MESSAGE" value="Corrigiendo errores en ventas y movimientos de ventas, los saldos no cuadran" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

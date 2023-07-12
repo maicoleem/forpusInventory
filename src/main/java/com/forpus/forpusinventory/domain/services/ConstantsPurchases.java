@@ -3,6 +3,8 @@ package com.forpus.forpusinventory.domain.services;
 import com.forpus.forpusinventory.persistence.crud.FoundHQL;
 import com.forpus.forpusinventory.persistence.crud.SearchHQL;
 import com.forpus.forpusinventory.persistence.entity.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.TextFormatter;
 import javafx.util.converter.IntegerStringConverter;
 
@@ -30,6 +32,8 @@ public class ConstantsPurchases {
     public static String invoiceType = null;
     public static MoveinvoiceClass moveInv = null;
     public static String totalSale = "0";
+
+    public static ObservableList<ProductClass> seekProductList;
 
     //Este metodo permite calcular el subtotal de cada producto
     public static Integer subtotalProduct(String amount, String price, String off){
@@ -193,5 +197,11 @@ public class ConstantsPurchases {
                     }
                     return null;
                 });
+    }
+
+    public static ObservableList<ProductClass> seekProducts(){
+        Constant.entity = "ProductClass";
+        SearchHQL.searchHQL();
+        return FXCollections.observableArrayList(ConstantsWare.productList);
     }
 }

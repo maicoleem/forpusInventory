@@ -8,6 +8,9 @@ import com.forpus.forpusinventory.persistence.Session.SessionDB;
 import com.forpus.forpusinventory.persistence.entity.*;
 import org.hibernate.Query;
 import org.hibernate.Session;
+
+import java.security.PublicKey;
+import java.security.SignedObject;
 import java.util.Objects;
 
 public class FoundHQL {
@@ -255,6 +258,17 @@ public class FoundHQL {
         } catch (Exception i){
             i.printStackTrace();
             return false;
+        }
+    }
+    public static CompanyClass companyFound(){
+        try{
+            SessionDB.session();
+            Session session = SessionDB.sessionHibernate;
+            Query queryCompany = session.createQuery("from CompanyClass");
+            return (CompanyClass) queryCompany.uniqueResult();
+        }catch (Exception i){
+            i.printStackTrace();
+            return null;
         }
     }
 

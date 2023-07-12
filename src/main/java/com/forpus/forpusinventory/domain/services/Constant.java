@@ -49,6 +49,7 @@ public class Constant {
     //Objectos de las entitys
     public static CompanyClass company = null;
     public static CompanyClass companyLogin = null;
+
     public static CustomerClass customer = null;
     public static PartnersClass partners = null;
     public static ProvidersClass provider = null;

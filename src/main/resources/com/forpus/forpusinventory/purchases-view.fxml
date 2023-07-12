@@ -339,5 +339,56 @@
             <TableColumn fx:id="m7" prefWidth="90.0" text="SUBTOTAL" />
          </columns>
       </TableView>
+      <Pane id="paneProduct" fx:id="paneProduct" layoutX="921.0" layoutY="159.0" prefHeight="214.0" prefWidth="375.0">
+         <children>
+            <TableView id="tableProductSearch" fx:id="tableProductSearch" layoutX="14.0" layoutY="32.0" onMouseClicked="#tableSelectedProduct" prefHeight="151.0" prefWidth="351.0">
+              <columns>
+                <TableColumn id="columCode" fx:id="columCode" prefWidth="103.0" text="CODIGO" />
+                <TableColumn id="columProduct" fx:id="columProduct" prefWidth="156.0" text="PRODUCTO" />
+                  <TableColumn id="columPrice" fx:id="columPrice" prefWidth="92.0" text="PRECIO" />
+              </columns>
+            </TableView>
+            <TextField id="tfCodeSeek" fx:id="tfCodeSeek" layoutX="13.0" layoutY="7.0" onKeyTyped="#filtrateTableProducts" prefHeight="25.0" prefWidth="103.0" />
+             <TextField id="tfProductSeek" fx:id="tfProductSeek" layoutX="116.0" layoutY="7.0" onKeyTyped="#filtrateTableProducts" prefHeight="25.0" prefWidth="159.0" />
+             <TextField id="tfPriceSeek" fx:id="tfPriceSeek" layoutX="275.0" layoutY="7.0" onKeyTyped="#filtrateTableProducts" prefHeight="25.0" prefWidth="91.0" />
+             <TextField id="tfCodeFound" fx:id="tfCodeFound" alignment="CENTER_RIGHT" layoutX="149.0" layoutY="185.0" prefHeight="25.0" prefWidth="215.0" promptText="CODIGO PRODUCTO" />
+         </children>
+      </Pane>
+      <Pane fx:id="paneDisponible" layoutX="931.0" layoutY="76.0" prefHeight="77.0" prefWidth="357.0">
+         <children>
+            <Label id="lblDisponibleBank" fx:id="lblDisponibleBank" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="5.0" layoutY="34.0" prefHeight="33.0" prefWidth="142.0" styleClass="labelGrey" text="0">
+               <font>
+                  <Font name="Tahoma Bold" size="20.0" />
+               </font>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </Label>
+            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="5.0" layoutY="5.0" prefHeight="0.0" prefWidth="142.0" styleClass="labelGrey" text="BANCO">
+               <font>
+                  <Font name="Tahoma Bold" size="20.0" />
+               </font>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </Label>
+            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="179.0" layoutY="5.0" prefHeight="0.0" prefWidth="142.0" styleClass="labelGrey" text="CAJA">
+               <font>
+                  <Font name="Tahoma Bold" size="20.0" />
+               </font>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </Label>
+            <Label id="lblDisponibleCash" fx:id="lblDisponibleCash" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="179.0" layoutY="34.0" prefHeight="33.0" prefWidth="142.0" styleClass="labelGrey" text="0">
+               <font>
+                  <Font name="Tahoma Bold" size="20.0" />
+               </font>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </Label>
+         </children>
+      </Pane>
     </children>
 </Pane>

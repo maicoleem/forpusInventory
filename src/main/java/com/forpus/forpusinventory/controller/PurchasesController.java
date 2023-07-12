@@ -10,13 +10,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
-import org.hibernate.event.spi.SaveOrUpdateEvent;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -128,6 +126,18 @@ public class PurchasesController {
     public Button bSale;
     public Button bSettings;
     public Button bWare;
+    public TableColumn<Object, Object> columCode;
+    public TableColumn<Object, Object> columProduct;
+    public Pane paneProduct;
+    public TableView<ProductClass> tableProductSearch;
+    public TextField tfCodeSeek;
+    public TableColumn<Object, Object> columPrice;
+    public TextField tfProductSeek;
+    public TextField tfPriceSeek;
+    public Pane paneDisponible;
+    public Label lblDisponibleBank;
+    public Label lblDisponibleCash;
+    public TextField tfCodeFound;
 
     @FXML
     protected void buttonSlide(ActionEvent event) throws IOException {
@@ -192,6 +202,8 @@ public class PurchasesController {
 
                     panelCheckIn.setVisible(a);
                     panelPayment.setVisible(a);
+                    paneDisponible.setVisible(a);
+                    paneProduct.setVisible(a);
                     buttonIVA.setVisible(a);
                     buttonBold.setVisible(a);
                     labelIVA.setText("IVA");
@@ -348,6 +360,8 @@ public class PurchasesController {
         panelCheckIn.setVisible(a);
         panelPayment.setVisible(a);
         panelTotal.setVisible(a);
+        paneDisponible.setVisible(a);
+        paneProduct.setVisible(a);
 
         checkSale.setVisible(a);
         checkProduct.setVisible(a);
@@ -781,6 +795,13 @@ public class PurchasesController {
         ConstantsPurchases.entityForInvoice = "ProvidersClass";
 
         taxesIVABOLD();
+        loadTableProduct();
+
+        CompanyClass company = FoundHQL.companyFound();
+        if(company != null){
+            lblDisponibleBank.setText(company.getBank());
+            lblDisponibleCash.setText(company.getCash());
+        }
 
         c1.setCellValueFactory(new PropertyValueFactory<>("idProduct"));
         c2.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -979,7 +1000,6 @@ public class PurchasesController {
             i.printStackTrace();
         }
     }
-
     private void clearPurchases() {
         tfProduct.clear();
         tfProductName.setVisible(false);
@@ -993,7 +1013,6 @@ public class PurchasesController {
         tfOff.setText("0");
         comboBoxPrice.getItems().clear();
     }
-
     public void suppress(ActionEvent event) {
         try{
         int a = tableMain.getSelectionModel().getSelectedIndex();
@@ -1282,4 +1301,29 @@ public class PurchasesController {
         }
 
     }
+    public void loadTableProduct(){
+        columCode.setCellValueFactory(new PropertyValueFactory<>("idProduct"));
+        columProduct.setCellValueFactory(new PropertyValueFactory<>("name"));
+        columPrice.setCellValueFactory(new PropertyValueFactory<>("purchasePrice"));
+        tableProductSearch.setItems(ConstantsPurchases.seekProducts());
+        ConstantsPurchases.seekProductList = tableProductSearch.getItems();
+    }
+    @FXML
+    public void filtrateTableProducts(){
+        ObservableList<ProductClass> listProduct = ConstantsPurchases.seekProductList;
+        FilteredList<ProductClass> filteredListProduct = new FilteredList<ProductClass>(listProduct, s -> s.getIdProduct().contains(tfCodeSeek.getText()) && s.getName().contains(tfProductSeek.getText()) && s.getPurchasePrice().contains(tfPriceSeek.getText()) );
+        tableProductSearch.setItems(filteredListProduct);
+    }
+
+    @FXML
+    public void tableSelectedProduct(){
+        try {
+            ProductClass tShow = tableProductSearch.getSelectionModel().getSelectedItem();
+            String code = tShow.getIdProduct();
+            tfCodeFound.setText(code);
+        }catch (Exception i){
+            System.out.println("Date not selected");
+        }
+    }
+
 }
