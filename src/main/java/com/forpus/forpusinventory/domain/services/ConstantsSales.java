@@ -1,5 +1,7 @@
 package com.forpus.forpusinventory.domain.services;
+import com.forpus.forpusinventory.persistence.entity.ProductClass;
 import com.forpus.forpusinventory.persistence.entity.WareProductClass;
+import javafx.collections.ObservableList;
 
 import javax.swing.text.Utilities;
 
@@ -11,6 +13,7 @@ public class ConstantsSales {
     public static String bold = "";
     public static String rBuy = "0";
     public static String rUtilities = "0";
+    public static ObservableList<ProductClass> seekProductList;
     public static Integer utilitiesPer (int sale, int buy){
         return ((sale - buy) * 100)/buy;
     }

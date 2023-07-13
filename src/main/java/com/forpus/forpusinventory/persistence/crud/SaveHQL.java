@@ -322,11 +322,11 @@ public class SaveHQL {
                     session.getTransaction().commit();
                     //actualiza la factura
                     session.beginTransaction();
+
+                    //actualiza deuda en la factura
                     ConstantsAccounting.invoice.setIdBill(ConstantsPurchases.moveInv.getSubtotal());
                     session.update(ConstantsAccounting.invoice);
                     session.getTransaction().commit();
-
-
 
                     switch (ConstantsPurchases.entityForInvoice){
                         case "ProvidersClass":
@@ -350,19 +350,25 @@ public class SaveHQL {
                             break;
                         case "CustomerClass":
 
-
-
-
                             session.beginTransaction();
                             session.update(Constant.company);
                             session.getTransaction().commit();
 
+                            //actualiza cliente
                             ConstantsSales.saleCustomer(String.valueOf(ConstantsPurchases.moveInv.getPayBank()),
                                     String.valueOf(ConstantsPurchases.moveInv.getPayCash()),
                                     String.valueOf((-1 * (ConstantsPurchases.moveInv.getPayCash() +
                                                     ConstantsPurchases.moveInv.getPayBank()))));
+
                             session.beginTransaction();
                             session.update(Constant.customer);
+                            session.getTransaction().commit();
+
+                            //actualiza la cuenta de la compañia
+                            ConstantsSales.saleMoveInvoiceCompany(
+                                    String.valueOf(ConstantsPurchases.moveInv.getPayBank()),
+                                    String.valueOf(ConstantsPurchases.moveInv.getPayCash()));                            session.beginTransaction();
+                            session.update(Constant.company);
                             session.getTransaction().commit();
                             break;
                         default:

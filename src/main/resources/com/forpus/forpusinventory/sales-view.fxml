@@ -341,6 +341,21 @@
          </font>
       </Label>
       <TextField id="tfOffPer" fx:id="tfOffPer" layoutX="823.0" layoutY="212.0" onKeyPressed="#offPercentage" prefHeight="40.0" prefWidth="60.0" promptText="1 - 100" />
+        <Pane id="paneProduct" fx:id="paneProduct" layoutX="915.0" layoutY="75.0" prefHeight="214.0" prefWidth="375.0">
+            <children>
+                <TableView id="tableProductSearch" fx:id="tableProductSearch" layoutX="14.0" layoutY="32.0" onMouseClicked="#tableSelectedProduct" prefHeight="151.0" prefWidth="351.0">
+                    <columns>
+                        <TableColumn id="columCode" fx:id="columCode" prefWidth="103.0" text="CODIGO" />
+                        <TableColumn id="columProduct" fx:id="columProduct" prefWidth="156.0" text="PRODUCTO" />
+                        <TableColumn id="columPrice" fx:id="columPrice" prefWidth="92.0" text="PRECIO" />
+                    </columns>
+                </TableView>
+                <TextField id="tfCodeSeek" fx:id="tfCodeSeek" layoutX="13.0" layoutY="7.0" onKeyTyped="#filtrateTableProducts" prefHeight="25.0" prefWidth="103.0" />
+                <TextField id="tfProductSeek" fx:id="tfProductSeek" layoutX="116.0" layoutY="7.0" onKeyTyped="#filtrateTableProducts" prefHeight="25.0" prefWidth="159.0" />
+                <TextField id="tfPriceSeek" fx:id="tfPriceSeek" layoutX="275.0" layoutY="7.0" onKeyTyped="#filtrateTableProducts" prefHeight="25.0" prefWidth="91.0" />
+                <TextField id="tfCodeFound" fx:id="tfCodeFound" alignment="CENTER_RIGHT" layoutX="149.0" layoutY="185.0" prefHeight="25.0" prefWidth="215.0" promptText="CODIGO PRODUCTO" />
+            </children>
+        </Pane>
     </children>
 
 </Pane>

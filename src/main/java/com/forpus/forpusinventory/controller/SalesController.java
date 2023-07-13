@@ -131,6 +131,15 @@ public class SalesController {
     public Button bSale;
     public Button bSettings;
     public TextField tfOffPer;
+    public Pane paneProduct;
+    public TableView<ProductClass> tableProductSearch;
+    public TableColumn<Object, Object> columCode;
+    public TableColumn<Object, Object> columProduct;
+    public TableColumn<Object, Object> columPrice;
+    public TextField tfCodeSeek;
+    public TextField tfProductSeek;
+    public TextField tfPriceSeek;
+    public TextField tfCodeFound;
 
     public void initialize() {
 
@@ -152,6 +161,7 @@ public class SalesController {
         ConstantsPurchases.entity = "SaleProduct";
 
         taxesIVABOLD();
+        loadTableProduct();
 
         c1.setCellValueFactory(new PropertyValueFactory<>("idProduct"));
         c2.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -241,6 +251,7 @@ public class SalesController {
         buttonSuppress.setVisible(a);
         buttonFactura.setVisible(a);
         tfOffPer.setVisible(a);
+        paneProduct.setVisible(a);
 
         search.setVisible(a);
         save.setVisible(a);
@@ -361,6 +372,7 @@ public class SalesController {
                 panelPayment.setVisible(a);
                 panelCheckIn.setVisible(a);
                 panelTotal.setVisible(a);
+                paneProduct.setVisible(a);
 
                 labelProduct.setVisible(a);
                 labelProduct.setText("Producto");
@@ -999,6 +1011,7 @@ public class SalesController {
             Constant.entity = "MoveinvoiceClass";
             ConstantsPurchases.entityForInvoice = "CustomerClass";
             if(SaveHQL.insertWorker("save")){
+
                 WareController.alertSend("REGISTRO GUARDADO");
                 tfTaxes.setText("0");
                 tfCash.setText("0");
@@ -1100,7 +1113,8 @@ public class SalesController {
                         )
                 );
 
-                ConstantsSales.saleCustomer(ConstantsAccounting.invoice.getBank(), ConstantsAccounting.invoice.getCash(),
+                ConstantsSales.saleCustomer(ConstantsAccounting.invoice.getBank(),
+                        ConstantsAccounting.invoice.getCash(),
                         ConstantsAccounting.invoice.getIndebtedness());
 
                 //Aqui se genera el sql que manda a guardar y actualizar todos los datos
@@ -1291,6 +1305,31 @@ public class SalesController {
             changeOff();
         }catch (Exception i) {
             System.out.println(i + " Porcentaje de descuento nulo");
+        }
+    }
+
+    public void loadTableProduct(){
+        columCode.setCellValueFactory(new PropertyValueFactory<>("idProduct"));
+        columProduct.setCellValueFactory(new PropertyValueFactory<>("name"));
+        columPrice.setCellValueFactory(new PropertyValueFactory<>("purchasePrice"));
+        tableProductSearch.setItems(ConstantsPurchases.seekProducts());
+        ConstantsSales.seekProductList = tableProductSearch.getItems();
+    }
+    @FXML
+    public void filtrateTableProducts(){
+        ObservableList<ProductClass> listProduct = ConstantsSales.seekProductList;
+        FilteredList<ProductClass> filteredListProduct = new FilteredList<ProductClass>(listProduct, s -> s.getIdProduct().contains(tfCodeSeek.getText()) && s.getName().contains(tfProductSeek.getText()) && s.getPurchasePrice().contains(tfPriceSeek.getText()) );
+        tableProductSearch.setItems(filteredListProduct);
+    }
+
+    @FXML
+    public void tableSelectedProduct(){
+        try {
+            ProductClass tShow = tableProductSearch.getSelectionModel().getSelectedItem();
+            String code = tShow.getIdProduct();
+            tfCodeFound.setText(code);
+        }catch (Exception i){
+            System.out.println("Date not selected");
         }
     }
 }
