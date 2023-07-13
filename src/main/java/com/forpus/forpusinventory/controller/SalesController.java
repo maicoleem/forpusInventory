@@ -475,6 +475,7 @@ public class SalesController {
                 search.setVisible(a);
 
                 tfTaxes.setVisible(a);
+                tfCliente.setText("");
 
                 panelPayment.setVisible(a);
                 buttonIVA.setVisible(!a);
@@ -509,6 +510,7 @@ public class SalesController {
         if(Objects.equals(ConstantsSales.salesOption, "Credit")){
             ObservableList<InvoiceClass> listOne = FXCollections.observableArrayList(ConstantsPurchases.invoiceCredit);
             if(!tfCliente.getText().isBlank()){
+                tableInvoice.getItems().clear();
                 FilteredList<InvoiceClass> filteredCode = new FilteredList<InvoiceClass>(listOne, s -> s.getIdCustomer().contains(tfCliente.getText()));
                 tableInvoice.setItems(filteredCode);
             }else{

@@ -9,12 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Se modificó la view de compras con una tabla para buscar productos y un label con el saldo disponible">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Se modifico la view de ventas y se verifico compra de productos, productos nuevos y venta de productos con exito.&#10;Se corrigio el error de pago de deuda por parte de los clientes.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SalesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SalesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/ConstantsSales.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/ConstantsSales.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SaveHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SaveHQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpusinventory/sales-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpusinventory/sales-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -286,14 +283,8 @@
       <workItem from="1688695281428" duration="5924000" />
       <workItem from="1689039402259" duration="9853000" />
       <workItem from="1689121358962" duration="8301000" />
-      <workItem from="1689210221089" duration="3819000" />
-    </task>
-    <task id="LOCAL-00037" summary="-Se debe de seguir planteando la contabilidad&#10;&#10;-Falta poder generar una cotización y la factura&#10;-Falta codigo para que SaveHQL guarde los datos de la compra &#10;**++**Se crearon los metodos y constantes que permiten guardar los datos de la generación de la factura">
-      <created>1680056432243</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1680056432243</updated>
+      <workItem from="1689210221089" duration="3933000" />
+      <workItem from="1689216998060" duration="2280000" />
     </task>
     <task id="LOCAL-00038" summary="-Se debe de seguir planteando la contabilidad&#10;&#10;**Se guardaron los datos exitosamente para la factura de compra">
       <created>1680457856056</created>
@@ -631,7 +622,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689129782360</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="Se modifico la view de ventas y se verifico compra de productos, productos nuevos y venta de productos con exito.&#10;Se corrigio el error de pago de deuda por parte de los clientes.">
+      <created>1689215314531</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1689215314531</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -649,7 +647,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Se modifico las entidades de WareinvoiceClass y ProductClass, para acoplarlas a el jasper Report, que esta en elaboración" />
     <MESSAGE value="Se modifico las entidades de WareinvoiceClass y ProductClass, para acoplarlas a el jasper Report, que esta en elaboración. Para evitar modificaciones en la DB es mejor cerrar sesion antes de guardar algun cambio" />
     <MESSAGE value="Quedan el reporte de la factura listo.&#10;&#10;Las importaciones de datos borran las tablas cuidado** &#10;&#10;La importación de productos crea las bodegas y los precios de compra&#10;&#10;queda pendiente arreglar los formatos de excel para la importación de datos y las pruebas&#10;&#10;--queda pendiente la modificación de los botones de registrar, cotizar y facturar en ventas y compras" />
     <MESSAGE value="Las importaciones de datos borran las tablas cuidado** &#10;&#10;La importación de productos crea las bodegas y los precios de compra&#10;&#10;Formatos de excel listos&#10;&#10;se modificaron los botones de registrar, cotizar y facturar en SalesController&#10;&#10;Falta probar los formatos de excel&#10;&#10;Falta revisar el funcionamiento - entrando en etapa alpha" />
@@ -674,7 +671,8 @@
     <MESSAGE value="se corigen errores al agregar aportes y realizar compra de productos nuevos." />
     <MESSAGE value="Corrigiendo errores en ventas y movimientos de ventas, los saldos no cuadran" />
     <MESSAGE value="Se modificó la view de compras con una tabla para buscar productos y un label con el saldo disponible" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se modificó la view de compras con una tabla para buscar productos y un label con el saldo disponible" />
+    <MESSAGE value="Se modifico la view de ventas y se verifico compra de productos, productos nuevos y venta de productos con exito.&#10;Se corrigio el error de pago de deuda por parte de los clientes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Se modifico la view de ventas y se verifico compra de productos, productos nuevos y venta de productos con exito.&#10;Se corrigio el error de pago de deuda por parte de los clientes." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
