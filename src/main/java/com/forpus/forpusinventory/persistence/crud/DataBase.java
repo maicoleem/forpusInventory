@@ -441,10 +441,22 @@ public class DataBase {
 
             createDatabase();
 
+            String os = System.getProperty("os.name").toLowerCase();
+
+
+            if (os.contains("win")) {
+                // Código para Windows
+                winDBRestore(path);
+            } else if (os.contains("nix") || os.contains("nux") || os.contains("mac")) {
+                // Código para Linux o macOS
+                linuxDBRestore(path);
+            } else {
+                throw new UnsupportedOperationException("Sistema operativo no compatible");
+            }
+            System.out.println(path);
+            /*
             Properties properties = properties();
-
             String executeCmd = "mysql -u " + properties.getProperty("user") + " -p" + properties.getProperty("clave") + " " + properties.getProperty("name");
-
         try {
 
             Process runtimeProcess = Runtime.getRuntime().exec(executeCmd);
@@ -465,6 +477,8 @@ public class DataBase {
             WareController.alertSend(String.valueOf(e));
             return false;
         }
+            */
+            return true;
         }catch (Exception i){
             WareController.alertSend("ERROR AL INSTALAR BASE DE DATOS" + i);
             i.printStackTrace();
@@ -494,6 +508,71 @@ public class DataBase {
         } catch (SQLException e) {
             WareController.alertSend(e.toString());
             WareController.alertSend("Error createDAtaBase: "+ e);
+        }
+    }
+    public static boolean winDBRestore(String path){
+        Properties properties = properties();
+        String executeCmd = "mysql -u " + properties.getProperty("user") + " -p" + properties.getProperty("clave") + " " +properties.getProperty("name");
+        try {
+            Process runtimeProcess = Runtime.getRuntime().exec(executeCmd);
+            OutputStream os = runtimeProcess.getOutputStream();
+            FileInputStream fis = new FileInputStream(path);
+            byte[] buffer = new byte[1000];
+            int leido = fis.read(buffer);
+            while (leido>0){
+                os.write(buffer, 0, leido);
+                leido = fis.read(buffer);
+            }
+            os.flush();
+            os.close();
+            fis.close();
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            WareController.alertSend(String.valueOf(e));
+            return false;
+        }
+    }
+    public static boolean linuxDBRestore(String path){
+
+        Properties properties = properties();
+        String jdbcURL = "jdbc:mysql://localhost:3306/" + properties.getProperty("name");;
+        String username = properties.getProperty("user");
+        String password = properties.getProperty("clave");
+        try {
+            // Establecer la conexión a la base de datos
+            Connection connection = DriverManager.getConnection(jdbcURL, username, password);
+            Statement statement = connection.createStatement();
+
+            // Ruta al archivo SQL que deseas ejecutar
+            String sqlFilePath = path;
+
+            // Leer el archivo SQL
+            BufferedReader br = new BufferedReader(new FileReader(sqlFilePath));
+            String line;
+            StringBuilder sqlCommands = new StringBuilder();
+
+            while ((line = br.readLine()) != null) {
+                sqlCommands.append(line).append("\n");
+            }
+
+            // Dividir los comandos SQL
+            String[] commands = sqlCommands.toString().split(";");
+
+            // Ejecutar cada comando SQL
+            for (String command : commands) {
+                statement.executeUpdate(command);
+            }
+
+            // Cerrar recursos
+            br.close();
+            statement.close();
+            connection.close();
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
     }
 }

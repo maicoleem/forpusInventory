@@ -9,9 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Se modifico la view de ventas y se verifico compra de productos, productos nuevos y venta de productos con exito.&#10;Se corrigio el error de pago de deuda por parte de los clientes.">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Se corrigio error en creditos.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SalesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SalesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/DataBase.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -284,14 +284,10 @@
       <workItem from="1689039402259" duration="9853000" />
       <workItem from="1689121358962" duration="8301000" />
       <workItem from="1689210221089" duration="3933000" />
-      <workItem from="1689216998060" duration="2280000" />
-    </task>
-    <task id="LOCAL-00038" summary="-Se debe de seguir planteando la contabilidad&#10;&#10;**Se guardaron los datos exitosamente para la factura de compra">
-      <created>1680457856056</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1680457856056</updated>
+      <workItem from="1689216998060" duration="2317000" />
+      <workItem from="1691349208957" duration="1138000" />
+      <workItem from="1692665793453" duration="2089000" />
+      <workItem from="1693463707435" duration="680000" />
     </task>
     <task id="LOCAL-00039" summary="-Se debe de seguir planteando la contabilidad&#10;&#10;**Se realizo el backend de servicios.">
       <created>1680657058186</created>
@@ -629,7 +625,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689215314531</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="Se corrigio error en creditos.">
+      <created>1689219370408</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1689219370409</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -647,7 +650,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Se modifico las entidades de WareinvoiceClass y ProductClass, para acoplarlas a el jasper Report, que esta en elaboración. Para evitar modificaciones en la DB es mejor cerrar sesion antes de guardar algun cambio" />
     <MESSAGE value="Quedan el reporte de la factura listo.&#10;&#10;Las importaciones de datos borran las tablas cuidado** &#10;&#10;La importación de productos crea las bodegas y los precios de compra&#10;&#10;queda pendiente arreglar los formatos de excel para la importación de datos y las pruebas&#10;&#10;--queda pendiente la modificación de los botones de registrar, cotizar y facturar en ventas y compras" />
     <MESSAGE value="Las importaciones de datos borran las tablas cuidado** &#10;&#10;La importación de productos crea las bodegas y los precios de compra&#10;&#10;Formatos de excel listos&#10;&#10;se modificaron los botones de registrar, cotizar y facturar en SalesController&#10;&#10;Falta probar los formatos de excel&#10;&#10;Falta revisar el funcionamiento - entrando en etapa alpha" />
     <MESSAGE value="Se modifico los colores de los botones que estan activos.&#10;&#10;Falta probar los formatos de excel&#10;&#10;Falta revisar el funcionamiento - entrando en etapa alpha" />
@@ -672,7 +674,8 @@
     <MESSAGE value="Corrigiendo errores en ventas y movimientos de ventas, los saldos no cuadran" />
     <MESSAGE value="Se modificó la view de compras con una tabla para buscar productos y un label con el saldo disponible" />
     <MESSAGE value="Se modifico la view de ventas y se verifico compra de productos, productos nuevos y venta de productos con exito.&#10;Se corrigio el error de pago de deuda por parte de los clientes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Se modifico la view de ventas y se verifico compra de productos, productos nuevos y venta de productos con exito.&#10;Se corrigio el error de pago de deuda por parte de los clientes." />
+    <MESSAGE value="Se corrigio error en creditos." />
+    <option name="LAST_COMMIT_MESSAGE" value="Se corrigio error en creditos." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
