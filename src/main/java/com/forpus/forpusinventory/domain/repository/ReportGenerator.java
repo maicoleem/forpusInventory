@@ -28,6 +28,16 @@ public class ReportGenerator {
             CompanyClass company = companyFound();
             // Ruta al archivo del informe de JasperReports (.jASPERT)
             String reportPath = "src/main/resources/com/forpus/jasper_report/Factura.jrxml";
+            String os = System.getProperty("os.name").toLowerCase();
+            if (os.contains("win")) {
+                // Código para Windows
+                //falta la ruta para windows.
+            } else if (os.contains("nix") || os.contains("nux") || os.contains("mac")) {
+                // Código para Linux o macOS
+                reportPath = "/opt/forpus/reports/Factura.jrxml";
+            } else {
+                throw new UnsupportedOperationException("Sistema operativo no compatible");
+            }
             //String reportPath = "C:\\Users\\Teemo\\OneDrive\\java\\proyecto1\\forpus_inventory\\src\\main\\resources\\com\\forpus\\jasper_report\\Factura.jrxml";
 
 
