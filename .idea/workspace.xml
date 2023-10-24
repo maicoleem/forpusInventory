@@ -10,8 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Se corrigio error en creditos.">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/DataBase.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,13 +37,6 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="workspaceImportEnabled" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
   <component name="MigrationScriptOptions">
     <option name="ignoreImplicitObjects" value="true" />
     <option name="ignoreSourceCode" value="false" />
@@ -54,40 +47,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
-    &quot;JPA.DatabaseSchemaImportDialog&quot;: &quot;e8a54545-f878-467d-b1bf-a1d41c63fbb2&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;import_schema_mapping&quot;: &quot;&lt;schema-mapping&gt;\n  &lt;databases&gt;\n    &lt;list&gt;\n      &lt;schema-mapping-item&gt;\n        &lt;source-data-source-id&gt;d160867a-a828-41a2-9bb2-b2de3721b983&lt;/source-data-source-id&gt;\n        &lt;source-path&gt;schema/&amp;quot;inventoryaccounting&amp;quot;&lt;/source-path&gt;\n        &lt;target-data-source-id&gt;d160867a-a828-41a2-9bb2-b2de3721b983&lt;/target-data-source-id&gt;\n        &lt;target-path&gt;schema/&amp;quot;inventoryaccounting&amp;quot;&lt;/target-path&gt;\n      &lt;/schema-mapping-item&gt;\n    &lt;/list&gt;\n  &lt;/databases&gt;\n&lt;/schema-mapping&gt;&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;11&quot;,
-    &quot;last_directory_selection&quot;: &quot;C:/Users/Teemo/OneDrive/java/proyecto1/forpus_inventory/src/main/java/com/forpus/forpus_inventory&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Program Files/Java/javafx-sdk-19.0.2.1/bin/vcruntime140_1.dll&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15022762&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.39857015&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.tools&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "true",
+    "JPA.DatabaseSchemaImportDialog": "e8a54545-f878-467d-b1bf-a1d41c63fbb2",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private",
+    "git-widget-placeholder": "Rebasing main",
+    "import_schema_mapping": "<schema-mapping>\n  <databases>\n    <list>\n      <schema-mapping-item>\n        <source-data-source-id>d160867a-a828-41a2-9bb2-b2de3721b983</source-data-source-id>\n        <source-path>schema/&quot;inventoryaccounting&quot;</source-path>\n        <target-data-source-id>d160867a-a828-41a2-9bb2-b2de3721b983</target-data-source-id>\n        <target-path>schema/&quot;inventoryaccounting&quot;</target-path>\n      </schema-mapping-item>\n    </list>\n  </databases>\n</schema-mapping>",
+    "jdk.selected.JAVA_MODULE": "11",
+    "last_directory_selection": "C:/Users/Teemo/OneDrive/java/proyecto1/forpus_inventory/src/main/java/com/forpus/forpus_inventory",
+    "last_opened_file_path": "C:/Program Files/Java/javafx-sdk-19.0.2.1/bin/vcruntime140_1.dll",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15022762",
+    "project.structure.side.proportion": "0.39857015",
+    "settings.editor.selected.configurable": "configurable.group.tools",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Teemo\OneDrive\java\proyecto1\forpus_inventory\src\main\resources\com\forpus\images" />
