@@ -9,11 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="backup Linux:&#10;1) se debe agregar al PATH export PATH=$PATH:/opt/lampp/bin&#10;2) crear enlace simbolico&#10;sudo ln -s /opt/lampp/bin/mysqldump /usr/local/bin/mysqldump">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="backup Linux:&#10;1) se debe agregar al PATH export PATH=$PATH:/opt/lampp/bin&#10;2) crear enlace simbolico&#10;sudo ln -s /opt/lampp/bin/mysqldump /usr/local/bin/mysqldump&#10;*) en finance se corrigio para que el boton backup se active con las rutas en linux">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/FinanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/FinanceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/DataBase.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -307,7 +304,8 @@
       <workItem from="1696473323576" duration="1921000" />
       <workItem from="1697168243828" duration="99000" />
       <workItem from="1697168383818" duration="7905000" />
-      <workItem from="1697177054248" duration="727000" />
+      <workItem from="1697177054248" duration="823000" />
+      <workItem from="1698106984042" duration="1370000" />
     </task>
     <task id="LOCAL-00039" summary="-Se debe de seguir planteando la contabilidad&#10;&#10;**Se realizo el backend de servicios.">
       <created>1680657058186</created>
@@ -652,7 +650,7 @@
       <option name="project" value="LOCAL" />
       <updated>1689219370409</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -670,7 +668,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Las importaciones de datos borran las tablas cuidado** &#10;&#10;La importación de productos crea las bodegas y los precios de compra&#10;&#10;Formatos de excel listos&#10;&#10;se modificaron los botones de registrar, cotizar y facturar en SalesController&#10;&#10;Falta probar los formatos de excel&#10;&#10;Falta revisar el funcionamiento - entrando en etapa alpha" />
     <MESSAGE value="Se modifico los colores de los botones que estan activos.&#10;&#10;Falta probar los formatos de excel&#10;&#10;Falta revisar el funcionamiento - entrando en etapa alpha" />
     <MESSAGE value="1-Eliminar todos los datos OK&#10;2-Subir datos de excel OK" />
     <MESSAGE value="Se esta revizando el funcionamiento del registro de una venta." />
@@ -695,7 +692,8 @@
     <MESSAGE value="Se modifico la view de ventas y se verifico compra de productos, productos nuevos y venta de productos con exito.&#10;Se corrigio el error de pago de deuda por parte de los clientes." />
     <MESSAGE value="Se corrigio error en creditos." />
     <MESSAGE value="backup Linux:&#10;1) se debe agregar al PATH export PATH=$PATH:/opt/lampp/bin&#10;2) crear enlace simbolico&#10;sudo ln -s /opt/lampp/bin/mysqldump /usr/local/bin/mysqldump" />
-    <option name="LAST_COMMIT_MESSAGE" value="backup Linux:&#10;1) se debe agregar al PATH export PATH=$PATH:/opt/lampp/bin&#10;2) crear enlace simbolico&#10;sudo ln -s /opt/lampp/bin/mysqldump /usr/local/bin/mysqldump" />
+    <MESSAGE value="backup Linux:&#10;1) se debe agregar al PATH export PATH=$PATH:/opt/lampp/bin&#10;2) crear enlace simbolico&#10;sudo ln -s /opt/lampp/bin/mysqldump /usr/local/bin/mysqldump&#10;*) en finance se corrigio para que el boton backup se active con las rutas en linux" />
+    <option name="LAST_COMMIT_MESSAGE" value="backup Linux:&#10;1) se debe agregar al PATH export PATH=$PATH:/opt/lampp/bin&#10;2) crear enlace simbolico&#10;sudo ln -s /opt/lampp/bin/mysqldump /usr/local/bin/mysqldump&#10;*) en finance se corrigio para que el boton backup se active con las rutas en linux" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
