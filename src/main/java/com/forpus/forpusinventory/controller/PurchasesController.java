@@ -1034,6 +1034,9 @@ public class PurchasesController {
             i.printStackTrace();
         }
     }
+    /***
+     * Habilita y deshabilita el pago de impuestos y recargos
+     * */
     public void taxes(ActionEvent event) {
         try{
         Button button = (Button) event.getSource();
@@ -1055,13 +1058,23 @@ public class PurchasesController {
     public void costTaxes(){
         try{
         if(!labelIVA.getText().equals("IVA")){
-            double ivaTaxes = Double.valueOf(labelIVA.getText());
+            double ivaTaxes;
+            if(ConstantsPurchases.iva){
+                ivaTaxes = Double.valueOf(labelIVA.getText());
+            }else {
+                ivaTaxes = 0;
+            }
             int subtotal = Integer.valueOf(labelTotal2.getText());
             int ivaSubtotal = (int) (ivaTaxes * subtotal / 100);
             labelIVA2.setText(String.valueOf(ivaSubtotal));
         }
         if(!labelBold.getText().equals("BOLD")){
-            double boldTaxes = Double.valueOf(labelBold.getText());
+            double boldTaxes;
+            if(ConstantsPurchases.boldP){
+                boldTaxes = Double.valueOf(labelBold.getText());
+            }else {
+                boldTaxes = 0;
+            }
             int subtotal = Integer.valueOf(labelTotal2.getText());
             int boldSubtotal = (int) (boldTaxes * subtotal / 100);
             labelBold2.setText(String.valueOf(boldSubtotal));

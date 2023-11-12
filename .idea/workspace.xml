@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Cambia el error en el metodo workerFound de la clase FoundHQL">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Actuializar dinero en caja y banco&#10;Ocultar categorias para producto existente y las muestra para nuevo producto">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/PurchasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/PurchasesController.java" afterDir="false" />
     </list>
@@ -311,7 +311,7 @@
       <workItem from="1699233084252" duration="1060000" />
       <workItem from="1699322219850" duration="1453000" />
       <workItem from="1699807201144" duration="993000" />
-      <workItem from="1699808352163" duration="2406000" />
+      <workItem from="1699808352163" duration="5020000" />
     </task>
     <task id="LOCAL-00039" summary="-Se debe de seguir planteando la contabilidad&#10;&#10;**Se realizo el backend de servicios.">
       <created>1680657058186</created>
@@ -656,7 +656,7 @@
       <option name="project" value="LOCAL" />
       <updated>1689219370409</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -674,7 +674,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Las importaciones de datos borran las tablas cuidado** &#10;&#10;La importación de productos crea las bodegas y los precios de compra&#10;&#10;Formatos de excel listos&#10;&#10;se modificaron los botones de registrar, cotizar y facturar en SalesController&#10;&#10;Falta probar los formatos de excel&#10;&#10;Falta revisar el funcionamiento - entrando en etapa alpha" />
     <MESSAGE value="Se modifico los colores de los botones que estan activos.&#10;&#10;Falta probar los formatos de excel&#10;&#10;Falta revisar el funcionamiento - entrando en etapa alpha" />
     <MESSAGE value="1-Eliminar todos los datos OK&#10;2-Subir datos de excel OK" />
     <MESSAGE value="Se esta revizando el funcionamiento del registro de una venta." />
@@ -699,7 +698,8 @@
     <MESSAGE value="Se modifico la view de ventas y se verifico compra de productos, productos nuevos y venta de productos con exito.&#10;Se corrigio el error de pago de deuda por parte de los clientes." />
     <MESSAGE value="Se corrigio error en creditos." />
     <MESSAGE value="Se modifico WareController para que tfThreeCategory pueda contener letras" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se modifico WareController para que tfThreeCategory pueda contener letras" />
+    <MESSAGE value="Actuializar dinero en caja y banco&#10;Ocultar categorias para producto existente y las muestra para nuevo producto" />
+    <option name="LAST_COMMIT_MESSAGE" value="Actuializar dinero en caja y banco&#10;Ocultar categorias para producto existente y las muestra para nuevo producto" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
