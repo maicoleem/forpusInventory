@@ -119,7 +119,6 @@ public class PurchasesController {
     public TableColumn<Object, Object> m6;
     public TableColumn<Object, Object> m7;
     public TextField tfTaxes;
-
     public Button bDash;
     public Button bAccounting;
     public Button bBuy;
@@ -152,7 +151,6 @@ public class PurchasesController {
         Button button = (Button) event.getSource();
         option(button.getId());
     }
-
     public void option(String idButton){
         try {
             clear();
@@ -192,9 +190,6 @@ public class PurchasesController {
                     cancel.setVisible(a);
                     remove.setVisible(a);
 
-                    comboBoxOne.setVisible(a);
-                    comboBoxTwo.setVisible(a);
-                    comboBoxThree.setVisible(a);
                     comboBoxWare.setVisible(a);
                     comboBoxPrice.setVisible(a);
 
@@ -348,8 +343,6 @@ public class PurchasesController {
         comboBoxThree.setVisible(a);
         comboBoxWare.setVisible(a);
         comboBoxPrice.setVisible(a);
-
-
 
         tableMain.setVisible(a);
         tableService.setVisible(a);
@@ -518,20 +511,23 @@ public class PurchasesController {
     }
     public void checkProduct(ActionEvent event) {
         try{
-        ArrayList<String> listProduct = new ArrayList<>();
-        tfProduct.setText("");
-        labelNameProduct.setText("");
-        if(checkProduct.isSelected()){
-            tfProductName.setVisible(true);
-            labelNameProduct.setVisible(false);
-            comboBoxOne.getItems().clear();
-            comboBoxOne.getItems().addAll(WareController.categoryOne(listProduct));
+             comboBoxOne.setVisible(true);
+            comboBoxTwo.setVisible(true);
+            comboBoxThree.setVisible(true);
+            ArrayList<String> listProduct = new ArrayList<>();
+            tfProduct.setText("");
+            labelNameProduct.setText("");
+            if(checkProduct.isSelected()){
+                tfProductName.setVisible(true);
+                labelNameProduct.setVisible(false);
+                comboBoxOne.getItems().clear();
+                comboBoxOne.getItems().addAll(WareController.categoryOne(listProduct));
 
-        }else{
-            tfProductName.setVisible(false);
-            labelNameProduct.setVisible(true);
-            comboBoxOne.getItems().clear();
-        }
+            }else{
+                tfProductName.setVisible(false);
+                labelNameProduct.setVisible(true);
+                comboBoxOne.getItems().clear();
+            }
         }catch (Exception i){
             i.printStackTrace();
         }
@@ -782,6 +778,10 @@ public class PurchasesController {
         ConstantsWare.two = null;
         ConstantsWare.three = null;
 
+        comboBoxOne.setVisible(false);
+        comboBoxTwo.setVisible(false);
+        comboBoxThree.setVisible(false);
+
         tfAmount.setTextFormatter(createNumericTextFormatter());
         tfProfit.setTextFormatter(createNumericTextFormatter());
         tfPrice.setTextFormatter(createNumericTextFormatter());
@@ -797,11 +797,7 @@ public class PurchasesController {
         taxesIVABOLD();
         loadTableProduct();
 
-        CompanyClass company = FoundHQL.companyFound();
-        if(company != null){
-            lblDisponibleBank.setText(company.getBank());
-            lblDisponibleCash.setText(company.getCash());
-        }
+        updateMoney();
 
         c1.setCellValueFactory(new PropertyValueFactory<>("idProduct"));
         c2.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -849,6 +845,15 @@ public class PurchasesController {
         buttonProduct0.setStyle("-fx-background-color: #F5F5F5; ");
         option("buttonProduct0");
     }
+
+    private void updateMoney() {
+        CompanyClass company = FoundHQL.companyFound();
+        if(company != null){
+            lblDisponibleBank.setText(company.getBank());
+            lblDisponibleCash.setText(company.getCash());
+        }
+    }
+
     // Crear un TextFormatter que solo permita números
     public Boolean verify(){
         String falseFor = "";
@@ -1222,8 +1227,8 @@ public class PurchasesController {
 
             //Aqui se genera el sql que manda a guardar y actualizar todos los datos
             if(SaveHQL.saveInvoice()){
-
                 WareController.alertSend("Datos guardados con exito");
+                updateMoney();
                 if(ConstantsPurchases.entity.equals("Purchases")){
                     option("buttonProduct0");
                 } else if (ConstantsPurchases.entity.equals("Service")) {
@@ -1314,7 +1319,6 @@ public class PurchasesController {
         FilteredList<ProductClass> filteredListProduct = new FilteredList<ProductClass>(listProduct, s -> s.getIdProduct().contains(tfCodeSeek.getText()) && s.getName().contains(tfProductSeek.getText()) && s.getPurchasePrice().contains(tfPriceSeek.getText()) );
         tableProductSearch.setItems(filteredListProduct);
     }
-
     @FXML
     public void tableSelectedProduct(){
         try {

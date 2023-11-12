@@ -11,7 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Cambia el error en el metodo workerFound de la clase FoundHQL">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/FoundHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/FoundHQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/PurchasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/PurchasesController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -311,7 +311,7 @@
       <workItem from="1699233084252" duration="1060000" />
       <workItem from="1699322219850" duration="1453000" />
       <workItem from="1699807201144" duration="993000" />
-      <workItem from="1699808352163" duration="619000" />
+      <workItem from="1699808352163" duration="2406000" />
     </task>
     <task id="LOCAL-00039" summary="-Se debe de seguir planteando la contabilidad&#10;&#10;**Se realizo el backend de servicios.">
       <created>1680657058186</created>
