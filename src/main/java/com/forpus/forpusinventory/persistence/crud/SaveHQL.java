@@ -22,7 +22,6 @@ public class SaveHQL {
             return false;
         }
     }
-
     public static boolean insertWorker(String saveOrUpdate){
 
         try{
@@ -367,7 +366,8 @@ public class SaveHQL {
                             //actualiza la cuenta de la compañia
                             ConstantsSales.saleMoveInvoiceCompany(
                                     String.valueOf(ConstantsPurchases.moveInv.getPayBank()),
-                                    String.valueOf(ConstantsPurchases.moveInv.getPayCash()));                            session.beginTransaction();
+                                    String.valueOf(ConstantsPurchases.moveInv.getPayCash()));
+                            session.beginTransaction();
                             session.update(Constant.company);
                             session.getTransaction().commit();
                             break;
@@ -386,7 +386,6 @@ public class SaveHQL {
             return false;
         }
     }
-
     //para update categorias
     //para insertar categorias
     public static boolean saveUpdateCate(String saveUpdate){

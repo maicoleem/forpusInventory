@@ -2,6 +2,7 @@ package com.forpus.forpusinventory.controller;
 
 import com.forpus.forpusinventory.HelloApplication;
 import com.forpus.forpusinventory.domain.services.Constant;
+import com.forpus.forpusinventory.domain.services.ConstantsAccounting;
 import com.forpus.forpusinventory.domain.services.ConstantsWare;
 import com.forpus.forpusinventory.domain.services.TableShow;
 import com.forpus.forpusinventory.persistence.Session.SessionDB;
@@ -160,6 +161,7 @@ public class WareController {
     public Label labelCostTrans;
     @FXML
     public void initialize(){
+        ConstantsAccounting.clearConstants();
         SessionDB.sessionClose();
         buttonCategory.setStyle("-fx-background-color: #F5F5F5;");
         options("buttonCategory");

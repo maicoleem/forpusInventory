@@ -68,6 +68,8 @@ public class AccountingController {
     public CheckBox checkBoxPay;
 
     public void initialize(){
+        Constant.entity = "TaxesClass";
+        ConstantsAccounting.entity = "TaxesClass";
         buttonTaxes.setStyle("-fx-background-color: #F5F5F5;");
         options("buttonTaxes");
     }
@@ -145,11 +147,11 @@ public class AccountingController {
                         tx.setTaxes(tfBold.getText());
                     }
                 }
+                break;
             case "PartnersClass":
                 Constant.entity = "InvoiceClass";
                 ConstantsPurchases.invoiceType = "socialContribution";
                 SaveHQL.insertWorker("save");
-
                 break;
             default:
                 break;
@@ -283,7 +285,6 @@ public class AccountingController {
         Button button = (Button) event.getSource();
         options(button.getId());
     }
-
     public void options(String idButton){
         try{
         clean();
@@ -862,19 +863,16 @@ public class AccountingController {
                 if(!tf.getText().isEmpty()){
                     for (int i=0;i<tf.getText().length()-1;i++){
                         String s = String.valueOf(tf.getText().charAt(i));
-                        System.out.println(s);
                         if(s.equals(".") && s.equals(a)){
                             tf.deleteText(tf.getText().length() - 1, tf.getText().length());
                         }
                     }
-
                     String texto = tf.getText();
                     double db = Double.valueOf(texto);
                     if(db>100.0){
                         tf.setText("100");
                     }
                 }
-
             case "PartnersClass":
                 try{
                     int cash = Integer.valueOf(tfCash.getText());

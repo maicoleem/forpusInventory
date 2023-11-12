@@ -782,6 +782,8 @@ public class PurchasesController {
         comboBoxTwo.setVisible(false);
         comboBoxThree.setVisible(false);
 
+        ConstantsAccounting.clearConstants();
+
         tfAmount.setTextFormatter(createNumericTextFormatter());
         tfProfit.setTextFormatter(createNumericTextFormatter());
         tfPrice.setTextFormatter(createNumericTextFormatter());

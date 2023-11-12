@@ -13,4 +13,8 @@ public class ConstantsAccounting {
     public static InvoiceClass invoice = null;
     public static WareinvoiceClass[] wareInvoiceList = null;
     public static MoveinvoiceClass[] debtList = null;
+
+    public static void clearConstants(){
+        invoice = null;
+    }
 }
