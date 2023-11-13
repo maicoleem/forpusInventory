@@ -374,7 +374,6 @@ public class SaveHQL {
                         default:
                             break;
                     }
-
                     break;
                 default:
                     break;

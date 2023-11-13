@@ -655,7 +655,6 @@ public class PurchasesController {
     public void register(ActionEvent event) {
         try{
         if(verify()){
-
             switch (ConstantsPurchases.entity){
                 case "Purchases":
                     if(checkProduct.isSelected()){
@@ -667,6 +666,7 @@ public class PurchasesController {
                         product.setAmount(Integer.valueOf(tfAmount.getText()));
                         product.setSalePrice(tfPriceSale.getText());
                         product.setProfit(tfProfit.getText());
+                        product.setOffSale(Integer.valueOf(tfOff.getText()));
 
                         if(ConstantsWare.one != null) {
                             product.setIdOne(ConstantsWare.one.getIdOne());
@@ -1172,6 +1172,7 @@ public class PurchasesController {
                         wi.setPriceSale(p.getSalePrice());
                         wi.setPriceBuy(Integer.parseInt(p.getPurchasePrice()));
                         wi.setAmount(p.getAmount());
+                        wi.setOffSale(p.getOffSale());
                         wi.setIndexWare(ConstantsPurchases.productTableList.indexOf(p));
                         //agrega el wareproduct a la lista
                         ConstantsPurchases.wareInvoiceList.add(wi);
