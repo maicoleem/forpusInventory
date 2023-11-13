@@ -1229,7 +1229,10 @@ public class PurchasesController {
             //Actualiza la invoice
             ConstantsAccounting.invoice.setIdCompany(Constant.company.getIdCompanyNIT());
             ConstantsAccounting.invoice.setIdProviders(Constant.provider.getNit());
+                //IVA
             ConstantsAccounting.invoice.setTaxes(labelIVA2.getText());
+                //BOLD
+            ConstantsAccounting.invoice.setBold(labelBold2.getText());
             ConstantsAccounting.invoice.setTotalBuy(labelTotal3.getText());
             ConstantsAccounting.invoice.setUtilities("0");
             ConstantsAccounting.invoice.setRUtilities("0");

@@ -9,13 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Actuializar dinero en caja y banco&#10;Ocultar categorias para producto existente y las muestra para nuevo producto">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="IVA and BOLD&#10;Se agrega break que causaba error para guardar un valor nuevo en impuestos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/AccountingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/AccountingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/PurchasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/PurchasesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/WareController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/WareController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/ConstantsAccounting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/ConstantsAccounting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SaveHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SaveHQL.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -660,7 +656,7 @@
       <option name="project" value="LOCAL" />
       <updated>1689219370409</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -678,7 +674,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Se modifico los colores de los botones que estan activos.&#10;&#10;Falta probar los formatos de excel&#10;&#10;Falta revisar el funcionamiento - entrando en etapa alpha" />
     <MESSAGE value="1-Eliminar todos los datos OK&#10;2-Subir datos de excel OK" />
     <MESSAGE value="Se esta revizando el funcionamiento del registro de una venta." />
     <MESSAGE value="+ Se correge el bold que no vaya a taxes(agregar bold a invoice)&#10;+ ahora se puede dar la opción de cero de iva y bold&#10;-Revizar las ventas no cuadran los movimientos de inventario&#10;-Revizar el pago de deudas para la gestion del bold" />
@@ -703,7 +698,8 @@
     <MESSAGE value="Se corrigio error en creditos." />
     <MESSAGE value="Se modifico WareController para que tfThreeCategory pueda contener letras" />
     <MESSAGE value="Actuializar dinero en caja y banco&#10;Ocultar categorias para producto existente y las muestra para nuevo producto" />
-    <option name="LAST_COMMIT_MESSAGE" value="Actuializar dinero en caja y banco&#10;Ocultar categorias para producto existente y las muestra para nuevo producto" />
+    <MESSAGE value="IVA and BOLD&#10;Se agrega break que causaba error para guardar un valor nuevo en impuestos" />
+    <option name="LAST_COMMIT_MESSAGE" value="IVA and BOLD&#10;Se agrega break que causaba error para guardar un valor nuevo en impuestos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
