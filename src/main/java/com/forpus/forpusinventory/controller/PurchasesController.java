@@ -307,6 +307,9 @@ public class PurchasesController {
         try{
         final boolean a = false;
 
+        ConstantsPurchases.productTableList.clear();
+        ConstantsPurchases.serviceTableList.clear();
+
         labelProvider.setVisible(a);
         labelNameProvider.setVisible(a);
         labelProduct.setVisible(a);
@@ -557,6 +560,11 @@ public class PurchasesController {
                 }
                 tfPrice.setText(comboBoxPrice.getValue());
                 comboBoxWare.getItems().clear();
+                try {
+                    comboBoxWare.setValue(listProduct.get(0));
+                }catch (Exception g){
+                    comboBoxWare.setValue("Bodega");
+                }
                 comboBoxWare.getItems().addAll(listProduct);
                 checkSale();
                 listProduct.clear();
@@ -774,6 +782,7 @@ public class PurchasesController {
     @FXML
     public void initialize() {
 
+        ConstantsPurchases.productTableList.clear();
         ConstantsWare.one = null;
         ConstantsWare.two = null;
         ConstantsWare.three = null;
@@ -847,7 +856,6 @@ public class PurchasesController {
         buttonProduct0.setStyle("-fx-background-color: #F5F5F5; ");
         option("buttonProduct0");
     }
-
     private void updateMoney() {
         CompanyClass company = FoundHQL.companyFound();
         if(company != null){
@@ -855,7 +863,6 @@ public class PurchasesController {
             lblDisponibleCash.setText(company.getCash());
         }
     }
-
     // Crear un TextFormatter que solo permita números
     public Boolean verify(){
         String falseFor = "";
@@ -1019,6 +1026,8 @@ public class PurchasesController {
         tfPriceSale.setText("1");
         tfOff.setText("0");
         comboBoxPrice.getItems().clear();
+        comboBoxPrice.setValue("Precio");
+        comboBoxWare.setValue("Bodega");
     }
     public void suppress(ActionEvent event) {
         try{
