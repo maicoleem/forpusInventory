@@ -1171,6 +1171,12 @@ public class PurchasesController {
 
             switch (ConstantsPurchases.entity){
                 case "Purchases":
+                    //limpia las listas de productos que se iran al SQL
+                    ConstantsPurchases.pPriceUpdateList.clear();
+                    ConstantsPurchases.productNewPrice.clear();
+                    ConstantsPurchases.productNewWare.clear();
+                    ConstantsPurchases.productNewList.clear();
+
                     //cada producto debe de crear un wareinvoice
                     for(ProductClass p: ConstantsPurchases.productTableList){
                         WareinvoiceClass wi = new WareinvoiceClass();
@@ -1199,8 +1205,12 @@ public class PurchasesController {
                                             pp.setAmount(p.getAmount() + pp.getAmount());
                                             //guarda la cantidad actualizada
                                             ConstantsPurchases.pPriceUpdateList.add(pp);
+                                        }else {
+                                            ConstantsPurchases.productNewPrice.add(p);
                                         }
                                     }
+                                }else{
+                                    ConstantsPurchases.productNewWare.add(p);
                                 }
                             }
                         }catch (Exception i){

@@ -507,33 +507,94 @@ public class SaveHQL {
                         }
                         session.getTransaction().commit();
                     }
+                    if(!ConstantsPurchases.productNewWare.isEmpty()){
+                        //salva el producto con bodega nueva
+                        for(ProductClass pNewWare: ConstantsPurchases.productNewWare){
+
+                            WareProductClass wp = saveWareProduct(pNewWare);
+
+                            /*WareProductClass wp = new WareProductClass();
+                            wp.setIdProduct(pNewWare.getIdProduct());
+                            wp.setProductByIdProduct(pNewWare);
+
+                            Constant.entity = "WarehouseClass";
+                            Constant.tfCode = pNewWare.getIdWage();
+                            FoundHQL.workerFound();
+
+                            wp.setIdWare(ConstantsWare.ware.getIdWarehouse());
+                            wp.setWarehouseByIdWare(ConstantsWare.ware);
+
+                            session.beginTransaction();
+                            session.save(wp);
+                            session.getTransaction().commit();*/
+
+                            saveProductPrice(pNewWare, wp);
+
+                            /*ProductpriceClass pP = new ProductpriceClass();
+                            pP.setPrice(Integer.parseInt(pNewWare.getPurchasePrice()));
+                            pP.setAmount(pNewWare.getAmount());
+                            pP.setIdProductWare(wp.getIdWareProduct());
+                            pP.setWareProductByIdProductWare(wp);
+                            session.beginTransaction();
+                            session.save(pP);
+                            session.getTransaction().commit();*/
+                        }
+                    }
+                    if(!ConstantsPurchases.productNewPrice.isEmpty()){
+                        //salva el producto con precio nuevo
+                        for(ProductClass pNewPrice: ConstantsPurchases.productNewPrice){
+                            for(WareProductClass wp: pNewPrice.getWareProductsByIdProduct()){
+                                //Si la bodega corresponde a una registrada
+                                if(Objects.equals(wp.getIdWare(), pNewPrice.getIdWage())){
+
+                                    saveProductPrice(pNewPrice, wp);
+                                    /*ProductpriceClass pP = new ProductpriceClass();
+                                    pP.setPrice(Integer.parseInt(pNewPrice.getPurchasePrice()));
+                                    pP.setAmount(pNewPrice.getAmount());
+                                    pP.setIdProductWare(wp.getIdWareProduct());
+                                    pP.setWareProductByIdProductWare(wp);
+                                    session.beginTransaction();
+                                    session.save(pP);
+                                    session.getTransaction().commit();*/
+                                }
+                            }
+                        }
+                    }
                     if(!ConstantsPurchases.productNewList.isEmpty()){
-                       //salva el producto
+                       //salva el producto nuevo
                         for(ProductClass pt: ConstantsPurchases.productNewList){
                             session.beginTransaction();
                             session.save(pt);
                             session.getTransaction().commit();
 
-                            WareProductClass wp = new WareProductClass();
+                            WareProductClass wp = saveWareProduct(pt);
+
+                            /*WareProductClass wp = new WareProductClass();
                             wp.setIdProduct(pt.getIdProduct());
                             wp.setProductByIdProduct(pt);
+
                             Constant.entity = "WarehouseClass";
                             Constant.tfCode = pt.getIdWage();
                             FoundHQL.workerFound();
+
                             wp.setIdWare(ConstantsWare.ware.getIdWarehouse());
                             wp.setWarehouseByIdWare(ConstantsWare.ware);
+
                             session.beginTransaction();
                             session.save(wp);
-                            session.getTransaction().commit();
+                            session.getTransaction().commit();*/
 
-                            ProductpriceClass pP = new ProductpriceClass();
+                            //guarda productprice
+                            saveProductPrice(pt, wp);
+
+                            /*ProductpriceClass pP = new ProductpriceClass();
                             pP.setPrice(Integer.parseInt(pt.getPurchasePrice()));
                             pP.setAmount(pt.getAmount());
                             pP.setIdProductWare(wp.getIdWareProduct());
                             pP.setWareProductByIdProductWare(wp);
                             session.beginTransaction();
                             session.save(pP);
-                            session.getTransaction().commit();
+                            session.getTransaction().commit();*/
                         }
                     }
                     moveInvoiceNew();
@@ -593,6 +654,53 @@ public class SaveHQL {
          WareController.alertSend("ERROR AL SALVAR DATOS");
      }
  }
+
+    public static WareProductClass saveWareProduct(ProductClass product){
+
+        try{
+            SessionDB.session();
+            Session session = SessionDB.session().getSession();
+
+            WareProductClass wp = new WareProductClass();
+            wp.setIdProduct(product.getIdProduct());
+            wp.setProductByIdProduct(product);
+
+            Constant.entity = "WarehouseClass";
+            Constant.tfCode = product.getIdWage();
+            FoundHQL.workerFound();
+
+            wp.setIdWare(ConstantsWare.ware.getIdWarehouse());
+            wp.setWarehouseByIdWare(ConstantsWare.ware);
+
+            session.beginTransaction();
+            session.save(wp);
+            session.getTransaction().commit();
+
+            return wp;
+        }catch (Exception i) {
+            WareController.alertSend("ERROR AL SALVAR DATOS");
+            i.printStackTrace();
+            return null;
+        }
+    }
+    public static void saveProductPrice(ProductClass product, WareProductClass warehouse){
+        try{
+            SessionDB.session();
+            Session session = SessionDB.session().getSession();
+            ProductpriceClass pP = new ProductpriceClass();
+            pP.setPrice(Integer.parseInt(product.getPurchasePrice()));
+            pP.setAmount(product.getAmount());
+            pP.setIdProductWare(warehouse.getIdWareProduct());
+            pP.setWareProductByIdProductWare(warehouse);
+            session.beginTransaction();
+            session.save(pP);
+            session.getTransaction().commit();
+        }catch (Exception i){
+            WareController.alertSend("ERROR AL SALVAR DATOS");
+            i.printStackTrace();
+        }
+    }
+
 }
 
 
