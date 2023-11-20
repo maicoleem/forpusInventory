@@ -1147,137 +1147,148 @@ public class PurchasesController {
         buttonCheckIn.setDisable(ConstantsPurchases.checkin);
     }
     public void checkinInvoice(ActionEvent event) {
-        try{
-        /*Crea un invoice solo con los datos necesarios para
-        *obtener la id, es obligatorio ingresar
-        *bak, cash, date y total
-        * con el idBill se encuentra la factura
-        * */
-        InvoiceClass invoice = new InvoiceClass();
-        invoice.setBank(tfBank.getText());
-        invoice.setCash(tfCash.getText());
-        invoice.setIndebtedness(labelDebt.getText());
-        invoice.setTotal(labelTotal3.getText());
-        invoice.setDate(ConstantsPurchases.dateActually());
-        invoice.setIdBill(666);
-        ConstantsAccounting.invoice = invoice;
-        Constant.entity = "InvoiceClass";
-        ConstantsPurchases.invoiceType = "purchaseFromSupplier";
-        if(SaveHQL.workerInsertUpdate()){
-        //si se guarda la factura, ahora la recupera.
-            Constant.tfCode = "666";
-            FoundHQL.wareFound();
+        try {
+            /*Crea un invoice solo con los datos necesarios para
+             *obtener la id, es obligatorio ingresar
+             *bak, cash, date y total
+             * con el idBill se encuentra la factura
+             * */
+            if (Constant.provider != null && !ConstantsPurchases.productTableList.isEmpty()) {
+                InvoiceClass invoice = new InvoiceClass();
+                invoice.setBank(tfBank.getText());
+                invoice.setCash(tfCash.getText());
+                invoice.setIndebtedness(labelDebt.getText());
+                invoice.setTotal(labelTotal3.getText());
+                invoice.setDate(ConstantsPurchases.dateActually());
+                invoice.setIdBill(666);
+                ConstantsAccounting.invoice = invoice;
+                Constant.entity = "InvoiceClass";
+                ConstantsPurchases.invoiceType = "purchaseFromSupplier";
+                if (SaveHQL.workerInsertUpdate()) {
+                //si se guarda la factura, ahora la recupera.
+                Constant.tfCode = "666";
+                FoundHQL.wareFound();
 
 
-            switch (ConstantsPurchases.entity){
-                case "Purchases":
-                    //limpia las listas de productos que se iran al SQL
-                    ConstantsPurchases.pPriceUpdateList.clear();
-                    ConstantsPurchases.productNewPrice.clear();
-                    ConstantsPurchases.productNewWare.clear();
-                    ConstantsPurchases.productNewList.clear();
+                switch (ConstantsPurchases.entity) {
+                    case "Purchases":
+                        //limpia las listas de productos que se iran al SQL
+                        ConstantsPurchases.pPriceUpdateList.clear();
+                        ConstantsPurchases.productNewPrice.clear();
+                        ConstantsPurchases.productNewWare.clear();
+                        ConstantsPurchases.productNewList.clear();
 
-                    //cada producto debe de crear un wareinvoice
-                    for(ProductClass p: ConstantsPurchases.productTableList){
-                        WareinvoiceClass wi = new WareinvoiceClass();
+                        //cada producto debe de crear un wareinvoice
+                        for (ProductClass p : ConstantsPurchases.productTableList) {
+                            WareinvoiceClass wi = new WareinvoiceClass();
 
-                        wi.setIdInvoice(ConstantsAccounting.invoice.getIdInvoice());
-                        wi.setIdProduct(p.getIdProduct());
-                        wi.setProductName(p.getName());
-                        wi.setPriceSale(p.getSalePrice());
-                        wi.setPriceBuy(Integer.parseInt(p.getPurchasePrice()));
-                        wi.setAmount(p.getAmount());
-                        wi.setOffSale(p.getOffSale());
-                        wi.setIndexWare(ConstantsPurchases.productTableList.indexOf(p));
-                        //agrega el wareproduct a la lista
-                        ConstantsPurchases.wareInvoiceList.add(wi);
+                            wi.setIdInvoice(ConstantsAccounting.invoice.getIdInvoice());
+                            wi.setIdProduct(p.getIdProduct());
+                            wi.setProductName(p.getName());
+                            wi.setPriceSale(p.getSalePrice());
+                            wi.setPriceBuy(Integer.parseInt(p.getPurchasePrice()));
+                            wi.setAmount(p.getAmount());
+                            wi.setOffSale(p.getOffSale());
+                            wi.setIndexWare(ConstantsPurchases.productTableList.indexOf(p));
+                            //agrega el wareproduct a la lista
+                            ConstantsPurchases.wareInvoiceList.add(wi);
 
-                        //actualiza los productos
-                        try{
-                            for(WareProductClass wp: p.getWareProductsByIdProduct()){
-                                //Si la bodega corresponde a una registrada
-                                if(Objects.equals(wp.getIdWare(), p.getIdWage())){
-                                    for(ProductpriceClass pp: wp.getProductpricesByIdWareProduct()){
-                                        //si el precio es el registrado
-                                        if(pp.getPrice() == Integer.parseInt(p.getPurchasePrice())){
-                                            //agrega el objeto productprice a la lista para actualizar
-                                            //actualiza la cantidad en inventario
-                                            pp.setAmount(p.getAmount() + pp.getAmount());
-                                            //guarda la cantidad actualizada
-                                            ConstantsPurchases.pPriceUpdateList.add(pp);
-                                        }else {
+                            //actualiza los productos
+                            try {
+                                boolean foundWarehouse = false;
+                                for (WareProductClass wp : p.getWareProductsByIdProduct()) {
+                                    //Si la bodega corresponde a una registrada
+                                    if (Objects.equals(wp.getIdWare(), p.getIdWage())) {
+                                        boolean foundPrice = false;
+                                        for (ProductpriceClass pp : wp.getProductpricesByIdWareProduct()) {
+                                            //si el precio es el registrado
+                                            if (pp.getPrice() == Integer.parseInt(p.getPurchasePrice())) {
+                                                //agrega el objeto productprice a la lista para actualizar
+                                                //actualiza la cantidad en inventario
+                                                pp.setAmount(p.getAmount() + pp.getAmount());
+                                                //guarda la cantidad actualizada
+                                                ConstantsPurchases.pPriceUpdateList.add(pp);
+                                                foundPrice = true;
+                                                break;
+                                            }
+                                        }
+                                        if(!foundPrice){
                                             ConstantsPurchases.productNewPrice.add(p);
                                         }
+                                        foundWarehouse = true;
+                                        break;
                                     }
-                                }else{
+                                }
+                                if(!foundWarehouse){
                                     ConstantsPurchases.productNewWare.add(p);
                                 }
+
+                            } catch (Exception i) {
+                                //en caso de error es porque el producto es nuevo o tiene nuevo precio
+                                ConstantsPurchases.productNewList.add(p);
                             }
-                        }catch (Exception i){
-                            //en caso de error es porque el producto es nuevo o tiene nuevo precio
-                            ConstantsPurchases.productNewList.add(p);
+
                         }
+                        break;
+                    case "Service":
+                        //cada servicio debe de crear un wareinvoice
+                        for (ServiceClass s : ConstantsPurchases.serviceTableList) {
+                            WareinvoiceClass wiS = new WareinvoiceClass();
 
-                    }
-                    break;
-                case "Service":
-                    //cada servicio debe de crear un wareinvoice
-                    for(ServiceClass s: ConstantsPurchases.serviceTableList){
-                        WareinvoiceClass wiS = new WareinvoiceClass();
-
-                        wiS.setIdInvoice(ConstantsAccounting.invoice.getIdInvoice());
-                        wiS.setIdProduct(s.getIdService());
-                        wiS.setProductName(s.getName());
-                        wiS.setPriceSale(s.getCost());
-                        wiS.setPriceBuy(Integer.parseInt(s.getCost()));
-                        wiS.setAmount(Integer.parseInt(s.getHour()));
-                        wiS.setIndexWare(ConstantsPurchases.productTableList.indexOf(s));
-                        //agrega el wareproduct a la lista
-                        ConstantsPurchases.wareInvoiceList.add(wiS);
-                    }
-                    break;
-                default:
-                    System.out.println("Error en  ConstantsPurchases.entity");
-                    break;
-            }
-            //Busca la compañia
-            ConstantsPurchases.invoiceType = "purchaseFromSupplier";
-            Constant.entity = "CompanyClass";
-            Constant.tfCode = "1";
-            FoundHQL.workerFound();
-
-            //Actualiza la invoice
-            ConstantsAccounting.invoice.setIdCompany(Constant.company.getIdCompanyNIT());
-            ConstantsAccounting.invoice.setIdProviders(Constant.provider.getNit());
-                //IVA
-            ConstantsAccounting.invoice.setTaxes(labelIVA2.getText());
-                //BOLD
-            ConstantsAccounting.invoice.setBold(labelBold2.getText());
-            ConstantsAccounting.invoice.setTotalBuy(labelTotal3.getText());
-            ConstantsAccounting.invoice.setUtilities("0");
-            ConstantsAccounting.invoice.setRUtilities("0");
-            //idBIll se usa para guardar la deuda actual
-            ConstantsAccounting.invoice.setIdBill(Integer.parseInt(ConstantsAccounting.invoice.getIndebtedness()));
-
-            //Actualiza la cuenta de la compañia y el proveedor
-            ConstantsPurchases.purchaseCompany(ConstantsAccounting.invoice.getBank(), ConstantsAccounting.invoice.getCash(), ConstantsAccounting.invoice.getIndebtedness());
-            ConstantsPurchases.purchaseProvider(ConstantsAccounting.invoice.getBank(), ConstantsAccounting.invoice.getCash(), ConstantsAccounting.invoice.getIndebtedness());
-
-            //Aqui se genera el sql que manda a guardar y actualizar todos los datos
-            if(SaveHQL.saveInvoice()){
-                WareController.alertSend("Datos guardados con exito");
-                updateMoney();
-                if(ConstantsPurchases.entity.equals("Purchases")){
-                    option("buttonProduct0");
-                } else if (ConstantsPurchases.entity.equals("Service")) {
-                    option("buttonService");
+                            wiS.setIdInvoice(ConstantsAccounting.invoice.getIdInvoice());
+                            wiS.setIdProduct(s.getIdService());
+                            wiS.setProductName(s.getName());
+                            wiS.setPriceSale(s.getCost());
+                            wiS.setPriceBuy(Integer.parseInt(s.getCost()));
+                            wiS.setAmount(Integer.parseInt(s.getHour()));
+                            wiS.setIndexWare(ConstantsPurchases.productTableList.indexOf(s));
+                            //agrega el wareproduct a la lista
+                            ConstantsPurchases.wareInvoiceList.add(wiS);
+                        }
+                        break;
+                    default:
+                        System.out.println("Error en  ConstantsPurchases.entity");
+                        break;
                 }
-            }else {
-                WareController.alertSend("Error al guardar los datos");
-            }
+                //Busca la compañia
+                ConstantsPurchases.invoiceType = "purchaseFromSupplier";
+                Constant.entity = "CompanyClass";
+                Constant.tfCode = "1";
+                FoundHQL.workerFound();
 
-        }
-        }catch (Exception i){
+                //Actualiza la invoice
+                ConstantsAccounting.invoice.setIdCompany(Constant.company.getIdCompanyNIT());
+                ConstantsAccounting.invoice.setIdProviders(Constant.provider.getNit());
+                //IVA
+                ConstantsAccounting.invoice.setTaxes(labelIVA2.getText());
+                //BOLD
+                ConstantsAccounting.invoice.setBold(labelBold2.getText());
+                ConstantsAccounting.invoice.setTotalBuy(labelTotal3.getText());
+                ConstantsAccounting.invoice.setUtilities("0");
+                ConstantsAccounting.invoice.setRUtilities("0");
+                //idBIll se usa para guardar la deuda actual
+                ConstantsAccounting.invoice.setIdBill(Integer.parseInt(ConstantsAccounting.invoice.getIndebtedness()));
+
+                //Actualiza la cuenta de la compañia y el proveedor
+                ConstantsPurchases.purchaseCompany(ConstantsAccounting.invoice.getBank(), ConstantsAccounting.invoice.getCash(), ConstantsAccounting.invoice.getIndebtedness());
+                ConstantsPurchases.purchaseProvider(ConstantsAccounting.invoice.getBank(), ConstantsAccounting.invoice.getCash(), ConstantsAccounting.invoice.getIndebtedness());
+
+                //Aqui se genera el sql que manda a guardar y actualizar todos los datos
+                if (SaveHQL.saveInvoice()) {
+                    WareController.alertSend("Datos guardados con exito");
+                    updateMoney();
+                    if (ConstantsPurchases.entity.equals("Purchases")) {
+                        option("buttonProduct0");
+                    } else if (ConstantsPurchases.entity.equals("Service")) {
+                        option("buttonService");
+                    }
+                } else {
+                    WareController.alertSend("Error al guardar los datos");
+                }
+
+            }
+            }
+        } catch (Exception i){
             i.printStackTrace();
         }
     }
