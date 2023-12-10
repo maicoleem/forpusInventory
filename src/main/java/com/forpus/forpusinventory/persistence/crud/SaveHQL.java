@@ -504,11 +504,27 @@ public class SaveHQL {
                     if(!ConstantsPurchases.productTableList.isEmpty()){
                         session.beginTransaction();
                         for(ProductClass p: ConstantsPurchases.productTableList){
-                            System.out.println("Actualizando: "+ p.getName());
-                            session.update(p);
+                            if(ConstantsPurchases.productNewList.contains(p)){
+                                System.out.println("Producto nuevo para crear");
+                            }else {
+                                System.out.println("Actualizando: "+ p.getName());
+                                session.update(p);
+                            }
                         }
                         session.getTransaction().commit();
                     }
+                    if(!ConstantsPurchases.productNewList.isEmpty()){
+                        //salva el producto nuevo
+                        for(ProductClass pt: ConstantsPurchases.productNewList){
+                            System.out.println("Creando producto: "+ pt);
+                            session.beginTransaction();
+                            session.save(pt);
+                            session.getTransaction().commit();
+                            WareProductClass wp = saveWareProduct(pt);
+                            saveProductPrice(pt, wp);
+                        }
+                    }
+
                     //actualiza el inventario
                     if(!ConstantsPurchases.pPriceUpdateList.isEmpty()){
                         session.beginTransaction();
@@ -538,17 +554,7 @@ public class SaveHQL {
                             }
                         }
                     }
-                    if(!ConstantsPurchases.productNewList.isEmpty()){
-                       //salva el producto nuevo
-                        for(ProductClass pt: ConstantsPurchases.productNewList){
-                            System.out.println("Creando producto: "+ pt);
-                            session.beginTransaction();
-                            session.save(pt);
-                            session.getTransaction().commit();
-                            WareProductClass wp = saveWareProduct(pt);
-                            saveProductPrice(pt, wp);
-                        }
-                    }
+
                     moveInvoiceNew();
                     break;
                 case "Service":

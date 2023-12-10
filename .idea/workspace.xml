@@ -9,9 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Purchases&#10;Se corrige error de crear mas bodegas y productprices, se establece variable para romper los bucles for.&#10;falta verificar funcionalidad.">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Purchases&#10;Ahora al escribirmal el codigo del producto y darle OK sale un mensaje de alerta">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/PurchasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/PurchasesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SaveHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SaveHQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpusinventory/purchases-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpusinventory/purchases-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -317,7 +319,7 @@
       <workItem from="1701631435197" duration="712000" />
       <workItem from="1701819505260" duration="1817000" />
       <workItem from="1702133940502" duration="739000" />
-      <workItem from="1702174525974" duration="2209000" />
+      <workItem from="1702174525974" duration="5124000" />
     </task>
     <task id="LOCAL-00039" summary="-Se debe de seguir planteando la contabilidad&#10;&#10;**Se realizo el backend de servicios.">
       <created>1680657058186</created>
@@ -662,7 +664,7 @@
       <option name="project" value="LOCAL" />
       <updated>1689219370409</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -680,7 +682,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="EL PRODUCTO QUEDO TERMINADO EN CUANTO A FUNCIONAMIENTO, SE ESPERA REVISIÓN Y CORRECÓN DE FALLOS." />
     <MESSAGE value="SE CONFIGURA EL MANEJO DE ERRORES EN LA TRANSMUTACION DE PRODUCTOS" />
     <MESSAGE value="Se crea el boton para restablecer la base de datos" />
     <MESSAGE value="Se agrego logo de la empresa en la pantalla de inicio&#10;+Cuando se presiona enter se inicia sesión&#10;+se incluye try-catch para cuando no se selecciona un sql" />
@@ -705,7 +706,8 @@
     <MESSAGE value="PURCHASES&#10;Ahora guarda el descuento" />
     <MESSAGE value="PURCHASES&#10;Error de bodega corregido al registrar producto, suprimir y cambiar de modulo" />
     <MESSAGE value="Purchases&#10;Se corrige error de crear mas bodegas y productprices, se establece variable para romper los bucles for.&#10;falta verificar funcionalidad." />
-    <option name="LAST_COMMIT_MESSAGE" value="Purchases&#10;Se corrige error de crear mas bodegas y productprices, se establece variable para romper los bucles for.&#10;falta verificar funcionalidad." />
+    <MESSAGE value="Purchases&#10;Ahora al escribirmal el codigo del producto y darle OK sale un mensaje de alerta" />
+    <option name="LAST_COMMIT_MESSAGE" value="Purchases&#10;Ahora al escribirmal el codigo del producto y darle OK sale un mensaje de alerta" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -751,18 +753,9 @@
           <option name="timeStamp" value="25" />
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SaveHQL.java</url>
-          <line>533</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/PurchasesController.java</url>
-          <line>427</line>
-          <properties class="com.forpus.forpusinventory.controller.PurchasesController" method="productFound">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="29" />
+          <line>691</line>
+          <option name="timeStamp" value="36" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

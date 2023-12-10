@@ -762,18 +762,19 @@ public class PurchasesController {
             case "comboBoxTwo":
                 //guarda el codigo de la categoria 2
                 Constant.entity = "CategorytwoClass";
-                Constant.tfCode = comboBoxTwo.getValue();
+                Constant.tfName = comboBoxTwo.getValue();
                 FoundHQL.workerFound();
 
-                //carga el comboBox de la categoria 2
+                //carga el comboBox de la categoria 3
                 comboBoxThree.getItems().clear();
                 comboBoxThree.getItems().addAll(WareController.categoryThree(new ArrayList<>(), comboBox.getValue()));
                 break;
             case "comboBoxThree":
-                //guarda el codigo de la categoria 2
+                //guarda el codigo de la categoria 3
                 Constant.entity = "CategorythreeClass";
-                Constant.tfCode = comboBoxThree.getValue();
+                Constant.tfName = comboBoxThree.getValue();
                 FoundHQL.workerFound();
+                System.out.println(Constant.tfCode);
 
                 break;
             default:
@@ -1030,7 +1031,7 @@ public class PurchasesController {
         tfPriceSale.setText("1");
         tfOff.setText("0");
         comboBoxPrice.getItems().clear();
-        comboBoxPrice.setValue("Precio");
+        comboBoxPrice.setValue("1");
         comboBoxWare.setValue("Bodega");
     }
     public void suppress(ActionEvent event) {

@@ -293,7 +293,7 @@
       <TextField id="tfProfit" fx:id="tfProfit" layoutX="537.0" layoutY="266.0" onKeyTyped="#priceSale" prefHeight="40.0" prefWidth="53.0" promptText="0-100" />
       <ComboBox id="comboBoxOne" fx:id="comboBoxOne" layoutX="234.0" layoutY="312.0" onAction="#categorySelected" prefHeight="40.0" prefWidth="103.0" promptText="Categoria 1" />
       <ComboBox id="comboBoxTwo" fx:id="comboBoxTwo" layoutX="347.0" layoutY="312.0" onAction="#categorySelected" prefHeight="40.0" prefWidth="103.0" promptText="Categoria 2" />
-      <ComboBox id="comboBoxThree" fx:id="comboBoxThree" layoutX="470.0" layoutY="312.0" prefHeight="40.0" prefWidth="103.0" promptText="Categoria 3" />
+      <ComboBox id="comboBoxThree" fx:id="comboBoxThree" layoutX="470.0" layoutY="312.0" onAction="#categorySelected" prefHeight="40.0" prefWidth="103.0" promptText="Categoria 3" />
       <ComboBox id="comboBoxWare" fx:id="comboBoxWare" layoutX="89.0" layoutY="312.0" prefHeight="40.0" prefWidth="103.0" promptText="Bodega" />
       <CheckBox id="checkProduct" fx:id="checkProduct" layoutX="89.0" layoutY="132.0" mnemonicParsing="false" onAction="#checkProduct" prefHeight="27.0" prefWidth="136.0" text="Producto Nuevo" />
       <CheckBox id="checkSale" fx:id="checkSale" layoutX="608.0" layoutY="273.0" mnemonicParsing="false" onAction="#checkSale" prefHeight="27.0" prefWidth="136.0" text="Precio Nuevo" />
