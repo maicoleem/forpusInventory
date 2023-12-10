@@ -435,26 +435,30 @@ public class PurchasesController {
                     checkProductIsTrue();
                 }else{
                     comboBoxPrice.getItems().clear();
-                    FoundHQL.workerFound();
-                    labelNameProduct.setText(ConstantsWare.product.getName());
-                    /*Obtener la lista de precios del producto
-                     *Crear array donde estaran los precios
-                     * Hacer un for para buscar en todas las bodegas
-                     * Hacer un for para buscar los precios
-                     * Adicionar al combobox
-                     * */
-                    ArrayList<String> listProduct = new ArrayList<>();
-                    for(WareProductClass w: ConstantsWare.product.getWareProductsByIdProduct()){
-                        for(ProductpriceClass p: w.getProductpricesByIdWareProduct()){
-                            String price = String.valueOf(p.getPrice());
-                            listProduct.add(price);
+                    if(FoundHQL.workerFound()){
+                        labelNameProduct.setText(ConstantsWare.product.getName());
+                        /*Obtener la lista de precios del producto
+                         *Crear array donde estaran los precios
+                         * Hacer un for para buscar en todas las bodegas
+                         * Hacer un for para buscar los precios
+                         * Adicionar al combobox
+                         * */
+                        ArrayList<String> listProduct = new ArrayList<>();
+                        for(WareProductClass w: ConstantsWare.product.getWareProductsByIdProduct()){
+                            for(ProductpriceClass p: w.getProductpricesByIdWareProduct()){
+                                String price = String.valueOf(p.getPrice());
+                                listProduct.add(price);
+                            }
                         }
+                        comboBoxPrice.setValue(listProduct.get(0));
+                        comboBoxPrice.getItems().addAll(listProduct);
+                        tfOff.setText("0");
+                        tfAmount.setText("1");
+                        tfProfit.setText(ConstantsWare.product.getProfit());
+                    }else {
+                        WareController.alertSend("Producto no existe");
+                        clearPurchases();
                     }
-                    comboBoxPrice.setValue(listProduct.get(0));
-                    comboBoxPrice.getItems().addAll(listProduct);
-                    tfOff.setText("0");
-                    tfAmount.setText("1");
-                    tfProfit.setText(ConstantsWare.product.getProfit());
                 }
                 break;
             case "Service":
@@ -985,7 +989,6 @@ public class PurchasesController {
                             FXCollections.observableArrayList(invoiceFiltrate);
                     tableInvoice.setItems(invoiceTable);
                 }catch (Exception i){
-                    System.out.println(i);
                     WareController.alertSend("Sin Facturas de clientes");
                 }
                 break;
@@ -1019,6 +1022,7 @@ public class PurchasesController {
         tfProductName.setVisible(false);
         tfProductName.clear();
         labelNameProduct.setVisible(true);
+        labelNameProduct.setText("");
         checkProduct.setSelected(false);
         tfProfit.setText("0");
         tfPrice.setText("1");
