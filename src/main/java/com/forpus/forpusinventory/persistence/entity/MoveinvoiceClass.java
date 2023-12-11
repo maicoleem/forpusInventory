@@ -14,7 +14,7 @@ public class MoveinvoiceClass {
     @Column(name = "idInvoice", nullable = false)
     private int idInvoice;
     @Basic
-    @Column(name = "date", nullable = false, length = 20)
+    @Column(name = "date", nullable = false, length = 30)
     private String date;
     @Basic
     @Column(name = "debt", nullable = false)
