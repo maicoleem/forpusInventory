@@ -9,9 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Purchases&#10;Se corrige error para guardar la categoria 3 del producto nuevo">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="MoveInvocie&#10;The number of character was changed so that the date can be saved">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/entity/MoveinvoiceClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/entity/MoveinvoiceClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/PurchasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/PurchasesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/entity/ServiceClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/entity/ServiceClass.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +60,9 @@
   <component name="MigrationScriptOptions">
     <option name="ignoreImplicitObjects" value="true" />
     <option name="ignoreSourceCode" value="false" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -318,7 +322,9 @@
       <workItem from="1701819505260" duration="1817000" />
       <workItem from="1702133940502" duration="739000" />
       <workItem from="1702174525974" duration="5570000" />
-      <workItem from="1702252483060" duration="2389000" />
+      <workItem from="1702252483060" duration="2630000" />
+      <workItem from="1702344537579" duration="669000" />
+      <workItem from="1703821216533" duration="4443000" />
     </task>
     <task id="LOCAL-00039" summary="-Se debe de seguir planteando la contabilidad&#10;&#10;**Se realizo el backend de servicios.">
       <created>1680657058186</created>
@@ -663,7 +669,7 @@
       <option name="project" value="LOCAL" />
       <updated>1689219370409</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -681,7 +687,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Se crea el boton para restablecer la base de datos" />
     <MESSAGE value="Se agrego logo de la empresa en la pantalla de inicio&#10;+Cuando se presiona enter se inicia sesión&#10;+se incluye try-catch para cuando no se selecciona un sql" />
     <MESSAGE value="Se modifico el JDK ahora es de https://bell-sw.com/pages/downloads/ que permite crear el file.jar con javaFX {structure project -&gt; artifact -&gt; jar -&gt; from modules with dependency}." />
     <MESSAGE value="se modifico el path de lso reportes String reportPath = &quot;src/main/resources/com/forpus/jasper_report/Cotizar.jrxml&quot;;&#10;&#10;se continua con el manejo de errores" />
@@ -706,7 +711,8 @@
     <MESSAGE value="Purchases&#10;Se corrige error de crear mas bodegas y productprices, se establece variable para romper los bucles for.&#10;falta verificar funcionalidad." />
     <MESSAGE value="Purchases&#10;Ahora al escribirmal el codigo del producto y darle OK sale un mensaje de alerta" />
     <MESSAGE value="Purchases&#10;Se corrige error para guardar la categoria 3 del producto nuevo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Purchases&#10;Se corrige error para guardar la categoria 3 del producto nuevo" />
+    <MESSAGE value="MoveInvocie&#10;The number of character was changed so that the date can be saved" />
+    <option name="LAST_COMMIT_MESSAGE" value="MoveInvocie&#10;The number of character was changed so that the date can be saved" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -751,15 +757,19 @@
           <properties class="java.io.IOException" package="java.io" />
           <option name="timeStamp" value="25" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/PurchasesController.java</url>
-          <line>691</line>
-          <option name="timeStamp" value="36" />
+          <line>948</line>
+          <properties class="com.forpus.forpusinventory.controller.PurchasesController" method="tableLoad">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="43" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/PurchasesController.java</url>
-          <line>774</line>
-          <option name="timeStamp" value="38" />
+          <line>965</line>
+          <option name="timeStamp" value="47" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
