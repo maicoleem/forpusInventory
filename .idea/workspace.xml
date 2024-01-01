@@ -9,13 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Purchases Services&#10;add column in ServiceClass for off;&#10;now the method checkinInvoice save services">
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Guardar servicios&#10;Ahora los servicios quedan guardados con bodega para poder generar la venta de servicios">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/WareController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/WareController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/FoundHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/FoundHQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SaveHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SaveHQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/entity/ServiceClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/entity/ServiceClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpusinventory/sales-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpusinventory/sales-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SalesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SalesController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -328,7 +324,7 @@
       <workItem from="1702252483060" duration="2630000" />
       <workItem from="1702344537579" duration="669000" />
       <workItem from="1703821216533" duration="4730000" />
-      <workItem from="1704060084429" duration="7537000" />
+      <workItem from="1704060084429" duration="9971000" />
     </task>
     <task id="LOCAL-00039" summary="-Se debe de seguir planteando la contabilidad&#10;&#10;**Se realizo el backend de servicios.">
       <created>1680657058186</created>
@@ -673,7 +669,7 @@
       <option name="project" value="LOCAL" />
       <updated>1689219370409</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -691,7 +687,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Se modifico el JDK ahora es de https://bell-sw.com/pages/downloads/ que permite crear el file.jar con javaFX {structure project -&gt; artifact -&gt; jar -&gt; from modules with dependency}." />
     <MESSAGE value="se modifico el path de lso reportes String reportPath = &quot;src/main/resources/com/forpus/jasper_report/Cotizar.jrxml&quot;;&#10;&#10;se continua con el manejo de errores" />
     <MESSAGE value="MANEJO DE ERRORES DE DataBase.java LISTO." />
     <MESSAGE value="SE COMPLETO EL MANEJO DE ERRORES DE LAS CLASES QUE INTERVIENEN CON LA BASE DE DATOS" />
@@ -716,7 +711,8 @@
     <MESSAGE value="Purchases&#10;Se corrige error para guardar la categoria 3 del producto nuevo" />
     <MESSAGE value="MoveInvocie&#10;The number of character was changed so that the date can be saved" />
     <MESSAGE value="Purchases Services&#10;add column in ServiceClass for off;&#10;now the method checkinInvoice save services" />
-    <option name="LAST_COMMIT_MESSAGE" value="Purchases Services&#10;add column in ServiceClass for off;&#10;now the method checkinInvoice save services" />
+    <MESSAGE value="Guardar servicios&#10;Ahora los servicios quedan guardados con bodega para poder generar la venta de servicios" />
+    <option name="LAST_COMMIT_MESSAGE" value="Guardar servicios&#10;Ahora los servicios quedan guardados con bodega para poder generar la venta de servicios" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -787,6 +783,15 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SalesController.java</url>
+          <line>694</line>
+          <properties class="com.forpus.forpusinventory.controller.SalesController" method="register">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="60" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/PurchasesController.java</url>

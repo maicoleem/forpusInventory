@@ -761,8 +761,13 @@ public class SalesController {
                 falseFor = "Ware";
             }
             if(comboBoxAmount.getValue() == null || comboBoxAmount.getValue().isBlank()){
-                falseFor = "amountCB";
-            }else {
+                if (ConstantsSales.salesOption.equals("Service")){
+
+                }else {
+                    falseFor = "amountCB";
+                }
+
+            } else {
                 int amount = Integer.parseInt(tfAmount.getText());
                 int stock = Integer.parseInt(comboBoxAmount.getValue());
                 if(amount > stock){
