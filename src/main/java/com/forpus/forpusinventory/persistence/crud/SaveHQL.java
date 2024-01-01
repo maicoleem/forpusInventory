@@ -232,38 +232,17 @@ public class SaveHQL {
                     Constant.entity = "ProductClass";
                     break;
                 case "ServiceClass":
-                    ServiceClass service = new ServiceClass();
-
-                    service.setIdService(Constant.tfCode);
-
-                    System.out.println(Constant.tfCode);
-                    service.setName(Constant.tfName);
-
-                    service.setProfit(ConstantsWare.tfProfit);
-
-                    service.setPayForHour(ConstantsWare.tfBuy);
-
-                    service.setIdWare(ConstantsWare.tfWare);
-
-                    service.setHour(ConstantsWare.tfThree);
-
-                    service.setCost(ConstantsWare.tfCost);
-
-                    System.out.println(ConstantsWare.tfCost);
-
                     session.beginTransaction();
-
                     if(saveOrUpdate.equals("save")){
-                        session.save(service);
+                        session.save(ConstantsWare.service);
                     }else{
-                        session.update(service);
+                        session.update(ConstantsWare.service);
                     }
                     session.getTransaction().commit();
-                    System.out.println("Servicio Guardado");
 
                     session.beginTransaction();
                     for(ServiceProductClass sp: ConstantsWare.sPListArray){
-                        sp.setServiceByIdService(service);
+                        sp.setServiceByIdService(ConstantsWare.service);
                         session.saveOrUpdate(sp);
                     }
                     session.getTransaction().commit();

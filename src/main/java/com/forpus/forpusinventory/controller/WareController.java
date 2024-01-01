@@ -459,30 +459,22 @@ public class WareController {
                         ConstantsWare.tfTwo = String.valueOf(ConstantsWare.productPrice.getPrice());
                     }
                 }
+                ServiceClass service = new ServiceClass();
+                service.setIdService(tfCode.getText());
+                service.setName(tfProduct.getText());
+                service.setPayForHour(tfBuy.getText());
+                service.setHour(tfProfit.getText());
+                service.setCost(tfCost.getText());
 
-                //bodega
-                idValorComboBox(comboBoxTwo.getValue(), "WarehouseClass");
+                idValorComboBox(comboBoxWage.getValue(), "WarehouseClass");
                 if (ConstantsWare.ware != null) {
-                    ConstantsWare.tfWare = String.valueOf(ConstantsWare.ware.getIdWarehouse());
+                    service.setIdWare(ConstantsWare.ware.getIdWarehouse());
+                    service.setWarehouseByIdWare(ConstantsWare.ware);
                 }
-
                 Constant.entity = "ServiceClass";
-                //codigo
-                Constant.tfCode = tfCode.getText();
-                //nombre
-                Constant.tfName = tfProduct.getText();
-                //profit
-                ConstantsWare.tfProfit = tfConsumed.getText();
-                //cantidad-------
-                //ConstantsWare.tf10th = tfThreeCategory1.getText();
-                //salary
-                ConstantsWare.tfBuy = tfBuy.getText();
-                //contenido-------
-                //ConstantsWare.tfSale = tfSale.getText();
-                //horas
-                ConstantsWare.tfThree = tfProfit.getText();
-                //costo
-                ConstantsWare.tfCost = tfCost.getText();
+                service.setProfit(tfConsumed.getText());
+                service.setOff("0");
+                ConstantsWare.service = service;
 
                 //Crea lista de objetos service_product
                 ConstantsWare.sPListArray.clear();
@@ -503,7 +495,6 @@ public class WareController {
                         ConstantsWare.sPListArray.add(sP);
                     }
                     Constant.entity = "ServiceClass";
-
                 }
                 break;
             case "Transmute":
@@ -1411,7 +1402,8 @@ public class WareController {
             comboBoxWage.getItems().addAll(listProduct);
 
             Constant.entity = "ProductClass";
-        } else {
+        }
+        else {
             System.out.println("transmutar falta el combobox");
             Constant.entity = "ProductClass";
             SearchHQL.searchHQL();

@@ -152,6 +152,7 @@ public class FoundHQL {
             }
             return true;
         }catch (Exception i){
+            i.printStackTrace();
             if(!Constant.entity.equals("InvoiceClass")) {
                 System.out.println("Error en worker found");
             }

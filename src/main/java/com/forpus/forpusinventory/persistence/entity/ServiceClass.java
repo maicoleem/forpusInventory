@@ -23,13 +23,13 @@ public class ServiceClass {
     @Column(name = "cost", nullable = true, length = 20)
     private String cost;
     @Basic
-    @Column(name = "id_ware", insertable = false, updatable = false, nullable = true, length = 6)
+    @Column(name = "id_ware", insertable = false, updatable = false ,nullable = true, length = 6)
     private String idWare;
     @Basic
-    @Column(name = "profit", insertable = false, updatable = false, nullable = false, length = 6)
+    @Column(name = "profit", nullable = true, length = 6)
     private String profit;
     @Basic
-    @Column(name = "off", insertable = false, updatable = false, nullable = false, length = 6)
+    @Column(name = "off", nullable = true, length = 20)
     private String off;
     @ManyToOne
     @JoinColumn(name = "id_ware", referencedColumnName = "id_warehouse")
