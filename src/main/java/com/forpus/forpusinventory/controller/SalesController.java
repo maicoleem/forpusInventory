@@ -1168,7 +1168,7 @@ public class SalesController {
         try {
             if(0 != invoiceSelected.getIdBill()){
                 labelSubTota2.setText(String.valueOf(invoiceSelected.getIdBill()));
-                labelTotal2.setText(labelTotal2.getText());
+                labelTotal2.setText(labelSubTota2.getText());
                 tfTaxes.setText("0");
             }
         }catch (Exception i){
@@ -1314,7 +1314,6 @@ public class SalesController {
             System.out.println(i + " Porcentaje de descuento nulo");
         }
     }
-
     public void loadTableProduct(){
         columCode.setCellValueFactory(new PropertyValueFactory<>("idProduct"));
         columProduct.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -1328,7 +1327,6 @@ public class SalesController {
         FilteredList<ProductClass> filteredListProduct = new FilteredList<ProductClass>(listProduct, s -> s.getIdProduct().contains(tfCodeSeek.getText()) && s.getName().contains(tfProductSeek.getText()) && s.getPurchasePrice().contains(tfPriceSeek.getText()) );
         tableProductSearch.setItems(filteredListProduct);
     }
-
     @FXML
     public void tableSelectedProduct(){
         try {
