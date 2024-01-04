@@ -28,10 +28,12 @@ public class ReportGenerator {
             CompanyClass company = companyFound();
             // Ruta al archivo del informe de JasperReports (.jASPERT)
             String reportPath = "src/main/resources/com/forpus/jasper_report/Factura.jrxml";
+            String pathInstallWin = "C:\\Program Files (x86)\\forpus\\jasper_report\\Factura.jrxml";
             String os = System.getProperty("os.name").toLowerCase();
             if (os.contains("win")) {
                 // Código para Windows
-                //falta la ruta para windows.
+                reportPath = "dFactura.jrxml";
+                //reportPath = "C:\\Program Files (x86)\\forpus\\jasper_report\\Factura.jrxml";
             } else if (os.contains("nix") || os.contains("nux") || os.contains("mac")) {
                 // Código para Linux o macOS
                 reportPath = "/opt/forpus/reports/Factura.jrxml";
@@ -79,7 +81,13 @@ public class ReportGenerator {
             parameters.put("IVA", invoice.getTaxes());
 
             // Compilar el informe
-            JasperReport jasperReport = JasperCompileManager.compileReport(reportPath);
+            JasperReport jasperReport = null;
+            try{
+               jasperReport = JasperCompileManager.compileReport(reportPath);
+            }catch (JRException i){
+                i.printStackTrace();
+                jasperReport = JasperCompileManager.compileReport(pathInstallWin);
+            }
 
             // Llenar el informe con datos y parámetros
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, sourceData);

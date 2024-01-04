@@ -2,16 +2,16 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="forpusLibericajar" />
+      <artifact name="forpusinventory:jar" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Ventas&#10;Se registra la venta de servicios con exito - falta revisar con deuda.">
+    <list default="true" id="c100c21c-3a8a-4617-abcb-404f11b4d22d" name="Changes" comment="Windows&#10;Commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SalesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SalesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/repository/ReportGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/repository/ReportGenerator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +169,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="" />
+      <changelist id="c100c21c-3a8a-4617-abcb-404f11b4d22d" name="Changes" comment="Windows&#10;Commit" />
       <created>1674074514731</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -326,13 +326,8 @@
       <workItem from="1703821216533" duration="4730000" />
       <workItem from="1704060084429" duration="10037000" />
       <workItem from="1704218169319" duration="1867000" />
-    </task>
-    <task id="LOCAL-00039" summary="-Se debe de seguir planteando la contabilidad&#10;&#10;**Se realizo el backend de servicios.">
-      <created>1680657058186</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1680657058186</updated>
+      <workItem from="1704357156416" duration="1826000" />
+      <workItem from="1704359226302" duration="692000" />
     </task>
     <task id="LOCAL-00040" summary="**Se esta editando la view para pagar los creditos&#10;&#10;--falta funcionalidad">
       <created>1680666485383</created>
@@ -670,7 +665,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689219370409</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="Windows&#10;Commit">
+      <created>1704354150817</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1704354150817</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -688,7 +690,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="MANEJO DE ERRORES DE DataBase.java LISTO." />
     <MESSAGE value="SE COMPLETO EL MANEJO DE ERRORES DE LAS CLASES QUE INTERVIENEN CON LA BASE DE DATOS" />
     <MESSAGE value="MANEJO DE ERRORES:&#10;SettingController OK&#10;SearchController OK&#10;WareController -&#10;AccountingController -&#10;FinanceController -&#10;HelloController -&#10;PurchasesControles -&#10;SalesController -&#10;&#10;BUILD ARTIFACT: &#10;crear .jar&#10;crear icono&#10;crear exe" />
     <MESSAGE value="MANEJO DE ERRORES:&#10;SettingController OK&#10;SearchController OK&#10;WareController OK&#10;AccountingController -&#10;FinanceController -&#10;HelloController -&#10;PurchasesControles OK&#10;SalesController OK&#10;&#10;BUILD ARTIFACT: &#10;crear .jar&#10;crear icono&#10;crear exe" />
@@ -713,7 +714,8 @@
     <MESSAGE value="Purchases Services&#10;add column in ServiceClass for off;&#10;now the method checkinInvoice save services" />
     <MESSAGE value="Guardar servicios&#10;Ahora los servicios quedan guardados con bodega para poder generar la venta de servicios" />
     <MESSAGE value="Ventas&#10;Se registra la venta de servicios con exito - falta revisar con deuda." />
-    <option name="LAST_COMMIT_MESSAGE" value="Ventas&#10;Se registra la venta de servicios con exito - falta revisar con deuda." />
+    <MESSAGE value="Windows&#10;Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Windows&#10;Commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
