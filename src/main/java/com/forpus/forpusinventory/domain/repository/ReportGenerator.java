@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ReportGenerator {
-
+    public static String os = System.getProperty("os.name").toLowerCase();
     public static void generateReport() {
         try {
             InvoiceClass invoice = ConstantsAccounting.invoice;
@@ -28,15 +28,14 @@ public class ReportGenerator {
             CompanyClass company = companyFound();
             // Ruta al archivo del informe de JasperReports (.jASPERT)
             String reportPath = "src/main/resources/com/forpus/jasper_report/Factura.jrxml";
-            String pathInstallWin = "C:\\Program Files (x86)\\forpus\\jasper_report\\Factura.jrxml";
-            String os = System.getProperty("os.name").toLowerCase();
+            String pathInstallWin = "C:\\Program Files (x86)\\forpus\\reports\\Factura.jrxml";
+            String pathInstallLinux = "/opt/forpusInventory/reports/Factura.jrxml";
             if (os.contains("win")) {
                 // Código para Windows
-                reportPath = "dFactura.jrxml";
-                //reportPath = "C:\\Program Files (x86)\\forpus\\jasper_report\\Factura.jrxml";
+                reportPath = "Factura.jrxml";
             } else if (os.contains("nix") || os.contains("nux") || os.contains("mac")) {
                 // Código para Linux o macOS
-                reportPath = "/opt/forpus/reports/Factura.jrxml";
+                reportPath = "/home/loro/MEGAsync/hubgit/forpusInventory/src/main/resources/com/forpus/jasper_report/Factura.jrxml";
             } else {
                 throw new UnsupportedOperationException("Sistema operativo no compatible");
             }
@@ -53,7 +52,6 @@ public class ReportGenerator {
                 int subtotal = wInvoice.getAmount() * Integer.parseInt(wInvoice.getPriceSale());
                 wInvoice.setPriceBuy(subtotal);
             }
-
             //calcula el subtotal
             int total = Integer.parseInt(invoice.getTotal());
             int taxes = Integer.parseInt(invoice.getTaxes());
@@ -85,8 +83,11 @@ public class ReportGenerator {
             try{
                jasperReport = JasperCompileManager.compileReport(reportPath);
             }catch (JRException i){
-                i.printStackTrace();
-                jasperReport = JasperCompileManager.compileReport(pathInstallWin);
+                if (os.contains("win")) {
+                    jasperReport = JasperCompileManager.compileReport(pathInstallWin);
+                }else {
+                    jasperReport = JasperCompileManager.compileReport(pathInstallLinux);
+                }
             }
 
             // Llenar el informe con datos y parámetros
@@ -112,8 +113,7 @@ public class ReportGenerator {
             // Exportar el informe a PDF u otro formato
            //JasperExportManager.exportReportToPdfFile(jasperPrint, "C:\\Users\\Teemo\\OneDrive\\destino.pdf");
         } catch (Exception e) {
-            e.printStackTrace();
-            WareController.alertSend("ERROR EL CARGAR EL REPORTE");
+            WareController.alertSend("ERROR EL CARGAR EL REPORTE" );
         }
     }
 
@@ -159,7 +159,19 @@ public class ReportGenerator {
 
     public static void generadorCotizar(CompanyClass company, CustomerClass customer, ArrayList<WareinvoiceClass> wareInvoice, int subtotal, int iva){
         // Ruta al archivo del informe de JasperReports (.jASPERT)
-        String reportPath = "src/main/resources/com/forpus/jasper_report/Cotizar.jrxml";
+
+        String reportPath;
+        String pathInstallWin = "C:\\Program Files (x86)\\forpus\\reports\\Cotizar.jrxml";
+        String pathInstallLinux = "/opt/forpusInventory/reports/Cotizar.jrxml";
+        if (os.contains("win")) {
+            // Código para Windows
+            reportPath = "Cotizar.jrxml";
+        } else if (os.contains("nix") || os.contains("nux") || os.contains("mac")) {
+            // Código para Linux o macOS
+            reportPath = "/home/loro/MEGAsync/hubgit/forpusInventory/src/main/resources/com/forpus/jasper_report/Cotizar.jrxml";
+        } else {
+            throw new UnsupportedOperationException("Sistema operativo no compatible");
+        }
 
         try {
             WareinvoiceClass wI = wareInvoice.get(0);
@@ -190,7 +202,16 @@ public class ReportGenerator {
             parameters.put("IVA", String.valueOf(iva));
 
             // Compilar el informe
-            JasperReport jasperReport = JasperCompileManager.compileReport(reportPath);
+            JasperReport jasperReport;
+            try{
+                jasperReport = JasperCompileManager.compileReport(reportPath);
+            }catch (JRException i){
+                if (os.contains("win")) {
+                    jasperReport = JasperCompileManager.compileReport(pathInstallWin);
+                }else {
+                    jasperReport = JasperCompileManager.compileReport(pathInstallLinux);
+                }
+            }
 
             // Llenar el informe con datos y parámetros
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, sourceData);
@@ -214,7 +235,6 @@ public class ReportGenerator {
 
         } catch (Exception e) {
             WareController.alertSend("ERROR EL CARGAR EL REPORTE");
-            e.printStackTrace();
         }
 
     }
