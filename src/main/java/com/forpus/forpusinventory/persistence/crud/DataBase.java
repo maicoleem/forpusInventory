@@ -30,13 +30,44 @@ public class DataBase {
 
         Properties properties = properties();
         String pDB = properties.getProperty("clave");
+        String pName = properties.getProperty("name");
         String date = ConstantsPurchases.dateDDMMAA();
-        String file = "\\"+date+ "backup.sql";
-        String executeCmd = "mysqldump -u root -p"+ pDB +" inventoryaccounting -r " + path + file;
+
+        String os = System.getProperty("os.name").toLowerCase();
+
+        String executeCmd = "";
+
+        if (os.contains("win")) {
+            // Código para Windows
+            String file = "\\"+date+ "backup.sql";
+            executeCmd = "mysqldump -u root -p"+ pDB +" " + pName + " -r " + path + file;
+        } else if (os.contains("nix") || os.contains("nux") || os.contains("mac")) {
+            // Código para Linux o macOS
+            String file = path + "/"+date+ "backup.sql";
+            //executeCmd = "mysqldump --user=root" + " --password=" + pDB + " --databases " + pName + " -r " + file;
+            executeCmd = "mysqldump -u root -p"+ pDB +" " + pName + " -r " + file;
+        } else {
+            throw new UnsupportedOperationException("Sistema operativo no compatible");
+        }
         try {
             Process runtimeProcess = Runtime.getRuntime().exec(executeCmd);
-            int processComplete = runtimeProcess.waitFor();
+            // Captura la salida estándar (stdout)
+            InputStream inputStream = runtimeProcess.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
+            // Muestra la salida estándar
+            while ((line = reader.readLine()) != null) {
+                System.out.println("stdout: " + line);
+            }
 
+            // Captura la salida de error (stderr)
+            InputStream errorStream = runtimeProcess.getErrorStream();
+            BufferedReader errorReader = new BufferedReader(new InputStreamReader(errorStream));
+            // Muestra la salida de error
+            while ((line = errorReader.readLine()) != null) {
+                System.out.println("stderr: " + line);
+            }
+            int processComplete = runtimeProcess.waitFor();
             if (processComplete == 0) {
                 System.out.println("La copia de seguridad de la base de datos se ha completado correctamente");
                 return true;
@@ -155,7 +186,6 @@ public class DataBase {
         return true;
     }
     public static boolean importTable(String path, String entity) {
-
         //borra los datos de la tabla a la que se le van a importar los datos
         deleteAllData(entity);
         Class<?> entityClass;
@@ -539,6 +569,7 @@ public class DataBase {
         String jdbcURL = "jdbc:mysql://localhost:3306/" + properties.getProperty("name");;
         String username = properties.getProperty("user");
         String password = properties.getProperty("clave");
+
         try {
             // Establecer la conexión a la base de datos
             Connection connection = DriverManager.getConnection(jdbcURL, username, password);

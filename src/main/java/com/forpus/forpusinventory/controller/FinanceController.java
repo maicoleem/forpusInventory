@@ -358,13 +358,10 @@ public class FinanceController {
 
         return seriesList;
     }
-
     private int getMonthTotal(Map<Integer, Integer> monthTotals, int month) {
         Integer monthTotal = monthTotals.get(month);
         return (monthTotal != null) ? monthTotal : 0;
     }
-
-
     public void buttonCRUD(ActionEvent event) {
     }
     public void buttonsOptions(ActionEvent event) {
@@ -442,9 +439,10 @@ public class FinanceController {
                     break;
             }
         }
+        // Deshabilita el botón si el texto de labelRuta contiene '\' o '/'
+        buttonBackUp.setDisable(!labelRuta.getText().contains("\\") && !labelRuta.getText().contains("/"));
+        buttonDownload.setDisable(!labelRuta.getText().contains("\\") && !labelRuta.getText().contains("/"));
 
-        buttonBackUp.setDisable(!labelRuta.getText().contains("\\"));
-        buttonDownload.setDisable(!labelRuta.getText().contains("\\"));
         }catch (Exception i){
             WareController.alertSend("ERROR AL EXPORTAR DATOS");
             i.printStackTrace();

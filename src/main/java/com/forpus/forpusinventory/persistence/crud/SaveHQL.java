@@ -4,7 +4,8 @@ import com.forpus.forpusinventory.controller.WareController;
 import com.forpus.forpusinventory.domain.services.*;
 import com.forpus.forpusinventory.persistence.Session.SessionDB;
 import com.forpus.forpusinventory.persistence.entity.*;
-import org.hibernate.Session;;
+import org.hibernate.Session;
+import org.hibernate.event.spi.SaveOrUpdateEvent;;
 import java.util.Objects;
 
 public class SaveHQL {
@@ -22,7 +23,6 @@ public class SaveHQL {
             return false;
         }
     }
-
     public static boolean insertWorker(String saveOrUpdate){
 
         try{
@@ -232,38 +232,17 @@ public class SaveHQL {
                     Constant.entity = "ProductClass";
                     break;
                 case "ServiceClass":
-                    ServiceClass service = new ServiceClass();
-
-                    service.setIdService(Constant.tfCode);
-
-                    System.out.println(Constant.tfCode);
-                    service.setName(Constant.tfName);
-
-                    service.setProfit(ConstantsWare.tfProfit);
-
-                    service.setPayForHour(ConstantsWare.tfBuy);
-
-                    service.setIdWare(ConstantsWare.tfWare);
-
-                    service.setHour(ConstantsWare.tfThree);
-
-                    service.setCost(ConstantsWare.tfCost);
-
-                    System.out.println(ConstantsWare.tfCost);
-
                     session.beginTransaction();
-
                     if(saveOrUpdate.equals("save")){
-                        session.save(service);
+                        session.save(ConstantsWare.service);
                     }else{
-                        session.update(service);
+                        session.update(ConstantsWare.service);
                     }
                     session.getTransaction().commit();
-                    System.out.println("Servicio Guardado");
 
                     session.beginTransaction();
                     for(ServiceProductClass sp: ConstantsWare.sPListArray){
-                        sp.setServiceByIdService(service);
+                        sp.setServiceByIdService(ConstantsWare.service);
                         session.saveOrUpdate(sp);
                     }
                     session.getTransaction().commit();
@@ -367,14 +346,14 @@ public class SaveHQL {
                             //actualiza la cuenta de la compañia
                             ConstantsSales.saleMoveInvoiceCompany(
                                     String.valueOf(ConstantsPurchases.moveInv.getPayBank()),
-                                    String.valueOf(ConstantsPurchases.moveInv.getPayCash()));                            session.beginTransaction();
+                                    String.valueOf(ConstantsPurchases.moveInv.getPayCash()));
+                            session.beginTransaction();
                             session.update(Constant.company);
                             session.getTransaction().commit();
                             break;
                         default:
                             break;
                     }
-
                     break;
                 default:
                     break;
@@ -386,7 +365,6 @@ public class SaveHQL {
             return false;
         }
     }
-
     //para update categorias
     //para insertar categorias
     public static boolean saveUpdateCate(String saveUpdate){
@@ -501,43 +479,61 @@ public class SaveHQL {
 
             switch (ConstantsPurchases.entity){
                 case "Purchases":
-                    //actualiza el inventario
-                    if(!ConstantsPurchases.pPriceUpdateList.isEmpty()){
+                    //update the products
+                    if(!ConstantsPurchases.productTableList.isEmpty()){
                         session.beginTransaction();
-                        for(ProductpriceClass pp: ConstantsPurchases.pPriceUpdateList){
-                            session.update(pp);
+                        for(ProductClass p: ConstantsPurchases.productTableList){
+                            if(ConstantsPurchases.productNewList.contains(p)){
+                                System.out.println("Producto nuevo para crear");
+                            }else {
+                                System.out.println("Actualizando: "+ p.getName());
+                                session.update(p);
+                            }
                         }
                         session.getTransaction().commit();
                     }
                     if(!ConstantsPurchases.productNewList.isEmpty()){
-                       //salva el producto
+                        //salva el producto nuevo
                         for(ProductClass pt: ConstantsPurchases.productNewList){
+                            System.out.println("Creando producto: "+ pt);
                             session.beginTransaction();
                             session.save(pt);
                             session.getTransaction().commit();
-
-                            WareProductClass wp = new WareProductClass();
-                            wp.setIdProduct(pt.getIdProduct());
-                            wp.setProductByIdProduct(pt);
-                            Constant.entity = "WarehouseClass";
-                            Constant.tfCode = pt.getIdWage();
-                            FoundHQL.workerFound();
-                            wp.setIdWare(ConstantsWare.ware.getIdWarehouse());
-                            wp.setWarehouseByIdWare(ConstantsWare.ware);
-                            session.beginTransaction();
-                            session.save(wp);
-                            session.getTransaction().commit();
-
-                            ProductpriceClass pP = new ProductpriceClass();
-                            pP.setPrice(Integer.parseInt(pt.getPurchasePrice()));
-                            pP.setAmount(pt.getAmount());
-                            pP.setIdProductWare(wp.getIdWareProduct());
-                            pP.setWareProductByIdProductWare(wp);
-                            session.beginTransaction();
-                            session.save(pP);
-                            session.getTransaction().commit();
+                            WareProductClass wp = saveWareProduct(pt);
+                            saveProductPrice(pt, wp);
                         }
                     }
+
+                    //actualiza el inventario
+                    if(!ConstantsPurchases.pPriceUpdateList.isEmpty()){
+                        session.beginTransaction();
+                        for(ProductpriceClass pp: ConstantsPurchases.pPriceUpdateList){
+                            System.out.println("Actualizando precio: "+ pp.getIdPrice());
+                            session.update(pp);
+                        }
+                        session.getTransaction().commit();
+                    }
+                    if(!ConstantsPurchases.productNewWare.isEmpty()){
+                        //salva el producto con bodega nueva
+                        for(ProductClass pNewWare: ConstantsPurchases.productNewWare){
+                            System.out.println("Creando bodega: "+ pNewWare);
+                            WareProductClass wp = saveWareProduct(pNewWare);
+                            saveProductPrice(pNewWare, wp);
+                        }
+                    }
+                    if(!ConstantsPurchases.productNewPrice.isEmpty()){
+                        //salva el producto con precio nuevo
+                        for(ProductClass pNewPrice: ConstantsPurchases.productNewPrice){
+                            for(WareProductClass wp: pNewPrice.getWareProductsByIdProduct()){
+                                //Si la bodega corresponde a una registrada
+                                System.out.println("Crando precio nuevo: "+ pNewPrice);
+                                if(Objects.equals(wp.getIdWare(), pNewPrice.getIdWage())){
+                                    saveProductPrice(pNewPrice, wp);
+                                }
+                            }
+                        }
+                    }
+
                     moveInvoiceNew();
                     break;
                 case "Service":
@@ -595,6 +591,53 @@ public class SaveHQL {
          WareController.alertSend("ERROR AL SALVAR DATOS");
      }
  }
+
+    public static WareProductClass saveWareProduct(ProductClass product){
+
+        try{
+            SessionDB.session();
+            Session session = SessionDB.session().getSession();
+
+            WareProductClass wp = new WareProductClass();
+            wp.setIdProduct(product.getIdProduct());
+            wp.setProductByIdProduct(product);
+
+            Constant.entity = "WarehouseClass";
+            Constant.tfCode = product.getIdWage();
+            FoundHQL.workerFound();
+
+            wp.setIdWare(ConstantsWare.ware.getIdWarehouse());
+            wp.setWarehouseByIdWare(ConstantsWare.ware);
+
+            session.beginTransaction();
+            session.save(wp);
+            session.getTransaction().commit();
+
+            return wp;
+        }catch (Exception i) {
+            WareController.alertSend("ERROR AL SALVAR DATOS");
+            i.printStackTrace();
+            return null;
+        }
+    }
+    public static void saveProductPrice(ProductClass product, WareProductClass warehouse){
+        try{
+            SessionDB.session();
+            Session session = SessionDB.session().getSession();
+            ProductpriceClass pP = new ProductpriceClass();
+            pP.setPrice(Integer.parseInt(product.getPurchasePrice()));
+            pP.setAmount(product.getAmount());
+            pP.setIdProductWare(warehouse.getIdWareProduct());
+            pP.setWareProductByIdProductWare(warehouse);
+            session.beginTransaction();
+            session.save(pP);
+            session.getTransaction().commit();
+        }catch (Exception i){
+            WareController.alertSend("ERROR AL SALVAR DATOS");
+            i.printStackTrace();
+        }
+    }
+
 }
 
 

@@ -8,6 +8,8 @@ target/
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
+.idea/workspace.xml
+.idea/
 *.iws
 *.iml
 *.ipr
@@ -52,7 +54,6 @@ build/
 /out/
 /src/main/resources/com/forpus/jasper_report/Cotizar.jrxml
 /src/main/resources/com/forpus/jasper_report/Factura.jrxml
-/Factura.jrxml
-/.idea/artifacts/forpusLibericajar.xml
 /src/main/resources/META-INF/MANIFEST.MF
 /nbactions-release-profile.xml
+/Factura.jrxml

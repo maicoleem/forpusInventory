@@ -24,6 +24,8 @@ public class ConstantsPurchases {
     public static ArrayList<ServiceClass> serviceTableList = new ArrayList<>();
     public static ArrayList<ProductpriceClass> pPriceUpdateList = new ArrayList<>();
     public static ArrayList<WareProductClass> wareProductList = new ArrayList<>();
+    public static ArrayList<ProductClass> productNewWare = new ArrayList<>();
+    public static ArrayList<ProductClass> productNewPrice = new ArrayList<>();
     public static ArrayList<ProductClass> productNewList = new ArrayList<>();
     public static ArrayList<WareinvoiceClass> wareInvoiceList = new ArrayList<>();
     public static ArrayList<InvoiceClass> invoiceList = new ArrayList<>();

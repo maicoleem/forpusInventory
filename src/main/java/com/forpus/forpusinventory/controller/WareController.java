@@ -2,6 +2,7 @@ package com.forpus.forpusinventory.controller;
 
 import com.forpus.forpusinventory.HelloApplication;
 import com.forpus.forpusinventory.domain.services.Constant;
+import com.forpus.forpusinventory.domain.services.ConstantsAccounting;
 import com.forpus.forpusinventory.domain.services.ConstantsWare;
 import com.forpus.forpusinventory.domain.services.TableShow;
 import com.forpus.forpusinventory.persistence.Session.SessionDB;
@@ -160,6 +161,7 @@ public class WareController {
     public Label labelCostTrans;
     @FXML
     public void initialize(){
+        ConstantsAccounting.clearConstants();
         SessionDB.sessionClose();
         buttonCategory.setStyle("-fx-background-color: #F5F5F5;");
         options("buttonCategory");
@@ -457,30 +459,22 @@ public class WareController {
                         ConstantsWare.tfTwo = String.valueOf(ConstantsWare.productPrice.getPrice());
                     }
                 }
+                ServiceClass service = new ServiceClass();
+                service.setIdService(tfCode.getText());
+                service.setName(tfProduct.getText());
+                service.setPayForHour(tfBuy.getText());
+                service.setHour(tfProfit.getText());
+                service.setCost(tfCost.getText());
 
-                //bodega
-                idValorComboBox(comboBoxTwo.getValue(), "WarehouseClass");
+                idValorComboBox(comboBoxWage.getValue(), "WarehouseClass");
                 if (ConstantsWare.ware != null) {
-                    ConstantsWare.tfWare = String.valueOf(ConstantsWare.ware.getIdWarehouse());
+                    service.setIdWare(ConstantsWare.ware.getIdWarehouse());
+                    service.setWarehouseByIdWare(ConstantsWare.ware);
                 }
-
                 Constant.entity = "ServiceClass";
-                //codigo
-                Constant.tfCode = tfCode.getText();
-                //nombre
-                Constant.tfName = tfProduct.getText();
-                //profit
-                ConstantsWare.tfProfit = tfConsumed.getText();
-                //cantidad-------
-                //ConstantsWare.tf10th = tfThreeCategory1.getText();
-                //salary
-                ConstantsWare.tfBuy = tfBuy.getText();
-                //contenido-------
-                //ConstantsWare.tfSale = tfSale.getText();
-                //horas
-                ConstantsWare.tfThree = tfProfit.getText();
-                //costo
-                ConstantsWare.tfCost = tfCost.getText();
+                service.setProfit(tfConsumed.getText());
+                service.setOff("0");
+                ConstantsWare.service = service;
 
                 //Crea lista de objetos service_product
                 ConstantsWare.sPListArray.clear();
@@ -501,7 +495,6 @@ public class WareController {
                         ConstantsWare.sPListArray.add(sP);
                     }
                     Constant.entity = "ServiceClass";
-
                 }
                 break;
             case "Transmute":
@@ -841,6 +834,12 @@ public class WareController {
         }
     }
     //botones de arriba, para dar formato al view
+
+    /**
+     * Define que muestra en la view de Warehouse
+     * @param option
+     *          define el boton del menu que se cliquea en la view
+     */
     protected void options(String option) {
         try{
         clean();
@@ -1403,7 +1402,8 @@ public class WareController {
             comboBoxWage.getItems().addAll(listProduct);
 
             Constant.entity = "ProductClass";
-        } else {
+        }
+        else {
             System.out.println("transmutar falta el combobox");
             Constant.entity = "ProductClass";
             SearchHQL.searchHQL();
@@ -1658,22 +1658,26 @@ public class WareController {
         alertMassage.show();
     }
     @FXML //solo numeros
+    /**
+     * Si Constant.entity no contiene "Categor", no permite escribir letras
+     * Esto es para tfThreeCategory
+     * **/
     private void isNumber (KeyEvent keyEvent){
-        TextField tf = (TextField) keyEvent.getSource();
-        System.out.println(tfCost.getText());
-        int a = Character.getNumericValue(keyEvent.getCharacter().charAt(0));
-        if (!Character.isDigit(keyEvent.getCharacter().charAt(0))) {
-            keyEvent.consume();
-            if (!tf.getText().isEmpty() && a > 9 || Character.isSpaceChar(keyEvent.getCharacter().charAt(0))) {
-                tf.deleteText(tf.getText().length() - 1, tf.getText().length());
+        if(!Constant.entity.contains("Categor")){
+            TextField tf = (TextField) keyEvent.getSource();
+            int a = Character.getNumericValue(keyEvent.getCharacter().charAt(0));
+            if (!Character.isDigit(keyEvent.getCharacter().charAt(0))) {
+                keyEvent.consume();
+                if (!tf.getText().isEmpty() && a > 9 || Character.isSpaceChar(keyEvent.getCharacter().charAt(0))) {
+                    tf.deleteText(tf.getText().length() - 1, tf.getText().length());
+                }
             }
-        }
-
-        if (Objects.equals(Constant.entity, "ProductClass") && !tfProfit.getText().isEmpty() && tfBuy.getText().length() > 1) {
-            Integer p = Integer.valueOf(tfProfit.getText());
-            int b = Integer.parseInt(tfBuy.getText());
-            int v = b + ((b * p) / 100);
-            labelProfitSale.setText(String.valueOf(v));
+            if (Objects.equals(Constant.entity, "ProductClass") && !tfProfit.getText().isEmpty() && tfBuy.getText().length() > 1) {
+                Integer p = Integer.valueOf(tfProfit.getText());
+                int b = Integer.parseInt(tfBuy.getText());
+                int v = b + ((b * p) / 100);
+                labelProfitSale.setText(String.valueOf(v));
+            }
         }
 
     }

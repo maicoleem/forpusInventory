@@ -9,8 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Ahora se puede cargar base de datos desde linux on jdbc">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="fc436f6a-0dcd-4c4e-8814-39ea22523c3d" name="Changes" comment="Ventas&#10;Se registra la venta de servicios con exito - falta revisar con deuda.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SalesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SalesController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +29,26 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="loro &lt;maicoleem@gmail.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;maicoleem&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="e540ca45-3697-4212-9fd8-34a091683e2a" />
+        <option name="url" value="git@github.com:maicoleem/forpusInventory.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="JpbToolWindowState">
     <option name="isToolWindowVisible" value="false" />
@@ -36,17 +56,16 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="workspaceImportEnabled" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
   <component name="MigrationScriptOptions">
     <option name="ignoreImplicitObjects" value="true" />
     <option name="ignoreSourceCode" value="false" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2KVzOwgdpcMq5qg2qhMhQygzXz1" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -65,6 +84,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;import_schema_mapping&quot;: &quot;&lt;schema-mapping&gt;\n  &lt;databases&gt;\n    &lt;list&gt;\n      &lt;schema-mapping-item&gt;\n        &lt;source-data-source-id&gt;d160867a-a828-41a2-9bb2-b2de3721b983&lt;/source-data-source-id&gt;\n        &lt;source-path&gt;schema/&amp;quot;inventoryaccounting&amp;quot;&lt;/source-path&gt;\n        &lt;target-data-source-id&gt;d160867a-a828-41a2-9bb2-b2de3721b983&lt;/target-data-source-id&gt;\n        &lt;target-path&gt;schema/&amp;quot;inventoryaccounting&amp;quot;&lt;/target-path&gt;\n      &lt;/schema-mapping-item&gt;\n    &lt;/list&gt;\n  &lt;/databases&gt;\n&lt;/schema-mapping&gt;&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;11&quot;,
     &quot;last_directory_selection&quot;: &quot;C:/Users/Teemo/OneDrive/java/proyecto1/forpus_inventory/src/main/java/com/forpus/forpus_inventory&quot;,
@@ -287,6 +307,25 @@
       <workItem from="1691349208957" duration="1138000" />
       <workItem from="1692665793453" duration="2089000" />
       <workItem from="1693463707435" duration="680000" />
+      <workItem from="1698796104772" duration="1826000" />
+      <workItem from="1698804808650" duration="602000" />
+      <workItem from="1698881125740" duration="1804000" />
+      <workItem from="1698976890676" duration="1081000" />
+      <workItem from="1699233084252" duration="1060000" />
+      <workItem from="1699322219850" duration="1453000" />
+      <workItem from="1699807201144" duration="993000" />
+      <workItem from="1699808352163" duration="5020000" />
+      <workItem from="1699911903257" duration="7156000" />
+      <workItem from="1700008123690" duration="8772000" />
+      <workItem from="1701631435197" duration="712000" />
+      <workItem from="1701819505260" duration="1817000" />
+      <workItem from="1702133940502" duration="739000" />
+      <workItem from="1702174525974" duration="5570000" />
+      <workItem from="1702252483060" duration="2630000" />
+      <workItem from="1702344537579" duration="669000" />
+      <workItem from="1703821216533" duration="4730000" />
+      <workItem from="1704060084429" duration="10037000" />
+      <workItem from="1704218169319" duration="1867000" />
     </task>
     <task id="LOCAL-00039" summary="-Se debe de seguir planteando la contabilidad&#10;&#10;**Se realizo el backend de servicios.">
       <created>1680657058186</created>
@@ -631,7 +670,7 @@
       <option name="project" value="LOCAL" />
       <updated>1689219370409</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <option name="localTasksCounter" value="101" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -649,19 +688,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Quedan el reporte de la factura listo.&#10;&#10;Las importaciones de datos borran las tablas cuidado** &#10;&#10;La importación de productos crea las bodegas y los precios de compra&#10;&#10;queda pendiente arreglar los formatos de excel para la importación de datos y las pruebas&#10;&#10;--queda pendiente la modificación de los botones de registrar, cotizar y facturar en ventas y compras" />
-    <MESSAGE value="Las importaciones de datos borran las tablas cuidado** &#10;&#10;La importación de productos crea las bodegas y los precios de compra&#10;&#10;Formatos de excel listos&#10;&#10;se modificaron los botones de registrar, cotizar y facturar en SalesController&#10;&#10;Falta probar los formatos de excel&#10;&#10;Falta revisar el funcionamiento - entrando en etapa alpha" />
-    <MESSAGE value="Se modifico los colores de los botones que estan activos.&#10;&#10;Falta probar los formatos de excel&#10;&#10;Falta revisar el funcionamiento - entrando en etapa alpha" />
-    <MESSAGE value="1-Eliminar todos los datos OK&#10;2-Subir datos de excel OK" />
-    <MESSAGE value="Se esta revizando el funcionamiento del registro de una venta." />
-    <MESSAGE value="+ Se correge el bold que no vaya a taxes(agregar bold a invoice)&#10;+ ahora se puede dar la opción de cero de iva y bold&#10;-Revizar las ventas no cuadran los movimientos de inventario&#10;-Revizar el pago de deudas para la gestion del bold" />
-    <MESSAGE value="+se corrigio el problema de venta de inventario, ahora al vender se registra correctamente el cambio de cantidad de los productos en el inventario&#10;-Revizar el pago de deudas para la gestion del bold" />
-    <MESSAGE value="EL PRODUCTO QUEDO TERMINADO EN CUANTO A FUNCIONAMIENTO, SE ESPERA REVISIÓN Y CORRECÓN DE FALLOS." />
-    <MESSAGE value="SE CONFIGURA EL MANEJO DE ERRORES EN LA TRANSMUTACION DE PRODUCTOS" />
-    <MESSAGE value="Se crea el boton para restablecer la base de datos" />
-    <MESSAGE value="Se agrego logo de la empresa en la pantalla de inicio&#10;+Cuando se presiona enter se inicia sesión&#10;+se incluye try-catch para cuando no se selecciona un sql" />
-    <MESSAGE value="Se modifico el JDK ahora es de https://bell-sw.com/pages/downloads/ que permite crear el file.jar con javaFX {structure project -&gt; artifact -&gt; jar -&gt; from modules with dependency}." />
-    <MESSAGE value="se modifico el path de lso reportes String reportPath = &quot;src/main/resources/com/forpus/jasper_report/Cotizar.jrxml&quot;;&#10;&#10;se continua con el manejo de errores" />
     <MESSAGE value="MANEJO DE ERRORES DE DataBase.java LISTO." />
     <MESSAGE value="SE COMPLETO EL MANEJO DE ERRORES DE LAS CLASES QUE INTERVIENEN CON LA BASE DE DATOS" />
     <MESSAGE value="MANEJO DE ERRORES:&#10;SettingController OK&#10;SearchController OK&#10;WareController -&#10;AccountingController -&#10;FinanceController -&#10;HelloController -&#10;PurchasesControles -&#10;SalesController -&#10;&#10;BUILD ARTIFACT: &#10;crear .jar&#10;crear icono&#10;crear exe" />
@@ -674,7 +700,20 @@
     <MESSAGE value="Se modificó la view de compras con una tabla para buscar productos y un label con el saldo disponible" />
     <MESSAGE value="Se modifico la view de ventas y se verifico compra de productos, productos nuevos y venta de productos con exito.&#10;Se corrigio el error de pago de deuda por parte de los clientes." />
     <MESSAGE value="Se corrigio error en creditos." />
-    <option name="LAST_COMMIT_MESSAGE" value="Se corrigio error en creditos." />
+    <MESSAGE value="Se modifico WareController para que tfThreeCategory pueda contener letras" />
+    <MESSAGE value="Actuializar dinero en caja y banco&#10;Ocultar categorias para producto existente y las muestra para nuevo producto" />
+    <MESSAGE value="IVA and BOLD&#10;Se agrega break que causaba error para guardar un valor nuevo en impuestos" />
+    <MESSAGE value="BOLD&#10;Se agrego el valor de Bold a la invoice de la compra" />
+    <MESSAGE value="PURCHASES&#10;Ahora guarda el descuento" />
+    <MESSAGE value="PURCHASES&#10;Error de bodega corregido al registrar producto, suprimir y cambiar de modulo" />
+    <MESSAGE value="Purchases&#10;Se corrige error de crear mas bodegas y productprices, se establece variable para romper los bucles for.&#10;falta verificar funcionalidad." />
+    <MESSAGE value="Purchases&#10;Ahora al escribirmal el codigo del producto y darle OK sale un mensaje de alerta" />
+    <MESSAGE value="Purchases&#10;Se corrige error para guardar la categoria 3 del producto nuevo" />
+    <MESSAGE value="MoveInvocie&#10;The number of character was changed so that the date can be saved" />
+    <MESSAGE value="Purchases Services&#10;add column in ServiceClass for off;&#10;now the method checkinInvoice save services" />
+    <MESSAGE value="Guardar servicios&#10;Ahora los servicios quedan guardados con bodega para poder generar la venta de servicios" />
+    <MESSAGE value="Ventas&#10;Se registra la venta de servicios con exito - falta revisar con deuda." />
+    <option name="LAST_COMMIT_MESSAGE" value="Ventas&#10;Se registra la venta de servicios con exito - falta revisar con deuda." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -719,6 +758,58 @@
           <properties class="java.io.IOException" package="java.io" />
           <option name="timeStamp" value="25" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/PurchasesController.java</url>
+          <line>948</line>
+          <properties class="com.forpus.forpusinventory.controller.PurchasesController" method="tableLoad">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/WareController.java</url>
+          <line>842</line>
+          <properties class="com.forpus.forpusinventory.controller.WareController" method="options">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/WareController.java</url>
+          <line>1643</line>
+          <properties class="com.forpus.forpusinventory.controller.WareController" method="idValorComboBox">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/PurchasesController.java</url>
+          <line>965</line>
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SaveHQL.java</url>
+          <line>233</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/WareController.java</url>
+          <line>1355</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/WareController.java</url>
+          <line>843</line>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/WareController.java</url>
+          <line>465</line>
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

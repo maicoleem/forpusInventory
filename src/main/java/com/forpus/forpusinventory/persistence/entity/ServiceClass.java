@@ -23,11 +23,14 @@ public class ServiceClass {
     @Column(name = "cost", nullable = true, length = 20)
     private String cost;
     @Basic
-    @Column(name = "id_ware", insertable = false, updatable = false, nullable = true, length = 6)
+    @Column(name = "id_ware", insertable = false, updatable = false ,nullable = true, length = 6)
     private String idWare;
     @Basic
-    @Column(name = "profit", insertable = false, updatable = false, nullable = false, length = 6)
+    @Column(name = "profit", nullable = true, length = 6)
     private String profit;
+    @Basic
+    @Column(name = "off", nullable = true, length = 20)
+    private String off;
     @ManyToOne
     @JoinColumn(name = "id_ware", referencedColumnName = "id_warehouse")
     private WarehouseClass warehouseByIdWare;
@@ -90,17 +93,24 @@ public class ServiceClass {
         this.profit = profit;
     }
 
+    public String getOff() {
+        return off;
+    }
+    public void setOff(String off) {
+        this.off = off;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ServiceClass that = (ServiceClass) o;
-        return Objects.equals(idService, that.idService) && Objects.equals(name, that.name) && Objects.equals(payForHour, that.payForHour) && Objects.equals(hour, that.hour) && Objects.equals(cost, that.cost) && Objects.equals(idWare, that.idWare) && Objects.equals(profit, that.profit);
+        return Objects.equals(idService, that.idService) && Objects.equals(name, that.name) && Objects.equals(payForHour, that.payForHour) && Objects.equals(hour, that.hour) && Objects.equals(cost, that.cost) && Objects.equals(idWare, that.idWare) && Objects.equals(profit, that.profit) && Objects.equals(off, that.off);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idService, name, payForHour, hour, cost, idWare, profit);
+        return Objects.hash(idService, name, payForHour, hour, cost, idWare, profit, off);
     }
 
     public WarehouseClass getWarehouseByIdWare() {
