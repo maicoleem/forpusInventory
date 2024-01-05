@@ -531,7 +531,7 @@ public class DataBase {
         String password = properties.getProperty("clave");
         String databaseName = properties.getProperty("name");
 
-        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/", username, password);
+        try (Connection connection = DriverManager.getConnection("jdbc:mariadb://localhost/", username, password);
              Statement statement = connection.createStatement()) {
             // Crea la base de datos
             statement.executeUpdate("CREATE DATABASE IF NOT EXISTS " + databaseName);
@@ -566,7 +566,7 @@ public class DataBase {
     public static boolean linuxDBRestore(String path){
 
         Properties properties = properties();
-        String jdbcURL = "jdbc:mysql://localhost:3306/" + properties.getProperty("name");;
+        String jdbcURL = "jdbc:mariadb://localhost:3306/" + properties.getProperty("name");;
         String username = properties.getProperty("user");
         String password = properties.getProperty("clave");
 
