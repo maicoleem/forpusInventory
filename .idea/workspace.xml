@@ -9,9 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c100c21c-3a8a-4617-abcb-404f11b4d22d" name="Changes" comment="Ventas&#10;total label shows the amount to be paid">
+    <list default="true" id="c100c21c-3a8a-4617-abcb-404f11b4d22d" name="Changes" comment="Upload sql file&#10;se corrige la url del jdbc">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/DataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/properties.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/properties.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +90,7 @@
     "git-widget-placeholder": "main",
     "import_schema_mapping": "<schema-mapping>\n  <databases>\n    <list>\n      <schema-mapping-item>\n        <source-data-source-id>d160867a-a828-41a2-9bb2-b2de3721b983</source-data-source-id>\n        <source-path>schema/&quot;inventoryaccounting&quot;</source-path>\n        <target-data-source-id>d160867a-a828-41a2-9bb2-b2de3721b983</target-data-source-id>\n        <target-path>schema/&quot;inventoryaccounting&quot;</target-path>\n      </schema-mapping-item>\n    </list>\n  </databases>\n</schema-mapping>",
     "jdk.selected.JAVA_MODULE": "11",
+    "kotlin-language-version-configured": "true",
     "last_directory_selection": "C:/Users/Teemo/OneDrive/java/proyecto1/forpus_inventory/src/main/java/com/forpus/forpus_inventory",
     "last_opened_file_path": "C:/Program Files/Java/javafx-sdk-19.0.2.1/bin/vcruntime140_1.dll",
     "list.type.of.created.stylesheet": "CSS",
@@ -166,6 +169,13 @@
         <item itemvalue="JAR Application.forpusjar.jar" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-11.0.21-corretto-11.0.21-f644763e9732-a9dfd5e7" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -329,6 +339,7 @@
       <workItem from="1704218169319" duration="1867000" />
       <workItem from="1704357156416" duration="1826000" />
       <workItem from="1704359226302" duration="692000" />
+      <workItem from="1704462624089" duration="2095000" />
     </task>
     <task id="LOCAL-00040" summary="**Se esta editando la view para pagar los creditos&#10;&#10;--falta funcionalidad">
       <created>1680666485383</created>
@@ -673,7 +684,7 @@
       <option name="project" value="LOCAL" />
       <updated>1704354150817</updated>
     </task>
-    <option name="localTasksCounter" value="102" />
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -691,7 +702,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="MANEJO DE ERRORES:&#10;SettingController OK&#10;SearchController OK&#10;WareController -&#10;AccountingController -&#10;FinanceController -&#10;HelloController -&#10;PurchasesControles -&#10;SalesController -&#10;&#10;BUILD ARTIFACT: &#10;crear .jar&#10;crear icono&#10;crear exe" />
     <MESSAGE value="MANEJO DE ERRORES:&#10;SettingController OK&#10;SearchController OK&#10;WareController OK&#10;AccountingController -&#10;FinanceController -&#10;HelloController -&#10;PurchasesControles OK&#10;SalesController OK&#10;&#10;BUILD ARTIFACT: &#10;crear .jar&#10;crear icono&#10;crear exe" />
     <MESSAGE value="MANEJO DE ERRORES:&#10;SettingController OK&#10;SearchController OK&#10;WareController OK&#10;AccountingController OK&#10;FinanceController OK&#10;HelloController OK&#10;PurchasesControles OK&#10;SalesController OK&#10;&#10;BUILD ARTIFACT: &#10;crear .jar&#10;crear icono&#10;crear exe" />
     <MESSAGE value="SE MODIFICO LAS GRAFICAS DE VENTAS Y COMPRAS PARA SEPARAR POR AÑOS&#10;&#10;BUILD ARTIFACT: &#10;crear .jar&#10;crear icono&#10;crear exe" />
@@ -716,7 +726,8 @@
     <MESSAGE value="Ventas&#10;Se registra la venta de servicios con exito - falta revisar con deuda." />
     <MESSAGE value="Windows&#10;Commit" />
     <MESSAGE value="Ventas&#10;total label shows the amount to be paid" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ventas&#10;total label shows the amount to be paid" />
+    <MESSAGE value="Upload sql file&#10;se corrige la url del jdbc" />
+    <option name="LAST_COMMIT_MESSAGE" value="Upload sql file&#10;se corrige la url del jdbc" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

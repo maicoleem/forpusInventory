@@ -76,7 +76,6 @@ public class DataBase {
                 return false;
             }
         } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
             WareController.alertSend("ERROR EN DESCARGAR EL BACKUP");
             return false;
         }
@@ -163,7 +162,6 @@ public class DataBase {
                 } catch (NoSuchFieldException | IllegalAccessException e) {
                     if(error == 1) {
                         WareController.alertSend("ERROR EN EL TIPO DE DATO");
-                        e.printStackTrace();
                     }
                     error = error +1;
                 }
@@ -180,7 +178,6 @@ public class DataBase {
             workbook.write(outputStream);
 
         } catch (IOException e) {
-            e.printStackTrace();
             WareController.alertSend("ERROR AL GUARDAR EL LIBRO");
         }
         return true;
@@ -215,7 +212,6 @@ public class DataBase {
                 SessionDB.sessionClose();
             }
         }catch (Exception i){
-            i.printStackTrace();
             WareController.alertSend("ERROR AL CONECTAR CON LA BASE DE DATOS");
         }
         SessionDB.session();
@@ -279,7 +275,6 @@ public class DataBase {
                         }catch (Exception f){
                             if(erroImport == 1){
                                 WareController.alertSend("ERROR EN EL TIPO DE DATOS EN EL ARCHIVO " + f);
-                                f.printStackTrace();
                                 erroImport = erroImport + 1;
                             }
                         }
@@ -328,7 +323,6 @@ public class DataBase {
             return true;
         } catch (IOException | IllegalAccessException | InstantiationException | NoSuchFieldException e) {
             WareController.alertSend( e.toString() + " PRODUCTOS NO AGREGADOS");
-            e.printStackTrace();
             return false;
         }
     }
@@ -380,7 +374,6 @@ public class DataBase {
             session.getTransaction().commit();
         }catch (Exception i){
             WareController.alertSend("Error en creación de bodegas y precios de productos");
-            i.printStackTrace();
         }
         Constant.entity = entity;
 
@@ -395,7 +388,6 @@ public class DataBase {
                 }
             }catch (Exception i){
                 WareController.alertSend("ERROR AL CONECTAR CON LA BASE DE DATOS");
-                i.printStackTrace();
             }
             SessionDB.session();
             Session session = SessionDB.sessionHibernate;
@@ -453,7 +445,6 @@ public class DataBase {
             return true;
         } catch (Exception e) {
             WareController.alertSend("ERROR AL BORRAR LOS DATOS");
-            e.printStackTrace();
             return false;
 
         }
@@ -469,49 +460,26 @@ public class DataBase {
 
             String path = FinanceController.escaparCaracteres(selectedFile.getPath());
 
-            createDatabase();
+            //condicional para crear la base de datos
+            if(createDatabase()){
+                String os = System.getProperty("os.name").toLowerCase();
 
-            String os = System.getProperty("os.name").toLowerCase();
-
-
-            if (os.contains("win")) {
-                // Código para Windows
-                winDBRestore(path);
-            } else if (os.contains("nix") || os.contains("nux") || os.contains("mac")) {
-                // Código para Linux o macOS
-                linuxDBRestore(path);
-            } else {
-                throw new UnsupportedOperationException("Sistema operativo no compatible");
+                //dependiendo del sistema operativo
+                if (os.contains("win")) {
+                    // Código para Windows
+                    winDBRestore(path);
+                } else if (os.contains("nix") || os.contains("nux") || os.contains("mac")) {
+                    // Código para Linux o macOS
+                    linuxDBRestore(path);
+                } else {
+                    throw new UnsupportedOperationException("Sistema operativo no compatible");
+                }
+                return true;
+            }else {
+                return false;
             }
-            System.out.println(path);
-            /*
-            Properties properties = properties();
-            String executeCmd = "mysql -u " + properties.getProperty("user") + " -p" + properties.getProperty("clave") + " " + properties.getProperty("name");
-        try {
-
-            Process runtimeProcess = Runtime.getRuntime().exec(executeCmd);
-            OutputStream os = runtimeProcess.getOutputStream();
-            FileInputStream fis = new FileInputStream(path);
-             byte[] buffer = new byte[1000];
-             int leido = fis.read(buffer);
-             while (leido>0){
-                 os.write(buffer, 0, leido);
-                 leido = fis.read(buffer);
-             }
-             os.flush();
-             os.close();
-             fis.close();
-        return true;
-        } catch (IOException e) {
-            e.printStackTrace();
-            WareController.alertSend(String.valueOf(e));
-            return false;
-        }
-            */
-            return true;
         }catch (Exception i){
-            WareController.alertSend("ERROR AL INSTALAR BASE DE DATOS" + i);
-            i.printStackTrace();
+            WareController.alertSend("ERROR AL CARGAR BASE DE DATOS");
             return false;
         }
     }
@@ -525,22 +493,23 @@ public class DataBase {
         }
         return properties;
     }
-    public static void createDatabase() {
+    public static boolean createDatabase() {
         Properties properties = properties();
         String username = properties.getProperty("user");
         String password = properties.getProperty("clave");
         String databaseName = properties.getProperty("name");
-
-        try (Connection connection = DriverManager.getConnection("jdbc:mariadb://localhost/", username, password);
+        String url = properties.getProperty("url");
+        try (Connection connection = DriverManager.getConnection(url, username, password);
              Statement statement = connection.createStatement()) {
             // Crea la base de datos
             statement.executeUpdate("CREATE DATABASE IF NOT EXISTS " + databaseName);
+            return true;
         } catch (SQLException e) {
-            WareController.alertSend(e.toString());
-            WareController.alertSend("Error createDAtaBase: "+ e);
+            WareController.alertSend("Error createDataBase");
+            return false;
         }
     }
-    public static boolean winDBRestore(String path){
+    public static void winDBRestore(String path){
         Properties properties = properties();
         String executeCmd = "mysql -u " + properties.getProperty("user") + " -p" + properties.getProperty("clave") + " " +properties.getProperty("name");
         try {
@@ -556,17 +525,14 @@ public class DataBase {
             os.flush();
             os.close();
             fis.close();
-            return true;
         } catch (IOException e) {
-            e.printStackTrace();
-            WareController.alertSend(String.valueOf(e));
-            return false;
+            WareController.alertSend("Error Cargando Datos");
         }
     }
-    public static boolean linuxDBRestore(String path){
+    public static void linuxDBRestore(String path){
 
         Properties properties = properties();
-        String jdbcURL = "jdbc:mariadb://localhost:3306/" + properties.getProperty("name");;
+        String jdbcURL = properties.getProperty("url") + properties.getProperty("name");;
         String username = properties.getProperty("user");
         String password = properties.getProperty("clave");
 
@@ -600,10 +566,8 @@ public class DataBase {
             statement.close();
             connection.close();
 
-            return true;
         } catch (Exception e) {
-            e.printStackTrace();
-            return false;
+            WareController.alertSend("Error Cargando Datos");
         }
     }
 }
