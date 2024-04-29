@@ -13,6 +13,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/FinanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/FinanceController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/ConstantsFinance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/ConstantsFinance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpusinventory/finance-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpusinventory/finance-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +182,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-11.0.21-corretto-11.0.21-f644763e9732-a9dfd5e7" />
+        <option value="jdk-11.0.21-corretto-11.0.21-3183f394aec4-585ed96d" />
       </set>
     </attachedChunks>
   </component>
@@ -797,58 +798,6 @@
           <properties class="java.io.IOException" package="java.io" />
           <option name="timeStamp" value="25" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/PurchasesController.java</url>
-          <line>949</line>
-          <properties class="com.forpus.forpusinventory.controller.PurchasesController" method="tableLoad">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/WareController.java</url>
-          <line>844</line>
-          <properties class="com.forpus.forpusinventory.controller.WareController" method="options">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="54" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/WareController.java</url>
-          <line>1645</line>
-          <properties class="com.forpus.forpusinventory.controller.WareController" method="idValorComboBox">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="56" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/PurchasesController.java</url>
-          <line>966</line>
-          <option name="timeStamp" value="47" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SaveHQL.java</url>
-          <line>233</line>
-          <option name="timeStamp" value="49" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/WareController.java</url>
-          <line>1357</line>
-          <option name="timeStamp" value="51" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/WareController.java</url>
-          <line>845</line>
-          <option name="timeStamp" value="52" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/WareController.java</url>
-          <line>467</line>
-          <option name="timeStamp" value="58" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

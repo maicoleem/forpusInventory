@@ -298,7 +298,7 @@
             </Button>
          </children>
       </Pane>
-      <Pane id="panelBalance" fx:id="panelBalance" layoutX="77.0" layoutY="77.0" prefHeight="611.0" prefWidth="1212.0">
+      <Pane id="panelBalance" fx:id="panelBalance" layoutX="76.0" layoutY="76.0" prefHeight="611.0" prefWidth="1212.0" visible="false">
          <children>
             <DatePicker id="dateInit" fx:id="dateInit" layoutX="46.0" layoutY="26.0" prefHeight="25.0" prefWidth="112.0" />
             <DatePicker id="dateEnd" fx:id="dateEnd" layoutX="203.0" layoutY="26.0" prefHeight="25.0" prefWidth="112.0" />
@@ -427,7 +427,7 @@
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="550.0" layoutY="170.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Impuestos">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="550.0" layoutY="170.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="BOLD">
                <font>
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
@@ -437,7 +437,7 @@
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="550.0" layoutY="270.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Otros">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="550.0" layoutY="270.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="IVA x pagar">
                <font>
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
@@ -475,6 +475,26 @@
             <Label id="labelEquity" fx:id="labelEquity" alignment="CENTER" contentDisplay="CENTER" layoutX="683.0" layoutY="320.0" prefHeight="40.0" prefWidth="228.0" styleClass="labelGrey" text="0">
                <font>
                   <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="440.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="imp. compra">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label id="labelTaxexBuy" fx:id="labelTaxesBuy" alignment="CENTER" contentDisplay="CENTER" layoutX="230.0" layoutY="440.0" prefHeight="40.0" prefWidth="228.0" styleClass="labelGrey" text="0">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label id="labelWithheldTaxes" fx:id="labelWithheldTaxes" alignment="CENTER" contentDisplay="CENTER" layoutX="230.0" layoutY="490.0" prefHeight="40.0" prefWidth="228.0" styleClass="labelGrey" text="0">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="490.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="BOLD">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
          </children></Pane>

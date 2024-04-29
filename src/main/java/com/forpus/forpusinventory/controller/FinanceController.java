@@ -64,6 +64,7 @@ public class FinanceController {
     public Pane panelReceivable;
     public Button buttonFinances;
     public Button buttonGraphics;
+    public Button buttonBalance;
     public Button buttonDB;
     public Pane panelProducts;
     public Pane panelBalance;
@@ -78,9 +79,11 @@ public class FinanceController {
     public Label labelOCosts;
     public Label labelDepreciation;
     public Label labelState;
+    public Label labelWithheldTaxes;
     public Label labelLiabilities;
     public Label labelPayable;
     public Label labelTaxes;
+    public Label labelTaxesBuy;
     public Label labelServices;
     public Label labelOthers;
     public Label labelEquity;
@@ -420,6 +423,7 @@ public class FinanceController {
                 buttonDB.setStyle("-fx-background-color: #F5F5F5;");
                 break;
             case "buttonBalance":
+                buttonBalance.setStyle("-fx-background-color: #F5F5F5;");
                 panelBalance.setVisible(a);
                 break;
         }
@@ -443,6 +447,7 @@ public class FinanceController {
         buttonFinances.setStyle("-fx-background-color: #1BA1E2;");
         buttonGraphics.setStyle("-fx-background-color: #1BA1E2;");
         buttonDB.setStyle("-fx-background-color: #1BA1E2;");
+        buttonBalance.setStyle("-fx-background-color: #1BA1E2;");
         }catch (Exception i){
             i.printStackTrace();
         }
@@ -607,6 +612,8 @@ public class FinanceController {
             labelOCosts.setText(String.valueOf(ConstantsFinance.operation));
             labelDepreciation.setText(String.valueOf(0));
             labelState.setText(String.valueOf(0));
+            labelTaxesBuy.setText(String.valueOf(ConstantsFinance.taxesBuy));
+            labelWithheldTaxes.setText(String.valueOf(ConstantsFinance.taxes));
 
             labelLiabilities.setText(String.valueOf(ConstantsFinance.liabilities));
             labelPayable.setText(String.valueOf(ConstantsFinance.payable));

@@ -20,6 +20,7 @@ public class ConstantsFinance {
     public static int assets = 0;
     public static int liabilities = 0;
     public static  int equity = 0;
+    public static int taxesBuy = 0;
     public static boolean searchInvoice(Date begin, Date end){
         dateBegin = begin;
         dateFinish = end;
@@ -35,6 +36,7 @@ public class ConstantsFinance {
         assets = 0;
         liabilities = 0;
         equity = 0;
+        taxesBuy = 0;
 
         if(SearchHQL.invoiceEntity("Date")){
             for (InvoiceClass invoice : ConstantsPurchases.invoiceList) {
@@ -50,22 +52,19 @@ public class ConstantsFinance {
                     bank = bank - Integer.parseInt(invoice.getBank());
                     operation = operation + Integer.parseInt(invoice.getTotal()) - Integer.parseInt(invoice.getTaxes()) - Integer.parseInt(invoice.getBold());
                     payable = payable + invoice.getIdBill();
-                    taxes = taxes + Integer.parseInt(invoice.getTaxes()) + Integer.parseInt(invoice.getBold());
+                    taxesBuy = taxesBuy + Integer.parseInt(invoice.getTaxes()) + Integer.parseInt(invoice.getBold());
                 }
                 //SALES
                 if(invoice.getIdCustomer() != null){
                     cash = cash + Integer.parseInt(invoice.getCash());
                     bank = bank + Integer.parseInt(invoice.getBank());
-
                     operation = operation - Integer.parseInt(invoice.getTotal()) + Integer.parseInt(invoice.getTaxes()) + Integer.parseInt(invoice.getBold()) + Integer.parseInt(invoice.getUtilities());
                     receivable = receivable + invoice.getIdBill();
                     taxes = taxes + Integer.parseInt(invoice.getBold());
-
                     others = others + Integer.parseInt(invoice.getTaxes());
-
-                    utilities = utilities + Integer.parseInt(invoice.getUtilities()) - Integer.parseInt(invoice.getRUtilities());
+                    utilities = utilities + Integer.parseInt(invoice.getUtilities());
                 }
-                assets = receivable + cash + bank + operation;
+                assets = receivable + cash + bank + operation + taxesBuy + taxes;
                 liabilities = payable + taxes + others;
                 equity = contributions + utilities;
             }
