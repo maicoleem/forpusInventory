@@ -72,6 +72,23 @@ public class FinanceController {
     public Pane panelFinance;
     public Button buttonExport;
     public Label labelRuta;
+    public Label labelCash;
+    public Label labelBank;
+    public Label labelReceivable;
+    public Label labelOCosts;
+    public Label labelDepreciation;
+    public Label labelState;
+    public Label labelLiabilities;
+    public Label labelPayable;
+    public Label labelTaxes;
+    public Label labelServices;
+    public Label labelOthers;
+    public Label labelEquity;
+    public Label labelContributions;
+    public Label labelUtilities;
+    public Label labelStatesEquity;
+    public Label labelDepretiationEquity;
+    public Label labelAssets;
     public Pane panelDB;
     public Button buttonBackUp;
     public Button buttonRestore;
@@ -582,6 +599,27 @@ public class FinanceController {
         dateFinished = dateEnd.getValue();
         Date init = Date.from(dateStart.atStartOfDay(ZoneId.systemDefault()).toInstant());
         Date end = Date.from(dateFinished.atStartOfDay(ZoneId.systemDefault()).toInstant());
-        ConstantsFinance.searchInvoice(init, end);
+        if(ConstantsFinance.searchInvoice(init, end)){
+            labelAssets.setText(String.valueOf(ConstantsFinance.assets));
+            labelCash.setText(String.valueOf(ConstantsFinance.cash));
+            labelBank.setText(String.valueOf(ConstantsFinance.bank));
+            labelReceivable.setText(String.valueOf(ConstantsFinance.receivable));
+            labelOCosts.setText(String.valueOf(ConstantsFinance.operation));
+            labelDepreciation.setText(String.valueOf(0));
+            labelState.setText(String.valueOf(0));
+
+            labelLiabilities.setText(String.valueOf(ConstantsFinance.liabilities));
+            labelPayable.setText(String.valueOf(ConstantsFinance.payable));
+            labelTaxes.setText(String.valueOf(ConstantsFinance.taxes));
+            labelServices.setText(String.valueOf(0));
+            labelOthers.setText(String.valueOf(ConstantsFinance.others));
+
+            labelEquity.setText(String.valueOf(ConstantsFinance.equity));
+            labelContributions.setText(String.valueOf(ConstantsFinance.contributions));
+            labelUtilities.setText(String.valueOf(ConstantsFinance.utilities));
+            labelStatesEquity.setText(String.valueOf(0));
+            labelDepreciation.setText(String.valueOf(0));
+        }
     }
 }
+

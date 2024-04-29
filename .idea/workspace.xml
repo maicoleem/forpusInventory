@@ -9,21 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c100c21c-3a8a-4617-abcb-404f11b4d22d" name="Changes" comment="the tables of AssetsEntity.java, LiabilitiesEntity.java and EquityEntity.java are created.">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+    <list default="true" id="c100c21c-3a8a-4617-abcb-404f11b4d22d" name="Changes" comment="now the entity InvoiceClass has a date format in its date colum,the programming to generate the balance sheet begins: it can be filtered by date, a balance is generated for contributions and purchases.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/AccountingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/AccountingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/FinanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/FinanceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/PurchasesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/PurchasesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SalesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SalesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/WareController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/WareController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/repository/ReportGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/repository/ReportGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/ConstantsFinance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/ConstantsFinance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/ConstantsPurchases.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/ConstantsPurchases.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SaveHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SaveHQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SearchHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SearchHQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/entity/InvoiceClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/entity/InvoiceClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpusinventory/finance-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpusinventory/finance-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,45 +80,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Launcher.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "true",
-    "JPA.DatabaseSchemaImportDialog": "e8a54545-f878-467d-b1bf-a1d41c63fbb2",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "extract.method.default.visibility": "private",
-    "git-widget-placeholder": "main",
-    "import_schema_mapping": "<schema-mapping>\n  <databases>\n    <list>\n      <schema-mapping-item>\n        <source-data-source-id>d160867a-a828-41a2-9bb2-b2de3721b983</source-data-source-id>\n        <source-path>schema/&quot;inventoryaccounting&quot;</source-path>\n        <target-data-source-id>d160867a-a828-41a2-9bb2-b2de3721b983</target-data-source-id>\n        <target-path>schema/&quot;inventoryaccounting&quot;</target-path>\n      </schema-mapping-item>\n    </list>\n  </databases>\n</schema-mapping>",
-    "jdk.selected.JAVA_MODULE": "11",
-    "kotlin-language-version-configured": "true",
-    "last_directory_selection": "C:/Users/Teemo/OneDrive/java/proyecto1/forpus_inventory/src/main/java/com/forpus/forpus_inventory",
-    "last_opened_file_path": "/home/loro/MEGAsync/hubgit/forpusInventory/src/main/java/com/forpus/forpusinventory/persistence/entity/InvoiceClass.java",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15022762",
-    "project.structure.side.proportion": "0.18428184",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "configurable.group.tools",
-    "two.files.diff.last.used.file": "/home/loro/MEGAsync/hubgit/forpusInventory/src/main/java/com/forpus/forpusinventory/persistence/entity/InvoiceClass.java",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Launcher.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;JPA.DatabaseSchemaImportDialog&quot;: &quot;e8a54545-f878-467d-b1bf-a1d41c63fbb2&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;import_schema_mapping&quot;: &quot;&lt;schema-mapping&gt;\n  &lt;databases&gt;\n    &lt;list&gt;\n      &lt;schema-mapping-item&gt;\n        &lt;source-data-source-id&gt;d160867a-a828-41a2-9bb2-b2de3721b983&lt;/source-data-source-id&gt;\n        &lt;source-path&gt;schema/&amp;quot;inventoryaccounting&amp;quot;&lt;/source-path&gt;\n        &lt;target-data-source-id&gt;d160867a-a828-41a2-9bb2-b2de3721b983&lt;/target-data-source-id&gt;\n        &lt;target-path&gt;schema/&amp;quot;inventoryaccounting&amp;quot;&lt;/target-path&gt;\n      &lt;/schema-mapping-item&gt;\n    &lt;/list&gt;\n  &lt;/databases&gt;\n&lt;/schema-mapping&gt;&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;11&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/Teemo/OneDrive/java/proyecto1/forpus_inventory/src/main/java/com/forpus/forpus_inventory&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/loro/MEGAsync/hubgit/forpusInventory/src/main/java/com/forpus/forpusinventory/persistence/entity/InvoiceClass.java&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15022762&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.18428184&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.tools&quot;,
+    &quot;two.files.diff.last.used.file&quot;: &quot;/home/loro/MEGAsync/hubgit/forpusInventory/src/main/java/com/forpus/forpusinventory/persistence/entity/InvoiceClass.java&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Teemo\OneDrive\java\proyecto1\forpus_inventory\src\main\resources\com\forpus\images" />
@@ -361,7 +350,8 @@
       <workItem from="1704462624089" duration="2095000" />
       <workItem from="1714270082102" duration="3051000" />
       <workItem from="1714316070710" duration="5400000" />
-      <workItem from="1714344222177" duration="12122000" />
+      <workItem from="1714344222177" duration="12353000" />
+      <workItem from="1714360493829" duration="3993000" />
     </task>
     <task id="LOCAL-00040" summary="**Se esta editando la view para pagar los creditos&#10;&#10;--falta funcionalidad">
       <created>1680666485383</created>
@@ -706,7 +696,7 @@
       <option name="project" value="LOCAL" />
       <updated>1704354150817</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <option name="localTasksCounter" value="105" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -737,7 +727,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="MANEJO DE ERRORES:&#10;SettingController OK&#10;SearchController OK&#10;WareController OK&#10;AccountingController OK&#10;FinanceController OK&#10;HelloController OK&#10;PurchasesControles OK&#10;SalesController OK&#10;&#10;BUILD ARTIFACT: &#10;crear .jar&#10;crear icono&#10;crear exe" />
     <MESSAGE value="SE MODIFICO LAS GRAFICAS DE VENTAS Y COMPRAS PARA SEPARAR POR AÑOS&#10;&#10;BUILD ARTIFACT: &#10;crear .jar&#10;crear icono&#10;crear exe" />
     <MESSAGE value="SE MODIFICA LAS VIEW PARA IRLAS ACOMODANDO A LA NUEVA RESOLUCIÓN, SE CORRIGEN ERRORES" />
     <MESSAGE value="se corigen errores al agregar aportes y realizar compra de productos nuevos." />
@@ -762,7 +751,8 @@
     <MESSAGE value="Ventas&#10;total label shows the amount to be paid" />
     <MESSAGE value="Upload sql file&#10;se corrige la url del jdbc" />
     <MESSAGE value="the tables of AssetsEntity.java, LiabilitiesEntity.java and EquityEntity.java are created." />
-    <option name="LAST_COMMIT_MESSAGE" value="the tables of AssetsEntity.java, LiabilitiesEntity.java and EquityEntity.java are created." />
+    <MESSAGE value="now the entity InvoiceClass has a date format in its date colum,the programming to generate the balance sheet begins: it can be filtered by date, a balance is generated for contributions and purchases." />
+    <option name="LAST_COMMIT_MESSAGE" value="now the entity InvoiceClass has a date format in its date colum,the programming to generate the balance sheet begins: it can be filtered by date, a balance is generated for contributions and purchases." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
