@@ -576,7 +576,7 @@ public class SaveHQL {
      if(!Objects.equals(ConstantsAccounting.invoice.getIndebtedness(), "0")){
          MoveinvoiceClass mi = new MoveinvoiceClass();
          mi.setIdInvoice(ConstantsAccounting.invoice.getIdInvoice());
-         mi.setDate(ConstantsAccounting.invoice.getDate());
+         mi.setDate(String.valueOf(ConstantsAccounting.invoice.getDate()));
          mi.setDebt(Integer.parseInt(ConstantsAccounting.invoice.getIndebtedness()));
          mi.setPayCash(0);
          mi.setPayBank(0);

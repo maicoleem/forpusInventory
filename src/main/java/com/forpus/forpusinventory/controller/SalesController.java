@@ -22,6 +22,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Objects;
 import static com.forpus.forpusinventory.domain.services.ConstantsPurchases.createNumericTextFormatter;
@@ -1005,7 +1006,7 @@ public class SalesController {
 
             MoveinvoiceClass mi = new MoveinvoiceClass();
 
-            mi.setDate(ConstantsPurchases.dateActually());
+            mi.setDate(String.valueOf(ConstantsPurchases.dateActuallyGet()));
             mi.setDebt(Integer.parseInt(labelTotal2.getText()));
             mi.setPayCash(Integer.parseInt(tfCash.getText()));
             mi.setPayBank(Integer.parseInt(tfBank.getText()));
@@ -1059,7 +1060,7 @@ public class SalesController {
             invoice.setCash(tfCash.getText());
             invoice.setIndebtedness(labelDebt.getText());
             invoice.setTotal(labelTotal2.getText());
-            invoice.setDate(ConstantsPurchases.dateActually());
+            invoice.setDate(ConstantsPurchases.dateActuallyGet());
             invoice.setIdBill(666);
 
             ConstantsAccounting.invoice = invoice;

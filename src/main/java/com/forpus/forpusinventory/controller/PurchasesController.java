@@ -17,6 +17,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -1165,7 +1166,7 @@ public class PurchasesController {
                 invoice.setCash(tfCash.getText());
                 invoice.setIndebtedness(labelDebt.getText());
                 invoice.setTotal(labelTotal3.getText());
-                invoice.setDate(ConstantsPurchases.dateActually());
+                invoice.setDate(ConstantsPurchases.dateActuallyGet());
                 invoice.setIdBill(666);
                 ConstantsAccounting.invoice = invoice;
                 Constant.entity = "InvoiceClass";
@@ -1341,7 +1342,7 @@ public class PurchasesController {
         try{
         MoveinvoiceClass mi = new MoveinvoiceClass();
 
-        mi.setDate(ConstantsPurchases.dateActually());
+        mi.setDate(String.valueOf(ConstantsPurchases.dateActuallyGet()));
         mi.setDebt(Integer.parseInt(labelTotal2.getText()));
         mi.setPayCash(Integer.parseInt(tfCash.getText()));
         mi.setPayBank(Integer.parseInt(tfBank.getText()));

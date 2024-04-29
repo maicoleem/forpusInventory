@@ -24,6 +24,8 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.*;
 
 public class FinanceController {
@@ -64,6 +66,7 @@ public class FinanceController {
     public Button buttonGraphics;
     public Button buttonDB;
     public Pane panelProducts;
+    public Pane panelBalance;
     public Pane panelPassives;
     public Pane panelPartners;
     public Pane panelFinance;
@@ -78,6 +81,7 @@ public class FinanceController {
     public Label labelRuta3;
     public Button buttonRuta2;
     public Button buttonDownload;
+    public Button buttonGenerate;
     public ComboBox<String> cbBoxCuentas;
     @FXML
     private LineChart<String , Number> chartSales;
@@ -85,6 +89,8 @@ public class FinanceController {
     public LineChart<String , Number> chartPurchases;
     public BarChart<String, Number> chartProducts;
     public BarChart<String, Number> chartCustomers;
+    public DatePicker dateInit;
+    public DatePicker dateEnd;
     @FXML
     protected void buttonSlide(ActionEvent event) throws IOException {
         WareController.slide(event);
@@ -257,7 +263,6 @@ public class FinanceController {
             i.printStackTrace();
         }
     }
-
     public void graphicsPurchases() throws ParseException {
         try{
         SearchHQL.invoiceEntity("ProvidersClass");
@@ -317,7 +322,7 @@ public class FinanceController {
 
         SimpleDateFormat format = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy");
         for (InvoiceClass iv : ConstantsPurchases.invoiceList) {
-            Date date = format.parse(iv.getDate());
+            Date date = iv.getDate();
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(date);
 
@@ -397,6 +402,9 @@ public class FinanceController {
                 panelDB.setVisible(a);
                 buttonDB.setStyle("-fx-background-color: #F5F5F5;");
                 break;
+            case "buttonBalance":
+                panelBalance.setVisible(a);
+                break;
         }
     }
     public void clear(){
@@ -413,6 +421,7 @@ public class FinanceController {
         chartPurchases.setVisible(a);
         chartSales.setVisible(a);
         panelDB.setVisible(a);
+        panelBalance.setVisible(a);
 
         buttonFinances.setStyle("-fx-background-color: #1BA1E2;");
         buttonGraphics.setStyle("-fx-background-color: #1BA1E2;");
@@ -477,7 +486,6 @@ public class FinanceController {
     public static String escaparCaracteres(String cadena) {
         return cadena.replace("\\", "\\\\");
     }
-
     public void tablas(ActionEvent event) {
         String entity1 = cbBoxCuentas.getValue();
         String entity2 =cbClass(entity1);
@@ -510,7 +518,6 @@ public class FinanceController {
         }
         return  entity2;
     }
-
     public void cbCuentas(ActionEvent event) {
     }
     public void importExcel(ActionEvent event) {
@@ -564,5 +571,17 @@ public class FinanceController {
         }else {
             WareController.alertSend("ERROR AL ELIMINAR LOS DATOS");
         }
+    }
+
+    public void balance(ActionEvent actionEvent) {
+
+        SimpleDateFormat sdfQuery = new SimpleDateFormat("yyyy-MM-dd");
+        LocalDate dateStart;
+        LocalDate dateFinished;
+        dateStart =dateInit.getValue();
+        dateFinished = dateEnd.getValue();
+        Date init = Date.from(dateStart.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        Date end = Date.from(dateFinished.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        ConstantsFinance.searchInvoice(init, end);
     }
 }

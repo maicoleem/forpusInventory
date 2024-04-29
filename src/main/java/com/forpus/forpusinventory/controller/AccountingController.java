@@ -13,6 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -187,7 +188,7 @@ public class AccountingController {
                     invoice.setTaxes("0");
                     invoice.setIndebtedness("0");
                     invoice.setTotal("0");
-                    invoice.setDate(ConstantsPurchases.dateActually());
+                    invoice.setDate(ConstantsPurchases.dateActuallyGet());
                     invoice.setTotalBuy("0");
                     invoice.setUtilities("0");
                     invoice.setRUtilities("0");
@@ -1065,7 +1066,7 @@ public class AccountingController {
             for (InvoiceClass iv : ConstantsAccounting.invoiceList) {
                 TableShow tableShow = new TableShow();
                 tableShow.setC1(String.valueOf(iv.getIdInvoice()));
-                tableShow.setC2(iv.getDate());
+                tableShow.setC2(String.valueOf(iv.getDate()));
                 tableShow.setC3(iv.getTotal());
                 tableShow.setC4(String.valueOf(iv.getIdBill()));
                 tableShow.setC5(iv.getUtilities());

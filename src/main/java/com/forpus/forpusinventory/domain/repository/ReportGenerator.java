@@ -189,7 +189,7 @@ public class ReportGenerator {
             Map<String, Object> parameters = new HashMap<>();
             parameters.put("LOGO", "ruta/al/logo.png");
             parameters.put("wareInvoice", sourceData);
-            parameters.put("DATE", ConstantsPurchases.dateActually());
+            parameters.put("DATE", ConstantsPurchases.dateActuallyGet());
             parameters.put("NAME_COMPANY", company.getName());
             parameters.put("NIT_EMPRESA", company.getIdCompanyNIT());
             parameters.put("PHONE_COMPANY", company.getPhoneNumber());

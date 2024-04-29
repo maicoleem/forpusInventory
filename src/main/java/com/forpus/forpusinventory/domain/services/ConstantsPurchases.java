@@ -99,13 +99,14 @@ public class ConstantsPurchases {
         return rUtilities;
     }
     //Fecha
-    public static String dateActually(){
+    public static Date dateActuallyGet(){
         // Obteniendo la fecha actual del sistema.
         Calendar calendar = Calendar.getInstance();
-        //Date dateActually = new Date(Calendar.getInstance().getTimeInMillis());
-        //SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        //formatter.format(dateActually);
-        return String.valueOf(calendar.getTime());
+        return new Date(Calendar.getInstance().getTimeInMillis());
+    }
+    public static String formatterDate(Date date){
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyyy-MM-dd HH:MM:SS");
+        return  formatter.format(date);
     }
 
     public static String dateDDMMAA(){

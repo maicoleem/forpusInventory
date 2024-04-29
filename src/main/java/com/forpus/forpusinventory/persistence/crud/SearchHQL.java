@@ -1,10 +1,7 @@
 package com.forpus.forpusinventory.persistence.crud;
 
 import com.forpus.forpusinventory.controller.WareController;
-import com.forpus.forpusinventory.domain.services.Constant;
-import com.forpus.forpusinventory.domain.services.ConstantsAccounting;
-import com.forpus.forpusinventory.domain.services.ConstantsPurchases;
-import com.forpus.forpusinventory.domain.services.ConstantsWare;
+import com.forpus.forpusinventory.domain.services.*;
 import com.forpus.forpusinventory.persistence.Session.SessionDB;
 import com.forpus.forpusinventory.persistence.entity.*;
 import org.hibernate.Session;
@@ -204,7 +201,6 @@ public class SearchHQL {
         }
     }
     public static boolean invoiceEntity(String typeEntity){
-
         try{
             SessionDB.session();
             Session session = SessionDB.sessionHibernate;
@@ -227,6 +223,13 @@ public class SearchHQL {
                     Query queryW = session.createQuery(hqlW);
                     List<InvoiceClass> resultsW = queryW.list();
                     ConstantsPurchases.invoiceList = (ArrayList<InvoiceClass>) resultsW;
+                    break;
+                case "Date":
+                    Query query = session.createQuery("FROM InvoiceClass C WHERE C.date BETWEEN :dateStart AND :dateEnd");
+                    query.setParameter("dateStart", ConstantsFinance.dateBegin);
+                    query.setParameter("dateEnd", ConstantsFinance.dateFinish);
+                    List<InvoiceClass> result = query.list();
+                    ConstantsPurchases.invoiceList = (ArrayList<InvoiceClass>) result;
                     break;
             }
             return true;

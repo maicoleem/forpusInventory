@@ -2,6 +2,7 @@ package com.forpus.forpusinventory.persistence.entity;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -48,8 +49,8 @@ public class InvoiceClass {
     @Column(name = "total", nullable = false, length = 20)
     private String total;
     @Basic
-    @Column(name = "date", nullable = false, length = 30)
-    private String date;
+    @Column(name = "date")
+    private Date date;
     @Basic
     @Column(name = "totalBuy", nullable = true, length = 20)
     private String totalBuy;
@@ -179,11 +180,10 @@ public class InvoiceClass {
         this.total = total;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
-
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

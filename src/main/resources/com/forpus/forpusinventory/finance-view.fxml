@@ -9,7 +9,7 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.93" prefHeight="700.0" prefWidth="1300.0" styleClass="panelWhite" stylesheets="@../styles/style-default.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.forpus.forpusinventory.controller.FinanceController">
 
     <children>
-        <Pane id="panelBlue" prefHeight="768.0" prefWidth="70.0">
+        <Pane id="panelBlue" prefHeight="700.0" prefWidth="70.0">
             <children>
                 <Button id="bWare" fx:id="buttonWarePB" layoutX="5.0" layoutY="94.7" maxHeight="60.0" maxWidth="60.0" minHeight="60.0" minWidth="60.0" mnemonicParsing="false" onAction="#buttonSlide" prefHeight="60.0" prefWidth="60.0" styleClass="buttonSide" text="Button">
                     <graphic>
@@ -61,23 +61,28 @@
         </Pane>
         <Pane layoutX="70.0" prefHeight="70.0" prefWidth="1230.0" styleClass="paneGrey">
             <children>
-                <Button id="buttonFinances" fx:id="buttonFinances" layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Finanzas">
+                <Button id="buttonFinances" fx:id="buttonFinances" layoutX="10.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Finanzas">
                     <font>
                         <Font name="Tahoma Bold" size="20.0" />
                     </font>
                 </Button>
-                <Button id="buttonGraphics" fx:id="buttonGraphics" layoutX="212.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Graficos">
+                <Button id="buttonGraphics" fx:id="buttonGraphics" layoutX="210.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Graficos">
                     <font>
                         <Font name="Tahoma Bold" size="20.0" />
                     </font>
                 </Button>
-                <Button id="buttonDB" fx:id="buttonDB" layoutX="406.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Datos">
+                <Button id="buttonDB" fx:id="buttonDB" layoutX="410.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Datos">
                     <font>
                         <Font name="Tahoma Bold" size="20.0" />
                     </font>
                 </Button>
+            <Button id="buttonBalance" fx:id="buttonBalance" layoutX="610.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Balance">
+               <font>
+                  <Font name="Tahoma Bold" size="20.0" />
+               </font>
+            </Button>
             </children></Pane>
-      <Pane id="panelFinance" fx:id="panelFinance" layoutX="70.0" layoutY="70.0" prefHeight="113.0" prefWidth="1230.0">
+      <Pane id="panelFinance" fx:id="panelFinance" layoutX="70.0" layoutY="70.0" prefHeight="113.0" prefWidth="1230.0" visible="false">
          <children>
               <Label alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="14.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Disponible">
                   <font>
@@ -109,8 +114,6 @@
                   <Font name="Tahoma Bold" size="19.0" />
                </font>
             </Label>
-            <DatePicker layoutX="877.0" layoutY="22.0" prefHeight="25.0" prefWidth="112.0" />
-            <DatePicker layoutX="1006.0" layoutY="22.0" prefHeight="25.0" prefWidth="112.0" />
       
               <Button id="buttomSearch" fx:id="buttonProduct" layoutX="1132.0" layoutY="14.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="84.0" styleClass="buttonBlue" text="BUSCAR">
                <font>
@@ -118,7 +121,7 @@
                </font>
             </Button>
          </children></Pane>
-        <Pane id="panelProducts" fx:id="panelProducts" layoutX="100.0" layoutY="193.0" prefHeight="252.0" prefWidth="534.0">
+        <Pane id="panelProducts" fx:id="panelProducts" layoutX="100.0" layoutY="193.0" prefHeight="252.0" prefWidth="534.0" visible="false">
             <children>
                 <Label alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="11.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Activos">
                     <font>
@@ -139,7 +142,7 @@
               </columns>
             </TableView>
             </children></Pane>
-      <Pane id="panelPassives" fx:id="panelPassives" layoutX="695.0" layoutY="193.0" prefHeight="252.0" prefWidth="552.0">
+      <Pane id="panelPassives" fx:id="panelPassives" layoutX="695.0" layoutY="193.0" prefHeight="252.0" prefWidth="552.0" visible="false">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="11.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Pasivos">
                <font>
@@ -160,7 +163,7 @@
             </TableView>
          </children>
       </Pane>
-      <Pane id="panelReceivable" fx:id="panelReceivable" layoutX="102.0" layoutY="458.0" prefHeight="231.0" prefWidth="522.0">
+      <Pane id="panelReceivable" fx:id="panelReceivable" layoutX="102.0" layoutY="458.0" prefHeight="231.0" prefWidth="522.0" visible="false">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="11.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Por Cobrar">
                <font>
@@ -181,7 +184,7 @@
             </TableView>
          </children>
       </Pane>
-      <Pane id="panelPartners" fx:id="panelPartners" layoutX="693.0" layoutY="457.0" prefHeight="231.0" prefWidth="543.0">
+      <Pane id="panelPartners" fx:id="panelPartners" layoutX="693.0" layoutY="457.0" prefHeight="231.0" prefWidth="543.0" visible="false">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="13.0" layoutY="11.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Aportes">
                <font>
@@ -295,6 +298,186 @@
             </Button>
          </children>
       </Pane>
+      <Pane id="panelBalance" fx:id="panelBalance" layoutX="77.0" layoutY="77.0" prefHeight="611.0" prefWidth="1212.0">
+         <children>
+            <DatePicker id="dateInit" fx:id="dateInit" layoutX="46.0" layoutY="26.0" prefHeight="25.0" prefWidth="112.0" />
+            <DatePicker id="dateEnd" fx:id="dateEnd" layoutX="203.0" layoutY="26.0" prefHeight="25.0" prefWidth="112.0" />
+            <Label id="labelCash" fx:id="labelCash" alignment="CENTER" contentDisplay="CENTER" layoutX="230.0" layoutY="140.0" prefHeight="40.0" prefWidth="228.0" styleClass="labelGrey" text="0" textAlignment="RIGHT">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="70.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="ACTIVOS">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+            <Button id="buttomGenerate" fx:id="buttonGenerate" layoutX="374.0" layoutY="18.0" mnemonicParsing="false" onAction="#balance" prefHeight="40.0" prefWidth="84.0" styleClass="buttonBlue" text="GENERAR">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="514.0" layoutY="70.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="PASIVOS">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="514.0" layoutY="320.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="PATRIMONIO">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label id="labelBank" fx:id="labelBank" alignment="CENTER" contentDisplay="CENTER" layoutX="230.0" layoutY="190.0" prefHeight="40.0" prefWidth="228.0" styleClass="labelGrey" text="0">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label id="labelReceivable" fx:id="labelReceivable" alignment="CENTER" contentDisplay="CENTER" layoutX="230.0" layoutY="240.0" prefHeight="40.0" prefWidth="228.0" styleClass="labelGrey" text="0">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label id="labelOCosts" fx:id="labelOCosts" alignment="CENTER" contentDisplay="CENTER" layoutX="230.0" layoutY="290.0" prefHeight="40.0" prefWidth="228.0" styleClass="labelGrey" text="0">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label id="labelDepreciation" fx:id="labelDepreciation" alignment="CENTER" contentDisplay="CENTER" layoutX="230.0" layoutY="340.0" prefHeight="40.0" prefWidth="228.0" styleClass="labelGrey" text="0">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label id="labelState" fx:id="labelState" alignment="CENTER" contentDisplay="CENTER" layoutX="230.0" layoutY="390.0" prefHeight="40.0" prefWidth="228.0" styleClass="labelGrey" text="0">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label id="labelPayable" fx:id="labelPayable" alignment="CENTER" contentDisplay="CENTER" layoutX="720.0" layoutY="120.0" prefHeight="40.0" prefWidth="228.0" styleClass="labelGrey" text="0">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label id="labelTaxes" fx:id="labelTaxes" alignment="CENTER" contentDisplay="CENTER" layoutX="720.0" layoutY="170.0" prefHeight="40.0" prefWidth="228.0" styleClass="labelGrey" text="0">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label id="labelServices" fx:id="labelServices" alignment="CENTER" contentDisplay="CENTER" layoutX="720.0" layoutY="220.0" prefHeight="40.0" prefWidth="228.0" styleClass="labelGrey" text="0">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label id="labelOthers" fx:id="labelOthers" alignment="CENTER" contentDisplay="CENTER" layoutX="720.0" layoutY="270.0" prefHeight="40.0" prefWidth="228.0" styleClass="labelGrey" text="0">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label id="labelContributions" fx:id="labelContributions" alignment="CENTER" contentDisplay="CENTER" layoutX="720.0" layoutY="370.0" prefHeight="40.0" prefWidth="228.0" styleClass="labelGrey" text="0">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label id="labelUtilities" fx:id="labelUtilities" alignment="CENTER" contentDisplay="CENTER" layoutX="720.0" layoutY="420.0" prefHeight="40.0" prefWidth="228.0" styleClass="labelGrey" text="0">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label id="labelStatesEquity" fx:id="labelStatesEquity" alignment="CENTER" contentDisplay="CENTER" layoutX="720.0" layoutY="470.0" prefHeight="40.0" prefWidth="228.0" styleClass="labelGrey" text="0">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label id="labelDepretiationEquity" fx:id="labelDepretiationEquity" alignment="CENTER" contentDisplay="CENTER" layoutX="720.0" layoutY="520.0" prefHeight="40.0" prefWidth="228.0" styleClass="labelGrey" text="0">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="140.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Efectivo">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="190.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Banco">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="240.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="C. P. Cobrar">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="290.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="C. Operacion">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="340.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Depreciacion">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="390.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Inmuebles">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="550.0" layoutY="120.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="C. P. Pagar">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="550.0" layoutY="170.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Impuestos">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="550.0" layoutY="220.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Servicios">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="550.0" layoutY="270.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Otros">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="550.0" layoutY="370.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Aportes">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="550.0" layoutY="420.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Utilidades">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="550.0" layoutY="470.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Inmuebles">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="550.0" layoutY="520.0" prefHeight="40.0" prefWidth="150.0" styleClass="labelGrey" text="Depreciacion">
+               <font>
+                  <Font name="Tahoma Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label id="labelAssets" fx:id="labelAssets" alignment="CENTER" contentDisplay="CENTER" layoutX="188.0" layoutY="70.0" prefHeight="40.0" prefWidth="228.0" styleClass="labelGrey" text="0">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label id="labelLiabilities" fx:id="labelLiabilities" alignment="CENTER" contentDisplay="CENTER" layoutX="683.0" layoutY="70.0" prefHeight="40.0" prefWidth="228.0" styleClass="labelGrey" text="0">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label id="labelEquity" fx:id="labelEquity" alignment="CENTER" contentDisplay="CENTER" layoutX="683.0" layoutY="320.0" prefHeight="40.0" prefWidth="228.0" styleClass="labelGrey" text="0">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+         </children></Pane>
 
     </children>
 </Pane>
