@@ -9,9 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c100c21c-3a8a-4617-abcb-404f11b4d22d" name="Changes" comment="now the entity InvoiceClass has a date format in its date colum,the programming to generate the balance sheet begins: it can be filtered by date, a balance is generated for contributions and purchases.">
+    <list default="true" id="c100c21c-3a8a-4617-abcb-404f11b4d22d" name="Changes" comment="The way of saving VAT on purchases and sales is changed to balance the balance&#10;*Review the movement of BOLD in sales&#10;*There is no option to pay withheld VAT">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/FinanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/FinanceController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/ConstantsFinance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/ConstantsFinance.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpusinventory/finance-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpusinventory/finance-view.fxml" afterDir="false" />
     </list>
@@ -353,6 +352,7 @@
       <workItem from="1714316070710" duration="5400000" />
       <workItem from="1714344222177" duration="12353000" />
       <workItem from="1714360493829" duration="3993000" />
+      <workItem from="1714503734795" duration="5027000" />
     </task>
     <task id="LOCAL-00040" summary="**Se esta editando la view para pagar los creditos&#10;&#10;--falta funcionalidad">
       <created>1680666485383</created>
@@ -697,7 +697,7 @@
       <option name="project" value="LOCAL" />
       <updated>1704354150817</updated>
     </task>
-    <option name="localTasksCounter" value="105" />
+    <option name="localTasksCounter" value="106" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -728,7 +728,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="SE MODIFICO LAS GRAFICAS DE VENTAS Y COMPRAS PARA SEPARAR POR AÑOS&#10;&#10;BUILD ARTIFACT: &#10;crear .jar&#10;crear icono&#10;crear exe" />
     <MESSAGE value="SE MODIFICA LAS VIEW PARA IRLAS ACOMODANDO A LA NUEVA RESOLUCIÓN, SE CORRIGEN ERRORES" />
     <MESSAGE value="se corigen errores al agregar aportes y realizar compra de productos nuevos." />
     <MESSAGE value="Corrigiendo errores en ventas y movimientos de ventas, los saldos no cuadran" />
@@ -753,7 +752,8 @@
     <MESSAGE value="Upload sql file&#10;se corrige la url del jdbc" />
     <MESSAGE value="the tables of AssetsEntity.java, LiabilitiesEntity.java and EquityEntity.java are created." />
     <MESSAGE value="now the entity InvoiceClass has a date format in its date colum,the programming to generate the balance sheet begins: it can be filtered by date, a balance is generated for contributions and purchases." />
-    <option name="LAST_COMMIT_MESSAGE" value="now the entity InvoiceClass has a date format in its date colum,the programming to generate the balance sheet begins: it can be filtered by date, a balance is generated for contributions and purchases." />
+    <MESSAGE value="The way of saving VAT on purchases and sales is changed to balance the balance&#10;*Review the movement of BOLD in sales&#10;*There is no option to pay withheld VAT" />
+    <option name="LAST_COMMIT_MESSAGE" value="The way of saving VAT on purchases and sales is changed to balance the balance&#10;*Review the movement of BOLD in sales&#10;*There is no option to pay withheld VAT" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -81,6 +81,11 @@
                   <Font name="Tahoma Bold" size="20.0" />
                </font>
             </Button>
+            <Button id="buttonAdjustments" fx:id="buttonAdjustments" layoutX="810.0" layoutY="5.0" mnemonicParsing="false" onAction="#buttonsOptions" prefHeight="60.0" prefWidth="150.0" styleClass="buttonBlue" text="Ajustes">
+               <font>
+                  <Font name="Tahoma Bold" size="20.0" />
+               </font>
+            </Button>
             </children></Pane>
       <Pane id="panelFinance" fx:id="panelFinance" layoutX="70.0" layoutY="70.0" prefHeight="113.0" prefWidth="1230.0" visible="false">
          <children>
@@ -498,6 +503,23 @@
                </font>
             </Label>
          </children></Pane>
+      <Pane id="panelAdjustments" fx:id="panelAdjustments" layoutX="81.0" layoutY="89.0" prefHeight="368.0" prefWidth="649.0">
+         <children>
+            <Button id="buttomBOLDajustment" fx:id="buttomBOLDajustment" layoutX="13.0" layoutY="16.0" mnemonicParsing="false" text="BOLD" />
+            <Button id="buttomIVAajustment" fx:id="buttomIVAajustment" layoutX="98.0" layoutY="16.0" mnemonicParsing="false" text="IVA" />
+            <Button id="buttomBoxAjustment" fx:id="buttomBoxAjustment" layoutX="163.0" layoutY="16.0" mnemonicParsing="false" text="CAJA" />
+            <Button id="buttonDoAdjustments" fx:id="buttonDoAdjustments" layoutX="22.0" layoutY="311.0" mnemonicParsing="false" text="realizar ajuste" />
+            <TextField id="tfCashAdjustment" fx:id="tfCashAdjustment" layoutX="25.0" layoutY="111.0" />
+            <TextField id="tfBankAdjustment" fx:id="tfBankAdjustment" layoutX="209.0" layoutY="111.0" />
+            <TextField id="tfValueMaxAdjustment" fx:id="tfValueMaxAdjustment" layoutX="130.0" layoutY="55.0" />
+            <Label layoutX="25.0" layoutY="58.0" prefHeight="16.0" prefWidth="97.0" text="Valor Maximo:" />
+            <TextField id="tfObsAdjustment" fx:id="tfObsAdjustment" layoutX="25.0" layoutY="160.0" prefHeight="137.0" prefWidth="328.0" />
+            <Label layoutX="25.0" layoutY="142.0" text="Observaciones" />
+            <Label layoutX="25.0" layoutY="90.0" text="Efectivo" />
+            <Label layoutX="221.0" layoutY="95.0" text="Banco" />
+            <Label id="labelInstructionsAdjustments" fx:id="labelInstructionsAdjustments" alignment="TOP_LEFT" layoutX="406.0" layoutY="9.0" lineSpacing="5.0" prefHeight="338.0" prefWidth="228.0" text="Instrucciones: asdfjhadsjfhajskdhfkljasdhfasdhfhasdjfhdhkjasdhjkfashdjkf" wrapText="true" />
+         </children>
+      </Pane>
 
     </children>
 </Pane>

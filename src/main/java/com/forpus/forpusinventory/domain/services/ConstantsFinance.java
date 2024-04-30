@@ -64,6 +64,19 @@ public class ConstantsFinance {
                     others = others + Integer.parseInt(invoice.getTaxes());
                     utilities = utilities + Integer.parseInt(invoice.getUtilities());
                 }
+                //accounting adjustments
+                if(invoice.getObservations() != null && invoice.getObservations().contains("adjustments") ){
+                    //pay BOLD
+                    taxes = taxes - Integer.parseInt(invoice.getBold());
+                    //pay IVA
+                    others = others - Integer.parseInt(invoice.getTaxes());
+                    cash = cash - Integer.parseInt(invoice.getCash());
+                    bank = bank - Integer.parseInt(invoice.getBank());
+                    //adjustments cash and bank (- into invoice)
+                    cash = cash + Integer.parseInt(invoice.getCash());
+                    bank = bank + Integer.parseInt(invoice.getBank());
+                }
+
                 assets = receivable + cash + bank + operation + taxesBuy + taxes;
                 liabilities = payable + taxes + others;
                 equity = contributions + utilities;
