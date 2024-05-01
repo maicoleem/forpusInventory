@@ -503,21 +503,63 @@
                </font>
             </Label>
          </children></Pane>
-      <Pane id="panelAdjustments" fx:id="panelAdjustments" layoutX="81.0" layoutY="89.0" prefHeight="368.0" prefWidth="649.0">
+      <Pane id="panelAdjustments" fx:id="panelAdjustments" layoutX="81.0" layoutY="89.0" prefHeight="598.0" prefWidth="1190.0" visible="false">
          <children>
-            <Button id="buttomBOLDajustment" fx:id="buttomBOLDajustment" layoutX="13.0" layoutY="16.0" mnemonicParsing="false" text="BOLD" />
-            <Button id="buttomIVAajustment" fx:id="buttomIVAajustment" layoutX="98.0" layoutY="16.0" mnemonicParsing="false" text="IVA" />
-            <Button id="buttomBoxAjustment" fx:id="buttomBoxAjustment" layoutX="163.0" layoutY="16.0" mnemonicParsing="false" text="CAJA" />
-            <Button id="buttonDoAdjustments" fx:id="buttonDoAdjustments" layoutX="22.0" layoutY="311.0" mnemonicParsing="false" text="realizar ajuste" />
-            <TextField id="tfCashAdjustment" fx:id="tfCashAdjustment" layoutX="25.0" layoutY="111.0" />
-            <TextField id="tfBankAdjustment" fx:id="tfBankAdjustment" layoutX="209.0" layoutY="111.0" />
-            <TextField id="tfValueMaxAdjustment" fx:id="tfValueMaxAdjustment" layoutX="130.0" layoutY="55.0" />
-            <Label layoutX="25.0" layoutY="58.0" prefHeight="16.0" prefWidth="97.0" text="Valor Maximo:" />
-            <TextField id="tfObsAdjustment" fx:id="tfObsAdjustment" layoutX="25.0" layoutY="160.0" prefHeight="137.0" prefWidth="328.0" />
-            <Label layoutX="25.0" layoutY="142.0" text="Observaciones" />
-            <Label layoutX="25.0" layoutY="90.0" text="Efectivo" />
-            <Label layoutX="221.0" layoutY="95.0" text="Banco" />
-            <Label id="labelInstructionsAdjustments" fx:id="labelInstructionsAdjustments" alignment="TOP_LEFT" layoutX="406.0" layoutY="9.0" lineSpacing="5.0" prefHeight="338.0" prefWidth="228.0" text="Instrucciones: asdfjhadsjfhajskdhfkljasdhfasdhfhasdjfhdhkjasdhjkfashdjkf" wrapText="true" />
+            <Button id="buttonBOLDadjustment" fx:id="buttonBOLDadjustment" layoutX="16.0" layoutY="62.0" mnemonicParsing="false" onAction="#adjustmentsOption" styleClass="buttonSide" text="BOLD">
+               <font>
+                  <Font size="24.0" />
+               </font></Button>
+            <Button id="buttonIVAadjustment" fx:id="buttonIVAadjustment" layoutX="195.0" layoutY="62.0" mnemonicParsing="false" styleClass="buttonSide" text="IVA">
+               <font>
+                  <Font size="24.0" />
+               </font></Button>
+            <Button id="buttonBoxAdjustment" fx:id="buttonBoxAdjustment" layoutX="348.0" layoutY="62.0" mnemonicParsing="false" styleClass="buttonSide" text="CAJA">
+               <font>
+                  <Font size="24.0" />
+               </font></Button>
+            <Button id="buttonDoAdjustments" fx:id="buttonDoAdjustments" layoutX="509.0" layoutY="511.0" mnemonicParsing="false" onAction="#adjustmentDo" styleClass="buttonBlue" text="realizar ajuste">
+               <font>
+                  <Font size="24.0" />
+               </font></Button>
+            <TextField id="tfCashAdjustment" fx:id="tfCashAdjustment" layoutX="21.0" layoutY="213.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField id="tfBankAdjustment" fx:id="tfBankAdjustment" layoutX="286.0" layoutY="213.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField id="tfValueMaxAdjustment" fx:id="tfValueMaxAdjustment" disable="true" layoutX="205.0" layoutY="118.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <Label layoutX="21.0" layoutY="124.0" prefHeight="21.0" prefWidth="156.0" text="Valor Maximo:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+            <Label layoutX="25.0" layoutY="266.0" text="Observaciones">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+            <Label layoutX="25.0" layoutY="178.0" text="Efectivo">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+            <Label layoutX="286.0" layoutY="178.0" text="Banco">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+            <Label id="labelInstructionsAdjustments" fx:id="labelInstructionsAdjustments" alignment="TOP_LEFT" layoutX="771.0" layoutY="28.0" lineSpacing="5.0" prefHeight="542.0" prefWidth="368.0" styleClass="labelGrey" text="INSTRUCCIONES:" wrapText="true">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
+            <TextArea id="tfObsAdjustment" fx:id="tfObsAdjustment" layoutX="14.0" layoutY="299.0" prefHeight="200.0" prefWidth="698.0" promptText="ESCRIBA LAS OBSERVACIONES" wrapText="true">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </TextArea>
+            <DatePicker id="dateAdjustment" fx:id="dateAdjustment" layoutX="21.0" layoutY="16.0" promptText="Fecha Inicio" />
+            <DatePicker id="dateAdjustmentEnd" fx:id="dateAdjustmentEnd" layoutX="264.0" layoutY="16.0" promptText="Fecha Fin" />
          </children>
       </Pane>
 

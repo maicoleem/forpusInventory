@@ -93,9 +93,14 @@ public class FinanceController {
     public Label labelDepretiationEquity;
     public Label labelAssets;
     public Pane panelDB;
+    public Pane panelAdjustments;
     public Button buttonBackUp;
     public Button buttonRestore;
+    public Button buttonBoxAdjustment;
+    public Button buttonBOLDadjustment;
+    public Button buttonIVAadjustment;
     public Button buttonCorte;
+    public Button buttonAdjustments;
     public Label labelRuta2;
     public Button buttonRuta3;
     public Label labelRuta3;
@@ -103,6 +108,14 @@ public class FinanceController {
     public Button buttonDownload;
     public Button buttonGenerate;
     public ComboBox<String> cbBoxCuentas;
+    public DatePicker dateAdjustment;
+    public DatePicker dateAdjustmentEnd;
+    public Label labelInstructionsAdjustments;
+    public TextArea tfObsAdjustment;
+    public TextField tfValueMaxAdjustment;
+    public TextField tfBankAdjustment;
+    public TextField tfCashAdjustment;
+    public Button buttonDoAdjustments;
     @FXML
     private LineChart<String , Number> chartSales;
     @FXML
@@ -426,6 +439,10 @@ public class FinanceController {
                 buttonBalance.setStyle("-fx-background-color: #F5F5F5;");
                 panelBalance.setVisible(a);
                 break;
+            case "buttonAdjustments":
+                buttonAdjustments.setStyle("-fx-background-color: #F5F5F5;");
+                panelAdjustments.setVisible(a);
+                break;
         }
     }
     public void clear(){
@@ -443,11 +460,13 @@ public class FinanceController {
         chartSales.setVisible(a);
         panelDB.setVisible(a);
         panelBalance.setVisible(a);
+        panelAdjustments.setVisible(a);
 
         buttonFinances.setStyle("-fx-background-color: #1BA1E2;");
         buttonGraphics.setStyle("-fx-background-color: #1BA1E2;");
         buttonDB.setStyle("-fx-background-color: #1BA1E2;");
         buttonBalance.setStyle("-fx-background-color: #1BA1E2;");
+        buttonAdjustments.setStyle("-fx-background-color: #1BA1E2;");
         }catch (Exception i){
             i.printStackTrace();
         }
@@ -594,16 +613,10 @@ public class FinanceController {
             WareController.alertSend("ERROR AL ELIMINAR LOS DATOS");
         }
     }
-
     public void balance(ActionEvent actionEvent) {
+        Date init = ConstantsFinance.dateBalance(dateInit);
+        Date end = ConstantsFinance.dateBalance(dateEnd);
 
-        SimpleDateFormat sdfQuery = new SimpleDateFormat("yyyy-MM-dd");
-        LocalDate dateStart;
-        LocalDate dateFinished;
-        dateStart =dateInit.getValue();
-        dateFinished = dateEnd.getValue();
-        Date init = Date.from(dateStart.atStartOfDay(ZoneId.systemDefault()).toInstant());
-        Date end = Date.from(dateFinished.atStartOfDay(ZoneId.systemDefault()).toInstant());
         if(ConstantsFinance.searchInvoice(init, end)){
             labelAssets.setText(String.valueOf(ConstantsFinance.assets));
             labelCash.setText(String.valueOf(ConstantsFinance.cash));
@@ -626,6 +639,79 @@ public class FinanceController {
             labelUtilities.setText(String.valueOf(ConstantsFinance.utilities));
             labelStatesEquity.setText(String.valueOf(0));
             labelDepreciation.setText(String.valueOf(0));
+        }
+    }
+    public void adjustmentsOption(ActionEvent event) {
+        Button button = (Button) event.getSource();
+        Date init = ConstantsFinance.dateBalance(dateAdjustment);
+        Date end = ConstantsFinance.dateBalance(dateAdjustmentEnd);
+        if(ConstantsFinance.searchInvoice(init, end)) {
+            switch (button.getId()) {
+                case "buttonBOLDadjustment":
+                    ConstantsFinance.adjustments = "BOLD";
+                    tfValueMaxAdjustment.setText(String.valueOf(ConstantsFinance.taxes));
+                    labelInstructionsAdjustments.setText("Instrucciones: 1-Escriba el valor a pagar en Banco, recuerde"+
+                            " que este valor sale ya se ha pagado por lo que la cuenta afectada en el balance es" +
+                            " BOLD 2-Escriba en observaciones >>BOLD<< 3-De click en realizar ajuste, recuerde que el valor pagado no puede ser mayor al valor maximo");
+                    break;
+                case "buttonIVAadjustment":
+                    ConstantsFinance.adjustments = "IVA";
+                    tfValueMaxAdjustment.setText(String.valueOf(ConstantsFinance.others));
+                    labelInstructionsAdjustments.setText("Instrucciones: 1-Escriba el valor a pagar en Efectivo y/o Banco"+
+                             "2-Escriba en observaciones >>PAGO IVA RETENIDO<< 3-De click en realizar ajuste, recuerde que el valor pagado no puede ser mayor al valor maximo");
+                    break;
+                case "buttonBoxAdjustment":
+                    ConstantsFinance.adjustments = "BOX";
+                    tfValueMaxAdjustment.setText("0");
+                    labelInstructionsAdjustments.setText("Instrucciones: 1-Escriba el valor a pagar en Efectivo y/o Banco"+
+                            "2-Escriba en observaciones el motivo por el cual cambia el valro en efectivo y banco 3-De click en realizar ajuste");
+                    break;
+            }
+        }
+    }
+    public void adjustmentDo(ActionEvent actionEvent) {
+        try {
+            InvoiceClass invoice = ConstantsFinance.invoiceEmpty();
+            Integer bank = Integer.valueOf(tfBankAdjustment.getText());
+            Integer cash = Integer.valueOf(tfCashAdjustment.getText());
+            int total = bank + cash;
+            switch (ConstantsFinance.adjustments) {
+                case "BOLD":
+                    Integer bold = Integer.valueOf(tfBankAdjustment.getText());
+                    if (bold <= ConstantsFinance.taxes) {
+                        invoice.setBold(String.valueOf(bold));
+                    }else{
+                        //Stop run
+                        return;
+                    }
+                    break;
+                case "IVA":
+                    if(total <= ConstantsFinance.others){
+                         invoice.setCash(String.valueOf(cash));
+                         invoice.setBank(String.valueOf(bank));
+                         invoice.setTaxes(String.valueOf(total));
+                    }else{
+                        //Stop run
+                        return;
+                    }
+                    break;
+                case "BOX":
+                    if(total != 0){
+                        invoice.setCash(String.valueOf(cash));
+                        invoice.setBank(String.valueOf(bank));
+                    }else{
+                        //Stop run
+                        return;
+                    }
+                    break;
+            }
+            invoice.setObservations(tfObsAdjustment.getText() + " adjustments");
+            ConstantsFinance.saveAdjustment(invoice);
+            if(!Objects.equals(ConstantsFinance.adjustments, "BOLD")){
+                ConstantsFinance.updateAccountCompany(bank, cash);
+            }
+        }catch (Exception i){
+            System.out.println(i.getMessage());
         }
     }
 }

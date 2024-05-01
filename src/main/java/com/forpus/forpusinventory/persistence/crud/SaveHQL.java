@@ -5,7 +5,6 @@ import com.forpus.forpusinventory.domain.services.*;
 import com.forpus.forpusinventory.persistence.Session.SessionDB;
 import com.forpus.forpusinventory.persistence.entity.*;
 import org.hibernate.Session;
-import org.hibernate.event.spi.SaveOrUpdateEvent;;
 import java.util.Objects;
 
 public class SaveHQL {
@@ -434,7 +433,6 @@ public class SaveHQL {
             return false;
         }
     }
-
     /**here go to code for save the invoice
      * */
     public static boolean saveInvoice(){
@@ -503,7 +501,6 @@ public class SaveHQL {
                             saveProductPrice(pt, wp);
                         }
                     }
-
                     //actualiza el inventario
                     if(!ConstantsPurchases.pPriceUpdateList.isEmpty()){
                         session.beginTransaction();
@@ -533,7 +530,6 @@ public class SaveHQL {
                             }
                         }
                     }
-
                     moveInvoiceNew();
                     break;
                 case "Service":
@@ -591,7 +587,6 @@ public class SaveHQL {
          WareController.alertSend("ERROR AL SALVAR DATOS");
      }
  }
-
     public static WareProductClass saveWareProduct(ProductClass product){
 
         try{
@@ -635,6 +630,20 @@ public class SaveHQL {
         }catch (Exception i){
             WareController.alertSend("ERROR AL SALVAR DATOS");
             i.printStackTrace();
+        }
+    }
+    public static <T> boolean saveOrUpdateObject(T object) {
+        try {
+            SessionDB.session();
+            Session session = SessionDB.session().getSession();
+            session.beginTransaction();
+            session.saveOrUpdate(object);
+            session.getTransaction().commit();
+            SessionDB.sessionClose();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
         }
     }
 

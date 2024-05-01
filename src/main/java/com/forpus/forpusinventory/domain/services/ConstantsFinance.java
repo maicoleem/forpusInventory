@@ -1,13 +1,22 @@
 package com.forpus.forpusinventory.domain.services;
 
+import com.forpus.forpusinventory.controller.WareController;
+import com.forpus.forpusinventory.persistence.crud.FoundHQL;
+import com.forpus.forpusinventory.persistence.crud.SaveHQL;
 import com.forpus.forpusinventory.persistence.crud.SearchHQL;
+import com.forpus.forpusinventory.persistence.entity.CompanyClass;
 import com.forpus.forpusinventory.persistence.entity.InvoiceClass;
+import javafx.scene.control.DatePicker;
+
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 
 public class ConstantsFinance {
     public static Date dateBegin;
     public static Date dateFinish;
     public static String[] cuentas = {"Clientes", "Trabajadores", "Proveedores", "Socios", "Productos", "Servicios"};
+    public static String adjustments;
     public static int contributions = 0;
     public static int cash = 0;
     public static int bank = 0;
@@ -87,4 +96,44 @@ public class ConstantsFinance {
             return false;
         }
     }
+    public static InvoiceClass invoiceEmpty(){
+        InvoiceClass invoice = new InvoiceClass();
+        invoice.setIdBill(0);
+        invoice.setIdCompany("1");
+        invoice.setBank("0");
+        invoice.setCash("0");
+        invoice.setTaxes("0");
+        invoice.setBold("0");
+        invoice.setIndebtedness("0");
+        invoice.setTotal("0");
+        invoice.setTotalBuy("0");
+        invoice.setUtilities("0");
+        invoice.setRUtilities("0");
+        return invoice;
+    }
+    public static void saveAdjustment (InvoiceClass invoice){
+        if(SaveHQL.saveOrUpdateObject(invoice)){
+            WareController.alertSend("Ajuste realizado");
+        }else {
+            WareController.alertSend("Error al realizar ajuste");
+        }
+    }
+    public static void updateAccountCompany(int bank, int cash){
+        CompanyClass company = FoundHQL.companyFound();
+        if(company != null){
+            int afterBank = Integer.parseInt(company.getBank());
+            int afterCash = Integer.parseInt(company.getCash());
+            int newBank = afterBank + bank;
+            int newCash = afterCash + cash;
+            company.setBank(String.valueOf(newBank));
+            company.setCash(String.valueOf(newCash));
+            SaveHQL.saveOrUpdateObject(company);
+        }
+    }
+    public static Date dateBalance(DatePicker date){
+        LocalDate localDate;
+        localDate = date.getValue();
+        return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+    }
+
 }

@@ -10,8 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c100c21c-3a8a-4617-abcb-404f11b4d22d" name="Changes" comment="The way of saving VAT on purchases and sales is changed to balance the balance&#10;*Review the movement of BOLD in sales&#10;*There is no option to pay withheld VAT">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/FinanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/FinanceController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/ConstantsFinance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/ConstantsFinance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/FoundHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/FoundHQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SaveHQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/persistence/crud/SaveHQL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/forpus/forpusinventory/finance-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/forpus/forpusinventory/finance-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -711,9 +715,9 @@
             <State>
               <option name="COLUMN_ID_WIDTH">
                 <map>
-                  <entry key="Table.Default.Author.ColumnIdWidth" value="52" />
-                  <entry key="Table.Default.Date.ColumnIdWidth" value="39" />
-                  <entry key="Table.Space.CommitStatus.ColumnIdWidth" value="39" />
+                  <entry key="Table.Default.Author.ColumnIdWidth" value="79" />
+                  <entry key="Table.Default.Date.ColumnIdWidth" value="107" />
+                  <entry key="Table.Space.CommitStatus.ColumnIdWidth" value="106" />
                 </map>
               </option>
               <option name="CUSTOM_BOOLEAN_PROPERTIES">
