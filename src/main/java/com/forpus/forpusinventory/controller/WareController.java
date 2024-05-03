@@ -195,6 +195,12 @@ public class WareController {
 
                 if (!Objects.equals(Constant.tfCode, "")) {
                     saveDates();
+                    if(Constant.entity.equals("Transmute")){
+                        if(ConstantsWare.saveTransmute(ConstantsWare.productPriceTransmute, ConstantsWare.pPListArray)){
+                            alertSend("Se han guardado los datos");
+                            break;
+                        }
+                    }
                     Constant.tfCode = tfCode.getText();
                     if (SaveHQL.workerInsertUpdate()) {
                         if (Objects.equals(Constant.messageSave, "Creado")) {
@@ -222,13 +228,11 @@ public class WareController {
                 }
                 break;
             case "remove":
-
                 if (Constant.isEntityForeanKey(Constant.entity)) {
 
                     DeleteHQL.deleteForean();
 
                 } else {
-
                     Constant.tfCode = tfCode.getText();
                     if (DeleteHQL.workerDelete()) {
                         alertSend("Datos Eliminados");
@@ -260,11 +264,9 @@ public class WareController {
                         break;
                     default:
                 }
-
                 break;
             case "found":
                 Constant.tfCode = tfCode.getText();
-
                 if (!Objects.equals(Constant.tfCode, "")) {
                     differentiateBetweenEntities(FoundHQL.workerFound());
                 } else {
@@ -314,9 +316,7 @@ public class WareController {
                     tfBuy.setText(ConstantsWare.service.getPayForHour());
 
                     if (!ConstantsWare.service.getServiceProductsByIdService().isEmpty()) {
-
                         Constant.listTableShow.clear();
-
                         for (ServiceProductClass sp : ConstantsWare.service.getServiceProductsByIdService()) {
                             TableShow tableShow = new TableShow();
                             //producto {buscar el producto con el id}
@@ -407,9 +407,7 @@ public class WareController {
         try{
         switch (Constant.entity) {
             case "ProductClass":
-
                 idValorComboBox(comboBoxOne.getValue(), "CategoryoneClass");
-
                 if (ConstantsWare.one != null) {
                     ConstantsWare.tfOne = String.valueOf(ConstantsWare.one.getIdOne());
                     idValorComboBox(comboBoxTwo.getValue(), "CategorytwoClass");
@@ -424,26 +422,17 @@ public class WareController {
                         }
                     }
                 }
-
                 idValorComboBox(comboBoxWage.getValue(), "WarehouseClass");
-
                 if (ConstantsWare.ware != null) {
                     ConstantsWare.tfWare = ConstantsWare.ware.getIdWarehouse();
                 }
                 Constant.entity = "ProductClass";
-
                 Constant.tfName = tfProduct.getText();
-
                 Constant.tfCode = tfCode.getText();
-
                 ConstantsWare.tfBuy = tfBuy.getText();
-
                 ConstantsWare.tfSale = tfSale.getText();
-
                 ConstantsWare.tfProfit = tfProfit.getText();
-
                 ConstantsWare.tfConsumed = tfConsumed.getText();
-
                 break;
             case "CategoryoneClass":
             case "WarehouseClass":
@@ -517,7 +506,6 @@ public class WareController {
                     }
                     Constant.entity = "Transmute";
                 }
-
                 break;
             default:
                 break;
@@ -1477,7 +1465,6 @@ public class WareController {
             switch (cBoxChange.getId()) {
                 case "comboBoxOne":
                 case "comboBoxProductTT":
-
                     if(Objects.equals(cBoxChange.getId(), "comboBoxOne")){
                         //limpia el comboBOx
                         comboBoxTwo.getItems().clear();
@@ -1527,14 +1514,11 @@ public class WareController {
                     comboBoxPrice.getItems().clear();
                     }
 
-
                     //Crea la lista de precios-producto
                     Constant.entity = "ProductpriceClass";
                     SearchHQL.searchHQL();
-
                     //get of id del item seleccionado en el combobox 2
                     Constant.tfAddress = (String) cBoxChange.getValue();
-
                     for (WareProductClass w : ConstantsWare.product.getWareProductsByIdProduct()) {
                         if (Objects.equals(w.getIdWare(), Constant.tfAddress)){
                             if (ConstantsWare.productPriceList != null) {
@@ -1551,7 +1535,6 @@ public class WareController {
                             }
                         }
                     }
-
                     if(Objects.equals(cBoxChange.getId(), "comboBoxTwo")){
                         //carga el combobox 2
                         comboBoxThree.getItems().addAll(listProduct);
@@ -1580,12 +1563,9 @@ public class WareController {
                         labelProfitSale.setText(String.valueOf(ConstantsWare.productPriceTransmute.getAmount()));
                     }
                     Constant.entity = "Transmute";
-
                     break;
                 default:
                     break;
-
-
             }
         }else{
                 switch (cBoxChange.getId()) {
@@ -1685,7 +1665,6 @@ public class WareController {
     }
     public void removeTable (ActionEvent event){
         try{
-
             int a = tableWare.getSelectionModel().getSelectedIndex();
             String nameProduct = (String) c1.getCellData(a);
 
@@ -1728,15 +1707,12 @@ public class WareController {
             int f;
             int h;
             int g = 1;
-
-
             if (Objects.equals(buttonUAM.getId(), button.getId())) {
                 f = inicial - cambio;
             } else {
                 f = cambio + inicial;
                 g = -1;
             }
-
             for (TableShow t : Constant.listTableShow) {
                 //C6 inicial
                 int init = Integer.parseInt(t.getC6());

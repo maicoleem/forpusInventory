@@ -158,7 +158,6 @@ public class SaveHQL {
                     System.out.println("Bodega Guardada");
                     break;
                 case "ProductClass":
-
                     //guarda o actualiza el producto
                     ProductClass product = new ProductClass();
                     product.setIdProduct(Constant.tfCode);
@@ -247,17 +246,18 @@ public class SaveHQL {
                     session.getTransaction().commit();
                     break;
                 case "Transmute":
+                    /*//One
                     session.beginTransaction();
                     session.update(ConstantsWare.productPriceTransmute);
                     session.getTransaction().commit();
-
+                    //many
                     session.beginTransaction();
                     for(ProductpriceClass p: ConstantsWare.pPListArray){
                         ProductpriceClass L = session.get(ProductpriceClass.class, p.getIdPrice());
                         L.setAmount(p.getAmount());
                         session.update(L);
                         session.getTransaction().commit();
-                    }
+                    }*/
                     break;
                 case "TaxesClass":
                     session.beginTransaction();
@@ -444,7 +444,6 @@ public class SaveHQL {
             session.update(ConstantsAccounting.invoice);
             session.getTransaction().commit();
             //segundo salva los ware invoice
-
             session.beginTransaction();
             for(WareinvoiceClass wI: ConstantsPurchases.wareInvoiceList){
                 session.save(wI);
