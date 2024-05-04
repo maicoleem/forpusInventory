@@ -399,7 +399,7 @@ public class WareController {
                 break;
         }
         }catch (Exception i){
-            i.printStackTrace();
+            System.out.println(i.getMessage());
         }
     }
     //funcion para salvar datos
@@ -1713,30 +1713,34 @@ public class WareController {
                 f = cambio + inicial;
                 g = -1;
             }
+            //for calculate the change of amount
             for (TableShow t : Constant.listTableShow) {
-                //C6 inicial
+                //C6 amount start
                 int init = Integer.parseInt(t.getC6());
-                //C7 cambio
+                //C7 change
                 int chang = Integer.parseInt(t.getC7());
                 //C8 final
                 int fi = init + (g * chang);
                 t.setC8(String.valueOf(fi));
             }
+            //for calculate the cost total of table
             h = 0;
             for (TableShow t : Constant.listTableShow) {
                 int cost = Integer.parseInt(t.getC9());
                 h = h + cost;
             }
             labelCostTrans.setText(String.valueOf(h));
-
             Constant.entity = "TransmuteTableShow";
             tableLoad();
-
             labelCost.setText(String.valueOf(f));
             ConstantsWare.productPriceTransmute.setAmount(f);
-            save.setDisable(false);
             Constant.entity = "Transmute";
             tfCode.setText("Transmute");
+            int profit = ConstantsWare.productPriceTransmute.getPrice();
+            save.setDisable(h != profit);
+            if(h != profit){
+                alertSend("Los costos deben de ser iguales");
+            }
         }catch (Exception i){
             i.printStackTrace();
             WareController.alertSend("POR FAVOR SELECCIONAR PRODUCTOS");
