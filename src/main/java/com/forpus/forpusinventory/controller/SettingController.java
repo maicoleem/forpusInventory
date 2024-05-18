@@ -16,7 +16,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class SettingController implements Initializable {
+public class SettingController {
     public Button buttonPartners;
     public Button buttonWorkers;
     public Button buttonCompany;
@@ -74,39 +74,15 @@ public class SettingController implements Initializable {
     Button buttonPartner;
     @FXML
     protected void buttonOptions(ActionEvent event){
-        Button button = (Button) event.getSource();
-
-        if(Constant.greyToBlue == null){
-            Constant.greyToBlue = button;
-            button.setStyle("-fx-background-color: #1BA1E2; ");
-        } else if (Constant.greyToBlue == button) {
-            button.setStyle("-fx-background-color: #1BA1E2; ");
-        }else{
-            Constant.greyToBlue.setStyle("-fx-background-color: #C2C2C2; ");
-            button.setStyle("-fx-background-color: #1BA1E2; ");
-            Constant.greyToBlue = button;
-        }
-        changeLabelsText(button.getId());
+        changeLabelsText(Constant.changeOptions(event));
     }
     @FXML
     protected void buttonCRUD(ActionEvent event){
-        try {
-            Button buttonCRUD = (Button) event.getSource();
-
-            if (Constant.blueToWhite == null) {
-                Constant.blueToWhite = buttonCRUD;
-                buttonCRUD.setStyle("-fx-background-color: #F5F5F5; ");
-            } else if (Constant.blueToWhite == buttonCRUD) {
-                buttonCRUD.setStyle("-fx-background-color: #F5F5F5; ");
-            } else {
-                Constant.blueToWhite.setStyle("-fx-background-color: #1BA1E2; ");
-                buttonCRUD.setStyle("-fx-background-color: #F5F5F5; ");
-                Constant.blueToWhite = buttonCRUD;
-            }
-            crudEjecuted(buttonCRUD.getId());
-        }catch (Exception i){
-            i.printStackTrace();
-            WareController.alertSend("ERROR EN SOLICITUD");
+        String receiver = Constant.buttonCrudChangeColor(event);
+        if(!receiver.equals("error")){
+            crudEjecuted(receiver);
+        }else {
+            WareController.alertSend("Error Ejecutando Crud");
         }
     }
     @FXML
@@ -465,7 +441,6 @@ public class SettingController implements Initializable {
         alertMassage.setContentText(massage);
         alertMassage.show();
     }
-    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         buttonWorkers.setVisible(Constant.isAdmin);
         buttonPartners.setVisible(Constant.isAdmin);

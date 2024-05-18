@@ -1,6 +1,8 @@
 package com.forpus.forpusinventory.domain.services;
 
+import com.forpus.forpusinventory.controller.WareController;
 import com.forpus.forpusinventory.persistence.entity.*;
+import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -68,5 +70,37 @@ public class Constant {
         }
         return false;
     }
-
+    public static String buttonCrudChangeColor(ActionEvent event){
+        try {
+            Button button = (Button) event.getSource();
+            if (blueToWhite == null) {
+                blueToWhite = button;
+                button.setStyle("-fx-background-color: #F5F5F5; ");
+            } else if (blueToWhite == button) {
+                button.setStyle("-fx-background-color: #F5F5F5; ");
+            } else {
+                blueToWhite.setStyle("-fx-background-color: #1BA1E2; ");
+                button.setStyle("-fx-background-color: #F5F5F5; ");
+                blueToWhite = button;
+            }
+            return button.getId();
+        }catch (Exception i){
+            System.out.println(i.getMessage());
+            return "error";
+        }
+    }
+    public static String changeOptions(ActionEvent event){
+        Button button = (Button) event.getSource();
+        if(Constant.greyToBlue == null){
+            Constant.greyToBlue = button;
+            button.setStyle("-fx-background-color: #1BA1E2; ");
+        } else if (Constant.greyToBlue == button) {
+            button.setStyle("-fx-background-color: #1BA1E2; ");
+        }else{
+            Constant.greyToBlue.setStyle("-fx-background-color: #C2C2C2; ");
+            button.setStyle("-fx-background-color: #1BA1E2; ");
+            Constant.greyToBlue = button;
+        }
+        return button.getId();
+    }
 }

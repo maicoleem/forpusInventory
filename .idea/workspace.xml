@@ -9,9 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c100c21c-3a8a-4617-abcb-404f11b4d22d" name="Changes" comment="Creating the option of adjustment. &#10;Balance logical is OK.&#10;In process is finance-view.fxml.">
+    <list default="true" id="c100c21c-3a8a-4617-abcb-404f11b4d22d" name="Changes" comment="the values for cost in transmute now must equal for save.setDisable(false).">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/ConstantsSettings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/AccountingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/AccountingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SettingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/SettingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/WareController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/WareController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/Constant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/domain/services/Constant.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +184,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-11.0.21-corretto-11.0.21-3183f394aec4-585ed96d" />
+        <option value="jdk-11.0.21-corretto-11.0.21-f644763e9732-a9dfd5e7" />
       </set>
     </attachedChunks>
   </component>
@@ -354,6 +358,7 @@
       <workItem from="1714503734795" duration="5027000" />
       <workItem from="1714695846597" duration="3829000" />
       <workItem from="1714753190188" duration="5886000" />
+      <workItem from="1715998805571" duration="3161000" />
     </task>
     <task id="LOCAL-00040" summary="**Se esta editando la view para pagar los creditos&#10;&#10;--falta funcionalidad">
       <created>1680666485383</created>
@@ -698,7 +703,7 @@
       <option name="project" value="LOCAL" />
       <updated>1704354150817</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -729,7 +734,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="SE MODIFICA LAS VIEW PARA IRLAS ACOMODANDO A LA NUEVA RESOLUCIÓN, SE CORRIGEN ERRORES" />
     <MESSAGE value="se corigen errores al agregar aportes y realizar compra de productos nuevos." />
     <MESSAGE value="Corrigiendo errores en ventas y movimientos de ventas, los saldos no cuadran" />
     <MESSAGE value="Se modificó la view de compras con una tabla para buscar productos y un label con el saldo disponible" />
@@ -754,7 +758,8 @@
     <MESSAGE value="the tables of AssetsEntity.java, LiabilitiesEntity.java and EquityEntity.java are created." />
     <MESSAGE value="now the entity InvoiceClass has a date format in its date colum,the programming to generate the balance sheet begins: it can be filtered by date, a balance is generated for contributions and purchases." />
     <MESSAGE value="The way of saving VAT on purchases and sales is changed to balance the balance&#10;*Review the movement of BOLD in sales&#10;*There is no option to pay withheld VAT" />
-    <option name="LAST_COMMIT_MESSAGE" value="The way of saving VAT on purchases and sales is changed to balance the balance&#10;*Review the movement of BOLD in sales&#10;*There is no option to pay withheld VAT" />
+    <MESSAGE value="the values for cost in transmute now must equal for save.setDisable(false)." />
+    <option name="LAST_COMMIT_MESSAGE" value="the values for cost in transmute now must equal for save.setDisable(false)." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -801,7 +806,7 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/WareController.java</url>
-          <line>495</line>
+          <line>480</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -816,33 +821,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/WareController.java</url>
-          <line>192</line>
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/WareController.java</url>
-          <line>1487</line>
+          <line>1471</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/WareController.java</url>
-          <line>1561</line>
+          <line>1545</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/WareController.java</url>
-          <line>190</line>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/WareController.java</url>
-          <line>268</line>
+          <line>258</line>
           <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/forpus/forpusinventory/controller/WareController.java</url>
-          <line>1740</line>
-          <option name="timeStamp" value="40" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -82,22 +82,11 @@ public class AccountingController {
     }
     @FXML //botones del CRUD
     public void buttonCRUD(ActionEvent event) {
-        try{
-        Button buttonCRUD = (Button) event.getSource();
-
-        if (Constant.blueToWhite == null) {
-            Constant.blueToWhite = buttonCRUD;
-            buttonCRUD.setStyle("-fx-background-color: #F5F5F5; ");
-        } else if (Constant.blueToWhite == buttonCRUD) {
-            buttonCRUD.setStyle("-fx-background-color: #F5F5F5; ");
-        } else {
-            Constant.blueToWhite.setStyle("-fx-background-color: #1BA1E2; ");
-            buttonCRUD.setStyle("-fx-background-color: #F5F5F5; ");
-            Constant.blueToWhite = buttonCRUD;
-        }
-        crudEjecuted(buttonCRUD.getId());
-        }catch (Exception i){
-            i.printStackTrace();
+        String receiver = Constant.buttonCrudChangeColor(event);
+        if(!receiver.equals("error")){
+            crudEjecuted(receiver);
+        }else {
+            WareController.alertSend("Error Ejecutando Crud");
         }
     }
     public void crudEjecuted(String idButton) {

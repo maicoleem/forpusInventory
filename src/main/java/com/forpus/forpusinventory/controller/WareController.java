@@ -168,23 +168,13 @@ public class WareController {
         buttonCategory.setStyle("-fx-background-color: #F5F5F5;");
         options("buttonCategory");
     }
-    @FXML //botones del CRUD
+    @FXML //buttons of CRUD
     public void buttonCRUD(ActionEvent event) {
-        try {
-            Button buttonCRUD = (Button) event.getSource();
-            if (Constant.blueToWhite == null) {
-                Constant.blueToWhite = buttonCRUD;
-                buttonCRUD.setStyle("-fx-background-color: #F5F5F5; ");
-            } else if (Constant.blueToWhite == buttonCRUD) {
-                buttonCRUD.setStyle("-fx-background-color: #F5F5F5; ");
-            } else {
-                Constant.blueToWhite.setStyle("-fx-background-color: #1BA1E2; ");
-                buttonCRUD.setStyle("-fx-background-color: #F5F5F5; ");
-                Constant.blueToWhite = buttonCRUD;
-            }
-            crudEjecuted(buttonCRUD.getId());
-        }catch (Exception i){
-            i.printStackTrace();
+        String receiver = Constant.buttonCrudChangeColor(event);
+        if(!receiver.equals("error")){
+            crudEjecuted(receiver);
+        }else {
+            WareController.alertSend("Error Ejecutando Crud");
         }
     }
     public void crudEjecuted(String idButton) {
@@ -803,7 +793,7 @@ public class WareController {
             i.printStackTrace();
         }
     }
-    @FXML //botones de arriba
+    @FXML //
     public void buttonsOptions(ActionEvent event) {
         try{
         Button buttonOption = (Button) event.getSource();
@@ -824,7 +814,6 @@ public class WareController {
         }
     }
     //botones de arriba, para dar formato al view
-
     /**
      * Define que muestra en la view de Warehouse
      * @param option
